@@ -1,0 +1,11 @@
+.btn-brand {
+  color: $inverted-font-color;
+  background-color: $brand-color;
+  bordr-color: $brand-color;
+}
+
+.btn-flat {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}

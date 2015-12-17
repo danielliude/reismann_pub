@@ -1,0 +1,37 @@
+{% load render_bundle from webpack_loader %}
+{% load i18n %}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% block meta_tags %}{% endblock %}
+  <title>
+    {% block title %}{% endblock %}
+  </title>
+  {% block stylesheets %}
+    {% render_bundle 'vendor' 'css' %}
+    {% render_bundle 'app' 'css' %}
+  {% endblock %}
+  {% block header_javascripts %}{% endblock %}
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="pull_top {% block body_class %}{% endblock %}">
+
+  <div class="wrapper">
+
+    {% block header %}{% include "core/header/__header.html" %}{% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}{% include "core/footer/__footer.html" %}{% endblock %}
+
+  </div>
+
+  {% block javascripts %}
+    {% render_bundle 'vendor' 'js' %}
+    {% render_bundle 'app' 'js' %}
+  {% endblock %}
+
+</body>
+</html>

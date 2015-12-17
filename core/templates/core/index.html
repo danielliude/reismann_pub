@@ -1,0 +1,15 @@
+{% extends "core/__base.html" %}
+
+{% block content %}
+
+  {% include "core/__index_banner.html" %}
+
+  {% if newcomer_profiles|length > 0 %}
+    {% include 'profiles/__newcomer_profiles.html' with newcomer_profiles=newcomer_profiles %}
+  {% endif %}
+
+  {% if newcomer_cities|length > 0 %}
+    {% include 'cities/__newcomer_cities.html' with newcomer_cities=newcomer_cities %}
+  {% endif %}
+
+{% endblock %}

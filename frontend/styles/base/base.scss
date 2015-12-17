@@ -1,0 +1,64 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+}
+
+body {
+  position: relative;
+  font-family: $primary-font;
+  color: $primary-font-color;
+  background-color: $background-color;
+
+  @include font-smoothing();
+
+  &.pull_top {
+    padding-top: 0px !important;
+  }
+
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+		font-family: $primary-font;
+		font-weight: bold;
+		color: inherit;
+		text-rendering: optimizelegibility;
+	}
+
+	h1,h2,h3 {
+		line-height: 40px;
+	}
+
+	h2 {
+		font-size: 31.5px;
+	}
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover, &:visited, &:focus {
+    text-decoration: none;
+  }
+}
+
+input {
+  font-family: $primary-font;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.secondary-text {
+  color: $secondary-font-color;
+}

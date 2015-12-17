@@ -1,0 +1,43 @@
+.banner-with-content {
+  position: relative;
+}
+
+.banner {
+  width: 100%;
+  padding: 0;
+}
+
+.banner-big {
+  height: 300px;
+
+  @include MQ(M) {
+    height: 480px;
+  }
+}
+
+.banner-small {
+  height: 180px;
+
+  @include MQ(M) {
+    height: 240px;
+  }
+}
+
+.banner-background {
+  height: 100%;
+}
+
+.banner-pattern-radial-gradient {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 2px, transparent 100%);
+    background-size: 3px 3px;
+  }
+}

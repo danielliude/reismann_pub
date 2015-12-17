@@ -1,0 +1,19 @@
+{% extends "profiles/__profile_base.html" %}
+
+{% block content %}
+
+  <div class="row">
+
+    <div class="col-sm-6">
+      {% block profile_box %} {% include "profiles/__profile_box.html" %} {% endblock %}
+      {% block service_box %} {% include "services/__service_box.html" %} {% endblock %}
+      {% block contact_box %} {% include "contacts/__contact_box.html" %} {% endblock %}
+    </div>
+
+    <div class="col-sm-6">
+      {% block service_descriptions %} {% endblock %}
+    </div>
+
+  </div>
+
+{% endblock %}

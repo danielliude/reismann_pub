@@ -1,0 +1,31 @@
+.register-box,
+.login-box {
+  margin: 20px auto;
+}
+
+.checkbox {
+  position: static;
+
+  label {
+    padding-left: 0;
+  }
+
+  input[type="checkbox"] {
+    position: static;
+    margin-left: 0;
+  }
+}
+
+.select2-container--default {
+  .select2-selection--multiple {
+    border-radius: 0;
+    border-color: $form-control-border-color;
+  }
+}
+
+.search {
+  input[type=text] {
+    border: none;
+    padding: 5px 10px;
+  }
+}

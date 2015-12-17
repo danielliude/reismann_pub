@@ -1,0 +1,75 @@
+.widget-profile {
+  .widget-user-header {
+    padding: 20px;
+    .widget-user-info {
+      margin-left: 110px;
+
+      @include MQ(L) {
+        margin-left: 120px;
+      }
+    }
+
+    .widget-user-image {
+      > img {
+        width: 90px;
+      }
+
+      @include MQ(L) {
+        > img {
+          width: 100px;
+        }
+      }
+    }
+
+    .widget-user-info {
+      h3 {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .widget-user-service {
+    border-top: 1px solid $separator-color;
+    padding: 20px;
+
+    h3 {
+      margin: 0 0 20px 0;
+    }
+
+    .row {
+      margin: 8px 0;
+
+      .service-tag {
+        width: 90px;
+        @include MQ(L) {
+          width: 100px;
+        }
+      }
+
+      .service-badges {
+        margin-left: 110px;
+
+        @include MQ(L) {
+          margin-left: 120px;
+        }
+      }
+    }
+  }
+
+  .widget-user-resumes {
+    padding: 20px 0;
+    .nav-tabs-custom {
+      border-radius: 0;
+      box-shadow: none;
+      margin-bottom: 0;
+      .tab-content {
+        padding: 15px 15px 0 15px;
+      }
+    }
+    .resume {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}

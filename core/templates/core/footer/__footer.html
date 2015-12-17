@@ -1,0 +1,60 @@
+{% load i18n %}
+
+<footer class="footer text-inverted">
+
+  <section class="footer--services row-space-2 row-space-top-2">
+
+    <div class="container footer--services--content">
+      <div class="row">
+
+        <div class="footer-services col-sm-4">
+          <h4>{% trans 'footer company' %}</h4>
+          <ul>
+            <li><a href="#">{% trans 'footer company about' %}</a></li>
+            <li><a href="#">{% trans 'footer company terms' %}</a></li>
+            <li><a href="#">{% trans 'footer company privacy' %}</a></li>
+            <li><a href="#">{% trans 'footer company imprint' %}</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-service col-sm-4">
+          <h4>{% trans 'footer help' %}</h4>
+          <ul>
+            <li><a href="#">{% trans 'footer help starter' %}</a></li>
+            <li><a href="#">{% trans 'footer help login and registry' %}</a></li>
+            <li><a href="#">{% trans 'footer help provider' %}</a></li>
+            <li><a href="#">{% trans 'footer help traveller' %}</a></li>
+            <li><a href="#">{% trans 'footer help review' %}</a></li>
+            <li><a href="#">{% trans 'footer help booking' %}</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-service col-sm-4">
+          <h4>{% trans 'footer contact' %}</h4>
+          <ul>
+            <li>
+              <a href="mailto:{% trans 'footer contact email' %}">
+                <i class="fa fa-envelope-o"></i> {% trans 'footer contact email' %}
+              </a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-edit"></i> {% trans 'footer contact form' %}</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-phone"></i> {% trans 'footer contact phone' %}</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section class="footer--information">
+    <div class="footer--information--content container text-center">
+      <strong>Copyright &copy; 2015 Reismann GmbH</strong>
+    </div>
+  </section>
+
+</footer>

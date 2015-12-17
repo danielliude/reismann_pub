@@ -1,0 +1,77 @@
+{% load i18n staticfiles %}
+
+<div class="navbar-custom-menu">
+  <ul class="nav navbar-nav navbar-right">
+
+    {% if user.is_authenticated %}
+      <li class="dropdown messages-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-envelope-o"></i>
+          <span class="label label-success">4</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="header">{% blocktrans %}You have 4 messages{% endblocktrans %}</li>
+          <li>
+            <ul class="menu">
+              <li>
+                <a href="#">
+                  <div class="pull-left">
+                    <img class="img-circle" src="{% static 'images/dummy/user2-160x160.jpg' %}" alt="User Image">
+                  </div>
+                  <h4>
+                    Support Team
+                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                  </h4>
+                  <p>Why not book a new awesome trip?</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="footer"><a href="#">{% trans 'see all messages' %}</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown user user-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <img src="{{ user.profile.get_avatar_url }}" alt="User Image" class="user-image">
+          <span class="hidden-xs">{{ user.profile.get_full_name_or_username }}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="user-header">
+            <img src="{{ user.profile.get_avatar_url }}" alt="User Image" class="img-circle">
+            <p>
+              {{ user.profile.get_full_name_or_username }} - {{ user.profile.location }}
+              <small>Member since Nov. 2015</small>
+            </p>
+          </li>
+          <li class="user-body">
+            <div class="col-xs-4 text-center">
+              <a href="#">12 Followers</a>
+            </div>
+            <div class="col-xs-4 text-center">
+              <a href="#">10 Followings</a>
+            </div>
+            <div class="col-xs-4 text-center">
+              <a href="#">1 Contract</a>
+            </div>
+          </li>
+          <li class="user-footer">
+            <div class="btn-group" role="group">
+              <a href="{% url 'profiles:profile' user.username %}" class="btn btn-default btn-flat btn-header-profile">{% trans 'profile' %}</a>
+              <a href="{% url 'profiles:dashboard' user.username %}" class="btn btn-default btn-flat btn-header-dashboard">{% trans 'dashboard' %}</a>
+              <a href="{% url 'accounts:logout' %}" class="btn btn-default btn-flat btn-header-logout">{% trans 'sign out' %}</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+    {% else %}
+      <li>
+        <a href="{% url 'accounts:login' %}">{% trans 'signin' %}</a>
+      </li>
+      <li>
+        <a href="{% url 'accounts:register' %}">{% trans 'register' %}</a>
+      </li>
+    {% endif %}
+
+  </ul>
+</div>

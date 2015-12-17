@@ -1,0 +1,45 @@
+{% load render_bundle from webpack_loader %}
+{% load i18n %}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% block meta_tags %}{% endblock %}
+  <title>
+    {% block title %}{% endblock %}
+  </title>
+  {% block stylesheets %}
+    {% render_bundle 'vendor' 'css' %}
+    {% render_bundle 'app' 'css' %}
+  {% endblock %}
+  {% block header_javascripts %}{% endblock %}
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="hold-transition {% block body_class %}skin-blue sidebar-mini{% endblock %}">
+
+  <div class="wrapper">
+
+    {% block header %}{% include "core/header/__header_with_sidebar.html" %}{% endblock %}
+
+    {% block aside %}{% endblock %}
+
+    <div class="content-wrapper">
+
+      <section class="content">
+        {% block content %}{% endblock %}
+      </section>
+
+    </div>
+
+    {% block footer %}{% endblock %}
+
+  </div>
+
+  {% block javascripts %}
+    {% render_bundle 'vendor' 'js' %}
+    {% render_bundle 'app' 'js' %}
+  {% endblock %}
+
+</body>
+</html>

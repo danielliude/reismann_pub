@@ -1,0 +1,30 @@
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  @include MQ(M) {
+    padding: 15px;
+  }
+}
+
+.simple-layout {
+  .wrapper {
+    background-color: $body-background-color;
+  }
+}
+
+.newcomer-profiles {
+  background-color: $background-light-grey;
+  padding-bottom: 1rem;
+
+  @include MQ(M) {
+    padding-bottom: 2rem;
+  }
+}
+
+.newcomer-cities {
+  background-color: #ffffff;
+}

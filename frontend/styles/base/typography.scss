@@ -1,0 +1,81 @@
+/*
+
+Base text size 16px -> 1rem
+32px -> 2rem
+30px -> 1.875rem
+28px -> 1.75rem
+26px -> 1.625rem
+24px -> 1.5rem
+22px -> 1.375rem
+20px -> 1.25rem
+18px -> 1.125rem
+14px -> 0.857rem
+12px -> 0.75rem
+10px -> 0.625rem
+8px -> 0.5rem
+*/
+
+html {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.boss {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+
+  @include MQ(M) {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+}
+
+.headline {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+
+  @include MQ(M) {
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+}
+
+.subheadline {
+  font-size: 1rem;
+  line-height: 1.25rem;
+
+  @include MQ(M) {
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+  }
+}
+
+.copy {
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.text {
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+}
+
+.micro {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.text-inverted {
+  color: $inverted-font-color;
+}
+
+.fa-icon {
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+}

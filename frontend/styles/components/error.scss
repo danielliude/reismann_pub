@@ -1,0 +1,8 @@
+ul.errorlist {
+  list-style: none;
+  -webkit-padding-start: 0;
+
+  li {
+    color: $form-error-font-color;
+  }
+}

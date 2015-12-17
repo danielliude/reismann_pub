@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<div class="widget-newcomer-profile widget-user">
+  <div class="image">
+    <a href="{% url 'profiles:profile' profile.user.username %}" class="background-image hover-darken"
+      style="background-image: url('{{ profile.get_card_image_url }}');"></a>
+  </div>
+  <a href="{% url 'profiles:profile' profile.user.username %}" class="profile-avatar widget-user-image">
+    <img src="{{ profile.get_avatar_url }}" alt="User Avatar" class="img-circle">
+  </a>
+  <div class="widget-body">
+    <div class="widget-profile-meta">
+      <div class="widget-profile-user">{{ profile.get_full_name_or_username }} {{ profile.short_description }}</div>
+      <a href="#" class="widget-profile-location">{{ profile.location.get_full_location }}</a>
+    </div>
+    <div class="widget-profile-price">
+      € 140
+      <span class="widget-profile-price-unit">{% trans 'profile price unit' %}</span>
+    </div>
+    <div class="widget-profile-bio">
+      {{ profile.bio }}
+    </div>
+  </div>
+</div>

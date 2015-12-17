@@ -1,0 +1,117 @@
+{% load i18n %}
+
+<div class="box box-solid box-square box-widget widget-profile">
+  <div class="widget-user-header clearfix">
+    <div class="widget-user-image pull-left">
+      <img src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile avatar' %}" class="img-circle">
+    </div>
+    <div class="widget-user-info">
+      <h3 class="widget-user-username">{{ profile.get_full_name_or_username }}</h3>
+      {% if profile.short_description %}
+        <h5 class="widget-user-desc secondary-text">{{ profile.short_description }}</h5>
+      {% endif %}
+      {% if profile.age or profile.location %}
+        <h5 class="widget-user-desc secondary-text">
+          {% if profile.age %}
+            {{ profile.age }} {% trans 'years old' %}
+            {% if profile.location %}  {% endif %}
+          {% endif %}
+          {% if profile.location %}
+            {% trans 'from' %} {{ profile.location.get_full_location }}
+          {% endif %}
+        </h5>
+      {% endif %}
+      {% if profile.member_since %}
+        <h5 class="widget-user-desc secondary-text">{{ profile.member_since }}</h5>
+      {% endif %}
+      {% if profile.bio %}
+        <h5 class="widget-user-desc secondary-text">{{ profile.bio }}</h5>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="widget-user-service">
+
+    <h3>{% trans 'my service' %}</h3>
+
+    <div class="row">
+      <div class="service-tag pull-left">
+        <i class="fa fa-map margin-r-5"></i> {% trans 'cities' %}
+      </div>
+      <div class="service-badges">
+        {% for city in service.cities.all %}
+          <a href="#" class="label label-info">{{ city.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="service-tag pull-left">
+        <i class="fa fa-folder margin-r-5"></i> {% trans 'categories' %}
+      </div>
+      <div class="service-badges">
+        {% for category in service.categories.all %}
+          <span class="label label-success">{{ category.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="service-tag pull-left">
+        <i class="fa fa-language margin-r-5"></i> {% trans 'languages' %}
+      </div>
+      <div class="service-badges">
+        {% for language in service.languages.all %}
+          <span class="label label-warning">{{ language.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="service-tag pull-left">
+        <i class="fa fa-tags margin-r-5"></i> {% trans 'tags' %}
+      </div>
+      <div class="service-badges">
+        {% for tag in service.tags.all %}
+          <span class="label label-danger">{{ tag.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+
+  {% if resumes|length > 0 %}
+    <div class="widget-user-resumes">
+
+      <div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs">
+          {% for resume in resumes %}
+            <li class="{% if forloop.counter == 1 %}active{% endif %}">
+              <a href="#{{ resume.service_category.name }}" data-toggle="tab">{{ resume.service_category.name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="tab-content">
+
+          {% for resume in resumes %}
+            <div class="tab-pane{% if forloop.counter == 1 %} active{% endif %}" id="{{ resume.service_category.name }}">
+              <div class="resume">
+                {% if resume.content %}
+                  {{ resume.content|safe }}
+                {% else %}
+                  {% trans 'empty resume placeholder' %}
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    </div>
+  {% endif %}
+
+</div>

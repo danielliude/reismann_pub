@@ -1,0 +1,85 @@
+/* brand / theme */
+$brand-color: #ff7e66;
+
+$body-background-color: #d2d6de;
+
+/* header */
+
+$primary-color: #3e454c;
+$header-background-color: rgba(0, 0, 0, 0.6);
+$navbar-inversed-background-color: rgba(0, 0, 0, 0.4);
+$navbar-static-top-background-color: #252528;
+$navbar-trigger-color: #ffffff;
+$navbar-font-color: #ffffff;
+$link-color: #1784c7;
+$background-color: #ffffff;
+$badge-color: $brand-color;
+$badge-font-color: #ffffff;
+$background-light-grey: #f3f3f3;
+
+/* button */
+
+$default-button-color: #ffffff;
+$default-button-border-color: #c4c4c4;
+$default-button-font-color: #565a5c;
+
+$primary-button-color: $brand-color;
+$primary-button-font-color: #ffffff;
+
+$inverted-button-color: #222222;
+$inverted-button-font-color: #ffffff;
+
+$button-border-radius: 0;
+$button-border-radius-large: 0;
+$button-border-radius-small: 0;
+
+/* form */
+
+$input-font-color: #565a5c;
+$input-icon-color: #82888a;
+
+$input-border-radius: 0;
+$input-border-radius-large: 0;
+$input-border-radius-small: 0;
+
+/* panel */
+$panel-border-radius: 0;
+
+/* footer */
+
+$footer-background-color: #252528;
+$footer-font-color: #ffffff;
+
+/* text colors */
+
+$primary-font-color: #000;
+$secondary-font-color: gray;
+$inverted-font-color: #ffffff;
+
+/* Image colors */
+
+$image-placeholder-background-color: #242731;
+
+/* Separator */
+$separator-color: #e5e4e1;
+
+/* Form */
+$form-control-border-color: #d2d6de;
+$form-error-font-color: #dd4b39;
+
+/* fonts */
+
+$primary-font: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+
+/* header size */
+
+$header-height-S: 42px;
+$header-height-M: 48px;
+
+/* sidebar size */
+
+$sidebar-width: 260px;
+
+/* grid */
+
+$condensed-row-gutter: 0.25rem;

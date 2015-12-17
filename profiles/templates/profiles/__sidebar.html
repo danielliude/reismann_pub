@@ -1,0 +1,74 @@
+{% load i18n %}
+
+<aside class="main-sidebar">
+
+  <section class="sidebar">
+
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="{{ user.profile.get_avatar_url }}" alt="User Image" class="img-circle">
+      </div>
+      <div class="pull-left info">
+        <p>{{ user.profile.get_full_name_or_username }}</p>
+        <span><i class="fa fa-circle text-success"></i> {% trans 'online' %}</span>
+      </div>
+    </div>
+
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+    </form>
+
+    <ul class="sidebar-menu">
+      <li class="header">{% trans 'Profile sidebar title' %}</li>
+      {% with request.resolver_match.url_name as url_name %}
+        <li class="{% if url_name == 'dashboard' %}active{% endif %}">
+          <a href="{% url 'profiles:dashboard' profile.user.username %}">
+            <i class="fa fa-tachometer"></i> <span>{% trans 'sidebar Dashboard' %}</span>
+          </a>
+        </li>
+        <li class="{% if url_name == 'detail' %}active{% endif %}">
+          <a href="{% url 'profiles:detail' profile.user.username %}">
+            <i class="fa fa-user"></i> <span>{% trans 'sidebar Profile' %}</span>
+          </a>
+        </li>
+        <li class="{% if url_name == 'contact' %}active{% endif %}">
+          <a href="{% url 'profiles:contact' profile.user.username %}">
+            <i class="fa fa-list-alt"></i> <span>{% trans 'sidebar Contact' %}</span>
+          </a>
+        </li>
+        <li class="{% if url_name == 'service' %}active{% endif %}">
+          <a href="{% url 'profiles:service' profile.user.username %}">
+            <i class="fa fa-tasks"></i> <span>{% trans 'sidebar Service' %}</span>
+          </a>
+        </li>
+        <li class="treeview {% if url_name == 'resume' %}active{% endif %}">
+          <a href="#">
+            <i class="fa fa-sitemap"></i> <span>{% trans 'sidebar Resumes' %}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            {% for category in service_categories %}
+              <li class="{% if url_name == 'resume' and category_id == category.id %}active{% endif %}">
+                <a href="{% url 'profiles:resume' profile.user.username category.id %}">
+                  <i class="fa fa-edit"> {{ category.name }}</i>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endwith %}
+      <li>
+        <a href="{% url 'profiles:profile' profile.user.username %}">
+          <i class="fa fa-sign-out"></i> <span>{% trans 'sidebar Quit' %}</span>
+        </a>
+      </li>
+    </ul>
+
+  </section>
+
+</aside>

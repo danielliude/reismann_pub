@@ -1,0 +1,55 @@
+{% load i18n %}
+
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <h3 class="box-title">{% trans 'Edit service' %}</h3>
+  </div>
+
+  <div class="box-body">
+
+    <form action="" id="service_edit_form" enctype="multipart/form-data" method="post">
+
+      {% csrf_token %}
+
+      {{ form.non_field_errors }}
+
+      {{ form.is_active.errors }}
+      <div class="checkbox">
+        <label>
+          {{ form.is_active }} {{ form.is_active.label }}
+        </label>
+      </div>
+
+      {{ form.cities.errors }}
+      <div class="form-group">
+        <label>{{ form.cities.label }}</label>
+        {{ form.cities }}
+      </div>
+
+      {{ form.categories.errors }}
+      <div class="form-group">
+        <label>{{ form.categories.label }}</label>
+        {{ form.categories }}
+      </div>
+
+      {{ form.languages.errors }}
+      <div class="form-group">
+        <label>{{ form.languages.label }}</label>
+        {{ form.languages }}
+      </div>
+
+      {{ form.tags.errors }}
+      <div class="form-group">
+        <label>{{ form.tags.label }}</label>
+        {{ form.tags }}
+      </div>
+
+      <button class="btn btn-primary btn-block btn-flat" type="submit">{% trans 'Save changes' %}</button>
+      <a href="{% url 'profiles:dashboard' profile.user.username %}" class="btn btn-danger btn-block btn-flat">{% trans 'Cancel' %}</a>
+
+    </form>
+
+  </div>
+
+</div>

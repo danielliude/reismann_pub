@@ -1,0 +1,15 @@
+.widget-newcomer-city {
+  margin: 15px 0;
+  .image {
+    height: 300px;
+  }
+  .title {
+    line-height: 300px;
+  }
+
+  &:hover {
+    .title {
+      background-color: rgba(0,0,0,.3);
+    }
+  }
+}

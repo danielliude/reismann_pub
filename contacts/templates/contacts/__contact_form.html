@@ -1,0 +1,56 @@
+{% load i18n %}
+
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <h3 class="box-title">{% trans 'Edit contact' %}</h3>
+  </div>
+
+  <div class="box-body">
+
+    <form action="" id="contact_edit_form" enctype="multipart/form-data" method="post">
+
+      {% csrf_token %}
+
+      {{ form.non_field_errors }}
+
+      {{ form.phone.error }}
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+          {{ form.phone }}
+        </div>
+      </div>
+
+      {{ form.weibo.error }}
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-weibo"></i></span>
+          {{ form.weibo }}
+        </div>
+      </div>
+
+      {{ form.wechat.error }}
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-wechat"></i></span>
+          {{ form.wechat }}
+        </div>
+      </div>
+
+      {{ form.qq.error }}
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-qq"></i></span>
+          {{ form.qq}}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans 'Save changes' %}</button>
+      <a href="{% url 'profiles:dashboard' profile.user.username %}" class="btn btn-danger btn-block btn-flat">{% trans 'Cancel' %}</a>
+
+    </form>
+
+  </div>
+
+</div>

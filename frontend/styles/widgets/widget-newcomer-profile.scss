@@ -1,0 +1,65 @@
+.widget-newcomer-profile {
+  margin: 15px 0;
+  position: relative;
+  background-color: #fff;
+  color: #343738;
+
+  .image {
+    a {
+      height: 250px;
+    }
+
+    @include MQ(M) {
+      a {
+        height: 300px;
+      }
+    }
+  }
+  .profile-avatar {
+    position: absolute;
+    top: 220px;
+    left: 20px;
+    margin-left: 0;
+    display: block;
+    z-index: 1;
+    .img-circle {
+      width: 60px;
+      height: 60px;
+    }
+
+    @include MQ(M) {
+      top: 270px;
+    }
+  }
+  .widget-body {
+    position: relative;
+    border: 1px solid $separator-color;
+    padding: 1rem;
+  }
+  .widget-profile-meta {
+    vertical-align: top;
+    padding-top: 1.2rem;
+  }
+  .widget-profile-location {
+    margin-top: 0.2rem;
+    @extend .bold;
+  }
+  .widget-profile-user {
+    @extend .micro;
+  }
+  .widget-profile-price {
+    position: absolute;
+    right: 1.2rem;
+    top: 2.2rem;
+    color: $brand-color;
+    @extend .bold;
+    @extend .text;
+    .widget-profile-price-unit {
+      @extend .micro;
+    }
+  }
+  .widget-profile-bio {
+    margin-top: 0.5rem;
+    @extend .micro;
+  }
+}

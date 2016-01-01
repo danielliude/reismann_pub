@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import Country, City
-
+from modeltranslation.admin import TranslationAdmin
 from reismann.admin import ImageWidgetAdmin
 
 class CountryAdmin(admin.ModelAdmin):
@@ -16,5 +16,14 @@ class CityAdmin(ImageWidgetAdmin):
     ('country', admin.RelatedOnlyFieldListFilter),
   )
 
-admin.site.register(Country, CountryAdmin)
-admin.site.register(City, CityAdmin)
+class TranslatedCountryAdmin(CountryAdmin, TranslationAdmin):
+    pass
+
+class TranslatedCityAdmin(CityAdmin, TranslationAdmin):
+    pass
+
+admin.site.register(Country, TranslatedCountryAdmin)
+admin.site.register(City, TranslatedCityAdmin)
+
+
+

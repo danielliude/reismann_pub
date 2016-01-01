@@ -13,3 +13,4 @@ class ImageWidgetAdmin(admin.ModelAdmin):
       return db_field.formfield(**kwargs)
 
     return super(ImageWidgetAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+

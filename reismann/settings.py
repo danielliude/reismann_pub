@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 
 SITE_ID = 1
 
-# Application definition
 
+# Application definition
 INSTALLED_APPS = (
   'django.contrib.contenttypes',
   'django.contrib.auth',
@@ -57,6 +57,18 @@ INSTALLED_APPS = (
   'insite_messages',
   'followship',
   'webpack_loader',
+)
+
+
+# MODEL TRANSLATION #
+#####################
+USE_MODELTRANSLATION = True
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_LANGUAGES = ('en','zh-hans')
+INSTALLED_APPS = ('modeltranslation',) + INSTALLED_APPS
+
+MODELTRANSLATION_TRANSLATION_FILES = (
+    'cities.translation',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,17 +116,27 @@ AUTHENTICATION_BACKENDS = (
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-  }
+    'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'reismanndb',
+         'USER': 'reismann',
+         'PASSWORD':'reismannpwd',
+         'HOST' : '',
+         'PORT' : '',
+    }
 }
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'zh-hans'
+LANGUAGE_CODE = 'en'
+
+ugettext = lambda s: s
+LANGUAGES = (
+	('en', ugettext('English')),
+    ('zh-hans', ugettext('Chinese')),
+)
 
 TIME_ZONE = 'UTC'
 
@@ -139,7 +161,7 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/media/'
+MEDIA_ROOT = '/home/alexander/PycharmProjects/reismann/media'
 
 MEDIA_URL = '/media/'
 

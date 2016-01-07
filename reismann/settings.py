@@ -1,3 +1,9 @@
+# Try to load specific settings
+try:
+    from .alex_settings import *
+except ImportError:
+    pass
+
 """
 Django settings for reismann project.
 
@@ -59,18 +65,6 @@ INSTALLED_APPS = (
   'webpack_loader',
 )
 
-
-# MODEL TRANSLATION #
-#####################
-USE_MODELTRANSLATION = True
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
-MODELTRANSLATION_LANGUAGES = ('en','zh-hans')
-INSTALLED_APPS = ('modeltranslation',) + INSTALLED_APPS
-
-MODELTRANSLATION_TRANSLATION_FILES = (
-    'cities.translation',
-)
-
 MIDDLEWARE_CLASSES = (
   'django.contrib.sessions.middleware.SessionMiddleware',
   'django.middleware.common.CommonMiddleware',
@@ -130,13 +124,6 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en'
-
-ugettext = lambda s: s
-LANGUAGES = (
-	('en', ugettext('English')),
-    ('zh-hans', ugettext('Chinese')),
-)
 
 TIME_ZONE = 'UTC'
 
@@ -160,10 +147,6 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
-
-MEDIA_ROOT = '/home/alexander/PycharmProjects/reismann/media'
-
-MEDIA_URL = '/media/'
 
 # Webpack-loader
 WEBPACK_LOADER = {

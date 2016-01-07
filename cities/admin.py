@@ -16,14 +16,8 @@ class CityAdmin(ImageWidgetAdmin):
     ('country', admin.RelatedOnlyFieldListFilter),
   )
 
-class TranslatedCountryAdmin(CountryAdmin, TranslationAdmin):
-    pass
-
-class TranslatedCityAdmin(CityAdmin, TranslationAdmin):
-    pass
-
-admin.site.register(Country, TranslatedCountryAdmin)
-admin.site.register(City, TranslatedCityAdmin)
+admin.site.register(Country, CountryAdmin)
+admin.site.register(City, CityAdmin)
 
 
 

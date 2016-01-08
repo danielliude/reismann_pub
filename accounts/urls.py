@@ -20,12 +20,13 @@ urlpatterns = [
   url(r'^logout/$', views.logout, name="logout"),
 
   # Activation
-  url(r'^(?P<username>[\@\.\w-])/registration/complete/$', views.action_complete, {
+  url(r'^(?P<username>\w+)/registration/complete/$', views.action_complete, {
     'template_name': 'accounts/registration_complete.html',
     'extra_context': {
       'account_activation_days': settings.ACCOUNTS_REGISTRATION_ACTIVATION_DAYS
     }
   }, name="registration_complete"),
+
   url(r'^activate/(?P<activation_key>\w+)/$', views.activate, name='activate'),
   # Activation Retry
   url(r'^activate/retry/(?P<activation_key>\w+)/$', views.activate_retry, name='activate_retry'),

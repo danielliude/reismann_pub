@@ -2,3 +2,5 @@ static/
 *.pyc
 .idea/*
 media/*
+diagobrowser/alex_settings.py
+reismann/images/*

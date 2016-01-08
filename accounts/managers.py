@@ -1,19 +1,20 @@
-from django.contrib.auth.models import User, UserManager
-from django.utils.six import text_type
+from django.contrib.auth.models import User, UserManager, Permission
+from django.contrib.contenttypes.models import ContentType
 
-from userena.utils import generate_sha1, get_datetime_now
+from django.utils.six import text_type
+from django.core.exceptions import ObjectDoesNotExist
+
+from userena.utils import generate_sha1, get_profile_model, get_user_model, get_user_profile
 
 from userena.compat import smart_text
 
-from accounts.settings import ACCOUNT_ACTIVATED
+from accounts.settings import ACCOUNT_ACTIVATED, ANONYMOUS_USER_ID
 
 from profiles.models import Profile
-
 from contacts.models import Contact
-
 from services.models import Service
 
-from guardian.shortcuts import assign_perm
+from guardian.shortcuts import assign_perm, get_perms
 
 from core.constants import ASSIGNED_PERMISSIONS
 
@@ -120,3 +121,54 @@ class RegistrationManager(UserManager):
         deleted_users.append(user)
         user.delete()
     return deleted_users
+
+  def check_permissions(self):
+    """
+    Checks that all permissions are set correctly for the users.
+    :return: A set of users whose permissions was wrong.
+    """
+    # Variable to supply some feedback
+    changed_permissions = []
+    changed_users = []
+    warnings = []
+
+    # Check that all the permissions are available.
+    for model, perms in ASSIGNED_PERMISSIONS.items():
+        if model == 'profile':
+            model_obj = get_profile_model()
+        else: model_obj = get_user_model()
+
+        model_content_type = ContentType.objects.get_for_model(model_obj)
+
+        for perm in perms:
+            try:
+                Permission.objects.get(codename=perm[0],
+                                       content_type=model_content_type)
+            except Permission.DoesNotExist:
+                changed_permissions.append(perm[1])
+                Permission.objects.create(name=perm[1],
+                                          codename=perm[0],
+                                          content_type=model_content_type)
+
+    # it is safe to rely on settings.ANONYMOUS_USER_ID since it is a
+    # requirement of django-guardian
+    for user in get_user_model().objects.exclude(id=ANONYMOUS_USER_ID):
+        try:
+            user_profile = get_user_profile(user=user)
+        except ObjectDoesNotExist:
+            warnings.append(_("No profile found for %(username)s") \
+                                % {'username': user.username})
+        else:
+            all_permissions = get_perms(user, user_profile) + get_perms(user, user)
+
+            for model, perms in ASSIGNED_PERMISSIONS.items():
+                if model == 'profile':
+                    perm_object = get_user_profile(user=user)
+                else: perm_object = user
+
+                for perm in perms:
+                    if perm[0] not in all_permissions:
+                        assign_perm(perm[0], user, perm_object)
+                        changed_users.append(user)
+
+    return (changed_permissions, changed_users, warnings)

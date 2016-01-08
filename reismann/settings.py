@@ -137,6 +137,8 @@ LOCALE_PATHS = (
   'locale',
 )
 
+AUTH_PROFILE_MODULE = 'profiles.Profile'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Static files (CSS, JavaScript, Images)
@@ -163,13 +165,13 @@ GRAPPELLI_ADMIN_TITLE = _('reismann admin interface')
 # Needed for Django guardian
 ANONYMOUS_USER_ID = -1
 
-# Mail Server Configuration
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'cnoleherzer@gmail.com'
-EMAIL_HOST_PASSWORD = 'sUvoziku'
-EMAIL_DEFAULT_FROM_EMAIL = 'cnoleherze@gmail.comr'
+# Mail Server Configuration MOVED TO LOCAL SETTINGS
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'cnoleherzer@gmail.com'
+# EMAIL_HOST_PASSWORD = 'sUvoziku'
+# EMAIL_DEFAULT_FROM_EMAIL = 'cnoleherze@gmail.comr'
 
 # Redactor Configuration
 REDACTOR_OPTIONS = {'lang': 'zh_cn'}

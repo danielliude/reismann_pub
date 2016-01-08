@@ -67,7 +67,7 @@ def login(request, login_form=AuthenticationForm, template_name='accounts/login.
   if not extra_context: extra_context = dict()
   extra_context.update({
     'form': form,
-    'next': request.REQUEST.get(REDIRECT_FIELD_NAME),
+    'next': request.GET(REDIRECT_FIELD_NAME),
   })
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
@@ -91,9 +91,9 @@ def register(request, register_form=RegistrationForm, template_name='accounts/re
       if success_url:
         redirect_to = success_url
       elif ACCOUNT_ACTIVATION_REQUIRED:
-        redirect_to = reverse('accounts:registration_complete', kwargs={'username: user.username'})
+        redirect_to = reverse('accounts:registration_complete', kwargs = {'username': user.username})
       else:
-        redirect_to = reverse('profiles:dashboard', kwargs={'username': user.username})
+        redirect_to = reverse('profiles:dashboard', kwargs = {'username': user.username})
 
       if request.user.is_authenticated():
         signout(request)

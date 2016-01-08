@@ -26,6 +26,9 @@ class Contact(models.Model):
   class Meta:
     verbose_name = _('Contact')
     verbose_name_plural = _('Contacts')
+    permissions = (
+        ('view_contact', _('view contact')),
+    )
 
   def __str__(self):
     return _('Contact of %(username)s') % {'username': self.user.username}

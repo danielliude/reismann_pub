@@ -56,6 +56,10 @@ class Service(models.Model):
   class Meta:
     verbose_name = _('Service')
     verbose_name_plural = _('Services')
+    permissions = (
+        ('view_service', _('view service')),
+    )
+
 
   def __str__(self):
     return self.user.username

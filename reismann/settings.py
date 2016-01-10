@@ -4,6 +4,11 @@ try:
 except ImportError:
     pass
 
+try:
+    from .zhen_settings import *
+except ImportError:
+    pass
+
 """
 Django settings for reismann project.
 

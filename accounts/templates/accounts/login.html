@@ -65,7 +65,7 @@
         </a>
       </div>
 
-      <a href="#">{% trans 'I forgot my password' %}</a><br>
+      <a href="{% url 'password_reset' %}">{% trans 'I forgot my password' %}</a><br>
       <a href="{% url 'accounts:register' %}" class="text-center">{% trans 'Register a new membership' %}</a>
 
     </div>

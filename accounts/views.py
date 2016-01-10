@@ -67,7 +67,7 @@ def login(request, login_form=AuthenticationForm, template_name='accounts/login.
   if not extra_context: extra_context = dict()
   extra_context.update({
     'form': form,
-    'next': request.GET(REDIRECT_FIELD_NAME),
+    'next': request.GET.get(REDIRECT_FIELD_NAME),
   })
 
   return ExtraContextTemplateView.as_view(template_name=template_name,

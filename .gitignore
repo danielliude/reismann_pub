@@ -4,3 +4,6 @@ static/
 media/*
 diagobrowser/alex_settings.py
 reismann/images/*
+frontend/node_modules
+zheng_settings.py
+db.sqlite3

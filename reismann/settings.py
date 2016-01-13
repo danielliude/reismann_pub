@@ -1,11 +1,11 @@
 # Try to load specific settings
+# try:
+#    from .alex_settings import *
+# except ImportError:
+#    pass
+#
 try:
-    from .alex_settings import *
-except ImportError:
-    pass
-
-try:
-    from .zhen_settings import *
+   from .zheng_settings import *
 except ImportError:
     pass
 
@@ -111,19 +111,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-# Database
+# Database MOVED TO LOCAL SETTINGS
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'reismanndb',
-         'USER': 'reismann',
-         'PASSWORD':'reismannpwd',
-         'HOST' : '',
-         'PORT' : '',
-    }
-}
 
 
 # Internationalization
@@ -171,12 +160,6 @@ GRAPPELLI_ADMIN_TITLE = _('reismann admin interface')
 ANONYMOUS_USER_ID = -1
 
 # Mail Server Configuration MOVED TO LOCAL SETTINGS
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'cnoleherzer@gmail.com'
-# EMAIL_HOST_PASSWORD = 'sUvoziku'
-# EMAIL_DEFAULT_FROM_EMAIL = 'cnoleherze@gmail.comr'
 
 # Redactor Configuration
 REDACTOR_OPTIONS = {'lang': 'zh_cn'}

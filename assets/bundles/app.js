@@ -45,19 +45,11 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	__webpack_require__(5);
 
 	$(function () {
-
-	  $(window).scroll(function () {
-	    if ($(".navbar").offset().top > 30) {
-	      $(".navbar-fixed-top").addClass("sticky");
-	    } else {
-	      $(".navbar-fixed-top").removeClass("sticky");
-	    }
-	  });
 
 	  $('form .input-group.date').datepicker({
 	    format: 'yyyy-mm-dd',

@@ -21,3 +21,15 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = make_bool(os.environ.get('EMAIL_USE_TLS', 'False'))
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
 EMAIL_DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'alex@alex.com')
+
+# Database SETTINGS
+DATABASES = {
+	'default': {
+		 'ENGINE': 'django.db.backends.mysql',
+		 'NAME': 'reismanndb',
+		 'USER': 'reismann',
+		 'PASSWORD':'reismannpwd',
+		 'HOST' : '',
+		 'PORT' : '',
+	}
+}

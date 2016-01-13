@@ -57,7 +57,7 @@ html {
       font-size: 1.125rem;
       line-height: 1.375rem; } }
 
-.copy, .navbar.navbar-inverse .nav > li > a {
+.copy {
   font-size: 1rem;
   line-height: 1.25rem; }
 
@@ -69,7 +69,7 @@ html {
   font-size: 0.75rem;
   line-height: 1rem; }
 
-.bold, .navbar.navbar-inverse .nav > li > a, .widget-newcomer-profile .widget-profile-location, .widget-newcomer-profile .widget-profile-price {
+.bold, .widget-newcomer-profile .widget-profile-location, .widget-newcomer-profile .widget-profile-price {
   font-weight: 600; }
 
 .text-inverted {
@@ -150,113 +150,6 @@ hr {
 
 .newcomer-cities {
   background-color: #ffffff; }
-
-.dropdown-help > li > a {
-  padding: 5px 20px; }
-
-@media only screen and (min-width: 768px) {
-  .navbar-collapse.pull-left + .navbar-custom-menu {
-    right: 0; } }
-
-.navbar-custom-menu .user-menu .user-footer .btn-group {
-  width: 100%; }
-  .navbar-custom-menu .user-menu .user-footer .btn-group .btn {
-    width: 33.33%; }
-
-header {
-  background: rgba(0, 0, 0, 0.6) !important; }
-
-.navbar {
-  padding: 10px 0px; }
-  .navbar.navbar-inverse {
-    background: rgba(0, 0, 0, 0.4);
-    border-bottom: 1px solid #585858; }
-    .navbar.navbar-inverse.navbar-static-top {
-      background-color: #252528; }
-      .navbar.navbar-inverse.navbar-static-top .container {
-        margin-top: 0;
-        margin-bottom: 0; }
-    .navbar.navbar-inverse .navbar-brand {
-      height: auto; }
-    .navbar.navbar-inverse .nav > li > a {
-      color: #ffffff;
-      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-      opacity: 0.6;
-      filter: alpha(opacify=60);
-      -webkit-transition: all .2s linear;
-      -moz-transition: all .2s linear;
-      transition: all .2s linear;
-      padding: 10px 15px 10px;
-      text-decoration: none; }
-      .navbar.navbar-inverse .nav > li > a:hover, .navbar.navbar-inverse .nav > li > a:active {
-        color: #ffffff;
-        opacity: 1;
-        filter: alpha(opacity=100); }
-    .navbar.navbar-inverse .nav > li.active > a {
-      color: #ffffff;
-      opacity: 1;
-      filter: alpha(opacity=100);
-      background-color: transparent; }
-  .navbar.sticky {
-    background: rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid #252525; }
-    .navbar.sticky .container {
-      margin-top: 0px !important;
-      margin-bottom: 0px !important; }
-  .navbar .container {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    -webkit-transition: margin .2s ease-in-out;
-    -moz-transition: margin .2s ease-in-out;
-    transition: margin .2s ease-in-out; }
-    .navbar .container .navbar-header .navbar-brand {
-      color: #ffffff;
-      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-      font-size: 20px;
-      margin-left: -20px;
-      padding: 10px 20px 10px; }
-    .navbar .container .collapse .nav .dropdown .caret {
-      margin-bottom: 4px; }
-    .navbar .container .collapse .nav .dropdown .dropdown-menu {
-      background: #252528;
-      -webkit-border-radius: 0;
-      -moz-border-radius: 0;
-      border-radius: 0;
-      margin-top: 2px; }
-      .navbar .container .collapse .nav .dropdown .dropdown-menu > li > a {
-        color: #fff;
-        padding: 10px 20px; }
-        .navbar .container .collapse .nav .dropdown .dropdown-menu > li > a:hover {
-          background: #08c; }
-
-/* Responsive */
-@media only screen and (max-width: 991px) {
-  body {
-    padding-top: 0 !important; } }
-
-@media only screen and (max-width: 991px) {
-  .navbar.navbar-inverse {
-    background: #252528; } }
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .navbar {
-    margin-bottom: 0; }
-    .navbar.transparent.navbar-fixed-top {
-      margin-bottom: -70px;
-      position: relative;
-      top: 999; }
-    .navbar.home.navbar-fixed-top {
-      margin-bottom: -70px;
-      position: relative;
-      top: 999; } }
-
-@media only screen and (max-width: 767px) {
-  .navbar.navbar-inverse .container .navbar-header .navbar-brand {
-    margin-left: -5px; }
-  .navbar .navbar-nav .open .dropdown-menu > li > a {
-    line-height: 25px;
-    font-weight: bold;
-    padding: 5px 15px 5px 35px; } }
 
 footer.footer {
   background-color: #252528;

@@ -5,19 +5,17 @@
   <div class="container">
 
     <div class="title headline row-space-1 text-center">
-      {% trans 'New providers' %}
+      {% trans 'Popular providers' %}
     </div>
 
     <div class="row">
 
-      {% for profile in newcomer_profiles %}
+      {% for profile in popular_profiles %}
         <div class="col-sm-6 col-md-4">
           {% include 'profiles/widgets/__widget_newcomer_profile.html' with profile=profile %}
         </div>
       {% endfor %}
 
     </div>
-
   </div>
-
 </div>

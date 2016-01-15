@@ -1,14 +1,3 @@
-# Try to load specific settings
-# try:
-#    from .alex_settings import *
-# except ImportError:
-#    pass
-#
-try:
-   from .zheng_settings import *
-except ImportError:
-    pass
-
 """
 Django settings for reismann project.
 
@@ -20,6 +9,17 @@ https://docs.djangoproject.com/en/1.8/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
+
+# Specific developer settings
+try:
+   from .alex_settings import *
+except ImportError:
+   pass
+
+try:
+   from .zheng_settings import *
+except ImportError:
+    pass
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -43,6 +43,7 @@ ALLOWED_HOSTS = []
 
 SITE_ID = 1
 
+ROOT_URLCONF = 'reismann.urls'
 
 # Application definition
 INSTALLED_APPS = (
@@ -70,6 +71,8 @@ INSTALLED_APPS = (
   'webpack_loader',
 )
 
+SESSION_COOKIE_AGE = 360
+
 MIDDLEWARE_CLASSES = (
   'django.contrib.sessions.middleware.SessionMiddleware',
   'django.middleware.common.CommonMiddleware',
@@ -82,7 +85,6 @@ MIDDLEWARE_CLASSES = (
   'userena.middleware.UserenaLocaleMiddleware',
 )
 
-ROOT_URLCONF = 'reismann.urls'
 
 TEMPLATES = [
   {

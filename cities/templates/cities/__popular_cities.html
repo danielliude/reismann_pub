@@ -5,12 +5,12 @@
   <div class="container">
 
     <div class="title text-center headline row-space-1">
-      {% trans 'New cities' %}
+      {% trans 'Popular cities' %}
     </div>
 
     <div class="row city-list">
 
-      {% for city in newcomer_cities %}
+      {% for city in popular_cities %}
         <div class="col-sm-6 col-md-4">
           {% include 'cities/widgets/__newcomer_city_widget.html' with city=city %}
         </div>

@@ -20,7 +20,7 @@ class Profile(models.Model):
 
   user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name='profile')
 
-  is_active = models.BooleanField(default=True, verbose_name=_('profile is active'),
+  is_active = models.BooleanField(default=False, verbose_name=_('profile is active'),
                                   help_text=_('profile is active help text'))
 
   avatar = ThumbnailerImageField(_('avatar'), blank=True, upload_to=upload_to_avatar,
@@ -71,6 +71,9 @@ class Profile(models.Model):
     if not self.birthday: return False
     else:
       today = datetime.date.today()
+
+      if self.birthday > today: return False
+
       # Raised when birthday is February 29 and the current year is not a leap year
       try:
         birth_date = self.birthday.replace(year=today.year)
@@ -78,8 +81,12 @@ class Profile(models.Model):
         day = today.day - 1 if today.day != 1 else today.day + 2
         birth_date = self.birthday.replace(year=today.year, day=day)
 
-      if birth_date > today: return today.year - self.birthday.year - 1
-      else: return today.year - self.birthday.year
+      age = 0
+      if birth_date > today: age = today.year - self.birthday.year - 1
+      else: age = today.year - self.birthday.year
+
+      if age > 18: return age;
+      else: return "<18"
 
   def member_since(self):
     if not self.created_at: return False

@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
+from django.utils.safestring import mark_safe
+
 from accounts.models import Registration
 from accounts.settings import ACCOUNT_ACTIVATION_REQUIRED, ACCOUNT_ACTIVATED, \
   ACCOUNT_FORBIDDEN_USERNAMES, ACCOUNTS_REGISTRATION_ACTIVATION_DAYS, \
@@ -40,7 +42,7 @@ class RegistrationForm(forms.Form):
                                                          render_value=False),
                               label=_("Repeat password"))
   tos = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'required', 'required': True}),
-                           label=_('I have read and agree to the Terms of Service'),
+                           label= mark_safe('I have read and agree to the <a href="#" data-toggle="modal" data-target="#myModal" target="_blank">terms</a> of service'),
                            error_messages={'required': _('You must agree to the terms to register.')})
 
   def clean_username(self):

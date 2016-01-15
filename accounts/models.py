@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 
 from userena.utils import generate_sha1, get_protocol
 
-from reismann.settings import EMAIL_DEFAULT_FROM_EMAIL
+from reismann.alex_settings import EMAIL_DEFAULT_FROM_EMAIL
 
 from accounts.settings import ACCOUNTS_REGISTRATION_ACTIVATION_DAYS
 from accounts.managers import RegistrationManager

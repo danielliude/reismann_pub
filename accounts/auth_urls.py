@@ -21,7 +21,7 @@ urlpatterns = [
 
   url(r'^password/reset/confirm/(?P<%s>[0-9A-Za-z]+)-(?P<token>.+)/$' % password_reset_uid_kwarg,
       auth_views.password_reset_confirm,
-      merged_dict({'template_name': 'accounts/reset_password_confirm_form.html',
+      merged_dict({'template_name': 'accounts/password_reset_confirm_form.html',
                    }, auth_views_compat_quirks['password_reset_confirm']),
       name='password_reset_confirm'),
 

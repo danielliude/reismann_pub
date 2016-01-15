@@ -59,9 +59,8 @@
 
         {{ form.tos.errors }}
         <div class="checkbox">
-          <label>
-            {{ form.tos }} {% trans 'I have read and agree to the terms of service' %}
-          </label>
+           {{ form.tos }}
+           {{ form.tos.label_tag }}
         </div>
 
         <div>
@@ -85,5 +84,24 @@
       <a href="{% url 'accounts:login' %}" class="text-center">{% trans 'I already have a membership' %}</a>
     </div><!-- /.form-box -->
   </div><!-- /.register-box -->
+
+
+    {#MODAL FOR TERMS#}
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">{% trans "Terms of usage" %}</h4>
+            </div>
+            <div class="modal-body">
+                <p> {% trans "Here are our terms of usage. Read carefully before registering on the website" %}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+             </div>
+        </div>
+      </div>
+    </div>
 
 {% endblock %}

@@ -1,0 +1,55 @@
+{% extends "core/__base.html" %}
+
+{% load staticfiles i18n %}
+
+{% block body_class %}skin-blue layout-top-nav login-page simple-layout{% endblock %}
+
+{% block content %}
+
+    <section class="mood mood-small">
+        <div style="background-image: url({{ city.banner_image }});" class="mood--background mood-pattern-radial-gradient">
+        </div>
+    </section>
+
+  <div class="container">
+    <div class="filters">
+        <div class="container">
+            <form class="col-lg-10" action="search/" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit" />
+            </form>
+    </div></div>
+
+    <div class="row">
+        {% for service in services %}
+            <div class="col-sm-6 col-md-4">
+                <div class="widget-newcomer-profile widget-user">
+                      <div class="image">
+                        <a href="{% url 'profiles:profile' service.user.username %}" class="background-image hover-darken"
+                          style="background-image: url('{{ service.user.profile.get_card_image_url }}');"></a>
+                      </div>
+                      <a href="{% url 'profiles:profile' service.user.username %}" class="profile-avatar widget-user-image">
+                        <img src="{{ service.user.profile.get_avatar_url }}" alt="User Avatar" class="img-circle">
+                      </a>
+                      <div class="widget-body">
+                        <div class="widget-profile-meta">
+                          <div class="widget-profile-user">{{ service.user.profile.get_full_name_or_username }} {{ service.user.profile.short_description }}</div>
+                          <a href="#" class="widget-profile-location">{{ service.user.profile.location.get_full_location }}</a>
+                        </div>
+                        <div class="widget-profile-price">
+                          € {{ service.price }}
+                          <span class="widget-profile-price-unit">{% trans 'profile price unit' %}</span>
+                        </div>
+                        <div class="widget-profile-bio">
+                          {{ service.user.profile.bio }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        {% endfor %}
+    </div>
+
+  </div>
+
+{% endblock %}

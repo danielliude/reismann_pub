@@ -85,8 +85,7 @@ class Profile(models.Model):
       if birth_date > today: age = today.year - self.birthday.year - 1
       else: age = today.year - self.birthday.year
 
-      if age > 18: return age;
-      else: return "<18"
+      return age
 
   def member_since(self):
     if not self.created_at: return False

@@ -3,6 +3,9 @@ from django.http import HttpResponseRedirect
 from cities.forms import SearchForm
 from services.models import Service
 from cities.models import City
+from profiles.models import Profile
+from django.contrib.auth.models import User
+import datetime
 import sys
 
 # Create your views here.
@@ -11,23 +14,61 @@ import sys
 def city(request, city_name, template_name='cities/city.html'):
 
     form = SearchForm(initial= {'city': city_name})
-    services = Service.objects.filter(is_active= True)
 
-    return render(request, 'cities/city.html', {'form': form, 'services': services})
-
-def search(request, from_city):
     if request.method == 'POST':
         print(request.POST)
         form = SearchForm(request.POST)
 
         if form.is_valid():
+
+            # City is required in the post
             service_city = request.POST.get('city')
-            print(service_city)
-            city = City.objects.filter(name= service_city)
-            if city:
+
+            if (service_city == '0'):
+                services = Service.objects.all()
+            else:
+                city = City.objects.filter(name= service_city)
                 services = Service.objects.filter(cities = city)
-                return HttpResponseRedirect('/cities/' + str(service_city) + '/', {'services': services})
-    else:
-            form = SearchForm(initial= {'city': from_city})
-            services = Service.objects.filter(is_active= True)
+
+            # Let's get gender
+            gender = request.POST.getlist('gender')
+            if(gender):
+                profiles = Profile.objects.filter(gender__in =(gender))
+                users = User.objects.filter(profile__in=(profiles))
+                services = services.filter(user__in=(users))
+
+            #Check age
+            age = request.POST.get('age')
+            if(age):
+                if(age != '0'):
+                    min = age.split(',')[0]
+                    min_date = datetime.datetime.now() - datetime.timedelta(days=int(min)*365)
+                    max = age.split(',')[1]
+                    max_date = datetime.datetime.now() - datetime.timedelta(days=int(max)*365)
+                    profiles = Profile.objects.filter(birthday__gt = max_date).filter(birthday__lt = min_date)
+
+                    users = User.objects.filter(profile__in=(profiles))
+                    services = services.filter(user__in=(users))
+
+            # Check languages for service
+            languages = request.POST.getlist('languages')
+            if(languages):
+                for language in languages:
+                    services = services.filter(languages = language)
+
+            # Check tags
+            tags = request.POST.getlist('tags')
+            if(tags):
+                for tag in tags:
+                    services = services.filter(tags = tag)
+
+            # Check type of services
+            request_services = request.POST.getlist('services')
+            if(request_services):
+                for service in request_services:
+                    services = services.filter(categories = service)
+
             return render(request, 'cities/city.html', {'form': form, 'services': services})
+    else:
+        services = Service.objects.filter(is_active= True)
+        return render(request, 'cities/city.html', {'form': form, 'services': services})

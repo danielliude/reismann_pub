@@ -32,9 +32,17 @@
 
   <div class="widget-user-service">
 
-    <h3>{% trans 'my service' %}</h3>
+    <h3>{% trans 'Services' %}</h3>
+
+    {% for service in services %}
+    <div class="row">
+        <h4> {{ service.title }}</h4>
+        <h5>€ {{ service.price }}</h5>
+        <h5> {{ service.get_type_display }}</h5>
+    </div>
 
     <div class="row">
+
       <div class="service-tag pull-left">
         <i class="fa fa-map margin-r-5"></i> {% trans 'cities' %}
       </div>
@@ -77,6 +85,25 @@
         {% endfor %}
       </div>
     </div>
+
+    <div class="row">
+        <p>{{ service.content }}</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+        </div>
+
+        <div class="col-md-3 text-right">
+            {% if view_own_profile %}
+            <a href="{% url 'profiles:service' profile.user.username service.id %}" class="btn btn-primary btn-block"><b>{% trans 'Edit service' %}</b></a>
+            {% else %}
+            <a href="#" class="btn btn-primary btn-block"><b>{% trans 'Book me' %}</b></a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% endfor %}
 
   </div>
 

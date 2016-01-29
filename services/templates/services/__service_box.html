@@ -3,51 +3,54 @@
 <div class="box box-primary">
 
   <div class="box-header with-border">
-    <h3 class="box-title">{% trans 'My service' %}</h3>
+    <h3 class="box-title">{% trans 'All services' %}</h3>
   </div>
 
   <div class="box-body">
-    <strong><i class="fa fa-map margin-r-5"></i> {% trans 'service cities' %}</strong>
+
+    <strong><i class="fa fa-map margin-r-5"></i> {% trans 'services cities' %}</strong>
     <p>
-      {% for city in service.cities.all %}
+      {% for city in unique_cities %}
         <a href="#" class="label label-info">{{ city.name }}</a>
       {% endfor %}
     </p>
 
     <hr>
 
-    <strong><i class="fa fa-folder margin-r-5"></i> {% trans 'service categories' %}</strong>
+    <strong><i class="fa fa-folder margin-r-5"></i> {% trans 'services categories' %}</strong>
     <p>
-      {% for category in service.categories.all %}
+      {% for category in unique_categories %}
         <span href="#" class="label label-success">{{ category.name }}</span>
       {% endfor %}
     </p>
 
     <hr>
 
-    <strong><i class="fa fa-language margin-r-5"></i> {% trans 'service languages' %}</strong>
+    <strong><i class="fa fa-language margin-r-5"></i> {% trans 'services languages' %}</strong>
     <p>
-      {% for language in service.languages.all %}
+      {% for language in unique_languages %}
         <span href="#" class="label label-warning">{{ language.name }}</span>
       {% endfor %}
     </p>
 
     <hr>
 
-    <strong><i class="fa fa-tags margin-r-5"></i> {% trans 'service tags' %}</strong>
+    <strong><i class="fa fa-tags margin-r-5"></i> {% trans 'services tags' %}</strong>
     <p>
-      {% for tag in service.tags.all %}
+      {% for tag in unique_tags %}
         <span href="#" class="label label-danger">{{ tag.name }}</span>
       {% endfor %}
     </p>
 
     <hr>
 
-    {% if view_own_profile %}
-      <a href="{% url 'profiles:service' profile.user.username %}" class="btn btn-primary btn-block"><b>{% trans 'Edit service' %}</b></a>
-    {% else %}
-      <a href="#" class="btn btn-primary btn-block"><b>{% trans 'Book me' %}</b></a>
-    {% endif %}
+        <div class="box-body">
+            {% if view_own_profile %}
+                <a href="{% url 'profiles:services' profile.user.username %}" class="btn btn-primary btn-block"><b>{% trans 'Edit services' %}</b></a>
+            {% else %}
+                <a href="#" class="btn btn-primary btn-block"><b>{% trans 'Book me' %}</b></a>
+            {% endif %}
+        </div>
 
   </div>
 

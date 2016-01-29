@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as signin, logout as signout, REDIRECT_FIELD_NAME
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import logout as Signout
 from django.views.generic.list import ListView
@@ -16,6 +17,7 @@ from userena import signals as userena_signals
 from userena import settings as userena_settings
 
 from guardian.decorators import permission_required_or_403
+from guardian.core import ObjectPermissionChecker
 
 from profiles.models import Profile
 from profiles.forms import ProfileForm
@@ -31,9 +33,9 @@ from contacts.forms import ContactForm
 from contacts.utils import get_user_contact
 
 from services.models import Service
-from services.forms import ServiceForm, ResumeForm
-from services.utils import get_user_service, get_user_category_resume, \
-  get_user_resumes
+from services.forms import ServiceForm
+from services.utils import get_user_services, get_service_by_id
+from services.utils import get_distinct_categories, get_distinct_cities,get_distinct_languages,get_distinct_tags
 
 from configurations.models import ServiceCategory
 from configurations.utils import get_active_service_categories
@@ -54,15 +56,23 @@ def profile(request, username, template_name="profiles/profile.html",
   user = get_object_or_404(User, username__iexact=username)
   profile = get_user_profile(user)
   contact = get_user_contact(user)
-  service = get_user_service(user)
-  resumes = get_user_resumes(user)
+  services = get_user_services(user)
+
+  unique_tags = get_distinct_tags(user)
+  unique_cities = get_distinct_cities(user)
+  unique_languages = get_distinct_languages(user)
+  unique_categories = get_distinct_categories(user)
 
   if not extra_context: extra_context = dict()
   extra_context['profile'] = profile
   extra_context['contact'] = contact
-  extra_context['service'] = service
-  extra_context['resumes'] = resumes
+  extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
+
+  extra_context['unique_tags'] = unique_tags
+  extra_context['unique_cities'] = unique_cities
+  extra_context['unique_languages'] = unique_languages
+  extra_context['unique_categories'] = unique_categories
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -74,7 +84,12 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
 
   profile = get_user_profile(user)
   contact = get_user_contact(user)
-  service = get_user_service(user)
+  services = get_user_services(user)
+
+  unique_tags = get_distinct_tags(user)
+  unique_cities = get_distinct_cities(user)
+  unique_languages = get_distinct_languages(user)
+  unique_categories = get_distinct_categories(user)
 
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
@@ -83,8 +98,14 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   extra_context['service_categories'] = get_active_service_categories()
   extra_context['profile'] = profile
   extra_context['contact'] = contact
-  extra_context['service'] = service
+  extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
+
+  extra_context['unique_tags'] = unique_tags
+  extra_context['unique_cities'] = unique_cities
+  extra_context['unique_languages'] = unique_languages
+  extra_context['unique_categories'] = unique_categories
+
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 @secure_required
@@ -97,7 +118,7 @@ def detail(request, username, edit_profile_form=ProfileForm,
 
   profile = get_user_profile(user)
   contact = get_user_contact(user)
-  service = get_user_service(user)
+  services = get_user_services(user)
 
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
@@ -121,12 +142,13 @@ def detail(request, username, edit_profile_form=ProfileForm,
   extra_context['service_categories'] = get_active_service_categories()
   extra_context['profile'] = profile
   extra_context['contact'] = contact
-  extra_context['service'] = service
+  extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
+
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 @secure_required
-@permission_required_or_403('change_contact', (Contact, 'user__username', 'username'))
+# @permission_required_or_403('change_contact', (Contact, 'user__username', 'username'))
 def contact(request, username, edit_contact_form=ContactForm,
                  template_name='profiles/contact.html', success_url=None,
                  extra_context=None, **kwargs):
@@ -134,7 +156,7 @@ def contact(request, username, edit_contact_form=ContactForm,
   user = get_object_or_404(User, username__iexact=username)
   profile = get_user_profile(user)
   contact = get_user_contact(user)
-  service = get_user_service(user)
+  services = get_user_services(user)
 
   form = edit_contact_form(instance=contact)
 
@@ -155,20 +177,57 @@ def contact(request, username, edit_contact_form=ContactForm,
   extra_context['service_categories'] = get_active_service_categories()
   extra_context['profile'] = profile
   extra_context['contact'] = contact
-  extra_context['service'] = service
+  extra_context['services'] = services
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
 
 @secure_required
-@permission_required_or_403('change_service', (Service, 'user__username', 'username'))
-def service(request, username, edit_service_form=ServiceForm,
-                 template_name='profiles/service.html', success_url=None,
+def service_add(request, username, edit_service_form=ServiceForm,
+                template_name='profiles/service_add.html', success_url=None,
+                extra_context=None, **kwargs):
+
+    user = get_object_or_404(User, username__iexact=username)
+
+    profile = get_user_profile(user)
+    contact = get_user_contact(user)
+
+    form = edit_service_form()
+
+    if request.method == 'POST':
+        form = edit_service_form(request.POST, request.FILES)
+
+        if form.is_valid():
+          service = form.save()
+          service.user = user
+          service.save()
+
+          if success_url:
+            redirect_to = success_url
+          else:
+            redirect_to = reverse('profiles:services', kwargs={'username': username})
+          return redirect(redirect_to)
+
+    if not extra_context: extra_context = dict()
+    extra_context['form'] = form
+    extra_context['service_categories'] = get_active_service_categories()
+    extra_context['profile'] = profile
+    extra_context['contact'] = contact
+    return ExtraContextTemplateView.as_view(template_name=template_name,
+                                          extra_context=extra_context)(request)
+
+@secure_required
+def service(request, username, service_id, edit_service_form=ServiceForm,
+                 template_name='profiles/service_edit.html', success_url=None,
                  extra_context=None, **kwargs):
 
   user = get_object_or_404(User, username__iexact=username)
   profile = get_user_profile(user)
   contact = get_user_contact(user)
-  service = get_user_service(user)
+  service = get_service_by_id(service_id)
+
+  checker = ObjectPermissionChecker(user)
+
+  # if(checker.has_perm('view_service', service)):
 
   form = edit_service_form(instance=service)
 
@@ -190,37 +249,25 @@ def service(request, username, edit_service_form=ServiceForm,
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['service'] = service
+
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
+  # else:
+  #   return HttpResponse(status=403)
 
 @secure_required
-@permission_required_or_403('change_service', (Service, 'user__username', 'username'))
-def resume(request, username, category_id, edit_resume_form=ResumeForm,
-           template_name='profiles/resume.html', success_url=None,
-           extra_context=None, **kwargs):
+def services(request, username,
+                template_name='profiles/services.html',
+                extra_context=None, **kwargs):
 
   user = get_object_or_404(User, username__iexact=username)
   profile = get_user_profile(user)
-  category = get_object_or_404(ServiceCategory, id=category_id)
-  resume = get_user_category_resume(user, category)
-
-  form = edit_resume_form(instance=resume)
-
-  if request.method == 'POST':
-    form = edit_resume_form(request.POST, request.FILES, instance=resume)
-
-    if form.is_valid():
-      resume = form.save()
-
-      if success_url:
-        redirect_to = success_url
-      else:
-        redirect_to = reverse('profiles:resume', kwargs={'username': username, 'category_id': category.id})
-      return redirect(redirect_to)
+  contact = get_user_contact(user)
+  services = get_user_services(user)
 
   if not extra_context: extra_context = dict()
-  extra_context['form'] = form
+  extra_context['services'] = services
   extra_context['profile'] = profile
-  extra_context['service_categories'] = get_active_service_categories()
+  extra_context['contact'] = contact
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)

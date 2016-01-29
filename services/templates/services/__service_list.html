@@ -1,0 +1,38 @@
+{% load i18n %}
+
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <h3 class="box-title">{% trans 'Available services' %}</h3>
+  </div>
+
+  <div class="box-body">
+
+      <table class="table table-condensed">
+        <tr>
+            <th>{% trans "Title" %}</th>
+            <th>{% trans "Date of creation" %}</th>
+            <th>{% trans "Active" %}</th>
+            <th>{% trans "Changes" %}</th>
+        </tr>
+        {% for service in services %}
+        <tr>
+            <td>{{ service.title }}</td>
+            <td>{{ service.created_at }}</td>
+            <td>{{ service.is_active }}</td>
+            <td><a href="{{ service.id }}/">Edit</a></td>
+        </tr>
+
+    {% endfor %}
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><a href="add/">New service</a></td>
+    </tr>
+</table>
+
+  </div>
+
+</div>

@@ -24,47 +24,32 @@
     </form>
 
     <ul class="sidebar-menu">
-      <li class="header">{% trans 'Profile sidebar title' %}</li>
+      <li class="header">{% trans 'Profile sidebar' %}</li>
       {% with request.resolver_match.url_name as url_name %}
         <li class="{% if url_name == 'dashboard' %}active{% endif %}">
           <a href="{% url 'profiles:dashboard' profile.user.username %}">
-            <i class="fa fa-tachometer"></i> <span>{% trans 'sidebar Dashboard' %}</span>
+            <i class="fa fa-tachometer"></i> <span>{% trans 'Dashboard' %}</span>
           </a>
         </li>
         <li class="{% if url_name == 'detail' %}active{% endif %}">
           <a href="{% url 'profiles:detail' profile.user.username %}">
-            <i class="fa fa-user"></i> <span>{% trans 'sidebar Profile' %}</span>
+            <i class="fa fa-user"></i> <span>{% trans 'Profile' %}</span>
           </a>
         </li>
         <li class="{% if url_name == 'contact' %}active{% endif %}">
           <a href="{% url 'profiles:contact' profile.user.username %}">
-            <i class="fa fa-list-alt"></i> <span>{% trans 'sidebar Contact' %}</span>
+            <i class="fa fa-list-alt"></i> <span>{% trans 'Contact' %}</span>
           </a>
         </li>
-        <li class="{% if url_name == 'service' %}active{% endif %}">
-          <a href="{% url 'profiles:service' profile.user.username %}">
-            <i class="fa fa-tasks"></i> <span>{% trans 'sidebar Service' %}</span>
+        <li class="{% if url_name == 'services' %}active{% endif %}">
+          <a href="{% url 'profiles:services' profile.user.username %}">
+            <i class="fa fa-tasks"></i> <span>{% trans 'Services' %}</span>
           </a>
-        </li>
-        <li class="treeview {% if url_name == 'resume' %}active{% endif %}">
-          <a href="#">
-            <i class="fa fa-sitemap"></i> <span>{% trans 'sidebar Resumes' %}</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            {% for category in service_categories %}
-              <li class="{% if url_name == 'resume' and category_id == category.id %}active{% endif %}">
-                <a href="{% url 'profiles:resume' profile.user.username category.id %}">
-                  <i class="fa fa-edit"> {{ category.name }}</i>
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
         </li>
       {% endwith %}
       <li>
-        <a href="{% url 'profiles:profile' profile.user.username %}">
-          <i class="fa fa-sign-out"></i> <span>{% trans 'sidebar Quit' %}</span>
+        <a href="{% url 'accounts:logout' %}">
+          <i class="fa fa-sign-out"></i> <span>{% trans 'Quit' %}</span>
         </a>
       </li>
     </ul>

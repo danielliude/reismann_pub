@@ -1,28 +1,34 @@
-from services.models import Service, Resume
+from services.models import Service
+from configurations.models import ServiceCategory, ServiceTag, ServiceLanguage
+from cities.models import City
 
-from configurations.models import ServiceCategory
+def get_user_services(user):
 
-def get_user_service(user):
-  try:
-    service = user.service
-  except Service.DoesNotExist:
-    service = Service.objects.create(user=user)
+    services = Service.objects.filter(user = user)
+    return services
 
-  return service
 
-def get_user_category_resume(user, category):
-  try:
-    resume = Resume.objects.get(user=user, service_category=category)
-  except Resume.DoesNotExist:
-    resume = Resume.objects.create_resume(user=user, service_category=category)
+def get_service_by_id(id):
 
-  return resume
+    return Service.objects.get(pk = id)
 
-def get_user_resumes(user):
-  service = get_user_service(user)
-  resumes = []
-  for category in service.categories.all():
-    resume = get_user_category_resume(user, category)
-    if resume.is_active and resume.content: resumes.append(resume)
+def get_distinct(user, field_name):
 
-  return resumes
+    return Service.objects.filter(user= user).values_list(field_name, flat=True).distinct()
+
+def get_distinct_categories(user):
+
+    ids = get_distinct(user, 'categories')
+    return ServiceCategory.objects.filter(id__in=ids)
+
+def get_distinct_tags(user):
+    ids = get_distinct(user, 'tags')
+    return ServiceTag.objects.filter(id__in=ids)
+
+def get_distinct_languages(user):
+    ids = get_distinct(user, 'languages')
+    return ServiceLanguage.objects.filter(id__in=ids)
+
+def get_distinct_cities(user):
+    ids = get_distinct(user, 'cities')
+    return City.objects.filter(id__in=ids)

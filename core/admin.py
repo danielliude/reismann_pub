@@ -28,7 +28,7 @@ class RegistrationInline(admin.StackedInline):
 
 class ServiceInline(admin.StackedInline):
   model = Service
-  max_num = 1
+  max_num = 5
 
   formfield_overrides = {
     ThumbnailerImageField: {'widget': ImageClearableFileInput}

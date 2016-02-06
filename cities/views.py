@@ -1,22 +1,43 @@
+import datetime
+
+from django.db.models import Q
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+
 from cities.forms import SearchForm
 from services.models import Service
 from cities.models import City
 from profiles.models import Profile
-from django.contrib.auth.models import User
-import datetime
-import sys
+from django.http import HttpResponse
+import json
 
-# Create your views here.
 
+# search for cities from index page
+def search_cities(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        cities = City.objects.filter(name__startswith = q )[:20]
+        results = []
+        for city in cities:
+            city_json = {}
+            city_json['id'] = city.id
+            city_json['label'] = city.name
+            city_json['value'] = city.name
+            results.append(city_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
 
 def city(request, city_name, template_name='cities/city.html'):
 
-    form = SearchForm(initial= {'city': city_name})
+    form = SearchForm()
+    form.fields['city'].initial = city_name
 
     if request.method == 'POST':
-        print(request.POST)
+
         form = SearchForm(request.POST)
 
         if form.is_valid():
@@ -68,7 +89,15 @@ def city(request, city_name, template_name='cities/city.html'):
                 for service in request_services:
                     services = services.filter(categories = service)
 
+            services = services.exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
+
             return render(request, 'cities/city.html', {'form': form, 'services': services})
     else:
-        services = Service.objects.filter(is_active= True)
+        services = Service.objects.filter(is_active= True) \
+                        .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
+
+        if(city_name):
+            city = City.objects.filter(name= city_name)
+            services = Service.objects.filter(cities = city)
+
         return render(request, 'cities/city.html', {'form': form, 'services': services})

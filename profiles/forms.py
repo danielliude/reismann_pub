@@ -1,20 +1,15 @@
 #encoding:utf-8
 from __future__ import unicode_literals
+import logging
+from collections import OrderedDict
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-
-from core.constants import GENDER_CHOICES
-
-from cities.models import City
-
-from profiles.models import Profile
-
 from easy_thumbnails.widgets import ImageClearableFileInput
 
-import logging
-
-from collections import OrderedDict
+from core.constants import GENDER_CHOICES
+from cities.models import City
+from profiles.models import Profile
 
 logger = logging.getLogger('accounts')
 

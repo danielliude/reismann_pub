@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 
 from easy_thumbnails.fields import ThumbnailerImageField
 
-from redactor.fields import RedactorField
-
 from core.constants import SERVICE_TYPE_CHOICES, SERVICE_CARD_IMAGE_SETTINGS
 from core.uploads import upload_to_service_card
 
@@ -38,7 +36,7 @@ class Service(models.Model):
                                 help_text=_('tags of service help text'),
                                 related_name='services')
 
-  content = RedactorField(verbose_name=_('service content'), allow_image_upload=True, default="service content")
+  content = models.TextField(verbose_name=_('service content'), default="service content")
 
   languages = models.ManyToManyField(ServiceLanguage, verbose_name=_('languages of service'),
                                      help_text=_('languages of service help text'),

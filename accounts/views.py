@@ -128,6 +128,7 @@ def activate(request, activation_key, template_name="accounts/activate_fail.html
     if not Registration.objects.check_expired_activation(activation_key):
       user = Registration.objects.activate_user(activation_key)
       if user:
+
         auth_user = authenticate(identification=user.email, check_password=False)
         signin(request, auth_user)
 

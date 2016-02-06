@@ -1,12 +1,15 @@
 from django import forms
+
 from core.constants import GENDER_CHOICES
+from .models import City
+
 
 CITIES = (
     ('0', 'All cities'),
-    ('hamburg', 'Hamburg'),
-    ('lippstadt','Lippstadt'),
-    ('frankfurt', 'Frankfurt'),
-    ('munich','Munich'),
+    ('Hamburg', 'Hamburg'),
+    ('Lippstadt','Lippstadt'),
+    ('Frankfurt', 'Frankfurt'),
+    ('Munich','Munich'),
 )
 
 AVAILABLE_SERVICES = (
@@ -59,3 +62,11 @@ class SearchForm(forms.Form):
     languages = forms.MultipleChoiceField(required= False,  widget=forms.CheckboxSelectMultiple, choices= LANGUAGES)
 
     tags = forms.MultipleChoiceField(required= False,  widget=forms.CheckboxSelectMultiple, choices= TAGS)
+
+
+
+class SearchIndexForm(forms.ModelForm):
+
+    class Meta:
+        model = City
+        fields = ['name']

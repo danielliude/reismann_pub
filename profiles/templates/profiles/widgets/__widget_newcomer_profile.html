@@ -14,8 +14,8 @@
       <a href="#" class="widget-profile-location">{{ profile.location.get_full_location }}</a>
     </div>
     <div class="widget-profile-price">
-      € {{ profile.user.service.price }}
-      <span class="widget-profile-price-unit">{% trans 'profile price unit' %}</span>
+      € {{ profile.average_price }}
+      <span class="widget-profile-price-unit">{% trans 'average price' %}</span>
     </div>
     <div class="widget-profile-bio">
       {{ profile.bio }}

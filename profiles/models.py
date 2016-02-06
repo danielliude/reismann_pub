@@ -1,20 +1,18 @@
+import datetime
+import statistics
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from django.contrib.sites.models import Site
-
 from easy_thumbnails.fields import ThumbnailerImageField
 
 from core.constants import MUGSHOT_SETTINGS, GENDER_CHOICES, PROFILE_CARD_IMAGE_SETTINGS
 from core.uploads import upload_to_avatar, upload_to_profile_card
-
 from configurations.utils import get_profile_card_fallback_url, get_avatar_fallback_url
-
 from cities.models import City
-
 from profiles.managers import ProfileManager
+from services.utils import get_user_services
 
-import datetime
 
 class Profile(models.Model):
 
@@ -65,6 +63,17 @@ class Profile(models.Model):
       return self.card_image.url
 
     return get_profile_card_fallback_url()
+
+  @property
+  def average_price(self):
+      user_services = get_user_services(self.user)
+      prices = []
+      for service in user_services:
+        if service.is_active:
+            prices.append(service.price)
+
+      return int(statistics.mean(prices))
+
 
   @property
   def age(self):

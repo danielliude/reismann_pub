@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import Country, City
-from modeltranslation.admin import TranslationAdmin
+from cities.models import Country, City
 from reismann.admin import ImageWidgetAdmin
 
 class CountryAdmin(admin.ModelAdmin):

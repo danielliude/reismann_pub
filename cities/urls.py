@@ -3,8 +3,11 @@ from cities import views
 
 urlpatterns = [
   # Activation
-  url(r'^(?P<city_name>\w+)/$', views.city, {
+  url(r'^show/(?P<city_name>\w+)/$', views.city, {
     'template_name': 'cities/city.html',
 
   }, name="city"),
+
+  # search for cities
+  url(r'^search/$', views.search_cities, name='search_cities'),
 ]

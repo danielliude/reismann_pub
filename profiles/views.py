@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as signin, logout as signout, REDIRECT_FIELD_NAME
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from django.http import HttpResponse
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import logout as Signout
@@ -18,6 +19,7 @@ from userena import settings as userena_settings
 
 from guardian.decorators import permission_required_or_403
 from guardian.core import ObjectPermissionChecker
+from guardian.shortcuts import get_perms
 
 from profiles.models import Profile
 from profiles.forms import ProfileForm
@@ -81,6 +83,10 @@ def profile(request, username, template_name="profiles/profile.html",
 def dashboard(request, username, template_name='profiles/dashboard.html',
               extra_context=None, **kwargs):
   user = get_object_or_404(User, username__iexact=username)
+
+  # site = Site.objects.get_current()
+  # print(get_perms(user, site))
+  # print(user.get_all_permissions())
 
   profile = get_user_profile(user)
   contact = get_user_contact(user)
@@ -182,6 +188,7 @@ def contact(request, username, edit_contact_form=ContactForm,
                                           extra_context=extra_context)(request)
 
 @secure_required
+# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
 def service_add(request, username, edit_service_form=ServiceForm,
                 template_name='profiles/service_add.html', success_url=None,
                 extra_context=None, **kwargs):
@@ -216,6 +223,7 @@ def service_add(request, username, edit_service_form=ServiceForm,
                                           extra_context=extra_context)(request)
 
 @secure_required
+# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
 def service(request, username, service_id, edit_service_form=ServiceForm,
                  template_name='profiles/service_edit.html', success_url=None,
                  extra_context=None, **kwargs):
@@ -224,10 +232,6 @@ def service(request, username, service_id, edit_service_form=ServiceForm,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   service = get_service_by_id(service_id)
-
-  checker = ObjectPermissionChecker(user)
-
-  # if(checker.has_perm('view_service', service)):
 
   form = edit_service_form(instance=service)
 
@@ -252,10 +256,9 @@ def service(request, username, service_id, edit_service_form=ServiceForm,
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
-  # else:
-  #   return HttpResponse(status=403)
 
 @secure_required
+# @permission_required_or_403('view_service', (Service, 'user__username', 'username'))
 def services(request, username,
                 template_name='profiles/services.html',
                 extra_context=None, **kwargs):

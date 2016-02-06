@@ -1,35 +1,56 @@
+import random
+
 from django.db.models import Q
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 from profiles.models import Profile
-
 from cities.models import City
-
-import random
+from cities.forms import SearchIndexForm
 
 def index(request):
-  popular_profiles = sorted(Profile.objects.filter(is_active=True) \
-                    .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True)) \
-                    .order_by('created_at')[:6], key=lambda x: random.random())
 
-  newcomer_profiles = Profile.objects.filter(is_active=True) \
+    form = SearchIndexForm()
+
+    if request.method == 'POST':
+
+        form = SearchIndexForm(request.POST)
+
+        if form.is_valid():
+
+            # City is required in the post
+            city = request.POST.get('name')
+
+            url = reverse('cities:city', kwargs={'city_name': city})
+
+            return HttpResponseRedirect(url)
+
+    else:
+
+      popular_profiles = sorted(Profile.objects.filter(is_active=True) \
                         .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True)) \
-                        .order_by('created_at')[:6]
+                        .order_by('created_at')[:6], key=lambda x: random.random())
 
-  newcomer_cities = City.objects.filter(is_active=True).order_by('created_at')[:6]
+      newcomer_profiles = Profile.objects.filter(is_active=True) \
+                            .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True)) \
+                            .order_by('created_at')[:6]
 
-  popular_cities = sorted(City.objects.filter(is_active=True).order_by('created_at')[:6], key=lambda x: random.random())
+      newcomer_cities = City.objects.filter(is_active=True).order_by('created_at')[:6]
 
-  context = {
-    'popular_profiles': popular_profiles,
-    'newcomer_profiles': newcomer_profiles,
-    'newcomer_cities': newcomer_cities,
-    'popular_cities': popular_cities,
-  }
+      popular_cities = sorted(City.objects.filter(is_active=True).order_by('created_at')[:6], key=lambda x: random.random())
 
-  return render(request, 'core/index.html', context)
+      context = {
+        'form' : form,
+        'popular_profiles': popular_profiles,
+        'newcomer_profiles': newcomer_profiles,
+        'newcomer_cities': newcomer_cities,
+        'popular_cities': popular_cities,
+      }
+
+      return render(request, 'core/index.html', context)
 
 def handler404(request):
   response = render_to_response('404.html', {}, context_instance=RequestContext(request))

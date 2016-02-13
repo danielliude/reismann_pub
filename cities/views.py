@@ -14,6 +14,7 @@ import json
 
 # search for cities from index page
 def search_cities(request):
+
     if request.is_ajax():
         q = request.GET.get('term', '')
         cities = City.objects.filter(name__startswith = q )[:20]
@@ -34,7 +35,8 @@ def search_cities(request):
 def city(request, city_name, template_name='cities/city.html'):
 
     form = SearchForm()
-    form.fields['city'].initial = city_name
+    city = City.objects.get(name = city_name)
+    form.fields['city'].initial = city.pk
 
     if request.method == 'POST':
 
@@ -43,12 +45,12 @@ def city(request, city_name, template_name='cities/city.html'):
         if form.is_valid():
 
             # City is required in the post
-            service_city = request.POST.get('city')
+            service_pk = request.POST.get('city')
 
-            if (service_city == '0'):
+            if (not service_pk):
                 services = Service.objects.all()
             else:
-                city = City.objects.filter(name= service_city)
+                city = City.objects.filter(pk= service_pk)
                 services = Service.objects.filter(cities = city)
 
             # Let's get gender

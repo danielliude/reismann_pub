@@ -35,7 +35,7 @@
                       <div class="widget-body">
                         <div class="widget-profile-meta">
                           <div class="widget-profile-user">{{ service.user.profile.get_full_name_or_username }} {{ service.user.profile.short_description }}</div>
-                          <a href="#" class="widget-profile-location">{{ service.user.profile.location.get_full_location }}</a>
+                          <a href="#" class="widget-profile-location">{% for city in service.cities.all %}{% if not forloop.last %}{{ city.name }} , {% else %}{{ city.name }}{% endif %} {% endfor %}</a>
                         </div>
                         <div class="widget-profile-price">
                           € {{ service.price }}

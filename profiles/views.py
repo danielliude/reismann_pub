@@ -42,6 +42,9 @@ from services.utils import get_distinct_categories, get_distinct_cities,get_dist
 from configurations.models import ServiceCategory
 from configurations.utils import get_active_service_categories
 
+from insite_messages.models import Message
+from insite_messages.forms import MessageComposeForm
+
 import warnings
 import logging
 
@@ -82,6 +85,7 @@ def profile(request, username, template_name="profiles/profile.html",
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
 def dashboard(request, username, template_name='profiles/dashboard.html',
               extra_context=None, **kwargs):
+
   user = get_object_or_404(User, username__iexact=username)
 
   # site = Site.objects.get_current()
@@ -187,6 +191,7 @@ def contact(request, username, edit_contact_form=ContactForm,
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
 
+
 @secure_required
 # @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
 def service_add(request, username, edit_service_form=ServiceForm,
@@ -274,3 +279,57 @@ def services(request, username,
   extra_context['contact'] = contact
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
+
+
+@secure_required
+# @permission_required_or_403('view_service', (Service, 'user__username', 'username'))
+def messages(request, username,
+                template_name='profiles/messages.html',
+                extra_context=None, **kwargs):
+
+  user = get_object_or_404(User, username__iexact=username)
+  profile = get_user_profile(user)
+  contact = get_user_contact(user)
+  messages = Message.objects.all_for(user)
+
+  if not extra_context: extra_context = dict()
+  extra_context['messages'] = messages
+  extra_context['profile'] = profile
+  extra_context['contact'] = contact
+  return ExtraContextTemplateView.as_view(template_name=template_name,
+                                          extra_context=extra_context)(request)
+
+
+@secure_required
+# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+def message_write(request, username, write_message_form=MessageComposeForm,
+                template_name='profiles/message_write.html', success_url=None,
+                extra_context=None, **kwargs):
+
+    user = get_object_or_404(User, username__iexact=username)
+
+    profile = get_user_profile(user)
+    contact = get_user_contact(user)
+
+    form = write_message_form()
+
+    if request.method == 'POST':
+        form = write_message_form(request.POST, request.FILES)
+
+        if form.is_valid():
+          message = form.save(user)
+          message.save()
+
+          if success_url:
+            redirect_to = success_url
+          else:
+            redirect_to = reverse('profiles:messages', kwargs={'username': username})
+          return redirect(redirect_to)
+
+    if not extra_context: extra_context = dict()
+    extra_context['form'] = form
+    extra_context['profile'] = profile
+    extra_context['contact'] = contact
+    return ExtraContextTemplateView.as_view(template_name=template_name,
+                                          extra_context=extra_context)(request)
+

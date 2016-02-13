@@ -28,6 +28,10 @@ class MessageManager(models.Manager):
       sender_deleted_at__isnull=False
     )
 
+  def all_for(self, user):
+    return self.filter(sender = user) | self.filter(recipient = user)
+
+
 class Message(models.Model):
 
   sender = models.ForeignKey(User, related_name='sent_messages', verbose_name=_('message sender'))

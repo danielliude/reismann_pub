@@ -22,7 +22,9 @@ def index(request):
         if form.is_valid():
 
             # City is required in the post
-            city = request.POST.get('name')
+            cityId = request.POST.get('name')
+
+            city = City.objects.get(pk = cityId)
 
             url = reverse('cities:city', kwargs={'city_name': city})
 

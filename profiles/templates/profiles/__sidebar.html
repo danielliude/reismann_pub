@@ -31,6 +31,11 @@
             <i class="fa fa-tachometer"></i> <span>{% trans 'Dashboard' %}</span>
           </a>
         </li>
+        <li class="{% if url_name == 'messages' %}active{% endif %}">
+          <a href="{% url 'profiles:messages' profile.user.username %}">
+            <i class="fa fa-send-o"></i> <span>{% trans 'Messages' %}</span>
+          </a>
+        </li>
         <li class="{% if url_name == 'detail' %}active{% endif %}">
           <a href="{% url 'profiles:detail' profile.user.username %}">
             <i class="fa fa-user"></i> <span>{% trans 'Profile' %}</span>

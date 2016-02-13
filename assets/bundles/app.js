@@ -57,14 +57,12 @@
 	  });
 
 	  $('form .select2').select2();
-	});
 
-    $(function() {
-      $("#id_name").autocomplete({
-        source: "/cities/search/",
-        minLength: 2
-      });
-    });
+	  $("#id_name").autocomplete({
+	    source: "/cities/search/",
+	    minLength: 2
+	  });
+	});
 
 /***/ },
 

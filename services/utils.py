@@ -1,12 +1,12 @@
 from services.models import Service
 from configurations.models import ServiceCategory, ServiceTag, ServiceLanguage
 from cities.models import City
+from insite_messages.models import Message
 
 def get_user_services(user):
 
     services = Service.objects.filter(user = user)
     return services
-
 
 def get_service_by_id(id):
 

@@ -1,25 +1,11 @@
 from django import forms
+from django.forms import TextInput
+from django.utils.translation import ugettext_lazy as _
 
 from core.constants import GENDER_CHOICES
 from .models import City
+from services.models import ServiceCategory, ServiceLanguage, ServiceTag
 
-
-CITIES = (
-    ('0', 'All cities'),
-    ('Hamburg', 'Hamburg'),
-    ('Lippstadt','Lippstadt'),
-    ('Frankfurt', 'Frankfurt'),
-    ('Munich','Munich'),
-)
-
-AVAILABLE_SERVICES = (
-    ('6', 'Translator'),
-    ('7', 'Tourguide'),
-    ('8', 'Driver'),
-    ('9', 'Booking'),
-    ('10', 'Buying'),
-    ('11', 'Pickup')
-)
 
 AGE = (
     ('0', 'not important'),
@@ -29,44 +15,28 @@ AGE = (
     ('50,120,',  '> 50 years old')
 )
 
-LANGUAGES = (
-    ('1', 'English'),
-    ('2','Chineese'),
-    ('3', 'German'),
-    ('4','French'),
-    ('5', 'Italien'),
-    ('6','Spanish'),
-)
-
-TAGS = (
-    ('5', 'food'),
-    ('6', 'culture'),
-    ('7','sightseeing'),
-    ('8', 'nightlife'),
-    ('9','photoshooting'),
-    ('10','private car'),
-    ('11','translations'),
-)
-
-
 class SearchForm(forms.Form):
 
-    city = forms.ChoiceField(required = True, choices = CITIES)
+    city = forms.ModelChoiceField(required=False, queryset=City.objects.all(), empty_label="All cities")
 
-    services = forms.MultipleChoiceField(required = False,widget=forms.CheckboxSelectMultiple, choices=AVAILABLE_SERVICES)
+    services = forms.ModelMultipleChoiceField(required = False,widget=forms.CheckboxSelectMultiple, queryset= ServiceCategory.objects.all())
 
     gender = forms.MultipleChoiceField(required = False, widget=forms.CheckboxSelectMultiple, choices=GENDER_CHOICES)
 
     age = forms.ChoiceField(required = False, choices= AGE)
 
-    languages = forms.MultipleChoiceField(required= False,  widget=forms.CheckboxSelectMultiple, choices= LANGUAGES)
+    languages = forms.ModelMultipleChoiceField(required= False,  widget=forms.CheckboxSelectMultiple, queryset= ServiceLanguage.objects.all())
 
-    tags = forms.MultipleChoiceField(required= False,  widget=forms.CheckboxSelectMultiple, choices= TAGS)
+    tags = forms.ModelMultipleChoiceField(required= False,  widget=forms.CheckboxSelectMultiple, queryset=ServiceTag.objects.all())
 
 
+class SearchIndexForm(forms.Form):
 
-class SearchIndexForm(forms.ModelForm):
+    name = forms.ModelChoiceField(widget=forms.Select(attrs={
+                                       'class': 'form-control select2',
+                                       'data-placeholder': _('Select city...'),
+                                       'style': 'width: 100%'
+                                     }),
+                                     queryset=City.objects.all())
 
-    class Meta:
-        model = City
-        fields = ['name']
+

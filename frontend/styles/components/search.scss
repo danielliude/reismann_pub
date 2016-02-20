@@ -11,7 +11,7 @@
   }
 
   form {
-    input, button {
+    select, input, button {
       height: 2rem;
       margin: 0;
 
@@ -19,6 +19,12 @@
     }
 
     input {
+      width: 200px;
+      background-color: #fff;
+      vertical-align: middle;
+    }
+
+    select {
       width: 200px;
       background-color: #fff;
       vertical-align: middle;
@@ -35,11 +41,11 @@
     top: 180px;
 
     form {
-      input, button {
+      select, input, button {
         height: 2.5rem;
       }
 
-      input {
+      select, input {
         width: 300px;
       }
 

@@ -46,7 +46,7 @@ class ServiceForm(forms.ModelForm):
 
   cities = forms.ModelMultipleChoiceField(label=_('Cities'),
                                      widget=forms.SelectMultiple(attrs={
-                                       'class': 'form-control select2',
+                                       'class': 'form-control',
                                        'data-placeholder': _('service cities'),
                                        'style': 'width: 100%'
                                      }),

@@ -7,27 +7,29 @@
       <li class="dropdown messages-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="fa fa-envelope-o"></i>
-          <span class="label label-success">4</span>
+          <span class="label label-success">{{ unread_messages.count }}</span>
         </a>
         <ul class="dropdown-menu">
-          <li class="header">{% blocktrans %}You have 4 messages{% endblocktrans %}</li>
+          <li class="header">{% trans "You have" %} {{ unread_messages.count }} {% trans " unread messages" %}</li>
           <li>
             <ul class="menu">
+              {% for message in unread_messages %}
               <li>
-                <a href="#">
+                <a href="{% url 'profiles:message_view' user.username message.id%}">
                   <div class="pull-left">
-                    <img class="img-circle" src="{% static 'images/dummy/user2-160x160.jpg' %}" alt="User Image">
+                    <img class="img-circle" src="{{ message.sender.profile.get_avatar_url }}" alt="User Image">
                   </div>
                   <h4>
-                    Support Team
-                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                    {{ message.sender }}
+                    <small><i class="fa fa-clock-o"></i> {{ message.minutes_past}}</small>
                   </h4>
-                  <p>Why not book a new awesome trip?</p>
+                  <p>{{ message.subject }}</p>
                 </a>
               </li>
+                {% endfor %}
             </ul>
           </li>
-          <li class="footer"><a href="#">{% trans 'see all messages' %}</a></li>
+          <li class="footer"><a href="{% url 'profiles:messages' user.username %}">{% trans 'see all messages' %}</a></li>
         </ul>
       </li>
 

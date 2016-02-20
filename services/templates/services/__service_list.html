@@ -8,19 +8,33 @@
 
   <div class="box-body">
 
-      <table class="table table-condensed">
+      <table class="table table-hover">
         <tr>
             <th>{% trans "Title" %}</th>
+            <th>{% trans "Price" %}</th>
             <th>{% trans "Date of creation" %}</th>
             <th>{% trans "Active" %}</th>
-            <th>{% trans "Changes" %}</th>
+            <th>{% trans "View" %}</th>
         </tr>
         {% for service in services %}
-        <tr>
+        <tr onclick="window.document.location='{{ service.id }}/';">
             <td>{{ service.title }}</td>
+            <td>{{ service.price}}</td>
             <td>{{ service.created_at }}</td>
-            <td>{{ service.is_active }}</td>
-            <td><a href="{{ service.id }}/">Edit</a></td>
+
+            {% ifequal service.is_active True %}
+                <td><span class="label label-success">{{ service.is_active }}</span></td>
+            {% else %}
+                <td><span class="label label-danger">{{ service.is_active }}</span></td>
+            {% endifequal %}
+
+            <td>
+               <a href="{{ service.id }}/">
+                    <button data-original-title="Edit service" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                </a>
+            </td>
         </tr>
 
     {% endfor %}
@@ -29,7 +43,13 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><a href="add/">New service</a></td>
+        <td></td>
+        <td>
+            <a href="add/">
+                <button data-original-title="Add service" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                    <i class="fa fa-pencil"></i>
+                </button>
+            </a>
     </tr>
 </table>
 

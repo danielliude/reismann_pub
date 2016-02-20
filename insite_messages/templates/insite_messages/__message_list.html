@@ -8,31 +8,66 @@
 
   <div class="box-body">
 
-      <table class="table table-condensed">
+      <table class="table table-hover">
         <tr>
             <th>{% trans "Sender" %}</th>
+            <th>{% trans "Recipient" %}</th>
             <th>{% trans "Subject" %}</th>
             <th>{% trans "Sent at" %}</th>
+            <th>{% trans "Status" %}</th>
             <th>{% trans "View" %}</th>
         </tr>
 
         {% for message in messages %}
-        <tr>
-            <td>{{ message.sender }}</td>
+        <tr onclick="window.document.location='{{ message.id }}/';">
+            {% if message.sender == user %}
+                <td>{% trans "Me" %}</td>
+            {% else %}
+                <td>{{ message.sender }}</td>
+            {% endif %}
+
+            {% if message.recipient == user %}
+                <td>{% trans "Me" %}</td>
+            {% else %}
+                <td>{{ message.recipient }}</td>
+            {% endif %}
+
             <td>{{ message.subject }}</td>
             <td>{{ message.sent_at }}</td>
-            <td><a href="{{ message.id }}/">View</a></td>
+            {% ifequal message.status "Read" %}
+                <td><span class="label label-success">{{ message.status }}</span></td>
+            {% else %}
+                <td><span class="label label-warning">{{ message.status }}</span></td>
+            {% endifequal %}
+
+            <td>
+                <a href="{{ message.id }}/">
+                    <button data-original-title="View" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                </a>
+            </td>
+
+
+
         </tr>
+        {% endfor %}
 
-    {% endfor %}
-
-     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><a href="write/">Write message</a></td>
-    </tr>
-</table>
+         <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="write/">
+                     <button data-original-title="Write message" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </a>
+            </td>
+        </tr>
+    </table>
 
   </div>
 

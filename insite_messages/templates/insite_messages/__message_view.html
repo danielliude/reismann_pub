@@ -1,0 +1,40 @@
+{% load i18n %}
+
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <h3 class="box-title">{% trans 'Message' %}<h3>
+  </div>
+
+  <div class="box_body">
+
+    <div class="mailbox-read-info">
+        <h3>{{ message.subject }}</h3>
+        <h5> {% trans 'From: ' %}{{ message.sender }}<span class="mailbox-read-time pull-right">{{ message.sent_at }}</span></h5>
+    </div>
+
+    <div class="mailbox-read-message">
+        {{ message.body }}
+    </div>
+
+  </div>
+
+  <div class="mailbox-controls with-border text-right">
+    <div class="btn-group">
+        {% if message.sender != user %}
+            <a href="reply">
+                <button data-original-title="Reply" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                     <i class="fa fa-reply"></i>
+                </button>
+            </a>
+        {% else %}
+            <a href="remove">
+                <button data-original-title="Remove" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                     <i class="fa fa-remove"></i>
+                </button>
+            </a>
+        {% endif %}
+    </div>
+  </div>
+
+</div>

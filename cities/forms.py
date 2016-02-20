@@ -17,17 +17,36 @@ AGE = (
 
 class SearchForm(forms.Form):
 
-    city = forms.ModelChoiceField(required=False, queryset=City.objects.all(), empty_label="All cities")
+    city = forms.ModelChoiceField(required=False, queryset=City.objects.all(), label= _("All cities"))
 
-    services = forms.ModelMultipleChoiceField(required = False,widget=forms.CheckboxSelectMultiple, queryset= ServiceCategory.objects.all())
+    services = forms.ModelMultipleChoiceField(label = _('Services'),
+                                              required = False,
+                                              widget=forms.RadioSelect(attrs={
+                                              }),
+                                              queryset= ServiceCategory.objects.all())
 
-    gender = forms.MultipleChoiceField(required = False, widget=forms.CheckboxSelectMultiple, choices=GENDER_CHOICES)
+    gender = forms.MultipleChoiceField(required = False,
+                                          widget=forms. SelectMultiple(attrs={
+                                          'class': 'form-control',
+                                          'data-placeholder': _('gender'),
+                                          }),
+                                        choices=GENDER_CHOICES)
 
     age = forms.ChoiceField(required = False, choices= AGE)
 
-    languages = forms.ModelMultipleChoiceField(required= False,  widget=forms.CheckboxSelectMultiple, queryset= ServiceLanguage.objects.all())
+    languages = forms.ModelMultipleChoiceField(required= False,
+                                                widget=forms. SelectMultiple(attrs={
+                                                  'class': 'form-control',
+                                                  'data-placeholder': _('languages'),
+                                              }),
+                                                queryset= ServiceLanguage.objects.all())
 
-    tags = forms.ModelMultipleChoiceField(required= False,  widget=forms.CheckboxSelectMultiple, queryset=ServiceTag.objects.all())
+    tags = forms.ModelMultipleChoiceField(required= False,
+                                          widget=forms. SelectMultiple(attrs={
+                                                  'class': 'form-control',
+                                                  'data-placeholder': _('tags'),
+                                              }),
+                                          queryset=ServiceTag.objects.all())
 
 
 class SearchIndexForm(forms.Form):
@@ -35,7 +54,6 @@ class SearchIndexForm(forms.Form):
     name = forms.ModelChoiceField(widget=forms.Select(attrs={
                                        'class': 'form-control select2',
                                        'data-placeholder': _('Select city...'),
-                                       'style': 'width: 100%'
                                      }),
                                      queryset=City.objects.all())
 

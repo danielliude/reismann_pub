@@ -8,11 +8,12 @@
       <div class="subheadline text-center tagline">{% trans 'book your individual travel services' %}</div>
       <form action="" method="POST">
         {% csrf_token %}
-        {{ form.name }}
-        <button class="btn btn-brand btn-flat" type="submit">
-            <span>{% trans 'search' %}</span>
-            <i class="fa fa-arrow-circle-right"></i>
-        </button>
+            {{ form.name }}
+
+            <button class="btn btn-brand btn-flat" type="submit">
+                <span>{% trans 'search' %}</span>
+                <i class="fa fa-arrow-circle-right"></i>
+            </button>
       </form>
     </div>
   </div>

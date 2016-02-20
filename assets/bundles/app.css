@@ -49,11 +49,11 @@ html {
       font-size: 1.75rem;
       line-height: 2rem; } }
 
-.subheadline, .footer--services h4, .search form input, .search form button {
+.subheadline, .footer--services h4, .search form select, .search form input, .search form button {
   font-size: 1rem;
   line-height: 1.25rem; }
   @media only screen and (min-width: 768px) {
-    .subheadline, .footer--services h4, .search form input, .search form button {
+    .subheadline, .footer--services h4, .search form select, .search form input, .search form button {
       font-size: 1.125rem;
       line-height: 1.375rem; } }
 
@@ -250,10 +250,14 @@ footer.footer {
     color: #ffffff;
     margin-bottom: 15px;
     text-shadow: 1px 1px 1px #000000; }
-  .search form input, .search form button {
+  .search form select, .search form input, .search form button {
     height: 2rem;
     margin: 0; }
   .search form input {
+    width: 200px;
+    background-color: #fff;
+    vertical-align: middle; }
+  .search form select {
     width: 200px;
     background-color: #fff;
     vertical-align: middle; }
@@ -264,9 +268,9 @@ footer.footer {
   @media only screen and (min-width: 768px) {
     .search {
       top: 180px; }
-      .search form input, .search form button {
+      .search form select, .search form input, .search form button {
         height: 2.5rem; }
-      .search form input {
+      .search form select, .search form input {
         width: 300px; }
       .search form button {
         width: 100px; } }

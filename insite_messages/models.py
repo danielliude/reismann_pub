@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from datetime import datetime
+from django.utils.timezone import utc
+from django.utils.timesince import timesince
+
 
 from redactor.fields import RedactorField
 
@@ -31,6 +35,11 @@ class MessageManager(models.Manager):
   def all_for(self, user):
     return self.filter(sender = user) | self.filter(recipient = user)
 
+  def unread_for(self, user):
+      return self.filter(
+          recipient = user,
+          read_at__isnull = True)
+
 
 class Message(models.Model):
 
@@ -54,6 +63,15 @@ class Message(models.Model):
     if self.read_at is not None:
       return False
     return True
+
+  def status(self):
+      if self.read_at is None:
+          return "Unread"
+      return "Read"
+
+  def minutes_past(self):
+    now = datetime.utcnow().replace(tzinfo=utc)
+    return timesince(self.sent_at, now=now)
 
   def replied(self):
     if self.replied_at is not None:

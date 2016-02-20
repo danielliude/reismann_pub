@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from profiles import views
 
 urlpatterns = [
@@ -12,7 +12,11 @@ urlpatterns = [
     url(r'^(?P<username>[\@\.\w-]+)/services/(?P<service_id>[0-9]+)/$', views.service, name='service'),
     url(r'^(?P<username>[\@\.\w-]+)/services/add/$', views.service_add, name='service_add'),
 
+    # url(r'^(?P<username>[\@\.\w-]+)/messages/', include('insite_messages.urls')),
+
     url(r'^(?P<username>[\@\.\w-]+)/messages/$', views.messages, name='messages'),
     url(r'^(?P<username>[\@\.\w-]+)/messages/write/$', views.message_write, name='message_write'),
-
+    url(r'^(?P<username>[\@\.\w-]+)/messages/(?P<message_id>[0-9]+)/$', views.message_view, name='message_view'),
+    url(r'^(?P<username>[\@\.\w-]+)/messages/(?P<message_id>[0-9]+)/reply$', views.message_reply, name='message_reply'),
+    url(r'^(?P<username>[\@\.\w-]+)/messages/(?P<message_id>[0-9]+)/remove$', views.message_remove, name='message_remove'),
 ]

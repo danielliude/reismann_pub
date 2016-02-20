@@ -12,6 +12,9 @@ from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext as _
 from django.http import Http404, HttpResponseRedirect
 
+from datetime import datetime
+from django.utils.timezone import utc
+
 from userena.models import UserenaSignup
 from userena.decorators import secure_required
 from userena import signals as userena_signals
@@ -62,6 +65,7 @@ def profile(request, username, template_name="profiles/profile.html",
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   services = get_user_services(user)
+  unread_messages = Message.objects.unread_for(user)
 
   unique_tags = get_distinct_tags(user)
   unique_cities = get_distinct_cities(user)
@@ -73,6 +77,7 @@ def profile(request, username, template_name="profiles/profile.html",
   extra_context['contact'] = contact
   extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
+  extra_context['unread_messages'] = unread_messages
 
   extra_context['unique_tags'] = unique_tags
   extra_context['unique_cities'] = unique_cities
@@ -95,6 +100,7 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   services = get_user_services(user)
+  unread_messages = Message.objects.unread_for(user)
 
   unique_tags = get_distinct_tags(user)
   unique_cities = get_distinct_cities(user)
@@ -109,6 +115,7 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['services'] = services
+  extra_context['unread_messages'] = unread_messages
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
   extra_context['unique_tags'] = unique_tags
@@ -129,6 +136,8 @@ def detail(request, username, edit_profile_form=ProfileForm,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   services = get_user_services(user)
+
+  unread_messages = Message.objects.unread_for(user)
 
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
@@ -153,6 +162,7 @@ def detail(request, username, edit_profile_form=ProfileForm,
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['services'] = services
+  extra_context['unread_messages'] = unread_messages
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
@@ -167,6 +177,7 @@ def contact(request, username, edit_contact_form=ContactForm,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   services = get_user_services(user)
+  unread_messages = Message.objects.unread_for(user)
 
   form = edit_contact_form(instance=contact)
 
@@ -188,6 +199,7 @@ def contact(request, username, edit_contact_form=ContactForm,
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['services'] = services
+  extra_context['unread_messages'] = unread_messages
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
 
@@ -202,6 +214,7 @@ def service_add(request, username, edit_service_form=ServiceForm,
 
     profile = get_user_profile(user)
     contact = get_user_contact(user)
+    unread_messages = Message.objects.unread_for(user)
 
     form = edit_service_form()
 
@@ -224,6 +237,7 @@ def service_add(request, username, edit_service_form=ServiceForm,
     extra_context['service_categories'] = get_active_service_categories()
     extra_context['profile'] = profile
     extra_context['contact'] = contact
+    extra_context['unread_messages'] = unread_messages
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
 
@@ -237,6 +251,8 @@ def service(request, username, service_id, edit_service_form=ServiceForm,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   service = get_service_by_id(service_id)
+  unread_messages = Message.objects.unread_for(user)
+
 
   form = edit_service_form(instance=service)
 
@@ -258,6 +274,7 @@ def service(request, username, service_id, edit_service_form=ServiceForm,
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['service'] = service
+  extra_context['unread_messages'] = unread_messages
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -272,11 +289,14 @@ def services(request, username,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   services = get_user_services(user)
+  unread_messages = Message.objects.unread_for(user)
+
 
   if not extra_context: extra_context = dict()
   extra_context['services'] = services
   extra_context['profile'] = profile
   extra_context['contact'] = contact
+  extra_context['unread_messages'] = unread_messages
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
 
@@ -291,11 +311,13 @@ def messages(request, username,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   messages = Message.objects.all_for(user)
+  unread_messages = Message.objects.unread_for(user)
 
   if not extra_context: extra_context = dict()
   extra_context['messages'] = messages
+  extra_context['unread_messages']= unread_messages
   extra_context['profile'] = profile
-  extra_context['contact'] = contact
+
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
 
@@ -311,7 +333,79 @@ def message_write(request, username, write_message_form=MessageComposeForm,
     profile = get_user_profile(user)
     contact = get_user_contact(user)
 
+    unread_messages = Message.objects.unread_for(user)
+
     form = write_message_form()
+
+    if request.method == 'POST':
+        form = write_message_form(request.POST, request.FILES)
+
+        if form.is_valid():
+          message = form.save(user)
+          message.sent_at = datetime.utcnow().replace(tzinfo=utc)
+          message.save()
+
+          if success_url:
+            redirect_to = success_url
+          else:
+            redirect_to = reverse('profiles:messages', kwargs={'username': username})
+          return redirect(redirect_to)
+
+    if not extra_context: extra_context = dict()
+    extra_context['form'] = form
+    extra_context['profile'] = profile
+    extra_context['contact'] = contact
+    extra_context['unread_messages'] = unread_messages
+    return ExtraContextTemplateView.as_view(template_name=template_name,
+                                          extra_context=extra_context)(request)
+
+
+@secure_required
+# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+def message_view(request, username, message_id, write_message_form=MessageComposeForm,
+                 template_name='profiles/message_view.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+    user = get_object_or_404(User, username__iexact=username)
+    profile = get_user_profile(user)
+    unread_messages = Message.objects.unread_for(user)
+
+    message = Message.objects.get(pk= message_id)
+
+    if message.recipient == user:
+        message.read_at = datetime.now()
+        message.save()
+
+    if not extra_context: extra_context = dict()
+    extra_context['message'] = message
+    extra_context['profile'] = profile
+    extra_context['unread_messages'] = unread_messages
+
+    return ExtraContextTemplateView.as_view(template_name=template_name,
+                                          extra_context=extra_context)(request)
+
+
+@secure_required
+# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+def message_reply(request, username, message_id, write_message_form=MessageComposeForm,
+                 template_name='profiles/message_write.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+    user = get_object_or_404(User, username__iexact=username)
+
+    profile = get_user_profile(user)
+    contact = get_user_contact(user)
+    message = Message.objects.get(pk= message_id)
+    unread_messages = Message.objects.unread_for(user)
+
+    initial_subject = "Re: " + message.subject
+    initial_body = ">" + message.body
+
+    form = write_message_form(initial={'recipient': message.sender,
+                                       'subject': initial_subject,
+                                       'body': initial_body}
+                                )
+
 
     if request.method == 'POST':
         form = write_message_form(request.POST, request.FILES)
@@ -330,6 +424,23 @@ def message_write(request, username, write_message_form=MessageComposeForm,
     extra_context['form'] = form
     extra_context['profile'] = profile
     extra_context['contact'] = contact
+    extra_context['unread_messages'] = unread_messages
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
+
+@secure_required
+# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+def message_remove(request, username, message_id, template_name='profiles/messages.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+  user = get_object_or_404(User, username__iexact=username)
+  message = Message.objects.get(pk = message_id)
+
+  if(message.sender == user):
+      message.delete()
+
+  url = reverse('profiles:messages', kwargs={'username':user.username})
+  return HttpResponseRedirect(url)
+
+
 

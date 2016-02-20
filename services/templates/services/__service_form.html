@@ -4,60 +4,62 @@
 
     <form action="" id="service_edit_form" enctype="multipart/form-data" method="post">
 
-      {% csrf_token %}
+       <div class="box-body">
+          {% csrf_token %}
 
-      {{ form.non_field_errors }}
+          {{ form.non_field_errors }}
 
-      {{ form.title.errors }}
-      <div class="form-group">
-        <label>{{ form.title.label }}</label>
-        {{ form.title }}
+          {{ form.title.errors }}
+          <div class="form-group">
+            <label>{{ form.title.label }}</label>
+            {{ form.title }}
+          </div>
+
+          {{ form.content.errors }}
+          <div class="form-group">
+            <label>{{ form.content.label }}</label>
+            {{ form.content }}
+          </div>
+
+          {{ form.price.errors }}
+          <div class="form-group">
+            <label>{{ form.price.label }}</label>
+            {{ form.price }}
+          </div>
+
+          {{ form.type.errors }}
+          <div class="form-group">
+            <label>{{ form.type.label }}</label>
+            {{ form.type }}
+          </div>
+
+          {{ form.cities.errors }}
+          <div class="form-group">
+            <label>{{ form.cities.label }}</label>
+            {{ form.cities }}
+          </div>
+
+          {{ form.categories.errors }}
+          <div class="form-group">
+            <label>{{ form.categories.label }}</label>
+            {{ form.categories }}
+          </div>
+
+          {{ form.languages.errors }}
+          <div class="form-group">
+            <label>{{ form.languages.label }}</label>
+            {{ form.languages }}
+          </div>
+
+          {{ form.tags.errors }}
+          <div class="form-group">
+            <label>{{ form.tags.label }}</label>
+            {{ form.tags }}
+          </div>
+
+          <button class="btn btn-primary btn-block btn-flat" type="submit">{% trans 'Save changes' %}</button>
+          <a href="{% url 'profiles:services' profile.user.username %}" class="btn btn-danger btn-block btn-flat">{% trans 'Cancel' %}</a>
       </div>
-
-      {{ form.content.errors }}
-      <div class="form-group">
-        <label>{{ form.content.label }}</label>
-        {{ form.content }}
-      </div>
-
-      {{ form.price.errors }}
-      <div class="form-group">
-        <label>{{ form.price.label }}</label>
-        {{ form.price }}
-      </div>
-
-      {{ form.type.errors }}
-      <div class="form-group">
-        <label>{{ form.type.label }}</label>
-        {{ form.type }}
-      </div>
-
-      {{ form.cities.errors }}
-      <div class="form-group">
-        <label>{{ form.cities.label }}</label>
-        {{ form.cities }}
-      </div>
-
-      {{ form.categories.errors }}
-      <div class="form-group">
-        <label>{{ form.categories.label }}</label>
-        {{ form.categories }}
-      </div>
-
-      {{ form.languages.errors }}
-      <div class="form-group">
-        <label>{{ form.languages.label }}</label>
-        {{ form.languages }}
-      </div>
-
-      {{ form.tags.errors }}
-      <div class="form-group">
-        <label>{{ form.tags.label }}</label>
-        {{ form.tags }}
-      </div>
-
-      <button class="btn btn-primary btn-block btn-flat" type="submit">{% trans 'Save changes' %}</button>
-      <a href="{% url 'profiles:services' profile.user.username %}" class="btn btn-danger btn-block btn-flat">{% trans 'Cancel' %}</a>
 
     </form>
 

@@ -10,6 +10,7 @@ module.exports = {
     vendor: './js/vendor',
     admin: './js/admin',
     app: './js/app',
+    semantic: './js/semantic',
   },
 
   output: {

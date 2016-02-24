@@ -8,7 +8,7 @@
 
   <div class="box-body">
 
-      <table class="table table-hover">
+      <table class="ui very basic collapsing celled table">
         <tr>
             <th>{% trans "Sender" %}</th>
             <th>{% trans "Recipient" %}</th>
@@ -18,18 +18,67 @@
             <th>{% trans "View" %}</th>
         </tr>
 
+
         {% for message in messages %}
         <tr onclick="window.document.location='{{ message.id }}/';">
             {% if message.sender == user %}
-                <td>{% trans "Me" %}</td>
+                <td>
+                    <h5 class= "ui image header">
+                        <img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+                        <div class="content">
+                            {% trans "Me" %}
+
+                            <div class="sub header">
+                                {{ message.sender.profile.location }}
+                            </div>
+                        </div>
+
+                    </h5>
+                </td>
             {% else %}
-                <td>{{ message.sender }}</td>
+                <td>
+                    <h5 class= "ui image header">
+                        <img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+                        <div class="content">
+                            {{ message.sender }}
+
+                            <div class="sub header">
+                                {{ message.sender.profile.location }}
+                            </div>
+                        </div>
+
+                    </h5>
+                </td>
             {% endif %}
 
             {% if message.recipient == user %}
-                <td>{% trans "Me" %}</td>
+                <td>
+                    <h5 class= "ui image header">
+                        <img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+                        <div class="content">
+                            {% trans "Me" %}
+
+                            <div class="sub header">
+                                {{ message.recipient.profile.location }}
+                            </div>
+                        </div>
+
+                    </h5>
+                </td>
             {% else %}
-                <td>{{ message.recipient }}</td>
+                <td>
+                    <h5 class= "ui image header">
+                        <img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+                        <div class="content">
+                            {{ message.sender }}
+
+                            <div class="sub header">
+                                {{ message.recipient.profile.location }}
+                            </div>
+                        </div>
+
+                    </h5>
+                </td>
             {% endif %}
 
             <td>{{ message.subject }}</td>

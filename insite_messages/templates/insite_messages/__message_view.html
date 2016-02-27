@@ -22,17 +22,24 @@
   <div class="mailbox-controls with-border text-right">
     <div class="btn-group">
         {% if message.sender != user %}
+            <a href="remove">
+                <button data-original-title="Remove" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                     <i class="fa fa-remove"></i>
+                </button>
+            </a>
             <a href="reply">
                 <button data-original-title="Reply" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
                      <i class="fa fa-reply"></i>
                 </button>
             </a>
         {% else %}
+            {% if message %}
             <a href="remove">
                 <button data-original-title="Remove" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
                      <i class="fa fa-remove"></i>
                 </button>
             </a>
+            {% endif %}
         {% endif %}
     </div>
   </div>

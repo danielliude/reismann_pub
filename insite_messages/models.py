@@ -33,7 +33,11 @@ class MessageManager(models.Manager):
     )
 
   def all_for(self, user):
-    return self.filter(sender = user) | self.filter(recipient = user)
+    return self.filter(sender = user,
+                       sender_deleted_at__isnull = True
+                      ) | self.filter(
+                        recipient = user,
+                        recipient_deleted_at__isnull = True)
 
   def unread_for(self, user):
       return self.filter(
@@ -94,6 +98,11 @@ class Message(models.Model):
     ordering = ['-sent_at']
     verbose_name = _('Message')
     verbose_name_plural = _('Messages')
+
+    permissions = (
+        ('view_message', 'Can view Message'),
+    )
+
 
 def inbox_count_for(user):
   return Message.objects.filter(recipient=user, read_at__isnull=True, recipient_deleted_at__isnull=True).count()

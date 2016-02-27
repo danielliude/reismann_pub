@@ -13,6 +13,8 @@ from accounts.settings import ACCOUNT_ACTIVATION_REQUIRED, ACCOUNT_ACTIVATED, \
   ACCOUNT_FORBIDDEN_USERNAMES, ACCOUNTS_REGISTRATION_ACTIVATION_DAYS, \
   ACCOUNT_LOGIN_REMEMBER_ME_DAYS
 
+from django.contrib.auth.models import Permission
+
 import logging
 
 # Get an instance of a logger
@@ -93,6 +95,13 @@ class RegistrationForm(forms.Form):
 
     new_user.first_name = first_name
     new_user.last_name = last_name
+
+    # permissions
+    new_user.user_permissions.add(Permission.objects.get(name = 'Can add Message'))
+    new_user.user_permissions.add(Permission.objects.get(name = 'Can change Message'))
+    new_user.user_permissions.add(Permission.objects.get(name = 'Can delete Message'))
+    new_user.user_permissions.add(Permission.objects.get(name = 'Can view Message'))
+
     new_user.save()
 
     return new_user

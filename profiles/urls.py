@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^(?P<username>[\@\.\w-]+)/detail/$', views.detail, name='detail'),
     url(r'^(?P<username>[\@\.\w-]+)/contact/$', views.contact, name='contact'),
 
-    url(r'^/', include('services.urls')),
+    url(r'^', include('services.urls')),
 
-    url(r'^/', include('insite_messages.urls')),
+    url(r'^', include('insite_messages.urls')),
 ]

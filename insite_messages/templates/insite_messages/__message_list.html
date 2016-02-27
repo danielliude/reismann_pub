@@ -19,6 +19,7 @@
 
         <tbody>
             {% for message in messages %}
+
             <tr onclick="window.document.location='{{ message.id }}/';">
                 {% if message.sender == user %}
                     <td>

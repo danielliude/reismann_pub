@@ -16,6 +16,9 @@ from contacts.utils import get_user_contact
 from insite_messages.models import Message
 from insite_messages.forms import MessageComposeForm
 
+from guardian.shortcuts import assign_perm
+from guardian.decorators import permission_required_or_403
+
 
 @secure_required
 # @permission_required_or_403('view_service', (Service, 'user__username', 'username'))
@@ -38,13 +41,12 @@ def messages(request, username,
 
 
 @secure_required
-# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+@permission_required_or_403('insite_messages.add_message')
 def message_write(request, username, write_message_form=MessageComposeForm,
                 template_name='profiles/message_write.html', success_url=None,
                 extra_context=None, **kwargs):
 
     user = get_object_or_404(User, username__iexact=username)
-
     profile = get_user_profile(user)
     contact = get_user_contact(user)
 
@@ -58,6 +60,14 @@ def message_write(request, username, write_message_form=MessageComposeForm,
         if form.is_valid():
           message = form.save(user)
           message.sent_at = datetime.utcnow().replace(tzinfo=utc)
+
+          # Permissions
+          assign_perm('insite_messages.view_message', user, message)
+          assign_perm('insite_messages.view_message', message.recipient, message)
+          assign_perm('insite_messages.delete_message', user, message)
+          assign_perm('insite_messages.delete_message', message.recipient, message)
+          assign_perm('insite_messages.change_message', user, message)
+
           message.save()
 
           if success_url:
@@ -76,7 +86,7 @@ def message_write(request, username, write_message_form=MessageComposeForm,
 
 
 @secure_required
-# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+@permission_required_or_403('insite_messages.view_message')
 def message_view(request, username, message_id, write_message_form=MessageComposeForm,
                  template_name='profiles/message_view.html', success_url=None,
                  extra_context=None, **kwargs):
@@ -92,7 +102,10 @@ def message_view(request, username, message_id, write_message_form=MessageCompos
         message.save()
 
     if not extra_context: extra_context = dict()
-    extra_context['message'] = message
+
+    if user.has_perm('insite_messages.view_message', message):
+        extra_context['message'] = message
+
     extra_context['profile'] = profile
     extra_context['unread_messages'] = unread_messages
 
@@ -101,7 +114,7 @@ def message_view(request, username, message_id, write_message_form=MessageCompos
 
 
 @secure_required
-# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+@permission_required_or_403('insite_messages.add_message')
 def message_reply(request, username, message_id, write_message_form=MessageComposeForm,
                  template_name='profiles/message_write.html', success_url=None,
                  extra_context=None, **kwargs):
@@ -127,6 +140,14 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
 
         if form.is_valid():
           message = form.save(user)
+
+          # Permissions
+          assign_perm('insite_messages.view_message', user, message)
+          assign_perm('insite_messages.view_message', message.recipient, message)
+          assign_perm('insite_messages.delete_message', user, message)
+          assign_perm('insite_messages.delete_message', message.recipient, message)
+          assign_perm('insite_messages.change_message', user, message)
+
           message.save()
 
           if success_url:
@@ -144,7 +165,7 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
                                           extra_context=extra_context)(request)
 
 @secure_required
-# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+@permission_required_or_403('insite_messages.delete_message')
 def message_remove(request, username, message_id, template_name='profiles/messages.html', success_url=None,
                  extra_context=None, **kwargs):
 
@@ -152,6 +173,14 @@ def message_remove(request, username, message_id, template_name='profiles/messag
   message = Message.objects.get(pk = message_id)
 
   if(message.sender == user):
+      message.sender_deleted_at = datetime.now()
+      message.save()
+
+  if(message.recipient == user):
+      message.recipient_deleted_at = datetime.now()
+      message.save()
+
+  if(message.recipient_deleted_at is not None and message.sender_deleted_at is not None):
       message.delete()
 
   url = reverse('profiles:messages', kwargs={'username':user.username})

@@ -61,3 +61,6 @@ except admin.sites.NotRegistered:
   pass
 
 admin.site.register(User, AccountAdmin)
+
+from django.contrib.auth.models import Permission
+admin.site.register(Permission)

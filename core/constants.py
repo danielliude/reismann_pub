@@ -29,7 +29,26 @@ ASSIGNED_PERMISSIONS = {
      ('change_contact', 'Can change contact'),
      ('delete_contact', 'Can remove contact')),
   'service':
-    (('view_service', 'Can view service'),
+    (('add_service', 'Can add service'),
+     ('view_service', 'Can view service'),
      ('change_service', 'Can change service'),
      ('delete_service', 'Can delete service')),
+  'message':
+    (('add_message', 'Can add message'),
+     ('view_message', 'Can view message'),
+     ('change_message', 'Can change message'),
+     ('delete_message', 'Can delete message')),
+}
+
+GLOBAL_PERMISSIONS = {
+  'global':
+    (('insite_messages.add_message', 'Can add message'),
+     ('insite_messages.view_message', 'Can view message'),
+     ('insite_messages.change_message', 'Can change message'),
+     ('insite_messages.delete_message', 'Can delete message'),
+
+     ('services.add_service', 'Can add service'),
+     ('services.view_service', 'Can view service'),
+     ('services.change_service', 'Can change service'),
+     ('services.delete_service', 'Can delete service')),
 }

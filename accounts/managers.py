@@ -17,6 +17,7 @@ from services.models import Service
 from guardian.shortcuts import assign_perm, get_perms
 
 from core.constants import ASSIGNED_PERMISSIONS
+from core.constants import GLOBAL_PERMISSIONS
 
 import re
 
@@ -32,6 +33,9 @@ class RegistrationManager(UserManager):
 
     for perm in ASSIGNED_PERMISSIONS['user']:
       assign_perm(perm[0], new_user, new_user)
+
+    for perm in GLOBAL_PERMISSIONS['global']:
+      assign_perm(perm[0], new_user)
 
     registration = self.create_registration(new_user)
     profile = Profile.objects.create_profile(new_user)

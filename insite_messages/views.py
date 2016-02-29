@@ -21,7 +21,7 @@ from guardian.decorators import permission_required_or_403
 
 
 @secure_required
-# @permission_required_or_403('view_service', (Service, 'user__username', 'username'))
+@permission_required_or_403('insite_messages.view_message')
 def messages(request, username,
                 template_name='profiles/messages.html',
                 extra_context=None, **kwargs):
@@ -60,14 +60,6 @@ def message_write(request, username, write_message_form=MessageComposeForm,
         if form.is_valid():
           message = form.save(user)
           message.sent_at = datetime.utcnow().replace(tzinfo=utc)
-
-          # Permissions
-          assign_perm('insite_messages.view_message', user, message)
-          assign_perm('insite_messages.view_message', message.recipient, message)
-          assign_perm('insite_messages.delete_message', user, message)
-          assign_perm('insite_messages.delete_message', message.recipient, message)
-          assign_perm('insite_messages.change_message', user, message)
-
           message.save()
 
           if success_url:
@@ -140,14 +132,6 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
 
         if form.is_valid():
           message = form.save(user)
-
-          # Permissions
-          assign_perm('insite_messages.view_message', user, message)
-          assign_perm('insite_messages.view_message', message.recipient, message)
-          assign_perm('insite_messages.delete_message', user, message)
-          assign_perm('insite_messages.delete_message', message.recipient, message)
-          assign_perm('insite_messages.change_message', user, message)
-
           message.save()
 
           if success_url:
@@ -172,16 +156,18 @@ def message_remove(request, username, message_id, template_name='profiles/messag
   user = get_object_or_404(User, username__iexact=username)
   message = Message.objects.get(pk = message_id)
 
-  if(message.sender == user):
-      message.sender_deleted_at = datetime.now()
-      message.save()
+  if user.has_perm('delete_message', message):
 
-  if(message.recipient == user):
-      message.recipient_deleted_at = datetime.now()
-      message.save()
+      if(message.sender == user):
+          message.sender_deleted_at = datetime.now()
+          message.save()
 
-  if(message.recipient_deleted_at is not None and message.sender_deleted_at is not None):
-      message.delete()
+      if(message.recipient == user):
+          message.recipient_deleted_at = datetime.now()
+          message.save()
+
+      if(message.recipient_deleted_at is not None and message.sender_deleted_at is not None):
+          message.delete()
 
   url = reverse('profiles:messages', kwargs={'username':user.username})
   return HttpResponseRedirect(url)

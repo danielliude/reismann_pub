@@ -41,12 +41,9 @@ class MessageComposeForm(forms.Form):
 
     subject = self.cleaned_data['subject']
     body = self.cleaned_data['body']
-    message = Message(
-      sender = sender,
-      recipient = recipient,
-      subject = subject,
-      body = body,
-    )
+
+    message = Message.objects.create_message(sender, recipient, subject, body)
+
     if parent is not None:
       message.parent = parent
       parent.replied_at = timezone.now()

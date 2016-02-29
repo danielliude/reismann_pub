@@ -8,17 +8,17 @@ from core.utils import ExtraContextTemplateView
 
 from contacts.utils import get_user_contact
 
+from guardian.decorators import permission_required_or_403
 
 from services.forms import ServiceForm
 from services.utils import get_user_services, get_service_by_id
 
 from configurations.utils import get_active_service_categories
-
 from insite_messages.models import Message
 
 
 @secure_required
-# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+@permission_required_or_403('services.add_service')
 def service_add(request, username, edit_service_form=ServiceForm,
                 template_name='profiles/service_add.html', success_url=None,
                 extra_context=None, **kwargs):
@@ -55,7 +55,7 @@ def service_add(request, username, edit_service_form=ServiceForm,
                                           extra_context=extra_context)(request)
 
 @secure_required
-# @permission_required_or_403('change_service', (Profile, 'user__username', 'username'))
+@permission_required_or_403('services.view_service')
 def service(request, username, service_id, edit_service_form=ServiceForm,
                  template_name='profiles/service_edit.html', success_url=None,
                  extra_context=None, **kwargs):
@@ -93,7 +93,7 @@ def service(request, username, service_id, edit_service_form=ServiceForm,
                                           extra_context=extra_context)(request)
 
 @secure_required
-# @permission_required_or_403('view_service', (Service, 'user__username', 'username'))
+@permission_required_or_403('services.view_service')
 def services(request, username,
                 template_name='profiles/services.html',
                 extra_context=None, **kwargs):

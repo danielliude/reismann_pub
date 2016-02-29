@@ -5,45 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
 from django.utils.timezone import utc
 from django.utils.timesince import timesince
-
-
 from redactor.fields import RedactorField
-
-class MessageManager(models.Manager):
-
-  def inbox_for(self, user):
-    return self.filter(
-      recipient=user,
-      recipient_deleted_at__isnull=True,
-    )
-
-  def outbox_for(self, user):
-    return self.filter(
-      sender=user,
-      sender_deleted_at__isnull=True,
-    )
-
-  def trash_for(self, user):
-    return self.filter(
-      recipient=user,
-      recipient_deleted_at__isnull=False,
-    ) | self.filter(
-      sender=user,
-      sender_deleted_at__isnull=False
-    )
-
-  def all_for(self, user):
-    return self.filter(sender = user,
-                       sender_deleted_at__isnull = True
-                      ) | self.filter(
-                        recipient = user,
-                        recipient_deleted_at__isnull = True)
-
-  def unread_for(self, user):
-      return self.filter(
-          recipient = user,
-          read_at__isnull = True)
-
+from insite_messages.managers import MessageManager
 
 class Message(models.Model):
 

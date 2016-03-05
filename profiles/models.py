@@ -72,8 +72,12 @@ class Profile(models.Model):
         if service.is_active:
             prices.append(service.price)
 
-      return int(statistics.mean(prices))
+      if prices:
+        return int(statistics.mean(prices))
+      else:
+        return 0;
 
+      return 0;
 
   @property
   def age(self):

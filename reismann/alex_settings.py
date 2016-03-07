@@ -27,9 +27,11 @@ DATABASES = {
 	'default': {
 		 'ENGINE': 'django.db.backends.mysql',
 		 'NAME': 'reismanndb',
-		 'USER': 'reismann',
-		 'PASSWORD':'reismannpwd',
-		 'HOST' : '',
-		 'PORT' : '',
+		 # 'USER': 'reismann',
+		 # 'PASSWORD':'reismannpwd',
+		 'USER': 'root',
+		 'PASSWORD':'jiejie123',
+		 'HOST' : '127.0.0.1',
+		 'PORT' : '3306',
 	}
 }

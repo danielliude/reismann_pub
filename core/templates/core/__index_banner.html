@@ -8,7 +8,13 @@
       <div class="subheadline text-center tagline">{% trans 'book your individual travel services' %}</div>
       <form action="" method="POST">
         {% csrf_token %}
-            {{ form.name }}
+            <!-- {{ form.name }} -->
+          <input type="text" placeholder="Select city..." list="city_list" name="name" AUTOCOMPLETE="off"></input>
+          <datalist id="city_list">
+            {% for city in city_list %}
+                <option>{{ city.name }}</option>
+            {% endfor %}
+          </datalist>
 
             <button class="btn btn-brand btn-flat" type="submit">
                 <span>{% trans 'search' %}</span>

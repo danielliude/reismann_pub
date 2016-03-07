@@ -12,23 +12,15 @@ from cities.models import City
 from cities.forms import SearchIndexForm
 
 def index(request):
-
-    form = SearchIndexForm()
+    city_list = City.objects.filter(is_active=1)
 
     if request.method == 'POST':
+        # City is required in the post
+        cityId = request.POST.get('name')
 
-        form = SearchIndexForm(request.POST)
+        url = reverse('cities:city', kwargs={'city_name': cityId})
 
-        if form.is_valid():
-
-            # City is required in the post
-            cityId = request.POST.get('name')
-
-            city = City.objects.get(pk = cityId)
-
-            url = reverse('cities:city', kwargs={'city_name': city})
-
-            return HttpResponseRedirect(url)
+        return HttpResponseRedirect(url)
 
     else:
 
@@ -45,7 +37,7 @@ def index(request):
       popular_cities = sorted(City.objects.filter(is_active=True).order_by('created_at')[:6], key=lambda x: random.random())
 
       context = {
-        'form' : form,
+        'city_list' : city_list,
         'popular_profiles': popular_profiles,
         'newcomer_profiles': newcomer_profiles,
         'newcomer_cities': newcomer_cities,

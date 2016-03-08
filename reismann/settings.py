@@ -21,6 +21,11 @@ try:
 except ImportError:
     pass
 
+try:
+   from .youngjie_settings import *
+except ImportError:
+    pass
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import sys

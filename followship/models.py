@@ -1,12 +1,16 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from django.core.cache import cache
+
 from django.core.exceptions import ValidationError
+
+from django.core.cache import cache
 
 from followship.signals import follower_created, follower_removed, \
   followee_created, followee_removed, following_created, following_removed
+
 from followship.exceptions import AlreadyFollowedError
+
 
 CACHE_TYPES = {
   'followers': 'fo-%d',
@@ -93,10 +97,11 @@ class FollowingManager(models.Manager):
       return True
     else:
       try:
-        Follow.objects.get(followes=follower, followee=followee)
+        Follow.objects.get(follower=follower, followee=followee)
         return True
       except Follow.DoesNotExist:
         return False
+
 
 class Follow(models.Model):
 
@@ -107,6 +112,8 @@ class Follow(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
 
   updated_at = models.DateTimeField(auto_now=True)
+
+  objects = FollowingManager()
 
   def __str__(self):
     return "User #%s follows #%s" % (self.follower.username, self.followee.username)

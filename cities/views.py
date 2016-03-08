@@ -35,8 +35,12 @@ def search_cities(request):
 def city(request, city_name, template_name='cities/city.html'):
 
     form = SearchForm()
-    city = City.objects.get(name = city_name)
-    form.fields['city'].initial = city.pk
+
+    try:
+        city = City.objects.get(name = city_name)
+        form.fields['city'].initial = city.pk
+    except:
+        form.fields['city'].initial = 0
 
     if request.method == 'POST':
 
@@ -100,6 +104,8 @@ def city(request, city_name, template_name='cities/city.html'):
 
         if(city_name):
             city = City.objects.filter(name= city_name)
-            services = services.filter(cities = city)
+
+            if city:
+                services = services.filter(cities = city)
 
         return render(request, 'cities/city.html', {'form': form, 'services': services})

@@ -18,9 +18,7 @@
                 {% csrf_token %}
 
                 <div class="row">
-
                     {{ form }}
-
                 </div>
 
                 <input type="submit" value="Submit" />
@@ -32,7 +30,7 @@
             <div class="col-sm-6 col-md-4">
                 <div class="widget-newcomer-profile widget-user">
                       <div class="image">
-                        <a href="{% url 'profiles:profile' service.user.username %}" class="background-image hover-darken"
+                        <a href="{% url 'profiles:service_view' service.user.username service.id %}" class="background-image hover-darken"
                           style="background-image: url('{{ service.user.profile.get_card_image_url }}');"></a>
                       </div>
                       <a href="{% url 'profiles:profile' service.user.username %}" class="profile-avatar widget-user-image">

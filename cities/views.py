@@ -100,6 +100,6 @@ def city(request, city_name, template_name='cities/city.html'):
 
         if(city_name):
             city = City.objects.filter(name= city_name)
-            services = Service.objects.filter(cities = city)
+            services = services.filter(cities = city)
 
         return render(request, 'cities/city.html', {'form': form, 'services': services})

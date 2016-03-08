@@ -1,5 +1,7 @@
 {% load i18n %}
 
+{% if request.user.is_authenicated %}
+
 <div class="box box-primary">
 
   <div class="box-header with-border">
@@ -40,3 +42,5 @@
     {% endif %}
   </div>
 </div>
+
+{% endif %}

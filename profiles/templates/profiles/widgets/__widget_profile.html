@@ -12,8 +12,8 @@
       {% endif %}
       {% if profile.age or profile.location %}
         <h5 class="widget-user-desc secondary-text">
-          {% if profile.age %}
-            {{ profile.age }} {% trans 'years old' %}
+          {% if request.user.is_authenticated %}{% if profile.age %}
+            {{ profile.age }} {% trans 'years old' %}{% endif %}
             {% if profile.location %}  {% endif %}
           {% endif %}
           {% if profile.location %}
@@ -21,8 +21,10 @@
           {% endif %}
         </h5>
       {% endif %}
-      {% if profile.member_since %}
-        <h5 class="widget-user-desc secondary-text">{{ profile.member_since }}</h5>
+      {% if request.user.is_authenticated %}
+          {% if profile.member_since %}
+            <h5 class="widget-user-desc secondary-text">{{ profile.member_since }}</h5>
+          {% endif %}
       {% endif %}
       {% if profile.bio %}
         <h5 class="widget-user-desc secondary-text">{{ profile.bio }}</h5>
@@ -30,82 +32,6 @@
     </div>
   </div>
 
-  <div class="widget-user-service">
-
-    <h3>{% trans 'Services' %}</h3>
-
-    {% for service in services %}
-    <div class="row">
-        <h4> {{ service.title }}</h4>
-        <h5>€ {{ service.price }}</h5>
-        <h5> {{ service.get_type_display }}</h5>
-    </div>
-
-    <div class="row">
-
-      <div class="service-tag pull-left">
-        <i class="fa fa-map margin-r-5"></i> {% trans 'cities' %}
-      </div>
-      <div class="service-badges">
-        {% for city in service.cities.all %}
-          <a href="#" class="label label-info">{{ city.name }}</a>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="service-tag pull-left">
-        <i class="fa fa-folder margin-r-5"></i> {% trans 'categories' %}
-      </div>
-      <div class="service-badges">
-        {% for category in service.categories.all %}
-          <span class="label label-success">{{ category.name }}</span>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="service-tag pull-left">
-        <i class="fa fa-language margin-r-5"></i> {% trans 'languages' %}
-      </div>
-      <div class="service-badges">
-        {% for language in service.languages.all %}
-          <span class="label label-warning">{{ language.name }}</span>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="service-tag pull-left">
-        <i class="fa fa-tags margin-r-5"></i> {% trans 'tags' %}
-      </div>
-      <div class="service-badges">
-        {% for tag in service.tags.all %}
-          <span class="label label-danger">{{ tag.name }}</span>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="row">
-        <p>{{ service.content }}</p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-9">
-        </div>
-
-        <div class="col-md-3 text-right">
-            {% if view_own_profile %}
-            <a href="{% url 'profiles:service' profile.user.username service.id %}" class="btn btn-primary btn-block"><b>{% trans 'Edit service' %}</b></a>
-            {% else %}
-            <a href="#" class="btn btn-primary btn-block"><b>{% trans 'Book me' %}</b></a>
-            {% endif %}
-        </div>
-    </div>
-
-    {% endfor %}
-
-  </div>
 
   {% if resumes|length > 0 %}
     <div class="widget-user-resumes">

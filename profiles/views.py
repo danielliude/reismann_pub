@@ -1,55 +1,24 @@
+import logging
+
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
-from django.contrib.auth import authenticate, login as signin, logout as signout, REDIRECT_FIELD_NAME
 from django.contrib.auth.models import User
-from django.contrib.sites.models import Site
-from django.http import HttpResponse
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth.views import logout as Signout
-from django.views.generic.list import ListView
-from django.contrib import messages
-from django.core.exceptions import PermissionDenied
-from django.utils.translation import ugettext as _
-from django.http import Http404, HttpResponseRedirect
-
-from datetime import datetime
-from django.utils.timezone import utc
-
-from userena.models import UserenaSignup
 from userena.decorators import secure_required
-from userena import signals as userena_signals
-from userena import settings as userena_settings
-
 from guardian.decorators import permission_required_or_403
-from guardian.core import ObjectPermissionChecker
-from guardian.shortcuts import get_perms
 
 from profiles.models import Profile
 from profiles.forms import ProfileForm
 from profiles.utils import get_user_profile
-
 from core.utils import ExtraContextTemplateView
-
-from accounts.forms import RegistrationForm, AuthenticationForm, ChangeEmailForm
-from accounts.utils import login_redirect
-
-from contacts.models import Contact
 from contacts.forms import ContactForm
 from contacts.utils import get_user_contact
-
-from services.models import Service
-from services.forms import ServiceForm
-from services.utils import get_user_services, get_service_by_id
+from services.utils import get_user_services
 from services.utils import get_distinct_categories, get_distinct_cities,get_distinct_languages,get_distinct_tags
-
-from configurations.models import ServiceCategory
+from followship.utils import get_number_followers, get_number_following
+from bookings.utils import get_number_bookings
 from configurations.utils import get_active_service_categories
-
 from insite_messages.models import Message
-from insite_messages.forms import MessageComposeForm
 
-import warnings
-import logging
 
 logger = logging.getLogger("profiles")
 
@@ -61,28 +30,38 @@ def view_own_profile(request, username):
 def profile(request, username, template_name="profiles/profile.html",
                    extra_context=None, **kwargs):
 
+  if not extra_context: extra_context = dict()
+
   user = get_object_or_404(User, username__iexact=username)
+
   profile = get_user_profile(user)
-  contact = get_user_contact(user)
   services = get_user_services(user)
-  unread_messages = Message.objects.unread_for(user)
+
+  extra_context['profile'] = profile
+  extra_context['services'] = services
+  extra_context['view_own_profile'] = view_own_profile(request, username)
+
+  if request.user.is_authenticated:
+    contact = get_user_contact(user)
+    extra_context['contact'] = contact
+
+
+  if view_own_profile(request, username):
+    unread_messages = Message.objects.unread_for(user)
+    extra_context['unread_messages'] = unread_messages
+
 
   unique_tags = get_distinct_tags(user)
   unique_cities = get_distinct_cities(user)
   unique_languages = get_distinct_languages(user)
   unique_categories = get_distinct_categories(user)
 
-  if not extra_context: extra_context = dict()
-  extra_context['profile'] = profile
-  extra_context['contact'] = contact
-  extra_context['services'] = services
-  extra_context['view_own_profile'] = view_own_profile(request, username)
-  extra_context['unread_messages'] = unread_messages
-
   extra_context['unique_tags'] = unique_tags
   extra_context['unique_cities'] = unique_cities
   extra_context['unique_languages'] = unique_languages
   extra_context['unique_categories'] = unique_categories
+
+  extra_context = makeContextForDetails(request, user, username, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -92,10 +71,6 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
               extra_context=None, **kwargs):
 
   user = get_object_or_404(User, username__iexact=username)
-
-  # site = Site.objects.get_current()
-  # print(get_perms(user, site))
-  # print(user.get_all_permissions())
 
   profile = get_user_profile(user)
   contact = get_user_contact(user)
@@ -122,6 +97,8 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   extra_context['unique_cities'] = unique_cities
   extra_context['unique_languages'] = unique_languages
   extra_context['unique_categories'] = unique_categories
+
+  extra_context = makeContextForDetails(request, user, username, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -165,7 +142,20 @@ def detail(request, username, edit_profile_form=ProfileForm,
   extra_context['unread_messages'] = unread_messages
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
+  extra_context = makeContextForDetails(request, user, username, extra_context)
+
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+
+def makeContextForDetails(request, user, username, context):
+    if view_own_profile(request, username):
+        number_followers = get_number_followers(user)
+        number_following = get_number_following(user)
+        number_bookings = get_number_bookings(user)
+        context['number_followers'] = number_followers
+        context['number_following'] = number_following
+        context['number_bookings'] = number_bookings
+    return context
+
 
 @secure_required
 # @permission_required_or_403('change_contact', (Contact, 'user__username', 'username'))
@@ -200,8 +190,9 @@ def contact(request, username, edit_contact_form=ContactForm,
   extra_context['contact'] = contact
   extra_context['services'] = services
   extra_context['unread_messages'] = unread_messages
-  return ExtraContextTemplateView.as_view(template_name=template_name,
-                                          extra_context=extra_context)(request)
+
+  extra_context = makeContextForDetails(request, user, username, extra_context)
+  return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 
 

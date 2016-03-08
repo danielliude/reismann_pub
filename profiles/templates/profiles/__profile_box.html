@@ -12,14 +12,16 @@
 
   <div class="box-body no-padding">
     <ul class="nav nav-stacked">
-      <li>
-        <b>{% trans 'Age' %}</b>
-        {% if profile.age %}
-          <span class="pull-right">{{ profile.age }} {% trans 'Years old' %}</span>
-        {% else %}
-          <span class="pull-right">{% trans 'unknown' %}</span>
-        {% endif %}
-      </li>
+      {% if request.user.is_authenticated %}
+          <li>
+            <b>{% trans 'Age' %}</b>
+            {% if profile.age %}
+              <span class="pull-right">{{ profile.age }} {% trans 'Years old' %}</span>
+            {% else %}
+              <span class="pull-right">{% trans 'unknown' %}</span>
+            {% endif %}
+          </li>
+     {% endif %}
       <li>
         <b>{% trans 'Location' %}</b>
         {% if profile.location %}
@@ -33,12 +35,14 @@
 
   </div>
 
+  {% if request.user.is_authenticated %}
   <div class="box-footer">
     {% if view_own_profile %}
       <a href="{% url 'profiles:detail' profile.user.username %}" class="btn btn-primary btn-block"><b>{% trans 'Edit profile' %}</b></a>
     {% else %}
-      <a href="#" class="btn btn-primary btn-block"><b>{% trans 'Follow me' %}</b></a>
+      <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="btn btn-primary btn-block"><b>{% trans 'Follow me' %}</b></a>
     {% endif %}
   </div>
+  {% endif %}
 
 </div>

@@ -1,23 +1,19 @@
+from datetime import datetime
+
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
-
 from django.contrib.auth.models import User
-
-from django.http import Http404, HttpResponseRedirect
-
-from datetime import datetime
+from django.http import HttpResponseRedirect
 from django.utils.timezone import utc
-
 from userena.decorators import secure_required
+from guardian.decorators import permission_required_or_403
+
 from profiles.utils import get_user_profile
 from core.utils import ExtraContextTemplateView
-
 from contacts.utils import get_user_contact
 from insite_messages.models import Message
 from insite_messages.forms import MessageComposeForm
-
-from guardian.shortcuts import assign_perm
-from guardian.decorators import permission_required_or_403
+from profiles.views import makeContextForDetails
 
 
 @secure_required
@@ -35,6 +31,8 @@ def messages(request, username,
   extra_context['messages'] = messages
   extra_context['unread_messages']= unread_messages
   extra_context['profile'] = profile
+
+  extra_context = makeContextForDetails(request, user, username, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -73,6 +71,9 @@ def message_write(request, username, write_message_form=MessageComposeForm,
     extra_context['profile'] = profile
     extra_context['contact'] = contact
     extra_context['unread_messages'] = unread_messages
+
+    extra_context = makeContextForDetails(request, user, username, extra_context)
+
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
 
@@ -100,6 +101,8 @@ def message_view(request, username, message_id, write_message_form=MessageCompos
 
     extra_context['profile'] = profile
     extra_context['unread_messages'] = unread_messages
+
+    extra_context = makeContextForDetails(request, user, username, extra_context)
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -145,6 +148,9 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
     extra_context['profile'] = profile
     extra_context['contact'] = contact
     extra_context['unread_messages'] = unread_messages
+
+    extra_context = makeContextForDetails(request, user, username, extra_context)
+
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
 

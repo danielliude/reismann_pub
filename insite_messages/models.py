@@ -1,11 +1,13 @@
+from datetime import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
-from datetime import datetime
 from django.utils.timezone import utc
 from django.utils.timesince import timesince
 from redactor.fields import RedactorField
+
 from insite_messages.managers import MessageManager
 
 class Message(models.Model):

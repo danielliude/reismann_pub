@@ -1,0 +1,30 @@
+{#like profile.html but with stress on services#}
+{% extends "core/__base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+  <div class="content-wrapper">
+
+    <section class="content">
+
+      <div class="row">
+        <div class="col-sm-8 no-padding-right-sm">
+          {% include "services/__service_descriptions.html" %}
+        </div>
+
+        <div class="col-sm-4">
+          {% block profile_box %} {% include "profiles/__profile_box.html" %} {% endblock %}
+
+          {% block service_box %} {% include "services/__service_box.html" %} {% endblock %}
+          {% block contact_box %} {% include "contacts/__contact_box.html" %} {% endblock %}
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+{% endblock %}

@@ -44,14 +44,6 @@
 
     <hr>
 
-        <div class="box-body">
-            {% if view_own_profile %}
-                <a href="{% url 'profiles:services' profile.user.username %}" class="btn btn-primary btn-block"><b>{% trans 'Edit services' %}</b></a>
-            {% else %}
-                <a href="#" class="btn btn-primary btn-block"><b>{% trans 'Book me' %}</b></a>
-            {% endif %}
-        </div>
-
   </div>
 
 </div>

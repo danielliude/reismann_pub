@@ -1,7 +1,7 @@
 from services.models import Service
 from configurations.models import ServiceCategory, ServiceTag, ServiceLanguage
 from cities.models import City
-from insite_messages.models import Message
+
 
 def get_user_services(user):
 

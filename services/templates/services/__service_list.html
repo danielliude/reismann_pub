@@ -17,7 +17,7 @@
             <th>{% trans "View" %}</th>
         </tr>
         {% for service in services %}
-        <tr onclick="window.document.location='{{ service.id }}/';">
+        <tr onclick="window.document.location='edit/{{ service.id }}/';">
             <td>{{ service.title }}</td>
             <td>{{ service.price}}</td>
             <td>{{ service.created_at }}</td>
@@ -29,7 +29,7 @@
             {% endifequal %}
 
             <td>
-               <a href="{{ service.id }}/">
+               <a href="edit/{{ service.id }}/">
                     <button data-original-title="Edit service" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
                         <i class="fa fa-eye"></i>
                     </button>

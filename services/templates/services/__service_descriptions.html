@@ -1,0 +1,96 @@
+{% load i18n %}
+
+<div class="box box-solid box-square box-widget widget-profile">
+
+<div class="widget-user-service">
+    {% if view_own_profile %}
+        <h3>{% trans 'My services' %}</h3>
+   {% else %}
+        <h3>{% trans 'Services' %}</h3>
+  {% endif %}
+
+
+    {% for service in services %}
+    <div class="row">
+        <h4> {{ service.title }}</h4>
+        {% if request.user.is_authenticated %}
+            <h5>€ {{ service.price }}</h5>
+        {% else %}
+            <h5>{% trans "Price: login required" %}</h5>
+        {% endif %}
+        <h5> {{ service.get_type_display }}</h5>
+    </div>
+
+    <div class="row">
+
+      <div class="service-tag pull-left">
+        <i class="fa fa-map margin-r-5"></i> {% trans 'cities' %}
+      </div>
+      <div class="service-badges">
+        {% for city in service.cities.all %}
+          <a href="#" class="label label-info">{{ city.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="service-tag pull-left">
+        <i class="fa fa-folder margin-r-5"></i> {% trans 'categories' %}
+      </div>
+      <div class="service-badges">
+        {% for category in service.categories.all %}
+          <span class="label label-success">{{ category.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="service-tag pull-left">
+        <i class="fa fa-language margin-r-5"></i> {% trans 'languages' %}
+      </div>
+      <div class="service-badges">
+        {% for language in service.languages.all %}
+          <span class="label label-warning">{{ language.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="service-tag pull-left">
+        <i class="fa fa-tags margin-r-5"></i> {% trans 'tags' %}
+      </div>
+      <div class="service-badges">
+        {% for tag in service.tags.all %}
+          <span class="label label-danger">{{ tag.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row">
+        <p>{{ service.content }}</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+        </div>
+
+
+        <div class="col-md-3 text-right">
+        {% if request.user.is_authenticated %}
+            {% if view_own_profile %}
+                <a href="{% url 'profiles:service_edit' profile.user.username service.id %}" class="btn btn-primary btn-block"><b>{% trans 'Edit service' %}</b></a>
+            {% else %}
+                <a href="#" class="btn btn-primary btn-block"><b>{% trans 'Book me' %}</b></a>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-block"><b>{% trans 'Log in to book' %}</b></a>
+        {% endif %}
+
+        </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+</div>

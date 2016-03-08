@@ -64,3 +64,7 @@ class Service(models.Model):
 
   def __str__(self):
     return self.user.username
+
+  def get_card_url(self):
+    if self.card_image:
+      return self.card_image.url

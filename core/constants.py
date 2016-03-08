@@ -10,6 +10,12 @@ SERVICE_TYPE_CHOICES = (
   (2, _('Full time')),
 )
 
+BOOKING_STATUS = (
+  (1, _('Negotiation')),
+  (2, _('Approved')),
+  (3, _('Rejected')),
+)
+
 MUGSHOT_SETTINGS = {'size': (140, 140), 'crop': 'smart'}
 
 SERVICE_CARD_IMAGE_SETTINGS = {'size': (800, 600), 'crop': 'smart'}

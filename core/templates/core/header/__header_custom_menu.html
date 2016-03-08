@@ -43,18 +43,18 @@
             <img src="{{ user.profile.get_avatar_url }}" alt="User Image" class="img-circle">
             <p>
               {{ user.profile.get_full_name_or_username }} - {{ user.profile.location }}
-              <small>Member since Nov. 2015</small>
+              <small>{{ profile.member_since }}</small>
             </p>
           </li>
           <li class="user-body">
             <div class="col-xs-4 text-center">
-              <a href="#">12 Followers</a>
+              <a href="#">{{ number_followers }} {% trans 'Followers' %}</a>
             </div>
             <div class="col-xs-4 text-center">
-              <a href="#">10 Followings</a>
+              <a href="#">{{ number_following }} {% trans 'Following' %}</a>
             </div>
             <div class="col-xs-4 text-center">
-              <a href="#">1 Contract</a>
+              <a href="#">{{ number_bookings }} {% trans 'Bookings' %}</a>
             </div>
           </li>
           <li class="user-footer">

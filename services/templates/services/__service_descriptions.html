@@ -6,7 +6,11 @@
     {% if view_own_profile %}
         <h3>{% trans 'My services' %}</h3>
    {% else %}
+
+        {% if services.count > 0 %}
         <h3>{% trans 'Services' %}</h3>
+        {% endif %}
+
   {% endif %}
 
 

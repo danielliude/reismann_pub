@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 
 from profiles.models import Profile
 from cities.models import City
-from cities.forms import SearchIndexForm
+from profiles.views import makeContextForDetails, makeContextForMessages
 
 def index(request):
     city_list = City.objects.filter(is_active=1)
@@ -43,6 +43,9 @@ def index(request):
         'newcomer_cities': newcomer_cities,
         'popular_cities': popular_cities,
       }
+
+      context = makeContextForMessages(request, context)
+      context = makeContextForDetails(request, context)
 
       return render(request, 'core/index.html', context)
 

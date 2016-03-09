@@ -32,7 +32,7 @@ def messages(request, username,
   extra_context['unread_messages']= unread_messages
   extra_context['profile'] = profile
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -72,7 +72,7 @@ def message_write(request, username, write_message_form=MessageComposeForm,
     extra_context['contact'] = contact
     extra_context['unread_messages'] = unread_messages
 
-    extra_context = makeContextForDetails(request, user, username, extra_context)
+    extra_context = makeContextForDetails(request, extra_context)
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -102,7 +102,7 @@ def message_view(request, username, message_id, write_message_form=MessageCompos
     extra_context['profile'] = profile
     extra_context['unread_messages'] = unread_messages
 
-    extra_context = makeContextForDetails(request, user, username, extra_context)
+    extra_context = makeContextForDetails(request, extra_context)
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -149,7 +149,7 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
     extra_context['contact'] = contact
     extra_context['unread_messages'] = unread_messages
 
-    extra_context = makeContextForDetails(request, user, username, extra_context)
+    extra_context = makeContextForDetails(request, extra_context)
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)

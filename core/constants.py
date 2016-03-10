@@ -44,6 +44,11 @@ ASSIGNED_PERMISSIONS = {
      ('view_message', 'Can view message'),
      ('change_message', 'Can change message'),
      ('delete_message', 'Can delete message')),
+  'booking':
+    (('add_booking', 'Can add booking'),
+     ('view_booking', 'Can view booking'),
+     ('change_booking', 'Can change booking'),
+     ('delete_booking', 'Can delete booking')),
 }
 
 GLOBAL_PERMISSIONS = {

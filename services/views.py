@@ -48,8 +48,8 @@ def service_add(request, username, edit_service_form=ServiceForm,
     extra_context['profile'] = profile
     extra_context['contact'] = contact
 
-    extra_context = makeContextForMessages(request, user, username, extra_context)
-    extra_context = makeContextForDetails(request, user, username, extra_context)
+    extra_context = makeContextForMessages(request, extra_context)
+    extra_context = makeContextForDetails(request, extra_context)
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -86,8 +86,8 @@ def service_edit(request, username, service_id, edit_service_form=ServiceForm,
   extra_context['contact'] = contact
   extra_context['service'] = service
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
-  extra_context = makeContextForMessages(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -124,8 +124,8 @@ def service_view(request, username, service_id,
   extra_context['unique_languages'] = unique_languages
   extra_context['unique_categories'] = unique_categories
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
-  extra_context = makeContextForMessages(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -145,8 +145,8 @@ def services(request, username,
   extra_context['profile'] = profile
   extra_context['contact'] = contact
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
-  extra_context = makeContextForMessages(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)

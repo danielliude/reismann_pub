@@ -68,6 +68,5 @@ class Message(models.Model):
         ('view_message', 'Can view Message'),
     )
 
-
 def inbox_count_for(user):
   return Message.objects.filter(recipient=user, read_at__isnull=True, recipient_deleted_at__isnull=True).count()

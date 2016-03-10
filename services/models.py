@@ -63,7 +63,7 @@ class Service(models.Model):
     )
 
   def __str__(self):
-    return self.user.username
+    return self.title + str(_(' by ')) + self.user.username + str(_(' with price ')) + str(self.price)
 
   def get_card_url(self):
     if self.card_image:

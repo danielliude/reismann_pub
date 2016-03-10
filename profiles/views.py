@@ -23,8 +23,11 @@ from insite_messages.models import Message
 logger = logging.getLogger("profiles")
 
 def view_own_profile(request, username):
+
   if request.user.is_authenticated():
+
     return request.user.username == username
+
   return False
 
 

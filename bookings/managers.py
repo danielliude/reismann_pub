@@ -18,7 +18,16 @@ class BookingManager(models.Manager):
       assign_perm(perm[0], sender, booking)
       assign_perm(perm[0], recipient, booking)
 
+    return booking
+
   def get_number_bookings(self, user):
     return self.filter(
       recipient=user,
     ).count()
+
+  def all_for(self, user):
+    return self.filter(sender = user,
+                   sender_deleted_at__isnull = True
+                  ) | self.filter(
+                    recipient = user,
+                    recipient_deleted_at__isnull = True)

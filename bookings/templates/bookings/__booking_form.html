@@ -1,0 +1,72 @@
+{% load i18n %}
+
+<div class="box-body">
+
+    <form action="" id="service_edit_form" enctype="multipart/form-data" method="post">
+
+       <div class="box-body">
+          {% csrf_token %}
+
+          {{ form.non_field_errors }}
+
+          {{ form.service.errors }}
+          <div class="form-group">
+            <label>{{ form.service.label }}</label>
+            {{ form.service }}
+          </div>
+
+          {{ form.start_time.errors }}
+          <div class="form-group">
+            <label>{{ form.start_time.label }}</label>
+            <div class="input-group date">
+            {{ form.start_time }}
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+          </div>
+
+          {{ form.end_time.errors }}
+          <div class="form-group">
+            <label>{{ form.end_time.label }}</label>
+            <div class="input-group date">
+            {{ form.end_time }}
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+          </div>
+
+          {{ form.number_of_customers.errors }}
+          <div class="form-group">
+            <label>{{ form.number_of_customers.label }}</label>
+            {{ form.number_of_customers }}
+          </div>
+
+          {{ form.price.errors }}
+          <div class="form-group">
+            <label>{{ form.price.label }}</label>
+            {{ form.price }}
+          </div>
+
+          {{ form.meeting_point.errors }}
+          <div class="form-group">
+            <label>{{ form.meeting_point.label }}</label>
+            {{ form.meeting_point }}
+          </div>
+
+          {{ form.booking_content.errors }}
+          <div class="form-group">
+            <label>{{ form.booking_content.label }}</label>
+            {{ form.booking_content }}
+          </div>
+
+          {{ form.booking_remark.errors }}
+          <div class="form-group">
+            <label>{{ form.booking_remark.label }}</label>
+            {{ form.booking_remark}}
+          </div>
+
+          <button class="btn btn-primary btn-block btn-flat" type="submit">{% trans 'Save changes' %}</button>
+          <a href="{% url 'profiles:bookings' profile.user.username %}" class="btn btn-danger btn-block btn-flat">{% trans 'Cancel' %}</a>
+      </div>
+
+    </form>
+
+  </div>

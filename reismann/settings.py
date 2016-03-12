@@ -73,6 +73,7 @@ INSTALLED_APPS = (
   'profiles',
   'insite_messages',
   'followship',
+  'bookings',
   'webpack_loader',
 )
 

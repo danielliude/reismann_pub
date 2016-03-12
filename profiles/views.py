@@ -23,9 +23,35 @@ from insite_messages.models import Message
 logger = logging.getLogger("profiles")
 
 def view_own_profile(request, username):
+
   if request.user.is_authenticated():
+
     return request.user.username == username
+
   return False
+
+
+def makeContextForDetails(request, context):
+
+    if request.user.is_authenticated():
+
+        number_followers = get_number_followers(request.user)
+        number_following = get_number_following(request.user)
+        number_bookings = get_number_bookings(request.user)
+        context['number_followers'] = number_followers
+        context['number_following'] = number_following
+        context['number_bookings'] = number_bookings
+
+    return context
+
+def makeContextForMessages(request, context):
+
+    if request.user.is_authenticated():
+
+        unread_messages = Message.objects.unread_for(request.user)
+        context['unread_messages'] = unread_messages
+
+    return context
 
 def profile(request, username, template_name="profiles/profile.html",
                    extra_context=None, **kwargs):
@@ -45,12 +71,6 @@ def profile(request, username, template_name="profiles/profile.html",
     contact = get_user_contact(user)
     extra_context['contact'] = contact
 
-
-  if view_own_profile(request, username):
-    unread_messages = Message.objects.unread_for(user)
-    extra_context['unread_messages'] = unread_messages
-
-
   unique_tags = get_distinct_tags(user)
   unique_cities = get_distinct_cities(user)
   unique_languages = get_distinct_languages(user)
@@ -61,7 +81,9 @@ def profile(request, username, template_name="profiles/profile.html",
   extra_context['unique_languages'] = unique_languages
   extra_context['unique_categories'] = unique_categories
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
+
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -75,7 +97,6 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   services = get_user_services(user)
-  unread_messages = Message.objects.unread_for(user)
 
   unique_tags = get_distinct_tags(user)
   unique_cities = get_distinct_cities(user)
@@ -90,7 +111,6 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['services'] = services
-  extra_context['unread_messages'] = unread_messages
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
   extra_context['unique_tags'] = unique_tags
@@ -98,7 +118,8 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   extra_context['unique_languages'] = unique_languages
   extra_context['unique_categories'] = unique_categories
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -113,8 +134,6 @@ def detail(request, username, edit_profile_form=ProfileForm,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   services = get_user_services(user)
-
-  unread_messages = Message.objects.unread_for(user)
 
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
@@ -139,23 +158,12 @@ def detail(request, username, edit_profile_form=ProfileForm,
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['services'] = services
-  extra_context['unread_messages'] = unread_messages
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
-
-def makeContextForDetails(request, user, username, context):
-    if view_own_profile(request, username):
-        number_followers = get_number_followers(user)
-        number_following = get_number_following(user)
-        number_bookings = get_number_bookings(user)
-        context['number_followers'] = number_followers
-        context['number_following'] = number_following
-        context['number_bookings'] = number_bookings
-    return context
-
 
 @secure_required
 # @permission_required_or_403('change_contact', (Contact, 'user__username', 'username'))
@@ -167,7 +175,6 @@ def contact(request, username, edit_contact_form=ContactForm,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   services = get_user_services(user)
-  unread_messages = Message.objects.unread_for(user)
 
   form = edit_contact_form(instance=contact)
 
@@ -189,9 +196,10 @@ def contact(request, username, edit_contact_form=ContactForm,
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['services'] = services
-  extra_context['unread_messages'] = unread_messages
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
+
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 

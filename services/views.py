@@ -13,7 +13,7 @@ from configurations.utils import get_active_service_categories
 from insite_messages.models import Message
 
 from services.utils import get_distinct_tags, get_distinct_languages,get_distinct_categories, get_distinct_cities
-from profiles.views import view_own_profile, makeContextForDetails
+from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages
 
 @secure_required
 @permission_required_or_403('services.add_service')
@@ -25,7 +25,6 @@ def service_add(request, username, edit_service_form=ServiceForm,
 
     profile = get_user_profile(user)
     contact = get_user_contact(user)
-    unread_messages = Message.objects.unread_for(user)
 
     form = edit_service_form()
 
@@ -48,9 +47,9 @@ def service_add(request, username, edit_service_form=ServiceForm,
     extra_context['service_categories'] = get_active_service_categories()
     extra_context['profile'] = profile
     extra_context['contact'] = contact
-    extra_context['unread_messages'] = unread_messages
 
-    extra_context = makeContextForDetails(request, user, username, extra_context)
+    extra_context = makeContextForMessages(request, extra_context)
+    extra_context = makeContextForDetails(request, extra_context)
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -65,8 +64,6 @@ def service_edit(request, username, service_id, edit_service_form=ServiceForm,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   service = get_service_by_id(service_id)
-  unread_messages = Message.objects.unread_for(user)
-
 
   form = edit_service_form(instance=service)
 
@@ -88,9 +85,9 @@ def service_edit(request, username, service_id, edit_service_form=ServiceForm,
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['service'] = service
-  extra_context['unread_messages'] = unread_messages
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -117,11 +114,6 @@ def service_view(request, username, service_id,
     contact = get_user_contact(user)
     extra_context['contact'] = contact
 
-  if view_own_profile(request, username):
-    unread_messages = Message.objects.unread_for(user)
-    extra_context['unread_messages'] = unread_messages
-
-
   unique_tags = get_distinct_tags(user)
   unique_cities = get_distinct_cities(user)
   unique_languages = get_distinct_languages(user)
@@ -132,7 +124,8 @@ def service_view(request, username, service_id,
   extra_context['unique_languages'] = unique_languages
   extra_context['unique_categories'] = unique_categories
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -146,16 +139,14 @@ def services(request, username,
   profile = get_user_profile(user)
   contact = get_user_contact(user)
   services = get_user_services(user)
-  unread_messages = Message.objects.unread_for(user)
-
 
   if not extra_context: extra_context = dict()
   extra_context['services'] = services
   extra_context['profile'] = profile
   extra_context['contact'] = contact
-  extra_context['unread_messages'] = unread_messages
 
-  extra_context = makeContextForDetails(request, user, username, extra_context)
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)

@@ -8,9 +8,9 @@ from cities.forms import SearchForm
 from services.models import Service
 from cities.models import City
 from profiles.models import Profile
+from profiles.views import makeContextForDetails, makeContextForMessages
 from django.http import HttpResponse
 import json
-
 
 # search for cities from index page
 def search_cities(request):
@@ -108,4 +108,12 @@ def city(request, city_name, template_name='cities/city.html'):
             if city:
                 services = services.filter(cities = city)
 
-        return render(request, 'cities/city.html', {'form': form, 'services': services})
+        context = {
+            'form': form,
+            'services': services
+        }
+
+        context = makeContextForMessages(request, context)
+        context = makeContextForDetails(request, context)
+
+        return render(request, 'cities/city.html', context)

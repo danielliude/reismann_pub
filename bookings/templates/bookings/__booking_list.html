@@ -8,10 +8,10 @@
       <table class="ui very basic collapsing celled table">
         <thead>
             <tr>
-                <th>{% trans "Sender" %}</th>
-                <th>{% trans "Recipient" %}</th>
-                <th>{% trans "Subject" %}</th>
-                <th>{% trans "Sent at" %}</th>
+                <th>{% trans "Customer" %}</th>
+                <th>{% trans "Provider" %}</th>
+                <th>{% trans "Service" %}</th>
+                <th>{% trans "Price" %}</th>
                 <th>{% trans "Status" %}</th>
                 <th>{% trans "View" %}</th>
             </tr>
@@ -21,7 +21,7 @@
             {% for booking in bookings %}
 
             <tr onclick="window.document.location='modify/{{ booking.id }}/';">
-                {% if message.sender == user %}
+                {% if booking.sender == user %}
                     <td>
                         <h4 class= "ui image header">
                             <img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image">
@@ -35,12 +35,12 @@
                 {% else %}
                     <td>
                         <h5 class= "ui image header">
-                            <img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+                            <img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image">
                             <div class="ui content">
                                 {{ booking.sender }}
 
                                 <div class="sub header">
-                                    {{ message.sender.profile.location }}
+                                    {{ booking.sender.profile.location }}
                                 </div>
                             </div>
 
@@ -48,7 +48,7 @@
                     </td>
                 {% endif %}
 
-                {% if message.recipient == user %}
+                {% if booking.recipient == user %}
                     <td>
                         <h5 class= "ui image header">
                             <img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
@@ -65,7 +65,7 @@
                 {% else %}
                     <td>
                         <h5 class= "ui image header">
-                            <img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+                            <img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
                             <div class="content">
                                 {{ booking.recipient }}
 
@@ -78,20 +78,20 @@
                     </td>
                 {% endif %}
 
+                <td>{{ booking.service.title}}</td>
                 <td>{{ booking.price }}</td>
-                <td>{{ message.sender_sent_at }}</td>
                 <td>
-                    {% ifequal message.status "Read" %}
-                        <a class="ui green label">{{ message.status }}</a>
+                    {% ifequal booking.status "Read" %}
+                        <a class="ui green label">{{ booking.status }}</a>
 
                     {% else %}
-                        <a class="ui red label">{{ message.status }}</a>
+                        <a class="ui red label">{{ booking.status }}</a>
                     {% endifequal %}
                 </td>
 
 
                 <td>
-                    <a href="{{ message.id }}/">
+                    <a href="edit/{{ booking.id }}/">
                         <div class="ui icon button">
                             <i class="right arrow icon"></i>
                         </div>
@@ -110,7 +110,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <a href="write/">
+                    <a href="add/">
                         <div class="ui icon button">
                             <i class="right edit icon"></i>
                         </div>

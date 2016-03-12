@@ -22,7 +22,7 @@ except ImportError:
     pass
 
 try:
-   from .youngjie_settings import *
+   from .yongjie_settings import *
 except ImportError:
     pass
 

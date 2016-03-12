@@ -46,27 +46,27 @@
 
 	'use strict';
 
-	__webpack_require__(16);
+	__webpack_require__(17);
 
-	__webpack_require__(19);
+	__webpack_require__(21);
 
-	__webpack_require__(26);
+	__webpack_require__(28);
 
-	__webpack_require__(27);
+	__webpack_require__(29);
 
-	__webpack_require__(35);
-
-	__webpack_require__(36);
+	__webpack_require__(37);
 
 	__webpack_require__(38);
 
-	__webpack_require__(39);
+	__webpack_require__(40);
 
 	__webpack_require__(41);
 
-	__webpack_require__(44);
+	__webpack_require__(43);
 
 	__webpack_require__(46);
+
+	__webpack_require__(48);
 
 /***/ },
 /* 1 */,
@@ -84,21 +84,22 @@
 /* 13 */,
 /* 14 */,
 /* 15 */,
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(17);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
+/* 16 */,
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(18);
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(18);
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(19);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9935,19 +9936,20 @@
 
 
 /***/ },
-/* 19 */
+/* 20 */,
+/* 21 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 20 */,
-/* 21 */,
 /* 22 */,
 /* 23 */,
 /* 24 */,
 /* 25 */,
-/* 26 */
+/* 26 */,
+/* 27 */,
+/* 28 */
 /***/ function(module, exports) {
 
 	/*!
@@ -12316,20 +12318,20 @@
 
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 28 */,
-/* 29 */,
 /* 30 */,
 /* 31 */,
 /* 32 */,
 /* 33 */,
 /* 34 */,
-/* 35 */
+/* 35 */,
+/* 36 */,
+/* 37 */
 /***/ function(module, exports) {
 
 	/* =========================================================
@@ -13788,14 +13790,14 @@
 	})(window.jQuery);
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 37 */,
-/* 38 */
+/* 39 */,
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -13805,7 +13807,7 @@
 	 * Released under the MIT license
 	 * https://github.com/select2/select2/blob/master/LICENSE.md
 	 */'use strict';(function(factory){if(true){ // AMD. Register as an anonymous module.
-	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(18)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));}else if(typeof exports === 'object'){ // Node/CommonJS
+	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(19)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));}else if(typeof exports === 'object'){ // Node/CommonJS
 	factory(require('jquery'));}else { // Browser globals
 	factory(jQuery);}})(function(jQuery){ // This is needed so we can catch the AMD loader configuration and use it
 	// The inner file should be wrapped (by `banner.start.js`) in a function that
@@ -14074,13 +14076,6 @@
 	return select2;});
 
 /***/ },
-/* 39 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 40 */,
 /* 41 */
 /***/ function(module, exports) {
 
@@ -14088,15 +14083,22 @@
 
 /***/ },
 /* 42 */,
-/* 43 */,
-/* 44 */
+/* 43 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
+/* 44 */,
 /* 45 */,
 /* 46 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 47 */,
+/* 48 */
 /***/ function(module, exports) {
 
 	/*! AdminLTE app.js

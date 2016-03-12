@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<h2 class="ui center aligned header new_city_h2">New cities</h2>
+<div class="ui three column stackable doubling page grid new_city">
+  {% for city in newcomer_cities %}
+    <div class="column">
+      <a href="cities/show/{{ city.name }}" class="city_map" style="background-image: url('{{ city.card_image.url }}');">
+        <span class="title">{{ city.name }}</span>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+

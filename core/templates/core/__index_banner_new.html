@@ -1,0 +1,35 @@
+{% load staticfiles i18n %}
+<div class="ui grid banner">
+  <div class="banner_img">
+    <div class="ui centered aligned grid transition information">
+      <div class="row">
+        <h1 class="ui inverted header tagline">
+          Your new travel experiences
+        </h1>
+      </div>
+      <h4 class="ui inverted header subheadline">book your individual travel services</h4>
+      <div class="row">
+        <div class="ui action input">
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="name">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select city...</div>
+            <div class="menu">
+              {% for city in city_list %}
+                <div class="item" data-value="{{ city.name }}">{{ city.name }}</div>
+              {% endfor %}  
+            </div>
+          </div>
+          <div class="ui red button search_but">
+            <i class="search icon"></i>
+            <p>search</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ 

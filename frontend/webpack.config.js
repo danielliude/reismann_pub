@@ -11,6 +11,7 @@ module.exports = {
     admin: './js/admin',
     app: './js/app',
     semantic: './js/semantic',
+    global: './js/global',
   },
 
   output: {

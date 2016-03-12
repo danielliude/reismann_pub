@@ -13,7 +13,7 @@ from core.utils import ExtraContextTemplateView
 from contacts.utils import get_user_contact
 from insite_messages.models import Message
 from insite_messages.forms import MessageComposeForm
-from profiles.views import makeContextForDetails
+from profiles.views import makeContextForDetails, makeContextForMessages
 
 
 @secure_required
@@ -25,14 +25,13 @@ def messages(request, username,
   user = get_object_or_404(User, username__iexact=username)
   profile = get_user_profile(user)
   messages = Message.objects.all_for(user)
-  unread_messages = Message.objects.unread_for(user)
 
   if not extra_context: extra_context = dict()
   extra_context['messages'] = messages
-  extra_context['unread_messages']= unread_messages
   extra_context['profile'] = profile
 
   extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -47,8 +46,6 @@ def message_write(request, username, write_message_form=MessageComposeForm,
     user = get_object_or_404(User, username__iexact=username)
     profile = get_user_profile(user)
     contact = get_user_contact(user)
-
-    unread_messages = Message.objects.unread_for(user)
 
     form = write_message_form()
 
@@ -70,9 +67,9 @@ def message_write(request, username, write_message_form=MessageComposeForm,
     extra_context['form'] = form
     extra_context['profile'] = profile
     extra_context['contact'] = contact
-    extra_context['unread_messages'] = unread_messages
 
     extra_context = makeContextForDetails(request, extra_context)
+    extra_context = makeContextForMessages(request, extra_context)
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -86,7 +83,6 @@ def message_view(request, username, message_id, write_message_form=MessageCompos
 
     user = get_object_or_404(User, username__iexact=username)
     profile = get_user_profile(user)
-    unread_messages = Message.objects.unread_for(user)
 
     message = Message.objects.get(pk= message_id)
 
@@ -100,9 +96,9 @@ def message_view(request, username, message_id, write_message_form=MessageCompos
         extra_context['message'] = message
 
     extra_context['profile'] = profile
-    extra_context['unread_messages'] = unread_messages
 
     extra_context = makeContextForDetails(request, extra_context)
+    extra_context = makeContextForMessages(request, extra_context)
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -119,7 +115,6 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
     profile = get_user_profile(user)
     contact = get_user_contact(user)
     message = Message.objects.get(pk= message_id)
-    unread_messages = Message.objects.unread_for(user)
 
     initial_subject = "Re: " + message.subject
     initial_body = ">" + message.body
@@ -147,9 +142,9 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
     extra_context['form'] = form
     extra_context['profile'] = profile
     extra_context['contact'] = contact
-    extra_context['unread_messages'] = unread_messages
 
     extra_context = makeContextForDetails(request, extra_context)
+    extra_context = makeContextForMessages(request, extra_context)
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)

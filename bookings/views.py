@@ -14,6 +14,7 @@ from profiles.views import makeContextForDetails, makeContextForMessages
 from profiles.utils import get_user_profile
 from bookings.utils import get_booking_by_id
 
+from datetime import datetime
 
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
@@ -71,19 +72,45 @@ def booking_add(request, username, booking_form = BookingForm,
 
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
-
-
+@secure_required
 def booking_add_with_service(request, username, service_id):
     pass
 
-def booking_reject(request):
+@secure_required
+def booking_reject(request, username, booking_id):
     pass
 
-def booking_view(request, booking_id, booking_form = BookingForm,
-                 template_name = 'bookings/book'):
+@secure_required
+def booking_approve(request, username, booking_id):
     pass
 
+@secure_required
+def booking_view(request, username, booking_id, template_name = 'bookings/booking_view.html', success_url=None,
+                 extra_context=None, **kwargs):
 
+    user = get_object_or_404(User, username__iexact=username)
+    profile = get_user_profile(user)
+
+    booking = Booking.objects.get(pk= booking_id)
+
+    if booking.recipient == user:
+        booking.read_at = datetime.now()
+        booking.save()
+
+    if not extra_context: extra_context = dict()
+
+    # if user.has_perm('bookings.view_message', booking):
+    extra_context['booking'] = booking
+
+    extra_context['profile'] = profile
+
+    extra_context = makeContextForDetails(request, extra_context)
+    extra_context = makeContextForMessages(request, extra_context)
+
+    return ExtraContextTemplateView.as_view(template_name=template_name,
+                                          extra_context=extra_context)(request)
+
+@secure_required
 def booking_edit(request, username, booking_id, edit_booking_form = BookingForm,
                  template_name ='bookings/booking_edit.html', success_url = None,
                   extra_context=None, **kwargs):

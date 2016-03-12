@@ -88,6 +88,8 @@ class BookingForm(forms.ModelForm):
     booking_meeting_point = self.cleaned_data['meeting_point']
     booking_content = self.cleaned_data['booking_content']
     booking_remark = self.cleaned_data['booking_remark']
+    service_starts_at = self.cleaned_data['start_time']
+    service_ends_at = self.cleaned_data['end_time']
 
     booking = Booking.objects.create_booking(service= service, sender= sender, recipient = service.user)
 
@@ -97,6 +99,8 @@ class BookingForm(forms.ModelForm):
     booking.meeting_point = booking_meeting_point
     booking.number_of_customers = booking_number_customer
     booking.sender_sent_at = datetime.utcnow().replace(tzinfo=utc)
+    booking.service_starts_at = service_starts_at
+    booking.service_ends_at = service_ends_at
 
     booking.save()
 

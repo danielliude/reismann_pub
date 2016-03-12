@@ -20,7 +20,7 @@
         <tbody>
             {% for booking in bookings %}
 
-            <tr onclick="window.document.location='modify/{{ booking.id }}/';">
+            <tr onclick="window.document.location='view/{{ booking.id }}/';">
                 {% if booking.sender == user %}
                     <td>
                         <h4 class= "ui image header">
@@ -91,7 +91,7 @@
 
 
                 <td>
-                    <a href="edit/{{ booking.id }}/">
+                    <a href="view/{{ booking.id }}/">
                         <div class="ui icon button">
                             <i class="right arrow icon"></i>
                         </div>

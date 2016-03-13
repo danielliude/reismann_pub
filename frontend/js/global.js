@@ -17,10 +17,12 @@ $(document).ready(function() {
   // $('.city_map').mouseover(function() {
    //  $(this).transition('tada');
   // })
+  $('.information .ui.dropdown').dropdown({
+    forceSelection : false,
+  });
   $('.search_but').click(function() {
-    var name = $(".information [name='name']").val()
+    var name = $(".information [tabindex='0']").val() || $(".information [name='name']").val() || 'all_city'
     if(name=="") {
-      $(".information [tabindex='0']").focus()
       return
     }
     $.ajax({
@@ -32,4 +34,10 @@ $(document).ready(function() {
       }
     })
   })
+  $(".information [tabindex='0']").keydown(function(e){ 
+    var curKey = e.which; 
+    if(curKey == 13){ 
+      $(".search_but").click(); 
+    } 
+  }); 
 })

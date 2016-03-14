@@ -5,3 +5,68 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover; }
+
+/*--------------
+    search_profile
+---------------*/
+.search_profile .search_head .ui.header {
+  position: absolute;
+  right: 0px;
+  top: 0px; }
+
+.search_profile .profile_map {
+  height: 300px;
+  display: block;
+  width: 100%;
+  background-color: #242731;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
+
+.ui.page.grid.search_profile {
+  background-color: #f3f3f3; }
+
+.ui.header.search_profile_h2 {
+  background-color: #f3f3f3;
+  margin-top: 0px;
+  padding-top: 50px;
+  padding-bottom: 10px; }
+
+.padding .ui.header {
+  font-size: 11px;
+  margin-bottom: 0px; }
+
+.padding .ui.segment {
+  margin-top: 0px;
+  padding-top: 0px; }
+
+.search_profile .ui.segment {
+  border: 0px; }
+
+.search_profile .ui.segment.padding {
+  padding: 0px; }
+
+.search_profile .average_price {
+  position: absolute;
+  right: 14px;
+  top: -27px; }
+
+.search_profile .content {
+  margin-top: 10px; }
+
+.search_profile .content p {
+  font-size: 0.75rem; }
+
+.search_profile .ui.tiny.image {
+  width: 60px;
+  padding: 2px;
+  border: 2px;
+  background-color: #fff;
+  border-radius: 28px;
+  margin-top: -33px;
+  margin-left: 19px; }
+
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+  .ui.page.grid.search_profile {
+    padding-left: 8%;
+    padding-right: 8%; } }

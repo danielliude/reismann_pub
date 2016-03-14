@@ -10,23 +10,142 @@
 
 {% block content %}
 <div class="city_img"></div>
-<!-- <div class="ui  grid"> -->
-  <form class="ui form">
-    <div class="fields">
-      <div class="four wide field">
-        <label>服务类型</label>
+<div class="ui segment">
+  <div class="ui page grid">
+    <div class="four wide column">
+      <label>服务类型</label>
+    </div>
+    <div class="twelve wide column">
+      <div class="ui three column grid">
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
       </div>
-      <div class="twelve wide fields">
-        <div class="field">
-          <div class="ui checkbox">
-            <input type="checkbox" tabindex="0" class="hidden">
-            <label>Checkbox</label>
+    </div>
+    <!-- <div class="ui fitted divider"></div> -->
+    <!-- <div class="row">
+      <div class="ui red horizontal  divider"> </div>
+    </div> -->
+    <div class="four wide column">
+      <label>服务人员</label>
+    </div>
+    <div class="twelve wide column">
+      <div class="ui three column grid">
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+      </div>
+    </div>
+    <div class="four wide column">
+      <label>服务语言</label>
+    </div>
+    <div class="twelve wide column">
+      <div class="ui three column grid">
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+      </div>
+    </div>
+    <div class="four wide column">
+      <label>服务特色</label>
+    </div>
+    <div class="twelve wide column">
+      <div class="ui three column grid">
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+        <div class="column">
+          <label>hahha</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="ui segment">
+</div> -->
+<div class="ui three column stackable doubling page grid search_profile">
+  <div class="row search_head">
+    <button class="ui button">更多筛选项</button>
+    <button class="ui button">查询</button>
+    <h4 class="ui header">已为你找到24个服务</h4>
+  </div>
+  {% for service in services %}
+    <div class="column">
+      <div class="ui segment padding">
+        <a href="{% url 'profiles:service_view' service.user.username service.id %}" class="profile_map" style="background-image: url('{{ service.user.profile.get_card_image_url }}');"></a>
+        <a href="{% url 'profiles:profile' service.user.username %}" class="ui tiny circular image">
+          <img  src="{{ service.user.profile.get_avatar_url }}" alt="User Avatar">
+        </a>
+        <div class="ui segment">
+          <div class="row"> 
+            <div class="ui header">{{ service.user.profile.get_full_name_or_username }} {{ service.user.profile.short_description }}</div>
+            </strong><a href="#">{% for city in service.cities.all %}{% if not forloop.last %}{{ city.name }} , {% else %}{{ city.name }}{% endif %} {% endfor %}</a></strong>
+          </div>
+          <div class="ui red header average_price">€ {{ service.price }} service price unit</div>
+          <div class="row content">
+            <p>{{ service.content }}</p>
           </div>
         </div>
       </div>
     </div>
-  </form>
-
-<!-- </div> -->
+  {% endfor %}
+</div>
 
 {% endblock %}

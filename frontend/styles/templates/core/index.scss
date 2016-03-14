@@ -31,11 +31,13 @@
     margin-right: 3px;
     .prompt {
       border-radius: 0px;
+      height: 36px;
+      line-height: 36px;
     }
   }
   .ui.search {
-    font-size: 0.1em;
-    height: 34px;
+    // font-size: 0.1em;
+    // height: 34px;
   }
   .ui.red.button {
     height: 36px;

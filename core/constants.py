@@ -11,9 +11,10 @@ SERVICE_TYPE_CHOICES = (
 )
 
 BOOKING_STATUS = (
-  (1, _('Negotiation')),
-  (2, _('Approved')),
-  (3, _('Rejected')),
+  (1, _('Negotiation_sender')),
+  (2, _('Negotiation_recipient')),
+  (3, _('Approved')),
+  (4, _('Rejected')),
 )
 
 MUGSHOT_SETTINGS = {'size': (140, 140), 'crop': 'smart'}
@@ -44,11 +45,16 @@ ASSIGNED_PERMISSIONS = {
      ('view_message', 'Can view message'),
      ('change_message', 'Can change message'),
      ('delete_message', 'Can delete message')),
-  'booking':
-    (('add_booking', 'Can add booking'),
-     ('view_booking', 'Can view booking'),
+  'booking_sender':
+    (('view_booking', 'Can view booking'),
      ('change_booking', 'Can change booking'),
      ('delete_booking', 'Can delete booking')),
+   'booking_recipient':
+    (('view_booking', 'Can view booking'),
+     ('change_booking', 'Can change booking'),
+     ('reject_booking', 'Can reject booking'),
+     ('approve_booking', 'Can approve booking')),
+
 }
 
 GLOBAL_PERMISSIONS = {
@@ -61,5 +67,12 @@ GLOBAL_PERMISSIONS = {
      ('services.add_service', 'Can add service'),
      ('services.view_service', 'Can view service'),
      ('services.change_service', 'Can change service'),
-     ('services.delete_service', 'Can delete service')),
+     ('services.delete_service', 'Can delete service'),
+
+     ('bookings.add_booking', 'Can add booking'),
+     ('bookings.view_booking', 'Can view booking'),
+     ('bookings.change_booking', 'Can change booking'),
+     ('bookings.reject_booking', 'Can reject booking'),
+     ('bookings.reject_booking', 'Can reject booking'),
+     ('bookings.approve_booking', 'Can approve booking')),
 }

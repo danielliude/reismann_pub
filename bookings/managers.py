@@ -14,8 +14,10 @@ class BookingManager(models.Manager):
 
     booking = self.create(service = service, sender = sender, recipient = recipient)
 
-    for perm in ASSIGNED_PERMISSIONS['booking']:
+    for perm in ASSIGNED_PERMISSIONS['booking_sender']:
       assign_perm(perm[0], sender, booking)
+
+    for perm in ASSIGNED_PERMISSIONS['booking_recipient']:
       assign_perm(perm[0], recipient, booking)
 
     return booking

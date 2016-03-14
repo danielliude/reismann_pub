@@ -28,7 +28,7 @@ class Booking(models.Model):
   booking_content = RedactorField(verbose_name=_('booking content'), allow_image_upload=False, allow_file_upload=False)
   booking_remark = RedactorField(verbose_name=_('booking remark'), allow_image_upload=False, allow_file_upload=False)
 
-  status = models.PositiveIntegerField(_('booking price'), choices=BOOKING_STATUS, blank=True, null=True)
+  status = models.PositiveIntegerField(_('booking status'), choices=BOOKING_STATUS, blank=True, null=True)
 
   read_at = models.DateTimeField(_('booking read at'), null=True, blank=True)
 
@@ -48,5 +48,7 @@ class Booking(models.Model):
     verbose_name_plural = _('Bookings')
 
     permissions = (
-      ('view_booking', 'Can view Booking'),
+      ('view_booking', 'Can view booking'),
+      ('reject_booking', 'Can reject booking'),
+      ('approve_booking', 'Can approve booking'),
     )

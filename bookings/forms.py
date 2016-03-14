@@ -67,17 +67,16 @@ class BookingForm(forms.ModelForm):
 
 
 
-  def save(self, sender_username):
+  def save(self, sender_username, booking=None):
 
     service = self.cleaned_data['service']
-
     try:
       service = Service.objects.get(pk= service.pk)
     except Service.DoesNotExist:
       raise forms.ValidationError(_('The following service does not exists'))
 
     try:
-      sender = User.objects.get(username=sender_username)
+      sender = User.objects.get(username = sender_username)
     except User.DoesNotExist:
       raise forms.ValidationError(_('The following username is incorrect: %(username)s') % {
         'username': sender_username
@@ -91,14 +90,21 @@ class BookingForm(forms.ModelForm):
     service_starts_at = self.cleaned_data['start_time']
     service_ends_at = self.cleaned_data['end_time']
 
-    booking = Booking.objects.create_booking(service= service, sender= sender, recipient = service.user)
+    if not booking:
+        booking = Booking.objects.create_booking(service= service, sender= sender, recipient = service.user)
+
+    if booking.sender == sender:
+        booking.status = 1
+        booking.sender_sent_at = datetime.utcnow().replace(tzinfo=utc)
+    elif booking.recipient == sender:
+        booking.status = 2
+        booking.recipient_sent_at = datetime.utcnow().replace(tzinfo=utc)
 
     booking.booking_content = booking_content
     booking.booking_remark = booking_remark
     booking.price = booking_price
     booking.meeting_point = booking_meeting_point
     booking.number_of_customers = booking_number_customer
-    booking.sender_sent_at = datetime.utcnow().replace(tzinfo=utc)
     booking.service_starts_at = service_starts_at
     booking.service_ends_at = service_ends_at
 

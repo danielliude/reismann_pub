@@ -80,13 +80,17 @@
 
                 <td>{{ booking.service.title}}</td>
                 <td>{{ booking.price }}</td>
-                <td>
-                    {% ifequal booking.status "Read" %}
-                        <a class="ui green label">{{ booking.status }}</a>
 
-                    {% else %}
-                        <a class="ui red label">{{ booking.status }}</a>
-                    {% endifequal %}
+                <td>
+                    {% if booking.status == 1 %}
+                        <a class="ui yellow label">{% trans 'Negotiation' %} </a>
+                    {% elif booking.status == 2%}
+                        <a class="ui blue label">{% trans 'Negotiation' %}</a>
+                    {% elif booking.status == 3%}
+                        <a class="ui green label">{{ booking.get_status_display|lower }}</a>
+                    {% elif booking.status == 4%}
+                        <a class="ui red label">{{ booking.get_status_display|lower }}</a>
+                    {% endif %}
                 </td>
 
 

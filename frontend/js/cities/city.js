@@ -1,0 +1,1 @@
+import '../../styles/templates/cities/city.scss'

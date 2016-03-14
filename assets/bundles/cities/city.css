@@ -1,0 +1,7 @@
+.city_img {
+  height: 150px;
+  width: 100%;
+  background-image: url("/static/images/dummy/banner.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }

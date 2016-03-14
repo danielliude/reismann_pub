@@ -1,4 +1,12 @@
 {% extends "core/__global.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block stylesheets %}
+    {% render_bundle 'core/index' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'core/index' 'js' %}
+{% endblock %}
 
 {% block content %}
     {% include "core/__index_banner_new.html" %}

@@ -46,46 +46,13 @@
 
 	'use strict';
 
-	__webpack_require__(7);
+	__webpack_require__(11);
 
-	__webpack_require__(15);
+	__webpack_require__(19);
 
-	__webpack_require__(17);
+	__webpack_require__(21);
 
-	__webpack_require__(20);
-
-	$(document).ready(function () {
-	  $('.ui.dropdown').dropdown({
-	    on: 'hover'
-	  });
-	  $('.banner .information').transition('scale in', 1000);
-	  // $('.city_map').mouseover(function() {
-	  //  $(this).transition('tada');
-	  // })
-	  $('.information .ui.dropdown').dropdown({
-	    forceSelection: false
-	  });
-	  $('.search_but').click(function () {
-	    var name = $(".information [tabindex='0']").val() || $(".information [name='name']").val() || 'all_city';
-	    if (name == "") {
-	      return;
-	    }
-	    $.ajax({
-	      type: 'get',
-	      url: "/search_url",
-	      data: { name: name },
-	      success: function success(data) {
-	        window.location.href = window.location.href + data.substring(1);
-	      }
-	    });
-	  });
-	  $(".information [tabindex='0']").keydown(function (e) {
-	    var curKey = e.which;
-	    if (curKey == 13) {
-	      $(".search_but").click();
-	    }
-	  });
-	});
+	__webpack_require__(24);
 
 /***/ },
 /* 1 */,
@@ -94,41 +61,45 @@
 /* 4 */,
 /* 5 */,
 /* 6 */,
-/* 7 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 7 */,
 /* 8 */,
 /* 9 */,
 /* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */
+/* 11 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
 /* 16 */,
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(18);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(19);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
+/* 17 */,
+/* 18 */,
 /* 19 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 20 */,
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(22);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(23);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9965,7 +9936,7 @@
 
 
 /***/ },
-/* 20 */
+/* 24 */
 /***/ function(module, exports) {
 
 	/*

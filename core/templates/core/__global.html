@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     {% block meta_tags %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
     {% render_bundle 'global' 'css' %}
+    {% block stylesheets %}{% endblock %}
     {% block header_javascripts %}{% endblock %}
     {% block extra_head %}{% endblock %}
 </head>

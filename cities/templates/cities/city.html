@@ -1,59 +1,32 @@
-{% extends "core/__base.html" %}
+{% extends "core/__global.html" %}
+{% load render_bundle from webpack_loader %}
 
-{% load staticfiles i18n %}
-
-{% block body_class %}skin-blue layout-top-nav login-page simple-layout{% endblock %}
+{% block stylesheets %}
+  {% render_bundle 'cities/city' 'css' %}
+{% endblock %}
+{% block javascripts %}
+  {% render_bundle 'cities/city' 'js' %}
+{% endblock %}
 
 {% block content %}
-
-    <section class="mood mood-small">
-        <div style="background-image: url({{ city.banner_image }});" class="mood--background mood-pattern-radial-gradient">
+<div class="city_img"></div>
+<!-- <div class="ui  grid"> -->
+  <form class="ui form">
+    <div class="fields">
+      <div class="four wide field">
+        <label>服务类型</label>
+      </div>
+      <div class="twelve wide fields">
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" tabindex="0" class="hidden">
+            <label>Checkbox</label>
+          </div>
         </div>
-    </section>
-
-  <div class="container">
-    <div class="filters">
-        <div class="container">
-            <form class="col-lg-10" action="" method="post">
-                {% csrf_token %}
-
-                <div class="row">
-                    {{ form }}
-                </div>
-
-                <input type="submit" value="Submit" />
-            </form>
-    </div></div>
-
-    <div class="row">
-        {% for service in services %}
-            <div class="col-sm-6 col-md-4">
-                <div class="widget-newcomer-profile widget-user">
-                      <div class="image">
-                        <a href="{% url 'profiles:service_view' service.user.username service.id %}" class="background-image hover-darken"
-                          style="background-image: url('{{ service.user.profile.get_card_image_url }}');"></a>
-                      </div>
-                      <a href="{% url 'profiles:profile' service.user.username %}" class="profile-avatar widget-user-image">
-                        <img src="{{ service.user.profile.get_avatar_url }}" alt="User Avatar" class="img-circle">
-                      </a>
-                      <div class="widget-body">
-                        <div class="widget-profile-meta">
-                          <div class="widget-profile-user">{{ service.user.profile.get_full_name_or_username }} {{ service.user.profile.short_description }}</div>
-                          <a href="#" class="widget-profile-location">{% for city in service.cities.all %}{% if not forloop.last %}{{ city.name }} , {% else %}{{ city.name }}{% endif %} {% endfor %}</a>
-                        </div>
-                        <div class="widget-profile-price">
-                          € {{ service.price }}
-                          <span class="widget-profile-price-unit">{% trans 'service price unit' %}</span>
-                        </div>
-                        <div class="widget-profile-bio">
-                          {{ service.content }}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-        {% endfor %}
+      </div>
     </div>
+  </form>
 
-  </div>
+<!-- </div> -->
 
 {% endblock %}

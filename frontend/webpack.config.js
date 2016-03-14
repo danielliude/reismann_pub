@@ -12,6 +12,8 @@ module.exports = {
     app: './js/app',
     semantic: './js/semantic',
     global: './js/global',
+    'core/index': './js/core/index',
+    'cities/city': './js/cities/city',
   },
 
   output: {

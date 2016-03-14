@@ -76,12 +76,12 @@
 	      }
 	    });
 	  });
-	  $(".information .prompt").keydown(function (e) {
-	    var curKey = e.which;
-	    if (curKey == 13) {
-	      $(".search_but").click();
-	    }
-	  });
+	  // $(".information .prompt").keydown(function(e){
+	  //   var curKey = e.which;
+	  //   if(curKey == 13){
+	  //     $(".search_but").click();
+	  //   }
+	  // });
 	  $('.ui.search').search({
 	    source: content
 	  });

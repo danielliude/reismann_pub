@@ -22,6 +22,7 @@ class SearchForm(forms.Form):
     services = forms.ModelMultipleChoiceField(label = _('Services'),
                                               required = False,
                                               widget=forms.RadioSelect(attrs={
+                                                  'class': "ui checkbox",
                                               }),
                                               queryset= ServiceCategory.objects.all())
 
@@ -30,7 +31,7 @@ class SearchForm(forms.Form):
                                           'class': 'form-control',
                                           'data-placeholder': _('gender'),
                                           }),
-                                        choices=GENDER_CHOICES)
+                                          choices=GENDER_CHOICES)
 
     age = forms.ChoiceField(required = False, choices= AGE)
 
@@ -39,13 +40,13 @@ class SearchForm(forms.Form):
                                                   'class': 'form-control',
                                                   'data-placeholder': _('languages'),
                                               }),
-                                                queryset= ServiceLanguage.objects.all())
+                                              queryset= ServiceLanguage.objects.all())
 
     tags = forms.ModelMultipleChoiceField(required= False,
                                           widget=forms. SelectMultiple(attrs={
                                                   'class': 'form-control',
                                                   'data-placeholder': _('tags'),
-                                              }),
+                                          }),
                                           queryset=ServiceTag.objects.all())
 
 

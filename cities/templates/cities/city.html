@@ -1,4 +1,5 @@
 {% extends "core/__global.html" %}
+{% load i18n %}
 {% load render_bundle from webpack_loader %}
 
 {% block stylesheets %}
@@ -13,21 +14,32 @@
 <div class="ui segment search_form">
   <div class="ui page grid">
     <div class="four wide column">
-      <label>服务类型</label>
+      <label>{% trans 'Service types' %}</label>
     </div>
+
     <div class="twelve wide column">
       <div class="ui three column grid">
-      {% for service in form.services %}
+        {% for field in form.services %}
         <div class="column">
           <div class="ui secondary segment">
-            <span>{{ service.title }}</span>
-            <div class="ui checkbox">
-              <input type="checkbox" name="{{ service.value }}">
-              <label></label>
-            </div>
+               {{ field.errors }}
+               {{ field }}
           </div>
         </div>
       {% endfor %}
+
+
+{#      {% for service in form_new.services %}#}
+{#        <div class="column">#}
+{#          <div class="ui secondary segment">#}
+{#            <span>{{ service.title }}</span>#}
+{#            <div class="ui checkbox">#}
+{#              <input type="checkbox" name="{{ service.value }}">#}
+{#              <label></label>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      {% endfor %}#}
       </div>
     </div>
     <div class="four wide column">
@@ -38,7 +50,7 @@
         <div class="column">
           <select class="ui fluid search dropdown">
             <option value="">please select gender</option>
-            {% for gender in form.genders %}
+            {% for gender in form_new.genders %}
               <option value="{{ gender.value }}">{{ gender.title }}</option>
             {% endfor %}
           </select>
@@ -46,7 +58,7 @@
         <div class="column">
           <select class="ui fluid search dropdown">
             <option value="">please select age</option>
-            {% for age in form.ages %}
+            {% for age in form_new.ages %}
               <option value="{{ age.value }}">{{ age.title }}</option>
             {% endfor %}
           </select>
@@ -61,7 +73,7 @@
         <div class="column">
           <select class="ui fluid dropdown">
             <option value="">please select city</option>
-            {% for city in form.cities %}
+            {% for city in form_new.cities %}
               <option value="{{ city.value }}">{{ city.title }}</option>
             {% endfor %}
           </select>
@@ -74,7 +86,7 @@
       </div>
       <div class="twelve wide column hidden">
         <div class="ui three column grid">
-          {% for language in form.languages %}
+          {% for language in form_new.languages %}
             <div class="column">
               <div class="ui secondary segment">
                 <span>{{ language.title }}</span>
@@ -92,7 +104,7 @@
       </div>
       <div class="twelve wide column hidden">
         <div class="ui three column grid">
-          {% for tag in form.tags %}
+          {% for tag in form_new.tags %}
             <div class="column">
               <div class="ui secondary segment">
                 <span>{{ tag.title }}</span>

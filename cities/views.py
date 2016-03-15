@@ -108,7 +108,7 @@ def city(request, city_name, template_name='cities/city.html'):
             if city:
                 services = services.filter(cities = city)
 
-        form = {
+        form_new = {
             'cities' : [
                 { "value" : "1", "title" : "Hamburg" },
                 { "value" : "2", "title" : "Frankfurt" },
@@ -156,6 +156,7 @@ def city(request, city_name, template_name='cities/city.html'):
         }
         context = {
             'form': form,
+            'form_new': form_new,
             'services': services
         }
 

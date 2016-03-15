@@ -10,122 +10,112 @@
 
 {% block content %}
 <div class="city_img"></div>
-<div class="ui segment">
+<div class="ui segment search_form">
   <div class="ui page grid">
     <div class="four wide column">
       <label>服务类型</label>
     </div>
     <div class="twelve wide column">
       <div class="ui three column grid">
+      {% for service in form.services %}
         <div class="column">
-          <label>hahha</label>
+          <div class="ui secondary segment">
+            <span>{{ service.title }}</span>
+            <div class="ui checkbox">
+              <input type="checkbox" name="{{ service.value }}">
+              <label></label>
+            </div>
+          </div>
         </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
+      {% endfor %}
       </div>
     </div>
-    <!-- <div class="ui fitted divider"></div> -->
-    <!-- <div class="row">
-      <div class="ui red horizontal  divider"> </div>
-    </div> -->
     <div class="four wide column">
       <label>服务人员</label>
     </div>
     <div class="twelve wide column">
       <div class="ui three column grid">
         <div class="column">
-          <label>hahha</label>
+          <select class="ui fluid search dropdown">
+            <option value="">please select gender</option>
+            {% for gender in form.genders %}
+              <option value="{{ gender.value }}">{{ gender.title }}</option>
+            {% endfor %}
+          </select>
         </div>
         <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
+          <select class="ui fluid search dropdown">
+            <option value="">please select age</option>
+            {% for age in form.ages %}
+              <option value="{{ age.value }}">{{ age.title }}</option>
+            {% endfor %}
+          </select>
         </div>
       </div>
     </div>
     <div class="four wide column">
-      <label>服务语言</label>
+      <label>服务城市</label>
     </div>
     <div class="twelve wide column">
-      <div class="ui three column grid">
+      <div class="ui grid">
         <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
+          <select class="ui fluid dropdown">
+            <option value="">please select city</option>
+            {% for city in form.cities %}
+              <option value="{{ city.value }}">{{ city.title }}</option>
+            {% endfor %}
+          </select>
         </div>
       </div>
     </div>
-    <div class="four wide column">
-      <label>服务特色</label>
-    </div>
-    <div class="twelve wide column">
-      <div class="ui three column grid">
-        <div class="column">
-          <label>hahha</label>
+    <div class="ui grid hidden_content" style="display: none;">
+      <div class="four wide column hidden">
+        <label>服务语言</label>
+      </div>
+      <div class="twelve wide column hidden">
+        <div class="ui three column grid">
+          {% for language in form.languages %}
+            <div class="column">
+              <div class="ui secondary segment">
+                <span>{{ language.title }}</span>
+                <div class="ui checkbox">
+                  <input type="checkbox" name="{{ language.value }}">
+                  <label></label>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
         </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
-        </div>
-        <div class="column">
-          <label>hahha</label>
+      </div>
+      <div class="four wide column hidden">
+        <label>服务特色</label>
+      </div>
+      <div class="twelve wide column hidden">
+        <div class="ui three column grid">
+          {% for tag in form.tags %}
+            <div class="column">
+              <div class="ui secondary segment">
+                <span>{{ tag.title }}</span>
+                <div class="ui checkbox">
+                  <input type="checkbox" name="{{ tag.value }}">
+                  <label></label>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- <div class="ui segment">
-</div> -->
-<div class="ui three column stackable doubling page grid search_profile">
-  <div class="row search_head">
-    <button class="ui button">更多筛选项</button>
+<div class="ui page grid search_button">
+  <div class="row search_head" style="padding-left: 14px !important;">
+    <button class="ui button more_select">更多筛选项</button>
     <button class="ui button">查询</button>
-    <h4 class="ui header">已为你找到24个服务</h4>
+    <h4 class="ui header">已为你找到 {{ services|length }} 个服务</h4>
   </div>
+</div>
+<div class="ui three column stackable doubling page grid search_profile">
   {% for service in services %}
     <div class="column">
       <div class="ui segment padding">
@@ -146,6 +136,11 @@
       </div>
     </div>
   {% endfor %}
+  <div class="row">
+    <div class="ui center aligned inverted segment more_loader">加载更多</div>
+  </div>
+</div>
+<div class="ui grid">
 </div>
 
 {% endblock %}

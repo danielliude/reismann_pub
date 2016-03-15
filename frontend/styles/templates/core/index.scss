@@ -35,12 +35,11 @@
       line-height: 36px;
     }
   }
-  .ui.search {
-    // font-size: 0.1em;
-    // height: 34px;
-  }
   .ui.red.button {
     height: 36px;
+  }
+  .left_aligned {
+    text-align: left;
   }
 }
 
@@ -240,6 +239,10 @@
 }
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .ui.page.grid.new_profile, .ui.page.grid.popular_profile, .ui.page.grid.new_city, .ui.page.grid.popular_city {
+      padding-left: 8%;
+      padding-right: 8%;
+  }
+  .footer .ui.page.grid {
       padding-left: 8%;
       padding-right: 8%;
   }

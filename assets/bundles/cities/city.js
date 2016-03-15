@@ -45,9 +45,18 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	__webpack_require__(7);
+
+	$(function () {
+	    $(".more_select").click(function () {
+	        $(".hidden_content").slideToggle("slow");
+	    });
+	    $(".ui.secondary.segment").click(function () {
+	        $(this).find('input').click();
+	    });
+	});
 
 /***/ },
 

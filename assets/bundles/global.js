@@ -54,6 +54,12 @@
 
 	__webpack_require__(24);
 
+	$(document).ready(function () {
+	  $('.masthead .ui.dropdown').dropdown({
+	    on: 'hover'
+	  });
+	});
+
 /***/ },
 /* 1 */,
 /* 2 */,

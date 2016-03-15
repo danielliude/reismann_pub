@@ -34,6 +34,9 @@
 .information .ui.red.button {
   height: 36px; }
 
+.information .left_aligned {
+  text-align: left; }
+
 /*--------------
     popular_profile
 ---------------*/
@@ -212,5 +215,8 @@
 
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .ui.page.grid.new_profile, .ui.page.grid.popular_profile, .ui.page.grid.new_city, .ui.page.grid.popular_city {
+    padding-left: 8%;
+    padding-right: 8%; }
+  .footer .ui.page.grid {
     padding-left: 8%;
     padding-right: 8%; } }

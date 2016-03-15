@@ -9,14 +9,41 @@
 
 
 
+/*--------------
+    search_form
+---------------*/
+.ui.segment.search_form {
+  margin-top: 0px;
+}
+.secondary .ui.checkbox {
+  position: absolute;
+  right: 0px;
+}
+.search_form .ui.secondary.segment {
+  padding-bottom: 9px;
+  padding-top: 9px;
+  cursor: pointer;
+}
+
+/*--------------
+    search_button
+---------------*/
+.ui.page.grid.search_button {
+  background-color: rgb(243, 243, 243);
+}
+.search_button .search_head .ui.header {
+  position: absolute;
+  right: 14px;
+  top: 0px;  
+}
 
 /*--------------
     search_profile
 ---------------*/
 .search_profile .search_head .ui.header {
 	position: absolute;
-	right: 0px;
-	top: 0px;
+	right: 14px;
+	top: 0px;  
 }
 
 .search_profile .profile_map {
@@ -30,6 +57,7 @@
 }
 .ui.page.grid.search_profile {
   background-color: rgb(243, 243, 243);
+  padding-bottom: 30px;
 }
 .ui.header.search_profile_h2 {
   background-color: rgb(243, 243, 243);
@@ -76,8 +104,18 @@
   }
 }
 
+
+.ui.segment.more_loader {
+  width: 100%; 
+}
+
+
+
+
+
+
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {
-  .ui.page.grid.search_profile {
+  .ui.page.grid.search_profile, .search_form .ui.page.grid, .ui.page.grid.search_button {
       padding-left: 8%;
       padding-right: 8%;
   }

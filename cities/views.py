@@ -108,6 +108,52 @@ def city(request, city_name, template_name='cities/city.html'):
             if city:
                 services = services.filter(cities = city)
 
+        form = {
+            'cities' : [
+                { "value" : "1", "title" : "Hamburg" },
+                { "value" : "2", "title" : "Frankfurt" },
+                { "value" : "3", "title" : "Berlin" },
+                { "value" : "4", "title" : "Lippstadt" },
+                { "value" : "5", "title" : "Koeln" },
+                { "value" : "6", "title" : "Munich" }
+            ],
+            'services' : [
+                { "value" : "1", "title" : "Booking" },
+                { "value" : "2", "title" : "Buying" },
+                { "value" : "3", "title" : "Driver" },
+                { "value" : "4", "title" : "Pickup" },
+                { "value" : "5", "title" : "Tour guide" },
+                { "value" : "6", "title" : "Translator" }
+            ],
+            'genders' : [
+                { "value" : "1", "title" : "Male" },
+                { "value" : "2", "title" : "Female" },
+            ],
+            'ages' : [
+                { "value" : "1", "title" : "not important" },
+                { "value" : "2", "title" : "< 30 years old" },
+                { "value" : "3", "title" : "30 to 40 years old" },
+                { "value" : "4", "title" : "40 to 50 years old" },
+                { "value" : "5", "title" : "> 50 years old" }
+            ],
+            'languages' : [
+                { "value" : "1", "title" : "English" },
+                { "value" : "2", "title" : "Chineese" },
+                { "value" : "3", "title" : "German" },
+                { "value" : "4", "title" : "French" },
+                { "value" : "5", "title" : "Italien guide" },
+                { "value" : "6", "title" : "Spanish" }
+            ],
+            'tags' : [
+                { "value" : "1", "title" : "food" },
+                { "value" : "2", "title" : "culture" },
+                { "value" : "3", "title" : "sightseeing" },
+                { "value" : "4", "title" : "nightlife" },
+                { "value" : "5", "title" : "private car" },
+                { "value" : "6", "title" : "private" },
+                { "value" : "7", "title" : "translations" }
+            ]
+        }
         context = {
             'form': form,
             'services': services

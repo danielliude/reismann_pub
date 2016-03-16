@@ -55,6 +55,7 @@ def message_write(request, username, write_message_form=MessageComposeForm,
         if form.is_valid():
           message = form.save(user)
           message.sent_at = datetime.utcnow().replace(tzinfo=utc)
+          message.send_notification_email_to_recipient()
           message.save()
 
           if success_url:

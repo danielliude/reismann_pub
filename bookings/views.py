@@ -55,6 +55,7 @@ def booking_add(request, username, booking_form = BookingForm,
         if form.is_valid():
 
           booking = form.save(user)
+          booking.send_notification_email_to_recipient()
 
           if success_url:
             redirect_to = success_url

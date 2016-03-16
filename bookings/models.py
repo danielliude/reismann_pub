@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from core.mail import send_mail
 from django.db import models
 from django.contrib.auth.models import User
 from services.models import Service
@@ -9,6 +9,12 @@ from django.utils.timezone import utc
 from django.utils.timesince import timesince
 from redactor.fields import RedactorField
 from core.constants import BOOKING_STATUS
+
+from django.template.loader import render_to_string
+
+from django.contrib.sites.models import Site
+
+from reismann.alex_settings import EMAIL_DEFAULT_FROM_EMAIL
 
 from bookings.managers import BookingManager
 
@@ -42,6 +48,17 @@ class Booking(models.Model):
 
   objects = BookingManager()
 
+  def send_notification_email_to_recipient(self):
+    context = {'user': self.recipient,
+               'site': Site.objects.get_current()}
+
+    subject = render_to_string('bookings/emails/new_booking_subject.txt', context)
+    subject = ''.join(subject.splitlines())
+
+    message = render_to_string('bookings/emails/new_booking_message.txt', context)
+
+    send_mail(subject, message, None, EMAIL_DEFAULT_FROM_EMAIL, [self.recipient.email])
+
   class Meta:
     ordering = ['-sender_sent_at']
     verbose_name = _('Booking')
@@ -52,3 +69,4 @@ class Booking(models.Model):
       ('reject_booking', 'Can reject booking'),
       ('approve_booking', 'Can approve booking'),
     )
+

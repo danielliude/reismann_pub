@@ -96,17 +96,6 @@ class RegistrationForm(forms.Form):
     new_user.first_name = first_name
     new_user.last_name = last_name
 
-    # permissions
-    # new_user.user_permissions.add(Permission.objects.get(name = 'Can add Message'))
-    # new_user.user_permissions.add(Permission.objects.get(name = 'Can change Message'))
-    # new_user.user_permissions.add(Permission.objects.get(name = 'Can delete Message'))
-    # new_user.user_permissions.add(Permission.objects.get(name = 'Can view Message'))
-    #
-    # new_user.user_permissions.add(Permission.objects.get(name = 'Can add Service'))
-    # new_user.user_permissions.add(Permission.objects.get(name = 'Can change Service'))
-    # new_user.user_permissions.add(Permission.objects.get(name = 'Can delete Service'))
-    # new_user.user_permissions.add(Permission.objects.get(name = 'Can view Service'))
-
     new_user.save()
 
     return new_user

@@ -1,4 +1,5 @@
 from datetime import datetime
+from core.mail import send_mail
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -7,6 +8,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import utc
 from django.utils.timesince import timesince
 from redactor.fields import RedactorField
+from django.template.loader import render_to_string
+
+from django.contrib.sites.models import Site
+
+from reismann.alex_settings import EMAIL_DEFAULT_FROM_EMAIL
 
 from insite_messages.managers import MessageManager
 
@@ -59,6 +65,17 @@ class Message(models.Model):
       self.sent_at = timezone.now()
     super(Message, self).save(**kwargs)
 
+  def send_notification_email_to_recipient(self):
+    context = {'user': self.recipient,
+               'site': Site.objects.get_current()}
+
+    subject = render_to_string('insite_messages/emails/notification_email_subject.txt', context)
+    subject = ''.join(subject.splitlines())
+
+    message = render_to_string('insite_messages/emails/notification_email_message.txt', context)
+
+    send_mail(subject, message, None, EMAIL_DEFAULT_FROM_EMAIL, [self.recipient.email])
+
   class Meta:
     ordering = ['-sent_at']
     verbose_name = _('Message')
@@ -67,6 +84,8 @@ class Message(models.Model):
     permissions = (
         ('view_message', 'Can view Message'),
     )
+
+
 
 def inbox_count_for(user):
   return Message.objects.filter(recipient=user, read_at__isnull=True, recipient_deleted_at__isnull=True).count()

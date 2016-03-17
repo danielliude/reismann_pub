@@ -84,7 +84,7 @@
             {% if view_own_profile %}
                 <a href="{% url 'profiles:service_edit' profile.user.username service.id %}" class="btn btn-primary btn-block"><b>{% trans 'Edit service' %}</b></a>
             {% else %}
-                <a href="#" class="btn btn-primary btn-block"><b>{% trans 'Book me' %}</b></a>
+                <a href="{% url 'profiles:booking_add' profile.user.username service.id %}" class="btn btn-primary btn-block"><b>{% trans 'Book me' %}</b></a>
             {% endif %}
         {% else %}
             <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-block"><b>{% trans 'Log in to book' %}</b></a>

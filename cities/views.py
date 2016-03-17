@@ -121,6 +121,15 @@ def city(request, city_name, template_name='cities/city.html'):
                 service_dict['content'] = service.content
                 services_new.append(service_dict)
 
+            page = int(request.POST.get('page'))
+            page_num = 20
+            page_start = (page-1) * 20
+            page_end   = page * 20
+            print(page_start)
+            print(page_end)
+            services_new = services_new[page_start:page_end]
+
+
             # services_new = [{
             #         "profile_map_url" : "/profiles/Elyse/services/view/3/",
             #         "card_image_url" : "/media/reismann/images/accounts/cardf3521c6b35.jpg",

@@ -87,6 +87,8 @@
 	});
 
 	$(function () {
+	    var page = 1;
+
 	    $(".more_select").click(function () {
 	        $(".hidden_content").slideToggle("slow");
 	    });
@@ -112,7 +114,8 @@
 	        if ($(".search_form [name='city']")) {
 	            temp.city = $(".search_form [name='city']").val();
 	        }
-	        temp.page = 1;
+	        page = 1;
+	        temp.page = page;
 	        $.post('/cities/show/all/', temp, function (ret) {
 	            console.log(ret, typeof ret);
 	            $(".search_profile").empty();
@@ -134,7 +137,6 @@
 	        return result;
 	    }
 
-	    var page = 1;
 	    $(".more_loader").click(function () {
 	        page++;
 	        var temp = {};

@@ -8,6 +8,7 @@ from services.models import ServiceCategory, ServiceLanguage, ServiceTag
 
 
 AGE = (
+    ('', 'age'),
     ('0', 'not important'),
     ('18,30', '< 30 years old'),
     ('30,40','30 to 40 years old'),
@@ -17,35 +18,43 @@ AGE = (
 
 class SearchForm(forms.Form):
 
-    city = forms.ModelChoiceField(required=False, queryset=City.objects.all(), label= _("All cities"))
+    city = forms.ModelChoiceField(required=False, queryset=City.objects.all(), 
+                                          widget=forms. Select(attrs={
+                                          'class': 'ui fluid dropdown',
+                                          # 'data-placeholder': _('gender'),
+                                          }),
+                                          label= _("All cities"))
 
     services = forms.ModelMultipleChoiceField(label = _('Services'),
                                               required = False,
-                                              widget=forms.RadioSelect(attrs={
+                                              widget=forms.CheckboxSelectMultiple(attrs={
                                                   'class': "ui checkbox",
                                               }),
                                               queryset= ServiceCategory.objects.all())
 
     gender = forms.MultipleChoiceField(required = False,
-                                          widget=forms. SelectMultiple(attrs={
-                                          'class': 'form-control',
-                                          'data-placeholder': _('gender'),
+                                          widget=forms. Select(attrs={
+                                          'class': 'ui fluid dropdown',
+                                          # 'data-placeholder': _('gender'),
                                           }),
                                           choices=GENDER_CHOICES)
 
-    age = forms.ChoiceField(required = False, choices= AGE)
+    age = forms.ChoiceField(required = False,
+                                widget=forms. Select(attrs={
+                                'class': 'ui fluid dropdown',
+                                # 'data-placeholder': _('gender'),
+                                }),
+                                choices= AGE)
 
     languages = forms.ModelMultipleChoiceField(required= False,
-                                                widget=forms. SelectMultiple(attrs={
-                                                  'class': 'form-control',
-                                                  'data-placeholder': _('languages'),
+                                              widget=forms.CheckboxSelectMultiple(attrs={
+                                                  'class': "ui checkbox",
                                               }),
                                               queryset= ServiceLanguage.objects.all())
 
     tags = forms.ModelMultipleChoiceField(required= False,
-                                          widget=forms. SelectMultiple(attrs={
-                                                  'class': 'form-control',
-                                                  'data-placeholder': _('tags'),
+                                          widget=forms.CheckboxSelectMultiple(attrs={
+                                              'class': "ui checkbox",
                                           }),
                                           queryset=ServiceTag.objects.all())
 

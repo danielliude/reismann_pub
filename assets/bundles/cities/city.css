@@ -14,7 +14,7 @@
 
 .secondary .ui.checkbox {
   position: absolute;
-  right: 0px; }
+  right: 2px; }
 
 .search_form .ui.secondary.segment {
   padding-bottom: 9px;
@@ -39,6 +39,9 @@
   position: absolute;
   right: 14px;
   top: 0px; }
+
+.search_form .ui.grid.hidden_content {
+  margin-top: 0px; }
 
 .search_profile .profile_map {
   height: 300px;

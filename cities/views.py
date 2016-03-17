@@ -44,6 +44,7 @@ def city(request, city_name, template_name='cities/city.html'):
 
     if request.method == 'POST':
 
+
         form = SearchForm(request.POST)
 
         if form.is_valid():
@@ -97,7 +98,33 @@ def city(request, city_name, template_name='cities/city.html'):
 
             services = services.exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
 
-            return render(request, 'cities/city.html', {'form': form, 'services': services})
+            # print(services)
+            services_new = [
+                {
+                    'profile_map_url' : '/profiles/Elyse/services/view/3/',
+                    'card_image_url' : '/media/reismann/images/accounts/cardf3521c6b35.jpg',
+                    'image_url' : '/profiles/Elyse/',
+                    'avatar_url' : '/media/reismann/images/accounts/avatar68ff70472a.jpg',
+                    'name_or_username' : 'Elyse Koker',
+                    'short_description' : 'Translator',
+                    'cities' : 'Frankfurt',
+                    'price' : '160.00',
+                    'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+                },
+                {
+                    'profile_map_url' : '/profiles/Elyse/services/view/3/',
+                    'card_image_url' : '/media/reismann/images/accounts/cardf3521c6b35.jpg',
+                    'image_url' : '/profiles/Elyse/',
+                    'avatar_url' : '/media/reismann/images/accounts/avatar68ff70472a.jpg',
+                    'name_or_username' : 'Elyse Koker',
+                    'short_description' : 'Translator',
+                    'cities' : 'Frankfurt',
+                    'price' : '160.00',
+                    'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+                }
+            ]
+            return HttpResponse(services_new)
+            # return render(request, 'cities/city.html', {'form': form, 'services': services})
     else:
         services = Service.objects.filter(is_active= True) \
                         .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))

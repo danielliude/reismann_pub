@@ -1,0 +1,10 @@
+{% load i18n %}{% autoescape off %}{% load url from future %}
+{% if not without_usernames %}{% blocktrans with user.username as username %}Dear {{ provider_first_name }} {{ provider_last_name }},{% endblocktrans %}
+{% endif %}
+{% blocktrans with site.name as site %}Customer has modified the booking offer for {{ service_title }} at {{ site }}. Log in to view the details!{% endblocktrans %}
+
+{% trans "Thanks for using our site!" %}
+
+{% trans "Sincerely" %},
+{{ site.name }}
+{% endautoescape %}

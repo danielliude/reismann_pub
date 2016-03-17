@@ -1,10 +1,17 @@
 {% load i18n %}{% autoescape off %}{% load url from future %}
-{% if not without_usernames %}{% blocktrans with user.username as username %}Dear {{ provider_name }},{% endblocktrans %}
+{% if not without_usernames %}{% blocktrans with user.username as username %}Dear {{ provider_first_name }} {{ provider_last_name }},{% endblocktrans %}
 {% endif %}
 {% blocktrans with site.name as site %}
-You have successfully booked a service at {{ site }}.
+You have accepted booking from {{ customer_first_name }} {{ customer_last_name }} at {{ site }}.
 
-Booking details:
+Customer information:
+
+Name: {{ customer_first_name }} {{ customer_last_name }}
+Tel: {{ customer_phone }}
+Wechat: {{ customer_wechat }}
+Email: {{ customer_email }}
+
+Service details:
 
 Service name: {{ service_title }}
 Service starting time: {{ service_date_starts_at }} at {{service_time_starts_at}}
@@ -12,27 +19,18 @@ Service ending time: {{ service_date_ends_at }} at {{service_time_ends_at}}
 
 Service charge:
 
-Total charge: {{ booking_price }}
+Total charge: {{ service_price }} Euro
+
 Charges inlcudes: The total charge is considered only for the agreed services. The possible toll and fuel charges during the journey are not included.
 
+Service content:
 
-Service provider information:
+{{ service_content }}
 
-Real name: {{ provider_name }} {{ booking_service_user_last_name }}
-Birthday: {{ provider_birthday }}
-Gender: {{ provider_gender }}
-Tel: {{ provider_phone }}
-Wechat: {{ provider_wechat }}
-Email: {{ provider_email }}
+Remark:
 
-Service content
-{{ booking_content }}
-
-Remark
-{{ booking_remark }}
-
+{{ service_remark }}
 {% endblocktrans %}
-
 {% trans "Thanks for using our site!" %}
 
 {% trans "Sincerely" %},

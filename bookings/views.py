@@ -57,7 +57,7 @@ def booking_add(request, username, booking_form = BookingForm,
 
           booking = form.save(user)
           m = mailer()
-          m.send_notification_email_to_recipient(booking)
+          m.send_notification_email_for_provider(booking)
 
           if success_url:
             redirect_to = success_url
@@ -104,7 +104,8 @@ def booking_approve(request, username, booking_id):
         if user.has_perm('approve_booking', booking):
             booking.status = 3
             m = mailer()
-            m.send_successful_booking_email_to_user(booking)
+            m.send_successful_booking_email_for_user(booking)
+            m.send_successful_booking_email_for_provider(booking)
             booking.save()
 
     url = reverse('profiles:bookings', kwargs={'username':user.username})
@@ -152,11 +153,17 @@ def booking_edit(request, username, booking_id, edit_booking_form = BookingForm,
         form = edit_booking_form(request.POST, request.FILES, instance=booking)
 
         if form.is_valid():
+
             if user.has_perm('change_booking', booking):
                 if(booking.status == 1 or booking.status == 2):
+
                     booking = form.save(user, booking)
                     m = mailer()
-                    m.send_successful_booking_email_to_user(booking)
+
+                    if(booking.status == 1):
+                        m.send_notification_booking_email_for_provider(booking)
+                    elif(booking.status == 2):
+                        m.send_notification_booking_email_for_user(booking)
 
             if success_url:
                 redirect_to = success_url

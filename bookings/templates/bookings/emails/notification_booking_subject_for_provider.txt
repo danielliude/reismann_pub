@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans with site.name as site %} Provider information. Booking modified by customer at {{ site }}.{% endblocktrans %}

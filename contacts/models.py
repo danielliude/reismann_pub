@@ -9,6 +9,9 @@ class Contact(models.Model):
   user= models.OneToOneField(User, unique=True, verbose_name=_('user'),
                              related_name=_('contact'), blank=True, null=True)
 
+  email = models.EmailField(max_length=200, verbose_name=_('contact email'),
+                        blank=True, null=True)
+
   phone = models.CharField(max_length=15, verbose_name=_('telephone number'),
                            blank=True, null=True)
 

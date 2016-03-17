@@ -17,6 +17,11 @@ class ContactForm(forms.ModelForm):
   phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('telefon number')}),
                           label=_('telephone number'),
                           max_length=30)
+
+  email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('contact email')}),
+                          label=_('contact email'),
+                          max_length=200)
+
   weibo = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('weibo account')}),
                           label=_('weibo account'),
                           max_length=30)

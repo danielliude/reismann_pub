@@ -12,7 +12,7 @@ class ContactManager(models.Manager):
     try:
       contact = self.get(user=user)
     except self.model.DoesNotExist:
-      contact = self.create(user=user, phone=phone, weibo=weibo, wechat=wechat, qq=qq)
+      contact = self.create(user=user, email= user.email, phone=phone, weibo=weibo, wechat=wechat, qq=qq)
 
     for perm in ASSIGNED_PERMISSIONS['contact']:
         assign_perm(perm[0], user, contact)

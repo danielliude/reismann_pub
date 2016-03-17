@@ -32,6 +32,11 @@ class ContactForm(forms.ModelForm):
                        label=_('qq account'),
                        max_length=30)
 
+  email_notifications = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-control', 'placeholder': _('email notifications')}),
+                       required= False,
+                       label=_('email notifications'))
+
+
   class Meta:
     model = Contact
     exclude = ['user']

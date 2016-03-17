@@ -24,6 +24,8 @@ class Contact(models.Model):
   qq = models.CharField(max_length=12, verbose_name=_('qq username'),
                         blank=True, null=True)
 
+  email_notifications = models.BooleanField(default=True, verbose_name=_('email notifications'))
+
   objects = ContactManager()
 
   class Meta:

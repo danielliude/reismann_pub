@@ -64,13 +64,13 @@ $(function() {
             temp.city     = $(".search_form [name='city']").val()
         }
         $.post('/cities/show/all/', temp, function(ret){
-            console.log(ret)
+            console.log(ret, typeof ret)
             $(".search_profile").empty()
             var html = ''
             for (var i in ret) {
                 html += '<div class="column">' +
                           '<div class="ui segment padding">'+
-                            '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url("' + ret[i].card_image_url +'");"></a>' +
+                            '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url +'\');"></a>' +
                             '<a href="' + ret[i].image_url + '" class="ui tiny circular image">' +
                               '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' +
                             '</a>' +
@@ -87,7 +87,7 @@ $(function() {
                           '</div>' +
                         '</div>' 
             }
-            // $(".search_profile").append(html)
+            $(".search_profile").append(html)
       })
     })
     function get_select_checkbox(name) {

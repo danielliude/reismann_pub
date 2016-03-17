@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 GENDER_CHOICES = (
+  ("", _('gender')),
   (1, _('Male')),
   (2, _('Female')),
 )

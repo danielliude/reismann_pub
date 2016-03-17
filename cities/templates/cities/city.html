@@ -6,13 +6,18 @@
   {% render_bundle 'cities/city' 'css' %}
 {% endblock %}
 {% block javascripts %}
+  <script type="text/javascript">
+    $.ajaxSetup({
+      data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+    });
+  </script>
   {% render_bundle 'cities/city' 'js' %}
 {% endblock %}
 
 {% block content %}
 <div class="city_img"></div>
 <div class="ui segment search_form">
-  <div class="ui page grid">
+  <div class="ui page doubling grid">
     <div class="four wide column">
       <label>{% trans 'Service types' %}</label>
     </div>
@@ -26,94 +31,60 @@
                {{ field }}
           </div>
         </div>
-      {% endfor %}
-
-
-{#      {% for service in form_new.services %}#}
-{#        <div class="column">#}
-{#          <div class="ui secondary segment">#}
-{#            <span>{{ service.title }}</span>#}
-{#            <div class="ui checkbox">#}
-{#              <input type="checkbox" name="{{ service.value }}">#}
-{#              <label></label>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#      {% endfor %}#}
+        {% endfor %}
       </div>
     </div>
     <div class="four wide column">
-      <label>服务人员</label>
+      <label>{% trans 'Service people' %}</label>
     </div>
     <div class="twelve wide column">
       <div class="ui three column grid">
         <div class="column">
-          <select class="ui fluid search dropdown">
-            <option value="">please select gender</option>
-            {% for gender in form_new.genders %}
-              <option value="{{ gender.value }}">{{ gender.title }}</option>
-            {% endfor %}
-          </select>
+          {{ form.gender }}
         </div>
         <div class="column">
-          <select class="ui fluid search dropdown">
-            <option value="">please select age</option>
-            {% for age in form_new.ages %}
-              <option value="{{ age.value }}">{{ age.title }}</option>
-            {% endfor %}
-          </select>
+          {{ form.age }}
         </div>
       </div>
     </div>
     <div class="four wide column">
-      <label>服务城市</label>
+      <label>{% trans 'Service cities' %}</label>
     </div>
     <div class="twelve wide column">
       <div class="ui grid">
         <div class="column">
-          <select class="ui fluid dropdown">
-            <option value="">please select city</option>
-            {% for city in form_new.cities %}
-              <option value="{{ city.value }}">{{ city.title }}</option>
-            {% endfor %}
-          </select>
+          {{ form.city }}
         </div>
       </div>
     </div>
     <div class="ui grid hidden_content" style="display: none;">
       <div class="four wide column hidden">
-        <label>服务语言</label>
+        <label>{% trans 'Service languages' %}</label>
       </div>
       <div class="twelve wide column hidden">
         <div class="ui three column grid">
-          {% for language in form_new.languages %}
-            <div class="column">
-              <div class="ui secondary segment">
-                <span>{{ language.title }}</span>
-                <div class="ui checkbox">
-                  <input type="checkbox" name="{{ language.value }}">
-                  <label></label>
-                </div>
-              </div>
+          {% for field in form.languages %}
+          <div class="column">
+            <div class="ui secondary segment">
+                 {{ field.errors }}
+                 {{ field }}
             </div>
+          </div>
           {% endfor %}
         </div>
       </div>
       <div class="four wide column hidden">
-        <label>服务特色</label>
+        <label>{% trans 'Service tags' %}</label>
       </div>
       <div class="twelve wide column hidden">
         <div class="ui three column grid">
-          {% for tag in form_new.tags %}
-            <div class="column">
-              <div class="ui secondary segment">
-                <span>{{ tag.title }}</span>
-                <div class="ui checkbox">
-                  <input type="checkbox" name="{{ tag.value }}">
-                  <label></label>
-                </div>
-              </div>
+          {% for field in form.tags %}
+          <div class="column">
+            <div class="ui secondary segment">
+                 {{ field.errors }}
+                 {{ field }}
             </div>
+          </div>
           {% endfor %}
         </div>
       </div>
@@ -123,7 +94,7 @@
 <div class="ui page grid search_button">
   <div class="row search_head" style="padding-left: 14px !important;">
     <button class="ui button more_select">更多筛选项</button>
-    <button class="ui button">查询</button>
+    <button class="ui button submit submit_button">查询</button>
     <h4 class="ui header">已为你找到 {{ services|length }} 个服务</h4>
   </div>
 </div>
@@ -148,9 +119,9 @@
       </div>
     </div>
   {% endfor %}
-  <div class="row">
+  <!-- <div class="row">
     <div class="ui center aligned inverted segment more_loader">加载更多</div>
-  </div>
+  </div> -->
 </div>
 <div class="ui grid">
 </div>

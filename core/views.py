@@ -86,6 +86,7 @@ def index_new(request):
       return render(request, 'core/index_new.html', context)
 
 def search_url(request):
+
   cityId = request.GET.get('name')
   url = reverse('cities:city', kwargs={'city_name': cityId})
 

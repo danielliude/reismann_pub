@@ -63,6 +63,7 @@ $(function() {
         if($(".search_form [name='city']")) {
             temp.city     = $(".search_form [name='city']").val()
         }
+        temp.page = 1
         $.post('/cities/show/all/', temp, function(ret){
             console.log(ret, typeof ret)
             $(".search_profile").empty()
@@ -88,7 +89,7 @@ $(function() {
                         '</div>' 
             }
             $(".search_profile").append(html)
-      })
+        })
     })
     function get_select_checkbox(name) {
         var result
@@ -100,4 +101,47 @@ $(function() {
         })
         return result
     }
+
+    var page = 1
+    $(".more_loader").click(function() {
+        page++
+        var temp = {}
+        temp.services = get_select_checkbox("services")
+        temp.services = get_select_checkbox("languages")
+        temp.services = get_select_checkbox("tags")
+        if($(".search_form [name='gender']").val()) {
+            temp.gender   = $(".search_form [name='gender']").val() 
+        }
+        if($(".search_form [name='age']").val()) {
+            temp.age      = $(".search_form [name='age']").val()
+        }
+        if($(".search_form [name='city']")) {
+            temp.city     = $(".search_form [name='city']").val()
+        }
+        temp.page = page
+        $.post('/cities/show/all/', temp, function(ret){
+            var html = ''
+            for (var i in ret) {
+                html += '<div class="column">' +
+                          '<div class="ui segment padding">'+
+                            '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url +'\');"></a>' +
+                            '<a href="' + ret[i].image_url + '" class="ui tiny circular image">' +
+                              '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' +
+                            '</a>' +
+                            '<div class="ui segment">' +
+                              '<div class="row"> ' +
+                                '<div class="ui header">' + ret[i].name_or_username + ' '  + ret[i].short_description + '</div>' +
+                                '</strong><a href="#">' + ret[i].cities + '</a></strong>' +
+                              '</div>' +
+                              '<div class="ui red header average_price">€ ' + ret[i].price + ' service price unit</div>' +
+                              '<div class="row content">' +
+                                '<p>' + ret[i].content + '</p>' +
+                              '</div>' +
+                            '</div>' +
+                          '</div>' +
+                        '</div>' 
+            }
+            $(".search_profile").append(html)
+        })
+    })
 })

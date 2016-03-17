@@ -96,10 +96,15 @@
   margin-top: -33px;
   margin-left: 19px; }
 
+.ui.page.grid.more_loaders {
+  background-color: #f3f3f3;
+  padding-bottom: 20px; }
+
 .ui.segment.more_loader {
-  width: 100%; }
+  width: 100%;
+  cursor: pointer; }
 
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {
-  .ui.page.grid.search_profile, .search_form .ui.page.grid, .ui.page.grid.search_button {
+  .ui.page.grid.search_profile, .search_form .ui.page.grid, .ui.page.grid.search_button, .ui.page.grid.more_loaders {
     padding-left: 8%;
     padding-right: 8%; } }

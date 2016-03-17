@@ -15,6 +15,7 @@ from profiles.utils import get_user_profile
 from bookings.utils import get_booking_by_id
 
 from datetime import datetime
+from bookings.managers import BookingMailManager as mailer
 
 @secure_required
 @permission_required_or_403('bookings.view_booking')
@@ -55,7 +56,8 @@ def booking_add(request, username, booking_form = BookingForm,
         if form.is_valid():
 
           booking = form.save(user)
-          booking.send_notification_email_to_recipient()
+          m = mailer()
+          m.send_notification_email_to_recipient(booking)
 
           if success_url:
             redirect_to = success_url
@@ -101,6 +103,8 @@ def booking_approve(request, username, booking_id):
     if user:
         if user.has_perm('approve_booking', booking):
             booking.status = 3
+            m = mailer()
+            m.send_successful_booking_email_to_user(booking)
             booking.save()
 
     url = reverse('profiles:bookings', kwargs={'username':user.username})
@@ -151,6 +155,8 @@ def booking_edit(request, username, booking_id, edit_booking_form = BookingForm,
             if user.has_perm('change_booking', booking):
                 if(booking.status == 1 or booking.status == 2):
                     booking = form.save(user, booking)
+                    m = mailer()
+                    m.send_successful_booking_email_to_user(booking)
 
             if success_url:
                 redirect_to = success_url

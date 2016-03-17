@@ -1,0 +1,40 @@
+{% load i18n %}{% autoescape off %}{% load url from future %}
+{% if not without_usernames %}{% blocktrans with user.username as username %}Dear {{ user_first_name }} {{ user_last_name}},{% endblocktrans %}
+{% endif %}
+{% blocktrans with site.name as site %}
+Congratulations for successfull booking at {{ site }}!
+Following is the booking information:
+
+Service details:
+
+Title: {{ service_title }}
+Starting time: {{ service_date_starts_at }} at {{service_time_starts_at}}
+Ending time: {{ service_date_ends_at }} at {{service_time_ends_at}}
+Total charge: {{ service_price }}
+
+* Charges inlcudes: The total charge is considered only for the agreed services. The possible toll and fuel charges during the journey are not included.
+
+Service provider information:
+
+Name: {{ provider_first_name }} {{ provider_last_name }}
+Birthday: {{ provider_birthday }}
+Gender: {{ provider_gender }}
+Tel: {{ provider_phone }}
+Wechat: {{ provider_wechat }}
+Email: {{ provider_email }}
+
+Service content:
+
+{{ service_content }}
+
+Remark:
+
+{{ service_remark }}
+
+{% endblocktrans %}
+
+{% trans "Thanks for using our site!" %}
+
+{% trans "Sincerely" %},
+{{ site.name }}
+{% endautoescape %}

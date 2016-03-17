@@ -20,13 +20,13 @@ class BookingForm(forms.ModelForm):
 
   start_time = forms.DateField(required=True,
                                initial=datetime.today, label= _('Start time'),
-                               widget=forms.DateInput(attrs={'class': 'required form-control', 'required': True},
+                               widget=forms.DateTimeInput(attrs={'class': 'required form-control timepicker', 'required': True},
                                format='%Y-%m-%d'),
                                input_formats=['%Y-%m-%d'])
 
   end_time = forms.DateField(required=True,
                              initial=datetime.today, label = _('End time'),
-                             widget=forms.DateInput(attrs={'class': 'required form-control', 'required': True},
+                             widget=forms.DateTimeInput(attrs={'class': 'required form-control', 'required': True},
                              format='%Y-%m-%d'),
                              input_formats=['%Y-%m-%d'])
 

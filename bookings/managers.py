@@ -6,6 +6,11 @@ from core.constants import ASSIGNED_PERMISSIONS
 
 import re
 
+from core.mail import send_mail
+from django.template.loader import render_to_string
+from django.contrib.sites.models import Site
+from reismann.alex_settings import EMAIL_DEFAULT_FROM_EMAIL
+
 SHA1_RE = re.compile('^[a-f0-9]{40}$')
 
 class BookingManager(models.Manager):
@@ -33,3 +38,71 @@ class BookingManager(models.Manager):
                   ) | self.filter(
                     recipient = user,
                     recipient_deleted_at__isnull = True)
+
+
+class BookingMailManager():
+
+  def send_notification_email_to_recipient(self, booking):
+    context = {'booking': booking,
+               'site': Site.objects.get_current()}
+
+    subject = render_to_string('bookings/emails/new_booking_subject.txt', context)
+    subject = ''.join(subject.splitlines())
+
+    message = render_to_string('bookings/emails/new_booking_message.txt', context)
+
+    send_mail(subject, message, None, EMAIL_DEFAULT_FROM_EMAIL, [booking.recipient.email])
+
+  def send_successful_booking_email_to_user(self, booking):
+
+    context = {'user_first_name': booking.sender.first_name,
+               'user_last_name': booking.sender.last_name,
+               'service_title': booking.service.title,
+               'service_date_starts_at': booking.service_starts_at,
+               'service_date_ends_at': booking.service_ends_at,
+               'service_time_starts_at': 'TO CHANGE!',
+               'service_time_ends_at': 'TO CHANGE!',
+               'service_price': booking.price,
+               'provider_first_name':booking.service.user.first_name,
+               'provider_last_name':booking.service.user.last_name,
+               'provider_birthday':booking.service.user.profile.birthday,
+               'provider_gender': booking.service.user.profile.get_gender_display(),
+               'provider_phone':booking.service.user.contact.phone,
+               'provider_wechat':booking.service.user.contact.wechat,
+               'provider_email':booking.service.user.contact.email,
+               'service_content':booking.booking_content,
+               'service_remark':booking.booking_remark,
+               'site': Site.objects.get_current()}
+
+    subject = render_to_string('bookings/emails/successful_booking_subject_for_user.txt', context)
+    subject = ''.join(subject.splitlines())
+
+    message = render_to_string('bookings/emails/successful_booking_message_for_user.txt', context)
+
+    send_mail(subject, message, None, EMAIL_DEFAULT_FROM_EMAIL, [booking.sender.email])
+
+  def send_successful_booking_email_to_provider(self, booking):
+
+    context = {'provider_name': booking.recipient.username,
+               'service_title': booking.service.title,
+               'service_date_starts_at': booking.service_starts_at,
+               'service_date_ends_at': booking.service_ends_at,
+               'service_time_starts_at': 'TO CHANGE!',
+               'service_time_ends_at': 'TO CHANGE!',
+               'service_price': booking.price,
+               'provider_first_name':booking.service.user.first_name,
+               'provider_last_name':booking.service.user.last_name,
+               'provider_birthday':booking.service.user.profile.birthday,
+               'provider_gender': booking.service.user.profile.get_gender_display(),
+               'provider_phone':booking.service.user.contact.phone,
+               'provider_wechat':booking.service.user.contact.wechat,
+               'provider_email':booking.service.user.email,
+               'service_content':booking.booking_content,
+               'service_remark':booking.booking_remark,
+               'site': Site.objects.get_current()}
+
+    subject = render_to_string('bookings/emails/successful_booking_subject_for_provider.txt', context)
+    subject = ''.join(subject.splitlines())
+    message = render_to_string('bookings/emails/successful_booking_message_for_provider.txt', context)
+
+    send_mail(subject, message, None, EMAIL_DEFAULT_FROM_EMAIL, [booking.recipient.email])

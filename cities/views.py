@@ -99,28 +99,49 @@ def city(request, city_name, template_name='cities/city.html'):
 
             services = services.exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
 
-            # print(services)
-            services_new = [{
-                    "profile_map_url" : "/profiles/Elyse/services/view/3/", 
-                    "card_image_url" : "/media/reismann/images/accounts/cardf3521c6b35.jpg", 
-                    "image_url" : "/profiles/Elyse/", 
-                    "avatar_url" : "/media/reismann/images/accounts/avatar68ff70472a.jpg", 
-                    "name_or_username" : "Elyse Koker", 
-                    "short_description" : "Translator", 
-                    "cities" : "Frankfurt", 
-                    "price" : "160.00", 
-                    "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" 
-                },{
-                    "profile_map_url" : "/profiles/Elyse/services/view/3/", 
-                    "card_image_url" : "/media/reismann/images/accounts/cardf3521c6b35.jpg", 
-                    "image_url" : "/profiles/Elyse/", 
-                    "avatar_url" : "/media/reismann/images/accounts/avatar68ff70472a.jpg", 
-                    "name_or_username" : "Elyse Koker", 
-                    "short_description" : "Translator", 
-                    "cities" : "Frankfurt", 
-                    "price" : "160.00", 
-                    "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" 
-                }]
+            services_new = []
+            for service in services:
+                # for each object, construct a dictionary containing the data you wish to return
+                service_dict = {}
+                service_dict['profile_map_url'] = "profiles/" + service.user.username + "/services/view/" + str(service.id)
+                service_dict['card_image_url'] = service.user.profile.get_card_image_url()
+                service_dict['image_url'] = "/profiles/" + service.user.username + "/"
+                service_dict['avatar_url'] = service.user.profile.get_avatar_url()
+                service_dict['name_of_username'] = service.user.username
+                service_dict['short_description'] = service.user.profile.short_description
+
+                cities = []
+                for city in service.cities.all():
+                     cities.append(city.name)
+
+                citiesStr = ",".join(str(item) for item in cities)
+
+                service_dict['cities'] = citiesStr
+                service_dict['price'] = service.price
+                service_dict['content'] = service.content
+                services_new.append(service_dict)
+
+            # services_new = [{
+            #         "profile_map_url" : "/profiles/Elyse/services/view/3/",
+            #         "card_image_url" : "/media/reismann/images/accounts/cardf3521c6b35.jpg",
+            #         "image_url" : "/profiles/Elyse/",
+            #         "avatar_url" : "/media/reismann/images/accounts/avatar68ff70472a.jpg",
+            #         "name_or_username" : "Elyse Koker",
+            #         "short_description" : "Translator",
+            #         "cities" : "Frankfurt",
+            #         "price" : "160.00",
+            #         "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+            #     },{
+            #         "profile_map_url" : "/profiles/Elyse/services/view/3/",
+            #         "card_image_url" : "/media/reismann/images/accounts/cardf3521c6b35.jpg",
+            #         "image_url" : "/profiles/Elyse/",
+            #         "avatar_url" : "/media/reismann/images/accounts/avatar68ff70472a.jpg",
+            #         "name_or_username" : "Elyse Koker",
+            #         "short_description" : "Translator",
+            #         "cities" : "Frankfurt",
+            #         "price" : "160.00",
+            #         "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+            #     }]
 
             return JsonResponse(services_new, safe=False)
     else:

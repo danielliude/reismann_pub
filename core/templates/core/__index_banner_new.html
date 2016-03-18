@@ -13,21 +13,10 @@
          {% for city in city_list %}
            { title: "{{city.name}}" },
          {% endfor %}  
-          // etc
         ];
       </script>
       <div class="row">
         <div class="ui action input">
-<!--           <div class="ui fluid search selection dropdown">
-            <input type="hidden" name="name">
-            <i class="dropdown icon"></i>
-            <div class="default text">Select city...</div>
-            <div class="menu">
-              {% for city in city_list %}
-                <div class="item" data-value="{{ city.name }}">{{ city.name }}</div>
-              {% endfor %}  
-            </div>
-          </div> -->
           <div class="ui search">
             <div class="ui icon input">
               <input class="prompt" type="text" placeholder="Select city...">
@@ -46,4 +35,3 @@
 
 
 
- 

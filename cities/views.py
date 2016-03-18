@@ -122,37 +122,14 @@ def city(request, city_name, template_name='cities/city.html'):
                 services_new.append(service_dict)
 
             page = int(request.POST.get('page'))
-            page_num = 20
-            page_start = (page-1) * 20
-            page_end   = page * 20
-            print(page_start)
-            print(page_end)
+            page_num = 21
+            page_start = (page-1) * page_num
+            page_end   = page * page_num
+            num        = len(services_new)
             services_new = services_new[page_start:page_end]
 
-
-            # services_new = [{
-            #         "profile_map_url" : "/profiles/Elyse/services/view/3/",
-            #         "card_image_url" : "/media/reismann/images/accounts/cardf3521c6b35.jpg",
-            #         "image_url" : "/profiles/Elyse/",
-            #         "avatar_url" : "/media/reismann/images/accounts/avatar68ff70472a.jpg",
-            #         "name_or_username" : "Elyse Koker",
-            #         "short_description" : "Translator",
-            #         "cities" : "Frankfurt",
-            #         "price" : "160.00",
-            #         "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
-            #     },{
-            #         "profile_map_url" : "/profiles/Elyse/services/view/3/",
-            #         "card_image_url" : "/media/reismann/images/accounts/cardf3521c6b35.jpg",
-            #         "image_url" : "/profiles/Elyse/",
-            #         "avatar_url" : "/media/reismann/images/accounts/avatar68ff70472a.jpg",
-            #         "name_or_username" : "Elyse Koker",
-            #         "short_description" : "Translator",
-            #         "cities" : "Frankfurt",
-            #         "price" : "160.00",
-            #         "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
-            #     }]
-
-            return JsonResponse(services_new, safe=False)
+            temp = {'num': num, 'services_new' : services_new}
+            return JsonResponse(temp)
     else:
         services = Service.objects.filter(is_active= True) \
                         .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
@@ -163,55 +140,8 @@ def city(request, city_name, template_name='cities/city.html'):
             if city:
                 services = services.filter(cities = city)
 
-        form_new = {
-            'cities' : [
-                { "value" : "1", "title" : "Hamburg" },
-                { "value" : "2", "title" : "Frankfurt" },
-                { "value" : "3", "title" : "Berlin" },
-                { "value" : "4", "title" : "Lippstadt" },
-                { "value" : "5", "title" : "Koeln" },
-                { "value" : "6", "title" : "Munich" }
-            ],
-            'services' : [
-                { "value" : "1", "title" : "Booking" },
-                { "value" : "2", "title" : "Buying" },
-                { "value" : "3", "title" : "Driver" },
-                { "value" : "4", "title" : "Pickup" },
-                { "value" : "5", "title" : "Tour guide" },
-                { "value" : "6", "title" : "Translator" }
-            ],
-            'genders' : [
-                { "value" : "1", "title" : "Male" },
-                { "value" : "2", "title" : "Female" },
-            ],
-            'ages' : [
-                { "value" : "1", "title" : "not important" },
-                { "value" : "2", "title" : "< 30 years old" },
-                { "value" : "3", "title" : "30 to 40 years old" },
-                { "value" : "4", "title" : "40 to 50 years old" },
-                { "value" : "5", "title" : "> 50 years old" }
-            ],
-            'languages' : [
-                { "value" : "1", "title" : "English" },
-                { "value" : "2", "title" : "Chineese" },
-                { "value" : "3", "title" : "German" },
-                { "value" : "4", "title" : "French" },
-                { "value" : "5", "title" : "Italien guide" },
-                { "value" : "6", "title" : "Spanish" }
-            ],
-            'tags' : [
-                { "value" : "1", "title" : "food" },
-                { "value" : "2", "title" : "culture" },
-                { "value" : "3", "title" : "sightseeing" },
-                { "value" : "4", "title" : "nightlife" },
-                { "value" : "5", "title" : "private car" },
-                { "value" : "6", "title" : "private" },
-                { "value" : "7", "title" : "translations" }
-            ]
-        }
         context = {
             'form': form,
-            'form_new': form_new,
             'services': services
         }
 

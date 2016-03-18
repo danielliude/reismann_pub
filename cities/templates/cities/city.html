@@ -27,7 +27,6 @@
         {% for field in form.services %}
         <div class="column">
           <div class="ui secondary segment">
-               {{ field.errors }}
                {{ field }}
           </div>
         </div>
@@ -66,7 +65,6 @@
           {% for field in form.languages %}
           <div class="column">
             <div class="ui secondary segment">
-                 {{ field.errors }}
                  {{ field }}
             </div>
           </div>
@@ -81,7 +79,6 @@
           {% for field in form.tags %}
           <div class="column">
             <div class="ui secondary segment">
-                 {{ field.errors }}
                  {{ field }}
             </div>
           </div>
@@ -95,10 +92,13 @@
   <div class="row search_head" style="padding-left: 14px !important;">
     <button class="ui button more_select">更多筛选项</button>
     <button class="ui button submit submit_button">查询</button>
-    <h4 class="ui header">已为你找到 {{ services|length }} 个服务</h4>
+    <h4 class="ui header">已为你找到 <span class="services_num">{{ services|length }}</span> 个服务</h4>
   </div>
 </div>
 <div class="ui three column stackable doubling page grid search_profile">
+  {% if services|length == 0 %}
+    <h4>No result,please search again!</h4>
+  {% endif %}
   {% for service in services %}
     <div class="column">
       <div class="ui segment padding">
@@ -120,12 +120,14 @@
     </div>
   {% endfor %}
 </div>
-{% if services|length > 20 %}
-<div class="ui page grid more_loaders">
+
+<div class="ui page grid more_loaders"{% if services|length <= 21 %} style="display:none" {% endif %}>
   <div class="row">
     <div class="ui center aligned inverted segment more_loader">加载更多</div>
   </div>
 </div>
-{% endif %}
 
 {% endblock %}
+
+
+ 

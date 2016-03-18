@@ -46,7 +46,7 @@ def bookings(request, username,
 
 @secure_required
 @permission_required_or_403('bookings.add_booking')
-def booking_add(request, username, service_id = None, booking_form = BookingForm,
+def booking_add(request, username, service_id, booking_form = BookingForm,
                 template_name = 'bookings/booking_add.html', success_url = None,
                 extra_context=None, **kwargs):
 
@@ -59,7 +59,7 @@ def booking_add(request, username, service_id = None, booking_form = BookingForm
 
             if service_id:
                 if service_id != '0':
-                    service = get_object_or_404(Service, id = service_id)
+                    service = Service.objects.get(id = service_id)
                     if service:
                         form.fields['service'].initial = service.pk
 
@@ -92,7 +92,7 @@ def booking_add(request, username, service_id = None, booking_form = BookingForm
             return ExtraContextTemplateView.as_view(template_name=template_name,
                                                   extra_context=extra_context)(request)
         else:
-            url = reverse('profiles:booking_add', kwargs={'username':request.user.username, 'service_id': 0})
+            url = reverse('profiles:booking_add', kwargs={'username':request.user.username, 'service_id': service_id})
             return HttpResponseRedirect(url)
 
 @secure_required

@@ -16,6 +16,7 @@ from bookings.utils import get_booking_by_id
 
 from datetime import datetime
 from bookings.managers import BookingMailManager as mailer
+from services.models import Service
 
 @secure_required
 @permission_required_or_403('bookings.view_booking')
@@ -40,14 +41,19 @@ def bookings(request, username,
 
 @secure_required
 @permission_required_or_403('bookings.add_booking')
-def booking_add(request, username, booking_form = BookingForm,
+def booking_add(request, username, service_id = None, booking_form = BookingForm,
                 template_name = 'bookings/booking_add.html', success_url = None,
                 extra_context=None, **kwargs):
 
-    user = get_object_or_404(User, username__iexact = username)
+    user = request.user
     profile = get_user_profile(user)
 
     form = booking_form()
+
+    if service_id:
+        service = Service.objects.get(id = service_id)
+        if service:
+            form.fields['service'].initial = service.pk
 
     if request.method == 'POST':
 

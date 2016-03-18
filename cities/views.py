@@ -103,7 +103,7 @@ def city(request, city_name, template_name='cities/city.html'):
             for service in services:
                 # for each object, construct a dictionary containing the data you wish to return
                 service_dict = {}
-                service_dict['profile_map_url'] = "profiles/" + service.user.username + "/services/view/" + str(service.id)
+                service_dict['profile_map_url'] = "/profiles/" + service.user.username + "/services/view/" + str(service.id)
                 service_dict['card_image_url'] = service.user.profile.get_card_image_url()
                 service_dict['image_url'] = "/profiles/" + service.user.username + "/"
                 service_dict['avatar_url'] = service.user.profile.get_avatar_url()

@@ -83,13 +83,21 @@
 
                 <td>
                     {% if booking.status == 1 %}
-                        <a class="ui yellow label">{% trans 'Negotiation' %} </a>
+                        <a class="ui blue label">{% trans 'Negotiation' %} </a>
                     {% elif booking.status == 2%}
                         <a class="ui blue label">{% trans 'Negotiation' %}</a>
                     {% elif booking.status == 3%}
-                        <a class="ui green label">{{ booking.get_status_display|lower }}</a>
+                        <a class="ui red label">{% trans 'Rejected' %}</a>
                     {% elif booking.status == 4%}
-                        <a class="ui red label">{{ booking.get_status_display|lower }}</a>
+                        <a class="ui red label">{% trans 'Rejected' %}</a>
+                    {% elif booking.status == 5%}
+                        <a class="ui green label">{% trans 'Approved' %}</a>
+                    {% elif booking.status == 6%}
+                        <a class="ui green label">{% trans 'Approved' %}</a>
+                    {% elif booking.status == 7%}
+                        <a class="ui red label">{% trans 'Removed' %}</a>
+                    {% elif booking.status == 8%}
+                        <a class="ui red label">{% trans 'Removed' %}</a>
                     {% endif %}
                 </td>
 

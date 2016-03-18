@@ -7,7 +7,7 @@
       <img src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile picture' %}" class="img-circle">
     </div>
     <h3 class="widget-user-username">{{ profile.get_full_name_or_username }}</h3>
-    <h5 class="widget-user-desc">{% trans 'experienced tour guide' %}</h5>
+    <h5 class="widget-user-desc">{{ profile.short_description }}</h5>
   </div>
 
   <div class="box-body no-padding">
@@ -39,6 +39,7 @@
   <div class="box-footer">
     {% if view_own_profile %}
       <a href="{% url 'profiles:detail' profile.user.username %}" class="btn btn-primary btn-block"><b>{% trans 'Edit profile' %}</b></a>
+      <a href="{% url 'profiles:contact' profile.user.username %}" class="btn btn-primary btn-block"><b>{% trans 'Edit contacts' %}</b></a>
     {% else %}
       <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="btn btn-primary btn-block"><b>{% trans 'Follow me' %}</b></a>
     {% endif %}

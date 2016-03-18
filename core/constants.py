@@ -12,10 +12,14 @@ SERVICE_TYPE_CHOICES = (
 )
 
 BOOKING_STATUS = (
-  (1, _('Negotiation_sender')),
-  (2, _('Negotiation_recipient')),
-  (3, _('Approved')),
-  (4, _('Rejected')),
+  (1, _('Negotiation by customer')),
+  (2, _('Negotiation by provider')),
+  (3, _('Rejected by customer')),
+  (4, _('Rejected by provider')),
+  (5, _('Approved by customer')),
+  (6, _('Approved byprovider')),
+  (7, _('Removed by customer')),
+  (8, _('Revoved by provider')),
 )
 
 MUGSHOT_SETTINGS = {'size': (140, 140), 'crop': 'smart'}
@@ -49,10 +53,13 @@ ASSIGNED_PERMISSIONS = {
   'booking_sender':
     (('view_booking', 'Can view booking'),
      ('change_booking', 'Can change booking'),
-     ('delete_booking', 'Can delete booking')),
+     ('delete_booking', 'Can delete booking'),
+     ('reject_booking', 'Can reject booking'),
+     ('approve_booking', 'Can approve booking')),
    'booking_recipient':
     (('view_booking', 'Can view booking'),
      ('change_booking', 'Can change booking'),
+     ('delete_booking', 'Can delete booking'),
      ('reject_booking', 'Can reject booking'),
      ('approve_booking', 'Can approve booking')),
 

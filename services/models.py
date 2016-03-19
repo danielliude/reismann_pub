@@ -68,3 +68,14 @@ class Service(models.Model):
   def get_card_url(self):
     if self.card_image:
       return self.card_image.url
+
+
+class ServiceRating(models.Model):
+
+    service = models.ForeignKey(Service, verbose_name=_('rating service'), related_name='service_rating', blank=True, null=True)
+
+    user = models.ForeignKey(User, verbose_name=_('rating user'), related_name='service_rating', blank=True, null=True)
+
+    rating = models.FloatField(verbose_name=_('rating value'), null=True, blank=True)
+
+    comment = models.CharField(_('rating comment'), blank=True, null=True, default='Service comment', max_length=255)

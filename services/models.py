@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
+
 
 from easy_thumbnails.fields import ThumbnailerImageField
 
@@ -79,3 +81,15 @@ class ServiceRating(models.Model):
     rating = models.FloatField(verbose_name=_('rating value'), null=True, blank=True)
 
     comment = models.CharField(_('rating comment'), blank=True, null=True, default='Service comment', max_length=255)
+
+    @property
+    def gen_stars(self):
+        output = ''
+        for i in range(1, 6):
+            print(output)
+            if i >= int(self.rating):
+                output = '<div class="ui star rating" data-rating="' + str(i) +' data-max-rating="5""></div>'
+            else:
+                output = '<div class="ui star rating" data-rating="0" data-max-rating="5"></div>'
+
+        return mark_safe(output)

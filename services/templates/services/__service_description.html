@@ -69,9 +69,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-9">
-            </div>
-
+        <div class="col-md-9"></div>
 
         <div class="col-md-3 text-right">
         {% if request.user.is_authenticated %}
@@ -86,6 +84,32 @@
 
         </div>
     </div>
+
+    {% for rating in ratings %}
+        <div class="row">
+            {% if request.user.username %}
+                <p>{% trans 'User' %} {{ request.user.username }}</p>
+            {% else %}
+                <p>{% trans 'Anonymous user' %}</p>
+            {% endif %}
+            <p>{{ rating.gen_stars }}</p>
+            <p>{{ rating.comment }}</p>
+
+        </div>
+
+    {% endfor %}
+
+    {% if form %}
+    <div class='row'>
+        <form method="post">{% csrf_token %}
+            <div>
+                {{form.stars}}
+            </div>
+            {{form.comment}}
+            <input type="submit" value="Send your comment" name="fb"/>
+        </form>
+    </div>
+    {% endif %}
 
   </div>
 

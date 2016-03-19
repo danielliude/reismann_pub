@@ -90,3 +90,13 @@ class ServiceForm(forms.ModelForm):
     service = super(ServiceForm, self).save(commit=commit)
 
     return service
+
+
+class ServiceRatingForm(forms.Form):
+    c=[('1',''),('2',''),('3',''),('4',''),('5','')]
+    def __init__(self, *args, **kwargs):
+        super(ServiceRatingForm, self).__init__(*args, **kwargs)
+        self.fields['stars'].widget.attrs.update({'class': 'star', 'name' : 'rating'})
+        self.fields['comment'].widget.attrs.update({'rows' : 10})
+    stars = forms.ChoiceField(widget=forms.RadioSelect, choices=c)
+    comment = forms.CharField(widget=forms.Textarea)

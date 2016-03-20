@@ -47,47 +47,47 @@
 
 	'use strict';
 
-	__webpack_require__(23);
+	__webpack_require__(25);
 
-	__webpack_require__(30);
+	__webpack_require__(32);
 
-	__webpack_require__(37);
+	__webpack_require__(39);
 
-	__webpack_require__(38);
+	__webpack_require__(40);
 
-	__webpack_require__(46);
-
-	__webpack_require__(47);
+	__webpack_require__(48);
 
 	__webpack_require__(49);
 
-	__webpack_require__(50);
+	__webpack_require__(51);
 
 	__webpack_require__(52);
 
-	__webpack_require__(55);
+	__webpack_require__(54);
 
 	__webpack_require__(57);
 
-/***/ },
-
-/***/ 23:
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(24);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-
-/***/ 24:
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(25);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+	__webpack_require__(59);
 
 /***/ },
 
 /***/ 25:
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(26);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+
+/***/ 26:
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(27);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+
+/***/ 27:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9925,14 +9925,14 @@
 
 /***/ },
 
-/***/ 30:
+/***/ 32:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 37:
+/***/ 39:
 /***/ function(module, exports) {
 
 	/*!
@@ -12302,14 +12302,14 @@
 
 /***/ },
 
-/***/ 38:
+/***/ 40:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 46:
+/***/ 48:
 /***/ function(module, exports) {
 
 	/* =========================================================
@@ -13769,14 +13769,14 @@
 
 /***/ },
 
-/***/ 47:
+/***/ 49:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 49:
+/***/ 51:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -13786,7 +13786,7 @@
 	 * Released under the MIT license
 	 * https://github.com/select2/select2/blob/master/LICENSE.md
 	 */'use strict';(function(factory){if(true){ // AMD. Register as an anonymous module.
-	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(25)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));}else if(typeof exports === 'object'){ // Node/CommonJS
+	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(27)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));}else if(typeof exports === 'object'){ // Node/CommonJS
 	factory(require('jquery'));}else { // Browser globals
 	factory(jQuery);}})(function(jQuery){ // This is needed so we can catch the AMD loader configuration and use it
 	// The inner file should be wrapped (by `banner.start.js`) in a function that
@@ -14056,13 +14056,6 @@
 
 /***/ },
 
-/***/ 50:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
 /***/ 52:
 /***/ function(module, exports) {
 
@@ -14070,7 +14063,7 @@
 
 /***/ },
 
-/***/ 55:
+/***/ 54:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
@@ -14078,6 +14071,13 @@
 /***/ },
 
 /***/ 57:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 59:
 /***/ function(module, exports) {
 
 	/*! AdminLTE app.js

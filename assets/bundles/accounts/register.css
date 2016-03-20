@@ -1,0 +1,19 @@
+body {
+  background-color: #f3f3f3; }
+
+.ui.grid.register-content {
+  width: 400px;
+  margin: 10px auto; }
+
+.register-content .icon_button {
+  margin-bottom: 8px;
+  text-align: left; }
+
+.register-content .ui.error.message {
+  margin-top: 25px; }
+
+.register-content ul.errorlist {
+  list-style: none;
+  -webkit-padding-start: 0; }
+  .register-content ul.errorlist li {
+    color: #dd4b39; }

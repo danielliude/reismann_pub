@@ -47,7 +47,7 @@
 
 	'use strict';
 
-	__webpack_require__(7);
+	__webpack_require__(9);
 
 	$(function () {
 
@@ -66,7 +66,7 @@
 
 /***/ },
 
-/***/ 7:
+/***/ 9:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

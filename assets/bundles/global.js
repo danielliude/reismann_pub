@@ -47,13 +47,13 @@
 
 	'use strict';
 
-	__webpack_require__(13);
-
-	__webpack_require__(21);
+	__webpack_require__(15);
 
 	__webpack_require__(23);
 
-	__webpack_require__(26);
+	__webpack_require__(25);
+
+	__webpack_require__(28);
 
 	$(document).ready(function () {
 	  $('.masthead .ui.dropdown').dropdown({
@@ -63,14 +63,7 @@
 
 /***/ },
 
-/***/ 13:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 21:
+/***/ 15:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
@@ -78,22 +71,29 @@
 /***/ },
 
 /***/ 23:
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(24);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-
-/***/ 24:
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(25);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+	// removed by extract-text-webpack-plugin
 
 /***/ },
 
 /***/ 25:
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(26);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+
+/***/ 26:
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(27);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+
+/***/ 27:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9931,7 +9931,7 @@
 
 /***/ },
 
-/***/ 26:
+/***/ 28:
 /***/ function(module, exports) {
 
 	/*

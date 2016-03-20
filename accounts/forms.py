@@ -100,18 +100,23 @@ class RegistrationForm(forms.Form):
 
     return new_user
 
-def identification_field_factory(label, error_required):
-  return forms.CharField(label=label,
-                         widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Email or Username')}),
-                         max_length=75,
-                         error_messages={'required': _("%(error)s") % {'error': error_required}})
+# def identification_field_factory(label, error_required):
+#   return forms.CharField(label=label,
+#                          widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Email or Username')}),
+#                          max_length=75,
+#                          error_messages={'required': _("%(error)s") % {'error': error_required}})
 
 class AuthenticationForm(forms.Form):
 
-  identification = identification_field_factory(_("Email or username"),
-                                                _("Either supply us with your email or username."))
+  # identification = identification_field_factory(_("Email or username"),
+  #                                               _("Either supply us with your email or username."))
+  # password = forms.CharField(label=_("Password"),
+  #                            widget=forms.PasswordInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Password')}, render_value=False))
+
+  identification = forms.CharField(label=_("Email or username"),
+                                   widget=forms.TextInput(attrs={'placeholder': _('Email or Username')}))
   password = forms.CharField(label=_("Password"),
-                             widget=forms.PasswordInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Password')}, render_value=False))
+                             widget=forms.PasswordInput(attrs={'placeholder': _('Password')}))
   remember_me = forms.BooleanField(widget=forms.CheckboxInput(),
                                    required=False,
                                    label=_('Remember me for %(days)s') % {'days': _(ACCOUNT_LOGIN_REMEMBER_ME_DAYS[0])})

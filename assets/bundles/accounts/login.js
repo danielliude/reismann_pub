@@ -40,37 +40,47 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(7);
+	__webpack_require__(1);
 
 	$(function () {
+	    init_form();
 
-	  $('form .input-group.date').datepicker({
-	    format: 'yyyy-mm-dd',
-	    language: 'zh-CN'
-	  });
-
-	  $('form .select2').select2();
-
-	  // $("#id_name").autocomplete({
-	  //   source: "/cities/search/",
-	  //   minLength: 2
-	  // });
+	    function init_form() {
+	        $('.ui.form').form({
+	            fields: {
+	                email: {
+	                    identifier: 'identification',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your email or username'
+	                    }]
+	                },
+	                password: {
+	                    identifier: 'password',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your password'
+	                    }, {
+	                        type: 'length[6]',
+	                        prompt: 'Your password must be at least 6 characters'
+	                    }]
+	                }
+	            }
+	        });
+	    }
 	});
 
 /***/ },
-
-/***/ 7:
+/* 1 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ }
-
-/******/ });
+/******/ ]);

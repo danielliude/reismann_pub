@@ -10,7 +10,7 @@ from .helpers import merged_dict
 urlpatterns = [
   url(r'^register/$', views.register, name="register"),
   url(r'^login/$', views.login, name="login"),
-  url(r'^login/$', views.login_old, name="login_old"),
+  url(r'^login_old/$', views.login_old, name="login_old"),
   url(r'^logout/$', views.logout, name="logout"),
 
   # Activation

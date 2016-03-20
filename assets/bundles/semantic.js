@@ -49,7 +49,7 @@
 
 	__webpack_require__(11);
 
-	__webpack_require__(24);
+	__webpack_require__(25);
 
 /***/ },
 
@@ -60,7 +60,7 @@
 
 /***/ },
 
-/***/ 24:
+/***/ 25:
 /***/ function(module, exports) {
 
 	/*

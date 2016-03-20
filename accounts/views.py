@@ -74,6 +74,42 @@ def login(request, login_form=AuthenticationForm, template_name='accounts/login.
   return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
 
+def login_old(request, login_form=AuthenticationForm, template_name='accounts/login_old.html',
+          extra_context=None):
+
+  form = login_form()
+
+  if request.method == 'POST':
+    form = login_form(request.POST, request.FILES)
+
+    if form.is_valid():
+      identification, password, remember_me = (form.cleaned_data['identification'],
+                                               form.cleaned_data['password'],
+                                               form.cleaned_data['remember_me'])
+      user = authenticate(identification=identification, password=password)
+
+      if user.is_active:
+        signin(request, user)
+        if remember_me:
+            request.session.set_expiry(ACCOUNT_LOGIN_REMEMBER_ME_DAYS[1] * 86400)
+        else:
+            request.session.set_expiry(0)
+
+        redirect_to = login_redirect(request.REQUEST.get(REDIRECT_FIELD_NAME), user)
+
+        return HttpResponseRedirect(redirect_to)
+      else:
+        return redirect(reverse('profile_disabled', kwargs={'username': user.username}))
+
+  if not extra_context: extra_context = dict()
+  extra_context.update({
+    'form': form,
+    'next': request.GET.get(REDIRECT_FIELD_NAME),
+  })
+
+  return ExtraContextTemplateView.as_view(template_name=template_name,
+                                          extra_context=extra_context)(request)
+
 def logout(request, template_name='accounts/logout.html', *args, **kwargs):
   next_page = reverse('index')
   return Signout(request, next_page=next_page, template_name=template_name, *args, **kwargs)

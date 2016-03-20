@@ -1,0 +1,7 @@
+.ui.comments {
+  max-width: 100%; }
+  .ui.comments .content {
+    padding: 0px;
+    min-height: 0px; }
+    .ui.comments .content .ui.rating {
+      padding-left: 10px; }

@@ -85,31 +85,46 @@
         </div>
     </div>
 
-    {% for rating in ratings %}
-        <div class="row">
+    {% if ratings|length != 0 %}
+    <div class="row">
+      <div class="ui comments">
+        <h3 class="ui dividing header">Comments</h3>
+        {% for rating in ratings %}
+        <div class="comment">
+          <a class="avatar">
+            <img src="/media/reismann/images/accounts/avatar993f0f6317.jpg">
+          </a>
+          <div class="content">
             {% if request.user.username %}
-                <p>{% trans 'User' %} {{ request.user.username }}</p>
+                <a class="author">{% trans 'User' %} {{ request.user.username }}</a>
             {% else %}
-                <p>{% trans 'Anonymous user' %}</p>
+                <a class="author">{% trans 'Anonymous user' %}</a>
             {% endif %}
-            <p>{{ rating.gen_stars }}</p>
-            <p>{{ rating.comment }}</p>
-
+            <div class="metadata">
+              <span class="date">今天下午 5:42</span>
+            </div>
+            {{ rating.gen_stars }}
+            <div class="text">{{ rating.comment }}</div>
+          </div>
         </div>
-
-    {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
 
     {% if form %}
     <div class='row'>
-        <form method="post">{% csrf_token %}
-            <div>
-                {{form.stars}}
-            </div>
+        <form method="post" class="ui form">
+          {% csrf_token %}
+          <div class="field">
+            <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
             {{form.comment}}
-            <input type="submit" value="Send your comment" name="fb"/>
+          </div>
+          <div class="ui blue labeled submit icon button"><i class="icon edit"></i> {% trans 'Send your comment' %}</div>
         </form>
     </div>
     {% endif %}
+
 
   </div>
 

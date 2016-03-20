@@ -1,0 +1,74 @@
+{% extends "core/__base.html" %}
+
+{% load staticfiles i18n %}
+
+{% block body_class %}skin-blue layout-top-nav login-page simple-layout{% endblock %}
+
+{% block content %}
+
+  <div class="login-box">
+
+    <div class="login-logo">
+      <a href="{% url 'index' %}">Reismann</a>
+    </div>
+
+    <div class="login-box-body">
+      <p class="login-box-msg">{% trans 'Sign in to start your session' %}</p>
+
+      <form action="" method="post">
+
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        {{ form.identification.errors }}
+        <div class="form-group has-feedback">
+          {{ form.identification }}
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        {{ form.password.errors }}
+        <div class="form-group has-feedback">
+          {{ form.password }}
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+
+        {{ form.remember_me.errors }}
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="checkbox">
+              <label>
+                {{ form.remember_me }} {% trans 'Remember Me' %}
+              </label>
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <button class="btn btn-primary btn-block btn-flat">{% trans 'Sign In' %}</button>
+          </div>
+
+        </div>
+
+        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+
+      </form>
+
+      <div class="social-auth-links text-center">
+        <p>{% trans '- OR -' %}</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+          <i class="fa fa-facebook"></i>
+          {% trans 'Sign in using Facebook' %}
+        </a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+          <i class="fa fa-google"></i>
+          {% trans 'Sign in using Google' %}
+        </a>
+      </div>
+
+      <a href="{% url 'password_reset' %}">{% trans 'I forgot my password' %}</a><br>
+      <a href="{% url 'accounts:register' %}" class="text-center">{% trans 'Register a new membership' %}</a>
+
+    </div>
+  </div>
+
+{% endblock %}

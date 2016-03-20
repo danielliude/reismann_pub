@@ -47,26 +47,41 @@
 
 	'use strict';
 
-	__webpack_require__(5);
+	__webpack_require__(26);
 
 	$(function () {
+		init_rating();
+		send_message();
 
-	  $('form .input-group.date').datepicker({
-	    format: 'yyyy-mm-dd',
-	    language: 'zh-CN'
-	  });
+		function init_rating() {
+			$('.ui.comments .ui.rating').rating('disable');
+			$('.ui.form .ui.rating').rating();
+		}
+		function send_message() {
+			$('.ui.form .submit').click(function () {
+				var stars = $('.ui.form .ui.rating .icon.active').size();
+				var comment = $("#id_comment").val();
+				if (stars == "0") {
+					return alert('please star rating');
+				}
+				if (comment == "") {
+					return alert('please comment');
+				}
 
-	  $('form .select2').select2();
-
-	  // $("#id_name").autocomplete({
-	  //   source: "/cities/search/",
-	  //   minLength: 2
-	  // });
+				var temp = {
+					'stars': stars,
+					'comment': comment
+				};
+				$.post('', temp, function (result) {
+					location.href = location.href;
+				});
+			});
+		}
 	});
 
 /***/ },
 
-/***/ 5:
+/***/ 26:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

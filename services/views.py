@@ -153,7 +153,7 @@ def service_view(request, username, service_id,
     extra_context = makeContextForMessages(request, extra_context)
 
     if request.method == 'POST':
-        if 'fb' in request.POST:
+        # if 'fb' in request.POST:
             form = ServiceRatingForm(request.POST)
             if form.is_valid():
                 rating = form.cleaned_data['stars']

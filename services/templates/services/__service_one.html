@@ -1,6 +1,20 @@
 {#like profile.html but with stress on services#}
 {% extends "core/__base.html" %}
 
+{% load render_bundle from webpack_loader %}
+{% block javascripts %}
+    {% render_bundle 'vendor' 'js' %}
+    {% render_bundle 'app' 'js' %}
+    {% render_bundle 'semantic' 'js' %}
+    {% render_bundle 'services/service_one' 'css' %}
+    <script type="text/javascript">
+      $.ajaxSetup({
+          data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+        });
+    </script>
+    {% render_bundle 'services/service_one' 'js' %}
+{% endblock %}
+
 {% load i18n %}
 
 {% block content %}

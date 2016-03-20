@@ -14,6 +14,7 @@ module.exports = {
     global: './js/global',
     'core/index': './js/core/index',
     'cities/city': './js/cities/city',
+    'services/service_one': './js/services/service_one',
   },
 
   output: {

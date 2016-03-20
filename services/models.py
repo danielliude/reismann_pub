@@ -84,12 +84,12 @@ class ServiceRating(models.Model):
 
     @property
     def gen_stars(self):
-        output = ''
-        for i in range(1, 6):
-            print(output)
-            if i >= int(self.rating):
-                output = '<div class="ui star rating" data-rating="' + str(i) +' data-max-rating="5""></div>'
-            else:
-                output = '<div class="ui star rating" data-rating="0" data-max-rating="5"></div>'
+        # output = ''
+        # for i in range(1, 6):
+        #     print(output)
+        #     if i >= int(self.rating):
+            # else:
+            #     output = '<div class="ui star rating" data-rating="0" data-max-rating="5"></div>'
 
+        output = '<div class="ui star rating" data-rating="' + str(self.rating) +'" data-max-rating="5"></div>'
         return mark_safe(output)

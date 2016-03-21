@@ -40,52 +40,47 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(30);
+	__webpack_require__(1);
 
 	$(function () {
-		init_rating();
-		send_message();
+	    init_form();
 
-		function init_rating() {
-			$('.ui.comments .ui.rating').rating('disable');
-			$('.ui.form .ui.rating').rating();
-		}
-		function send_message() {
-			$('.ui.form .submit').click(function () {
-				var stars = $('.ui.form .ui.rating .icon.active').size();
-				var comment = $("#id_comment").val();
-				if (stars == "0") {
-					return alert('please star rating');
-				}
-				if (comment == "") {
-					return alert('please comment');
-				}
-
-				var temp = {
-					'stars': stars,
-					'comment': comment
-				};
-				$.post('', temp, function (result) {
-					location.href = location.href;
-				});
-			});
-		}
+	    function init_form() {
+	        $('.ui.form').form({
+	            fields: {
+	                email: {
+	                    identifier: 'identification',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your email or username'
+	                    }]
+	                },
+	                password: {
+	                    identifier: 'password',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your password'
+	                    }, {
+	                        type: 'length[6]',
+	                        prompt: 'Your password must be at least 6 characters'
+	                    }]
+	                }
+	            }
+	        });
+	    }
 	});
 
 /***/ },
-
-/***/ 30:
+/* 1 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ }
-
-/******/ });
+/******/ ]);

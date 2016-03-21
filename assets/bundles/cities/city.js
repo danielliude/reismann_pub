@@ -45,9 +45,9 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	__webpack_require__(7);
+	__webpack_require__(11);
 
 	$(function () {
 	    var page = 1;
@@ -55,6 +55,7 @@
 	    init_button();
 
 	    function init_button() {
+	        $('.search_form .ui.dropdown').dropdown();
 	        $(".more_select").click(function () {
 	            $(".hidden_content").slideToggle("slow");
 	        });
@@ -120,7 +121,7 @@
 	        if ($(".search_form [name='age']").val()) {
 	            temp.age = $(".search_form [name='age']").val();
 	        }
-	        if ($(".search_form [name='city']")) {
+	        if ($(".search_form [name='city']").val()) {
 	            temp.city = $(".search_form [name='city']").val();
 	        }
 	        temp.page = page;
@@ -137,7 +138,7 @@
 
 /***/ },
 
-/***/ 7:
+/***/ 11:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

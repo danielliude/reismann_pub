@@ -1,74 +1,65 @@
-{% extends "core/__base.html" %}
-
+{% extends "core/__global.html" %}
 {% load staticfiles i18n %}
+{% load render_bundle from webpack_loader %}
 
-{% block body_class %}skin-blue layout-top-nav login-page simple-layout{% endblock %}
+{% block stylesheets %}
+    {% render_bundle 'accounts/login' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'accounts/login' 'js' %}
+{% endblock %}
 
 {% block content %}
 
-  <div class="login-box">
-
-    <div class="login-logo">
-      <a href="{% url 'index' %}">Reismann</a>
-    </div>
-
-    <div class="login-box-body">
-      <p class="login-box-msg">{% trans 'Sign in to start your session' %}</p>
-
-      <form action="" method="post">
-
+<div class="ui grid login-content">
+  <div class="column">
+    <h2 class="ui center aligned header">
+      <a href="{% url 'index' %}">{% trans 'Reismann' %}</a>
+    </h2>
+    <div class="ui segment">
+      <h5 class="ui center aligned header">{% trans 'Sign in to start your session' %}</h5>
+      <form class="ui form" action="" method="post">
         {% csrf_token %}
-
+        
         {{ form.non_field_errors }}
-
         {{ form.identification.errors }}
-        <div class="form-group has-feedback">
-          {{ form.identification }}
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <div class="required field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            {{ form.identification }}
+          </div>
         </div>
-
         {{ form.password.errors }}
-        <div class="form-group has-feedback">
-          {{ form.password }}
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <div class="required field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            {{ form.password }}
+          </div>
         </div>
-
         {{ form.remember_me.errors }}
-        <div class="row">
-          <div class="col-xs-8">
-            <div class="checkbox">
-              <label>
-                {{ form.remember_me }} {% trans 'Remember Me' %}
-              </label>
-            </div>
+        <div class="field">
+          <div class="ui checkbox">
+            {{ form.remember_me }} 
+            <label>{% trans 'Remember Me' %}</label>
           </div>
-
-          <div class="col-xs-4">
-            <button class="btn btn-primary btn-block btn-flat">{% trans 'Sign In' %}</button>
-          </div>
-
+          <button class="ui right floated blue button" type="submit">{% trans 'Sign In' %}</button>
         </div>
-
+        <div class="ui error message">
+        </div>
         {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
-
       </form>
 
-      <div class="social-auth-links text-center">
-        <p>{% trans '- OR -' %}</p>
-        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
-          <i class="fa fa-facebook"></i>
-          {% trans 'Sign in using Facebook' %}
-        </a>
-        <a href="#" class="btn btn-block btn-social btn-google btn-flat">
-          <i class="fa fa-google"></i>
-          {% trans 'Sign in using Google' %}
-        </a>
-      </div>
+      <h5 class="ui center aligned header">{% trans '- OR -' %}</h5>
 
-      <a href="{% url 'password_reset' %}">{% trans 'I forgot my password' %}</a><br>
+      <button class="fluid ui facebook button icon_button"><i class="facebook icon"></i> {% trans 'Sign in using Facebook' %} </button>
+      <button class="fluid ui google plus button icon_button"><i class="google plus icon"></i> {% trans 'Sign in using Google' %} </button>
+
+      <!-- <div class="ui header">{% trans '- OR -' %}</div> -->
+      <a href="{% url 'password_reset' %}">{% trans 'I forgot my password' %}</a>
+      </br>
       <a href="{% url 'accounts:register' %}" class="text-center">{% trans 'Register a new membership' %}</a>
-
     </div>
   </div>
+</div>
 
 {% endblock %}

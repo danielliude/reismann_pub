@@ -20,7 +20,8 @@ class SearchForm(forms.Form):
 
     city = forms.ModelChoiceField(required=False, queryset=City.objects.all(), 
                                           widget=forms. Select(attrs={
-                                          'class': 'ui fluid dropdown',
+                                          'class': 'ui fluid search dropdown',
+                                          'multiple' : "",
                                           # 'data-placeholder': _('gender'),
                                           }),
                                           label= _("All cities"))

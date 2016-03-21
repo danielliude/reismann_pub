@@ -26,25 +26,25 @@ class RegistrationForm(forms.Form):
 
   username = forms.RegexField(regex=USERNAME_RE,
                               max_length=30,
-                              widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Username')}),
+                              widget=forms.TextInput(attrs={'placeholder': _('Username')}),
                               label=_("Username"),
                               error_messages={'invalid': _('Username must contain only letters, numbers, dots and underscores.')})
-  email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Email')}),
+  email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': _('Email')}),
                            label=_("Email"))
-  first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('First Name')}),
+  first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('First Name')}),
                                label=_("First name"),
                                max_length=30)
-  last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Last Name')}),
+  last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('Last Name')}),
                               label=_("Last name"),
                               max_length=30)
-  password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Password')},
+  password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': _('Password')},
                                                          render_value=False),
                               label=_("Create password"))
-  password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Repeat password')},
+  password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': _('Repeat password')},
                                                          render_value=False),
                               label=_("Repeat password"))
-  tos = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'required', 'required': True}),
-                           label= mark_safe('I have read and agree to the <a href="#" data-toggle="modal" data-target="#myModal" target="_blank">terms</a> of service'),
+  tos = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'required'}),
+                           label= mark_safe('I have read and agree to the <a href="#" id="ui_model">terms</a> of service'),
                            error_messages={'required': _('You must agree to the terms to register.')})
 
   def clean_username(self):
@@ -100,18 +100,23 @@ class RegistrationForm(forms.Form):
 
     return new_user
 
-def identification_field_factory(label, error_required):
-  return forms.CharField(label=label,
-                         widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Email or Username')}),
-                         max_length=75,
-                         error_messages={'required': _("%(error)s") % {'error': error_required}})
+# def identification_field_factory(label, error_required):
+#   return forms.CharField(label=label,
+#                          widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Email or Username')}),
+#                          max_length=75,
+#                          error_messages={'required': _("%(error)s") % {'error': error_required}})
 
 class AuthenticationForm(forms.Form):
 
-  identification = identification_field_factory(_("Email or username"),
-                                                _("Either supply us with your email or username."))
+  # identification = identification_field_factory(_("Email or username"),
+  #                                               _("Either supply us with your email or username."))
+  # password = forms.CharField(label=_("Password"),
+  #                            widget=forms.PasswordInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Password')}, render_value=False))
+
+  identification = forms.CharField(label=_("Email or username"),
+                                   widget=forms.TextInput(attrs={'placeholder': _('Email or Username')}))
   password = forms.CharField(label=_("Password"),
-                             widget=forms.PasswordInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Password')}, render_value=False))
+                             widget=forms.PasswordInput(attrs={'placeholder': _('Password')}))
   remember_me = forms.BooleanField(widget=forms.CheckboxInput(),
                                    required=False,
                                    label=_('Remember me for %(days)s') % {'days': _(ACCOUNT_LOGIN_REMEMBER_ME_DAYS[0])})

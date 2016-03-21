@@ -1,0 +1,19 @@
+body {
+  background-color: #f3f3f3; }
+
+.ui.grid.login-content {
+  width: 400px;
+  margin: 10px auto; }
+
+.login-content .icon_button {
+  margin-bottom: 8px;
+  text-align: left; }
+
+.login-content .ui.error.message {
+  margin-top: 25px; }
+
+.login-content ul.errorlist {
+  list-style: none;
+  -webkit-padding-start: 0; }
+  .login-content ul.errorlist li {
+    color: #dd4b39; }

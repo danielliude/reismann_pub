@@ -40,19 +40,20 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(11);
+	__webpack_require__(15);
 
-	__webpack_require__(19);
+	__webpack_require__(23);
 
-	__webpack_require__(21);
+	__webpack_require__(25);
 
-	__webpack_require__(24);
+	__webpack_require__(28);
 
 	$(document).ready(function () {
 	  $('.masthead .ui.dropdown').dropdown({
@@ -61,51 +62,38 @@
 	});
 
 /***/ },
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */
+
+/***/ 15:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */
+
+/***/ 23:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 20 */,
-/* 21 */
+
+/***/ 25:
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(22);
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(26);
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 22 */
+
+/***/ 26:
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(23);
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(27);
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 23 */
+
+/***/ 27:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9942,7 +9930,8 @@
 
 
 /***/ },
-/* 24 */
+
+/***/ 28:
 /***/ function(module, exports) {
 
 	/*
@@ -10661,4 +10650,5 @@
 	onRefresh:function onRefresh(){},metadata:{src:'src'},className:{fixed:'fixed',placeholder:'placeholder'},error:{method:'The method you called is not defined.',visible:'Element is hidden, you must call refresh after element becomes visible'}};})(jQuery,window,document);
 
 /***/ }
-/******/ ]);
+
+/******/ });

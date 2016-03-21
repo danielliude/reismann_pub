@@ -1,0 +1,107 @@
+{% extends "core/__base.html" %}
+
+{% load staticfiles i18n %}
+
+{% block body_class %}skin-blue layout-top-nav register-page simple-layout{% endblock %}
+
+{% block content %}
+
+  <div class="register-box">
+
+    <div class="register-logo">
+      <a href="{% url 'index' %}">Reismann</a>
+    </div>
+
+    <div class="register-box-body">
+      <p class="login-box-msg">{% trans 'Register a new membership' %}</p>
+
+      <form action="#" method="post">
+
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        {{ form.username.errors }}
+        <div class="form-group has-feedback">
+          {{ form.username }}
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+
+        {{ form.lastname.errors }}
+        <div class="form-group has-feedback">
+          {{ form.last_name }}
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+
+        {{ form.firstname.errors }}
+        <div class="form-group has-feedback">
+          {{ form.first_name }}
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+
+        {{ form.email.errors }}
+        <div class="form-group has-feedback">
+          {{ form.email }}
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        {{ form.password1.errors }}
+        <div class="form-group has-feedback">
+          {{ form.password1 }}
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+
+        {{ form.password2.errors }}
+        <div class="form-group has-feedback">
+          {{ form.password2 }}
+          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        </div>
+
+        {{ form.tos.errors }}
+        <div class="checkbox">
+           {{ form.tos }}
+           {{ form.tos.label_tag }}
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+        </div><!-- /.col -->
+
+      </form>
+
+      <div class="social-auth-links text-center">
+        <p>{% trans '- OR -' %}</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+          <i class="fa fa-facebook"></i>
+          {% trans 'Sign up using Facebook' %}
+        </a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+          <i class="fa fa-google-plus"></i>
+          {% trans 'Sign up using Google+' %}
+        </a>
+      </div>
+
+      <a href="{% url 'accounts:login' %}" class="text-center">{% trans 'I already have a membership' %}</a>
+    </div><!-- /.form-box -->
+  </div><!-- /.register-box -->
+
+
+    {#MODAL FOR TERMS#}
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">{% trans "Terms of usage" %}</h4>
+            </div>
+            <div class="modal-body">
+                <p> {% trans "Here are our terms of usage. Read carefully before registering on the website" %}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+             </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

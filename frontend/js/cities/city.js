@@ -6,6 +6,7 @@ $(function() {
     init_button()
 
     function init_button() {
+        $('.search_form .ui.dropdown').dropdown();
         $(".more_select").click(function() {
             $(".hidden_content").slideToggle("slow");
         })
@@ -71,7 +72,7 @@ $(function() {
         if($(".search_form [name='age']").val()) {
             temp.age      = $(".search_form [name='age']").val()
         }
-        if($(".search_form [name='city']")) {
+        if($(".search_form [name='city']").val()) {
             temp.city     = $(".search_form [name='city']").val()
         }
         temp.page         = page

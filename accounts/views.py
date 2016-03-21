@@ -146,6 +146,38 @@ def register(request, register_form=RegistrationForm, template_name='accounts/re
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
+def register_old(request, register_form=RegistrationForm, template_name='accounts/register_old.html',
+             success_url=None, extra_context=None):
+  form = register_form()
+
+  if request.method == 'POST':
+    form = register_form(request.POST, request.FILES)
+    if form.is_valid():
+      user = form.save()
+
+      accounts_signals.registration_complete.send(sender=None, user=user)
+
+      if success_url:
+        redirect_to = success_url
+      elif ACCOUNT_ACTIVATION_REQUIRED:
+        redirect_to = reverse('accounts:registration_complete', kwargs = {'username': user.username})
+      else:
+        redirect_to = reverse('profiles:dashboard', kwargs = {'username': user.username})
+
+      if request.user.is_authenticated():
+        signout(request)
+
+      if not ACCOUNT_ACTIVATION_REQUIRED:
+        user = authenticate(identification=user.email, check_password=False)
+        signin(request, user)
+
+      return redirect(redirect_to)
+
+  if not extra_context: extra_context = dict()
+  extra_context['form'] = form
+
+  return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+
 def action_complete(request, username, template_name, extra_context=None):
   user = get_object_or_404(User, username__iexact=username)
 

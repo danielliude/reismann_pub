@@ -89,7 +89,7 @@ $(function() {
                         '</a>' +
                         '<div class="ui segment">' +
                           '<div class="row"> ' +
-                            '<div class="ui header">' + ret[i].name_or_username + ' '  + ret[i].short_description + '</div>' +
+                            '<div class="ui header">' + ret[i].name_of_username + ' '  + ret[i].short_description + '</div>' +
                             '</strong><a href="#">' + ret[i].cities + '</a></strong>' +
                           '</div>' +
                           '<div class="ui red header average_price">€ ' + ret[i].price + ' service price unit</div>' +

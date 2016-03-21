@@ -90,10 +90,12 @@
 </div>
 <div class="ui page grid search_button">
   <div class="row search_head" style="padding-left: 14px !important;">
-    <button class="ui button more_select"> {% trans "More options" %}</button>
-    <button class="ui button submit submit_button">{% trans "Search" %}</button>
-    <h4 class="ui header">{% trans "Have found " %} <span class="services_num"> {{ services|length }}</span>{% trans " services" %}</h4>
+    <button class="ui blue button more_select"> {% trans "More options" %}</button>
+    <button class="ui blue button submit submit_button">{% trans "Search" %}</button>
   </div>
+  {% if services|length > 0 %}
+  <p class="serveice_num_p">{% trans "Have found " %} <span class="services_num"> {{ services|length }}</span>{% trans " services" %}</p>
+  {% endif %}
 </div>
 <div class="ui three column stackable doubling page grid search_profile">
   {% if services|length == 0 %}

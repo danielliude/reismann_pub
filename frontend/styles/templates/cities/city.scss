@@ -30,11 +30,13 @@
 ---------------*/
 .ui.page.grid.search_button {
   background-color: rgb(243, 243, 243);
+  .submit_button {
+    position: absolute;
+    right: 14px;
+  }
 }
-.search_button .search_head .ui.header {
-  position: absolute;
-  right: 14px;
-  top: 0px;  
+.search_button .serveice_num_p {
+  padding-bottom: 10px;
 }
 
 /*--------------

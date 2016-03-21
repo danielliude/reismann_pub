@@ -73,9 +73,11 @@
 	                $(".services_num").text(result.num);
 	                $(".search_profile").empty();
 	                if (result.num == '0') {
+	                    $(".serveice_num_p").hide();
 	                    $(".search_profile").append('<h4>No result,please search again!</h4>');
 	                    return;
 	                }
+	                $(".serveice_num_p").show();
 	                if (parseInt(result.num) <= page * page_num) {
 	                    $(".more_loaders").hide();
 	                } else {

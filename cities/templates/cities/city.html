@@ -90,9 +90,9 @@
 </div>
 <div class="ui page grid search_button">
   <div class="row search_head" style="padding-left: 14px !important;">
-    <button class="ui button more_select">更多筛选项</button>
-    <button class="ui button submit submit_button">查询</button>
-    <h4 class="ui header">已为你找到 <span class="services_num">{{ services|length }}</span> 个服务</h4>
+    <button class="ui button more_select"> {% trans "More options" %}</button>
+    <button class="ui button submit submit_button">{% trans "Search" %}</button>
+    <h4 class="ui header">{% trans "Here is what?" %} <span class="services_num">{{ services|length }}</span>{% trans "Service number" %}</h4>
   </div>
 </div>
 <div class="ui three column stackable doubling page grid search_profile">

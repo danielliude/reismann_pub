@@ -127,6 +127,7 @@ def city(request, city_name, template_name='cities/city.html'):
             page_end   = page * page_num
             num        = len(services_new)
             services_new = services_new[page_start:page_end]
+            print(">>>>>", num , services_new)
 
             temp = {'num': num, 'services_new' : services_new}
             return JsonResponse(temp)

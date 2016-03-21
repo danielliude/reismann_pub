@@ -35,8 +35,8 @@ class SearchForm(forms.Form):
 
     gender = forms.MultipleChoiceField(required = False,
                                           widget=forms. Select(attrs={
-                                          'class': 'ui fluid dropdown',
-                                          # 'data-placeholder': _('gender'),
+                                          'class': 'ui fluid search dropdown',
+                                          'multiple' : "",
                                           }),
                                           choices=GENDER_CHOICES)
 

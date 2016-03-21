@@ -17,6 +17,8 @@ module.exports = {
     'services/service_one': './js/services/service_one',
     'accounts/login': './js/accounts/login',
     'accounts/register': './js/accounts/register',
+    'accounts/password_reset': './js/accounts/password_reset',
+    'accounts/password_reset_confirm': './js/accounts/password_reset_confirm',
   },
 
   output: {

@@ -1,16 +1,14 @@
-{% extends "core/__base.html" %}
-
+{% extends "core/__global.html" %}
 {% load i18n %}
 
-{% block body_class %}skin-blue layout-top-nav register-page simple-layout{% endblock %}
-
 {% block title %}{% trans "Account activation failed." %}{% endblock %}
-
 {% block content %}
+<div class="ui padded grid middle aligned center aligned highly_adaptive">
+	<div class="column">
+		<h2>{% trans "Your account could not be activated..." %}</h2>
 
-  <h2>{% trans "Your account could not be activated..." %}</h2>
-
-  <p>{% trans "Your account could not be activated because activation link is expired." %}</p>
-  <p><a href="{% url 'userena_activate_retry' activation_key %}">{% trans "Request a new activation link." %}</a></p>
-
+		<p>{% trans "Your account could not be activated because activation link is expired." %}</p>
+		<p><a href="{% url 'userena_activate_retry' activation_key %}">{% trans "Request a new activation link." %}</a></p>
+	</div>
+</div>
 {% endblock %}

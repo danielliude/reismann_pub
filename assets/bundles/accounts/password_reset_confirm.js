@@ -47,11 +47,32 @@
 
 	'use strict';
 
-	__webpack_require__(11);
+	__webpack_require__(7);
+
+	$(function () {
+	    init_form();
+
+	    function init_form() {
+	        $('.ui.form').form({
+	            fields: {
+	                password: {
+	                    identifier: 'password',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your password'
+	                    }, {
+	                        type: 'length[6]',
+	                        prompt: 'Your password must be at least 6 characters'
+	                    }]
+	                }
+	            }
+	        });
+	    }
+	});
 
 /***/ },
 
-/***/ 11:
+/***/ 7:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

@@ -47,11 +47,32 @@
 
 	'use strict';
 
-	__webpack_require__(11);
+	__webpack_require__(5);
+
+	$(function () {
+	    init_form();
+
+	    function init_form() {
+	        $('.ui.form').form({
+	            fields: {
+	                email: {
+	                    identifier: 'email',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your email'
+	                    }, {
+	                        type: 'email',
+	                        prompt: 'Please enter a valid e-mail'
+	                    }]
+	                }
+	            }
+	        });
+	    }
+	});
 
 /***/ },
 
-/***/ 11:
+/***/ 5:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

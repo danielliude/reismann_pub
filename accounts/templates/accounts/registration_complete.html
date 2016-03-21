@@ -1,18 +1,15 @@
-{% extends "core/__base.html" %}
-
+{% extends "core/__global.html" %}
 {% load i18n %}
 
-{% block body_class %}skin-blue layout-top-nav register-page simple-layout{% endblock %}
-
-{% block title %}{% trans "Signup almost done!" %}{% endblock %}
-
 {% block content %}
+<div class="ui padded grid middle aligned center aligned highly_adaptive">
+	<div class="column">
+		<h2>{% trans "Signup almost done!" %}</h2>
 
-  <h2>{% trans "Signup almost done!" %}</h2>
+		<p>{% trans "Thank you for signing up with us!" %}</p>
 
-  <p>{% trans "Thank you for signing up with us!" %}</p>
-
-  <p>{% blocktrans %}You have been sent an e-mail with an activation link to the supplied email.{% endblocktrans %}</p>
-  <p>{% blocktrans %}We will store your signup information for {{ account_activation_days }} days on our server. {% endblocktrans %}</p>
-
+		<p>{% blocktrans %}You have been sent an e-mail with an activation link to the supplied email.{% endblocktrans %}</p>
+		<p>{% blocktrans %}We will store your signup information for {{ account_activation_days }} days on our server. {% endblocktrans %}</p>
+	</div>
+</div>
 {% endblock %}

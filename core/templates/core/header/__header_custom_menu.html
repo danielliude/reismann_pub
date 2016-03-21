@@ -68,11 +68,12 @@
       </li>
     {% else %}
       <li>
-        <a href="{% url 'accounts:login' %}">{% trans 'signin' %}</a>
+        <a href="{% url 'accounts:login' %}?next={{request.path}}">{% trans 'signin' %}</a>
       </li>
       <li>
         <a href="{% url 'accounts:register' %}">{% trans 'register' %}</a>
       </li>
+
     {% endif %}
 
   </ul>

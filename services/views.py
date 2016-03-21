@@ -119,33 +119,41 @@ def service_view(request, username, service_id,
     extra_context['service'] = service
     extra_context['ratings'] = ratings
 
-    # rated = True
-    if request.user.username:
-        user = User.objects.get(username__iexact = request.user.username)
-        profile = get_user_profile(user)
-        extra_context['profile'] = profile
+    canRate = False
 
-        # try:
-        #     serviceRating = ServiceRating.objects.get(service= service, user = user)
-        #     rated = True
-        # except ServiceRating.DoesNotExist:
-        form = ServiceRatingForm()
-        extra_context['form'] = form
-            # rated = False
+    user = User.objects.get(username__iexact = username)
 
-        if(user.is_authenticated):
-            contact = get_user_contact(user)
-            extra_context['contact'] = contact
+    try:
+        who = User.objects.get(username__iexact = request.user.username)
+    except User.DoesNotExist:
+        who = None
 
-        unique_tags = get_distinct_tags(user)
-        unique_cities = get_distinct_cities(user)
-        unique_languages = get_distinct_languages(user)
-        unique_categories = get_distinct_categories(user)
+    profile = get_user_profile(user)
+    extra_context['profile'] = profile
 
-        extra_context['unique_tags'] = unique_tags
-        extra_context['unique_cities'] = unique_cities
-        extra_context['unique_languages'] = unique_languages
-        extra_context['unique_categories'] = unique_categories
+    if who:
+        try:
+            serviceRating = ServiceRating.objects.get(service= service, user = who)
+        except ServiceRating.DoesNotExist:
+            form = ServiceRatingForm()
+            extra_context['form'] = form
+            canRate = True
+    else:
+        canRate = False
+
+    # if(user.is_authenticated):
+    #     contact = get_user_contact(user)
+    #     extra_context['contact'] = contact
+
+    unique_tags = get_distinct_tags(user)
+    unique_cities = get_distinct_cities(user)
+    unique_languages = get_distinct_languages(user)
+    unique_categories = get_distinct_categories(user)
+
+    extra_context['unique_tags'] = unique_tags
+    extra_context['unique_cities'] = unique_cities
+    extra_context['unique_languages'] = unique_languages
+    extra_context['unique_categories'] = unique_categories
 
     extra_context['view_own_profile'] = view_own_profile(request, username)
 
@@ -153,16 +161,15 @@ def service_view(request, username, service_id,
     extra_context = makeContextForMessages(request, extra_context)
 
     if request.method == 'POST':
-        # if 'fb' in request.POST:
-            form = ServiceRatingForm(request.POST)
-            if form.is_valid():
-                rating = form.cleaned_data['stars']
-                comment = form.cleaned_data['comment']
-                # if (rated == False):
+        form = ServiceRatingForm(request.POST)
+        if form.is_valid():
+            rating = form.cleaned_data['stars']
+            comment = form.cleaned_data['comment']
+            if (canRate):
                 serviceRating = ServiceRating(user= request.user, service = service, rating = rating, comment = comment)
                 serviceRating.save()
-                url = reverse('profiles:service_view', kwargs={'username':request.user.username, 'service_id':service_id})
-                return HttpResponseRedirect(url)
+            url = reverse('profiles:service_view', kwargs={'username':request.user.username, 'service_id':service_id})
+            return HttpResponseRedirect(url)
 
     return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 

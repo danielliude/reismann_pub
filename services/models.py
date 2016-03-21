@@ -13,6 +13,8 @@ from configurations.models import ServiceCategory, ServiceTag, ServiceLanguage
 from cities.models import City
 
 from services.managers import ServiceManager
+from django.db.models import Avg
+
 
 class Service(models.Model):
 
@@ -71,6 +73,14 @@ class Service(models.Model):
     if self.card_image:
       return self.card_image.url
 
+  @property
+  def rating(self):
+    service_ratings = ServiceRating.objects.filter(service = self)
+    if service_ratings:
+        return service_ratings.aggregate(Avg('rating')).get('rating__avg')
+    else:
+        return 0
+
 
 class ServiceRating(models.Model):
 
@@ -81,6 +91,8 @@ class ServiceRating(models.Model):
     rating = models.FloatField(verbose_name=_('rating value'), null=True, blank=True)
 
     comment = models.CharField(_('rating comment'), blank=True, null=True, default='Service comment', max_length=255)
+
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'), blank=True, null=True)
 
     @property
     def gen_stars(self):

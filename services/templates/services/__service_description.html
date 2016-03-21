@@ -11,6 +11,7 @@
 
     <div class="row">
         <h4> {{ service.title }}</h4>
+        <h5>{% trans 'Rating: ' %}{{ service.rating|floatformat }}/5</h5>
         {% if request.user.is_authenticated %}
             <h5>€ {{ service.price }}</h5>
         {% else %}
@@ -88,20 +89,20 @@
     {% if ratings|length != 0 %}
     <div class="row">
       <div class="ui comments">
-        <h3 class="ui dividing header">Comments</h3>
+        <h3 class="ui dividing header">{% trans "Comments" %}</h3>
         {% for rating in ratings %}
         <div class="comment">
           <a class="avatar">
-            <img src="/media/reismann/images/accounts/avatar993f0f6317.jpg">
+            <img src="{{ rating.user.profile.get_avatar_url }}">
           </a>
           <div class="content">
             {% if request.user.username %}
-                <a class="author">{% trans 'User' %} {{ request.user.username }}</a>
+                <a class="author">{% trans 'User' %} {{ rating.user.username }}</a>
             {% else %}
                 <a class="author">{% trans 'Anonymous user' %}</a>
             {% endif %}
             <div class="metadata">
-              <span class="date">今天下午 5:42</span>
+              <span class="date">{% trans 'Created at: ' %}{{ rating.created_at }}</span>
             </div>
             {{ rating.gen_stars }}
             <div class="text">{{ rating.comment }}</div>

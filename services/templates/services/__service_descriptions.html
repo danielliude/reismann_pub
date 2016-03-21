@@ -10,8 +10,10 @@
   {% endif %}
 
     {% for service in services %}
+        <div class="row" onclick="window.document.location='services/view/{{ service.id }}/';">
         <div class="row">
             <h4> {{ service.title }}</h4>
+            <h5>{% trans 'Rating: ' %}{{ service.rating|floatformat }}/5</h5>
             {% if request.user.is_authenticated %}
                 <h5>€ {{ service.price }}</h5>
             {% else %}
@@ -87,7 +89,7 @@
 
             </div>
         </div>
-
+    </div>
     {% endfor %}
 
   </div>

@@ -16,6 +16,7 @@ from services.utils import get_distinct_tags, get_distinct_languages,get_distinc
 from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages
 from services.forms import ServiceRatingForm
 from services.models import ServiceRating
+from datetime import datetime
 
 @secure_required
 @permission_required_or_403('services.add_service')
@@ -141,9 +142,6 @@ def service_view(request, username, service_id,
     else:
         canRate = False
 
-    # if(user.is_authenticated):
-    #     contact = get_user_contact(user)
-    #     extra_context['contact'] = contact
 
     unique_tags = get_distinct_tags(user)
     unique_cities = get_distinct_cities(user)
@@ -167,6 +165,7 @@ def service_view(request, username, service_id,
             comment = form.cleaned_data['comment']
             if (canRate):
                 serviceRating = ServiceRating(user= request.user, service = service, rating = rating, comment = comment)
+                serviceRating.created_at = datetime.now()
                 serviceRating.save()
             url = reverse('profiles:service_view', kwargs={'username':request.user.username, 'service_id':service_id})
             return HttpResponseRedirect(url)

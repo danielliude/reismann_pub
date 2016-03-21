@@ -1,6 +1,23 @@
-from services.models import Service
+from services.models import Service, ServiceRating
 from configurations.models import ServiceCategory, ServiceTag, ServiceLanguage
 from cities.models import City
+from itertools import chain
+
+def get_services_rating(user):
+
+    services = Service.objects.filter(user = user)
+
+    result = []
+    for service in services:
+        result = list(chain(result, ServiceRating.objects.filter(service = service)))
+
+    all_price = sum(c.rating for c in result)
+
+    if result:
+        return all_price/len(result)
+    else:
+        return 0
+
 
 
 def get_user_services(user):

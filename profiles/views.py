@@ -13,7 +13,7 @@ from core.utils import ExtraContextTemplateView
 from contacts.forms import ContactForm
 from contacts.utils import get_user_contact
 from services.utils import get_user_services
-from services.utils import get_distinct_categories, get_distinct_cities,get_distinct_languages,get_distinct_tags
+from services.utils import get_distinct_categories, get_distinct_cities,get_distinct_languages,get_distinct_tags, get_services_rating
 from followship.utils import get_number_followers, get_number_following
 from bookings.utils import get_number_bookings
 from configurations.utils import get_active_service_categories
@@ -53,6 +53,23 @@ def makeContextForMessages(request, context):
 
     return context
 
+def makeContextForAllServices(request, user, context):
+
+    unique_tags = get_distinct_tags(user)
+    unique_cities = get_distinct_cities(user)
+    unique_languages = get_distinct_languages(user)
+    unique_categories = get_distinct_categories(user)
+    services_rating = get_services_rating(user)
+
+    context['unique_tags'] = unique_tags
+    context['unique_cities'] = unique_cities
+    context['unique_languages'] = unique_languages
+    context['unique_categories'] = unique_categories
+    context['services_rating'] = services_rating
+
+    return context
+
+
 def profile(request, username, template_name="profiles/profile.html",
                    extra_context=None, **kwargs):
 
@@ -71,16 +88,7 @@ def profile(request, username, template_name="profiles/profile.html",
     contact = get_user_contact(user)
     extra_context['contact'] = contact
 
-  unique_tags = get_distinct_tags(user)
-  unique_cities = get_distinct_cities(user)
-  unique_languages = get_distinct_languages(user)
-  unique_categories = get_distinct_categories(user)
-
-  extra_context['unique_tags'] = unique_tags
-  extra_context['unique_cities'] = unique_cities
-  extra_context['unique_languages'] = unique_languages
-  extra_context['unique_categories'] = unique_categories
-
+  extra_context = makeContextForAllServices(request, user, extra_context)
   extra_context = makeContextForDetails(request, extra_context)
   extra_context = makeContextForMessages(request, extra_context)
 
@@ -98,11 +106,6 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   contact = get_user_contact(user)
   services = get_user_services(user)
 
-  unique_tags = get_distinct_tags(user)
-  unique_cities = get_distinct_cities(user)
-  unique_languages = get_distinct_languages(user)
-  unique_categories = get_distinct_categories(user)
-
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
 
@@ -113,11 +116,7 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
-  extra_context['unique_tags'] = unique_tags
-  extra_context['unique_cities'] = unique_cities
-  extra_context['unique_languages'] = unique_languages
-  extra_context['unique_categories'] = unique_categories
-
+  extra_context = makeContextForAllServices(request, user, extra_context)
   extra_context = makeContextForDetails(request, extra_context)
   extra_context = makeContextForMessages(request, extra_context)
 

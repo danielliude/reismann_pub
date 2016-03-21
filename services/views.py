@@ -13,7 +13,7 @@ from configurations.utils import get_active_service_categories
 from django.http import HttpResponseRedirect
 
 from services.utils import get_distinct_tags, get_distinct_languages,get_distinct_categories, get_distinct_cities
-from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages
+from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages, makeContextForAllServices
 from services.forms import ServiceRatingForm
 from services.models import ServiceRating
 from datetime import datetime
@@ -142,19 +142,8 @@ def service_view(request, username, service_id,
     else:
         canRate = False
 
-
-    unique_tags = get_distinct_tags(user)
-    unique_cities = get_distinct_cities(user)
-    unique_languages = get_distinct_languages(user)
-    unique_categories = get_distinct_categories(user)
-
-    extra_context['unique_tags'] = unique_tags
-    extra_context['unique_cities'] = unique_cities
-    extra_context['unique_languages'] = unique_languages
-    extra_context['unique_categories'] = unique_categories
-
     extra_context['view_own_profile'] = view_own_profile(request, username)
-
+    extra_context = makeContextForAllServices(request, user, extra_context)
     extra_context = makeContextForDetails(request, extra_context)
     extra_context = makeContextForMessages(request, extra_context)
 

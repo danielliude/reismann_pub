@@ -1,35 +1,17 @@
-{% extends "core/__base.html" %}
-
+{% extends "core/__global.html" %}
 {% load i18n %}
 
-{% block header %}
-
-  {% include "core/header/__header.html" %}
-
-{% endblock %}
-
+{% block title %}{% trans "500 Error Page" %}{% endblock %}
 {% block content %}
+<div class="ui padded grid middle aligned center aligned highly_adaptive">
+  <div class="column">
+    <h2><span style="font-size:90px;color:#DB2828;">500</span><i class="warning sign red icon"></i> {% trans 'Oops! Something went wrong.' %}</h2>
 
-  <div class="content-wrapper">
-
-    <section class="content-header">
-      <h1>{% trans '500 Error Page' %}</h1>
-    </section>
-
-    <section class="content">
-      <div class="error-page">
-        <div class="headline text-red">500</div>
-        <div class="error-content">
-          <h3><i class="fa fa-warning text-red"></i> {% trans 'Oops! Something went wrong.' %}</h3>
-          <p>
-            {% trans 'We will work on fixing that right away.' %}
-            {% trans 'Meanwhile, you may' %}
-            <a href="{% url 'index' %}">{% trans 'return to homepage' %}</a>.
-          </p>
-        </div>
-      </div>
-    </section>
-
+    <p>
+      {% trans 'We will work on fixing that right away.' %}
+      {% trans 'Meanwhile, you may' %}
+      <a href="{% url 'index' %}">{% trans 'return to homepage' %}</a>.
+    </p>
   </div>
-
+</div>
 {% endblock %}

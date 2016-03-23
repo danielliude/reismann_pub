@@ -5,8 +5,8 @@
       <h3 class="header item">
         <a href="{% url 'index' %}">Reismann</a>
       </h3>
-      <a class="item" href="#">become a provider</a>
-      <div class="ui dropdown link item">
+      <a class="item not_mobile" href="#">become a provider</a>
+      <div class="ui dropdown link item not_mobile">
           help
           <i class="dropdown icon"></i>
           <div class="menu">
@@ -17,10 +17,13 @@
               <a href="#" class="item">review</a>
           </div>        
       </div>
-      <div class="right menu">
+
+      
+      {% include "core/header/__header_custom_menu_new.html" %}
+      <!-- <div class="right menu">
         <a class="item" href="{% url 'accounts:login' %}">signin</a>
         <a class="item" href="{% url 'accounts:register' %}">register</a>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

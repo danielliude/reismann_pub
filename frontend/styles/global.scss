@@ -32,6 +32,36 @@
   }
 }
 
+.ui.dropdown .menu>.divider {
+    margin: .1em 0;
+}
+
+.unread_info {
+  .sender {
+    position: absolute;
+    left: 53px;
+    top: 9px;
+    font-weight: bold;
+    color: #444444;
+    font-size: 15px;
+  }
+  .minutes_past {
+    position: absolute;
+    right: 15px;
+    color: #999999;
+    font-size: 10px;
+    top: 6px;
+  }
+  .subject {
+    position: absolute;
+    left: 53px;
+    top: 28px;
+    font-size: 12px;
+    color: #888888;
+  }
+}
+
+
 /*--------------
     footer
 ---------------*/
@@ -55,5 +85,22 @@
 ---------------*/
 .ui.inverted.segment>.ui.header {
   color: #b3b3b3;
+}
+
+
+
+
+
+.masthead .fixed_h .right.menu > .mobile.item {
+  display: flex;
+  @include MQ(M) {
+    display: none;
+  }
+}
+.masthead .fixed_h .not_mobile.item {
+  display: none;
+  @include MQ(M) {
+    display: flex;
+  }
 }
 

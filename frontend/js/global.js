@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 	function init_component() {
 		$('.masthead .ui.dropdown').dropdown({
-		  on: 'hover'
+		  // on: 'hover'
 		})
 	}
 

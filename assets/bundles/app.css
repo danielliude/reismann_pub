@@ -29,18 +29,6 @@ Base text size 16px -> 1rem
 10px -> 0.625rem
 8px -> 0.5rem
 */
-html {
-  font-size: 16px;
-  line-height: 20px; }
-
-.boss {
-  font-size: 1.5rem;
-  line-height: 1.75rem; }
-  @media only screen and (min-width: 768px) {
-    .boss {
-      font-size: 2rem;
-      line-height: 2.25rem; } }
-
 .headline {
   font-size: 1.25rem;
   line-height: 1.5rem; }
@@ -48,38 +36,6 @@ html {
     .headline {
       font-size: 1.75rem;
       line-height: 2rem; } }
-
-.subheadline, .footer--services h4, .search form select, .search form input, .search form button {
-  font-size: 1rem;
-  line-height: 1.25rem; }
-  @media only screen and (min-width: 768px) {
-    .subheadline, .footer--services h4, .search form select, .search form input, .search form button {
-      font-size: 1.125rem;
-      line-height: 1.375rem; } }
-
-.copy {
-  font-size: 1rem;
-  line-height: 1.25rem; }
-
-.text, .footer--services ul li, .widget-newcomer-profile .widget-profile-price {
-  font-size: 0.875rem;
-  line-height: 1.125rem; }
-
-.micro, .footer--information, .widget-newcomer-profile .widget-profile-user, .widget-newcomer-profile .widget-profile-price .widget-profile-price-unit, .widget-newcomer-profile .widget-profile-bio {
-  font-size: 0.75rem;
-  line-height: 1rem; }
-
-.bold, .widget-newcomer-profile .widget-profile-location, .widget-newcomer-profile .widget-profile-price {
-  font-weight: 600; }
-
-.text-inverted {
-  color: #ffffff; }
-
-.fa-icon {
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: normal; }
 
 *, *::after, *::before {
   box-sizing: border-box; }

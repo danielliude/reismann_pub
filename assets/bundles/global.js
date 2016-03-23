@@ -53,7 +53,7 @@
 
 	__webpack_require__(29);
 
-	__webpack_require__(33);
+	__webpack_require__(32);
 
 	$(document).ready(function () {
 		init_component();
@@ -62,7 +62,7 @@
 
 		function init_component() {
 			$('.masthead .ui.dropdown').dropdown({
-				on: 'hover'
+				// on: 'hover'
 			});
 		}
 
@@ -9948,7 +9948,7 @@
 
 /***/ },
 
-/***/ 33:
+/***/ 32:
 /***/ function(module, exports) {
 
 	/*

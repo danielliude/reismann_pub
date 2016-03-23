@@ -83,6 +83,9 @@ def index_new(request):
         'popular_cities': popular_cities,
       }
 
+      context = makeContextForMessages(request, context)
+      context = makeContextForDetails(request, context)
+
       return render(request, 'core/index_new.html', context)
 
 def search_url(request):

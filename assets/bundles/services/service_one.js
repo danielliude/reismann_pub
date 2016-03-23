@@ -47,7 +47,7 @@
 
 	'use strict';
 
-	__webpack_require__(34);
+	__webpack_require__(33);
 
 	$(function () {
 		init_rating();
@@ -81,7 +81,7 @@
 
 /***/ },
 
-/***/ 34:
+/***/ 33:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

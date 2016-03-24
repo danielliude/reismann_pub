@@ -1,70 +1,31 @@
 {% load i18n %}
 
-<div class="box box-solid box-square box-widget widget-profile">
-  <div class="widget-user-header clearfix">
-    <div class="widget-user-image pull-left">
-      <img src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile avatar' %}" class="img-circle">
-    </div>
-    <div class="widget-user-info">
-      <h3 class="widget-user-username">{{ profile.get_full_name_or_username }}</h3>
-      {% if profile.short_description %}
-        <h5 class="widget-user-desc secondary-text">{{ profile.short_description }}</h5>
-      {% endif %}
-      {% if profile.age or profile.location %}
-        <h5 class="widget-user-desc secondary-text">
-          {% if request.user.is_authenticated %}{% if profile.age %}
-            {{ profile.age }} {% trans 'years old' %}{% endif %}
-            {% if profile.location %}  {% endif %}
-          {% endif %}
-          {% if profile.location %}
-            {% trans 'from' %} {{ profile.location.get_full_location }}
-          {% endif %}
-        </h5>
-      {% endif %}
-      {% if request.user.is_authenticated %}
-          {% if profile.member_since %}
-            <h5 class="widget-user-desc secondary-text">{{ profile.member_since }}</h5>
-          {% endif %}
-      {% endif %}
-      {% if profile.bio %}
-        <h5 class="widget-user-desc secondary-text">{{ profile.bio }}</h5>
-      {% endif %}
-    </div>
+<div class="ui segment">
+  <img class="ui tiny circular left floated image" src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile avatar' %}">
+
+  <div style="padding-left:100px;padding-top:10px;">
+    <h3 class="ui header">{{ profile.get_full_name_or_username }}</h3>
+    {% if profile.short_description %}
+      <h5>{{ profile.short_description }}</h5>
+    {% endif %}
+    {% if profile.age or profile.location %}
+      <p>
+        {% if request.user.is_authenticated %}{% if profile.age %}
+          {{ profile.age }} {% trans 'years old' %}{% endif %}
+          {% if profile.location %}  {% endif %}
+        {% endif %}
+        {% if profile.location %}
+          {% trans 'from' %} {{ profile.location.get_full_location }}
+        {% endif %}
+      </p>
+    {% endif %}
+    {% if request.user.is_authenticated %}
+        {% if profile.member_since %}
+          <p>{{ profile.member_since }}</p>
+        {% endif %}
+    {% endif %}
+    {% if profile.bio %}
+      <p>{{ profile.bio }}</p>
+    {% endif %}
   </div>
-
-
-  {% if resumes|length > 0 %}
-    <div class="widget-user-resumes">
-
-      <div class="nav-tabs-custom">
-
-        <ul class="nav nav-tabs">
-          {% for resume in resumes %}
-            <li class="{% if forloop.counter == 1 %}active{% endif %}">
-              <a href="#{{ resume.service_category.name }}" data-toggle="tab">{{ resume.service_category.name }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-
-        <div class="tab-content">
-
-          {% for resume in resumes %}
-            <div class="tab-pane{% if forloop.counter == 1 %} active{% endif %}" id="{{ resume.service_category.name }}">
-              <div class="resume">
-                {% if resume.content %}
-                  {{ resume.content|safe }}
-                {% else %}
-                  {% trans 'empty resume placeholder' %}
-                {% endif %}
-              </div>
-            </div>
-          {% endfor %}
-
-        </div>
-
-      </div>
-
-    </div>
-  {% endif %}
-
 </div>

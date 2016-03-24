@@ -1,50 +1,44 @@
 {% load i18n %}
 
-<div class="box box-primary">
+<div class="ui blue segment all_services">
+  <h3>{% trans 'All services' %}</h3>
 
-  <div class="box-header with-border">
-    <h3 class="box-title">{% trans 'All services' %}</h3>
-    <h4>Overall rating: {{ services_rating|floatformat }}/5</h4>
+  <div class="ui divided items">
+    <div class="item">
+      <h4>Overall rating: {{ services_rating|floatformat }}/5</h4>
+    </div>
+    <div class="item">
+      <div class="content">
+        <p><strong><i class="marker icon"></i>{% trans 'cities' %}</strong></p> 
+        {% for city in unique_cities %}
+          <a href="#" class="ui blue label">{{ city.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <p><strong><i class="folder icon"></i> {% trans 'categories' %}</strong></p>
+        {% for category in unique_categories %}
+          <span href="#" class="ui green label">{{ category.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <p><strong><i class="flag icon"></i> {% trans 'languages' %}</strong></p>
+        {% for language in unique_languages %}
+          <span href="#" class="ui yellow label">{{ language.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <p><strong><i class="tags icon"></i> {% trans 'tags' %}</strong></p>
+        {% for tag in unique_tags %}
+          <span href="#" class="ui red label">{{ tag.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
   </div>
-
-  <div class="box-body">
-
-    <strong><i class="fa fa-map margin-r-5"></i> {% trans 'services cities' %}</strong>
-    <p>
-      {% for city in unique_cities %}
-        <a href="#" class="label label-info">{{ city.name }}</a>
-      {% endfor %}
-    </p>
-
-    <hr>
-
-    <strong><i class="fa fa-folder margin-r-5"></i> {% trans 'services categories' %}</strong>
-    <p>
-      {% for category in unique_categories %}
-        <span href="#" class="label label-success">{{ category.name }}</span>
-      {% endfor %}
-    </p>
-
-    <hr>
-
-    <strong><i class="fa fa-language margin-r-5"></i> {% trans 'services languages' %}</strong>
-    <p>
-      {% for language in unique_languages %}
-        <span href="#" class="label label-warning">{{ language.name }}</span>
-      {% endfor %}
-    </p>
-
-    <hr>
-
-    <strong><i class="fa fa-tags margin-r-5"></i> {% trans 'services tags' %}</strong>
-    <p>
-      {% for tag in unique_tags %}
-        <span href="#" class="label label-danger">{{ tag.name }}</span>
-      {% endfor %}
-    </p>
-
-    <hr>
-
-  </div>
-
+  
 </div>

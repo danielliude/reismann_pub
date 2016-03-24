@@ -1,14 +1,9 @@
-.ui.comments {
-  max-width: 100%; }
-  .ui.comments .content .ui.rating {
-    padding-left: 10px; }
-
 body {
   background-color: #f3f3f3; }
 
 .ui.segment.profiles_services {
-  margin-bottom: 40px;
-  padding-left: 1.5rem; }
+  padding-bottom: 0px;
+  margin-bottom: 40px; }
   .ui.segment.profiles_services .ui.grid > .column {
     padding-left: 0rem;
     padding-top: 0rem; }

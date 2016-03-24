@@ -1,32 +1,24 @@
-{% extends "core/__base.html" %}
+{% extends "core/__global.html" %}
+{% load render_bundle from webpack_loader %}
 
-{% load i18n %}
-
-{% block content %}
-
-  <div class="content-wrapper">
-
-    <section class="content">
-
-      <div class="row">
-
-        <div class="col-sm-8 no-padding-right-sm">
-
-          {% include "profiles/widgets/__widget_profile.html" %}
-          {% include "services/__service_descriptions.html" %}
-
-        </div>
-
-        <div class="col-sm-4">
-          {% block profile_box %} {% include "profiles/__profile_box.html" %} {% endblock %}
-          {% block service_box %} {% include "services/__service_box.html" %} {% endblock %}
-          {% block contact_box %} {% include "contacts/__contact_box.html" %} {% endblock %}
-        </div>
-
-      </div>
-
-    </section>
-
-  </div>
-
+{% block stylesheets %}
+    {% render_bundle 'profiles/profile' 'css' %}
 {% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/profile' 'js' %}
+{% endblock %}
+
+{% block content %}    
+  <div class="ui page grid">
+    <div class="eleven wide column">
+      {% include "profiles/widgets/__widget_profile.html" %}
+      {% include "services/__service_descriptions.html" %}
+    </div>
+    <div class="five wide column">
+      {% block profile_box %} {% include "profiles/__profile_box.html" %} {% endblock %}
+      {% block service_box %} {% include "services/__service_box.html" %} {% endblock %}
+      {% block contact_box %} {% include "contacts/__contact_box.html" %} {% endblock %}
+    </div>
+  </div>
+{% endblock %}
+

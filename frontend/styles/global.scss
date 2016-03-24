@@ -90,7 +90,9 @@
 
 
 
-
+/*--------------
+    responsive
+---------------*/
 .masthead .fixed_h .right.menu > .mobile.item {
   display: flex;
   @include MQ(M) {

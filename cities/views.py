@@ -98,6 +98,7 @@ def city(request, city_name, template_name='cities/city.html'):
                     services = services.filter(categories = service)
 
             services = services.exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
+            services = services.filter(is_active=True)
 
             services_new = []
             for service in services:

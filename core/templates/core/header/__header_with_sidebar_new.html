@@ -1,0 +1,15 @@
+{% load staticfiles i18n %}
+<div class="ui centered grid masthead top attached">
+  <div class="fifteen wide column">
+    <div class="ui inverted blue menu fixed_h">
+      <h3 class="header item">
+        <a href="{% url 'index' %}">Reismann</a>
+      </h3>
+      <a class="item sidebar_click">
+        <i class="sidebar icon"></i>
+      </a>
+
+      {% include "core/header/__header_custom_menu_new.html" %}
+    </div>
+  </div>
+</div>

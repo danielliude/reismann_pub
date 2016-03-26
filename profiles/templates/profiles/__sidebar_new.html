@@ -1,0 +1,36 @@
+{% load i18n %}
+<div class="ui left demo vertical inverted sidebar icon menu">
+
+    <div class="ui header item">{% trans 'Profile sidebar' %}</div>
+    {% with request.resolver_match.url_name as url_name %}
+    <a class="item {% if url_name == 'dashboard' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
+      <i class="dashboard icon"></i>
+      {% trans 'Dashboard' %}
+    </a>
+    <a class="item {% if url_name == 'bookings' %}active{% endif %}" href="{% url 'profiles:bookings' profile.user.username %}">
+      <i class="bookmark icon"></i>
+      {% trans 'Bookings' %}
+    </a>
+    <a class="item {% if url_name == 'messages' %}active{% endif %}" href="{% url 'profiles:messages' profile.user.username %}">
+      <i class="comment outline icon"></i>
+      {% trans 'Messages' %}
+    </a>
+    <a class="item {% if url_name == 'detail' %}active{% endif %}" href="{% url 'profiles:detail' profile.user.username %}">
+      <i class="user icon"></i>
+      {% trans 'Profile' %}
+    </a>
+    <a class="item {% if url_name == 'contact' %}active{% endif %}" href="{% url 'profiles:contact' profile.user.username %}">
+      <i class="phone icon"></i>
+      {% trans 'Contact' %}
+    </a>
+    <a class="item {% if url_name == 'services' %}active{% endif %}" href="{% url 'profiles:services' profile.user.username %}">
+      <i class="server icon"></i>
+      {% trans 'Services' %}
+    </a>
+    <a class="item" href="{% url 'accounts:logout' %}">
+      <i class="sign out icon"></i>
+      {% trans 'Quit' %}
+    </a>
+    {% endwith %}
+</div>
+

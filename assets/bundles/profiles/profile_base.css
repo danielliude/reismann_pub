@@ -1,0 +1,22 @@
+body {
+  background-color: #f3f3f3; }
+
+.ui.inverted.sidebar {
+  margin-top: 49px !important; }
+
+.ui.segment.profile_info {
+  margin-top: 1rem; }
+  .ui.segment.profile_info .right_absolute {
+    position: absolute;
+    right: 1rem; }
+  .ui.segment.profile_info .ui.divided.items > .item {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; }
+
+.ui.segment.all_services {
+  margin-bottom: 2rem; }
+  .ui.segment.all_services .ui.divided.items > .item {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; }
+  .ui.segment.all_services .ui.label {
+    padding: 6px 9px; }

@@ -15,10 +15,6 @@ body, body.pushable > .pusher {
     .position-fixed .reismann_logo a {
       padding-left: 12px; }
 
-.ui.visible.left.sidebar ~ .fixed, .ui.visible.left.sidebar ~ .pusher {
-  -webkit-transform: translate3d(157px, 0, 0);
-  transform: translate3d(157px, 0, 0); }
-
 /*--------------
     responsive
 ---------------*/

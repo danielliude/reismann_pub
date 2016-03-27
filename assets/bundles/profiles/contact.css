@@ -1,4 +1,9 @@
 .ui.segment.contact_form {
   max-width: 700px;
-  margin-top: 64px;
-  margin-bottom: 2rem; }
+  margin-top: 80px;
+  margin-bottom: 2.5rem; }
+  .ui.segment.contact_form ul.errorlist {
+    list-style: none;
+    -webkit-padding-start: 0; }
+    .ui.segment.contact_form ul.errorlist li {
+      color: #dd4b39; }

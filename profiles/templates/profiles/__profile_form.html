@@ -1,80 +1,83 @@
 {% load i18n %}
 
-<div class="box box-primary square">
-
-  <div class="box-header with-border">
-    <h3 class="box-title">{% trans 'Edit profile' %}</h3>
-  </div>
-
-  <div class="box-body box-profile">
-
-    <form id="profile_edit_form" action="" enctype="multipart/form-data" method="post">
-
-      {% csrf_token %}
-
-      {{ form.non_field_errors }}
-
-      {{ form.last_name.errors }}
-      <div class="form-group has-feedback">
+<div class="ui blue segment profile_form">
+  <h3 class="ui center aligned header">{% trans 'Edit profile' %}</h3>
+  <form class="ui form" action="" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    
+    {{ form.non_field_errors }}
+    {{ form.last_name.errors }}
+    <div class="field">
         <label>{{ form.last_name.label }}</label>
-        {{ form.last_name }}
-      </div>
-
-      {{ form.first_name.errors }}
-      <div class="form-group has-feedback">
+        <div class="ui corner labeled input">
+          {{ form.last_name }}
+          <div class="ui corner label">
+            <i class="asterisk icon"></i>
+          </div>
+        </div>
+    </div>
+    {{ form.first_name.errors }}
+    <div class="field">
         <label>{{ form.first_name.label }}</label>
-        {{ form.first_name }}
-      </div>
-
-      {{ form.gender.errors }}
-      <div class="form-group">
-        <label>{{ form.gender.label }}</label>
-        {{ form.gender }}
-      </div>
-
-      {{ form.avatar.errors }}
-      <div class="form-group">
-        <label>{{ form.avatar.label }}</label>
-        {{ form.avatar }}
-      </div>
-
-      {{ form.birthday.errors }}
-      <div class="form-group">
-        <label>{{ form.birthday.label }}</label>
-        <div class="input-group date">
-          {{ form.birthday }}
-          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        <div class="ui corner labeled input">
+          {{ form.first_name }}
+          <div class="ui corner label">
+            <i class="asterisk icon"></i>
+          </div>
         </div>
       </div>
-
-      {{ form.location.errors }}
-      <div class="form-group">
-        <label>{{ form.location.label }}</label>
-        {{ form.location }}
+      {{ form.gender.errors }}
+    <div class="field">
+        <label>{{ form.gender.label }}</label>
+        {{ form.gender }}
+    </div>
+    {{ form.avatar.errors }}
+    <div class="field">
+      <label>{{ form.avatar.label }}</label>
+      <div class="ui checkbox">
+        {{ form.avatar }}
       </div>
-
-      {{ form.short_description.errors }}
-      <div class="form-group">
-        <label>{{ form.short_description.label }}</label>
-        {{ form.short_description }}
-      </div>
-
-      {{ form.card_image.errors }}
-      <div class="form-group">
-        <label>{{ form.card_image.label }}</label>
+    </div>
+    {{ form.birthday.errors }}
+    <div class="field">
+      <label>{{ form.birthday.label }}</label>
+      <div class="ui corner labeled input">
+          {{ form.birthday }}
+          <div class="ui corner label">
+            <i class="asterisk icon"></i>
+          </div>
+        </div>
+    </div>
+    {{ form.location.errors }}
+    <div class="field">
+      <label>{{ form.location.label }}</label>
+      {{ form.location }}
+    </div>
+    {{ form.short_description.errors }}
+    <div class="field">
+      <label>{{ form.short_description.label }}</label>
+      <div class="ui corner labeled input">
+          {{ form.short_description }}
+          <div class="ui corner label">
+            <i class="asterisk icon"></i>
+          </div>
+        </div>
+    </div>
+    {{ form.card_image.errors }}
+    <div class="field">
+      <label>{{ form.card_image.label }}</label>
+      <div class="ui checkbox">
         {{ form.card_image }}
       </div>
-
-      {{ form.bio.errors }}
-      <div class="form-group">
-        <label>{{ form.bio.label }}</label>
-        {{ form.bio }}
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans 'Save changes' %}</button>
-      <a href="{% url 'profiles:detail' profile.user.username %}" class="btn btn-danger btn-block btn-flat">{% trans 'Cancel' %}</a>
-
-    </form>
-
-  </div>
+    </div>
+    {{ form.bio.errors }}
+    <div class="field">
+      <label>{{ form.bio.label }}</label>
+      {{ form.bio }}
+    </div>
+    <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+    <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
+    <div class="ui error message">
+    </div>
+  </form>
 </div>

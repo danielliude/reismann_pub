@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <div class="ui blue segment contact_form">
-  <h5 class="ui center aligned header">{% trans 'Edit contact' %}</h5>
+  <h3 class="ui center aligned header">{% trans 'Edit contact' %}</h3>
   <form class="ui form" action="" method="post">
     {% csrf_token %}
     
@@ -49,7 +49,7 @@
       </div>
     </div>
     <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
-    <a href="{% url 'profiles:dashboard' profile.user.username %}" class="fluid ui primary button">{% trans 'Cancel' %}</a>
+    <a href="{% url 'profiles:dashboard' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
     <div class="ui error message">
     </div>
   </form>

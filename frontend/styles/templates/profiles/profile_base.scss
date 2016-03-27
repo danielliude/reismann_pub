@@ -21,9 +21,9 @@ body, body.pushable>.pusher {
 	}
 }
 
-.ui.visible.left.sidebar~.fixed, .ui.visible.left.sidebar~.pusher {
-    -webkit-transform: translate3d(157px,0,0);
-    transform: translate3d(157px,0,0);
+.ui.visible.left.sidebar~.pusher {
+    // transform: translate3d(157px,0,0);
+    // -webkit-transform: translate3d(157px,0,0);
 }
 
 

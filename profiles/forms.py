@@ -21,7 +21,7 @@ class ProfileForm(forms.ModelForm):
                               max_length=30,
                               widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Last name')}))
   gender = forms.ChoiceField(label=_('gender'),
-                             widget=forms.Select(attrs={'class': 'required form-control', 'required': True}),
+                             widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'required': True}),
                              choices=GENDER_CHOICES)
   avatar = forms.ImageField(label=_('avatar'),
                              widget=ImageClearableFileInput(attrs={'class': 'form-control'}),
@@ -31,10 +31,10 @@ class ProfileForm(forms.ModelForm):
                                                     format='%Y-%m-%d'),
                              input_formats=['%Y-%m-%d'])
   location = forms.ModelChoiceField(label=_('profile location'),
-                                    widget=forms.Select(attrs={'class': 'required form-control', 'required': True}),
+                                    widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'multiple' : "", 'required': True}),
                                     queryset=City.objects.all())
   short_description = forms.CharField(label=_('profile short description'), max_length=255,
-                                      widget=forms.TextInput(attrs={'class': 'form-control'}),
+                                      widget=forms.TextInput(attrs={'class': 'form-control', 'required': True}),
                                       required=False)
   card_image = forms.ImageField(label=_('profile card image'),
                                 widget=ImageClearableFileInput(attrs={'class': 'form-control'}),

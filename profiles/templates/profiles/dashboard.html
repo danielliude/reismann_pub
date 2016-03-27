@@ -1,4 +1,11 @@
 {% extends "profiles/__profile_base_new.html" %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/dashboard' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/dashboard' 'js' %}
+{% endblock %}
 
 {% block content %}
   <div class="pusher">

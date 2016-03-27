@@ -21,6 +21,8 @@ module.exports = {
     'accounts/password_reset_confirm': './js/accounts/password_reset_confirm',
     'profiles/profile': './js/profiles/profile',
     'profiles/profile_base': './js/profiles/profile_base',
+    'profiles/dashboard': './js/profiles/dashboard',
+    'profiles/contact': './js/profiles/contact',
   },
 
   output: {

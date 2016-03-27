@@ -14,25 +14,25 @@ class ContactForm(forms.ModelForm):
   """
   Form for creating or editing a new contact.
   """
-  phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('telefon number')}),
+  phone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('telefon number')}),
                           label=_('telephone number'),
                           max_length=30)
 
-  email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('contact email')}),
+  email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder': _('contact email')}),
                           label=_('contact email'),
                           max_length=200)
 
-  weibo = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('weibo account')}),
+  weibo = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('weibo account')}),
                           label=_('weibo account'),
                           max_length=30)
-  wechat = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('wechat account')}),
+  wechat = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('wechat account')}),
                            label=_('wechat account'),
                            max_length=30)
-  qq = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('qq account')}),
+  qq = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('qq account')}),
                        label=_('qq account'),
                        max_length=30)
 
-  email_notifications = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-control', 'placeholder': _('email notifications')}),
+  email_notifications = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('email notifications')}),
                        required= False,
                        label=_('email notifications'))
 

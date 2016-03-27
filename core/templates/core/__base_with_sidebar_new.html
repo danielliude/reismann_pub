@@ -10,6 +10,7 @@
     {% block meta_tags %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
     {% render_bundle 'global' 'css' %}
+    {% render_bundle 'profiles/profile_base' 'css' %}
     {% block stylesheets %}{% endblock %}
     {% block header_javascripts %}{% endblock %}
     {% block extra_head %}{% endblock %}
@@ -22,6 +23,7 @@
     {% block footer %}{% include "core/footer/__footer_new.html" %}{% endblock %}
 
     {% render_bundle 'global' 'js' %}
+    {% render_bundle 'profiles/profile_base' 'js' %}
     {% block javascripts %}{% endblock %}
 </body>
 </html>

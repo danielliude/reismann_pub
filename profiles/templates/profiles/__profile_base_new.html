@@ -1,13 +1,6 @@
 {% extends "core/__base_with_sidebar_new.html" %}
 {% load render_bundle from webpack_loader %}
 
-{% block stylesheets %}
-    {% render_bundle 'profiles/profile_base' 'css' %}
-{% endblock %}
-{% block javascripts %}
-    {% render_bundle 'profiles/profile_base' 'js' %}
-{% endblock %}
-
 {% block sidebar %}
   {% include "profiles/__sidebar_new.html" %}
 {% endblock %}

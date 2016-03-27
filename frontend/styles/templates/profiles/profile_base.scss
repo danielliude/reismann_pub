@@ -1,4 +1,4 @@
-body {
+body, body.pushable>.pusher {
 	background-color: rgb(243, 243, 243);
 }
 
@@ -7,27 +7,33 @@ body {
 }
 
 
-
-
-.ui.segment.profile_info {
-	margin-top: 1rem;
-	.right_absolute {
-		position: absolute;
-		right: 1rem;
-	}
-	.ui.divided.items>.item {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+.position-fixed {
+	position: fixed;
+	top: 0px;
+	height: 50px;
+	width: 100%;
+	z-index: 100;
+	.reismann_logo {
+		width: 158px;
+		a {
+			padding-left: 12px;
+		}
 	}
 }
 
-.ui.segment.all_services {
-	margin-bottom: 2rem;
-	.ui.divided.items>.item {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
-	}
-	.ui.label {
-		padding: 6px 9px;
-	}
+.ui.visible.left.sidebar~.fixed, .ui.visible.left.sidebar~.pusher {
+    -webkit-transform: translate3d(157px,0,0);
+    transform: translate3d(157px,0,0);
+}
+
+
+@import '../../base/responsive';
+/*--------------
+    responsive
+---------------*/
+.masthead .fixed_h .right.menu > .mobile.item {
+  display: none;
+  @include MQ(M) {
+    display: none;
+  }
 }

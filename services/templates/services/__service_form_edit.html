@@ -1,11 +1,7 @@
 {% load i18n %}
 
-<div class="box box-primary">
-
-  <div class="box-header with-border">
-    <h3 class="box-title">{% trans 'Edit service' %}</h3>
-  </div>
+<div class="ui blue segment service_show">
+  <h3 class="ui center aligned header">{% trans 'Edit service' %}</h3>
 
   {% include 'services/__service_form.html' %}
-
 </div>

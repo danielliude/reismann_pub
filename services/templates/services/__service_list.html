@@ -1,21 +1,19 @@
 {% load i18n %}
 
-<div class="box box-primary">
+<div class="ui blue segment service_show">
+  <h3 class="ui center aligned header">{% trans 'Available services' %}</h3>
 
-  <div class="box-header with-border">
-    <h3 class="box-title">{% trans 'Available services' %}</h3>
-  </div>
-
-  <div class="box-body">
-
-      <table class="table table-hover">
+  <table class="ui striped table">
+      <thead>
         <tr>
-            <th>{% trans "Title" %}</th>
-            <th>{% trans "Price" %}</th>
-            <th>{% trans "Date of creation" %}</th>
-            <th>{% trans "Active" %}</th>
-            <th>{% trans "View" %}</th>
+          <th>{% trans "Title" %}</th>
+          <th>{% trans "Price" %}</th>
+          <th>{% trans "Date of creation" %}</th>
+          <th>{% trans "Active" %}</th>
+          <th>{% trans "View" %}</th>
         </tr>
+      </thead>
+      <tbody>
         {% for service in services %}
         <tr onclick="window.document.location='edit/{{ service.id }}/';">
             <td>{{ service.title }}</td>
@@ -23,36 +21,28 @@
             <td>{{ service.created_at }}</td>
 
             {% ifequal service.is_active True %}
-                <td><span class="label label-success">{{ service.is_active }}</span></td>
+                <td><span class="ui green label">{{ service.is_active }}</span></td>
             {% else %}
-                <td><span class="label label-danger">{{ service.is_active }}</span></td>
+                <td><span class="ui red label">{{ service.is_active }}</span></td>
             {% endifequal %}
 
             <td>
-               <a href="edit/{{ service.id }}/">
-                    <button data-original-title="Edit service" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                        <i class="fa fa-eye"></i>
-                    </button>
+                <a class="ui green label" href="edit/{{ service.id }}/">
+                  <i class="unhide icon"></i>view
                 </a>
             </td>
         </tr>
-
-    {% endfor %}
-
-     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <a href="add">
-                <button data-original-title="Add service" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                    <i class="fa fa-pencil"></i>
-                </button>
+        {% endfor %}
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <a class="ui green label" href="add">
+              <i class="edit icon"></i>add
             </a>
-    </tr>
-</table>
-
-  </div>
-
+        </tr>
+      </tbody>
+    </table>
 </div>

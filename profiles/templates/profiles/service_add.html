@@ -1,15 +1,19 @@
-{% extends "profiles/__profile_base.html" %}
+{% extends "profiles/__profile_base_new.html" %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/services' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/services' 'js' %}
+{% endblock %}
 
 {% block content %}
-
-  <div class="row">
-
-    <div class="col-md-8 col-md-offset-2">
-
-     {% include 'services/__service_form_add.html' %}
-
+  <div class="pusher">
+    <div class="ui page grid">
+      <div class="column">
+        {% include 'services/__service_form_add.html' %}
+      </div>
     </div>
+  <div>
 
-  </div>
-
-{% endblock %}
+{% endblock %} 

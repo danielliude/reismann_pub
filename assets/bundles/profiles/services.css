@@ -1,0 +1,9 @@
+.ui.segment.service_show {
+  max-width: 800px;
+  margin-top: 80px;
+  margin-bottom: 2.5rem; }
+  .ui.segment.service_show ul.errorlist {
+    list-style: none;
+    -webkit-padding-start: 0; }
+    .ui.segment.service_show ul.errorlist li {
+      color: #dd4b39; }

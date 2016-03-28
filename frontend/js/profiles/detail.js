@@ -2,6 +2,9 @@ import '../../styles/templates/profiles/detail.scss'
 import '../../vendors/daterangepicker/daterangepicker.css'
 
 
+// import '../../vendors/daterangepicker/moment.js'
+// import '../../vendors/daterangepicker/daterangepicker.js'
+
 $(function() {
     init_button()
     // init_form()

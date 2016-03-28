@@ -1,66 +1,66 @@
 {% load i18n %}
 
-<div class="box-body">
-
-    <form action="" id="service_edit_form" enctype="multipart/form-data" method="post">
-
-       <div class="box-body">
-          {% csrf_token %}
-
-          {{ form.non_field_errors }}
-
-          {{ form.title.errors }}
-          <div class="form-group">
-            <label>{{ form.title.label }}</label>
-            {{ form.title }}
-          </div>
-
-          {{ form.content.errors }}
-          <div class="form-group">
-            <label>{{ form.content.label }}</label>
-            {{ form.content }}
-          </div>
-
-          {{ form.price.errors }}
-          <div class="form-group">
-            <label>{{ form.price.label }}</label>
-            {{ form.price }}
-          </div>
-
-          {{ form.type.errors }}
-          <div class="form-group">
-            <label>{{ form.type.label }}</label>
-            {{ form.type }}
-          </div>
-
-          {{ form.cities.errors }}
-          <div class="form-group">
-            <label>{{ form.cities.label }}</label>
-            {{ form.cities }}
-          </div>
-
-          {{ form.categories.errors }}
-          <div class="form-group">
-            <label>{{ form.categories.label }}</label>
-            {{ form.categories }}
-          </div>
-
-          {{ form.languages.errors }}
-          <div class="form-group">
-            <label>{{ form.languages.label }}</label>
-            {{ form.languages }}
-          </div>
-
-          {{ form.tags.errors }}
-          <div class="form-group">
-            <label>{{ form.tags.label }}</label>
-            {{ form.tags }}
-          </div>
-
-          <button class="btn btn-primary btn-block btn-flat" type="submit">{% trans 'Save changes' %}</button>
-          <a href="{% url 'profiles:services' profile.user.username %}" class="btn btn-danger btn-block btn-flat">{% trans 'Cancel' %}</a>
+<form class="ui form service_form" action="" enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+  
+  {{ form.non_field_errors }}
+  {{ form.title.errors }}
+  <div class="field">
+    <label>{{ form.title.label }}</label>
+    <div class="ui corner labeled input">
+      {{ form.title }}
+      <div class="ui corner label">
+        <i class="asterisk icon"></i>
       </div>
-
-    </form>
-
+    </div>
   </div>
+  {{ form.content.errors }}
+  <div class="field">
+    <label>{{ form.content.label }}</label>
+    <div class="ui corner labeled input">
+      {{ form.content }}
+      <div class="ui corner label">
+        <i class="asterisk icon"></i>
+      </div>
+    </div>
+  </div>
+  {{ form.price.errors }}
+  <div class="field">
+    <label>{{ form.price.label }}</label>
+    <div class="ui right labeled input">
+      <div class="ui label">$</div>
+      {{ form.price }}
+      <div class="ui basic label">.00</div>
+    </div>
+  </div>
+  {{ form.type.errors }}
+  <div class="field">
+      <label>{{ form.type.label }}</label>
+      {{ form.type }}
+  </div>
+  {{ form.cities.errors }}
+  <div class="field">
+      <label>{{ form.cities.label }}</label>
+      {{ form.cities }}
+  </div>
+  {{ form.categories.errors }}
+  <div class="field">
+      <label>{{ form.categories.label }}</label>
+      {{ form.categories }}
+  </div>
+  {{ form.languages.errors }}
+  <div class="field">
+      <label>{{ form.languages.label }}</label>
+      {{ form.languages }}
+  </div>
+  {{ form.tags.errors }}
+  <div class="field">
+      <label>{{ form.tags.label }}</label>
+      {{ form.tags }}
+  </div>
+  
+  <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+  <a href="{% url 'profiles:services' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
+  <div class="ui error message">
+  </div>
+</form>

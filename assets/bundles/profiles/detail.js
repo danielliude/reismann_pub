@@ -51,6 +51,9 @@
 
 	__webpack_require__(39);
 
+	// import '../../vendors/daterangepicker/moment.js'
+	// import '../../vendors/daterangepicker/daterangepicker.js'
+
 	$(function () {
 	    init_button();
 	    // init_form()

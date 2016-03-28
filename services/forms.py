@@ -18,13 +18,11 @@ logger = logging.getLogger('services')
 class ServiceForm(forms.ModelForm):
 
   title = forms.CharField(widget=forms.TextInput(attrs={
-                            'class': 'form-control',
                             'placeholder': _('service title')}),
                           label=_('Title'),
                           max_length=150)
 
   content = forms.CharField(widget=forms.Textarea(attrs={
-                             'class': 'form-control',
                              'placeholder': _('service content'),
                              'cols': "20",
                              'rows': "5"}),
@@ -34,45 +32,44 @@ class ServiceForm(forms.ModelForm):
   price = forms.IntegerField(min_value=1, max_value=1000, required=True, label=_('Price'))
 
   type = forms.ChoiceField(label=_('Type'),
-                           choices = SERVICE_TYPE_CHOICES, initial='', widget=forms.Select(), required=True)
+                           choices = SERVICE_TYPE_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'required': True}), required=True)
 
   forms.IntegerField(label=_('Type'),
                               widget=forms.Select(attrs={
                                'class': 'form-control select2',
-                               'data-placeholder': _('service type'),
-                               'style': 'width: 100%'
+                               'placeholder': _('service type')
                              }),
                             required= True, )
 
   cities = forms.ModelMultipleChoiceField(label=_('Cities'),
                                      widget=forms.SelectMultiple(attrs={
-                                       'class': 'form-control',
-                                       'data-placeholder': _('service cities'),
-                                       'style': 'width: 100%'
+                                       'class': 'ui fluid search dropdown',
+                                       'multiple' : "",
+                                       'placeholder': _('service cities')
                                      }),
                                      queryset=City.objects.all())
 
   categories = forms.ModelMultipleChoiceField(label=_('Categories'),
                                          widget=forms.SelectMultiple(attrs={
-                                           'class': 'form-control select2',
-                                           'data-placeholder': _('service categories'),
-                                            'style': 'width: 100%'
+                                           'class': 'ui fluid search dropdown',
+                                           'multiple' : "",
+                                           'placeholder': _('service categories')
                                          }),
                                          queryset=ServiceCategory.objects.all())
 
   languages = forms.ModelMultipleChoiceField(label=_('Languages'),
                                         widget=forms.SelectMultiple(attrs={
-                                          'class': 'form-control select2',
-                                          'data-placeholder': _('service languages'),
-                                          'style': 'width: 100%'
+                                          'class': 'ui fluid search dropdown',
+                                          'multiple' : "",
+                                          'placeholder': _('service languages')
                                         }),
                                         queryset=ServiceLanguage.objects.all())
 
   tags = forms.ModelMultipleChoiceField(label=_('Tags'),
                                    widget=forms.SelectMultiple(attrs={
-                                     'class': 'form-control select2',
-                                     'data-placeholder': _('service tags'),
-                                      'style': 'width: 100%'
+                                     'class': 'ui fluid search dropdown',
+                                     'multiple' : "",
+                                     'data-placeholder': _('service tags')
                                    }),
                                    queryset=ServiceTag.objects.all())
 

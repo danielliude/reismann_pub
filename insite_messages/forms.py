@@ -10,19 +10,17 @@ from insite_messages.models import Message
 class MessageComposeForm(forms.Form):
 
   recipient = forms.ModelChoiceField(widget=forms.Select(attrs={
-                        'class': 'form-control select2',
+                        'class': 'ui fluid search dropdown',
                         'placeholder': _('recipient')}),
                       label=_('Recipient'),
                       queryset= User.objects.all())
 
   subject = forms.CharField(widget=forms.TextInput(attrs={
-                        'class': 'form-control',
                         'placeholder': _('subject')}),
                       label=_('Subject'),
                       max_length=120)
 
   body = forms.CharField(widget=forms.Textarea(attrs={
-                         'class': 'form-control',
                          'placeholder': _('message body'),
                          'cols': "20",
                          'rows': "5"}),

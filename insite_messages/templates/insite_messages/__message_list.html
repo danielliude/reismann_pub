@@ -1,127 +1,101 @@
 {% load i18n %}
 
-<div class="main ui container">
+<div class="ui blue segment message_show">
+  <h3 class="ui center aligned header">{% trans 'Messages' %}</h3>
 
-   <h3 class="ui dividing header">{% trans 'Messages' %}</h3>
+  <table class="ui striped table">
+    <thead>
+      <tr>
+        <th>{% trans "Sender" %}</th>
+        <th>{% trans "Recipient" %}</th>
+        <th>{% trans "Subject" %}</th>
+        <th>{% trans "Sent at" %}</th>
+        <th>{% trans "Status" %}</th>
+        <th>{% trans "View" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for message in messages %}
+      <tr onclick="window.document.location='{{ message.id }}/';">
+        {% if message.sender == user %}
+          <td>
+            <h4 class= "ui image header">
+              <img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+              <div class="content">
+                  {% trans "Me" %}
+                  <div class="sub header">{{ message.sender.profile.location }}</div>
+              </div>
+            </h4>
+          </td>
+        {% else %}
+          <td>
+            <h5 class= "ui image header">
+              <img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+              <div class="ui content">
+                {{ message.sender }}
+                <div class="sub header">
+                    {{ message.sender.profile.location }}
+                </div>
+              </div>
+            </h5>
+          </td>
+        {% endif %}
 
-  <div class="ui top attached segment">
-      <table class="ui very basic collapsing celled table">
-        <thead>
-            <tr>
-                <th>{% trans "Sender" %}</th>
-                <th>{% trans "Recipient" %}</th>
-                <th>{% trans "Subject" %}</th>
-                <th>{% trans "Sent at" %}</th>
-                <th>{% trans "Status" %}</th>
-                <th>{% trans "View" %}</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {% for message in messages %}
-
-            <tr onclick="window.document.location='{{ message.id }}/';">
-                {% if message.sender == user %}
-                    <td>
-                        <h4 class= "ui image header">
-                            <img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image">
-                            <div class="content">
-                                {% trans "Me" %}
-                                <div class="sub header">{{ message.sender.profile.location }}</div>
-                            </div>
-
-                        </h4>
-                    </td>
-                {% else %}
-                    <td>
-                        <h5 class= "ui image header">
-                            <img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image">
-                            <div class="ui content">
-                                {{ message.sender }}
-
-                                <div class="sub header">
-                                    {{ message.sender.profile.location }}
-                                </div>
-                            </div>
-
-                        </h5>
-                    </td>
-                {% endif %}
-
-                {% if message.recipient == user %}
-                    <td>
-                        <h5 class= "ui image header">
-                            <img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
-                            <div class="content">
-                                {% trans "Me" %}
-
-                                <div class="sub header">
-                                    {{ message.recipient.profile.location }}
-                                </div>
-                            </div>
-
-                        </h5>
-                    </td>
-                {% else %}
-                    <td>
-                        <h5 class= "ui image header">
-                            <img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
-                            <div class="content">
-                                {{ message.recipient }}
-
-                                <div class="sub header">
-                                    {{ message.recipient.profile.location }}
-                                </div>
-                            </div>
-
-                        </h5>
-                    </td>
-                {% endif %}
-
-                <td>{{ message.subject }}</td>
-                <td>{{ message.sent_at }}</td>
-                <td>
-                    {% ifequal message.status "Read" %}
-                        <a class="ui green label">{{ message.status }}</a>
-
-                    {% else %}
-                        <a class="ui red label">{{ message.status }}</a>
-                    {% endifequal %}
-                </td>
-
-
-                <td>
-                    <a href="{{ message.id }}/">
-                        <div class="ui icon button">
-                            <i class="right arrow icon"></i>
-                        </div>
-                    </a>
-                </td>
-
-
-
-            </tr>
-            {% endfor %}
-
-             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href="write/">
-                        <div class="ui icon button">
-                            <i class="right edit icon"></i>
-                        </div>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-
-
-    </table>
-
-  </div>
-
+        {% if message.recipient == user %}
+          <td>
+            <h5 class= "ui image header">
+              <img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+              <div class="content">
+                {% trans "Me" %}
+                <div class="sub header">
+                  {{ message.recipient.profile.location }}
+                </div>
+              </div>
+            </h5>
+          </td>
+        {% else %}
+          <td>
+            <h5 class= "ui image header">
+              <img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+              <div class="content">
+                {{ message.recipient }}
+                <div class="sub header">
+                  {{ message.recipient.profile.location }}
+                </div>
+              </div>
+            </h5>
+          </td>
+        {% endif %}
+          <td>{{ message.subject }}</td>
+          <td>{{ message.sent_at }}</td>
+          <td>
+            {% ifequal message.status "Read" %}
+              <a class="ui green label">{{ message.status }}</a>
+            {% else %}
+              <a class="ui red label">{{ message.status }}</a>
+            {% endifequal %}
+          </td>
+          <td>
+            <a href="{{ message.id }}/">
+              <div class="ui icon button">
+                <i class="right arrow icon"></i>
+              </div>
+            </a>
+          </td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <a class="ui green label" href="write/">
+            <i class="edit icon"></i>
+            write
+          </a>
+      </tr>
+    </tbody>
+  </table>
 </div>
+

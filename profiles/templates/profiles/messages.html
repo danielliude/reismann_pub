@@ -1,15 +1,18 @@
-{% extends "profiles/__profile_base.html" %}
+{% extends "profiles/__profile_base_new.html" %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/message' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/message' 'js' %}
+{% endblock %}
 
 {% block content %}
-
-  <div class="row">
-
-    <div class="col-md-8 col-md-offset-2">
-
-     {% include 'insite_messages/__message_list.html' %}
-
+  <div class="pusher">
+    <div class="ui page grid">
+      <div class="column">
+        {% include 'insite_messages/__message_list.html' %}
+      </div>
     </div>
-
-  </div>
-
-{% endblock %}
+  <div>
+{% endblock %} 

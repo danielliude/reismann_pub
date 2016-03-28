@@ -25,6 +25,7 @@ module.exports = {
     'profiles/contact': './js/profiles/contact',
     'profiles/detail': './js/profiles/detail',
     'profiles/services': './js/profiles/services',
+    'profiles/message': './js/profiles/message',
   },
 
   output: {

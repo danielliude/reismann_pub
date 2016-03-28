@@ -47,41 +47,48 @@
 
 	'use strict';
 
-	__webpack_require__(49);
+	__webpack_require__(41);
 
 	$(function () {
-		init_rating();
-		send_message();
+	    init_button();
+	    init_form();
 
-		function init_rating() {
-			$('.ui.comments .ui.rating').rating('disable');
-			$('.ui.form .ui.rating').rating();
-		}
-		function send_message() {
-			$('.ui.form .submit').click(function () {
-				var stars = $('.ui.form .ui.rating .icon.active').size();
-				var comment = $("#id_comment").val();
-				if (stars == "0") {
-					return alert('please star rating');
-				}
-				if (comment == "") {
-					return alert('please comment');
-				}
+	    function init_button() {
+	        $('.message_write_form .ui.dropdown').dropdown();
+	    }
 
-				var temp = {
-					'stars': stars,
-					'comment': comment
-				};
-				$.post('', temp, function (result) {
-					location.href = location.href;
-				});
-			});
-		}
+	    function init_form() {
+	        $('.ui.form.message_write_form').form({
+	            fields: {
+	                recipient: {
+	                    identifier: 'recipient',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your recipient'
+	                    }]
+	                },
+	                subject: {
+	                    identifier: 'subject',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your subject'
+	                    }]
+	                },
+	                body: {
+	                    identifier: 'body',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your message'
+	                    }]
+	                }
+	            }
+	        });
+	    }
 	});
 
 /***/ },
 
-/***/ 49:
+/***/ 41:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

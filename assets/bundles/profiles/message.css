@@ -1,0 +1,9 @@
+.ui.segment.message_show {
+  max-width: 900px;
+  margin-top: 80px;
+  margin-bottom: 2.5rem; }
+  .ui.segment.message_show ul.errorlist {
+    list-style: none;
+    -webkit-padding-start: 0; }
+    .ui.segment.message_show ul.errorlist li {
+      color: #dd4b39; }

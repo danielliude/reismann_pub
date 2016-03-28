@@ -5,6 +5,9 @@ $(function() {
     init_form()
 
     function init_button() {
+        $(".service_show [multiple='multiple']").each(function() {
+            $(this).append("<option value=''>" + $(this).attr("placeholder") + "</option>")
+        })
         $('.service_show .ui.dropdown').dropdown();
     }
 
@@ -43,7 +46,7 @@ $(function() {
                         {
                             type   : 'integer[1..1000]',
                             prompt : 'Please enter an integer value, 1 to 1000'
-                          }
+                        }
                     ]
                 },
                 type: {

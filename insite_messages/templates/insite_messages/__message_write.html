@@ -1,11 +1,7 @@
 {% load i18n %}
 
-<div class="box box-primary">
-
-  <div class="box-header with-border">
-    <h3 class="box-title">{% trans 'Write message' %}</h3>
-  </div>
+<div class="ui blue segment message_show">
+  <h3 class="ui center aligned header">{% trans 'Write message' %}</h3>
 
   {% include 'insite_messages/__message_form.html' %}
-
 </div>

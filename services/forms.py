@@ -37,7 +37,7 @@ class ServiceForm(forms.ModelForm):
   forms.IntegerField(label=_('Type'),
                               widget=forms.Select(attrs={
                                'class': 'form-control select2',
-                               'placeholder': _('service type')
+                               'placeholder': _('service type'),
                              }),
                             required= True, )
 
@@ -69,7 +69,7 @@ class ServiceForm(forms.ModelForm):
                                    widget=forms.SelectMultiple(attrs={
                                      'class': 'ui fluid search dropdown',
                                      'multiple' : "",
-                                     'data-placeholder': _('service tags')
+                                     'placeholder': _('service tags')
                                    }),
                                    queryset=ServiceTag.objects.all())
 

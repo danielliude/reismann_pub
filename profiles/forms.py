@@ -31,7 +31,7 @@ class ProfileForm(forms.ModelForm):
                                                     format='%Y-%m-%d'),
                              input_formats=['%Y-%m-%d'])
   location = forms.ModelChoiceField(label=_('profile location'),
-                                    widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'multiple' : "", 'required': True}),
+                                    widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'required': True}),
                                     queryset=City.objects.all())
   short_description = forms.CharField(label=_('profile short description'), max_length=255,
                                       widget=forms.TextInput(attrs={'class': 'form-control', 'required': True}),

@@ -13,7 +13,7 @@ from django.utils.timezone import utc
 class BookingForm(forms.ModelForm):
 
   service = forms.ModelChoiceField(required=True,
-                                    widget=forms.Select(attrs={'class': 'form-control select2',
+                                    widget=forms.Select(attrs={'class': 'ui fluid search dropdown',
                                     'placeholder': _('service')}),
                                     label=_('Service'),
                                     queryset= Service.objects.all())
@@ -44,12 +44,10 @@ class BookingForm(forms.ModelForm):
   meeting_point = forms.CharField(required=False,
                                   max_length=200, label = _('Meeting point'),
                                   widget=forms.TextInput(attrs={
-                                      'class': 'form-control',
                                       'placeholder': _('meeting point')}),)
 
   booking_content = forms.CharField(required=False,
                                     widget=forms.Textarea(attrs={
-                                        'class': 'form-control',
                                         'placeholder': _('booking content'),
                                         'cols': "20",
                                         'rows': "5"}),
@@ -58,7 +56,6 @@ class BookingForm(forms.ModelForm):
 
   booking_remark = forms.CharField(required=False,
                                    widget=forms.Textarea(attrs={
-                                        'class': 'form-control',
                                         'placeholder': _('booking remark'),
                                         'cols': "20",
                                         'rows': "5"}),

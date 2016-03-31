@@ -47,9 +47,9 @@
 
 	'use strict';
 
-	__webpack_require__(37);
-
 	__webpack_require__(39);
+
+	__webpack_require__(41);
 
 	// import '../../vendors/daterangepicker/moment.js'
 	// import '../../vendors/daterangepicker/daterangepicker.js'
@@ -142,14 +142,14 @@
 
 /***/ },
 
-/***/ 37:
+/***/ 39:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 39:
+/***/ 41:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

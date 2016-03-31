@@ -1,15 +1,18 @@
-{% extends "profiles/__profile_base.html" %}
+{% extends "profiles/__profile_base_new.html" %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/bookings' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/bookings' 'js' %}
+{% endblock %}
 
 {% block content %}
-
-  <div class="row">
-
-    <div class="col-md-8 col-md-offset-2">
-
-     {% include 'bookings/__booking_form_edit.html' %}
-
+  <div class="pusher">
+    <div class="ui page grid">
+      <div class="column">
+        {% include 'bookings/__booking_form_edit.html' %}
+      </div>
     </div>
-
-  </div>
-
-{% endblock %}
+  <div>
+{% endblock %} 

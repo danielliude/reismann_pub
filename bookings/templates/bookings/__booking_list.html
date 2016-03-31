@@ -1,139 +1,107 @@
 {% load i18n %}
 
-<div class="main ui container">
+<div class="ui blue segment bookings_show">
+  <h3 class="ui center aligned header">{% trans 'Bookings' %}</h3>
 
-   <h3 class="ui dividing header">{% trans 'Bookings' %}</h3>
-
-  <div class="ui top attached segment">
-      <table class="ui very basic collapsing celled table">
-        <thead>
-            <tr>
-                <th>{% trans "Customer" %}</th>
-                <th>{% trans "Provider" %}</th>
-                <th>{% trans "Service" %}</th>
-                <th>{% trans "Price" %}</th>
-                <th>{% trans "Status" %}</th>
-                <th>{% trans "View" %}</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {% for booking in bookings %}
-
-            <tr onclick="window.document.location='view/{{ booking.id }}/';">
-                {% if booking.sender == user %}
-                    <td>
-                        <h4 class= "ui image header">
-                            <img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image">
-                            <div class="content">
-                                {% trans "Me" %}
-                                <div class="sub header">{{ booking.sender.profile.location }}</div>
-                            </div>
-
-                        </h4>
-                    </td>
-                {% else %}
-                    <td>
-                        <h5 class= "ui image header">
-                            <img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image">
-                            <div class="ui content">
-                                {{ booking.sender }}
-
-                                <div class="sub header">
-                                    {{ booking.sender.profile.location }}
-                                </div>
-                            </div>
-
-                        </h5>
-                    </td>
-                {% endif %}
-
-                {% if booking.recipient == user %}
-                    <td>
-                        <h5 class= "ui image header">
-                            <img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
-                            <div class="content">
-                                {% trans "Me" %}
-
-                                <div class="sub header">
-                                    {{ booking.recipient.profile.location }}
-                                </div>
-                            </div>
-
-                        </h5>
-                    </td>
-                {% else %}
-                    <td>
-                        <h5 class= "ui image header">
-                            <img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
-                            <div class="content">
-                                {{ booking.recipient }}
-
-                                <div class="sub header">
-                                    {{ booking.recipient.profile.location }}
-                                </div>
-                            </div>
-
-                        </h5>
-                    </td>
-                {% endif %}
-
-                <td>{{ booking.service.title}}</td>
-                <td>{{ booking.price }}</td>
-
-                <td>
-                    {% if booking.status == 1 %}
-                        <a class="ui blue label">{% trans 'Negotiation' %} </a>
-                    {% elif booking.status == 2%}
-                        <a class="ui blue label">{% trans 'Negotiation' %}</a>
-                    {% elif booking.status == 3%}
-                        <a class="ui red label">{% trans 'Rejected' %}</a>
-                    {% elif booking.status == 4%}
-                        <a class="ui red label">{% trans 'Rejected' %}</a>
-                    {% elif booking.status == 5%}
-                        <a class="ui green label">{% trans 'Approved' %}</a>
-                    {% elif booking.status == 6%}
-                        <a class="ui green label">{% trans 'Approved' %}</a>
-                    {% elif booking.status == 7%}
-                        <a class="ui red label">{% trans 'Removed' %}</a>
-                    {% elif booking.status == 8%}
-                        <a class="ui red label">{% trans 'Removed' %}</a>
-                    {% endif %}
-                </td>
-
-
-                <td>
-                    <a href="view/{{ booking.id }}/">
-                        <div class="ui icon button">
-                            <i class="right arrow icon"></i>
-                        </div>
-                    </a>
-                </td>
-
-
-
-            </tr>
-            {% endfor %}
-
-             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href="add/0">
-                        <div class="ui icon button">
-                            <i class="right edit icon"></i>
-                        </div>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-
-
-    </table>
-
-  </div>
-
+  <table class="ui striped table">
+    <thead>
+      <tr>
+        <th>{% trans "Customer" %}</th>
+        <th>{% trans "Provider" %}</th>
+        <th>{% trans "Service" %}</th>
+        <th>{% trans "Price" %}</th>
+        <th>{% trans "Status" %}</th>
+        <th>{% trans "View" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for booking in bookings %}
+      <tr onclick="window.document.location='view/{{ booking.id }}/';">
+        {% if booking.sender == user %}
+          <td>
+            <h4 class= "ui image header">
+              <img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+              <div class="content">
+                {% trans "Me" %}
+                <div class="sub header">{{ booking.sender.profile.location }}</div>
+              </div>
+            </h4>
+          </td>
+        {% else %}
+          <td>
+            <h5 class= "ui image header">
+              <img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+              <div class="ui content">
+                {{ booking.sender }}
+                <div class="sub header">{{ booking.sender.profile.location }}</div>
+              </div>
+            </h5>
+          </td>
+        {% endif %}
+        {% if booking.recipient == user %}
+          <td>
+            <h5 class= "ui image header">
+              <img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+              <div class="content">
+                {% trans "Me" %}
+                <div class="sub header">{{ booking.recipient.profile.location }}</div>
+              </div>
+            </h5>
+          </td>
+        {% else %}
+          <td>
+            <h5 class= "ui image header">
+              <img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+              <div class="content">
+                {{ booking.recipient }}
+                <div class="sub header">{{ booking.recipient.profile.location }}</div>
+              </div>
+            </h5>
+          </td>
+        {% endif %}
+        <td>{{ booking.service.title}}</td>
+        <td>{{ booking.price }}</td>
+        <td>
+          {% if booking.status == 1 %}
+            <a class="ui blue label">{% trans 'Negotiation' %} </a>
+          {% elif booking.status == 2%}
+            <a class="ui blue label">{% trans 'Negotiation' %}</a>
+          {% elif booking.status == 3%}
+            <a class="ui red label">{% trans 'Rejected' %}</a>
+          {% elif booking.status == 4%}
+            <a class="ui red label">{% trans 'Rejected' %}</a>
+          {% elif booking.status == 5%}
+            <a class="ui green label">{% trans 'Approved' %}</a>
+          {% elif booking.status == 6%}
+            <a class="ui green label">{% trans 'Approved' %}</a>
+          {% elif booking.status == 7%}
+            <a class="ui red label">{% trans 'Removed' %}</a>
+          {% elif booking.status == 8%}
+            <a class="ui red label">{% trans 'Removed' %}</a>
+          {% endif %}
+        </td>
+        <td>
+          <a href="view/{{ booking.id }}/">
+            <div class="ui icon button">
+              <i class="right arrow icon"></i>
+            </div>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <a class="ui green label" href="add/0">
+            <i class="edit icon"></i>
+            write
+          </a>
+      </tr>
+    </tbody>
+  </table>
 </div>
+

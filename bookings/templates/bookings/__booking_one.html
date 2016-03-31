@@ -1,176 +1,164 @@
 {% load i18n %}
 
-<div class="box box-primary">
+<div class="ui blue segment bookings_show">
+  <h3 class="ui center aligned header">{% trans 'Booking' %}</h3>
 
-  <div class="box-header with-border">
-    <h3 class="box-title">{% trans 'Booking' %}<h3>
-  </div>
-
-  <div class="box_body">
-
-    <div class="mailbox-read-info">
-         <div class="form-group">
-            <label>{% trans 'Service' %}</label>
-            {{ booking.service.title }}
-         </div>
-
-         <div class="form-group">
-            <label>{% trans 'Start time' %}</label>
-            {{ booking.service_starts_at|date:"d/m/Y" }}
-         </div>
-
-
-         <div class="form-group">
-            <label>{% trans 'End time' %}</label>
-            {{ booking.service_ends_at|date:"d/m/Y" }}
-         </div>
-
-         <div class="form-group">
-            <label>{% trans 'Sender' %}</label>
-            {{ booking.sender }}
-         </div>
-
-
-         <div class="form-group">
-            <label>{% trans 'Recipient' %}</label>
-            {{ booking.recipient }}
-         </div>
-
-         <div class="form-group">
-            <label>{% trans 'Price' %}</label>
-            {{ booking.price }}
-         </div>
-
-
-         <div class="form-group">
-            <label>{% trans 'Number of customers' %}</label>
-            {{ booking.number_of_customers }}
-         </div>
-
-         <div class="form-group">
-            <label>{% trans 'Booking content' %}</label>
-            {{ booking.booking_content }}
-         </div>
-
-         <div class="form-group">
-            <label>{% trans 'Booking remark' %}</label>
-            {{ booking.booking_remark }}
-         </div>
-
-         <div class="form-group">
-            <label>{% trans 'Booking status' %}</label>
-            {{ booking.get_status_display|lower }}
-            {{ booking.status }}
-         </div>
+  <form class="ui form">
+    <div class="field">
+      <label>{% trans 'Service' %}</label>
+      {{ booking.service.title }}
+    </div>
+    <div class="field">
+      <label>{% trans 'Start time' %}</label>
+      {{ booking.service_starts_at|date:"d/m/Y" }}
+    </div>
+    <div class="field">
+      <label>{% trans 'End time' %}</label>
+      {{ booking.service_ends_at|date:"d/m/Y" }}
+    </div>
+    <div class="field">
+      <label>{% trans 'Sender' %}</label>
+      {{ booking.sender }}
+    </div>
+    <div class="field">
+      <label>{% trans 'Recipient' %}</label>
+      {{ booking.recipient }}
+    </div>
+    <div class="field">
+      <label>{% trans 'Price' %}</label>
+      {{ booking.price }}
+    </div>
+    <div class="field">
+      <label>{% trans 'Number of customers' %}</label>
+      {{ booking.number_of_customers }}
+    </div>
+    <div class="field">
+      <label>{% trans 'Booking content' %}</label>
+      {{ booking.booking_content }}
+    </div>
+    <div class="field">
+      <label>{% trans 'Booking remark' %}</label>
+      {{ booking.booking_remark }}
+    </div>
+    <div class="field">
+      <label>{% trans 'Booking status' %}</label>
+      {{ booking.get_status_display|lower }}
+      {{ booking.status }}
     </div>
 
-  </div>
 
-  <div class="mailbox-controls with-border text-right">
-    <div class="btn-group">
 
-        <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}">
-            <button data-original-title="Remove" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                 <i class="fa fa-remove"></i>
-            </button>
-        </a>
+<!--     <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}" class="ui right floated button"><i class="remove icon"></i></a> -->
 
-        {% if booking.status == 3 or booking.status == 4 or booking.status == 5 or booking.status == 6 or booking.status == 7 or booking.status == 8 %}
+    {% if booking.status == 3 or booking.status == 4 or booking.status == 5 or booking.status == 6 or booking.status == 7 or booking.status == 8 %}
 
-            <a href="">
-                <button data-original-title="Reject" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                     <i class="fa fa-remove"></i>
-                </button>
-            </a>
+      <a href="" class="ui right floated button"><i class="remove icon"></i></a>
+      <a href="" class="ui right floated button"><i class="edit icon"></i></a>
+      <a href="" class="ui right floated button"><i class="angellist icon"></i></a>
 
-            <a href="">
-            <button data-original-title="Edit" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                 <i class="fa fa-pencil"></i>
-            </button>
-            </a>
-            <a href="">
-                <button data-original-title="Approve" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                     <i class="fa fa-plus"></i>
-                </button>
-            </a>
+<!--       <a href="">
+          <button data-original-title="Reject" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
+               <i class="fa fa-remove"></i>
+          </button>
+      </a>
+
+      <a href="">
+      <button data-original-title="Edit" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
+           <i class="fa fa-pencil"></i>
+      </button>
+      </a>
+      <a href="">
+          <button data-original-title="Approve" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
+               <i class="fa fa-plus"></i>
+          </button>
+      </a> -->
+    {% else %}
+      {% if request.user == booking.sender %}
+        {% if booking.status == 2%}
+          <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}" class="ui right floated button"><i class="remove icon"></i></a>
+          <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}" class="ui right floated button"><i class="edit icon"></i></a>
+          <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}" class="ui right floated button"><i class="angellist icon"></i></a>
+<!--           <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}">
+              <button data-original-title="Reject" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-remove"></i>
+              </button>
+          </a>
+          <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}">
+              <button data-original-title="Approve" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-plus"></i>
+              </button>
+          </a>
+          <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}">
+              <button data-original-title="Edit" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-pencil"></i>
+              </button>
+          </a> -->
         {% else %}
-            {% if request.user == booking.sender %}
-                {% if booking.status == 2%}
-                     <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}">
-                        <button data-original-title="Reject" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-remove"></i>
-                        </button>
-                    </a>
-                    <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}">
-                        <button data-original-title="Approve" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-plus"></i>
-                        </button>
-                    </a>
-                    <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}">
-                        <button data-original-title="Edit" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-pencil"></i>
-                        </button>
-                    </a>
-                {% else %}
-                    <a href="">
-                        <button data-original-title="Reject" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-remove"></i>
-                        </button>
-                    </a>
+          <a href="" class="ui right floated button"><i class="remove icon"></i></a>
+          <a href="" class="ui right floated button"><i class="edit icon"></i></a>
+          <a href="" class="ui right floated button"><i class="angellist icon"></i></a>
+      <!--     <a href="">
+              <button data-original-title="Reject" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-remove"></i>
+              </button>
+          </a>
 
-                    <a href="">
-                    <button data-original-title="Edit" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                         <i class="fa fa-pencil"></i>
-                    </button>
-                    </a>
-                    <a href="">
-                        <button data-original-title="Approve" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-plus"></i>
-                        </button>
-                    </a>
-                {% endif %}
-            {% elif request.user == booking.recipient %}
-                {% if booking.status == 1%}
-                     <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}">
-                        <button data-original-title="Reject" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-remove"></i>
-                        </button>
-                    </a>
-                    <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}">
-                        <button data-original-title="Approve" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-plus"></i>
-                        </button>
-                    </a>
-                    <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}">
-                        <button data-original-title="Edit" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-pencil"></i>
-                        </button>
-                    </a>
-                {% else %}
-                    <a href="">
-                        <button data-original-title="Reject" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-remove"></i>
-                        </button>
-                    </a>
-
-                    <a href="">
-                    <button data-original-title="Edit" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                         <i class="fa fa-pencil"></i>
-                    </button>
-                    </a>
-                    <a href="">
-                        <button data-original-title="Approve" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                             <i class="fa fa-plus"></i>
-                        </button>
-                    </a>
-                {% endif %}
-            {% endif %}
-
-
+          <a href="">
+          <button data-original-title="Edit" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
+               <i class="fa fa-pencil"></i>
+          </button>
+          </a>
+          <a href="">
+              <button data-original-title="Approve" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-plus"></i>
+              </button>
+          </a> -->
         {% endif %}
+      {% elif request.user == booking.recipient %}
+        {% if booking.status == 1%}
+          <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}" class="ui right floated button"><i class="remove icon"></i></a>
+          <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}" class="ui right floated button"><i class="edit icon"></i></a>
+          <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}" class="ui right floated button"><i class="angellist icon"></i></a>
 
+     <!--      <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}">
+              <button data-original-title="Reject" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-remove"></i>
+              </button>
+          </a>
+          <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}">
+              <button data-original-title="Approve" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-plus"></i>
+              </button>
+          </a>
+          <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}">
+              <button data-original-title="Edit" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-pencil"></i>
+              </button>
+          </a> -->
+        {% else %}
+          <a href="" class="ui right floated button"><i class="remove icon"></i></a>
+          <a href="" class="ui right floated button"><i class="edit icon"></i></a>
+          <a href="" class="ui right floated button"><i class="angellist icon"></i></a>
+<!--           <a href="">
+              <button data-original-title="Reject" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-remove"></i>
+              </button>
+          </a>
 
-    </div>
-  </div>
-
+          <a href="">
+          <button data-original-title="Edit" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
+               <i class="fa fa-pencil"></i>
+          </button>
+          </a>
+          <a href="">
+              <button data-original-title="Approve" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
+                   <i class="fa fa-plus"></i>
+              </button>
+          </a> -->
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    <br>
+    <br>
+  </form>
 </div>

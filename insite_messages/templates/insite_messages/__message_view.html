@@ -4,7 +4,6 @@
   <h3 class="ui center aligned header">{% trans 'Message' %}</h3>
 
   <h3>{{ message.subject }}</h3>
- <!--  <h5> {% trans 'From: ' %}{{ message.sender }} <span style="position:absolute;right:5px;">{{ message.sent_at }}</span></h5> -->
   <h5 class="ui header">{% trans 'From: ' %}{{ message.sender }} <div class="sub header">{{ message.sent_at }}</div></h5>
 
   {{ message.body }}

@@ -45,41 +45,55 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	__webpack_require__(49);
+	__webpack_require__(33);
+
+	__webpack_require__(41);
 
 	$(function () {
 	    init_button();
 	    init_form();
 
 	    function init_button() {
-	        $(".service_show [multiple='multiple']").each(function () {
-	            $(this).append("<option value=''>" + $(this).attr("placeholder") + "</option>");
+	        $('.bookings_write_form .ui.dropdown').dropdown();
+	        $('#id_start_time, #id_end_time').daterangepicker({
+	            format: 'YYYY-MM-DD',
+	            singleDatePicker: true
+	        }, function (start, end, label) {
+	            console.log(start.toISOString(), end.toISOString(), label);
 	        });
-	        $('.service_show .ui.dropdown').dropdown();
 	    }
 
 	    function init_form() {
-	        $('.ui.form.service_form').form({
+	        $('.ui.form.bookings_write_form').form({
 	            fields: {
-	                title: {
-	                    identifier: 'title',
+	                service: {
+	                    identifier: 'service',
 	                    rules: [{
 	                        type: 'empty',
-	                        prompt: 'Please enter your title'
+	                        prompt: 'Please enter your service'
 	                    }]
 	                },
-
-	                // {
-	                //   type   : 'minLength[3]',
-	                //   prompt : 'Username should have at least 3 letters'
-	                // },
-	                content: {
-	                    identifier: 'content',
+	                start_time: {
+	                    identifier: 'start_time',
 	                    rules: [{
 	                        type: 'empty',
-	                        prompt: 'Please enter your content'
+	                        prompt: 'Please enter your start_time'
+	                    }]
+	                },
+	                end_time: {
+	                    identifier: 'end_time',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your end_time'
+	                    }]
+	                },
+	                number_of_customers: {
+	                    identifier: 'number_of_customers',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your number_of_customers'
 	                    }]
 	                },
 	                price: {
@@ -87,44 +101,27 @@
 	                    rules: [{
 	                        type: 'empty',
 	                        prompt: 'Please enter your price'
-	                    }, {
-	                        type: 'integer[1..1000]',
-	                        prompt: 'Please enter an integer value, 1 to 1000'
 	                    }]
 	                },
-	                type: {
-	                    identifier: 'type',
+	                meeting_point: {
+	                    identifier: 'meeting_point',
 	                    rules: [{
 	                        type: 'empty',
-	                        prompt: 'Please enter your type'
+	                        prompt: 'Please enter your meeting_point'
 	                    }]
 	                },
-	                cities: {
-	                    identifier: 'cities',
+	                booking_content: {
+	                    identifier: 'booking_content',
 	                    rules: [{
 	                        type: 'empty',
-	                        prompt: 'Please enter your cities'
+	                        prompt: 'Please enter your booking_content'
 	                    }]
 	                },
-	                categories: {
-	                    identifier: 'categories',
+	                booking_remark: {
+	                    identifier: 'booking_remark',
 	                    rules: [{
 	                        type: 'empty',
-	                        prompt: 'Please enter your categories'
-	                    }]
-	                },
-	                languages: {
-	                    identifier: 'languages',
-	                    rules: [{
-	                        type: 'empty',
-	                        prompt: 'Please enter your languages'
-	                    }]
-	                },
-	                tags: {
-	                    identifier: 'tags',
-	                    rules: [{
-	                        type: 'empty',
-	                        prompt: 'Please enter your tags'
+	                        prompt: 'Please enter your booking_remark'
 	                    }]
 	                }
 	            }
@@ -134,7 +131,14 @@
 
 /***/ },
 
-/***/ 49:
+/***/ 33:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 41:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

@@ -1,3 +1,12 @@
+.ui.segment.bookings_show {
+  max-width: 900px;
+  margin-top: 80px;
+  margin-bottom: 2.5rem; }
+  .ui.segment.bookings_show ul.errorlist {
+    list-style: none;
+    -webkit-padding-start: 0; }
+    .ui.segment.bookings_show ul.errorlist li {
+      color: #dd4b39; }
 /*!
  * Stylesheet for the Date Range Picker, for use with Semantic UI
  *
@@ -373,14 +382,3 @@
 
 .daterangepicker .prev .left.arrow.icon,
 .daterangepicker .next .right.arrow.icon { margin: 0; }
-.ui.segment.profile_form {
-  max-width: 700px;
-  margin-top: 80px;
-  margin-bottom: 2.5rem; }
-  .ui.segment.profile_form #id_avatar, .ui.segment.profile_form #id_card_image {
-    margin-bottom: 10px; }
-  .ui.segment.profile_form ul.errorlist {
-    list-style: none;
-    -webkit-padding-start: 0; }
-    .ui.segment.profile_form ul.errorlist li {
-      color: #dd4b39; }

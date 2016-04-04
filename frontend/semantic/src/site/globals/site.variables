@@ -1,3 +1,18 @@
 /*******************************
      User Global Variables
 *******************************/
+
+
+/*-------------------
+       Fonts
+--------------------*/
+
+@importGoogleFonts : false;
+@headerFont        : Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+@pageFont 		   : Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+
+
+
+/*---  Colors  ---*/
+
+@blue           : #3c8dbc;

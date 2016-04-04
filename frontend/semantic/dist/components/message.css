@@ -42,7 +42,7 @@
 /* Header */
 .ui.message .header {
   display: block;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
   font-weight: bold;
   margin: -0.14285em 0em 0rem 0em;
 }
@@ -396,10 +396,10 @@
 }
 .ui.blue.message {
   background-color: #DFF0FF;
-  color: #2185D0;
+  color: #3c8dbc;
 }
 .ui.blue.message .header {
-  color: #1e77ba;
+  color: #367fa9;
 }
 .ui.violet.message {
   background-color: #EAE7FF;

@@ -1,3 +1,9 @@
+body {
+  background-color: #f3f3f3; }
+
+/*--------------
+    city_img
+---------------*/
 .city_img {
   height: 150px;
   width: 100%;
@@ -11,101 +17,70 @@
 ---------------*/
 .ui.segment.search_form {
   margin-top: 0px; }
-
-.secondary .ui.checkbox {
-  position: absolute;
-  right: 2px; }
-
-.search_form .ui.secondary.segment {
-  padding-bottom: 9px;
-  padding-top: 9px;
-  cursor: pointer; }
+  .ui.segment.search_form .secondary .ui.checkbox {
+    position: absolute;
+    right: 5px; }
+  .ui.segment.search_form .ui.secondary.segment {
+    padding-bottom: 9px;
+    padding-top: 9px;
+    cursor: pointer; }
+  .ui.segment.search_form .ui.grid.hidden_content {
+    margin-top: 0px; }
 
 /*--------------
     search_button
 ---------------*/
-.ui.page.grid.search_button {
-  background-color: #f3f3f3; }
-  .ui.page.grid.search_button .submit_button {
-    position: absolute;
-    right: 14px; }
+.ui.grid.search_button .submit_button {
+  position: absolute;
+  right: 1rem; }
 
-.search_button .serveice_num_p {
+.ui.grid.search_button .serveice_num_p {
   padding-bottom: 10px; }
 
 /*--------------
     search_profile
 ---------------*/
-.search_profile .search_head .ui.header {
-  position: absolute;
-  right: 14px;
-  top: 0px; }
+.ui.grid.search_profile {
+  padding-bottom: 40px; }
+  .ui.grid.search_profile .profile_map {
+    height: 300px;
+    display: block;
+    width: 100%;
+    background-color: #242731;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; }
+  .ui.grid.search_profile .ui.grid.hidden_content {
+    margin-top: 0px; }
+  .ui.grid.search_profile .ui.segment.padding {
+    padding: 0px; }
+    .ui.grid.search_profile .ui.segment.padding .ui.header {
+      font-size: 11px;
+      margin-bottom: 0px; }
+    .ui.grid.search_profile .ui.segment.padding .ui.segment {
+      margin-top: 0px;
+      padding-top: 0px;
+      border: 0px; }
+    .ui.grid.search_profile .ui.segment.padding .average_price {
+      position: absolute;
+      right: 14px;
+      top: -27px; }
+    .ui.grid.search_profile .ui.segment.padding .content {
+      margin-top: 10px; }
+    .ui.grid.search_profile .ui.segment.padding .content p {
+      font-size: 0.75rem; }
+    .ui.grid.search_profile .ui.segment.padding .ui.tiny.image {
+      width: 60px;
+      padding: 2px;
+      border: 2px;
+      background-color: #fff;
+      border-radius: 28px;
+      margin-top: -33px;
+      margin-left: 19px; }
 
-.search_form .ui.grid.hidden_content {
-  margin-top: 0px; }
-
-.search_profile .profile_map {
-  height: 300px;
-  display: block;
-  width: 100%;
-  background-color: #242731;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; }
-
-.ui.page.grid.search_profile {
-  background-color: #f3f3f3;
-  padding-bottom: 30px; }
-
-.ui.header.search_profile_h2 {
-  background-color: #f3f3f3;
+.ui.grid.more_loaders {
   margin-top: 0px;
-  padding-top: 50px;
-  padding-bottom: 10px; }
-
-.padding .ui.header {
-  font-size: 11px;
-  margin-bottom: 0px; }
-
-.padding .ui.segment {
-  margin-top: 0px;
-  padding-top: 0px; }
-
-.search_profile .ui.segment {
-  border: 0px; }
-
-.search_profile .ui.segment.padding {
-  padding: 0px; }
-
-.search_profile .average_price {
-  position: absolute;
-  right: 14px;
-  top: -27px; }
-
-.search_profile .content {
-  margin-top: 10px; }
-
-.search_profile .content p {
-  font-size: 0.75rem; }
-
-.search_profile .ui.tiny.image {
-  width: 60px;
-  padding: 2px;
-  border: 2px;
-  background-color: #fff;
-  border-radius: 28px;
-  margin-top: -33px;
-  margin-left: 19px; }
-
-.ui.page.grid.more_loaders {
-  background-color: #f3f3f3;
   padding-bottom: 20px; }
-
-.ui.segment.more_loader {
-  width: 100%;
-  cursor: pointer; }
-
-@media only screen and (min-width: 1200px) and (max-width: 1919px) {
-  .ui.page.grid.search_profile, .search_form .ui.page.grid, .ui.page.grid.search_button, .ui.page.grid.more_loaders {
-    padding-left: 8%;
-    padding-right: 8%; } }
+  .ui.grid.more_loaders .ui.segment.more_loader {
+    width: 100%;
+    cursor: pointer; }

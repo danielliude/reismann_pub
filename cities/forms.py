@@ -18,7 +18,7 @@ AGE = (
 
 class SearchForm(forms.Form):
 
-    city = forms.ModelChoiceField(required=False, queryset=City.objects.all(), 
+    city = forms.ModelMultipleChoiceField(required=False, queryset=City.objects.all(), 
                                           widget=forms. Select(attrs={
                                           'class': 'ui fluid search dropdown',
                                           'multiple' : "",

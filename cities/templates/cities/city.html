@@ -17,13 +17,13 @@
 {% block content %}
 <div class="city_img"></div>
 <div class="ui segment search_form">
-  <div class="ui page doubling grid">
+  <div class="ui doubling grid container">
     <div class="four wide column">
       <label>{% trans 'Service types' %}</label>
     </div>
 
     <div class="twelve wide column">
-      <div class="ui three column grid">
+      <div class="ui three column doubling grid">
         {% for field in form.services %}
         <div class="column">
           <div class="ui secondary segment">
@@ -88,16 +88,16 @@
     </div>
   </div>
 </div>
-<div class="ui page grid search_button">
+<div class="ui grid container search_button">
   <div class="row search_head" style="padding-left: 14px !important;">
-    <button class="ui blue button more_select"> {% trans "More options" %}</button>
-    <button class="ui blue button submit submit_button">{% trans "Search" %}</button>
+    <button class="ui primary button more_select"> {% trans "More options" %}</button>
+    <button class="ui primary button submit submit_button">{% trans "Search" %}</button>
   </div>
   {% if services|length > 0 %}
   <p class="serveice_num_p">{% trans "Have found " %} <span class="services_num"> {{ services|length }}</span>{% trans " services" %}</p>
   {% endif %}
 </div>
-<div class="ui three column stackable doubling page grid search_profile">
+<div class="ui three column stackable doubling grid container search_profile">
   {% if services|length == 0 %}
     <h4>No result,please search again!</h4>
   {% endif %}
@@ -123,9 +123,9 @@
   {% endfor %}
 </div>
 
-<div class="ui page grid more_loaders"{% if services|length <= 21 %} style="display:none" {% endif %}>
+<div class="ui grid container more_loaders"{% if services|length <= 21 %} style="display:none" {% endif %}>
   <div class="row">
-    <div class="ui center aligned inverted segment more_loader">加载更多</div>
+    <button class="large ui fluid center aligned black button more_loader">加载更多</button>
   </div>
 </div>
 

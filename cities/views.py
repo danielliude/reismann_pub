@@ -12,6 +12,8 @@ from profiles.views import makeContextForDetails, makeContextForMessages
 from django.http import HttpResponse
 import json
 from django.http import JsonResponse
+from django.db.models import Q
+from configurations.models import ServiceCategory, ServiceTag, ServiceLanguage
 
 # search for cities from index page
 def search_cities(request):
@@ -50,21 +52,38 @@ def city(request, city_name, template_name='cities/city.html'):
 
         if form.is_valid():
 
-            # City is required in the post
-            service_pk = request.POST.get('city')
+            services = Service.objects.all()
+            services = services.exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
+            services = services.filter(is_active=True)
 
-            if (not service_pk):
-                services = Service.objects.all()
-            else:
-                city = City.objects.filter(pk= service_pk)
-                services = Service.objects.filter(cities = city)
+            # Check cities for service
+            print('init', services)
+            city = request.POST.getlist('city[]')
+            cit = ''
+            if(city):
+                for ci in city:
+                    if(cit):
+                        cit = cit | Q(cities=City.objects.filter(id=ci)) 
+                    else:
+                        cit = Q(cities=City.objects.filter(id=ci)) 
+            if(cit):
+                services = services.filter(cit)
+            print('cit', services)
 
             # Let's get gender
-            gender = request.POST.getlist('gender')
+            gender = request.POST.getlist('gender[]')
+            gen = ''
             if(gender):
-                profiles = Profile.objects.filter(gender__in =(gender))
-                users = User.objects.filter(profile__in=(profiles))
-                services = services.filter(user__in=(users))
+                for gend in gender:
+                    profiles = Profile.objects.filter(gender__in =(gend))
+                    users = User.objects.filter(profile__in=(profiles))
+                    if(gen):
+                        gen = gen | Q(user__in=(users)) 
+                    else:
+                        gen = Q(user__in=(users)) 
+            if(gen):
+                services = services.filter(gen)
+            print('gen', services)
 
             #Check age
             age = request.POST.get('age')
@@ -78,27 +97,47 @@ def city(request, city_name, template_name='cities/city.html'):
 
                     users = User.objects.filter(profile__in=(profiles))
                     services = services.filter(user__in=(users))
+            print('age', services)
 
             # Check languages for service
-            languages = request.POST.getlist('languages')
+            languages = request.POST.getlist('languages[]')
+            lan = ''
             if(languages):
-                for language in languages:
-                    services = services.filter(languages = language)
+                for lang in languages:
+                    if(lan):
+                        lan = lan | Q(languages = ServiceLanguage.objects.filter(id=lang)) 
+                    else:
+                        lan = Q(languages = ServiceLanguage.objects.filter(id=lang)) 
+            if(lan):
+                print('lan lan', lan)
+                services = services.filter(lan) 
+            print('lan', services)
 
             # Check tags
-            tags = request.POST.getlist('tags')
+            tags = request.POST.getlist('tags[]')
+            ta = ''
             if(tags):
                 for tag in tags:
-                    services = services.filter(tags = tag)
+                    if(ta):
+                        ta = ta | Q(tags = ServiceTag.objects.filter(id=tag)) 
+                    else:
+                        ta = Q(tags = ServiceTag.objects.filter(id=tag)) 
+            if(ta):
+                services = services.filter(ta)
+            print('ta', services)
 
             # Check type of services
-            request_services = request.POST.getlist('services')
-            if(request_services):
-                for service in request_services:
-                    services = services.filter(categories = service)
-
-            services = services.exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
-            services = services.filter(is_active=True)
+            svrs = request.POST.getlist('services[]')
+            svr = ''
+            if(svrs):
+                for service in svrs:
+                    if(svr):
+                        svr = svr | Q(categories = ServiceCategory.objects.filter(id=service)) 
+                    else:
+                        svr = Q(categories = ServiceCategory.objects.filter(id=service)) 
+            if(svr):
+                services = services.filter(svr)
+            print('serv', services)
 
             services_new = []
             for service in services:
@@ -128,7 +167,6 @@ def city(request, city_name, template_name='cities/city.html'):
             page_end   = page * page_num
             num        = len(services_new)
             services_new = services_new[page_start:page_end]
-            print(">>>>>", num , services_new)
 
             temp = {'num': num, 'services_new' : services_new}
             return JsonResponse(temp)

@@ -1,46 +1,42 @@
+body {
+  background-color: #f3f3f3; }
+
 /*--------------
     banner
 ---------------*/
-.ui.grid.banner {
-  margin-top: 0px; }
-
-.banner .banner_img {
-  height: 300px;
+.ui.grid.banner .banner_img {
   width: 100%;
   background-image: url("/static/images/dummy/banner.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover; }
 
-.banner .information {
-  margin-top: 80px; }
-
-.information .tagline {
+.ui.grid.banner .information .tagline {
   text-shadow: 1px 1px 1px #000000; }
 
-.information .subheadline.ui.header {
+.ui.grid.banner .information .subheadline.ui.header {
   margin-top: 0px;
   margin-bottom: 0px;
   text-shadow: 1px 1px 1px #000000; }
 
-.information .ui.icon.input {
+.ui.grid.banner .information .ui.icon.input {
   width: 300px;
   margin-right: 3px; }
-  .information .ui.icon.input .prompt {
+  .ui.grid.banner .information .ui.icon.input .prompt {
     border-radius: 0px;
     height: 36px;
     line-height: 36px; }
 
-.information .ui.red.button {
+.ui.grid.banner .information .ui.red.button {
   height: 36px; }
 
-.information .left_aligned {
+.ui.grid.banner .information .left_aligned {
   text-align: left; }
 
 /*--------------
-    popular_profile
+    profile_content
 ---------------*/
-.popular_profile .profile_map {
+.profile_map {
   height: 300px;
   display: block;
   width: 100%;
@@ -49,11 +45,7 @@
   background-position: center center;
   background-size: cover; }
 
-.ui.page.grid.popular_profile {
-  background-color: #f3f3f3; }
-
-.ui.header.popular_profile_h2 {
-  background-color: #f3f3f3;
+.ui.header.popular_profile_h2, .ui.header.new_profile_h2 {
   margin-top: 0px;
   padding-top: 50px;
   padding-bottom: 10px; }
@@ -66,24 +58,24 @@
   margin-top: 0px;
   padding-top: 0px; }
 
-.popular_profile .ui.segment {
+.profile_content .ui.segment {
   border: 0px; }
 
-.popular_profile .ui.segment.padding {
+.profile_content .ui.segment.padding {
   padding: 0px; }
 
-.popular_profile .average_price {
+.profile_content .average_price {
   position: absolute;
   right: 14px;
   top: -27px; }
 
-.popular_profile .content {
+.profile_content .content {
   margin-top: 10px; }
 
-.popular_profile .content p {
+.profile_content .content p {
   font-size: 0.75rem; }
 
-.popular_profile .ui.tiny.image {
+.profile_content .ui.tiny.image {
   width: 60px;
   padding: 2px;
   border: 2px;
@@ -93,108 +85,32 @@
   margin-left: 19px; }
 
 /*--------------
-    new_profile
+    city_content
 ---------------*/
-.new_profile .profile_map {
-  height: 300px;
-  display: block;
-  width: 100%;
-  background-color: #242731;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; }
-
-.ui.page.grid.new_profile {
-  background-color: #f3f3f3;
-  padding-bottom: 30px; }
-
-.ui.header.new_profile_h2 {
-  background-color: #f3f3f3;
-  margin-top: 0px;
-  padding-top: 50px;
-  padding-bottom: 10px; }
-
-.new_profile .ui.segment {
-  border: 0px; }
-
-.new_profile .ui.segment.padding {
-  padding: 0px; }
-
-.new_profile .average_price {
-  position: absolute;
-  right: 14px;
-  top: -27px; }
-
-.new_profile .content {
-  margin-top: 10px; }
-
-.new_profile .content p {
-  font-size: 0.75rem; }
-
-.new_profile .ui.tiny.image {
-  width: 60px;
-  padding: 2px;
-  border: 2px;
-  background-color: #fff;
-  border-radius: 28px;
-  margin-top: -33px;
-  margin-left: 19px; }
-
-/*--------------
-    popular_city
----------------*/
-.popular_city .city_map {
-  height: 300px;
-  display: block;
-  width: 100%;
-  background-color: #242731;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; }
-
-.popular_city .title {
-  line-height: 300px;
-  display: inline-block;
-  width: 100%;
-  text-shadow: 1px 1px 1px black;
-  transition: background-color .2s ease;
-  color: #ffffff;
-  font-weight: 600;
-  text-align: center;
-  font-size: 1.5rem; }
-
-.ui.page.grid.popular_city {
+.ui.grid.city_content {
   margin-bottom: 30px; }
+  .ui.grid.city_content .city_map {
+    height: 300px;
+    display: block;
+    width: 100%;
+    background-color: #242731;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; }
+  .ui.grid.city_content .title {
+    line-height: 300px;
+    display: inline-block;
+    width: 100%;
+    text-shadow: 1px 1px 1px black;
+    transition: background-color .2s ease;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.5rem; }
 
 .ui.header.popular_city_h2 {
   padding-top: 10px;
   padding-bottom: 10px; }
-
-/*--------------
-    new_city
----------------*/
-.new_city .city_map {
-  height: 300px;
-  display: block;
-  width: 100%;
-  background-color: #242731;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; }
-
-.new_city .title {
-  line-height: 300px;
-  display: inline-block;
-  width: 100%;
-  text-shadow: 1px 1px 1px black;
-  transition: background-color .2s ease;
-  color: #ffffff;
-  font-weight: 600;
-  text-align: center;
-  font-size: 1.5rem; }
-
-.ui.page.grid.new_city {
-  margin-bottom: 20px; }
 
 .ui.header.new_city_h2 {
   padding-top: 25px;
@@ -203,20 +119,14 @@
 /*--------------
     responsive
 ---------------*/
-@media only screen and (min-width: 768px) {
-  .banner .banner_img {
-    height: 480px; }
-  .banner .information {
-    margin-top: 164px; }
-  .new_city .title {
-    font-size: 2rem; }
-  .popular_city .title {
-    font-size: 2rem; } }
+.ui.grid.banner .banner_img {
+  height: 300px; }
+  @media only screen and (min-width: 768px) {
+    .ui.grid.banner .banner_img {
+      height: 480px; } }
 
-@media only screen and (min-width: 1200px) and (max-width: 1919px) {
-  .ui.page.grid.new_profile, .ui.page.grid.popular_profile, .ui.page.grid.new_city, .ui.page.grid.popular_city {
-    padding-left: 8%;
-    padding-right: 8%; }
-  .footer .ui.page.grid {
-    padding-left: 8%;
-    padding-right: 8%; } }
+.ui.grid.banner .information {
+  margin-top: 70px; }
+  @media only screen and (min-width: 768px) {
+    .ui.grid.banner .information {
+      margin-top: 152px; } }

@@ -17,7 +17,9 @@
 
 <body id="home">
     {% block header %}{% include "core/header/__header_new.html" %}{% endblock %}
-    {% block content %}{% endblock %}
+    <div class="highly_adaptive">
+        {% block content %}{% endblock %}
+    </div>
     {% block footer %}{% include "core/footer/__footer_new.html" %}{% endblock %}
 
     {% render_bundle 'global' 'js' %}

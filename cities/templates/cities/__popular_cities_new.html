@@ -1,10 +1,10 @@
 {% load i18n %}
 
-<h2 class="ui center aligned header popular_city_h2">Popular cities</h2>
-<div class="ui three column stackable doubling page grid popular_city">
+<div class="ui center aligned header popular_city_h2">{% trans 'Popular cities' %}</div>
+<div class="ui three column stackable doubling grid container city_content">
   {% for city in popular_cities %}
     <div class="column">
-			<a href="cities/show/{{ city.name }}" class="city_map" style="background-image: url('{{ city.card_image.url }}');">
+		<a href="cities/show/{{ city.name }}" class="city_map" style="background-image: url('{{ city.card_image.url }}');">
         <span class="title">{{ city.name }}</span>
       </a>
     </div>

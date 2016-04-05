@@ -11,9 +11,7 @@ $(document).ready(function() {
 	$(window).resize(highly_adaptive)
 
 	function init_component() {
-		$('.masthead .ui.dropdown').dropdown({
-		  // on: 'hover'
-		})
+		$('.masthead .ui.dropdown').dropdown({})
 	}
 
 	function highly_adaptive() {

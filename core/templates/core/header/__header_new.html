@@ -1,24 +1,20 @@
 {% load staticfiles i18n %}
-<div class="ui centered grid masthead">
-  <div class="fifteen wide column">
-    <div class="ui inverted blue menu fixed_h">
-      <h3 class="header item">
-        <a href="{% url 'index' %}">Reismann</a>
-      </h3>
-      <a class="item not_mobile" href="#">become a provider</a>
-      <div class="ui dropdown link item not_mobile">
-          help
-          <i class="dropdown icon"></i>
-          <div class="menu">
-              <a href="#" class="item">get started</a>
-              <a href="#" class="item">login and register</a>
-              <a href="#" class="item">provider</a>
-              <a href="#" class="item">traveller</a>
-              <a href="#" class="item">review</a>
-          </div>        
-      </div>
-
-      {% include "core/header/__header_custom_menu_new.html" %}
+<div class="ui inverted blue borderless menu masthead">
+  <div class="ui container">
+    <a href="{% url 'index' %}" class="item"><h3>{% trans 'Reismann' %}</h3></a>
+    <a class="item not_mobile" href="#">{% trans 'become a provider' %}</a>
+    <div class="ui dropdown link item not_mobile">
+        help
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <a href="#" class="item">{% trans 'get started' %}</a>
+            <a href="#" class="item">{% trans 'login and register' %}</a>
+            <a href="#" class="item">{% trans 'provider' %}</a>
+            <a href="#" class="item">{% trans 'traveller' %}</a>
+            <a href="#" class="item">{% trans 'review' %}</a>
+        </div>        
     </div>
+
+    {% include "core/header/__header_custom_menu_new.html" %}
   </div>
 </div>

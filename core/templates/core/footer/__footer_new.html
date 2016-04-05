@@ -1,30 +1,30 @@
 {% load i18n %}
 
 <div class="ui inverted vertical segment footer">
-  <div class="ui three column center aligned stackable grid">
+  <div class="ui three column left aligned stackable grid container">
     <div class="column">
-      <h5 class="ui inverted header">About us</h5>
+      <h5 class="ui inverted header">{% trans "About us" %}</h5>
       <div class="ui inverted link list">
-        <a class="item" href="#">Our team</a>
-        <a class="item" href="#">Terms of services</a>
-        <a class="item" href="#">Join us</a>
-        <a class="item" href="#">Business cooperation</a>
+        <a class="item" href="#">{% trans "Our team" %}</a>
+        <a class="item" href="#">{% trans "Terms of services" %}</a>
+        <a class="item" href="#">{% trans "Join us" %}</a>
+        <a class="item" href="#">{% trans "Business cooperation" %}</a>
       </div>
     </div>
     <div class="column">
-      <h5 class="ui inverted header">Q&A</h5>
+      <h5 class="ui inverted header">{% trans "Q&A" %}</h5>
       <div class="ui inverted link list">
-        <a class="item" href="#">How to book</a>
-        <a class="item" href="#">How to become provider</a>
-        <a class="item" href="#">Service commissions</a>
+        <a class="item" href="#">{% trans "How to book" %}</a>
+        <a class="item" href="#">{% trans "How to become provider" %}</a>
+        <a class="item" href="#">{% trans "Service commissions" %}</a>
       </div>
     </div>
     <div class="column">
-      <h5 class="ui inverted header">Contact</h5>
+      <h5 class="ui inverted header">{% trans "Contact" %}</h5>
       <div class="ui inverted link list">
-        <a class="item" href="#"><i class="mail outline icon"></i> Team@reismann.de</a>
-        <a class="item" href="#"><i class="edit icon"></i> Write us a message</a>
-        <a class="item" href="#"><i class="call icon"></i> +49 222 333 222</a>
+        <a class="item" href="#"><i class="mail outline icon"></i> {% trans "Team@reismann.de" %}</a>
+        <a class="item" href="#"><i class="edit icon"></i> {% trans "Write us a message" %}</a>
+        <a class="item" href="#"><i class="call icon"></i> {% trans "+49 222 333 222" %}</a>
       </div>
     </div>
   </div>

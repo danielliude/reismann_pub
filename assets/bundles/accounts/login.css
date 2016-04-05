@@ -2,8 +2,8 @@ body {
   background-color: #f3f3f3; }
 
 .ui.grid.login-content {
-  width: 400px;
-  margin: 10px auto; }
+  max-width: 500px;
+  margin: 30px auto; }
 
 .login-content .icon_button {
   margin-bottom: 8px;

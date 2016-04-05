@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="ui grid register-content">
+<div class="ui middle aligned grid register-content highly_adaptive">
   <div class="column">
     <h2 class="ui center aligned header">
       <a href="{% url 'index' %}">{% trans 'Reismann' %}</a>
@@ -70,7 +70,7 @@
             {{ form.tos.label_tag }}
           </div>
         </div>
-        <button class="fluid ui blue button" type="submit">{% trans 'Register' %}</button>
+        <button class="fluid ui primary button" type="submit">{% trans 'Register' %}</button>
         <div class="ui error message">
         </div>
       </form>
@@ -79,8 +79,9 @@
 
       <button class="fluid ui facebook button icon_button"><i class="facebook icon"></i> {% trans 'Sign in using Facebook' %} </button>
       <button class="fluid ui google plus button icon_button"><i class="google plus icon"></i> {% trans 'Sign in using Google' %} </button>
-
-      <a href="{% url 'accounts:login' %}" class="text-center">{% trans 'I already have a membership' %}</a>
+    </div>
+    <div class="ui center aligned segment">
+      {% trans 'Have a membership?' %} <a href="{% url 'accounts:login' %}">{% trans 'Sign In' %}</a>
     </div>
   </div>
 </div>

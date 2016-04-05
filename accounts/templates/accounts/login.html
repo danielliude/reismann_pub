@@ -11,7 +11,7 @@
 
 {% block content %}
 
-<div class="ui grid login-content">
+<div class="ui middle aligned grid login-content highly_adaptive">
   <div class="column">
     <h2 class="ui center aligned header">
       <a href="{% url 'index' %}">{% trans 'Reismann' %}</a>
@@ -42,22 +42,21 @@
             {{ form.remember_me }} 
             <label>{% trans 'Remember Me' %}</label>
           </div>
-          <button class="ui right floated blue button" type="submit">{% trans 'Sign In' %}</button>
+          <button class="ui right floated primary button" type="submit">{% trans 'Sign In' %}</button>
         </div>
         <div class="ui error message">
         </div>
-        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
       </form>
 
       <h5 class="ui center aligned header">{% trans '- OR -' %}</h5>
 
       <button class="fluid ui facebook button icon_button"><i class="facebook icon"></i> {% trans 'Sign in using Facebook' %} </button>
       <button class="fluid ui google plus button icon_button"><i class="google plus icon"></i> {% trans 'Sign in using Google' %} </button>
-
-      <!-- <div class="ui header">{% trans '- OR -' %}</div> -->
-      <a href="{% url 'password_reset' %}">{% trans 'I forgot my password' %}</a>
-      </br>
-      <a href="{% url 'accounts:register' %}" class="text-center">{% trans 'Register a new membership' %}</a>
+    </div>
+    <div class="ui center aligned segment">
+      {% trans 'New to us?' %} <a href="{% url 'accounts:register' %}">{% trans 'Sign Up' %}</a>
+      <br>
+      {% trans 'Forgot my password?' %} <a href="{% url 'password_reset' %}">{% trans 'Retrieve' %}</a>
     </div>
   </div>
 </div>

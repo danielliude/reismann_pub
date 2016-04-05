@@ -2633,6 +2633,78 @@
   color: #FF695E !important;
 }
 
+/*--- Brand ---*/
+
+.ui.brand.buttons .button,
+.ui.brand.button {
+  background-color: #FF7E66;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.ui.brand.button {
+  box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.ui.brand.buttons .button:hover,
+.ui.brand.button:hover {
+  background-color: #ff684c;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.ui.brand.buttons .button:focus,
+.ui.brand.button:focus {
+  background-color: #ff5c3d;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.ui.brand.buttons .button:active,
+.ui.brand.button:active {
+  background-color: #ff5333;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.ui.brand.buttons .active.button,
+.ui.brand.buttons .active.button:active,
+.ui.brand.active.button,
+.ui.brand.button .active.button:active {
+  background-color: #ff684c;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.ui.basic.brand.buttons .button,
+.ui.basic.brand.button {
+  box-shadow: 0px 0px 0px 1px #FF7E66 inset !important;
+  color: #FF7E66 !important;
+}
+.ui.basic.brand.buttons .button:hover,
+.ui.basic.brand.button:hover {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px #ff684c inset !important;
+  color: #ff684c !important;
+}
+.ui.basic.brand.buttons .button:focus,
+.ui.basic.brand.button:focus {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px #ff5c3d inset !important;
+  color: #ff684c !important;
+}
+.ui.basic.brand.buttons .active.button,
+.ui.basic.brand.active.button {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px #ff684c inset !important;
+  color: #ff5333 !important;
+}
+.ui.basic.brand.buttons .button:active,
+.ui.basic.brand.button:active {
+  box-shadow: 0px 0px 0px 1px #ff5333 inset !important;
+  color: #ff5333 !important;
+}
+.ui.buttons:not(.vertical) > .basic.brand.button:not(:first-child) {
+  margin-left: -1px;
+}
+
 /*--- Teal ---*/
 
 .ui.teal.buttons .button,

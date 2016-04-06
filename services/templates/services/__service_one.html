@@ -14,11 +14,11 @@
 {% endblock %}
 
 {% block content %}    
-  <div class="ui page grid">
-    <div class="eleven wide column">
+  <div class="ui grid container profile_content">
+    <div class="sixteen wide tablet eleven wide computer column">
       {% include "services/__service_description.html" %}
     </div>
-    <div class="five wide column">
+    <div class="sixteen wide tablet five wide computer column">
       {% block profile_box %} {% include "profiles/__profile_box.html" %} {% endblock %}
       {% block service_box %} {% include "services/__service_box.html" %} {% endblock %}
       {% block contact_box %} {% include "contacts/__contact_box.html" %} {% endblock %}

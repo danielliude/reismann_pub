@@ -1,10 +1,14 @@
+body {
+  background-color: #f3f3f3; }
+
 .ui.comments {
   max-width: 100%; }
   .ui.comments .content .ui.rating {
     padding-left: 10px; }
 
-body {
-  background-color: #f3f3f3; }
+.ui.grid.profile_content {
+  margin-top: 2rem;
+  margin-bottom: 2rem; }
 
 .ui.segment.profiles_services {
   margin-bottom: 40px;
@@ -14,6 +18,9 @@ body {
     padding-top: 0rem; }
   .ui.segment.profiles_services .ui.label {
     padding: 4px 6px; }
+
+.ui.segment.profile_info .ui.blue.segment {
+  padding-bottom: 30px; }
 
 .ui.segment.profile_info .right_absolute {
   position: absolute;
@@ -29,7 +36,8 @@ body {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem; }
   .ui.segment.all_services .ui.label {
-    padding: 4px 6px; }
+    padding: 4px 6px;
+    margin-bottom: 5px; }
 
 .ui.page.grid {
   padding-left: 8%;

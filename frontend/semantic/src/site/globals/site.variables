@@ -16,3 +16,6 @@
 /*---  Colors  ---*/
 
 @blue           : #3c8dbc;
+@green 			: #21A23F;
+@yellow			: #C19512;
+@red			: #C52929;

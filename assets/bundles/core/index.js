@@ -58,7 +58,7 @@
 	      forceSelection: false
 	    });
 
-	    $('.banner .information').transition('fly up', 2000);
+	    $('.banner .information').transition('scale', 500); //.transition('fly up', 2000);
 
 	    $('.ui.search').search({
 	      source: content

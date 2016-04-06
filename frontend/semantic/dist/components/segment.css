@@ -501,10 +501,10 @@
 
 /* Red */
 .ui.red.segment:not(.inverted) {
-  border-top: 2px solid #DB2828;
+  border-top: 2px solid #C52929;
 }
 .ui.inverted.red.segment {
-  background-color: #DB2828 !important;
+  background-color: #C52929 !important;
   color: #FFFFFF !important;
 }
 
@@ -519,10 +519,10 @@
 
 /* Yellow */
 .ui.yellow.segment:not(.inverted) {
-  border-top: 2px solid #FBBD08;
+  border-top: 2px solid #C19512;
 }
 .ui.inverted.yellow.segment {
-  background-color: #FBBD08 !important;
+  background-color: #C19512 !important;
   color: #FFFFFF !important;
 }
 
@@ -537,10 +537,10 @@
 
 /* Green */
 .ui.green.segment:not(.inverted) {
-  border-top: 2px solid #21BA45;
+  border-top: 2px solid #21A23F;
 }
 .ui.inverted.green.segment {
-  background-color: #21BA45 !important;
+  background-color: #21A23F !important;
   color: #FFFFFF !important;
 }
 

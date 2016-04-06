@@ -216,14 +216,14 @@ i.inverted.icon {
 
 /* Red */
 i.red.icon {
-  color: #DB2828 !important;
+  color: #C52929 !important;
 }
 i.inverted.red.icon {
   color: #FF695E !important;
 }
 i.inverted.bordered.red.icon,
 i.inverted.circular.red.icon {
-  background-color: #DB2828 !important;
+  background-color: #C52929 !important;
   color: #FFFFFF !important;
 }
 
@@ -242,14 +242,14 @@ i.inverted.circular.orange.icon {
 
 /* Yellow */
 i.yellow.icon {
-  color: #FBBD08 !important;
+  color: #C19512 !important;
 }
 i.inverted.yellow.icon {
   color: #FFE21F !important;
 }
 i.inverted.bordered.yellow.icon,
 i.inverted.circular.yellow.icon {
-  background-color: #FBBD08 !important;
+  background-color: #C19512 !important;
   color: #FFFFFF !important;
 }
 
@@ -268,14 +268,14 @@ i.inverted.circular.olive.icon {
 
 /* Green */
 i.green.icon {
-  color: #21BA45 !important;
+  color: #21A23F !important;
 }
 i.inverted.green.icon {
   color: #2ECC40 !important;
 }
 i.inverted.bordered.green.icon,
 i.inverted.circular.green.icon {
-  background-color: #21BA45 !important;
+  background-color: #21A23F !important;
   color: #FFFFFF !important;
 }
 

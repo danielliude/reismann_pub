@@ -27,6 +27,20 @@
       <span class="not_mobile_span">{{ user.profile.get_full_name_or_username }}</span>
     </div>
     <div class="menu" style="width:280px;left:-141px;"> 
+<!--       <div class="card">
+        <div class="content">
+          <img class="right floated mini ui image" src="{{ user.profile.get_avatar_url }}">
+          <div class="header">{{ user.profile.get_full_name_or_username }} </div>
+          <div class="meta">Friends of Veronika </div>
+          <div class="description">Elliot requested permission to view your contact details </div>
+        </div>
+        <div class="extra content">
+          <div class="ui two buttons">
+            <div class="ui basic green button">Approve</div>
+            <div class="ui basic red button">Decline</div>
+          </div>
+        </div>
+      </div> -->
       <div class="item">
         <span class="description">{{ number_followers }}</span>
         <span class="text">{% trans 'Followers' %}</span>

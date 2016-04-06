@@ -1,0 +1,60 @@
+{% load i18n staticfiles %}
+
+{% if user.is_authenticated %}
+<div class="right menu">
+  <div class="ui dropdown item">
+    <i class="icon mail outline"></i> 
+    <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{{ unread_messages.count }}</div>
+
+    <div class="menu" style="width:280px;left:-225px;">
+      <div class="item">{% trans "You have" %} {{ unread_messages.count }} {% trans " unread messages" %}</div>
+      <div class="divider"></div>
+      {% for message in unread_messages %}
+        <a href="{% url 'profiles:message_view' user.username message.id%}" class="item unread_info">
+          <img class="ui avatar image" src="{{ message.sender.profile.get_avatar_url }}">
+            <span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">{{ message.sender }}</span>
+            <small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>{{ message.minutes_past}}</small>
+            <span class="subject" style="position:absolute;left:53px;top:25px;">{{ message.subject }}</span>
+        </a>
+        <div class="divider"></div>
+      {% endfor %}
+      <a class="item" href="{% url 'profiles:messages' user.username %}">{% trans 'see all messages' %}</a>
+    </div>
+  </div>
+  <div class="ui dropdown item">
+    <div>
+      <img class="ui avatar image" src="{{ user.profile.get_avatar_url }}">
+      <span class="not_mobile_span">{{ user.profile.get_full_name_or_username }}</span>
+    </div>
+    <div class="menu" style="width:280px;left:-141px;"> 
+      <div class="item">
+        <span class="description">{{ number_followers }}</span>
+        <span class="text">{% trans 'Followers' %}</span>
+      </div>
+      <div class="item">
+        <span class="description">{{ number_following }}</span>
+        <span class="text">{% trans 'Following' %}</span>
+      </div>
+      <div class="item">
+        <span class="description">{{ number_bookings }}</span>
+        <span class="text">{% trans 'Bookings' %}</span>
+      </div>
+      <a href="{% url 'profiles:profile' user.username %}" class="item">
+        {% trans 'profile' %}
+      </a>
+      <a href="{% url 'profiles:dashboard' user.username %}" class="item">
+        {% trans 'dashboard' %}
+      </a>
+      <a href="{% url 'accounts:logout' %}" class="item">
+        {% trans 'sign out' %}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% else %}
+<div class="right menu">
+  <a class="item" href="{% url 'accounts:login' %}">{% trans 'signin' %}</a>
+  <a class="item" href="{% url 'accounts:register' %}">{% trans 'register' %}</a>
+</div>
+{% endif %}

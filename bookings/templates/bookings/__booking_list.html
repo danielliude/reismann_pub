@@ -81,10 +81,8 @@
           {% endif %}
         </td>
         <td>
-          <a href="view/{{ booking.id }}/">
-            <div class="ui icon button">
-              <i class="right arrow icon"></i>
-            </div>
+          <a class="ui green label" href="view/{{ booking.id }}/">
+            <i class="unhide icon"></i>{% trans 'view' %}
           </a>
         </td>
       </tr>
@@ -97,8 +95,7 @@
         <td></td>
         <td>
           <a class="ui green label" href="add/0">
-            <i class="edit icon"></i>
-            write
+            <i class="edit icon"></i>{% trans 'add' %}
           </a>
       </tr>
     </tbody>

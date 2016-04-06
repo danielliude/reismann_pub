@@ -1,15 +1,16 @@
-{% extends "profiles/__profile_base.html" %}
+{% extends "profiles/__profile_base_new.html" %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/contact' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/contact' 'js' %}
+{% endblock %}
 
 {% block content %}
-
-  <div class="row">
-
-    <div class="col-md-8 col-md-offset-2">
-
-     {% include 'contacts/__contact_form.html' %}
-
+    <div class="ui grid contact_grid">
+      <div class="column">
+        {% include 'contacts/__contact_form.html' %}
+      </div>
     </div>
-
-  </div>
-
-{% endblock %}
+{% endblock %} 

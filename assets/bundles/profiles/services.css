@@ -1,6 +1,8 @@
+.ui.grid.service_grid {
+  max-width: 900px;
+  margin: 80px auto; }
+
 .ui.segment.service_show {
-  max-width: 800px;
-  margin-top: 80px;
   margin-bottom: 2.5rem; }
   .ui.segment.service_show ul.errorlist {
     list-style: none;

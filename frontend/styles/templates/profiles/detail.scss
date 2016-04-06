@@ -1,6 +1,9 @@
+.ui.grid.detail_grid {
+	max-width: 900px;
+	margin: 80px auto;
+}
+
 .ui.segment.profile_form {
-	max-width: 700px;
-	margin-top: 80px;
 	margin-bottom: 2.5rem;
 	#id_avatar, #id_card_image {
 		margin-bottom: 10px;
@@ -13,16 +16,3 @@
 		}
 	}
 }
-
-
-
-// .register-content {
-// 	.icon_button {
-// 		margin-bottom: 8px;
-// 		text-align: left;
-// 	}
-// 	.ui.error.message {
-// 		margin-top: 25px;
-// 	}
-	
-// }

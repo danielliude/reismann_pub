@@ -7,15 +7,11 @@
     {% render_bundle 'profiles/dashboard' 'js' %}
 {% endblock %}
 
-{% block content %}
-  <div class="pusher">
-    <div class="ui page grid">
-      <div class="column">
-        {% block profile_box %} {% include "profiles/__profile_box.html" %} {% endblock %}
-        {% block service_box %} {% include "services/__service_box.html" %} {% endblock %}
-        {% block contact_box %} {% include "contacts/__contact_box.html" %} {% endblock %}
-      </div>
+{% block content %}  
+  <div class="ui grid dashboard_grid">
+    <div class="column">
+      {% block profile_box %} {% include "profiles/__profile_box.html" %} {% endblock %}
+      {% block service_box %} {% include "services/__service_box.html" %} {% endblock %}
     </div>
-  <div>
-
+  </div>
 {% endblock %} 

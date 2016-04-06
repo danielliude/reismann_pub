@@ -1,7 +1,19 @@
 {% load i18n %}
-<div class="ui visible left demo vertical inverted sidebar icon menu">
+<div class="ui visible left vertical inverted sidebar ui segment pointing menu profile_sidebar">
 
     <div class="ui header item">{% trans 'Profile sidebar' %}</div>
+    <div class="ui center aligned  padded grid" style="background-color:#272727;">
+      <div class="row">
+        <div class="eight wide column" style="padding-right:0px;">
+          <img class="ui tiny avatar image" src="{{ user.profile.get_avatar_url }}">
+        </div>
+        <div class="eight wide column" style="padding-left:0px;padding-top:12px;">
+          <h4>{{ user.profile.get_full_name_or_username }}</h4>
+          <p><i class="circle green icon"></i>{% trans 'Online' %}</p>
+        </div>
+        
+      </div>
+    </div>
     {% with request.resolver_match.url_name as url_name %}
     <a class="item {% if url_name == 'dashboard' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
       <i class="dashboard icon"></i>

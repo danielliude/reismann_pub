@@ -373,9 +373,11 @@
 
 .daterangepicker .prev .left.arrow.icon,
 .daterangepicker .next .right.arrow.icon { margin: 0; }
+.ui.grid.detail_grid {
+  max-width: 900px;
+  margin: 80px auto; }
+
 .ui.segment.profile_form {
-  max-width: 700px;
-  margin-top: 80px;
   margin-bottom: 2.5rem; }
   .ui.segment.profile_form #id_avatar, .ui.segment.profile_form #id_card_image {
     margin-bottom: 10px; }

@@ -49,7 +49,7 @@
 
 	__webpack_require__(19);
 
-	__webpack_require__(47);
+	__webpack_require__(33);
 
 	__webpack_require__(29);
 
@@ -62,7 +62,7 @@
 			$('.masthead .ui.dropdown').dropdown({});
 
 			$(".sidebar_click").click(function () {
-				$('.demo.sidebar').sidebar('setting', 'dimPage', false).sidebar('setting', 'closable', false).sidebar('toggle');
+				$('.profile_sidebar.sidebar').sidebar('setting', 'dimPage', false).sidebar('setting', 'closable', false).sidebar('toggle');
 
 				$(".reismann_logo").toggle(500);
 			});
@@ -9948,7 +9948,7 @@
 
 /***/ },
 
-/***/ 47:
+/***/ 33:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

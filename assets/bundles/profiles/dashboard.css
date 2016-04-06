@@ -1,18 +1,23 @@
-.ui.segment.profile_info {
+.ui.grid.dashboard_grid {
   max-width: 700px;
-  margin-top: 80px; }
-  .ui.segment.profile_info .right_absolute {
-    position: absolute;
-    right: 1rem; }
-  .ui.segment.profile_info .ui.divided.items > .item {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem; }
+  margin: 80px auto; }
+
+.ui.segment.profile_info .ui.blue.segment {
+  padding-bottom: 30px; }
+
+.ui.segment.profile_info .right_absolute {
+  position: absolute;
+  right: 1rem; }
+
+.ui.segment.profile_info .ui.divided.items > .item {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; }
 
 .ui.segment.all_services {
-  max-width: 700px;
   margin-bottom: 2.5rem; }
   .ui.segment.all_services .ui.divided.items > .item {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem; }
   .ui.segment.all_services .ui.label {
-    padding: 6px 9px; }
+    padding: 6px 9px;
+    margin-bottom: 5px; }

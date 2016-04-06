@@ -12,22 +12,18 @@
   {{ form.start_time.errors }}
   <div class="field">
     <label>{{ form.start_time.label }}</label>
-    <div class="ui corner labeled input">
-        {{ form.start_time }}
-        <div class="ui corner label">
-          <i class="asterisk icon"></i>
-        </div>
-      </div>
+    <div class="ui icon input">
+      {{ form.start_time }}
+      <i class="calendar icon"></i>
+    </div>
   </div>
   {{ form.end_time.errors }}
   <div class="field">
     <label>{{ form.end_time.label }}</label>
-    <div class="ui corner labeled input">
-        {{ form.end_time }}
-        <div class="ui corner label">
-          <i class="asterisk icon"></i>
-        </div>
-      </div>
+    <div class="ui icon input">
+      {{ form.end_time }}
+      <i class="calendar icon"></i>
+    </div>
   </div>
   {{ form.number_of_customers.errors }}
   <div class="field">

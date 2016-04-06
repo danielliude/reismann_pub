@@ -93,9 +93,8 @@
     <button class="ui primary button more_select"> {% trans "More options" %}</button>
     <button class="ui primary button submit submit_button">{% trans "Search" %}</button>
   </div>
-  {% if services|length > 0 %}
-  <p class="serveice_num_p">{% trans "Have found " %} <span class="services_num"> {{ services|length }}</span>{% trans " services" %}</p>
-  {% endif %}
+  <p class="serveice_num_p" {% if services|length == 0 %}style="display:none"{% endif %}>{% trans "Have found " %} <span class="services_num"> {{ services|length }}</span>{% trans " services" %}</p>
+  
 </div>
 <div class="ui three column stackable doubling grid container search_profile">
   {% if services|length == 0 %}

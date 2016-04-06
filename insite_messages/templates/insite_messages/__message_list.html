@@ -76,10 +76,8 @@
             {% endifequal %}
           </td>
           <td>
-            <a href="{{ message.id }}/">
-              <div class="ui icon button">
-                <i class="right arrow icon"></i>
-              </div>
+            <a class="ui green label" href="{{ message.id }}/">
+              <i class="unhide icon"></i>{% trans 'view' %}
             </a>
           </td>
       </tr>
@@ -91,8 +89,7 @@
         <td></td>
         <td>
           <a class="ui green label" href="write/">
-            <i class="edit icon"></i>
-            write
+            <i class="edit icon"></i>{% trans 'add' %}
           </a>
       </tr>
     </tbody>

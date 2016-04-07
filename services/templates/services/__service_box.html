@@ -19,7 +19,7 @@
       <div class="content">
         <p><strong><i class="folder icon"></i> {% trans 'categories' %}</strong></p>
         {% for category in unique_categories %}
-          <span href="#" class="ui green label">{{ category.name }}</span>
+          <a href="#" class="ui green label">{{ category.name }}</a>
         {% endfor %}
       </div>
     </div>
@@ -27,7 +27,7 @@
       <div class="content">
         <p><strong><i class="flag icon"></i> {% trans 'languages' %}</strong></p>
         {% for language in unique_languages %}
-          <span href="#" class="ui yellow label">{{ language.name }}</span>
+          <a href="#" class="ui yellow label">{{ language.name }}</a>
         {% endfor %}
       </div>
     </div>
@@ -35,7 +35,7 @@
       <div class="content">
         <p><strong><i class="tags icon"></i> {% trans 'tags' %}</strong></p>
         {% for tag in unique_tags %}
-          <span href="#" class="ui red label">{{ tag.name }}</span>
+          <a href="#" class="ui red label">{{ tag.name }}</a>
         {% endfor %}
       </div>
     </div>

@@ -26,42 +26,48 @@
       <img class="ui avatar image" src="{{ user.profile.get_avatar_url }}">
       <span class="not_mobile_span">{{ user.profile.get_full_name_or_username }}</span>
     </div>
-    <div class="menu" style="width:280px;left:-141px;"> 
-<!--       <div class="card">
+    <div class="menu" style="left:-171px;"> 
+      <div class="item" style="display:none"></div>
+      <div class="ui card card_info">
         <div class="content">
           <img class="right floated mini ui image" src="{{ user.profile.get_avatar_url }}">
           <div class="header">{{ user.profile.get_full_name_or_username }} </div>
-          <div class="meta">Friends of Veronika </div>
-          <div class="description">Elliot requested permission to view your contact details </div>
-        </div>
-        <div class="extra content">
-          <div class="ui two buttons">
-            <div class="ui basic green button">Approve</div>
-            <div class="ui basic red button">Decline</div>
+          <div class="meta">{{ user.profile.short_description }}</div>
+          <div class="ui description center aligned three column divided grid">
+            <div class="column">
+              <div class="ui grey statistic">
+                <div class="value">
+                  {{ number_followers }}
+                </div>
+                <div class="label">{% trans 'Followers' %}</div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui grey statistic">
+                <div class="value">
+                  {{ number_following }}
+                </div>
+                <div class="label">{% trans 'Following' %}</div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui grey statistic">
+                <div class="value">
+                  {{ number_bookings }}
+                </div>
+                <div class="label">{% trans 'Bookings' %}</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div> -->
-      <div class="item">
-        <span class="description">{{ number_followers }}</span>
-        <span class="text">{% trans 'Followers' %}</span>
+        <div class="extra content">
+          <div class="ui three buttons">
+            <a href="{% url 'profiles:profile' user.username %}" class="ui basic green button">{% trans 'profile' %}</a>
+            <a href="{% url 'profiles:dashboard' user.username %}" class="ui basic blue button" style="padding-left:12px">{% trans 'dashboard' %}</a>
+            <a href="{% url 'accounts:logout' %}" class="ui basic red button">{% trans 'sign out' %}</a>
+          </div>
+        </div>
       </div>
-      <div class="item">
-        <span class="description">{{ number_following }}</span>
-        <span class="text">{% trans 'Following' %}</span>
-      </div>
-      <div class="item">
-        <span class="description">{{ number_bookings }}</span>
-        <span class="text">{% trans 'Bookings' %}</span>
-      </div>
-      <a href="{% url 'profiles:profile' user.username %}" class="item">
-        {% trans 'profile' %}
-      </a>
-      <a href="{% url 'profiles:dashboard' user.username %}" class="item">
-        {% trans 'dashboard' %}
-      </a>
-      <a href="{% url 'accounts:logout' %}" class="item">
-        {% trans 'sign out' %}
-      </a>
     </div>
   </div>
   <div class="ui mobile dropdown item">

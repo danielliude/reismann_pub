@@ -132,7 +132,7 @@
 	    function show_data(ret) {
 	        var html = '';
 	        for (var i in ret) {
-	            html += '<div class="column">' + '<div class="ui segment padding">' + '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url + '\');"></a>' + '<a href="' + ret[i].image_url + '" class="ui tiny circular image">' + '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' + '</a>' + '<div class="ui segment">' + '<div class="row"> ' + '<div class="ui header">' + ret[i].name_of_username + ' ' + ret[i].short_description + '</div>' + '</strong><a href="#">' + ret[i].cities + '</a></strong>' + '</div>' + '<div class="ui red header average_price">€ ' + ret[i].price + ' service price unit</div>' + '<div class="row content">' + '<p>' + ret[i].content + '</p>' + '</div>' + '</div>' + '</div>' + '</div>';
+	            html += '<div class="column">' + '<div class="ui segment padding">' + '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url + '\');"></a>' + '<a href="' + ret[i].image_url + '" class="ui tiny circular image">' + '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' + '</a>' + '<div class="ui segment">' + '<div class="row"> ' + '<div class="ui header">' + ret[i].name_of_username + ' ' + ret[i].short_description + '</div>' + '<span>' + ret[i].cities + '</span>' + '</div>' + '<div class="ui red header average_price">€ ' + ret[i].price + ' service price unit</div>' + '<div class="row content">' + '<p>' + ret[i].content + '</p>' + '</div>' + '</div>' + '</div>' + '</div>';
 	        }
 	        $(".search_profile").append(html);
 	    }

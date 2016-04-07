@@ -55,20 +55,25 @@ body {
   .ui.grid.search_profile .ui.segment.padding {
     padding: 0px; }
     .ui.grid.search_profile .ui.segment.padding .ui.header {
-      font-size: 11px;
+      font-size: 1em;
       margin-bottom: 0px; }
     .ui.grid.search_profile .ui.segment.padding .ui.segment {
       margin-top: 0px;
       padding-top: 0px;
       border: 0px; }
+      .ui.grid.search_profile .ui.segment.padding .ui.segment span {
+        color: rgba(0, 0, 0, 0.6);
+        margin: 0.5em 0em 0.5em;
+        font-size: 0.9em; }
     .ui.grid.search_profile .ui.segment.padding .average_price {
       position: absolute;
       right: 14px;
-      top: -27px; }
+      top: -25px; }
     .ui.grid.search_profile .ui.segment.padding .content {
       margin-top: 10px; }
     .ui.grid.search_profile .ui.segment.padding .content p {
-      font-size: 0.75rem; }
+      color: rgba(0, 0, 0, 0.68);
+      font-size: 1em; }
     .ui.grid.search_profile .ui.segment.padding .ui.tiny.image {
       width: 60px;
       padding: 2px;

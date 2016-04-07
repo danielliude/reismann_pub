@@ -22,10 +22,7 @@
     padding-left: 64px; }
 
 .masthead .ui.card.card_info {
-  margin-top: 0px;
-  width: 310px; }
-  .masthead .ui.card.card_info .ui.statistic > .label {
-    font-size: 0.8em; }
+  margin-top: 0px; }
 
 .ui.menu.masthead {
   border-radius: 0px;

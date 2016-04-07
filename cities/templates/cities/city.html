@@ -110,7 +110,7 @@
         <div class="ui segment">
           <div class="row"> 
             <div class="ui header">{{ service.user.profile.get_full_name_or_username }} {{ service.user.profile.short_description }}</div>
-            </strong><a href="#">{% for city in service.cities.all %}{% if not forloop.last %}{{ city.name }} , {% else %}{{ city.name }}{% endif %} {% endfor %}</a></strong>
+            <span>{% for city in service.cities.all %}{% if not forloop.last %}{{ city.name }} , {% else %}{{ city.name }}{% endif %} {% endfor %}</span>
           </div>
           <div class="ui red header average_price">€ {{ service.price }}</div>
           <div class="row content">

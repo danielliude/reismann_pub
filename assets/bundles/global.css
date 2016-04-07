@@ -39,10 +39,7 @@
     font-size: 12px;
     color: #888888; }
   .ui.menu.masthead .ui.card.card_info {
-    margin-top: 0px;
-    width: 310px; }
-    .ui.menu.masthead .ui.card.card_info .ui.statistic > .label {
-      font-size: 0.8em; }
+    margin-top: 0px; }
 
 /*--------------
     footer

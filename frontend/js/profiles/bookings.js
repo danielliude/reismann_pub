@@ -1,7 +1,6 @@
 import '../../styles/templates/profiles/bookings.scss'
 import '../../vendors/daterangepicker/daterangepicker.css'
 
-import '../../vendors/daterangepicker/moment.js'
 import '../../vendors/daterangepicker/daterangepicker.min.js'
 
 $(function() {

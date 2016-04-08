@@ -17,9 +17,9 @@ BOOKING_STATUS = (
   (3, _('Rejected by customer')),
   (4, _('Rejected by provider')),
   (5, _('Approved by customer')),
-  (6, _('Approved byprovider')),
+  (6, _('Approved by provider')),
   (7, _('Removed by customer')),
-  (8, _('Revoved by provider')),
+  (8, _('Removed by provider')),
 )
 
 MUGSHOT_SETTINGS = {'size': (140, 140), 'crop': 'smart'}

@@ -29,38 +29,21 @@ class RegistrationForm(forms.Form):
                               widget=forms.TextInput(attrs={'placeholder': _('Username')}),
                               label=_("Username"),
                               error_messages={'invalid': _('Username must contain only letters, numbers, dots and underscores.')})
+
   email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': _('Email')}),
-                           label=_("Email"))
-  first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('First Name')}),
-                               label=_("First name"),
-                               max_length=30)
-  last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('Last Name')}),
-                              label=_("Last name"),
-                              max_length=30)
+                                                  label=_("Email"))
+
   password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': _('Password')},
                                                          render_value=False),
-                              label=_("Create password"))
+                                                         label=_("Create password"))
+
   password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': _('Repeat password')},
                                                          render_value=False),
-                              label=_("Repeat password"))
+                                                         label=_("Repeat password"))
+
   tos = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'required'}),
                            label= mark_safe('I have read and agree to the <a href="#" id="ui_model">terms</a> of service'),
                            error_messages={'required': _('You must agree to the terms to register.')})
-
-  def clean_username(self):
-    try:
-      user = User.objects.get(username__iexact=self.cleaned_data['username'])
-    except User.DoesNotExist:
-      pass
-    else:
-      if len(self.cleaned_data.get('username')) < 3:
-        raise forms.ValidationError(_('Username should have at least 3 letters.'))
-      if ACCOUNT_ACTIVATION_REQUIRED and Registration.objects.filter(user__username__iexact=self.cleaned_data['username']).exclude(activation_key=ACCOUNT_ACTIVATED):
-        raise forms.ValidationError(_('This username is already taken but not confirmed. Please check your email for verification steps.'))
-      raise forms.ValidationError(_('This username is already taken.'))
-    if self.cleaned_data['username'].lower() in ACCOUNT_FORBIDDEN_USERNAMES:
-      raise forms.ValidationError(_('This username is not allowed.'))
-    return self.cleaned_data['username']
 
   def clean_email(self):
     if User.objects.filter(email__iexact=self.cleaned_data['email']):
@@ -73,8 +56,10 @@ class RegistrationForm(forms.Form):
     if 'password1' in self.cleaned_data and 'password2' in self.cleaned_data:
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:
             raise forms.ValidationError(_('The two password fields didn\'t match.'))
+
         if len(self.cleaned_data.get('password1')) < 8:
             raise forms.ValidationError(_('Password should be more then 8 letters.'))
+
     return self.cleaned_data
 
   def save(self):
@@ -87,31 +72,12 @@ class RegistrationForm(forms.Form):
                                                  password,
                                                  not ACCOUNT_ACTIVATION_REQUIRED,
                                                  ACCOUNT_ACTIVATION_REQUIRED)
-    logger.debug(self, self.cleaned_data)
-    first_name, last_name = (self.cleaned_data['first_name'],
-                             self.cleaned_data['last_name'])
-    logger.debug(self, first_name)
-    logger.debug(self, last_name)
-
-    new_user.first_name = first_name
-    new_user.last_name = last_name
 
     new_user.save()
-
     return new_user
 
-# def identification_field_factory(label, error_required):
-#   return forms.CharField(label=label,
-#                          widget=forms.TextInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Email or Username')}),
-#                          max_length=75,
-#                          error_messages={'required': _("%(error)s") % {'error': error_required}})
 
 class AuthenticationForm(forms.Form):
-
-  # identification = identification_field_factory(_("Email or username"),
-  #                                               _("Either supply us with your email or username."))
-  # password = forms.CharField(label=_("Password"),
-  #                            widget=forms.PasswordInput(attrs={'class': 'required form-control', 'required': True, 'placeholder': _('Password')}, render_value=False))
 
   identification = forms.CharField(label=_("Email or username"),
                                    widget=forms.TextInput(attrs={'placeholder': _('Email or Username')}))

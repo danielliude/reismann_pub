@@ -19,15 +19,17 @@ from guardian.shortcuts import assign_perm, get_perms
 from core.constants import ASSIGNED_PERMISSIONS
 from core.constants import GLOBAL_PERMISSIONS
 
+import datetime
+
 import re
 
 SHA1_RE = re.compile('^[a-f0-9]{40}$')
 
 class RegistrationManager(UserManager):
 
-  def create_user(self, username, email, password, active=False,
-                  send_email=True):
-    new_user = User.objects.create_user(username, email, password)
+  def create_user(self, username, email, password, active=False, send_email=True):
+
+    new_user = User.objects.create_user(username=username, email=email, password=password)
     new_user.is_active = active
     new_user.save()
 
@@ -68,7 +70,7 @@ class RegistrationManager(UserManager):
       salt, new_activation_key = generate_sha1(registration.user.username)
       registration.activation_key = new_activation_key
       registration.save(using=self._db)
-      registration.user.date_joined = get_datetime_now()
+      registration.user.date_joined = datetime.datetime.now()
       registration.user.save(using=self._db)
       registration.send_activation_email()
       return True

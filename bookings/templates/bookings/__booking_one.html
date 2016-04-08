@@ -49,7 +49,7 @@
       <div class="eight wide tablet twelve wide computer column">{{ booking.booking_remark }}</div>
     </div>
     <div class="one column row">
-      <div class="column">
+      <div class="column" style="width:100%!important;">
         {% if request.user == booking.sender %}
           {% if booking.status == 1 or booking.status == 2 or booking.status == 3 or booking.status == 4 %}
             <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}" class="ui blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>

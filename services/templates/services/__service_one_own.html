@@ -1,67 +1,29 @@
 {% load i18n %}
 
-<div class="ui blue segment bookings_show">
-  <h3 class="ui center aligned header">{% trans 'Booking' %}</h3>
+<div class="ui blue segment service_show">
+  <h3 class="ui center aligned header">{% trans 'Service' %}</h3>
 
   <div class="ui four column grid  celled divided  doubling ">
-    <div class="column"><b>{% trans 'Service' %}</b></div>
-    <div class="column">{{ booking.service.title }}</div>
-    <div class="column"><b>{% trans 'Start time' %}</b></div>
-    <div class="column">{{ booking.service_starts_at|date:"Y-m-d" }}</div>
-    <div class="column"><b>{% trans 'End time' %}</b></div>
-    <div class="column">{{ booking.service_ends_at|date:"Y-m-d" }}</div>
-    <div class="column"><b>{% trans 'Price' %}</b></div>
-    <div class="column">{{ booking.price }}</div>
-    <div class="column"><b>{% trans 'Sender' %}</b></div>
-    <div class="column">{{ booking.sender }}</div>
-    <div class="column"><b>{% trans 'Recipient' %}</b></div>
-    <div class="column">{{ booking.recipient }}</div>
-    <div class="column"><b>{% trans 'Number of customers' %}</b></div>
-    <div class="column">{{ booking.number_of_customers }}</div>
-    <div class="column"><b>{% trans 'Booking status' %}</b></div>
-    <div class="column">
-      {% if booking.status == 1 %}
-        <a class="ui brand_blue label">{% trans 'Negotiation' %} </a>
-      {% elif booking.status == 2%}
-        <a class="ui brand_blue label">{% trans 'Negotiation' %}</a>
-      {% elif booking.status == 3%}
-        <a class="ui red label">{% trans 'Rejected' %}</a>
-      {% elif booking.status == 4%}
-        <a class="ui red label">{% trans 'Rejected' %}</a>
-      {% elif booking.status == 5%}
-        <a class="ui green label">{% trans 'Approved' %}</a>
-      {% elif booking.status == 6%}
-        <a class="ui green label">{% trans 'Approved' %}</a>
-      {% elif booking.status == 7%}
-        <a class="ui red label">{% trans 'Removed' %}</a>
-      {% elif booking.status == 8%}
-        <a class="ui red label">{% trans 'Removed' %}</a>
-      {% endif %}
-    </div>
+    <div class="column"><b>{% trans 'Title' %}</b></div>
+    <div class="column">{{ service.title }}</div>
+    <div class="column"><b>{% trans 'content' %}</b></div>
+    <div class="column">{{ service.content }}</div>
+    <div class="column"><b>{% trans 'price' %}</b></div>
+    <div class="column">{{ service.price }}</div>
+    <div class="column"><b>{% trans 'type' %}</b></div>
+    <div class="column">{{ service.type }}</div>
+    <div class="column"><b>{% trans 'cities' %}</b></div>
+    <div class="column">{{ service.cities }}</div>
+    <div class="column"><b>{% trans 'categories' %}</b></div>
+    <div class="column">{{ service.categories }}</div>
+    <div class="column"><b>{% trans 'languages' %}</b></div>
+    <div class="column">{{ service.languages }}</div>
+    <div class="column"><b>{% trans 'tags' %}</b></div>
+    <div class="column">{{ service.tags }}</div>
 
-    <div class="row">
-      <div class="eight wide tablet four wide computer computer column"><b>{% trans 'Booking content' %}</b></div>
-      <div class="eight wide tablet twelve wide computer column">{{ booking.booking_content }}</div>
-    </div>
-    <div class="row">
-      <div class="eight wide tablet four wide computer column"><b>{% trans 'Booking remark' %}</b></div>
-      <div class="eight wide tablet twelve wide computer column">{{ booking.booking_remark }}</div>
-    </div>
     <div class="one column row">
       <div class="column" style="width:100%!important;">
-        {% if request.user == booking.sender %}
-          {% if booking.status == 1 or booking.status == 2 or booking.status == 3 or booking.status == 4 %}
-            <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}" class="ui blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
-            <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
-          {% endif %}
-        {% elif request.user == booking.recipient %}
-          {% if booking.status == 1 or booking.status == 2 %}
-            <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
-            <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}" class="ui green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
-          {% elif booking.status == 3 or booking.status == 4  %}
-            <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}" class="ui green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
-          {% endif %}
-        {% endif %}
+          
       </div>
     </div>
   </div>

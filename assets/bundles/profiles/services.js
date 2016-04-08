@@ -47,11 +47,7 @@
 
 	"use strict";
 
-<<<<<<< HEAD
-	__webpack_require__(211);
-=======
 	__webpack_require__(115);
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 
 	$(function () {
 	    init_button();
@@ -138,11 +134,7 @@
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 211:
-=======
 /***/ 115:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

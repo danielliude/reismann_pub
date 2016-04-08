@@ -49,27 +49,6 @@
 
 	__webpack_require__(80);
 
-<<<<<<< HEAD
-	__webpack_require__(219);
-
-	__webpack_require__(226);
-
-	__webpack_require__(227);
-
-	__webpack_require__(235);
-
-	__webpack_require__(236);
-
-	__webpack_require__(238);
-
-	__webpack_require__(239);
-
-	__webpack_require__(241);
-
-	__webpack_require__(244);
-
-	__webpack_require__(246);
-=======
 	__webpack_require__(123);
 
 	__webpack_require__(130);
@@ -89,7 +68,6 @@
 	__webpack_require__(148);
 
 	__webpack_require__(150);
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 
 /***/ },
 
@@ -9958,22 +9936,14 @@
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 219:
-=======
 /***/ 123:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 226:
-=======
 /***/ 130:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	/*!
@@ -12343,22 +12313,14 @@
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 227:
-=======
 /***/ 131:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 235:
-=======
 /***/ 139:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	/* =========================================================
@@ -13818,22 +13780,14 @@
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 236:
-=======
 /***/ 140:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 238:
-=======
 /***/ 142:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -14113,44 +14067,28 @@
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 239:
-=======
 /***/ 143:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 241:
-=======
 /***/ 145:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 244:
-=======
 /***/ 148:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-<<<<<<< HEAD
-/***/ 246:
-=======
 /***/ 150:
->>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	/*! AdminLTE app.js

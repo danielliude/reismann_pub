@@ -23,7 +23,7 @@
       </div>
       <div class="twelve wide column">
         {% for city in service.cities.all %}
-          <a class="ui blue label">{{ city.name }}</a>
+          <a class="ui brand_blue label">{{ city.name }}</a>
         {% endfor %}
       </div>
       <div class="four wide column">
@@ -56,12 +56,12 @@
 
     {% if request.user.is_authenticated %}
       {% if view_own_profile %}
-        <a class="ui blue right floated button" href="{% url 'profiles:service_edit' profile.user.username service.id %}"><b>{% trans 'Edit service' %}</b></a>
+        <a class="ui brand_blue right floated button" href="{% url 'profiles:service_edit' profile.user.username service.id %}"><b>{% trans 'Edit service' %}</b></a>
       {% else %}
-        <a class="ui blue right floated button" href="{% url 'profiles:booking_add' profile.user.username service.id %}"><b>{% trans 'Book me' %}</b></a>
+        <a class="ui brand_blue right floated button" href="{% url 'profiles:booking_add' profile.user.username service.id %}"><b>{% trans 'Book me' %}</b></a>
       {% endif %}
     {% else %}
-      <a class="ui blue right floated button" href="{% url 'accounts:login' %}"><b>{% trans 'Log in to book' %}</b></a>
+      <a class="ui brand_blue right floated button" href="{% url 'accounts:login' %}"><b>{% trans 'Log in to book' %}</b></a>
     {% endif %}
 
     {% if ratings|length != 0 %}
@@ -102,7 +102,7 @@
               <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
               {{form.comment}}
             </div>
-            <div class="ui blue labeled submit icon button"><i class="icon edit"></i> {% trans 'Send your comment' %}</div>
+            <div class="ui brand_blue labeled submit icon button"><i class="icon edit"></i> {% trans 'Send your comment' %}</div>
           </form>
       </div>
     {% endif %}

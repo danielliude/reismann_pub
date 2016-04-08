@@ -791,6 +791,47 @@ a.ui.basic.blue.label:hover {
   border-color: #3080ae !important;
 }
 
+/*--- Blue ---*/
+
+.ui.brand_blue.labels .label,
+.ui.brand_blue.label {
+  background-color: #1C76AB !important;
+  border-color: #1C76AB !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.ui.brand_blue.labels .label:hover,
+a.ui.brand_blue.label:hover {
+  background-color: #12689b !important;
+  border-color: #12689b !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.ui.brand_blue.corner.label,
+.ui.brand_blue.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.ui.brand_blue.ribbon.label {
+  border-color: #15587f !important;
+}
+
+/* Basic */
+.ui.basic.brand_blue.label {
+  background-color: #FFFFFF !important;
+  color: #1C76AB !important;
+  border-color: #1C76AB !important;
+}
+.ui.basic.brand_blue.labels a.label:hover,
+a.ui.basic.brand_blue.label:hover {
+  background-color: #FFFFFF !important;
+  color: #12689b !important;
+  border-color: #12689b !important;
+}
+
 /*--- Violet ---*/
 
 .ui.violet.labels .label,

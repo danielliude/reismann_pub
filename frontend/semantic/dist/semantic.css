@@ -664,6 +664,14 @@ input::selection {
         Global Overrides
 *******************************/
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /*******************************
          Site Overrides
 *******************************/
@@ -3731,6 +3739,50 @@ input::selection {
   text-shadow: none;
 }
 
+/*--- Brand_blue ---*/
+
+.ui.brand_blue.buttons .button,
+.ui.brand_blue.button {
+  background-color: #1C76AB;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+
+.ui.brand_blue.button {
+  box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+
+.ui.brand_blue.buttons .button:hover,
+.ui.brand_blue.button:hover {
+  background-color: #12689b;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.ui.brand_blue.buttons .button:focus,
+.ui.brand_blue.button:focus {
+  background-color: #0b6193;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.ui.brand_blue.buttons .button:active,
+.ui.brand_blue.button:active {
+  background-color: #15587f;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.ui.brand_blue.buttons .active.button,
+.ui.brand_blue.buttons .active.button:active,
+.ui.brand_blue.active.button,
+.ui.brand_blue.button .active.button:active {
+  background-color: #0f699e;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
 /* Basic */
 
 .ui.basic.brand.buttons .button,
@@ -3767,6 +3819,89 @@ input::selection {
 }
 
 .ui.buttons:not(.vertical) > .basic.brand.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/*--- Brand ---*/
+
+.ui.brand.buttons .button,
+.ui.brand.button {
+  background-color: #FF7E66;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+
+.ui.brand.button {
+  box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+
+.ui.brand.buttons .button:hover,
+.ui.brand.button:hover {
+  background-color: #ff684c;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.ui.brand.buttons .button:focus,
+.ui.brand.button:focus {
+  background-color: #ff5c3d;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.ui.brand.buttons .button:active,
+.ui.brand.button:active {
+  background-color: #ff5333;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.ui.brand.buttons .active.button,
+.ui.brand.buttons .active.button:active,
+.ui.brand.active.button,
+.ui.brand.button .active.button:active {
+  background-color: #ff684c;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+
+.ui.basic.brand_blue.buttons .button,
+.ui.basic.brand_blue.button {
+  box-shadow: 0px 0px 0px 1px #1C76AB inset !important;
+  color: #1C76AB !important;
+}
+
+.ui.basic.brand_blue.buttons .button:hover,
+.ui.basic.brand_blue.button:hover {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px #12689b inset !important;
+  color: #12689b !important;
+}
+
+.ui.basic.brand_blue.buttons .button:focus,
+.ui.basic.brand_blue.button:focus {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px #0b6193 inset !important;
+  color: #12689b !important;
+}
+
+.ui.basic.brand_blue.buttons .active.button,
+.ui.basic.brand_blue.active.button {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px #0f699e inset !important;
+  color: #15587f !important;
+}
+
+.ui.basic.brand_blue.buttons .button:active,
+.ui.basic.brand_blue.button:active {
+  box-shadow: 0px 0px 0px 1px #15587f inset !important;
+  color: #15587f !important;
+}
+
+.ui.buttons:not(.vertical) > .basic.brand_blue.button:not(:first-child) {
   margin-left: -1px;
 }
 
@@ -12122,6 +12257,52 @@ a.ui.basic.blue.label:hover {
   background-color: #FFFFFF !important;
   color: #3080ae !important;
   border-color: #3080ae !important;
+}
+
+/*--- Blue ---*/
+
+.ui.brand_blue.labels .label,
+.ui.brand_blue.label {
+  background-color: #1C76AB !important;
+  border-color: #1C76AB !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+
+.ui.brand_blue.labels .label:hover,
+a.ui.brand_blue.label:hover {
+  background-color: #12689b !important;
+  border-color: #12689b !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+
+.ui.brand_blue.corner.label,
+.ui.brand_blue.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+
+.ui.brand_blue.ribbon.label {
+  border-color: #15587f !important;
+}
+
+/* Basic */
+
+.ui.basic.brand_blue.label {
+  background-color: #FFFFFF !important;
+  color: #1C76AB !important;
+  border-color: #1C76AB !important;
+}
+
+.ui.basic.brand_blue.labels a.label:hover,
+a.ui.basic.brand_blue.label:hover {
+  background-color: #FFFFFF !important;
+  color: #12689b !important;
+  border-color: #12689b !important;
 }
 
 /*--- Violet ---*/

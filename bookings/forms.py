@@ -20,24 +20,26 @@ class BookingForm(forms.ModelForm):
 
   start_time = forms.DateField(required=True,
                                initial=datetime.today, label= _('Start time'),
-                               widget=forms.DateTimeInput(attrs={'class': 'required form-control timepicker', 'required': True},
+                               widget=forms.DateTimeInput(attrs={'class': 'required', 'required': True},
                                format='%Y-%m-%d'),
                                input_formats=['%Y-%m-%d'])
 
   end_time = forms.DateField(required=True,
                              initial=datetime.today, label = _('End time'),
-                             widget=forms.DateTimeInput(attrs={'class': 'required form-control', 'required': True},
+                             widget=forms.DateTimeInput(attrs={'class': 'required', 'required': True},
                              format='%Y-%m-%d'),
                              input_formats=['%Y-%m-%d'])
 
   number_of_customers = forms.IntegerField(required=True,
                                            min_value=1, max_value=20,
                                            label = _('Number of customers'),
-                                           widget = forms.NumberInput(attrs={'class': 'required form-control', 'required': True}))
+                                           widget = forms.NumberInput(attrs={'class': 'required form-control', 
+                                                                             'required': True,
+                                                                             'placeholder': _('Number of customers')}))
 
   price = forms.IntegerField(min_value=1, required=False,
                              label = _('Price'),
-                             widget = forms.NumberInput(attrs={'class': 'required form-control',
+                             widget = forms.NumberInput(attrs={'class': 'required',
                                                                'required': True,
                                                                'placeholder': _('negotiation price')}))
 

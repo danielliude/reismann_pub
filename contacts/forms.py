@@ -14,20 +14,24 @@ class ContactForm(forms.ModelForm):
   """
   Form for creating or editing a new contact.
   """
-  phone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('telefon number')}),
+  phone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('telephone number')}),
+                          required= True,
                           label=_('telephone number'),
                           max_length=30)
 
   email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder': _('contact email')}),
+                          required= True,
                           label=_('contact email'),
                           max_length=200)
 
   weibo = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('weibo account')}),
+                          required= False,
                           label=_('weibo account'),
                           max_length=30)
   wechat = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('wechat account')}),
-                           label=_('wechat account'),
-                           max_length=30)
+                          required= False,
+                          label=_('wechat account'),
+                          max_length=30)
   qq = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('qq account')}),
                        label=_('qq account'),
                        max_length=30)

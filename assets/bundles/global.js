@@ -56,14 +56,14 @@
 	__webpack_require__(32);
 
 	$(document).ready(function () {
-		init_component();
 		highly_adaptive();
-		$(window).resize(highly_adaptive);
+		init_component();
 
 		function init_component() {
 			$('.masthead .ui.dropdown').dropdown({});
 		}
 
+		$(window).resize(highly_adaptive);
 		function highly_adaptive() {
 			var h = window_height() - $(".masthead").innerHeight() - $(".footer").innerHeight() - $(".copyright").innerHeight();
 

@@ -33,7 +33,11 @@
   {{ form.price.errors }}
   <div class="field">
     <label>{{ form.price.label }}</label>
-    {{ form.price }}
+    <div class="ui right labeled input">
+      <div class="ui label">$</div>
+      {{ form.price }}
+      <div class="ui basic label">.00</div>
+    </div>
   </div>
   {{ form.meeting_point.errors }}
   <div class="field">
@@ -51,7 +55,7 @@
     {{ form.booking_remark }}
   </div>
 
-  <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+  <button class="fluid ui brand_blue button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
   <a href="{% url 'profiles:bookings' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
   <div class="ui error message">
   </div>

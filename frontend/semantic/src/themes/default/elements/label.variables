@@ -152,6 +152,7 @@
 @greenTextColor: @white;
 @tealTextColor: @white;
 @blueTextColor: @white;
+@brand_blueTextColor: @white;
 @violetTextColor: @white;
 @purpleTextColor: @white;
 @pinkTextColor: @white;
@@ -166,6 +167,7 @@
 @greenHoverTextColor: @white;
 @tealHoverTextColor: @white;
 @blueHoverTextColor: @white;
+@brand_blueHoverTextColor: @white;
 @violetHoverTextColor: @white;
 @purpleHoverTextColor: @white;
 @pinkHoverTextColor: @white;
@@ -180,6 +182,7 @@
 @greenRibbonShadow: darken(@green, 10);
 @tealRibbonShadow: darken(@teal, 10);
 @blueRibbonShadow: darken(@blue, 10);
+@brand_blueRibbonShadow: darken(@brand_blue, 10);
 @violetRibbonShadow: darken(@violet, 10);
 @purpleRibbonShadow: darken(@purple, 10);
 @pinkRibbonShadow: darken(@pink, 10);

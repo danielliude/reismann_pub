@@ -47,114 +47,31 @@
     </div>
 
 
-
-<!--     <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}" class="ui right floated button"><i class="remove icon"></i></a> -->
-
     {% if booking.status == 3 or booking.status == 4 or booking.status == 5 or booking.status == 6 or booking.status == 7 or booking.status == 8 %}
 
       <a href="" class="ui right floated button"><i class="remove icon"></i></a>
       <a href="" class="ui right floated button"><i class="edit icon"></i></a>
       <a href="" class="ui right floated button"><i class="angellist icon"></i></a>
-
-<!--       <a href="">
-          <button data-original-title="Reject" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-               <i class="fa fa-remove"></i>
-          </button>
-      </a>
-
-      <a href="">
-      <button data-original-title="Edit" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-           <i class="fa fa-pencil"></i>
-      </button>
-      </a>
-      <a href="">
-          <button data-original-title="Approve" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-               <i class="fa fa-plus"></i>
-          </button>
-      </a> -->
     {% else %}
       {% if request.user == booking.sender %}
         {% if booking.status == 2%}
           <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}" class="ui right floated button"><i class="remove icon"></i></a>
           <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}" class="ui right floated button"><i class="edit icon"></i></a>
           <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}" class="ui right floated button"><i class="angellist icon"></i></a>
-<!--           <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}">
-              <button data-original-title="Reject" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-remove"></i>
-              </button>
-          </a>
-          <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}">
-              <button data-original-title="Approve" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-plus"></i>
-              </button>
-          </a>
-          <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}">
-              <button data-original-title="Edit" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-pencil"></i>
-              </button>
-          </a> -->
         {% else %}
           <a href="" class="ui right floated button"><i class="remove icon"></i></a>
           <a href="" class="ui right floated button"><i class="edit icon"></i></a>
           <a href="" class="ui right floated button"><i class="angellist icon"></i></a>
-      <!--     <a href="">
-              <button data-original-title="Reject" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-remove"></i>
-              </button>
-          </a>
-
-          <a href="">
-          <button data-original-title="Edit" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-               <i class="fa fa-pencil"></i>
-          </button>
-          </a>
-          <a href="">
-              <button data-original-title="Approve" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-plus"></i>
-              </button>
-          </a> -->
         {% endif %}
       {% elif request.user == booking.recipient %}
         {% if booking.status == 1%}
           <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}" class="ui right floated button"><i class="remove icon"></i></a>
           <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}" class="ui right floated button"><i class="edit icon"></i></a>
           <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}" class="ui right floated button"><i class="angellist icon"></i></a>
-
-     <!--      <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}">
-              <button data-original-title="Reject" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-remove"></i>
-              </button>
-          </a>
-          <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}">
-              <button data-original-title="Approve" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-plus"></i>
-              </button>
-          </a>
-          <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}">
-              <button data-original-title="Edit" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-pencil"></i>
-              </button>
-          </a> -->
         {% else %}
           <a href="" class="ui right floated button"><i class="remove icon"></i></a>
           <a href="" class="ui right floated button"><i class="edit icon"></i></a>
           <a href="" class="ui right floated button"><i class="angellist icon"></i></a>
-<!--           <a href="">
-              <button data-original-title="Reject" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-remove"></i>
-              </button>
-          </a>
-
-          <a href="">
-          <button data-original-title="Edit" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-               <i class="fa fa-pencil"></i>
-          </button>
-          </a>
-          <a href="">
-              <button data-original-title="Approve" type="button" class="btn btn-default btn-sm disabled" data-toggle="tooltip" data-container="body" title="">
-                   <i class="fa fa-plus"></i>
-              </button>
-          </a> -->
         {% endif %}
       {% endif %}
     {% endif %}

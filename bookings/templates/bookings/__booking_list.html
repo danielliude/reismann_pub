@@ -63,9 +63,9 @@
         <td>{{ booking.price }}</td>
         <td>
           {% if booking.status == 1 %}
-            <a class="ui blue label">{% trans 'Negotiation' %} </a>
+            <a class="ui brand_blue label">{% trans 'Negotiation' %} </a>
           {% elif booking.status == 2%}
-            <a class="ui blue label">{% trans 'Negotiation' %}</a>
+            <a class="ui brand_blue label">{% trans 'Negotiation' %}</a>
           {% elif booking.status == 3%}
             <a class="ui red label">{% trans 'Rejected' %}</a>
           {% elif booking.status == 4%}

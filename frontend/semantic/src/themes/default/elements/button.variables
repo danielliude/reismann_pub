@@ -261,6 +261,8 @@
 @redTextShadow: @invertedTextShadow;
 @brandTextColor: @invertedTextColor;
 @brandTextShadow: @invertedTextShadow;
+@brand_blueTextColor: @invertedTextColor;
+@brand_blueTextShadow: @invertedTextShadow;
 @orangeTextColor: @invertedTextColor;
 @orangeTextShadow: @invertedTextShadow;
 @greenTextColor: @invertedTextColor;

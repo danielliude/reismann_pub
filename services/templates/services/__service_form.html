@@ -7,21 +7,15 @@
   {{ form.title.errors }}
   <div class="field">
     <label>{{ form.title.label }}</label>
-    <div class="ui corner labeled input">
+    <div class="ui input">
       {{ form.title }}
-      <div class="ui corner label">
-        <i class="asterisk icon"></i>
-      </div>
     </div>
   </div>
   {{ form.content.errors }}
   <div class="field">
     <label>{{ form.content.label }}</label>
-    <div class="ui corner labeled input">
+    <div class="ui input">
       {{ form.content }}
-      <div class="ui corner label">
-        <i class="asterisk icon"></i>
-      </div>
     </div>
   </div>
   {{ form.price.errors }}
@@ -59,7 +53,7 @@
       {{ form.tags }}
   </div>
   
-  <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+  <button class="fluid ui brand_blue button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
   <a href="{% url 'profiles:services' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
   <div class="ui error message">
   </div>

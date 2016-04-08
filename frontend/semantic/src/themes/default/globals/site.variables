@@ -200,6 +200,7 @@
 @grey             : #767676;
 @black            : #1B1C1D;
 @brand            : #FF7E66;
+@brand_blue       : #1C76AB;
 
 /*---  Light Colors  ---*/
 @lightRed         : #FF695E;
@@ -598,6 +599,8 @@
 @pinkHover            : saturate(darken(@pink, 5), 10, relative);
 @brownHover           : saturate(darken(@brown, 5), 10, relative);
 @brandHover           : saturate(darken(@brand, 5), 10, relative);
+@brand_blueHover      : saturate(darken(@brand_blue, 5), 10, relative);
+@brand_blue_blueHover      : saturate(darken(@brand_blue, 5), 10, relative);
 
 @lightRedHover        : saturate(darken(@lightRed, 5), 10, relative);
 @lightOrangeHover     : saturate(darken(@lightOrange, 5), 10, relative);
@@ -657,6 +660,7 @@
 @pinkFocus            : saturate(darken(@pink, 8), 20, relative);
 @brownFocus           : saturate(darken(@brown, 8), 20, relative);
 @brandFocus           : saturate(darken(@brand, 8), 20, relative);
+@brand_blueFocus      : saturate(darken(@brand_blue, 8), 20, relative);
 
 @lightRedFocus        : saturate(darken(@lightRed, 8), 20, relative);
 @lightOrangeFocus     : saturate(darken(@lightOrange, 8), 20, relative);
@@ -717,6 +721,7 @@
 @pinkDown            : darken(@pink, 10);
 @brownDown           : darken(@brown, 10);
 @brandDown           : darken(@brand, 10);
+@brand_blueDown      : darken(@brand_blue, 10);
 
 @lightRedDown        : darken(@lightRed, 10);
 @lightOrangeDown     : darken(@lightOrange, 10);
@@ -777,6 +782,7 @@
 @pinkActive            : saturate(darken(@pink, 5), 15, relative);
 @brownActive           : saturate(darken(@brown, 5), 15, relative);
 @brandActive           : saturate(darken(@brand, 5), 15, relative);
+@brand_blueActive      : saturate(darken(@brand_blue, 5), 15, relative);
 
 @lightRedActive        : saturate(darken(@lightRed, 5), 15, relative);
 @lightOrangeActive     : saturate(darken(@lightOrange, 5), 15, relative);

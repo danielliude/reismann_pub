@@ -1,0 +1,20 @@
+{% extends "profiles/__profile_base_new.html" %}
+{% load i18n %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/message' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/message' 'js' %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui grid message_grid">
+      <div class="column">
+          <div class="ui blue segment message_show">
+            <h3 class="ui center aligned header">{% trans ' Inbox Messages' %}</h3>
+                {% include 'insite_messages/__message_list.html' %}
+          </div>
+      </div>
+    </div>
+{% endblock %} 

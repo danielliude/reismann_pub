@@ -18,15 +18,15 @@ from profiles.views import makeContextForDetails, makeContextForMessages
 
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
-def messages(request, username,
-                template_name='profiles/messages.html',
+def inbox_messages(request, username,
+                template_name='insite_messages/inbox_messages.html',
                 extra_context=None, **kwargs):
 
   if request.user.username == username:
 
       user = get_object_or_404(User, username__iexact=username)
       profile = get_user_profile(user)
-      messages = Message.objects.all_for(user)
+      messages = Message.objects.inbox_for(user)
 
       if not extra_context: extra_context = dict()
       extra_context['messages'] = messages
@@ -39,14 +39,41 @@ def messages(request, username,
                                               extra_context=extra_context)(request)
   else:
 
-    url = reverse('profiles:messages', kwargs={'username':request.user.username})
+    url = reverse('profiles:inbox_messages', kwargs={'username':request.user.username})
+    return HttpResponseRedirect(url)
+
+
+@secure_required
+@permission_required_or_403('insite_messages.view_message')
+def outbox_messages(request, username,
+                template_name='insite_messages/outbox_messages.html',
+                extra_context=None, **kwargs):
+
+  if request.user.username == username:
+
+      user = get_object_or_404(User, username__iexact=username)
+      profile = get_user_profile(user)
+      messages = Message.objects.outbox_for(user)
+
+      if not extra_context: extra_context = dict()
+      extra_context['messages'] = messages
+      extra_context['profile'] = profile
+
+      extra_context = makeContextForDetails(request, extra_context)
+      extra_context = makeContextForMessages(request, extra_context)
+
+      return ExtraContextTemplateView.as_view(template_name=template_name,
+                                              extra_context=extra_context)(request)
+  else:
+
+    url = reverse('profiles:outbox_messages', kwargs={'username':request.user.username})
     return HttpResponseRedirect(url)
 
 
 @secure_required
 @permission_required_or_403('insite_messages.add_message')
 def message_write(request, username, write_message_form=MessageComposeForm,
-                template_name='profiles/message_write.html', success_url=None,
+                template_name='insite_messages/message_write.html', success_url=None,
                 extra_context=None, **kwargs):
 
     if request.user.username == username:
@@ -68,7 +95,7 @@ def message_write(request, username, write_message_form=MessageComposeForm,
               if success_url:
                 redirect_to = success_url
               else:
-                redirect_to = reverse('profiles:messages', kwargs={'username': username})
+                redirect_to = reverse('profiles:outbox_messages', kwargs={'username': username})
               return redirect(redirect_to)
 
         if not extra_context: extra_context = dict()
@@ -91,7 +118,7 @@ def message_write(request, username, write_message_form=MessageComposeForm,
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
 def message_view(request, username, message_id, write_message_form=MessageComposeForm,
-                 template_name='profiles/message_view.html', success_url=None,
+                 template_name='insite_messages/message_view.html', success_url=None,
                  extra_context=None, **kwargs):
 
     if request.user.username == username:
@@ -125,7 +152,7 @@ def message_view(request, username, message_id, write_message_form=MessageCompos
 @secure_required
 @permission_required_or_403('insite_messages.add_message')
 def message_reply(request, username, message_id, write_message_form=MessageComposeForm,
-                 template_name='profiles/message_write.html', success_url=None,
+                 template_name='insite_messages/message_write.html', success_url=None,
                  extra_context=None, **kwargs):
 
     if request.user.username == username:
@@ -155,7 +182,7 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
               if success_url:
                 redirect_to = success_url
               else:
-                redirect_to = reverse('profiles:messages', kwargs={'username': username})
+                redirect_to = reverse('profiles:outbox_messages', kwargs={'username': username})
               return redirect(redirect_to)
 
         if not extra_context: extra_context = dict()
@@ -176,7 +203,7 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
 
 @secure_required
 @permission_required_or_403('insite_messages.delete_message')
-def message_remove(request, username, message_id, template_name='profiles/messages.html', success_url=None,
+def message_remove(request, username, message_id, template_name='profiles/inbox_messages.html', success_url=None,
                  extra_context=None, **kwargs):
 
   if request.user.username == username:
@@ -197,7 +224,7 @@ def message_remove(request, username, message_id, template_name='profiles/messag
           if(message.recipient_deleted_at is not None and message.sender_deleted_at is not None):
               message.delete()
 
-      url = reverse('profiles:messages', kwargs={'username':user.username})
+      url = reverse('profiles:inbox_messages', kwargs={'username':user.username})
       return HttpResponseRedirect(url)
 
   else:

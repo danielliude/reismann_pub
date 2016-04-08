@@ -3,6 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 
+from redactor.fields import RedactorField
+
 
 from easy_thumbnails.fields import ThumbnailerImageField
 
@@ -40,7 +42,7 @@ class Service(models.Model):
                                 help_text=_('tags of service help text'),
                                 related_name='services')
 
-  content = models.TextField(verbose_name=_('service content'), default="service content")
+  content = RedactorField(verbose_name=_('service content'), default="service content")
 
   languages = models.ManyToManyField(ServiceLanguage, verbose_name=_('languages of service'),
                                      help_text=_('languages of service help text'),

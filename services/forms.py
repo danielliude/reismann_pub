@@ -22,12 +22,12 @@ class ServiceForm(forms.ModelForm):
                           label=_('Title'),
                           max_length=150)
 
-  content = forms.CharField(widget=forms.Textarea(attrs={
+  content = forms.CharField(widget=RedactorEditor(attrs={
                              'placeholder': _('service content'),
                              'cols': "20",
                              'rows': "5"}),
                             label=_('Content'),
-                            max_length=500)
+                            max_length=3000)
 
   price = forms.IntegerField(min_value=1, max_value=1000, required=True, label=_('Price'))
 

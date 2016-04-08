@@ -1,0 +1,25 @@
+{% load i18n %}
+
+
+<div class="ui blue segment bookings_show">
+  <h3 class="ui center aligned header">{% trans 'Booking' %}</h3>
+  <table class="ui five column celled table">
+    <thead>
+      <tr>
+        <th>{% trans 'Service' %}</th>
+        <th>{% trans 'Price' %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ service.title }}</td>
+        <td>{{ service.price }}</td>
+      </tr>
+    </tbody>
+
+
+    <tfoot class="full-width">
+
+    </tfoot>
+  </table>
+</div>

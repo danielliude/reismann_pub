@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         {% for service in services %}
-        <tr onclick="window.document.location='edit/{{ service.id }}/';">
+        <tr onclick="window.document.location='view/own/{{ service.id }}/';">
             <td>{{ service.title }}</td>
             <td>{{ service.price}}</td>
             <td>{{ service.created_at }}</td>
@@ -27,7 +27,7 @@
             {% endifequal %}
 
             <td>
-                <a class="ui green label" href="edit/{{ service.id }}/">
+                <a class="ui green label" href="view/own/{{ service.id }}/">
                   <i class="unhide icon"></i>view
                 </a>
             </td>

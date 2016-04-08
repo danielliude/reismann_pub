@@ -47,6 +47,7 @@
 
 	'use strict';
 
+<<<<<<< HEAD
 	__webpack_require__(213);
 
 	__webpack_require__(216);
@@ -54,13 +55,26 @@
 /***/ },
 
 /***/ 213:
+=======
+	__webpack_require__(117);
+
+	__webpack_require__(120);
+
+/***/ },
+
+/***/ 117:
+>>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
+<<<<<<< HEAD
 /***/ 216:
+=======
+/***/ 120:
+>>>>>>> 3dbd5c2e71d5a878553bb7f71b46b34e74f421a7
 /***/ function(module, exports) {
 
 	/*

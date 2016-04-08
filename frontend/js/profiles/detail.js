@@ -1,7 +1,7 @@
 import '../../styles/templates/profiles/detail.scss'
 import '../../vendors/daterangepicker/daterangepicker.css'
 
-import '../../vendors/daterangepicker/daterangepicker.min.js'
+import '../../vendors/daterangepicker/daterangepicker.js'
 
 $(function() {
     init_button()

@@ -54,8 +54,5 @@
     "webpack": "^1.12.2",
     "webpack-bundle-tracker": "0.0.8",
     "yamljs": "^0.2.5"
-  },
-  "dependencies": {
-    "moment": "^2.12.0"
   }
 }

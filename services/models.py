@@ -8,7 +8,7 @@ from redactor.fields import RedactorField
 
 from easy_thumbnails.fields import ThumbnailerImageField
 
-from core.constants import SERVICE_TYPE_CHOICES, SERVICE_CARD_IMAGE_SETTINGS
+from core.constants import SERVICE_TYPE_CHOICES, SERVICE_CARD_IMAGE_SETTINGS, SERVICE_STATUS
 from core.uploads import upload_to_service_card
 
 from configurations.models import ServiceCategory, ServiceTag, ServiceLanguage
@@ -52,8 +52,7 @@ class Service(models.Model):
                                   help_text=_('cities of service help text'),
                                   related_name='services')
 
-  is_active = models.BooleanField(default=False, verbose_name=_('service is active'),
-                                  help_text=_('service is active'))
+  status = models.PositiveIntegerField(_('service status'), choices=SERVICE_STATUS, blank=True, null=True)
 
   created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'), blank=True, null=True)
 

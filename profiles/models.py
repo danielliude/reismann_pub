@@ -69,7 +69,7 @@ class Profile(models.Model):
       user_services = get_user_services(self.user)
       prices = []
       for service in user_services:
-        if service.is_active:
+        if service.status == 2:
             prices.append(service.price)
 
       if prices:

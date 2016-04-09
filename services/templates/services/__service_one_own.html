@@ -56,11 +56,14 @@
     <div class="one column row">
       <div class="column style_button" style="width:100%!important;">
         <a href="{% url 'profiles:service_edit' request.user.username service.id %}" class="ui brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
-        {% ifequal service.is_active True %}
-            <a href="{% url 'profiles:service_edit' request.user.username service.id %}" class="ui green button"><i class="unlock icon"></i>{% trans 'active' %}</a>
-        {% else %}
-            <a href="{% url 'profiles:service_edit' request.user.username service.id %}" class="ui grey button"><i class="lock icon"></i>{% trans 'deactivate' %}</a>
+        {% ifequal service.status 3 %}
+            <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui green button"><i class="unlock icon"></i>{% trans 'Activate' %}</a>
         {% endifequal %}
+
+        {% ifequal service.status 2 %}
+            <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui grey button"><i class="lock icon"></i>{% trans 'Deactivate' %}</a>
+        {% endifequal %}
+
         <a href="{% url 'profiles:service_remove' request.user.username service.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
       </div>
     </div>

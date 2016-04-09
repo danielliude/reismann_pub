@@ -16,7 +16,7 @@
 					</div>
 					<div class="ui red header average_price">€ {{ profile.average_price }} average price</div>
 					<div class="row content">
-						<p>{{ profile.bio }}</p>
+						<p>{{ profile.bio | slice:"250" }}...</p>
 					</div>
 				</div>
     	</div>

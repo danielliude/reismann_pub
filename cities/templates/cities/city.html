@@ -114,7 +114,7 @@
           </div>
           <div class="ui red header average_price">€ {{ service.price }}</div>
           <div class="row content">
-            <p>{{ service.content }}</p>
+            <p>{{ service.content | slice:"250" }}...</p>
           </div>
         </div>
       </div>

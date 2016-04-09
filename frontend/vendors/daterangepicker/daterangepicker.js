@@ -8,13 +8,8 @@
 
 (function (root, factory) {
 
-    if(typeof define === 'function' && define.amd) {
-        define(['moment', 'jquery', 'exports'], function (momentjs, $, exports) {
-            root.daterangepicker = factory(root, exports, momentjs, $);
-        });
-
-    } else if(typeof exports !== 'undefined') {
-        var momentjs = require('moment');
+    if(typeof exports !== 'undefined') {
+        var momentjs = require('../moment/moment');
         var jQuery;
         try {
             jQuery = require('jquery');

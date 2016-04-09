@@ -1,16 +1,17 @@
 {% extends "profiles/__profile_base_new.html" %}
 {% load render_bundle from webpack_loader %}
-{#{% block stylesheets %}#}
-{#    {% render_bundle 'profiles/service_view_own' 'css' %}#}
-{#{% endblock %}#}
-{#{% block javascripts %}#}
-{#    {% render_bundle 'profiles/service_view_own' 'js' %}#}
-{#{% endblock %}#}
+{% block stylesheets %}
+    {% render_bundle 'profiles/services' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/services' 'js' %}
+{% endblock %}
 
 {% block content %}
-    <div class="ui grid booking_add_grid">
+    <div class="ui grid service_grid">
       <div class="column">
         {% include 'services/__service_one_own.html' %}
       </div>
     </div>
 {% endblock %}
+

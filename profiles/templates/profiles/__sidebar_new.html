@@ -31,11 +31,11 @@
         </div>
         <div class="active content">
           <a class="item {% if url_name == 'inbox_messages' %}active{% endif %}" href="{% url 'profiles:inbox_messages' profile.user.username %}">
-              <i class="comment outline icon"></i>
+              <i class="arrow circle left icon"></i>
               {% trans 'Inbox' %}
           </a>
           <a class="item {% if url_name == 'outbox_messages' %}active{% endif %}" href="{% url 'profiles:outbox_messages' profile.user.username %}">
-              <i class="comment outline icon"></i>
+              <i class="arrow circle right icon"></i>
               {% trans 'Outbox' %}
           </a>
         </div>  

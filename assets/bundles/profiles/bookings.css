@@ -19,7 +19,10 @@
     booking_one
 ---------------*/
 .style_button a.ui.button {
-  margin-bottom: 5px; }
+  margin-bottom: 3px; }
+
+.style_label a.ui.label {
+  margin-top: 3px; }
 /*!
  * Stylesheet for the Date Range Picker, for use with Semantic UI
  *

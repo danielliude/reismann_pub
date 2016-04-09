@@ -13,10 +13,8 @@
 /*--------------
     service_one_own
 ---------------*/
-.style_button {
-  width: 100% !important; }
-  .style_button a.ui.button {
-    margin-bottom: 3px; }
+.style_button a.ui.button {
+  margin-bottom: 3px; }
 
 .style_label a.ui.label {
-  margin-bottom: 3px; }
+  margin-top: 3px; }

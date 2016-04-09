@@ -55,7 +55,7 @@
       {% else %}
           <a href="{% url 'profiles:service_edit' request.user.username service.id %}" class="ui grey button"><i class="lock icon"></i>{% trans 'deactivate' %}</a>
       {% endifequal %}
-      <a href="{% url 'profiles:service_edit' request.user.username service.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
+      <a href="{% url 'profiles:service_remove' request.user.username service.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
     </div>
   </div>
 </div>

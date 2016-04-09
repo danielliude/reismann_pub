@@ -174,15 +174,20 @@ def city(request, city_name, template_name='cities/city.html'):
         services = Service.objects.filter(status = 2) \
                         .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
 
+
+        # this is a default banner_image
+        banner_image = { 'url' : '/media/reismann/images/cities/banner/munich.jpg' } 
         if(city_name):
             city = City.objects.filter(name= city_name)
 
             if city:
+                banner_image = city[0].banner_image
                 services = services.filter(cities = city)
 
         context = {
             'form': form,
-            'services': services
+            'services': services,
+            'banner_image': banner_image
         }
 
         context = makeContextForMessages(request, context)

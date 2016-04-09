@@ -14,6 +14,12 @@
     -webkit-padding-start: 0; }
     .ui.segment.bookings_show ul.errorlist li {
       color: #dd4b39; }
+
+/*--------------
+    booking_one
+---------------*/
+.style_button a.ui.button {
+  margin-bottom: 5px; }
 /*!
  * Stylesheet for the Date Range Picker, for use with Semantic UI
  *

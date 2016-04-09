@@ -41,6 +41,7 @@ def service_add(request, username, edit_service_form=ServiceForm,
 
             if form.is_valid():
               service = form.save(username = username)
+              service.status = 1
               service.user = user
               service.save()
 
@@ -85,12 +86,14 @@ def service_edit(request, username, service_id, edit_service_form=ServiceForm,
             form = edit_service_form(request.POST, request.FILES, instance=service)
 
             if form.is_valid():
-              service = form.save()
+              service = form.save(username=username)
+              service.status = 1
+              service.save()
 
               if success_url:
                 redirect_to = success_url
               else:
-                redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
+                redirect_to = reverse('profiles:services', kwargs={'username': username})
               return redirect(redirect_to)
 
         if not extra_context: extra_context = dict()
@@ -232,6 +235,31 @@ def service_remove(request, username, service_id, template_name='bookings/bookin
 
         if user.has_perm('delete_service', service):
             service.delete()
+
+        url = reverse('profiles:services', kwargs={'username':user.username})
+        return HttpResponseRedirect(url)
+
+    else:
+        url = reverse('profiles:services', kwargs={'username':request.user.username})
+        return HttpResponseRedirect(url)
+
+
+@secure_required
+@permission_required_or_403('services.view_service')
+def service_activate(request, username, service_id, template_name='bookings/bookings.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+    if request.user.username == username:
+
+        user = get_object_or_404(User, username__iexact=username)
+        service = get_service_by_id(service_id)
+
+        if service.status != 1:
+            if service.status == 2:
+                service.status = 3
+            elif service.status == 3:
+                service.status = 2
+            service.save()
 
         url = reverse('profiles:services', kwargs={'username':user.username})
         return HttpResponseRedirect(url)

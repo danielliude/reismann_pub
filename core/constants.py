@@ -22,6 +22,12 @@ BOOKING_STATUS = (
   (8, _('Removed by provider')),
 )
 
+SERVICE_STATUS = (
+  (1, _('Moderation')),
+  (2, _('Active')),
+  (3, _('Not active')),
+)
+
 MUGSHOT_SETTINGS = {'size': (140, 140), 'crop': 'smart'}
 
 SERVICE_CARD_IMAGE_SETTINGS = {'size': (800, 600), 'crop': 'smart'}

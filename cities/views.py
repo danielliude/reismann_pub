@@ -54,7 +54,7 @@ def city(request, city_name, template_name='cities/city.html'):
 
             services = Service.objects.all()
             services = services.exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
-            services = services.filter(is_active=True)
+            services = services.filter(status = 2)
 
             # Check cities for service
             print('init', services)
@@ -171,7 +171,7 @@ def city(request, city_name, template_name='cities/city.html'):
             temp = {'num': num, 'services_new' : services_new}
             return JsonResponse(temp)
     else:
-        services = Service.objects.filter(is_active= True) \
+        services = Service.objects.filter(status = 2) \
                         .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True))
 
         if(city_name):

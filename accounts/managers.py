@@ -42,7 +42,6 @@ class RegistrationManager(UserManager):
     registration = self.create_registration(new_user)
     profile = Profile.objects.create_profile(new_user)
     contact = Contact.objects.create_contact(new_user)
-    service = Service.objects.create_service(new_user)
 
     if send_email:
       registration.send_activation_email()

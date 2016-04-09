@@ -28,6 +28,7 @@ class RegistrationInline(admin.StackedInline):
 
 class ServiceInline(admin.StackedInline):
   model = Service
+  extra = 0
   max_num = 5
 
   formfield_overrides = {

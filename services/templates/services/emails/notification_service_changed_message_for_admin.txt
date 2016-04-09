@@ -1,0 +1,14 @@
+{% load i18n %}{% autoescape off %}{% load url from future %}
+
+{% blocktrans with user.username as username %}Dear administrator,{% endblocktrans %}
+
+{% blocktrans with site.name as site %}Customer has modified service and it needs your moderation!
+
+You can do it here:
+http://{{ site }}/admin/services/service/{{service_id}}
+
+{% endblocktrans %}
+
+{% trans "Sincerely" %},
+{{ site.name }}
+{% endautoescape %}

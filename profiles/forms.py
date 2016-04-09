@@ -42,6 +42,9 @@ class ProfileForm(forms.ModelForm):
   bio = forms.CharField(label=_('profile bio'),
                         widget=forms.Textarea(attrs={}),
                         required=False)
+  is_active = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('is active')}),
+                       required= False,
+                       label=_('active'))
 
   def __init__(self, *args, **kw):
     super(ProfileForm, self).__init__(*args, **kw)

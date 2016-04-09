@@ -75,6 +75,14 @@
       <label>{{ form.bio.label }}</label>
       {{ form.bio }}
     </div>
+
+     <div class="field">
+      <div class="ui checkbox">
+        {{ form.is_active}}
+        {{ form.is_active.label_tag }}
+      </div>
+    </div>
+
     <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
     <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
     <div class="ui error message">

@@ -10,9 +10,20 @@
     {% for service in services %}
       <div class="item">
         <div class="content">
-          <a class="header" href="services/view/own/{{ service.id }}/"><i class="map marker icon"></i>{{ service.title }}</a>
+          <a class="header" href="services/view/own/{{ service.id }}/">
+            <i class="map marker icon"></i>{{ service.title }}         
+            {% if service.status == 1 %}
+              <span class="ui red label">{% trans 'Moderation' %}</span>
+            {% elif service.status == 2 %}
+              <span class="ui green label">{% trans 'Active' %}</span>
+            {% elif service.status == 3 %}
+              <span class="ui gray label">{% trans 'Not active' %}</span>
+            {% else %}
+              <span class="ui gray label">{% trans 'Not active' %}</span>      
+            {% endif %}
+          </a>
           <div class="meta">
-            <span class="price"> {% trans '  $' %}{{ service.price }}</span>
+            <span class="price">{% trans '$' %}{{ service.price }}</span>
             <span class="stay">{% trans 'one day' %}</span>
           </div>
           <div class="description">

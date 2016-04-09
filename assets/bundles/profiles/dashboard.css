@@ -19,5 +19,8 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem; }
   .ui.segment.all_services .ui.label {
-    padding: 6px 9px;
-    margin-bottom: 5px; }
+    padding: 6px 9px; }
+
+.ui.segment.service_short_list .ui.label {
+  padding: 6px 9px;
+  margin-top: 2px; }

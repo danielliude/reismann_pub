@@ -25,6 +25,12 @@
         <span class="right_absolute">{% trans 'unknown' %}</span>
       {% endif %}
     </div>
+
+    <div class="item">
+      <b>{% trans 'Active' %}</b>
+      <span class="right_absolute">{{ profile.is_active }}</span>
+    </div>
+
 <!--     <div class="item">
       {% if request.user.is_authenticated %}
         {% if view_own_profile %}

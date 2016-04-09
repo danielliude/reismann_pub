@@ -21,6 +21,8 @@ from configurations.utils import get_active_service_categories
 from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages, makeContextForAllServices
 from services.models import ServiceRating
 
+from services.managers import ServiceMailManager
+
 @secure_required
 @permission_required_or_403('services.add_service')
 def service_add(request, username, edit_service_form=ServiceForm,
@@ -44,6 +46,9 @@ def service_add(request, username, edit_service_form=ServiceForm,
               service.status = 1
               service.user = user
               service.save()
+
+              m = ServiceMailManager()
+              m.send_notification_email_to_administrator(service)
 
               if success_url:
                 redirect_to = success_url
@@ -89,6 +94,9 @@ def service_edit(request, username, service_id, edit_service_form=ServiceForm,
               service = form.save(username=username)
               service.status = 1
               service.save()
+
+              m = ServiceMailManager()
+              m.send_notification_email_to_administrator(service)
 
               if success_url:
                 redirect_to = success_url

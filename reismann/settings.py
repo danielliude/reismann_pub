@@ -118,7 +118,6 @@ AUTHENTICATION_BACKENDS = (
   'django.contrib.auth.backends.ModelBackend',
 )
 
-
 # Database MOVED TO LOCAL SETTINGS
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 

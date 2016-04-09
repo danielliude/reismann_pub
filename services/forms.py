@@ -1,5 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
 
 from redactor.widgets import RedactorEditor
 
@@ -12,6 +13,10 @@ from services.models import Service
 from core.constants import SERVICE_TYPE_CHOICES
 
 import logging
+
+from guardian.shortcuts import assign_perm
+
+from core.constants import ASSIGNED_PERMISSIONS
 
 logger = logging.getLogger('services')
 
@@ -33,13 +38,6 @@ class ServiceForm(forms.ModelForm):
 
   type = forms.ChoiceField(label=_('Type'),
                            choices = SERVICE_TYPE_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'required': True}), required=True)
-
-  forms.IntegerField(label=_('Type'),
-                              widget=forms.Select(attrs={
-                               'class': 'form-control select2',
-                               'placeholder': _('service type'),
-                             }),
-                            required= True, )
 
   cities = forms.ModelMultipleChoiceField(label=_('Cities'),
                                      widget=forms.SelectMultiple(attrs={
@@ -83,8 +81,20 @@ class ServiceForm(forms.ModelForm):
   def __init__(self, *args, **kwargs):
     super(ServiceForm, self).__init__(*args, **kwargs)
 
-  def save(self, force_insert=False, force_update=False, commit=True):
+  def save(self, username, force_insert=False, force_update=False, commit=True):
+
+    try:
+        user = User.objects.get(username = username)
+    except User.DoesNotExist:
+      raise forms.ValidationError(_('The following username is incorrect: %(username)s') % {
+        'username': username
+      })
+
     service = super(ServiceForm, self).save(commit=commit)
+
+    if user:
+        for perm in ASSIGNED_PERMISSIONS['service']:
+          assign_perm(perm[0], user, service)
 
     return service
 

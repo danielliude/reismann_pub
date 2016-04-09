@@ -59,12 +59,12 @@
 
 	    function init_button() {
 	        $('.profile_form .ui.dropdown').dropdown();
-	        // $('#id_birthday').daterangepicker({
-	        //     format: 'YYYY-MM-DD',
-	        //     singleDatePicker: true
-	        // }, function(start, end, label) {
-	        //     console.log(start.toISOString(), end.toISOString(), label);
-	        // });
+	        $('#id_birthday').daterangepicker({
+	            format: 'YYYY-MM-DD',
+	            singleDatePicker: true
+	        }, function (start, end, label) {
+	            console.log(start.toISOString(), end.toISOString(), label);
+	        });
 	    }
 	    function init_form() {
 	        $('.ui.form').form({

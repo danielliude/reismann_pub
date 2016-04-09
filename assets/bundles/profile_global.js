@@ -98,9 +98,9 @@
 
 	__webpack_require__(72);
 
-	__webpack_require__(151);
-
 	__webpack_require__(93);
+
+	__webpack_require__(95);
 
 	__webpack_require__(80);
 
@@ -114,11 +114,11 @@
 
 	__webpack_require__(89);
 
-	__webpack_require__(95);
+	__webpack_require__(97);
 
 	__webpack_require__(90);
 
-	__webpack_require__(153);
+	__webpack_require__(98);
 
 	$(function () {
 		init_button();
@@ -12152,6 +12152,13 @@
 /* 95 */
 /***/ function(module, exports) {
 
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 96 */,
+/* 97 */
+/***/ function(module, exports) {
+
 	/*!
 	 * # Semantic UI 2.1.8 - Sidebar
 	 * http://github.com/semantic-org/semantic-ui/
@@ -12409,69 +12416,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */,
-/* 114 */,
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */,
-/* 127 */,
-/* 128 */,
-/* 129 */,
-/* 130 */,
-/* 131 */,
-/* 132 */,
-/* 133 */,
-/* 134 */,
-/* 135 */,
-/* 136 */,
-/* 137 */,
-/* 138 */,
-/* 139 */,
-/* 140 */,
-/* 141 */,
-/* 142 */,
-/* 143 */,
-/* 144 */,
-/* 145 */,
-/* 146 */,
-/* 147 */,
-/* 148 */,
-/* 149 */,
-/* 150 */,
-/* 151 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 152 */,
-/* 153 */
+/* 98 */
 /***/ function(module, exports) {
 
 	/*!

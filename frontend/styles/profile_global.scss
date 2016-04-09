@@ -62,6 +62,9 @@
 .ui.sidebar.profile_sidebar {
   margin-top: 53px !important;
   background-color:   #222D32;
+  .ui.accordion {
+    padding: 0px;
+  }
 }
 body, body.pushable>.pusher {
   background-color: rgb(243, 243, 243);

@@ -24,6 +24,7 @@ import '../semantic/dist/components/statistic.min.css'
 import '../semantic/dist/components/table.min.css'
 import '../semantic/dist/components/list.min.css'
 import '../semantic/dist/components/transition.min.css'
+import '../semantic/dist/components/accordion.min.css'
 import '../styles/profile_global.scss'
 
 import 'expose?jQuery!expose?$!jquery'
@@ -34,6 +35,7 @@ import '../semantic/dist/components/form.min.js'
 import '../semantic/dist/components/search.min.js'
 import '../semantic/dist/components/sidebar.min.js'
 import '../semantic/dist/components/transition.min.js'
+import '../semantic/dist/components/accordion.min.js'
 
 $(function() {
 	init_button() 
@@ -47,6 +49,8 @@ $(function() {
 
 			$(".reismann_logo").toggle(500)
 		})
+
+		$('.ui.accordion').accordion();
 	}
 })
 

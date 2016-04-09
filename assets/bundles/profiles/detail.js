@@ -55,84 +55,68 @@
 
 	$(function () {
 	    init_button();
-	    // init_form()
+	    init_form();
 
 	    function init_button() {
 	        $('.profile_form .ui.dropdown').dropdown();
-	        $('#id_birthday').daterangepicker({
-	            format: 'YYYY-MM-DD',
-	            singleDatePicker: true
-	        }, function (start, end, label) {
-	            console.log(start.toISOString(), end.toISOString(), label);
-	        });
+	        // $('#id_birthday').daterangepicker({
+	        //     format: 'YYYY-MM-DD',
+	        //     singleDatePicker: true
+	        // }, function(start, end, label) {
+	        //     console.log(start.toISOString(), end.toISOString(), label);
+	        // });
 	    }
 	    function init_form() {
 	        $('.ui.form').form({
 	            fields: {
-	                phone: {
-	                    identifier: 'phone',
-	                    rules: [
-	                        // {
-	                        //   type   : 'empty',
-	                        //   prompt : 'Please enter your username'
-	                        // },
-	                        // {
-	                        //   type   : 'minLength[3]',
-	                        //   prompt : 'Username should have at least 3 letters'
-	                        // },
-	                    ]
-	                },
-	                email: {
-	                    identifier: 'email',
-	                    rules: [
-	                    // {
-	                    //   type   : 'empty',
-	                    //   prompt : 'Please enter your email'
-	                    // },
-	                    {
-	                        type: 'email',
-	                        prompt: 'Please enter a valid e-mail'
+	                first_name: {
+	                    identifier: 'first_name',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your first_name'
 	                    }]
 	                },
-	                weibo: {
-	                    identifier: 'weibo',
-	                    rules: [
-	                        // {
-	                        //   type   : 'empty',
-	                        //   prompt : 'Please enter your first_name'
-	                        // },
-	                    ]
+	                last_name: {
+	                    identifier: 'last_name',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your last_name'
+	                    }]
 	                },
-	                wechat: {
-	                    identifier: 'wechat',
-	                    rules: [
-	                        // {
-	                        //   type   : 'empty',
-	                        //   prompt : 'Please enter your last_name'
-	                        // },
-	                    ]
+	                gender: {
+	                    identifier: 'gender',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your gender'
+	                    }]
 	                },
-	                qq: {
-	                    identifier: 'qq',
-	                    rules: [
-	                        // {
-	                        //   type   : 'empty',
-	                        //   prompt : 'Please enter your password'
-	                        // },
-	                        // {
-	                        //   type   : 'minLength[8]',
-	                        //   prompt : 'Password should be more then 8 letters'
-	                        // },
-	                    ]
+	                birthday: {
+	                    identifier: 'birthday',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your birthday'
+	                    }]
 	                },
-	                email_notifications: {
-	                    identifier: 'email_notifications',
-	                    rules: [
-	                        // {
-	                        //   type   : 'checked',
-	                        //   prompt : 'You must agree to the terms to register'
-	                        // },
-	                    ]
+	                location: {
+	                    identifier: 'location',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your location'
+	                    }]
+	                },
+	                short_description: {
+	                    identifier: 'short_description',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your short_description'
+	                    }]
+	                },
+	                bio: {
+	                    identifier: 'bio',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter your bio'
+	                    }]
 	                }
 	            }
 	        });

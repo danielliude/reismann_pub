@@ -37,24 +37,6 @@ $(function() {
                         }
                     ]
                 },
-                first_name: {
-                    identifier  : 'first_name',
-                    rules: [
-                        {
-                          type   : 'empty',
-                          prompt : 'Please enter your first_name'
-                        },
-                    ]
-                },
-                last_name: {
-                    identifier  : 'last_name',
-                    rules: [
-                        {
-                          type   : 'empty',
-                          prompt : 'Please enter your last_name'
-                        },
-                    ]
-                },
                 password1: {
                     identifier  : 'password1',
                     rules: [

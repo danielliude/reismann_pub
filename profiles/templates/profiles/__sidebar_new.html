@@ -23,20 +23,27 @@
       <i class="bookmark icon"></i>
       {% trans 'Bookings' %}
     </a>
-    <div class='active header'>
-        {% trans 'Messages' %}
-    </div>
-    <div class='menu'>
-        <a class="item {% if url_name == 'inbox_messages' %}active{% endif %}" href="{% url 'profiles:inbox_messages' profile.user.username %}">
-            <i class="comment outline icon"></i>
-            {% trans 'Inbox' %}
-        </a>
-        <a class="item {% if url_name == 'outbox_messages' %}active{% endif %}" href="{% url 'profiles:outbox_messages' profile.user.username %}">
-            <i class="comment outline icon"></i>
-            {% trans 'Outbox' %}
-        </a>
-    </div>
 
+    <div class="ui inverted accordion item">
+      <div class="item" style="padding-right:0px;">
+        <div class="title">
+          {% trans 'Messages' %}
+        </div>
+        <div class="active content">
+          <a class="item {% if url_name == 'inbox_messages' %}active{% endif %}" href="{% url 'profiles:inbox_messages' profile.user.username %}">
+              <i class="arrow circle left icon"></i>
+              {% trans 'Inbox' %}
+          </a>
+          <a class="item {% if url_name == 'outbox_messages' %}active{% endif %}" href="{% url 'profiles:outbox_messages' profile.user.username %}">
+              <i class="arrow circle right icon"></i>
+              {% trans 'Outbox' %}
+          </a>
+        </div>  
+      </div>
+    </div>  
+
+
+      
     <a class="item {% if url_name == 'detail' %}active{% endif %}" href="{% url 'profiles:detail' profile.user.username %}">
       <i class="user icon"></i>
       {% trans 'Profile' %}

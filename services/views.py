@@ -40,7 +40,7 @@ def service_add(request, username, edit_service_form=ServiceForm,
             form = edit_service_form(request.POST, request.FILES)
 
             if form.is_valid():
-              service = form.save()
+              service = form.save(username = username)
               service.user = user
               service.save()
 
@@ -218,3 +218,24 @@ def services(request, username,
   else:
     url = reverse('profiles:services', kwargs={'username':request.user.username})
     return HttpResponseRedirect(url)
+
+
+@secure_required
+@permission_required_or_403('services.delete_service')
+def service_remove(request, username, service_id, template_name='bookings/bookings.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+    if request.user.username == username:
+
+        user = get_object_or_404(User, username__iexact=username)
+        service = get_service_by_id(service_id)
+
+        if user.has_perm('delete_service', service):
+            service.delete()
+
+        url = reverse('profiles:services', kwargs={'username':user.username})
+        return HttpResponseRedirect(url)
+
+    else:
+        url = reverse('profiles:services', kwargs={'username':request.user.username})
+        return HttpResponseRedirect(url)

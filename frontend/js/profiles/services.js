@@ -9,6 +9,8 @@ $(function() {
             $(this).append("<option value=''>" + $(this).attr("placeholder") + "</option>")
         })
         $('.service_show .ui.dropdown').dropdown();
+
+        $(".edit_price #id_price").val('')
     }
 
     function init_form() {

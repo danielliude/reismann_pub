@@ -7,23 +7,23 @@ $(function() {
     function init_form() {
         $('.ui.form').form({
             fields: {
-                username: {
-                    identifier  : 'username',
-                    rules: [
-                        {
-                          type   : 'empty',
-                          prompt : 'Please enter your username'
-                        },
-                        // {
-                        //   type   : 'regExp[/[\.\w]+$/]',  
-                        //   prompt : 'Username must contain only letters, numbers, dots and underscores'
-                        // },
-                        {
-                          type   : 'minLength[3]',
-                          prompt : 'Username should have at least 3 letters'
-                        },
-                    ]
-                },
+                // username: {
+                //     identifier  : 'username',
+                //     rules: [
+                //         {
+                //           type   : 'empty',
+                //           prompt : 'Please enter your username'
+                //         },
+                //         // {
+                //         //   type   : 'regExp[/[\.\w]+$/]',  
+                //         //   prompt : 'Username must contain only letters, numbers, dots and underscores'
+                //         // },
+                //         {
+                //           type   : 'minLength[3]',
+                //           prompt : 'Username should have at least 3 letters'
+                //         },
+                //     ]
+                // },
                 email: {
                     identifier  : 'email',
                     rules: [

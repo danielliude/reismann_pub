@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<div class="ui blue segment service_short_list">
+  <h3>{% trans 'My services' %}</h3>
+
+  <div class="ui divided items">
+    <div class="item">
+      <h4>{% trans 'Num of services' %} : {{ services|length }}</h4>
+    </div>
+    {% for service in services %}
+      <div class="item">
+        <div class="content">
+          <a class="header" href="services/view/own/{{ service.id }}/"><i class="map marker icon"></i>{{ service.title }}</a>
+          <div class="meta">
+            <span class="price"> {% trans '  $' %}{{ service.price }}</span>
+            <span class="stay">{% trans 'one day' %}</span>
+          </div>
+          <div class="description">
+            <p>{{ service.content|truncatewords:"30" }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>

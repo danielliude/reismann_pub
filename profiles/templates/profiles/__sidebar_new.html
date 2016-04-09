@@ -23,10 +23,20 @@
       <i class="bookmark icon"></i>
       {% trans 'Bookings' %}
     </a>
-    <a class="item {% if url_name == 'messages' %}active{% endif %}" href="{% url 'profiles:messages' profile.user.username %}">
-      <i class="comment outline icon"></i>
-      {% trans 'Messages' %}
-    </a>
+    <div class='active header'>
+        {% trans 'Messages' %}
+    </div>
+    <div class='menu'>
+        <a class="item {% if url_name == 'inbox_messages' %}active{% endif %}" href="{% url 'profiles:inbox_messages' profile.user.username %}">
+            <i class="comment outline icon"></i>
+            {% trans 'Inbox' %}
+        </a>
+        <a class="item {% if url_name == 'outbox_messages' %}active{% endif %}" href="{% url 'profiles:outbox_messages' profile.user.username %}">
+            <i class="comment outline icon"></i>
+            {% trans 'Outbox' %}
+        </a>
+    </div>
+
     <a class="item {% if url_name == 'detail' %}active{% endif %}" href="{% url 'profiles:detail' profile.user.username %}">
       <i class="user icon"></i>
       {% trans 'Profile' %}

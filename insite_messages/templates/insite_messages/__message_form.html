@@ -26,8 +26,8 @@
   </div>
 
   
-  <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
-  <a href="{% url 'profiles:messages' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
+  <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Send message  ' %}</button>
+  <a href="{% url 'profiles:inbox_messages' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
   <div class="ui error message">
   </div>
 </form>

@@ -18,7 +18,8 @@
         </a>
         <div class="divider"></div>
       {% endfor %}
-      <a class="item" href="{% url 'profiles:messages' user.username %}">{% trans 'see all messages' %}</a>
+      <a class="item" href="{% url 'profiles:inbox_messages' user.username %}">{% trans 'see inbox messages' %}</a>
+      <a class="item" href="{% url 'profiles:outbox_messages' user.username %}">{% trans 'see outbox messages' %}</a>
     </div>
   </div>
   <div class="ui dropdown item">

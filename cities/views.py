@@ -57,7 +57,7 @@ def city(request, city_name, template_name='cities/city.html'):
             services = services.filter(status = 2)
 
             # Check cities for service
-            print('init', services)
+            # print('init', services)
             city = request.POST.getlist('city[]')
             cit = ''
             if(city):
@@ -68,7 +68,7 @@ def city(request, city_name, template_name='cities/city.html'):
                         cit = Q(cities=City.objects.filter(id=ci)) 
             if(cit):
                 services = services.filter(cit)
-            print('cit', services)
+            # print('cit', services)
 
             # Let's get gender
             gender = request.POST.getlist('gender[]')
@@ -83,7 +83,7 @@ def city(request, city_name, template_name='cities/city.html'):
                         gen = Q(user__in=(users)) 
             if(gen):
                 services = services.filter(gen)
-            print('gen', services)
+            # print('gen', services)
 
             #Check age
             age = request.POST.get('age')
@@ -97,7 +97,7 @@ def city(request, city_name, template_name='cities/city.html'):
 
                     users = User.objects.filter(profile__in=(profiles))
                     services = services.filter(user__in=(users))
-            print('age', services)
+            # print('age', services)
 
             # Check languages for service
             languages = request.POST.getlist('languages[]')
@@ -111,7 +111,7 @@ def city(request, city_name, template_name='cities/city.html'):
             if(lan):
                 print('lan lan', lan)
                 services = services.filter(lan) 
-            print('lan', services)
+            # print('lan', services)
 
             # Check tags
             tags = request.POST.getlist('tags[]')
@@ -124,7 +124,7 @@ def city(request, city_name, template_name='cities/city.html'):
                         ta = Q(tags = ServiceTag.objects.filter(id=tag)) 
             if(ta):
                 services = services.filter(ta)
-            print('ta', services)
+            # print('ta', services)
 
             # Check type of services
             svrs = request.POST.getlist('services[]')
@@ -137,10 +137,10 @@ def city(request, city_name, template_name='cities/city.html'):
                         svr = Q(categories = ServiceCategory.objects.filter(id=service)) 
             if(svr):
                 services = services.filter(svr)
-            print('serv', services)
+            # print('serv', services)
 
             services_new = []
-            for service in services:
+            for service in services.distinct():
                 # for each object, construct a dictionary containing the data you wish to return
                 service_dict = {}
                 service_dict['profile_map_url'] = "/profiles/" + service.user.username + "/services/view/" + str(service.id)

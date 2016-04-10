@@ -1,0 +1,48 @@
+{% extends "core/__global.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block stylesheets %}
+    {% render_bundle 'core/about_us' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'core/about_us' 'js' %}
+{% endblock %}
+
+{% block content %}
+  <div class="city_img" style="background-image: url('/static/images/dummy/banner.jpg');"></div>
+
+  <div class="ui container">
+    <div class="ui large breadcrumb">
+      <a href="{% url 'index' %}" class="section"><i class="home icon"></i>Home</a>
+      <i class="right chevron icon divider"></i>
+      <div class="active section">About us</div>
+    </div>    
+    <br>
+    <br>
+    <br>
+    <div class="ui padded grid about_us">
+      <div class="four wide column">
+        <div class="ui rail" style="min-height: 262px;">
+          <div class="ui sticky" style="left: -2.5px; width: 272px !important; height: 262px !important;">
+            <a href="#" class="sub header" style="font-size:1.4em;color: rgba(0,0,0,.68);">About us</a>
+          </div>
+        </div>
+      </div>
+      <div class="twelve wide column about_context">
+        <div class="sub header">About us</div>
+        <br>
+        <br>
+        <p>Frelanvo致力于建立一个免费、透明、公平、高效的互联网旅行平台。</p>
+        <p>我们希望给予旅行服务商提供一个良好的自我展示环境，使旅客能对其所提供的服务以及服务商本人作更多和更好的了解。</p>
+        <p>我们游鼓励服务商与旅客直接沟通，从而增进了解，建立信任。</p>
+        <p>我们建议旅客对所选服务在本网站上进行预定，以便记录旅客和服务商的权利和义务，促成公平的交易。</p>
+        <p>我们相信，通过我们的努力和不断的改进，旅客可以在本网站找到合适的服务和服务商，从而享受舒适的个人定制服务。</p>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

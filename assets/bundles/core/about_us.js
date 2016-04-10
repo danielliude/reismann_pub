@@ -47,13 +47,17 @@
 
 	'use strict';
 
-	__webpack_require__(111);
+	__webpack_require__(13);
 
-	$(function () {});
+	$(function () {
+	  $('.ui.sticky').sticky({
+	    context: '.about_context'
+	  });
+	});
 
 /***/ },
 
-/***/ 111:
+/***/ 13:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

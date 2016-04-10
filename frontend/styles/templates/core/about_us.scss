@@ -1,0 +1,30 @@
+body {
+  background-color: rgb(243, 243, 243);
+}
+
+/*--------------
+    city_img
+---------------*/
+.city_img {
+  height: 200px;
+  width: 100%;
+  // background-image: url('/static/images/dummy/banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; 
+}
+
+
+
+/*--------------
+    about_us
+---------------*/
+.about_us {
+	p {
+		color: rgba(0,0,0,.68);
+    font-size: 1.3em;
+	}
+	.sub.header {
+		font-size: 2em;
+	}
+}

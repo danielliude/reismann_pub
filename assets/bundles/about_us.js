@@ -40,24 +40,21 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(111);
+	__webpack_require__(1);
 
 	$(function () {});
 
 /***/ },
-
-/***/ 111:
+/* 1 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ }
-
-/******/ });
+/******/ ]);

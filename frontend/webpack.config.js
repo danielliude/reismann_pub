@@ -23,6 +23,7 @@ module.exports = {
     'profiles/services': './js/profiles/services',
     'profiles/message': './js/profiles/message',
     'profiles/bookings': './js/profiles/bookings',
+    'core/about_us': './js/core/about_us',
   },
 
   output: {

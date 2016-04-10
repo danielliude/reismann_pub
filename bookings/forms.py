@@ -93,10 +93,10 @@ class BookingForm(forms.ModelForm):
         booking = Booking.objects.create_booking(service= service, sender= sender, recipient = service.user)
 
     if booking.sender == sender:
-        booking.status = 1
+        booking.status = 2
         booking.sender_sent_at = datetime.utcnow().replace(tzinfo=utc)
     elif booking.recipient == sender:
-        booking.status = 2
+        booking.status = 1
         booking.recipient_sent_at = datetime.utcnow().replace(tzinfo=utc)
 
     booking.booking_content = booking_content

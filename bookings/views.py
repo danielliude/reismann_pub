@@ -193,9 +193,9 @@ def booking_edit(request, username, booking_id, edit_booking_form = BookingForm,
                         booking = form.save(user, booking)
                         m = mailer()
 
-                        if(booking.status == 1):
+                        if(booking.status == 2):
                             m.send_notification_booking_email_for_provider(booking)
-                        elif(booking.status == 2):
+                        elif(booking.status == 1):
                             m.send_notification_booking_email_for_user(booking)
 
                 if success_url:

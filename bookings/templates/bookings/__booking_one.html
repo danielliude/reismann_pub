@@ -72,6 +72,11 @@
           <a class="ui disabled green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
           <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
           <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
+        {% else %}
+          <a class="ui disabled brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
+          <a class="ui disabled green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
+          <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
+          <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
         {% endif %}
       {% elif request.user == booking.recipient %}
         {% if booking.status == 2 %}
@@ -84,6 +89,11 @@
           <a class="ui disabled green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
           <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
           <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
+        {% else %}
+          <a class="ui disabled brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
+          <a class="ui disabled green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
+          <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
+          <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
         {% endif %}
       {% endif %}
     </div>

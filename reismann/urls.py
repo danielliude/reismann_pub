@@ -22,8 +22,7 @@ from django.conf import settings
 from core import views
 
 urlpatterns = patterns('',
-  url(r'^index_new/$', views.index, name="index_new"),
-  url(r'^$', views.index_new, name="index"),  
+  url(r'^$', views.index, name="index"),  
   url(r'^search_url$', views.search_url, name="search_url"),  
   url(r'^404/$', views.handler404, name="404"),
   url(r'^500/$', views.handler500, name="500"),

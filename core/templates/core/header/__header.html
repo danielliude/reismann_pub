@@ -1,42 +1,20 @@
 {% load staticfiles i18n %}
-
-<header class="main-header">
-  
-  <nav class="navbar navbar-static-top">
-    <div class="container">
-
-      <div class="navbar-header">
-        <a href="{% url 'index' %}" class="navbar-brand">Reismann</a>
-        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-          <i class="fa fa-bars"></i>
-        </button>
-      </div>
-
-      <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-        {% block header_search %}{% endblock %}
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="#">{% trans 'become a provider' %}</a>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              {% trans 'help' %}
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">{% trans 'get started' %}</a></li>
-              <li><a href="#">{% trans 'login and register' %}</a></li>
-              <li><a href="#">{% trans 'provider' %}</a></li>
-              <li><a href="#">{% trans 'traveller' %}</a></li>
-              <li><a href="#">{% trans 'review' %}</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      {% include "core/header/__header_custom_menu.html" %}
-
+<div class="ui inverted blue borderless menu masthead">
+  <div class="ui container">
+    <a href="{% url 'index' %}" class="item"><h3>{% trans 'Reismann' %}</h3></a>
+    <a class="item not_mobile" href="#">{% trans 'become a provider' %}</a>
+    <div class="ui dropdown link item not_mobile">
+        help
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <a href="#" class="item">{% trans 'get started' %}</a>
+            <a href="#" class="item">{% trans 'login and register' %}</a>
+            <a href="#" class="item">{% trans 'provider' %}</a>
+            <a href="#" class="item">{% trans 'traveller' %}</a>
+            <a href="#" class="item">{% trans 'review' %}</a>
+        </div>        
     </div>
-  </nav>
-  
-</header>
+
+    {% include "core/header/__header_custom_menu.html" %}
+  </div>
+</div>

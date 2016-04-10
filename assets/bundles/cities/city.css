@@ -81,6 +81,14 @@ body {
       border-radius: 28px;
       margin-top: -33px;
       margin-left: 19px; }
+    .ui.grid.search_profile .ui.segment.padding .filter_map {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      left: 0px;
+      top: 0px;
+      background: #000;
+      opacity: 0; }
 
 .ui.grid.more_loaders {
   margin-top: 0px;

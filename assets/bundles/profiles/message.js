@@ -47,7 +47,7 @@
 
 	'use strict';
 
-	__webpack_require__(114);
+	__webpack_require__(113);
 
 	$(function () {
 	    init_button();
@@ -88,7 +88,7 @@
 
 /***/ },
 
-/***/ 114:
+/***/ 113:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

@@ -1,7 +1,30 @@
-{% extends "core/__base_with_sidebar.html" %}
+{% load render_bundle from webpack_loader %}
+{% load i18n %}
 
-{% block aside %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    {% block meta_tags %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+    {% render_bundle 'profile_global' 'css' %}
+    {% block stylesheets %}{% endblock %}
+    {% block header_javascripts %}{% endblock %}
+    {% block extra_head %}{% endblock %}
+</head>
 
-  {% include "profiles/__sidebar.html" %}
+<body id="home">
+    {% block header %}{% include "core/header/__header_with_sidebar.html" %}{% endblock %}
+    {% block sidebar %}
+        {% include "profiles/__sidebar.html" %}
+    {% endblock %}
+    <div class="pusher">
+	    {% block content %}{% endblock %}
+    </div>
 
-{% endblock %}
+    {% render_bundle 'profile_global' 'js' %}
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

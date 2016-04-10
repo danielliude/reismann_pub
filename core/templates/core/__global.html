@@ -16,11 +16,11 @@
 </head>
 
 <body id="home">
-    {% block header %}{% include "core/header/__header_new.html" %}{% endblock %}
+    {% block header %}{% include "core/header/__header.html" %}{% endblock %}
     <div class="highly_adaptive">
         {% block content %}{% endblock %}
     </div>
-    {% block footer %}{% include "core/footer/__footer_new.html" %}{% endblock %}
+    {% block footer %}{% include "core/footer/__footer.html" %}{% endblock %}
 
     {% render_bundle 'global' 'js' %}
     {% block javascripts %}{% endblock %}

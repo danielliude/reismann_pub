@@ -1,22 +1,12 @@
-{% load i18n %}
+{% load staticfiles i18n %}
 
-<header class="main-header">
-
-  <a href="{% url 'index' %}" class="navbar-brand logo">
-    <span class="logo-mini"></span>
-    <span class="logo-lg">Reismann</span>
+<div class="ui inverted blue top fixed borderless menu masthead">
+  <h3 class="header item reismann_logo">
+    <a href="{% url 'index' %}">Reismann</a>
+  </h3>
+  <a class="item sidebar_click">
+    <i class="sidebar icon"></i>
   </a>
 
-  <nav class="navbar navbar-static-top" role="navigation">
-
-    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </a>
-
-    {% include "core/header/__header_custom_menu.html" %}
-
-  </nav>
-
-</header>
+  {% include "core/header/__header_profile.html" %}
+</div>

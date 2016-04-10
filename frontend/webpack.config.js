@@ -7,10 +7,6 @@ module.exports = {
   context: __dirname,
 
   entry: {
-    vendor: './js/vendor',
-    admin: './js/admin',
-    app: './js/app',
-    semantic: './js/semantic',
     global: './js/global',
     profile_global: './js/profile_global',
     'core/index': './js/core/index',

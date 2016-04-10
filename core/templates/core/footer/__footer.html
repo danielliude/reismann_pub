@@ -1,57 +1,34 @@
 {% load i18n %}
 
-<footer class="footer text-inverted">
-
-  <section class="footer--services row-space-2 row-space-top-2">
-
-    <div class="container footer--services--content">
-      <div class="row">
-
-        <div class="footer-services col-sm-4">
-          <h4>{% trans 'About us' %}</h4>
-          <ul>
-            <li><a href="#">{% trans 'Our team' %}</a></li>
-            <li><a href="#">{% trans 'Terms of services' %}</a></li>
-            <li><a href="#">{% trans 'Join us' %}</a></li>
-            <li><a href="#">{% trans 'Business cooperation' %}</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-service col-sm-4">
-          <h4>{% trans 'Q&A' %}</h4>
-          <ul>
-            <li><a href="#">{% trans 'How to book' %}</a></li>
-            <li><a href="#">{% trans 'How to become provider' %}</a></li>
-            <li><a href="#">{% trans 'Service commissions' %}</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-service col-sm-4">
-          <h4>{% trans 'Contact' %}</h4>
-          <ul>
-            <li>
-              <a href="mailto:{% trans 'footer contact email' %}">
-                <i class="fa fa-envelope-o"></i> {% trans 'team@reismann.de' %}
-              </a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-edit"></i> {% trans 'Write us a message' %}</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-phone"></i> {% trans '+49 222 333 222' %}</a>
-            </li>
-          </ul>
-        </div>
-
+<div class="ui inverted vertical segment footer">
+  <div class="ui three column left aligned stackable doubling grid container">
+    <div class="column">
+      <h5 class="ui inverted header">{% trans "About us" %}</h5>
+      <div class="ui inverted link list">
+        <a class="item" href="#">{% trans "Our team" %}</a>
+        <a class="item" href="#">{% trans "Terms of services" %}</a>
+        <a class="item" href="#">{% trans "Join us" %}</a>
+        <a class="item" href="#">{% trans "Business cooperation" %}</a>
       </div>
     </div>
-
-  </section>
-
-  <section class="footer--information">
-    <div class="footer--information--content container text-center">
-      <strong>Copyright &copy; 2015 Reismann GmbH</strong>
+    <div class="column">
+      <h5 class="ui inverted header">{% trans "Q&A" %}</h5>
+      <div class="ui inverted link list">
+        <a class="item" href="#">{% trans "How to book" %}</a>
+        <a class="item" href="#">{% trans "How to become provider" %}</a>
+        <a class="item" href="#">{% trans "Service commissions" %}</a>
+      </div>
     </div>
-  </section>
-
-</footer>
+    <div class="column">
+      <h5 class="ui inverted header">{% trans "Contact" %}</h5>
+      <div class="ui inverted link list">
+        <a class="item" href="#"><i class="mail outline icon"></i> {% trans "Team@reismann.de" %}</a>
+        <a class="item" href="#"><i class="edit icon"></i> {% trans "Write us a message" %}</a>
+        <a class="item" href="#"><i class="call icon"></i> {% trans "+49 222 333 222" %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui inverted vertical segment center aligned copyright">
+  <h6 class="ui header">Copyright &copy; 2015 Reismann GmbH</h6>
+</div>

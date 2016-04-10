@@ -4,6 +4,16 @@ $(function() {
     var page     = 1     
     var page_num = 21     
     init_button()
+    init_filter()
+
+    function init_filter() {
+        $(document).on('mouseenter', '.filter_map', function(){
+          $(this).animate({opacity:0.2},200);
+        })
+        $(document).on('mouseout', '.filter_map', function(){
+          $(this).animate({opacity:0},200);
+        })
+    }
 
     function init_button() {
         $('.search_form .ui.dropdown').dropdown();
@@ -85,7 +95,7 @@ $(function() {
         for (var i in ret) {
             html += '<div class="column">' +
                       '<div class="ui segment padding">'+
-                        '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url +'\');"></a>' +
+                        '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url +'\');"><div class="filter_map"></div></a>' +
                         '<a href="' + ret[i].image_url + '" class="ui tiny circular image">' +
                           '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' +
                         '</a>' +

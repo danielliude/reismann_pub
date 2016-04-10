@@ -1,80 +1,98 @@
 {% load i18n staticfiles %}
 
-<div class="navbar-custom-menu">
-  <ul class="nav navbar-nav">
+{% if user.is_authenticated %}
+<div class="right menu">
+  <div class="ui dropdown item">
+    <i class="icon mail outline"></i> 
+    <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{{ unread_messages.count }}</div>
 
-    {% if user.is_authenticated %}
-      <li class="dropdown messages-menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <i class="fa fa-envelope-o"></i>
-          <span class="label label-success">{{ unread_messages.count }}</span>
+    <div class="menu" style="width:280px;left:-225px;">
+      <div class="item">{% trans "You have" %} {{ unread_messages.count }} {% trans " unread messages" %}</div>
+      <div class="divider"></div>
+      {% for message in unread_messages %}
+        <a href="{% url 'profiles:message_view' user.username message.id%}" class="item unread_info">
+          <img class="ui avatar image" src="{{ message.sender.profile.get_avatar_url }}">
+            <span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">{{ message.sender }}</span>
+            <small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>{{ message.minutes_past}}</small>
+            <span class="subject" style="position:absolute;left:53px;top:25px;">{{ message.subject }}</span>
         </a>
-        <ul class="dropdown-menu">
-          <li class="header">{% trans "You have" %} {{ unread_messages.count }} {% trans " unread messages" %}</li>
-          <li>
-            <ul class="menu">
-              {% for message in unread_messages %}
-              <li>
-                <a href="{% url 'profiles:message_view' user.username message.id%}">
-                  <div class="pull-left">
-                    <img class="img-circle" src="{{ message.sender.profile.get_avatar_url }}" alt="User Image">
-                  </div>
-                  <h4>
-                    {{ message.sender }}
-                    <small><i class="fa fa-clock-o"></i> {{ message.minutes_past}}</small>
-                  </h4>
-                  <p>{{ message.subject }}</p>
-                </a>
-              </li>
-                {% endfor %}
-            </ul>
-          </li>
-          <li class="footer"><a href="{% url 'profiles:messages' user.username %}">{% trans 'see all messages' %}</a></li>
-        </ul>
-      </li>
-
-      <li class="dropdown user user-menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <img src="{{ user.profile.get_avatar_url }}" alt="User Image" class="user-image">
-          <span class="hidden-xs">{{ user.profile.get_full_name_or_username }}</span>
-        </a>
-        <ul class="dropdown-menu">
-          <li class="user-header">
-            <img src="{{ user.profile.get_avatar_url }}" alt="User Image" class="img-circle">
-            <p>
-              {{ user.profile.get_full_name_or_username }} - {{ user.profile.location }}
-              <small>{{ profile.member_since }}</small>
-            </p>
-          </li>
-          <li class="user-body">
-            <div class="col-xs-4 text-center">
-              <a href="#">{{ number_followers }} {% trans 'Followers' %}</a>
+        <div class="divider"></div>
+      {% endfor %}
+      <a class="item" href="{% url 'profiles:inbox_messages' user.username %}">{% trans 'see inbox messages' %}</a>
+      <a class="item" href="{% url 'profiles:outbox_messages' user.username %}">{% trans 'see outbox messages' %}</a>
+    </div>
+  </div>
+  <div class="ui dropdown item">
+    <div>
+      <img class="ui avatar image" src="{{ user.profile.get_avatar_url }}">
+      <span class="not_mobile_span">{{ user.profile.get_full_name_or_username }}</span>
+    </div>
+    <div class="menu" style="left:-156px;"> 
+      <div class="item" style="display:none"></div>
+      <div class="ui card card_info">
+        <div class="content">
+          <img class="right floated mini ui image" src="{{ user.profile.get_avatar_url }}">
+          <div class="header">{{ user.profile.get_full_name_or_username }} </div>
+          <div class="meta">{{ user.profile.short_description }}</div>
+          <div class="ui description center aligned three column divided padded grid">
+            <div class="column">
+              <div class="ui grey statistic">
+                <div class="value">
+                  {{ number_followers }}
+                </div>
+                <div class="">{% trans 'Followers' %}</div>
+              </div>
             </div>
-            <div class="col-xs-4 text-center">
-              <a href="#">{{ number_following }} {% trans 'Following' %}</a>
+            <div class="column">
+              <div class="ui grey statistic">
+                <div class="value">
+                  {{ number_following }}
+                </div>
+                <div class="">{% trans 'Following' %}</div>
+              </div>
             </div>
-            <div class="col-xs-4 text-center">
-              <a href="#">{{ number_bookings }} {% trans 'Bookings' %}</a>
+            <div class="column">
+              <div class="ui grey statistic">
+                <div class="value">
+                  {{ number_bookings }}
+                </div>
+                <div class="">{% trans 'Bookings' %}</div>
+              </div>
             </div>
-          </li>
-          <li class="user-footer">
-            <div class="btn-group btn-group-justified" role="group">
-              <a href="{% url 'profiles:profile' user.username %}" class="btn btn-default btn-flat btn-header-profile">{% trans 'profile' %}</a>
-              <a href="{% url 'profiles:dashboard' user.username %}" class="btn btn-default btn-flat btn-header-dashboard">{% trans 'dashboard' %}</a>
-              <a href="{% url 'accounts:logout' %}" class="btn btn-default btn-flat btn-header-logout">{% trans 'sign out' %}</a>
-            </div>
-          </li>
-        </ul>
-      </li>
-    {% else %}
-      <li>
-        <a href="{% url 'accounts:login' %}?next={{request.path}}">{% trans 'signin' %}</a>
-      </li>
-      <li>
-        <a href="{% url 'accounts:register' %}">{% trans 'register' %}</a>
-      </li>
-
-    {% endif %}
-
-  </ul>
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="ui three buttons">
+            <a href="{% url 'profiles:profile' user.username %}" class="ui basic green button">{% trans 'profile' %}</a>
+            <a href="{% url 'profiles:dashboard' user.username %}" class="ui basic blue button" style="padding-left:12px">{% trans 'dashboard' %}</a>
+            <a href="{% url 'accounts:logout' %}" class="ui basic red button">{% trans 'sign out' %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui mobile dropdown item">
+    <i class="sidebar icon"></i>
+    <div class="menu">
+      <a class="item" href="#">{% trans 'become a provider' %}</a>
+      <div class="item">
+        <i class="left dropdown icon"></i>
+        <span class="text">{% trans 'help' %}</span>
+        <div class="left menu">
+          <a href="#" class="item">{% trans 'get started' %}</a>
+          <a href="#" class="item">{% trans 'login and register' %}</a>
+          <a href="#" class="item">{% trans 'provider' %}</a>
+          <a href="#" class="item">{% trans 'traveller' %}</a>
+          <a href="#" class="item">{% trans 'review' %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+{% else %}
+<div class="right menu">
+  <a class="item" href="{% url 'accounts:login' %}">{% trans 'signin' %}</a>
+  <a class="item" href="{% url 'accounts:register' %}">{% trans 'register' %}</a>
+</div>
+{% endif %}

@@ -1,28 +1,37 @@
 {% load staticfiles i18n %}
-
-<section class="banner banner-big banner-with-content">
-  <div class="banner-background background-image banner"
-       style="background-image:url('{% static "images/dummy/banner.jpg" %}');">
-    <div class="search">
-      <div class="boss text-center tagline">{% trans 'Your new travel experiences' %}</div>
-      <div class="subheadline text-center tagline">{% trans 'book your individual travel services' %}</div>
-      <form action="" method="POST">
-        {% csrf_token %}
-          <input type="text" placeholder="Select city..." list="city_list" name="name" AUTOCOMPLETE="off"></input>
-          <datalist id="city_list">
-            {% for city in city_list %}
-                <option>{{ city.name }}</option>
-            {% endfor %}
-          </datalist>
-
-            <button class="btn btn-brand btn-flat" type="submit">
-                <span>{% trans 'search' %}</span>
-                <i class="fa fa-arrow-circle-right"></i>
-            </button>
-      </form>
+<div class="ui padded grid banner">
+  <div class="banner_img">
+    <div class="ui centered aligned grid transition information hidden">
+      <div class="row">
+        <h1 class="ui inverted header tagline">
+          {% trans "Your new travel experiences" %}
+        </h1>
+      </div>
+      <h4 class="ui inverted header subheadline">{% trans "book your individual travel services" %}</h4>
+      <script type="text/javascript">
+        var content = [
+         {% for city in city_list %}
+           { title: "{{city.name}}" },
+         {% endfor %}  
+        ];
+      </script>
+      <div class="row">
+        <div class="ui action input">
+          <div class="ui search">
+            <div class="ui icon input">
+              <input class="prompt" type="text" placeholder="Select city...">
+            </div>
+            <div class="results left_aligned"></div>
+          </div>
+          <div class="ui brand button search_but">
+            <i class="search icon"></i>
+            <p>search</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 
- 
+

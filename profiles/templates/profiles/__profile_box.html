@@ -20,7 +20,7 @@
     <div class="item">
       <b>{% trans 'Location' %}</b>
       {% if profile.location %}
-        <a href="#" class="right_absolute">{{ profile.location.get_full_location }}</a>
+        <span class="right_absolute">{{ profile.location.get_full_location }}</span>
       {% else %}
         <span class="right_absolute">{% trans 'unknown' %}</span>
       {% endif %}

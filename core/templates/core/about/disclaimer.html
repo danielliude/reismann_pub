@@ -1,0 +1,60 @@
+{% extends "core/__global.html" %}
+{% load render_bundle from webpack_loader %}
+{% load i18n %}
+
+{% block stylesheets %}
+    {% render_bundle 'core/about_us' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'core/about_us' 'js' %}
+{% endblock %}
+
+{% block content %}
+  <div class="city_img" style="background-image: url('/static/images/dummy/banner.jpg');"></div>
+
+  <div class="ui container">
+    <div class="ui basic segment">
+      <div class="ui large breadcrumb">
+        <a href="{% url 'index' %}" class="section"><i class="home icon"></i>{% trans "Home" %}</a>
+        <i class="right chevron icon divider"></i>
+        <div class="active section">{% trans "Disclaimer of liability" %}</div>
+      </div>    
+    </div>     
+    <br>
+    <div class="ui padded grid about_us">
+      <div class="computer only four wide column">
+        <div class="ui rail">
+          <div class="ui sticky">
+            <div class="ui big animated link very  relaxed list">
+              <a href="{% url 'about_us' %}" class="active item"><i class="file text icon"></i>{% trans "About us" %}</a>
+              <a href="{% url 'service_term' %}" class="active item"><i class="file text icon"></i>{% trans "Terms of services" %}</a>
+              <a href="{% url 'privacy_protect' %}" class="item"><i class="file text icon"></i>{% trans "Privacy protection" %}</a>
+              <a href="{% url 'disclaimer' %}" class="active item"><i class="black file text icon"></i>{% trans "Disclaimer of liability" %}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sixteen wide tablet twelve wide computer column about_context">
+        <div class="sub header">{% trans "Disclaimer of liability" %}</div>
+        <br>
+        <br>
+        <p>1.确认并接受</p>
+        <p>1.1 蚂蜂窝根据《蚂蜂窝服务协议》（以下简称"本协议"）为用户提供各类网站、产品或服务等（以下简称“本服务”）。“蚂蜂窝”是指蚂蜂窝公司及其相关服务可能存在的运营关联单位，在有的具体协议中也可能称为蚂蜂窝公司。“用户”是指本服务的使用人，本协议也可能使用“您”来称呼用户。本协议的条款蚂蜂窝有权随时更新，且毋须另行通知，一旦发生变动，蚂蜂窝将在网页上公布修改内容。修改后的本协议一旦在网页上公布即有效代替原来的本协议。此外，当您使用蚂蜂窝某一具体网站频道、产品、服务等具体服务时，您应遵守蚂蜂窝随时公布的与该具体服务相关的具体协议、指引和规则等。如《游记协议》，《网络信息侵权投诉指引》，《免责声明》等，前述所有的具体协议、指引和声明等，均构成本协议的一部分。</p>
+        <p>1.2 您在使用本服务之前，应仔细阅读本协议以及相关具体协议。本协议构成法律上的书面协议，本协议限制、免责条款可能以黑体加粗形式提示您注意。除非您已阅读并接受本协议所有条款，否则您无权使用本服务。如您不同意本协议，或本协议全部或任何部分的修改，请您立即停止使用本服务；您一旦使用本服务，即视为您已完全理解并同意本本协议各项内容，包括蚂蜂窝对本协议随时所做的任何修改。</p>
+        <p>1.3 若用户未满18周岁则属于未成年人用户，未成年人用户应在监护人监护、指导下，阅读了解本协议和使用本服务。</p>
+        <p>2.服务内容</p>
+        <p>2.1 本服务的具体内容，由蚂蜂窝根据实际情况决定提供或不提供，例如：在蚂蜂窝网站及APP产品中发布游记、旅游攻略、日记、结伴旅行、话题、上传图片；发布或参加各类线上及线下活动；发布并分享对文章、话题、活动、图片的评论。您理解并同意，本服务是按照现有技术和条件所能达到的现状提供的。蚂蜂窝会尽最大努力向您提供服务，确保服务的连贯性和安全性；但蚂蜂窝不能随时预见和防范法律、技术以及其他风险，包括但不限于不可抗力、病毒、木马、黑客攻击、系统不稳定、第三方服务瑕疵、政府行为等原因可能导致的服务中断、数据丢失以及其他的损失和风险。对于任何用户信息或个人化设定之时效、删除、传递错误、未予储存或其它任何问题，蚂蜂窝均不承担任何责任。蚂蜂窝保留不经事先通知为升级、维护或其它目的暂停本服务全部或任何部分的权利。</p>
+        <p>2.2 蚂蜂窝会不定期通过站内积分或虚拟货币，来奖励或兑换真实物品，具体实施方案将由蚂蜂窝在某一具体的服务中具体确定，并保留对实施方案的最终解释权。</p>
+        <p>2.3 请您理解，蚂蜂窝仅提供相关的网络服务，除此之外与相关网络服务有关的设备（如个人电脑、手机、及其他与接入互联网或移动网有关的装置）及所需的费用（如为接入互联网而支付的电话费及上网费、为使用移动网而支付的手机费）均应由用户自行负担。您理解并同意，您使用本服务时会耗用您的终端设备和带宽等资源。</p>
+        <p>2.4您同意蚂蜂窝可以在提供服务的过程中自行或由第三方广告商向您发送广告、推广或宣传信息（包括商业与非商业信息），其方式和范围可不经向您特别通知而变更。蚂蜂窝可能为您提供选择停止接受广告信息的功能或渠道，但任何时候您都不得以本协议未明确约定或蚂蜂窝未书面许可的方式屏蔽、过滤广告信息。蚂蜂窝依照法律的规定对广告商履行相关义务，您应当自行判断广告信息的真实性并为自己的判断行为负责，除法律明确规定外，您因依该广告信息进行的交易或前述广告商提供的内容而遭受的损失或损害，蚂蜂窝不承担责任。</p>
+        <p>2.5 蚂蜂窝依法为用户提供本服务，但是用户应对其使用蚂蜂窝自行承担责任及风险，蚂蜂窝在任何情况下不就因使用或不能使用蚂蜂窝提供的服务所发生的特殊的、意外的、直接或间接的损失承担赔偿责任。</p>
+        <p>2.6 除您与蚂蜂窝另行书面约定外，蚂蜂窝保留随时停止、修改或中断服务而不需通知您的权利。蚂蜂窝不需就此对用户或第三方负责。</p>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

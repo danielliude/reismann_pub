@@ -1,5 +1,6 @@
 {% extends "core/__global.html" %}
 {% load render_bundle from webpack_loader %}
+{% load i18n %}
 
 {% block stylesheets %}
     {% render_bundle 'core/about_us' 'css' %}
@@ -12,26 +13,28 @@
   <div class="city_img" style="background-image: url('/static/images/dummy/banner.jpg');"></div>
 
   <div class="ui container">
-    <div class="ui large breadcrumb">
-      <a href="{% url 'index' %}" class="section"><i class="home icon"></i>Home</a>
-      <i class="right chevron icon divider"></i>
-      <div class="active section">Terms of services</div>
-    </div>    
-    <br>
-    <br>
+    <div class="ui basic segment">
+      <div class="ui large breadcrumb">
+        <a href="{% url 'index' %}" class="section"><i class="home icon"></i>Home</a>
+        <i class="right chevron icon divider"></i>
+        <div class="active section">Terms of services</div>
+      </div>    
+    </div>
     <br>
     <div class="ui padded grid about_us">
-      <div class="four wide column">
-        <div class="ui rail" style="min-height: 262px;">
-          <div class="ui sticky" style="left: -2.5px; width: 272px !important; height: 262px !important;">
-            <a href="#" class="sub header" style="font-size:1.4em;color: rgba(0,0,0,.68);">About us</a>
-            <br>
-            <br>
-            <a href="#" class="sub header" style="font-size:1.4em;color: rgba(0,0,0,.68);">Terms of services</a>
+      <div class="computer only four wide column">
+        <div class="ui rail">
+          <div class="ui sticky">
+            <div class="ui big animated link very  relaxed list">
+              <a href="{% url 'about_us' %}" class="item"><i class="file text icon"></i>{% trans "About us" %}</a>
+              <a href="{% url 'service_term' %}" class="active item"><i class="black file text icon"></i>{% trans "Terms of services" %}</a>
+              <a href="{% url 'privacy_protect' %}" class="item"><i class="file text icon"></i>{% trans "Privacy protection" %}</a>
+              <a href="{% url 'disclaimer' %}" class="item"><i class="file text icon"></i>{% trans "Disclaimer of liability" %}</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="twelve wide column about_context">
+      <div class="sixteen wide tablet twelve wide computer column about_context">
         <div class="sub header">Terms of services</div>
         <br>
         <br>

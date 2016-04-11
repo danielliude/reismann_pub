@@ -51,7 +51,8 @@
 
 	$(function () {
 	  $('.ui.sticky').sticky({
-	    context: '.about_context'
+	    context: '.about_context',
+	    offset: 50
 	  });
 	});
 

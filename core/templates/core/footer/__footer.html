@@ -7,8 +7,8 @@
       <div class="ui inverted link list">
         <a class="item" href="{% url 'about_us' %}">{% trans "About us" %}</a>
         <a class="item" href="{% url 'service_term' %}">{% trans "Terms of services" %}</a>
-        <a class="item" href="about/privacy_protect">{% trans "Privacy protection" %}</a>
-        <a class="item" href="about/disclaimer">{% trans "Disclaimer of liability" %}</a>
+        <a class="item" href="{% url 'privacy_protect' %}">{% trans "Privacy protection" %}</a>
+        <a class="item" href="{% url 'disclaimer' %}">{% trans "Disclaimer of liability" %}</a>
       </div>
     </div>
     <div class="column">

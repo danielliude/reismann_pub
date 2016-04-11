@@ -26,3 +26,9 @@ body {
 
 .help_context .ui.accordion .content {
   padding-left: 1.9em !important; }
+
+.help_context .ui.list > a.item {
+  color: rgba(0, 0, 0, 0.68); }
+
+.help_context .ui.list > a.item.active {
+  color: #000; }

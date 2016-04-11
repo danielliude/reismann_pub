@@ -27,4 +27,10 @@ body {
 	.sub.header {
 		font-size: 2em;
 	}
+  .ui.list>a.item {
+    color: rgba(0,0,0,.68);
+  }
+  .ui.list>a.item.active {
+    color: #000;
+  }
 }

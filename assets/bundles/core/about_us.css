@@ -20,3 +20,9 @@ body {
 
 .about_us .sub.header {
   font-size: 2em; }
+
+.about_us .ui.list > a.item {
+  color: rgba(0, 0, 0, 0.68); }
+
+.about_us .ui.list > a.item.active {
+  color: #000; }

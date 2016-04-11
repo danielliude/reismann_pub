@@ -72,33 +72,14 @@ def handler500(request):
   return response
 
 
-def about_us(request):
-  context = {}
+def about_us(request, about_type, template_name='core/about/about_us.html'):
+  context = {
+    'about_type': about_type
+  }
   context = makeContextForMessages(request, context)
   context = makeContextForDetails(request, context)
 
   return render(request, 'core/about/about_us.html', context)
-
-def service_term(request):
-  context = {}
-  context = makeContextForMessages(request, context)
-  context = makeContextForDetails(request, context)
-
-  return render(request, 'core/about/service_term.html', context)
-
-def privacy_protect(request):
-  context = {}
-  context = makeContextForMessages(request, context)
-  context = makeContextForDetails(request, context)
-
-  return render(request, 'core/about/privacy_protect.html', context)
-
-def disclaimer(request):
-  context = {}
-  context = makeContextForMessages(request, context)
-  context = makeContextForDetails(request, context)
-
-  return render(request, 'core/about/disclaimer.html', context)
 
 def help_problem(request, problem_type, serial_id, template_name='core/help/problem.html'):
   context = {

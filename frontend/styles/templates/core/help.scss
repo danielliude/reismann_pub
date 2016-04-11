@@ -37,4 +37,10 @@ body {
       padding-left: 1.9em!important;
     }
   }
+  .ui.list>a.item {
+    color: rgba(0,0,0,.68);
+  }
+  .ui.list>a.item.active {
+    color: #000;
+  }
 }

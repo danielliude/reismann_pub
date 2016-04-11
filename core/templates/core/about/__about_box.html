@@ -1,0 +1,20 @@
+{% load i18n %}
+
+<div class="ui big animated relaxed list">
+  <a href="{% url 'about_us' 'about_us' %}" class="{% if about_type == 'about_us' %}active{% endif %} item">
+  	<i class="{% if about_type == 'about_us' %}black{% endif %} file text icon"></i>
+  	关于我们
+  </a>
+  <a href="{% url 'about_us' 'service_term' %}" class="{% if about_type == 'service_term' %}active{% endif %} item">
+  	<i class="{% if about_type == 'service_term' %}black{% endif %} file text icon"></i>
+  	服务条款
+  </a>
+  <a href="{% url 'about_us' 'privacy_protect' %}" class="{% if about_type == 'privacy_protect' %}active{% endif %} item">
+  	<i class="{% if about_type == 'privacy_protect' %}black{% endif %} file text icon"></i>
+  	隐私保护
+  </a>
+  <a href="{% url 'about_us' 'disclaimer' %}" class="{% if about_type == 'disclaimer' %}active{% endif %} item">
+  	<i class="{% if about_type == 'disclaimer' %}black{% endif %} file text icon"></i>
+  	免责声明
+  </a>
+</div>

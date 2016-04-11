@@ -1,0 +1,168 @@
+{% load i18n %}
+
+<div class="ui basic segment">
+{% if problem_type == 'all' %}
+  <div class="ui accordion">
+    <div class="title"><i class="dropdown icon"></i>新手上路</div>
+    <div class="content">
+      <div class="ui link relaxed list">
+        <a class="item" href="{% url 'help_problem' 'novice' '1' %}">我是服务商</a>
+        <a class="item" href="{% url 'help_problem' 'novice' '2' %}">我是旅客</a>
+      </div>
+    </div>
+    <div class="title"><i class="dropdown icon"></i>注册与登录</div>
+    <div class="content">
+      <div class="ui link relaxed list">
+        <a class="item" href="{% url 'help_problem' 'login_register' '1' %}">如何注册及登录</a>
+        <a class="item" href="{% url 'help_problem' 'login_register' '2' %}">Frelanvo网站是否有权关闭我的账户或降低我的信用等级</a>
+        <a class="item" href="{% url 'help_problem' 'login_register' '3' %}">我如何关闭或隐藏我的账户</a>
+      </div>
+    </div>
+    <div class="title"><i class="dropdown icon"></i>管理您的账户</div>
+    <div class="content">
+      <div class="ui link relaxed list">
+        <a class="item" href="{% url 'help_problem' 'manager_account' '1' %}">账户安全和密码管理</a>
+        <a class="item" href="{% url 'help_problem' 'manager_account' '2' %}">新消息提醒</a>
+      </div>
+    </div>
+    <div class="title"><i class="dropdown icon"></i>服务商</div>
+    <div class="content">
+      <div class="ui link relaxed list">
+        <a class="item" href="{% url 'help_problem' 'service' '1' %}">如何成为服务商</a>
+        <a class="item" href="{% url 'help_problem' 'service' '2' %}">如何布置我的服务页面和个人主页</a>
+        <a class="item" href="{% url 'help_problem' 'service' '3' %}">旅客预约后，如果联系不上旅客，怎么办?</a>
+        <a class="item" href="{% url 'help_problem' 'service' '4' %}">作为服务商，在法律及纳税规定方面我要注意什么？</a>
+      </div>
+    </div>
+    <div class="title"><i class="dropdown icon"></i>旅客</div>
+    <div class="content">
+      <div class="ui link relaxed list">
+        <a class="item" href="{% url 'help_problem' 'user' '1' %}">如何成为旅客</a>
+        <a class="item" href="{% url 'help_problem' 'user' '2' %}">寻找服务/服务商</a>
+        <a class="item" href="{% url 'help_problem' 'user' '3' %}">预定旅行服务</a>
+        <a class="item" href="{% url 'help_problem' 'user' '4' %}">旅行与付款</a>
+      </div>
+    </div>
+    <div class="title"><i class="dropdown icon"></i>评价</div>
+    <div class="content">
+      <div class="ui link relaxed list">
+        <a class="item" href="{% url 'help_problem' 'comment' '1' %}">撰写评价</a>
+        <a class="item" href="{% url 'help_problem' 'comment' '2' %}">编辑评价</a>
+        <a class="item" href="{% url 'help_problem' 'comment' '3' %}">前期评价</a>
+        <a class="item" href="{% url 'help_problem' 'comment' '4' %}">星级评分</a>
+      </div>
+    </div>
+    <div class="title"><i class="dropdown icon"></i>预约变更</div>
+    <div class="content">
+      <div class="ui link relaxed list">
+        <a class="item" href="{% url 'help_problem' 'booking_modify' '1' %}">我是旅客，如果预约完后，我联系不上服务商，怎么办？</a>
+      </div>
+    </div>
+  </div>
+{% elif problem_type == 'novice' %}
+  <div class="ui big animated link relaxed list">
+    <a href="{% url 'help_problem' problem_type '1' %}" class="{% if serial_id == '1' %}active{% endif %} item">
+      <i class="{% if serial_id == '1' %}black{% endif %} file text icon"></i>
+      我是服务商
+    </a>
+    <a href="{% url 'help_problem' problem_type '2' %}" class="{% if serial_id == '2' %}active{% endif %} item">
+      <i class="{% if serial_id == '2' %}black{% endif %} file text icon"></i>
+      我是旅客
+    </a>
+  </div> 
+{% elif problem_type == 'login_register' %}
+  <div class="ui big animated link relaxed list">
+    <a href="{% url 'help_problem' problem_type '1' %}" class="{% if serial_id == '1' %}active{% endif %} item">
+      <i class="{% if serial_id == '1' %}black{% endif %} file text icon"></i>
+      如何注册及登录
+    </a>
+    <a href="{% url 'help_problem' problem_type '2' %}" class="{% if serial_id == '2' %}active{% endif %} item">
+      <i class="{% if serial_id == '2' %}black{% endif %} file text icon"></i>
+      Frelanvo网站是否有权关闭我的账户或降低我的信用等级
+    </a>
+    <a href="{% url 'help_problem' problem_type '3' %}" class="{% if serial_id == '3' %}active{% endif %} item">
+      <i class="{% if serial_id == '3' %}black{% endif %} file text icon"></i>
+      我如何关闭或隐藏我的账户
+    </a>
+  </div> 
+{% elif problem_type == 'manager_account' %}
+  <div class="ui big animated link relaxed list">
+    <a href="{% url 'help_problem' problem_type '1' %}" class="{% if serial_id == '1' %}active{% endif %} item">
+      <i class="{% if serial_id == '1' %}black{% endif %} file text icon"></i>
+      账户安全和密码管理
+    </a>
+    <a href="{% url 'help_problem' problem_type '2' %}" class="{% if serial_id == '2' %}active{% endif %} item">
+      <i class="{% if serial_id == '2' %}black{% endif %} file text icon"></i>
+      新消息提醒
+    </a>
+  </div>
+{% elif problem_type == 'service' %}
+  <div class="ui big animated link relaxed list">
+    <a href="{% url 'help_problem' problem_type '1' %}" class="{% if serial_id == '1' %}active{% endif %} item">
+      <i class="{% if serial_id == '1' %}black{% endif %} file text icon"></i>
+      如何成为服务商
+    </a>
+    <a href="{% url 'help_problem' problem_type '2' %}" class="{% if serial_id == '2' %}active{% endif %} item">
+      <i class="{% if serial_id == '2' %}black{% endif %} file text icon"></i>
+      如何布置我的服务页面和个人主页
+    </a>
+    <a href="{% url 'help_problem' problem_type '3' %}" class="{% if serial_id == '3' %}active{% endif %} item">
+      <i class="{% if serial_id == '3' %}black{% endif %} file text icon"></i>
+      旅客预约后，如果联系不上旅客，怎么办?
+    </a>
+    <a href="{% url 'help_problem' problem_type '4' %}" class="{% if serial_id == '4' %}active{% endif %} item">
+      <i class="{% if serial_id == '4' %}black{% endif %} file text icon"></i>
+      作为服务商，在法律及纳税规定方面我要注意什么？
+    </a>
+  </div>
+{% elif problem_type == 'user' %}
+  <div class="ui big animated link relaxed list">
+    <a href="{% url 'help_problem' problem_type '1' %}" class="{% if serial_id == '1' %}active{% endif %} item">
+      <i class="{% if serial_id == '1' %}black{% endif %} file text icon"></i>
+      如何成为旅客
+    </a>
+    <a href="{% url 'help_problem' problem_type '2' %}" class="{% if serial_id == '2' %}active{% endif %} item">
+      <i class="{% if serial_id == '2' %}black{% endif %} file text icon"></i>
+      寻找服务/服务商
+    </a>
+    <a href="{% url 'help_problem' problem_type '3' %}" class="{% if serial_id == '3' %}active{% endif %} item">
+      <i class="{% if serial_id == '3' %}black{% endif %} file text icon"></i>
+      预定旅行服务
+    </a>
+    <a href="{% url 'help_problem' problem_type '4' %}" class="{% if serial_id == '4' %}active{% endif %} item">
+      <i class="{% if serial_id == '4' %}black{% endif %} file text icon"></i>
+      旅行与付款
+    </a>
+  </div>
+{% elif problem_type == 'comment' %}
+  <div class="ui big animated link relaxed list">
+    <a href="{% url 'help_problem' problem_type '1' %}" class="{% if serial_id == '1' %}active{% endif %} item">
+      <i class="{% if serial_id == '1' %}black{% endif %} file text icon"></i>
+      撰写评价
+    </a>
+    <a href="{% url 'help_problem' problem_type '2' %}" class="{% if serial_id == '2' %}active{% endif %} item">
+      <i class="{% if serial_id == '2' %}black{% endif %} file text icon"></i>
+      编辑评价
+    </a>
+    <a href="{% url 'help_problem' problem_type '3' %}" class="{% if serial_id == '3' %}active{% endif %} item">
+      <i class="{% if serial_id == '3' %}black{% endif %} file text icon"></i>
+      前期评价
+    </a>
+    <a href="{% url 'help_problem' problem_type '4' %}" class="{% if serial_id == '4' %}active{% endif %} item">
+      <i class="{% if serial_id == '4' %}black{% endif %} file text icon"></i>
+      星级评分
+    </a>
+  </div>
+{% elif problem_type == 'booking_modify' %}
+  <div class="ui big animated link relaxed list">
+    <a href="{% url 'help_problem' problem_type '1' %}" class="{% if serial_id == '1' %}active{% endif %} item">
+      <i class="{% if serial_id == '1' %}black{% endif %} file text icon"></i>
+      我是旅客，如果预约完后，我联系不上服务商，怎么办？
+    </a>
+  </div>
+{% endif %}
+</div>
+<br>
+<br>
+<br>
+<br>

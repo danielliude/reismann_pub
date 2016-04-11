@@ -24,6 +24,7 @@ module.exports = {
     'profiles/message': './js/profiles/message',
     'profiles/bookings': './js/profiles/bookings',
     'core/about_us': './js/core/about_us',
+    'core/help': './js/core/help',
   },
 
   output: {

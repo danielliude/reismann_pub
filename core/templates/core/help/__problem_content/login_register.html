@@ -1,0 +1,36 @@
+{% load i18n %}
+
+{% if serial_id == '1' %}
+	<div class="sub header">如何注册及登录</div>
+	<br>
+	<br>
+	<p>如您在Frelanvo网站还没有账户，请前往通过以下链接注册:<a href="{% url 'accounts:register' %}">注册</a></p>
+	<p>以下账户无需注册，可以直接登录Frelanvo网站：</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;<i class="grey circle icon"></i>新浪微博</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;<i class="grey circle icon"></i>微信</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;<i class="grey circle icon"></i>QQ</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;<i class="grey circle icon"></i>Google+</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;<i class="grey circle icon"></i>Facebook</p>
+	<p>注册并登录后，请记得完善个人资料</p>
+{% elif serial_id == '2' %}
+	<div class="sub header">Frelanvo网站是否有权关闭我的账户或降低我的信用等级</div>
+	<br>
+	<br>
+	<p>根据网站服务条款，Frelanvo有权锁定、关闭您的账号或降低信用等级。</p>
+	<p>如果您是服务商，您的账号可能由于下列原因被锁定及关闭：</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;<i class="grey circle icon"></i>基于举报，涉嫌严重侵犯旅客权利，或者所提供服务与协议规定的义务有重大出入</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;<i class="grey circle icon"></i>基于举报，涉嫌炒作信用，如虚构交易以提高信用等级。</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;<i class="grey circle icon"></i>个人信息内涉及儿童色情、暴力等不宜内容</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;<i class="grey circle icon"></i>账户显示异常登录情况 </p>
+	<p>如需咨询、重新激活或取回账户，请联系网站管理员:<a href="{% url 'accounts:register' %}">注册</a></p>
+{% else %}
+	<div class="sub header">我如何关闭或隐藏我的账户？</div>
+	<br>
+	<br>
+	<p>如果您想永久关闭Frelanvo的账户，您可以通过以下操作完成：</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;控制面板->账户关闭->点击“保存”</p>
+	<p>作为服务商，如果您在一定时间内不想被旅客看见或收索到，您可以通过以下操作完成：</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;控制面板->账户隐藏->点击“保存”</p>
+	<p>如需取消隐藏，请通过以下操作完成：</p>
+	<p>控制面板->取消隐藏->点击“保存”</p>
+{% endif %}

@@ -31,15 +31,15 @@
       <span class="right_absolute">{{ profile.is_active }}</span>
     </div>
 
-<!--     <div class="item">
+    <div class="item">
       {% if request.user.is_authenticated %}
         {% if view_own_profile %}
-          <a href="{% url 'profiles:detail' profile.user.username %}" class="ui blue right floated button"><b>{% trans 'Edit profile' %}</b></a>
-          <a href="{% url 'profiles:contact' profile.user.username %}" class="ui blue right floated button"><b>{% trans 'Edit contacts' %}</b></a>
+          <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue right floated button"><b>{% trans 'Edit profile' %}</b></a>
+          <a href="{% url 'profiles:contact' profile.user.username %}" class="ui brand_blue right floated button"><b>{% trans 'Edit contacts' %}</b></a>
         {% else %}
-          <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="ui blue right floated fluid button"><b>{% trans 'Follow me' %}</b></a>
+          <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="ui brand_blue right floated fluid button"><b>{% trans 'Follow me' %}</b></a>
         {% endif %}
       {% endif %}
-    </div> -->
+    </div>
   </div>
 </div>

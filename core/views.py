@@ -99,3 +99,13 @@ def disclaimer(request):
   context = makeContextForDetails(request, context)
 
   return render(request, 'core/about/disclaimer.html', context)
+
+def help_problem(request, problem_type, serial_id, template_name='core/help/problem.html'):
+  context = {
+    'problem_type': problem_type,
+    'serial_id': serial_id
+  }
+  context = makeContextForMessages(request, context)
+  context = makeContextForDetails(request, context)
+
+  return render(request, 'core/help/problem.html', context)

@@ -28,6 +28,7 @@ import '../semantic/dist/components/list.min.css'
 import '../semantic/dist/components/reset.min.css'
 import '../semantic/dist/components/breadcrumb.min.css'
 import '../semantic/dist/components/sticky.min.css'
+import '../semantic/dist/components/accordion.min.css'
 import '../styles/global.scss'
 
 import 'expose?jQuery!expose?$!jquery'
@@ -41,6 +42,7 @@ import '../semantic/dist/components/rating.min.js'
 import '../semantic/dist/components/search.min.js'
 import '../semantic/dist/components/transition.min.js'
 import '../semantic/dist/components/sticky.min.js'
+import '../semantic/dist/components/accordion.min.js'
 
 
 

@@ -1,0 +1,23 @@
+{% load i18n %}
+
+{% if serial_id == '1' %}
+	<div class="sub header">撰写评价</div>
+	<br>
+	<br>
+	<p>通过Frelanvo预约的旅行服务结束后，请您前往 控制面板->评价 对服务进行评价。评价的字数不能超过300字，且必须遵守Frelanvo评价要求。</p>
+{% elif serial_id == '2' %}
+	<div class="sub header">编辑评价</div>
+	<br>
+	<br>
+	<p>当您评价提交后的48小时内，您可对您提交的评价进行编辑。</p>
+{% elif serial_id == '3' %}
+	<div class="sub header">前期评价</div>
+	<br>
+	<br>
+	<p>通过 控制面板->评价->前期评价， 您可以看到以前的“对您的评价”及“您写的评价”。在“对您的评价”页面上，您可以对过去两周内收到的评价发表公开回复。</p>
+{% elif serial_id == '4' %}
+	<div class="sub header">星级评分</div>
+	<br>
+	<br>
+	<p>通过Frelanvo预约的旅行服务结束后，请您前往 控制面板->评价 对服务进行评分。对于服务商，Frelanvo网站收到4名旅客以上的星级评分后，系统会根据<a>星级评分标准</a>给予服务商星级。</p>
+{% endif %}

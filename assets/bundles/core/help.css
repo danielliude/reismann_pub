@@ -1,0 +1,28 @@
+body {
+  background-color: #f3f3f3; }
+
+/*--------------
+    city_img
+---------------*/
+.city_img {
+  height: 200px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
+
+/*--------------
+    help_content
+---------------*/
+.help_content p {
+  color: rgba(0, 0, 0, 0.68);
+  font-size: 1.3em; }
+
+.help_content .sub.header {
+  font-size: 2em; }
+
+.help_context .ui.accordion .title {
+  font-size: 1.3em; }
+
+.help_context .ui.accordion .content {
+  padding-left: 1.9em !important; }

@@ -14,8 +14,8 @@
     <div class="column">
       <h5 class="ui inverted header">{% trans "Help" %}</h5>
       <div class="ui inverted link list">
-        <a class="item" href="help/question">{% trans "Q&A" %}</a>
-        <a class="item" href="help/novice">{% trans "Novice on the road" %}</a>
+        <a class="item" href="{% url 'help_problem' 'all' 'all' %}">{% trans "Q&A" %}</a>
+        <a class="item" href="{% url 'help_problem' 'novice' '1' %}">{% trans "Novice on the road" %}</a>
       </div>
     </div>
     <div class="column">

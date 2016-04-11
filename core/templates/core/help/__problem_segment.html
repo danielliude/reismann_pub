@@ -1,0 +1,32 @@
+{% load i18n %}
+
+<div class="ui basic segment">
+  <div class="ui large breadcrumb">
+    <a href="{% url 'index' %}" class="section"><i class="home icon"></i>主页</a>
+    <i class="right chevron icon divider"></i>
+    {% if problem_type == 'all' %}
+	    <div class="active section">常见问题</div>
+    {% else %} 
+	    <a href="{% url 'help_problem' 'all' 'all' %}" class="section">常见问题</a>
+	    <i class="right chevron icon divider"></i>
+	    <div class="active section">
+        {% if problem_type == 'novice' %}
+          新手上路
+        {% elif problem_type == 'novice' %}
+          注册与登录
+        {% elif problem_type == 'manager_account' %}
+          管理您的账户
+        {% elif problem_type == 'service' %}
+          服务商
+        {% elif problem_type == 'user' %}
+          旅客
+        {% elif problem_type == 'comment' %}
+          评价
+        {% elif problem_type == 'booking_modify' %}
+          预约变更
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>    
+</div>     
+<br>

@@ -46,11 +46,9 @@
 
 	'use strict';
 
-	__webpack_require__(17);
-
-	__webpack_require__(76);
-
 	__webpack_require__(19);
+
+	__webpack_require__(78);
 
 	__webpack_require__(21);
 
@@ -72,7 +70,7 @@
 
 	__webpack_require__(39);
 
-	__webpack_require__(46);
+	__webpack_require__(41);
 
 	__webpack_require__(48);
 
@@ -84,41 +82,43 @@
 
 	__webpack_require__(56);
 
-	__webpack_require__(64);
+	__webpack_require__(58);
 
 	__webpack_require__(66);
 
-	__webpack_require__(97);
-
 	__webpack_require__(68);
+
+	__webpack_require__(102);
 
 	__webpack_require__(70);
 
+	__webpack_require__(72);
+
+	__webpack_require__(76);
+
 	__webpack_require__(74);
 
-	__webpack_require__(72);
+	__webpack_require__(84);
+
+	__webpack_require__(104);
+
+	__webpack_require__(88);
+
+	__webpack_require__(91);
+
+	__webpack_require__(92);
+
+	__webpack_require__(93);
+
+	__webpack_require__(94);
+
+	__webpack_require__(98);
+
+	__webpack_require__(106);
 
 	__webpack_require__(99);
 
 	__webpack_require__(101);
-
-	__webpack_require__(84);
-
-	__webpack_require__(87);
-
-	__webpack_require__(88);
-
-	__webpack_require__(89);
-
-	__webpack_require__(90);
-
-	__webpack_require__(94);
-
-	__webpack_require__(103);
-
-	__webpack_require__(95);
-
-	__webpack_require__(104);
 
 	$(function () {
 		init_button();
@@ -153,12 +153,7 @@
 /* 14 */,
 /* 15 */,
 /* 16 */,
-/* 17 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 17 */,
 /* 18 */,
 /* 19 */
 /***/ function(module, exports) {
@@ -237,17 +232,17 @@
 
 /***/ },
 /* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */
+/* 41 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
 /* 47 */,
 /* 48 */
 /***/ function(module, exports) {
@@ -284,18 +279,18 @@
 
 /***/ },
 /* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */
+/* 58 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
 /* 65 */,
 /* 66 */
 /***/ function(module, exports) {
@@ -339,27 +334,41 @@
 
 /***/ },
 /* 77 */,
-/* 78 */,
+/* 78 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
 /* 79 */,
 /* 80 */,
 /* 81 */,
 /* 82 */,
 /* 83 */,
 /* 84 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(85);
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(89);
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 85 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(86);
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(90);
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 86 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10207,7 +10216,7 @@
 
 
 /***/ },
-/* 87 */
+/* 91 */
 /***/ function(module, exports) {
 
 	/*!
@@ -10342,7 +10351,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 88 */
+/* 92 */
 /***/ function(module, exports) {
 
 	/*!
@@ -10533,7 +10542,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 89 */
+/* 93 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11281,7 +11290,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 90 */
+/* 94 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11616,10 +11625,10 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11885,7 +11894,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 95 */
+/* 99 */
 /***/ function(module, exports) {
 
 	/*!
@@ -12140,29 +12149,155 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 96 */,
-/* 97 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 98 */,
-/* 99 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
 /* 100 */,
 /* 101 */
 /***/ function(module, exports) {
 
+	/*!
+	 * # Semantic UI 2.1.8 - Accordion
+	 * http://github.com/semantic-org/semantic-ui/
+	 *
+	 *
+	 * Copyright 2015 Contributors
+	 * Released under the MIT license
+	 * http://opensource.org/licenses/MIT
+	 *
+	 */
+	"use strict";
+
+	!(function (e, n, t, i) {
+	  "use strict";e.fn.accordion = function (t) {
+	    var o,
+	        a = e(this),
+	        s = new Date().getTime(),
+	        r = [],
+	        c = arguments[0],
+	        l = "string" == typeof c,
+	        u = [].slice.call(arguments, 1);n.requestAnimationFrame || n.mozRequestAnimationFrame || n.webkitRequestAnimationFrame || n.msRequestAnimationFrame || function (e) {
+	      setTimeout(e, 0);
+	    };return a.each(function () {
+	      var d,
+	          g,
+	          m = e.isPlainObject(t) ? e.extend(!0, {}, e.fn.accordion.settings, t) : e.extend({}, e.fn.accordion.settings),
+	          f = m.className,
+	          p = m.namespace,
+	          v = m.selector,
+	          b = m.error,
+	          h = "." + p,
+	          y = "module-" + p,
+	          C = a.selector || "",
+	          O = e(this),
+	          x = O.find(v.title),
+	          A = O.find(v.content),
+	          F = this,
+	          T = O.data(y);g = { initialize: function initialize() {
+	          g.debug("Initializing", O), g.bind.events(), m.observeChanges && g.observeChanges(), g.instantiate();
+	        }, instantiate: function instantiate() {
+	          T = g, O.data(y, g);
+	        }, destroy: function destroy() {
+	          g.debug("Destroying previous instance", O), O.off(h).removeData(y);
+	        }, refresh: function refresh() {
+	          x = O.find(v.title), A = O.find(v.content);
+	        }, observeChanges: function observeChanges() {
+	          "MutationObserver" in n && (d = new MutationObserver(function (e) {
+	            g.debug("DOM tree modified, updating selector cache"), g.refresh();
+	          }), d.observe(F, { childList: !0, subtree: !0 }), g.debug("Setting up mutation observer", d));
+	        }, bind: { events: function events() {
+	            g.debug("Binding delegated events"), O.on(m.on + h, v.trigger, g.event.click);
+	          } }, event: { click: function click() {
+	            g.toggle.call(this);
+	          } }, toggle: function toggle(n) {
+	          var t = n !== i ? "number" == typeof n ? x.eq(n) : e(n).closest(v.title) : e(this).closest(v.title),
+	              o = t.next(A),
+	              a = o.hasClass(f.animating),
+	              s = o.hasClass(f.active),
+	              r = s && !a,
+	              c = !s && a;g.debug("Toggling visibility of content", t), r || c ? m.collapsible ? g.close.call(t) : g.debug("Cannot close accordion content collapsing is disabled") : g.open.call(t);
+	        }, open: function open(n) {
+	          var t = n !== i ? "number" == typeof n ? x.eq(n) : e(n).closest(v.title) : e(this).closest(v.title),
+	              o = t.next(A),
+	              a = o.hasClass(f.animating),
+	              s = o.hasClass(f.active),
+	              r = s || a;return r ? void g.debug("Accordion already open, skipping", o) : (g.debug("Opening accordion content", t), m.onOpening.call(o), m.exclusive && g.closeOthers.call(t), t.addClass(f.active), o.stop(!0, !0).addClass(f.animating), m.animateChildren && (e.fn.transition !== i && O.transition("is supported") ? o.children().transition({ animation: "fade in", queue: !1, useFailSafe: !0, debug: m.debug, verbose: m.verbose, duration: m.duration }) : o.children().stop(!0, !0).animate({ opacity: 1 }, m.duration, g.resetOpacity)), void o.slideDown(m.duration, m.easing, function () {
+	            o.removeClass(f.animating).addClass(f.active), g.reset.display.call(this), m.onOpen.call(this), m.onChange.call(this);
+	          }));
+	        }, close: function close(n) {
+	          var t = n !== i ? "number" == typeof n ? x.eq(n) : e(n).closest(v.title) : e(this).closest(v.title),
+	              o = t.next(A),
+	              a = o.hasClass(f.animating),
+	              s = o.hasClass(f.active),
+	              r = !s && a,
+	              c = s && a;!s && !r || c || (g.debug("Closing accordion content", o), m.onClosing.call(o), t.removeClass(f.active), o.stop(!0, !0).addClass(f.animating), m.animateChildren && (e.fn.transition !== i && O.transition("is supported") ? o.children().transition({ animation: "fade out", queue: !1, useFailSafe: !0, debug: m.debug, verbose: m.verbose, duration: m.duration }) : o.children().stop(!0, !0).animate({ opacity: 0 }, m.duration, g.resetOpacity)), o.slideUp(m.duration, m.easing, function () {
+	            o.removeClass(f.animating).removeClass(f.active), g.reset.display.call(this), m.onClose.call(this), m.onChange.call(this);
+	          }));
+	        }, closeOthers: function closeOthers(n) {
+	          var t,
+	              o,
+	              a,
+	              s = n !== i ? x.eq(n) : e(this).closest(v.title),
+	              r = s.parents(v.content).prev(v.title),
+	              c = s.closest(v.accordion),
+	              l = v.title + "." + f.active + ":visible",
+	              u = v.content + "." + f.active + ":visible";m.closeNested ? (t = c.find(l).not(r), a = t.next(A)) : (t = c.find(l).not(r), o = c.find(u).find(l).not(r), t = t.not(o), a = t.next(A)), t.length > 0 && (g.debug("Exclusive enabled, closing other content", t), t.removeClass(f.active), a.removeClass(f.animating).stop(!0, !0), m.animateChildren && (e.fn.transition !== i && O.transition("is supported") ? a.children().transition({ animation: "fade out", useFailSafe: !0, debug: m.debug, verbose: m.verbose, duration: m.duration }) : a.children().stop(!0, !0).animate({ opacity: 0 }, m.duration, g.resetOpacity)), a.slideUp(m.duration, m.easing, function () {
+	            e(this).removeClass(f.active), g.reset.display.call(this);
+	          }));
+	        }, reset: { display: function display() {
+	            g.verbose("Removing inline display from element", this), e(this).css("display", ""), "" === e(this).attr("style") && e(this).attr("style", "").removeAttr("style");
+	          }, opacity: function opacity() {
+	            g.verbose("Removing inline opacity from element", this), e(this).css("opacity", ""), "" === e(this).attr("style") && e(this).attr("style", "").removeAttr("style");
+	          } }, setting: function setting(n, t) {
+	          if ((g.debug("Changing setting", n, t), e.isPlainObject(n))) e.extend(!0, m, n);else {
+	            if (t === i) return m[n];m[n] = t;
+	          }
+	        }, internal: function internal(n, t) {
+	          return g.debug("Changing internal", n, t), t === i ? g[n] : void (e.isPlainObject(n) ? e.extend(!0, g, n) : g[n] = t);
+	        }, debug: function debug() {
+	          m.debug && (m.performance ? g.performance.log(arguments) : (g.debug = Function.prototype.bind.call(console.info, console, m.name + ":"), g.debug.apply(console, arguments)));
+	        }, verbose: function verbose() {
+	          m.verbose && m.debug && (m.performance ? g.performance.log(arguments) : (g.verbose = Function.prototype.bind.call(console.info, console, m.name + ":"), g.verbose.apply(console, arguments)));
+	        }, error: function error() {
+	          g.error = Function.prototype.bind.call(console.error, console, m.name + ":"), g.error.apply(console, arguments);
+	        }, performance: { log: function log(e) {
+	            var n, t, i;m.performance && (n = new Date().getTime(), i = s || n, t = n - i, s = n, r.push({ Name: e[0], Arguments: [].slice.call(e, 1) || "", Element: F, "Execution Time": t })), clearTimeout(g.performance.timer), g.performance.timer = setTimeout(g.performance.display, 500);
+	          }, display: function display() {
+	            var n = m.name + ":",
+	                t = 0;s = !1, clearTimeout(g.performance.timer), e.each(r, function (e, n) {
+	              t += n["Execution Time"];
+	            }), n += " " + t + "ms", C && (n += " '" + C + "'"), (console.group !== i || console.table !== i) && r.length > 0 && (console.groupCollapsed(n), console.table ? console.table(r) : e.each(r, function (e, n) {
+	              console.log(n.Name + ": " + n["Execution Time"] + "ms");
+	            }), console.groupEnd()), r = [];
+	          } }, invoke: function invoke(n, t, a) {
+	          var s,
+	              r,
+	              c,
+	              l = T;return t = t || u, a = F || a, "string" == typeof n && l !== i && (n = n.split(/[\. ]/), s = n.length - 1, e.each(n, function (t, o) {
+	            var a = t != s ? o + n[t + 1].charAt(0).toUpperCase() + n[t + 1].slice(1) : n;if (e.isPlainObject(l[a]) && t != s) l = l[a];else {
+	              if (l[a] !== i) return r = l[a], !1;if (!e.isPlainObject(l[o]) || t == s) return l[o] !== i ? (r = l[o], !1) : (g.error(b.method, n), !1);l = l[o];
+	            }
+	          })), e.isFunction(r) ? c = r.apply(a, t) : r !== i && (c = r), e.isArray(o) ? o.push(c) : o !== i ? o = [o, c] : c !== i && (o = c), r;
+	        } }, l ? (T === i && g.initialize(), g.invoke(c)) : (T !== i && T.invoke("destroy"), g.initialize());
+	    }), o !== i ? o : this;
+	  }, e.fn.accordion.settings = { name: "Accordion", namespace: "accordion", debug: !1, verbose: !1, performance: !0, on: "click", observeChanges: !0, exclusive: !0, collapsible: !0, closeNested: !1, animateChildren: !0, duration: 350, easing: "easeOutQuad", onOpening: function onOpening() {}, onOpen: function onOpen() {}, onClosing: function onClosing() {}, onClose: function onClose() {}, onChange: function onChange() {}, error: { method: "The method you called is not defined" }, className: { active: "active", animating: "animating" }, selector: { accordion: ".accordion", title: ".title", trigger: ".title", content: ".content" } }, e.extend(e.easing, { easeOutQuad: function easeOutQuad(e, n, t, i, o) {
+	      return -i * (n /= o) * (n - 2) + t;
+	    } });
+	})(jQuery, window, document);
+
+/***/ },
+/* 102 */
+/***/ function(module, exports) {
+
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 102 */,
-/* 103 */
+/* 103 */,
+/* 104 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 105 */,
+/* 106 */
 /***/ function(module, exports) {
 
 	/*!
@@ -12419,139 +12554,6 @@
 	        } }, m ? (B === t && w.initialize(), w.invoke(h)) : (B !== t && w.invoke("destroy"), w.initialize());
 	    }), r !== t ? r : this;
 	  }, e.fn.sidebar.settings = { name: "Sidebar", namespace: "sidebar", debug: !1, verbose: !1, performance: !0, transition: "auto", mobileTransition: "auto", defaultTransition: { computer: { left: "uncover", right: "uncover", top: "overlay", bottom: "overlay" }, mobile: { left: "uncover", right: "uncover", top: "overlay", bottom: "overlay" } }, context: "body", exclusive: !1, closable: !0, dimPage: !0, scrollLock: !1, returnScroll: !1, delaySetup: !1, duration: 500, onChange: function onChange() {}, onShow: function onShow() {}, onHide: function onHide() {}, onHidden: function onHidden() {}, onVisible: function onVisible() {}, className: { active: "active", animating: "animating", dimmed: "dimmed", ios: "ios", pushable: "pushable", pushed: "pushed", right: "right", top: "top", left: "left", bottom: "bottom", visible: "visible" }, selector: { fixed: ".fixed", omitted: "script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed", pusher: ".pusher", sidebar: ".ui.sidebar" }, regExp: { ios: /(iPad|iPhone|iPod)/g, mobileChrome: /(CriOS)/g, mobile: /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/g }, error: { method: "The method you called is not defined.", pusher: "Had to add pusher element. For optimal performance make sure body content is inside a pusher element", movedSidebar: "Had to move sidebar. For optimal performance make sure sidebar and pusher are direct children of your body tag", overlay: "The overlay setting is no longer supported, use animation: overlay", notFound: "There were no elements that matched the specified selector" } };
-	})(jQuery, window, document);
-
-/***/ },
-/* 104 */
-/***/ function(module, exports) {
-
-	/*!
-	 * # Semantic UI 2.1.8 - Accordion
-	 * http://github.com/semantic-org/semantic-ui/
-	 *
-	 *
-	 * Copyright 2015 Contributors
-	 * Released under the MIT license
-	 * http://opensource.org/licenses/MIT
-	 *
-	 */
-	"use strict";
-
-	!(function (e, n, t, i) {
-	  "use strict";e.fn.accordion = function (t) {
-	    var o,
-	        a = e(this),
-	        s = new Date().getTime(),
-	        r = [],
-	        c = arguments[0],
-	        l = "string" == typeof c,
-	        u = [].slice.call(arguments, 1);n.requestAnimationFrame || n.mozRequestAnimationFrame || n.webkitRequestAnimationFrame || n.msRequestAnimationFrame || function (e) {
-	      setTimeout(e, 0);
-	    };return a.each(function () {
-	      var d,
-	          g,
-	          m = e.isPlainObject(t) ? e.extend(!0, {}, e.fn.accordion.settings, t) : e.extend({}, e.fn.accordion.settings),
-	          f = m.className,
-	          p = m.namespace,
-	          v = m.selector,
-	          b = m.error,
-	          h = "." + p,
-	          y = "module-" + p,
-	          C = a.selector || "",
-	          O = e(this),
-	          x = O.find(v.title),
-	          A = O.find(v.content),
-	          F = this,
-	          T = O.data(y);g = { initialize: function initialize() {
-	          g.debug("Initializing", O), g.bind.events(), m.observeChanges && g.observeChanges(), g.instantiate();
-	        }, instantiate: function instantiate() {
-	          T = g, O.data(y, g);
-	        }, destroy: function destroy() {
-	          g.debug("Destroying previous instance", O), O.off(h).removeData(y);
-	        }, refresh: function refresh() {
-	          x = O.find(v.title), A = O.find(v.content);
-	        }, observeChanges: function observeChanges() {
-	          "MutationObserver" in n && (d = new MutationObserver(function (e) {
-	            g.debug("DOM tree modified, updating selector cache"), g.refresh();
-	          }), d.observe(F, { childList: !0, subtree: !0 }), g.debug("Setting up mutation observer", d));
-	        }, bind: { events: function events() {
-	            g.debug("Binding delegated events"), O.on(m.on + h, v.trigger, g.event.click);
-	          } }, event: { click: function click() {
-	            g.toggle.call(this);
-	          } }, toggle: function toggle(n) {
-	          var t = n !== i ? "number" == typeof n ? x.eq(n) : e(n).closest(v.title) : e(this).closest(v.title),
-	              o = t.next(A),
-	              a = o.hasClass(f.animating),
-	              s = o.hasClass(f.active),
-	              r = s && !a,
-	              c = !s && a;g.debug("Toggling visibility of content", t), r || c ? m.collapsible ? g.close.call(t) : g.debug("Cannot close accordion content collapsing is disabled") : g.open.call(t);
-	        }, open: function open(n) {
-	          var t = n !== i ? "number" == typeof n ? x.eq(n) : e(n).closest(v.title) : e(this).closest(v.title),
-	              o = t.next(A),
-	              a = o.hasClass(f.animating),
-	              s = o.hasClass(f.active),
-	              r = s || a;return r ? void g.debug("Accordion already open, skipping", o) : (g.debug("Opening accordion content", t), m.onOpening.call(o), m.exclusive && g.closeOthers.call(t), t.addClass(f.active), o.stop(!0, !0).addClass(f.animating), m.animateChildren && (e.fn.transition !== i && O.transition("is supported") ? o.children().transition({ animation: "fade in", queue: !1, useFailSafe: !0, debug: m.debug, verbose: m.verbose, duration: m.duration }) : o.children().stop(!0, !0).animate({ opacity: 1 }, m.duration, g.resetOpacity)), void o.slideDown(m.duration, m.easing, function () {
-	            o.removeClass(f.animating).addClass(f.active), g.reset.display.call(this), m.onOpen.call(this), m.onChange.call(this);
-	          }));
-	        }, close: function close(n) {
-	          var t = n !== i ? "number" == typeof n ? x.eq(n) : e(n).closest(v.title) : e(this).closest(v.title),
-	              o = t.next(A),
-	              a = o.hasClass(f.animating),
-	              s = o.hasClass(f.active),
-	              r = !s && a,
-	              c = s && a;!s && !r || c || (g.debug("Closing accordion content", o), m.onClosing.call(o), t.removeClass(f.active), o.stop(!0, !0).addClass(f.animating), m.animateChildren && (e.fn.transition !== i && O.transition("is supported") ? o.children().transition({ animation: "fade out", queue: !1, useFailSafe: !0, debug: m.debug, verbose: m.verbose, duration: m.duration }) : o.children().stop(!0, !0).animate({ opacity: 0 }, m.duration, g.resetOpacity)), o.slideUp(m.duration, m.easing, function () {
-	            o.removeClass(f.animating).removeClass(f.active), g.reset.display.call(this), m.onClose.call(this), m.onChange.call(this);
-	          }));
-	        }, closeOthers: function closeOthers(n) {
-	          var t,
-	              o,
-	              a,
-	              s = n !== i ? x.eq(n) : e(this).closest(v.title),
-	              r = s.parents(v.content).prev(v.title),
-	              c = s.closest(v.accordion),
-	              l = v.title + "." + f.active + ":visible",
-	              u = v.content + "." + f.active + ":visible";m.closeNested ? (t = c.find(l).not(r), a = t.next(A)) : (t = c.find(l).not(r), o = c.find(u).find(l).not(r), t = t.not(o), a = t.next(A)), t.length > 0 && (g.debug("Exclusive enabled, closing other content", t), t.removeClass(f.active), a.removeClass(f.animating).stop(!0, !0), m.animateChildren && (e.fn.transition !== i && O.transition("is supported") ? a.children().transition({ animation: "fade out", useFailSafe: !0, debug: m.debug, verbose: m.verbose, duration: m.duration }) : a.children().stop(!0, !0).animate({ opacity: 0 }, m.duration, g.resetOpacity)), a.slideUp(m.duration, m.easing, function () {
-	            e(this).removeClass(f.active), g.reset.display.call(this);
-	          }));
-	        }, reset: { display: function display() {
-	            g.verbose("Removing inline display from element", this), e(this).css("display", ""), "" === e(this).attr("style") && e(this).attr("style", "").removeAttr("style");
-	          }, opacity: function opacity() {
-	            g.verbose("Removing inline opacity from element", this), e(this).css("opacity", ""), "" === e(this).attr("style") && e(this).attr("style", "").removeAttr("style");
-	          } }, setting: function setting(n, t) {
-	          if ((g.debug("Changing setting", n, t), e.isPlainObject(n))) e.extend(!0, m, n);else {
-	            if (t === i) return m[n];m[n] = t;
-	          }
-	        }, internal: function internal(n, t) {
-	          return g.debug("Changing internal", n, t), t === i ? g[n] : void (e.isPlainObject(n) ? e.extend(!0, g, n) : g[n] = t);
-	        }, debug: function debug() {
-	          m.debug && (m.performance ? g.performance.log(arguments) : (g.debug = Function.prototype.bind.call(console.info, console, m.name + ":"), g.debug.apply(console, arguments)));
-	        }, verbose: function verbose() {
-	          m.verbose && m.debug && (m.performance ? g.performance.log(arguments) : (g.verbose = Function.prototype.bind.call(console.info, console, m.name + ":"), g.verbose.apply(console, arguments)));
-	        }, error: function error() {
-	          g.error = Function.prototype.bind.call(console.error, console, m.name + ":"), g.error.apply(console, arguments);
-	        }, performance: { log: function log(e) {
-	            var n, t, i;m.performance && (n = new Date().getTime(), i = s || n, t = n - i, s = n, r.push({ Name: e[0], Arguments: [].slice.call(e, 1) || "", Element: F, "Execution Time": t })), clearTimeout(g.performance.timer), g.performance.timer = setTimeout(g.performance.display, 500);
-	          }, display: function display() {
-	            var n = m.name + ":",
-	                t = 0;s = !1, clearTimeout(g.performance.timer), e.each(r, function (e, n) {
-	              t += n["Execution Time"];
-	            }), n += " " + t + "ms", C && (n += " '" + C + "'"), (console.group !== i || console.table !== i) && r.length > 0 && (console.groupCollapsed(n), console.table ? console.table(r) : e.each(r, function (e, n) {
-	              console.log(n.Name + ": " + n["Execution Time"] + "ms");
-	            }), console.groupEnd()), r = [];
-	          } }, invoke: function invoke(n, t, a) {
-	          var s,
-	              r,
-	              c,
-	              l = T;return t = t || u, a = F || a, "string" == typeof n && l !== i && (n = n.split(/[\. ]/), s = n.length - 1, e.each(n, function (t, o) {
-	            var a = t != s ? o + n[t + 1].charAt(0).toUpperCase() + n[t + 1].slice(1) : n;if (e.isPlainObject(l[a]) && t != s) l = l[a];else {
-	              if (l[a] !== i) return r = l[a], !1;if (!e.isPlainObject(l[o]) || t == s) return l[o] !== i ? (r = l[o], !1) : (g.error(b.method, n), !1);l = l[o];
-	            }
-	          })), e.isFunction(r) ? c = r.apply(a, t) : r !== i && (c = r), e.isArray(o) ? o.push(c) : o !== i ? o = [o, c] : c !== i && (o = c), r;
-	        } }, l ? (T === i && g.initialize(), g.invoke(c)) : (T !== i && T.invoke("destroy"), g.initialize());
-	    }), o !== i ? o : this;
-	  }, e.fn.accordion.settings = { name: "Accordion", namespace: "accordion", debug: !1, verbose: !1, performance: !0, on: "click", observeChanges: !0, exclusive: !0, collapsible: !0, closeNested: !1, animateChildren: !0, duration: 350, easing: "easeOutQuad", onOpening: function onOpening() {}, onOpen: function onOpen() {}, onClosing: function onClosing() {}, onClose: function onClose() {}, onChange: function onChange() {}, error: { method: "The method you called is not defined" }, className: { active: "active", animating: "animating" }, selector: { accordion: ".accordion", title: ".title", trigger: ".title", content: ".content" } }, e.extend(e.easing, { easeOutQuad: function easeOutQuad(e, n, t, i, o) {
-	      return -i * (n /= o) * (n - 2) + t;
-	    } });
 	})(jQuery, window, document);
 
 /***/ }

@@ -11,6 +11,7 @@
     <title>{% block title %}{% endblock %}</title>
     {% render_bundle 'profile_global' 'css' %}
     {% block stylesheets %}{% endblock %}
+    {% render_bundle 'profile_global' 'js' %}
     {% block header_javascripts %}{% endblock %}
     {% block extra_head %}{% endblock %}
 </head>
@@ -21,10 +22,9 @@
         {% include "profiles/__sidebar.html" %}
     {% endblock %}
     <div class="pusher">
-	    {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
     </div>
 
-    {% render_bundle 'profile_global' 'js' %}
     {% block javascripts %}{% endblock %}
 </body>
 </html>

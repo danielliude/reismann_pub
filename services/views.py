@@ -1,22 +1,25 @@
+from datetime import datetime
+
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+
 from userena.decorators import secure_required
 from guardian.decorators import permission_required_or_403
 
-from profiles.utils import get_user_profile
 from core.utils import ExtraContextTemplateView
-from contacts.utils import get_user_contact
-from services.forms import ServiceForm
-from services.utils import get_user_services, get_service_by_id
-from configurations.utils import get_active_service_categories
-from django.http import HttpResponseRedirect
 
-from services.utils import get_distinct_tags, get_distinct_languages,get_distinct_categories, get_distinct_cities
+from profiles.utils import get_user_profile
+
+from contacts.utils import get_user_contact
+from services.forms import ServiceForm, ServiceRatingForm
+from services.utils import get_user_services, get_service_by_id
+
+from configurations.utils import get_active_service_categories
+
 from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages, makeContextForAllServices
-from services.forms import ServiceRatingForm
 from services.models import ServiceRating
-from datetime import datetime
 
 @secure_required
 @permission_required_or_403('services.add_service')
@@ -106,6 +109,33 @@ def service_edit(request, username, service_id, edit_service_form=ServiceForm,
     else:
         url = reverse('profiles:service_edit', kwargs={'username':request.user.username, 'service_id': service_id})
         return HttpResponseRedirect(url)
+
+@secure_required
+def service_view_own(request, username, service_id,
+                 template_name='services/__service_view_own.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+    if request.user.username == username:
+        if not extra_context: extra_context = dict()
+
+        user = get_object_or_404(User, username__iexact=username)
+        profile = get_user_profile(user)
+        extra_context['profile'] = profile
+
+        service = get_service_by_id(service_id)
+        extra_context['service'] = service
+
+        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForDetails(request, extra_context)
+
+        return ExtraContextTemplateView.as_view(template_name=template_name,
+                                              extra_context=extra_context)(request)
+
+    else:
+        url = reverse('profiles:services', kwargs={'username':request.user.username})
+        return HttpResponseRedirect(url)
+
+
 
 @secure_required
 def service_view(request, username, service_id,

@@ -82,8 +82,6 @@
 
 	__webpack_require__(58);
 
-	__webpack_require__(60);
-
 	__webpack_require__(62);
 
 	__webpack_require__(64);
@@ -102,23 +100,25 @@
 
 	__webpack_require__(78);
 
-	__webpack_require__(80);
-
-	__webpack_require__(83);
-
-	__webpack_require__(84);
-
-	__webpack_require__(85);
-
 	__webpack_require__(86);
-
-	__webpack_require__(87);
 
 	__webpack_require__(88);
 
-	__webpack_require__(89);
+	__webpack_require__(91);
 
-	__webpack_require__(90);
+	__webpack_require__(92);
+
+	__webpack_require__(93);
+
+	__webpack_require__(94);
+
+	__webpack_require__(96);
+
+	__webpack_require__(97);
+
+	__webpack_require__(98);
+
+	__webpack_require__(99);
 
 	$(document).ready(function () {
 		highly_adaptive();
@@ -291,12 +291,7 @@
 
 /***/ },
 /* 59 */,
-/* 60 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 60 */,
 /* 61 */,
 /* 62 */
 /***/ function(module, exports) {
@@ -361,21 +356,34 @@
 
 /***/ },
 /* 79 */,
-/* 80 */
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 87 */,
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(81);
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(89);
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 81 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(82);
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(90);
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 82 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10223,7 +10231,7 @@
 
 
 /***/ },
-/* 83 */
+/* 91 */
 /***/ function(module, exports) {
 
 	/*!
@@ -10358,7 +10366,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 84 */
+/* 92 */
 /***/ function(module, exports) {
 
 	/*!
@@ -10549,7 +10557,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 85 */
+/* 93 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11297,7 +11305,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 86 */
+/* 94 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11632,7 +11640,8 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 87 */
+/* 95 */,
+/* 96 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11847,7 +11856,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 88 */
+/* 97 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11962,7 +11971,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 89 */
+/* 98 */
 /***/ function(module, exports) {
 
 	/*!
@@ -12228,7 +12237,7 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 90 */
+/* 99 */
 /***/ function(module, exports) {
 
 	/*!

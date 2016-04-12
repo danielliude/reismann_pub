@@ -27,7 +27,7 @@
             <span class="stay">{% trans 'one day' %}</span>
           </div>
           <div class="description">
-            <p>{{ service.content|truncatewords:"30" }}</p>
+            <p>{{ service.content|safe|truncatewords:"30" }}</p>
           </div>
         </div>
       </div>

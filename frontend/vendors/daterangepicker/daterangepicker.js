@@ -10,12 +10,14 @@
 
     if(typeof exports !== 'undefined') {
         var momentjs = require('../moment/moment');
-        var jQuery;
-        try {
-            jQuery = require('jquery');
-        } catch(err) {
-            jQuery = window.jQuery;
-            if(!jQuery) throw new Error('jQuery dependency not found');
+        var jQuery = $;
+        if (!jQuery) {
+            try {
+              jQuery = require('jquery');
+            } catch(err) {
+              jQuery = window.jQuery;
+              if(!jQuery) throw new Error('jQuery dependency not found');
+            }
         }
 
         factory(root, exports, momentjs, jQuery);

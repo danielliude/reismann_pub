@@ -10012,6 +10012,7 @@
 	(function (root, factory) {
 
 	    if (true) {
+<<<<<<< HEAD
 	        var momentjs = __webpack_require__(104);
 	        var jQuery;
 	        try {
@@ -10019,6 +10020,17 @@
 	        } catch (err) {
 	            jQuery = window.jQuery;
 	            if (!jQuery) throw new Error('jQuery dependency not found');
+=======
+	        var momentjs = __webpack_require__(101);
+	        var jQuery = $;
+	        if (!jQuery) {
+	            try {
+	                jQuery = __webpack_require__(82);
+	            } catch (err) {
+	                jQuery = window.jQuery;
+	                if (!jQuery) throw new Error('jQuery dependency not found');
+	            }
+>>>>>>> b582984ad2d3317235c2b38e7efeb3b3f8f54cd5
 	        }
 
 	        factory(root, exports, momentjs, jQuery);

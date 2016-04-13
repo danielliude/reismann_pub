@@ -19,11 +19,13 @@
     {% include 'profiles/__newcomer_profiles.html' with newcomer_profiles=newcomer_profiles %}
     {% endif %}
 
-    {% if newcomer_cities|length > 0 %}
-    {% include 'cities/__newcomer_cities.html' with newcomer_cities=newcomer_cities %}
-    {% endif %}
+    <div class="ui segment" style="border:0px;">
+        {% if newcomer_cities|length > 0 %}
+        {% include 'cities/__newcomer_cities.html' with newcomer_cities=newcomer_cities %}
+        {% endif %}
 
-    {% if popular_cities|length > 0 %}
-    {% include 'cities/__popular_cities.html' with popular_cities=popular_cities %}
-    {% endif %}
+        {% if popular_cities|length > 0 %}
+        {% include 'cities/__popular_cities.html' with popular_cities=popular_cities %}
+        {% endif %}
+    </div>
 {% endblock %}

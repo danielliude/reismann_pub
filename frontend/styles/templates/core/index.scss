@@ -2,6 +2,17 @@ body {
   background-color: rgb(243, 243, 243);
 }
 
+.ui.inverted.blue.menu.masthead {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+}
+.highly_adaptive {
+  position: relative;
+  margin-top: -54px;
+  z-index: 1;
+}
+
 /*--------------
     banner
 ---------------*/
@@ -173,9 +184,9 @@ body {
     }
   }   
   .information {
-    margin-top: 70px;
+    margin-top: 90px;
     @include MQ(M) {
-      margin-top: 152px;
+      margin-top: 190px;
     }
   }
 }

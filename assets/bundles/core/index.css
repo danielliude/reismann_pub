@@ -1,6 +1,16 @@
 body {
   background-color: #f3f3f3; }
 
+.ui.inverted.blue.menu.masthead {
+  position: relative;
+  z-index: 2;
+  background-color: transparent; }
+
+.highly_adaptive {
+  position: relative;
+  margin-top: -54px;
+  z-index: 1; }
+
 /*--------------
     banner
 ---------------*/
@@ -150,7 +160,7 @@ body {
       height: 480px; } }
 
 .ui.grid.banner .information {
-  margin-top: 70px; }
+  margin-top: 90px; }
   @media only screen and (min-width: 768px) {
     .ui.grid.banner .information {
-      margin-top: 152px; } }
+      margin-top: 190px; } }

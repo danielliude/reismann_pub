@@ -1,0 +1,62 @@
+{% extends "core/__global.html" %}
+{% load render_bundle from webpack_loader %}
+{% load i18n %}
+
+{% block stylesheets %}
+    {% render_bundle 'core/contact_info' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'core/contact_info' 'js' %}
+{% endblock %}
+
+{% block content %}
+  <div class="city_img" style="background-image: url('/static/images/dummy/banner_0.jpg');"></div>
+  <br>
+  <br>
+  <h1 class="ui header container" style="font-weight:100;">联系我们</h1>
+  <div class="ui divider container"></div>
+  <br>
+  <div class="ui container">
+    <div class="ui two column padded doubling grid vertically divided contact_info">
+      <div class="column">
+        <img class="ui small left floated image" src="{{ user.profile.get_avatar_url }}">
+        <h1>市场</h1>
+        <p>如果您有商务合作的需求，请发邮件至</p>
+        <h3>Team@reismann.de</h3>
+        <br>
+      </div>
+      <div class="column">
+        <img class="ui small left floated image" src="{{ user.profile.get_avatar_url }}">
+        <h1>人事</h1>
+        <p>如果您有人事方面问题咨询，请发邮件至</p>
+        <h3>Team@reismann.de</h3>
+        <br>
+      </div>
+      <div class="column">
+        <img class="ui small left floated image" src="{{ user.profile.get_avatar_url }}">
+        <h1>客服</h1>
+        <p>期待听到用户的声音，请发邮件至</p>
+        <h3>Team@reismann.de</h3>
+        <br>
+      </div>
+      <div class="column">
+        <img class="ui small left floated image" src="{{ user.profile.get_avatar_url }}">
+        <h1>成为提供者</h1>
+        <p>帮助有需要的人获得快乐</p>
+        <div class="ui brand button">成为提供者</div>  
+        <br>
+      </div>
+    </div>
+    <br>
+  </div>
+  <div class="ui divider container"></div>
+  <h1 class="ui header container" style="font-weight:100;">联系电话</h1>
+  <div class="ui container">
+    <h3 class="contact_h3">国内电话：123123123</h3>
+    <h3 class="contact_h3">国外电话：+49 222 333 222</h3>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock %}

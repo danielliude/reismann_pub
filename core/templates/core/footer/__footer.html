@@ -21,10 +21,10 @@
     <div class="column">
       <h5 class="ui inverted header">{% trans "Contact" %}</h5>
       <div class="ui inverted link list">
-        <a class="item" href="#"><i class="mail outline icon"></i> {% trans "Team@reismann.de" %}</a>
-        <a class="item" href="#"><i class="call icon"></i> {% trans "+49 222 333 222" %}</a>
-        <a class="item" href="#"><i class="weibo icon"></i> {% trans "Official micro-blog" %}</a>
-        <a class="item" href="#"><i class="wechat icon"></i> {% trans "WeChat public number" %}</a>
+        <a class="item" href="{% url 'contact_info' %}"><i class="mail outline icon"></i> {% trans "Team@reismann.de" %}</a>
+        <a class="item" href="{% url 'contact_info' %}"><i class="call icon"></i> {% trans "+49 222 333 222" %}</a>
+        <a class="item" href="{% url 'contact_info' %}"><i class="weibo icon"></i> {% trans "Official micro-blog" %}</a>
+        <a class="item" href="{% url 'contact_info' %}"><i class="wechat icon"></i> {% trans "WeChat public number" %}</a>
       </div>
     </div>
   </div>

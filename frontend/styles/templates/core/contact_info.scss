@@ -1,0 +1,46 @@
+@import '../../base/responsive';
+
+body {
+  background-color: rgb(243, 243, 243);
+}
+
+/*--------------
+    city_img
+---------------*/
+.city_img {
+  height: 200px;
+  width: 100%;
+  // background-image: url('/static/images/dummy/banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; 
+}
+
+
+/*--------------
+    contact_info
+---------------*/
+.ui.grid.contact_info {
+	.column {
+		img {
+			margin-right: 3em;
+		}
+		color: #756E66;
+		h1 {
+			font-weight: 100;
+			margin-top: 0px;
+			margin-bottom: 2em;
+		}
+		h3 {
+			font-weight: 100;
+			margin-top: 0px;
+		}
+	}
+}
+.contact_h3 {
+	font-weight: 100;
+	padding-left: 190px;
+	@include GT(S) {
+      padding-left: 30px;
+    } 
+}

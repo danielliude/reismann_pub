@@ -25,6 +25,7 @@ module.exports = {
     'profiles/bookings': './js/profiles/bookings',
     'core/about_us': './js/core/about_us',
     'core/help': './js/core/help',
+    'core/contact_info': './js/core/contact_info',
   },
 
   output: {

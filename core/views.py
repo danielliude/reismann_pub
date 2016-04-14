@@ -90,3 +90,11 @@ def help_problem(request, problem_type, serial_id, template_name='core/help/prob
   context = makeContextForDetails(request, context)
 
   return render(request, 'core/help/problem.html', context)
+
+
+def contact_info(request):
+  context = {}
+  context = makeContextForMessages(request, context)
+  context = makeContextForDetails(request, context)
+
+  return render(request, 'core/contact_info/contact_info.html', context)

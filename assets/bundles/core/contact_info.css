@@ -22,9 +22,25 @@ body {
     font-weight: 100;
     margin-top: 0px;
     margin-bottom: 2em; }
+    @media only screen and (max-width: 319px) {
+      .ui.grid.contact_info .column h1 {
+        margin-bottom: 1em; } }
   .ui.grid.contact_info .column h3 {
     font-weight: 100;
     margin-top: 0px; }
+  @media only screen and (max-width: 450px) {
+    .ui.grid.contact_info .column h1 {
+      margin-bottom: 1em; }
+    .ui.grid.contact_info .column p, .ui.grid.contact_info .column h3 {
+      padding-left: 1em; }
+    .ui.grid.contact_info .column .ui.brand.button {
+      margin-left: 1em; }
+    .ui.grid.contact_info .column img {
+      display: none; } }
+
+@media only screen and (max-width: 450px) {
+  .ui.grid.contact_info .column {
+    padding-left: 3rem; } }
 
 .contact_h3 {
   font-weight: 100;

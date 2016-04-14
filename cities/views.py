@@ -158,7 +158,7 @@ def city(request, city_name, template_name='cities/city.html'):
 
                 service_dict['cities'] = citiesStr
                 service_dict['price'] = service.price
-                service_dict['content'] = service.content
+                service_dict['title'] = service.title
                 services_new.append(service_dict)
 
             page = int(request.POST.get('page'))

@@ -18,11 +18,11 @@
 <div class="city_img" style="background-image: url('{{ banner_image.url }}');"></div>
 <div class="ui segment search_form">
   <div class="ui doubling grid container">
-    <div class="four wide column">
+    <div class="sixteen wide tablet four wide computer column">
       <label>{% trans 'Service types' %}</label>
     </div>
 
-    <div class="twelve wide column">
+    <div class="sixteen wide tablet twelve wide computer column">
       <div class="ui three column doubling grid">
         {% for field in form.services %}
         <div class="column">
@@ -33,10 +33,10 @@
         {% endfor %}
       </div>
     </div>
-    <div class="four wide column">
+    <div class="sixteen wide tablet four wide computer column">
       <label>{% trans 'Service people' %}</label>
     </div>
-    <div class="twelve wide column">
+    <div class="sixteen wide tablet twelve wide computer column">
       <div class="ui grid">
         <div class="eight wide column">
           {{ form.gender }}
@@ -46,10 +46,10 @@
         </div>
       </div>
     </div>
-    <div class="four wide column">
+    <div class="sixteen wide tablet four wide computer column">
       <label>{% trans 'Service cities' %}</label>
     </div>
-    <div class="twelve wide column">
+    <div class="sixteen wide tablet twelve wide computer column">
       <div class="ui grid">
         <div class="column">
           {{ form.city }}
@@ -57,11 +57,11 @@
       </div>
     </div>
     <div class="ui grid hidden_content" style="display: none;">
-      <div class="four wide column hidden">
+      <div class="sixteen wide tablet four wide computer column hidden">
         <label>{% trans 'Service languages' %}</label>
       </div>
-      <div class="twelve wide column hidden">
-        <div class="ui three column grid">
+      <div class="sixteen wide tablet twelve wide computer column hidden">
+        <div class="ui three column doubling grid">
           {% for field in form.languages %}
           <div class="column">
             <div class="ui secondary segment">
@@ -71,11 +71,11 @@
           {% endfor %}
         </div>
       </div>
-      <div class="four wide column hidden">
+      <div class="sixteen wide tablet four wide computer column hidden">
         <label>{% trans 'Service tags' %}</label>
       </div>
-      <div class="twelve wide column hidden">
-        <div class="ui three column grid">
+      <div class="sixteen wide tablet twelve wide computer column hidden">
+        <div class="ui three column doubling grid">
           {% for field in form.tags %}
           <div class="column">
             <div class="ui secondary segment">
@@ -116,7 +116,7 @@
           </div>
           <div class="ui red header average_price">€ {{ service.price }}</div>
           <div class="row content">
-            <p>{{ service.content|safe | slice:"250" }}...</p>
+            <p>{{ service.title | slice:"100" }}{% if service.title|length > 100 %}...{% endif %}</p>
           </div>
         </div>
       </div>

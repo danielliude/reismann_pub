@@ -106,7 +106,7 @@ $(function() {
                           '</div>' +
                           '<div class="ui red header average_price">€ ' + ret[i].price + ' service price unit</div>' +
                           '<div class="row content">' +
-                            '' + ret[i].content.substring(0, 250) + '<span>...</span>' +
+                            '<p>' + ret[i].title.substring(0, 100) + (ret[i].title.length > 100 ? '...' : '') + '</p>' +
                           '</div>' +
                         '</div>' +
                       '</div>' +

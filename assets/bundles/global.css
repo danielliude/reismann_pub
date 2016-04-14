@@ -344,6 +344,6 @@
 
 .footer .ui.grid.container .column {
   padding-left: 1rem; }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 992px) {
     .footer .ui.grid.container .column {
       padding-left: 100px; } }

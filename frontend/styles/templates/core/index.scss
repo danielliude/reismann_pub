@@ -1,3 +1,5 @@
+@import '../../base/responsive';
+
 body {
   background-color: rgb(243, 243, 243);
 }
@@ -8,7 +10,6 @@ body {
   background-color: transparent;
 }
 .highly_adaptive {
-  position: relative;
   margin-top: -54px;
   z-index: 1;
 }
@@ -19,31 +20,63 @@ body {
 .ui.grid.banner {
   .banner_img {
     width: 100%;
-    background-image: url('/static/images/dummy/banner.jpg');
+    background-image: url('/static/images/dummy/banner_0.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover; 
+    height: 300px;
+    @include LT(S) {
+      height: 480px;
+    }
+    @include LT(M) {
+      height: 600px;
+    }
   }
   .information {
+    margin-top: 90px;
+    @include LT(S) {
+      margin-top: 190px;
+    }
+    @include LT(M) {
+      margin-top: 230px;
+    }
     .tagline {
       text-shadow: 1px 1px 1px #000000;
+      font-size: 2.5rem;
+      @include GT(M) {
+        font-size: 2.2rem;
+      }
+      @include GT(S) {
+        font-size: 1.7rem;
+      }
+      @include GT(X) {
+        font-size: 1.5rem;
+      }
     }
    .subheadline.ui.header {
       margin-top: 0px;
       margin-bottom: 0px;
       text-shadow: 1px 1px 1px #000000;
+      @include LT(M) {
+        font-size: 1.2rem;
+      }
+      @include GT(S) {
+        font-size: 0.8rem;
+      }
     }
     .ui.icon.input {
-      width: 300px;
       margin-right: 3px;
+      margin-bottom: 0.3rem;
+      width: 290px;
+      @include GT(S) {
+        width: 260px;
+      }
       .prompt {
         border-radius: 0px;
-        height: 36px;
-        line-height: 36px;
       }
     }
     .ui.brand.button {
-      height: 36px;
+      height: 38px;
     }
     .left_aligned {
       text-align: left;
@@ -67,8 +100,8 @@ body {
 
 .ui.header.popular_profile_h2, .ui.header.new_profile_h2 {
   margin-top: 0px;
-  padding-top: 50px;
-  padding-bottom: 10px;
+  padding-top: 55px;
+  padding-bottom: 30px;
 }
 .padding {
   .ui.header {
@@ -76,7 +109,7 @@ body {
     margin-bottom: 0px;
   }
   .ui.segment {
-    margin-top: 0px;
+    margin-top: 5px;
     padding-top: 0px;
   }
 }
@@ -149,7 +182,7 @@ body {
     color: #ffffff;
     font-weight: 600;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     position: relative;
     top: -300px;
   }
@@ -165,28 +198,20 @@ body {
 }
 .ui.header.popular_city_h2 {
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 23px;
 }
 .ui.header.new_city_h2 {
-  padding-top: 25px;
-  padding-bottom: 10px;
+  padding-top: 35px;
+  padding-bottom: 23px;
 }
 
+
 /*--------------
-    responsive
+    fixed_position
 ---------------*/
-@import '../../base/responsive';
-.ui.grid.banner { 
-  .banner_img {
-    height: 300px;
-    @include MQ(M) {
-      height: 480px;
-    }
-  }   
-  .information {
-    margin-top: 90px;
-    @include MQ(M) {
-      margin-top: 190px;
-    }
-  }
+.ui.animated.button.fixed_position {
+  position: fixed;
+  display: none;
+  bottom: 120px;
+  right: 30px;
 }

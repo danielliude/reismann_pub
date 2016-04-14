@@ -82,19 +82,19 @@
 .ui.menu.masthead {
   .mobile.item {
     display: flex;
-    @include MQ(M) {
+    @include LT(S) {
       display: none;
     }
   }
   .not_mobile.item {
     display: none;
-    @include MQ(M) {
+    @include LT(S) {
       display: flex;
     }
   }
   .not_mobile_span {
     display: none;
-    @include MQ(M) {
+    @include LT(S) {
       display: inline-block;
     } 
   }
@@ -103,7 +103,7 @@
 .footer .ui.grid.container {
   .column {
     padding-left: 1rem;
-    @include MQ(M) {
+    @include LT(M) {
       padding-left: 100px;
     } 
   }

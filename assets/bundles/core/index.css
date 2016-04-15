@@ -13,28 +13,29 @@ body {
 /*--------------
     banner
 ---------------*/
-.ui.grid.banner .banner_img {
+.ui.grid.banner .banner_img, .ui.grid.banner .banner_img_copy {
   width: 100%;
   background-image: url("/static/images/dummy/banner_0.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  padding: 0px;
   height: 300px; }
   @media only screen and (min-width: 768px) {
-    .ui.grid.banner .banner_img {
+    .ui.grid.banner .banner_img, .ui.grid.banner .banner_img_copy {
       height: 480px; } }
   @media only screen and (min-width: 992px) {
-    .ui.grid.banner .banner_img {
+    .ui.grid.banner .banner_img, .ui.grid.banner .banner_img_copy {
       height: 600px; } }
 
 .ui.grid.banner .information {
-  margin-top: 90px; }
+  margin-top: -210px; }
   @media only screen and (min-width: 768px) {
     .ui.grid.banner .information {
-      margin-top: 190px; } }
+      margin-top: -290px; } }
   @media only screen and (min-width: 992px) {
     .ui.grid.banner .information {
-      margin-top: 230px; } }
+      margin-top: -370px; } }
   .ui.grid.banner .information .tagline {
     text-shadow: 1px 1px 1px #000000;
     font-size: 2.5rem; }

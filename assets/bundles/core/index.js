@@ -106,23 +106,17 @@
 	  }
 
 	  function image_scroll() {
-	    var i = 1;
-
+	    var i = 0;
 	    setInterval(function () {
 	      var length = $(".banner_img").css('background-image').length;
-	      $('.banner_img').transition({
-	        animation: 'fade',
-	        duration: '0.8s',
-	        onComplete: function onComplete() {
-	          $(".banner_img").css('background-image', $(".banner_img").css('background-image').substring(0, length - 7) + i + ".jpg\")");
-	          $('.banner_img').transition({
-	            animation: 'fade',
-	            duration: '0.5s'
-	          });
+	      $('.banner_img_copy').fadeOut(100, function () {
+	        $(".banner_img_copy").css('background-image', $(".banner_img_copy").css('background-image').replace('_' + i + '.jpg', '_' + (i + 1) % 4 + '.jpg'));
+	        $('.banner_img_copy').fadeIn(2000, function () {
+	          $(".banner_img").css('background-image', $(".banner_img_copy").css('background-image').replace('_' + i + '.jpg', '_' + (i + 1) % 4 + '.jpg'));
 	          i = (i + 1) % 4;
-	        }
+	        });
 	      });
-	    }, 10000);
+	    }, 8000);
 	  }
 
 	  function sc() {

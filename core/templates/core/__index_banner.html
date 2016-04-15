@@ -1,13 +1,17 @@
 {% load staticfiles i18n %}
 <div class="ui padded grid banner">
   <div class="banner_img">
+    <div class="banner_img_copy">
+    </div>
     <div class="ui centered aligned grid transition information hidden">
       <div class="row">
         <h1 class="ui inverted header tagline">
           {% trans "Your new travel experiences" %}
         </h1>
       </div>
-      <h4 class="ui inverted header subheadline">{% trans "book your individual travel services" %}</h4>
+      <div class="row" style="padding:0px;">
+        <h4 class="ui inverted header subheadline">{% trans "book your individual travel services" %}</h4>
+      </div>
       <script type="text/javascript">
         var content = [
          {% for city in city_list %}

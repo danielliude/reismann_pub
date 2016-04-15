@@ -18,12 +18,13 @@ body {
     banner
 ---------------*/
 .ui.grid.banner {
-  .banner_img {
+  .banner_img, .banner_img_copy {
     width: 100%;
     background-image: url('/static/images/dummy/banner_0.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover; 
+    padding: 0px;
     height: 300px;
     @include LT(S) {
       height: 480px;
@@ -32,13 +33,22 @@ body {
       height: 600px;
     }
   }
+  // .banner_img_copy {
+  //   margin-top: -300px;
+  //   @include LT(S) {
+  //     margin-top: -480px;
+  //   }
+  //   @include LT(M) {
+  //     margin-top: -600px;
+  //   }
+  // }
   .information {
-    margin-top: 90px;
+    margin-top: -210px;
     @include LT(S) {
-      margin-top: 190px;
+      margin-top: -290px;
     }
     @include LT(M) {
-      margin-top: 230px;
+      margin-top: -370px;
     }
     .tagline {
       text-shadow: 1px 1px 1px #000000;

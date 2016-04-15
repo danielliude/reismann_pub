@@ -276,7 +276,8 @@
 ---------------*/
 .ui.menu.masthead {
   border-radius: 0px;
-  margin-bottom: 0px; }
+  margin-bottom: 0px;
+  margin-top: 0px; }
   .ui.menu.masthead .ui.dropdown .menu > .divider {
     margin: .1em 0; }
   .ui.menu.masthead .unread_info .sender {

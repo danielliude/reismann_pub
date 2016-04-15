@@ -104,7 +104,7 @@ $(function() {
                             '<div class="ui header">' + ret[i].name_of_username + ' '  + ret[i].short_description + '</div>' +
                             '<span>' + ret[i].cities + '</span>' +
                           '</div>' +
-                          '<div class="ui red header average_price">€ ' + ret[i].price + ' service price unit</div>' +
+                          '<div class="ui red header average_price">€ ' + ret[i].price + '</div>' +
                           '<div class="row content">' +
                             '<p>' + ret[i].title.substring(0, 100) + (ret[i].title.length > 100 ? '...' : '') + '</p>' +
                           '</div>' +

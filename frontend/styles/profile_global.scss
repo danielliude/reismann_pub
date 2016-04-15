@@ -10,17 +10,22 @@
 /*--------------
     Masthead
 ---------------*/
-.masthead {
+.ui.menu.masthead {
 	.reismann_logo {
 		width: 260px;
     height: 53px;
     border-right: 1px solid #197CB5;
-		a {
-			padding-left: 64px;
-		}
+    display: none;
+    a {
+      padding-left: 64px;
+    }
+    .right.menu {
+      padding-right: 10%;  
+    }
 	}
   .ui.card.card_info {
     margin-top: 0px;
+    width: 100%;
   }
 }
 
@@ -79,4 +84,5 @@ body.pushable {
 ---------------*/
 .ui.visible.left.sidebar~.fixed, .ui.visible.left.sidebar~.pusher {
     margin-right: 260px;
+    min-width: 300px;
 }

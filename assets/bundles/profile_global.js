@@ -121,7 +121,11 @@
 	__webpack_require__(103);
 
 	$(function () {
+		var sidebar_state = -1; //-1 is the meaning of hiding
+		var if_use = true;
 		init_button();
+		init_sidebar();
+		$(window).resize(init_sidebar);
 
 		function init_button() {
 			$('.masthead .ui.dropdown').dropdown({});
@@ -129,10 +133,29 @@
 			$(".sidebar_click").click(function () {
 				$('.profile_sidebar.sidebar').sidebar('setting', 'dimPage', false).sidebar('setting', 'closable', false).sidebar('toggle');
 
-				$(".reismann_logo").toggle(500);
+				$(".reismann_logo").toggle(500, function () {
+					sidebar_state = -sidebar_state;
+					if_use = true;
+				});
 			});
 
 			$('.ui.accordion').accordion();
+		}
+
+		function init_sidebar() {
+			if (if_use && sidebar_state > 0 && window_width() <= 992) {
+				if_use = false;
+				$(".sidebar_click").click();
+			}
+			if (if_use && sidebar_state < 0 && window_width() > 992) {
+				if_use = false;
+				$(".sidebar_click").click();
+			}
+		}
+
+		function window_width() {
+			var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+			return parseInt(w);
 		}
 	});
 

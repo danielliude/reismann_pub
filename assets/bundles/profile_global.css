@@ -238,15 +238,19 @@
 /*--------------
     Masthead
 ---------------*/
-.masthead .reismann_logo {
+.ui.menu.masthead .reismann_logo {
   width: 260px;
   height: 53px;
-  border-right: 1px solid #197CB5; }
-  .masthead .reismann_logo a {
+  border-right: 1px solid #197CB5;
+  display: none; }
+  .ui.menu.masthead .reismann_logo a {
     padding-left: 64px; }
+  .ui.menu.masthead .reismann_logo .right.menu {
+    padding-right: 10%; }
 
-.masthead .ui.card.card_info {
-  margin-top: 0px; }
+.ui.menu.masthead .ui.card.card_info {
+  margin-top: 0px;
+  width: 100%; }
 
 .ui.menu.masthead {
   border-radius: 0px;
@@ -292,4 +296,5 @@ body.pushable {
     responsive
 ---------------*/
 .ui.visible.left.sidebar ~ .fixed, .ui.visible.left.sidebar ~ .pusher {
-  margin-right: 260px; }
+  margin-right: 260px;
+  min-width: 300px; }

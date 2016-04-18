@@ -7,8 +7,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    {% block meta_tags %}{% endblock %}
-    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="/static/images/dummy/icon.png">
+    {% block title %}
+        <title>为您提供舒适的个人定制旅游</title>
+    {% endblock %}
+    {% block meta_tags %}
+        <meta name="keywords" content="定制,旅行,导游,地接,服务,旅行平台,巴黎地接,美国包车,东京导游,泰国地接,英国地接,西班牙地接,德国地接,澳洲地接,清迈地接,曼谷导游,澳大利亚导游,迪拜导游,韩国导游,纽约导游,加拿大导游,法国导游.">
+        <meta name="description" content="Reismann致力于建立一个免费、透明、公平、高效的互联网旅行平台。我们希望给予旅行服务商提供一个良好的自我展示环境，使旅客能对其所提供的服务以及服务商本人作更多和更好的了解。我们游鼓励服务商与旅客直接沟通，从而增进了解，建立信任。我们建议旅客对所选服务在本网站上进行预定，以便记录旅客和服务商的权利和义务，促成公平的交易。我们相信，通过我们的努力和不断的改进，旅客可以在本网站找到合适的服务和服务商，从而享受舒适的个人定制服务。">
+    {% endblock %}
     {% render_bundle 'global' 'css' %}
     {% block stylesheets %}{% endblock %}
     {% block header_javascripts %}{% endblock %}

@@ -34,15 +34,6 @@ body {
       height: 600px;
     }
   }
-  // .banner_img_copy {
-  //   margin-top: -300px;
-  //   @include LT(S) {
-  //     margin-top: -480px;
-  //   }
-  //   @include LT(M) {
-  //     margin-top: -600px;
-  //   }
-  // }
   .information {
     margin-top: -210px;
     @include LT(S) {

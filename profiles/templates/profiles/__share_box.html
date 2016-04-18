@@ -1,0 +1,28 @@
+{% load staticfiles i18n %}
+<div class="ui blue segment">
+	<h4 class="ui center aligned header">
+		{% trans 'Share to:' %}
+	</h4>
+	<div class="ui three buttons">
+	    <a class="jiathis_button_weixin ui basic green button"><i class="icon wechat"></i>{% trans 'weixin' %}</a>
+	    <a class="jiathis_button_tsina ui basic red button"><i class="icon weibo"></i>{% trans 'weibo' %}</a>
+	    <a class="jiathis_button_qzone ui basic blue button"><i class="icon qq"></i>{% trans 'qq' %}</a>
+	 </div>
+	<!-- JiaThis Button BEGIN -->
+	<script type="text/javascript" >
+	var jiathis_config={
+	  siteNum:3,
+	  sm:"weixin,qzone,tsina",
+	  url:window.location.href,
+	  summary:"世界这么大，怎能不出去走走呢！来吧，新的旅程从这里开始！",
+	  title:"{% if services %} {{profile.bio}} {% else %} {{service.title}} {% endif %}",
+	  boldNum:0,
+	  pic:"http://" + window.location.hostname + ":" + window.location.port + "{{ user.profile.get_avatar_url }}",
+	  showClose:true,
+	  shortUrl:false,
+	  hideMore:false
+	}
+	</script>
+	<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>

@@ -10,36 +10,44 @@
   </div>
   <div class="ui divided items">
     <div class="item">
-      <span><b>{% trans 'Age' %}</b></span>
-      {% if profile.age %}
-        <span class="right_absolute">{{ profile.age }} {% trans 'Years old' %}</span>
-      {% else %}
-        <span class="right_absolute">{% trans 'unknown' %}</span>
-      {% endif %}
-    </div>
-    <div class="item">
-      <b>{% trans 'Location' %}</b>
-      {% if profile.location %}
-        <span class="right_absolute">{{ profile.location.get_full_location }}</span>
-      {% else %}
-        <span class="right_absolute">{% trans 'unknown' %}</span>
-      {% endif %}
-    </div>
-
-    <div class="item">
-      <b>{% trans 'Active' %}</b>
-      <span class="right_absolute">{{ profile.is_active }}</span>
-    </div>
-
-    <div class="item">
-      {% if request.user.is_authenticated %}
-        {% if view_own_profile %}
-          <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue right floated button"><b>{% trans 'Edit profile' %}</b></a>
-          <a href="{% url 'profiles:contact' profile.user.username %}" class="ui brand_blue right floated button"><b>{% trans 'Edit contacts' %}</b></a>
+      <div class="content">
+        <b>{% trans 'Age' %}</b>
+        {% if profile.age %}
+          <span class="right_absolute">{{ profile.age }} {% trans 'Years old' %}</span>
         {% else %}
-          <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="ui brand_blue right floated fluid button"><b>{% trans 'Follow me' %}</b></a>
+          <span class="right_absolute">{% trans 'unknown' %}</span>
         {% endif %}
-      {% endif %}
+      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <b>{% trans 'Location' %}</b>
+        {% if profile.location %}
+          <span class="right_absolute">{{ profile.location.get_full_location }}</span>
+        {% else %}
+          <span class="right_absolute">{% trans 'unknown' %}</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="content">
+        <b>{% trans 'Active' %}</b>
+        <span class="right_absolute">{{ profile.is_active }}</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="content">
+        {% if request.user.is_authenticated %}
+          {% if view_own_profile %}
+            <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue  button"><b>{% trans 'Edit profile' %}</b></a>
+            <a href="{% url 'profiles:contact' profile.user.username %}" class="ui brand_blue  button"><b>{% trans 'Edit contacts' %}</b></a>
+          {% else %}
+            <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="ui brand_blue  fluid button"><b>{% trans 'Follow me' %}</b></a>
+          {% endif %}
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>

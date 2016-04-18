@@ -49,7 +49,16 @@
 
 	__webpack_require__(126);
 
-	$(function () {});
+	$(function () {
+		init();
+
+		function init() {
+			$('.ui.sticky').sticky({
+				context: '.profile_content',
+				offset: 0
+			});
+		}
+	});
 
 /***/ },
 

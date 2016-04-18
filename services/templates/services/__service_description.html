@@ -18,42 +18,42 @@
     <h5> {{ service.get_type_display }}</h5>
 
     <div class="ui padded grid">
-      <div class="four wide column">
+      <div class="four wide column" style="min-width:120px;">
         <i class="marker icon"></i> {% trans 'cities' %}
       </div>
-      <div class="twelve wide column">
+      <div class="twelve wide column" style="margin-bottom:-5px;">
         {% for city in service.cities.all %}
-          <a class="ui brand_blue label">{{ city.name }}</a>
+          <a class="ui brand_blue label" style="margin-bottom:5px;">{{ city.name }}</a>
         {% endfor %}
       </div>
-      <div class="four wide column">
+      <div class="four wide column" style="min-width:120px;">
         <i class="folder icon"></i> {% trans 'categories' %}
       </div>
-      <div class="twelve wide column">
+      <div class="twelve wide column" style="margin-bottom:-5px;">
         {% for category in service.categories.all %}
-          <a class="ui green label">{{ category.name }}</a>
+          <a class="ui green label" style="margin-bottom:5px;">{{ category.name }}</a>
         {% endfor %}
       </div>
-      <div class="four wide column">
+      <div class="four wide column" style="min-width:120px;">
         <i class="flag icon"></i> {% trans 'languages' %}
       </div>
-      <div class="twelve wide column">
+      <div class="twelve wide column" style="margin-bottom:-5px;">
         {% for language in service.languages.all %}
-          <a class="ui yellow label">{{ language.name }}</a>
+          <a class="ui yellow label" style="margin-bottom:5px;">{{ language.name }}</a>
         {% endfor %}
       </div>
-      <div class="four wide column">
+      <div class="four wide column" style="min-width:120px;">
         <i class="tags icon"></i> {% trans 'tags' %}
       </div>
-      <div class="twelve wide column">
+      <div class="twelve wide column" style="margin-bottom:-5px;">
         {% for tag in service.tags.all %}
-          <a class="ui red label">{{ tag.name }}</a>
+          <a class="ui red label" style="margin-bottom:5px;">{{ tag.name }}</a>
         {% endfor %}
       </div>
     </div>
-
+    <br>
     <p>{{ service.content|safe }}</p>
-
+    <br>
     {% if request.user.is_authenticated %}
       {% if view_own_profile %}
         <a class="ui brand_blue right floated button" href="{% url 'profiles:service_edit' profile.user.username service.id %}"><b>{% trans 'Edit service' %}</b></a>
@@ -64,6 +64,7 @@
       <a class="ui brand_blue right floated button" href="{% url 'accounts:login' %}"><b>{% trans 'Log in to book' %}</b></a>
     {% endif %}
 
+    <br>
     <br>
     <br>
     <br>
@@ -94,6 +95,7 @@
         </div>
       </div>
     {% endif %}
+    <br>
 
     {% if form %}
       <div class='row'>
@@ -106,6 +108,7 @@
             <div class="ui brand_blue labeled submit icon button"><i class="icon edit"></i> {% trans 'Send your comment' %}</div>
           </form>
       </div>
+      <br>
     {% endif %}
   </div>
 </div>

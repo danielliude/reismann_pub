@@ -15,13 +15,22 @@
 
 {% block content %}    
   <div class="ui grid container profile_content">
+    <div class="mobile tablet only sixteen wide column">
+      {% include "profiles/__profile_box.html" %}
+      <br>
+      {% include "services/__service_box.html" %}
+      <br>
+    </div>
     <div class="sixteen wide tablet eleven wide computer column">
       {% include "services/__service_description.html" %}
     </div>
-    <div class="sixteen wide tablet five wide computer column">
-      {% block profile_box %} {% include "profiles/__profile_box.html" %} {% endblock %}
-      {% block service_box %} {% include "services/__service_box.html" %} {% endblock %}
-      {% block contact_box %} {% include "contacts/__contact_box.html" %} {% endblock %}
-    </div>
+    <div class="computer only five wide column">
+        <div class="ui rail">
+          <div class="ui sticky">
+            {% include "profiles/__profile_box.html" %}
+            {% include "services/__service_box.html" %}
+          </div>
+        </div>
+      </div>
   </div>
 {% endblock %}

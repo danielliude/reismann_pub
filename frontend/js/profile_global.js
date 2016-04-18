@@ -41,7 +41,7 @@ $(function() {
 	var sidebar_state = -1   //-1 is the meaning of hiding
 	var if_use        = true
 	init_button() 
-	init_sidebar()
+	init_side_state()
 	$(window).resize(init_sidebar)
 
 	function init_button() {
@@ -51,13 +51,24 @@ $(function() {
 			$('.profile_sidebar.sidebar').sidebar('setting', 'dimPage', false)
 			.sidebar('setting', 'closable', false).sidebar('toggle');
 
-			$(".reismann_logo").toggle(500, function() {
+			if(if_use) {
+				$(".reismann_logo").toggle(500, function() {
+				})
+			} else {
 				sidebar_state = -sidebar_state
-				if_use = true
-			})
+				if_use = true	
+			}
 		})
 
 		$('.ui.accordion').accordion();
+	}
+
+	function init_side_state() {
+		if(window_width() <= 992) {
+			sidebar_state = -1
+		} else {
+			sidebar_state = 1
+		}
 	}
 
 	function init_sidebar() {

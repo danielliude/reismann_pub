@@ -241,8 +241,10 @@
 .ui.menu.masthead .reismann_logo {
   width: 260px;
   height: 53px;
-  border-right: 1px solid #197CB5;
-  display: none; }
+  border-right: 1px solid #197CB5; }
+  @media only screen and (max-width: 991px) {
+    .ui.menu.masthead .reismann_logo {
+      display: none; } }
   .ui.menu.masthead .reismann_logo a {
     padding-left: 64px; }
   .ui.menu.masthead .reismann_logo .right.menu {

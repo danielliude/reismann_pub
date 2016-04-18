@@ -1,5 +1,16 @@
 {% load i18n %}
 <div class="ui  left vertical inverted sidebar ui segment pointing menu profile_sidebar">
+  <script type="text/javascript">
+    function window_width() {
+        var w = window.innerWidth
+              || document.documentElement.clientWidth
+              || document.body.clientWidth;
+        return parseInt(w)
+    }
+    if(window_width() > 992) {
+      $('.profile_sidebar').addClass('visible')
+    }
+  </script>
 
     <div class="ui header item">{% trans 'Profile sidebar' %}</div>
     <div class="ui center aligned  padded grid" style="background-color:#272727;">

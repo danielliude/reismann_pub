@@ -15,7 +15,9 @@
 		width: 260px;
     height: 53px;
     border-right: 1px solid #197CB5;
-    display: none;
+    @include GT(M) {
+      display: none;
+    }
     a {
       padding-left: 64px;
     }

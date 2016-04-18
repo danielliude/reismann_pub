@@ -2,11 +2,11 @@
 
 {% if user.is_authenticated %}
 <div class="right menu">
-  <div class="ui dropdown item">
+  <div class="ui top right pointing dropdown item">
     <i class="icon mail outline"></i> 
     <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{{ unread_messages.count }}</div>
 
-    <div class="menu" style="width:280px;left:-225px;">
+    <div class="menu" style="width:250px;">
       <div class="item">{% trans "You have" %} {{ unread_messages.count }} {% trans " unread messages" %}</div>
       <div class="divider"></div>
       {% for message in unread_messages %}
@@ -22,12 +22,12 @@
       <a class="item" href="{% url 'profiles:outbox_messages' user.username %}">{% trans 'see outbox messages' %}</a>
     </div>
   </div>
-  <div class="ui dropdown item">
+  <div class="ui top right pointing dropdown item">
     <div>
       <img class="ui avatar image" src="{{ user.profile.get_avatar_url }}">
       <span class="not_mobile_span">{{ user.profile.get_full_name_or_username }}</span>
     </div>
-    <div class="menu" style="left:-156px;"> 
+    <div class="menu"> 
       <div class="item" style="display:none"></div>
       <div class="ui card card_info">
         <div class="content">
@@ -74,18 +74,8 @@
   <div class="ui mobile dropdown item">
     <i class="sidebar icon"></i>
     <div class="menu">
-      <a class="item" href="#">{% trans 'become a provider' %}</a>
-      <div class="item">
-        <i class="left dropdown icon"></i>
-        <span class="text">{% trans 'help' %}</span>
-        <div class="left menu">
-          <a href="#" class="item">{% trans 'get started' %}</a>
-          <a href="#" class="item">{% trans 'login and register' %}</a>
-          <a href="#" class="item">{% trans 'provider' %}</a>
-          <a href="#" class="item">{% trans 'traveller' %}</a>
-          <a href="#" class="item">{% trans 'review' %}</a>
-        </div>
-      </div>
+      <a class="item" href="{% url 'help_problem' 'all' 'all' %}">{% trans 'become a provider' %}</a>
+      <a class="item" href="{% url 'help_problem' 'all' 'all' %}">{% trans "help" %}</a>
     </div>
   </div>
 </div>

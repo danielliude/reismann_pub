@@ -2,18 +2,7 @@
 <div class="ui inverted blue borderless menu masthead">
   <div class="ui container">
     <a href="{% url 'index' %}" class="item"><h3>{% trans 'Reismann' %}</h3></a>
-    <a class="item not_mobile" href="#">{% trans 'become a provider' %}</a>
-<!--     <div class="ui dropdown link item not_mobile">
-        {% trans 'help' %}
-        <i class="dropdown icon"></i>
-        <div class="menu">
-            <a href="#" class="item">{% trans 'get started' %}</a>
-            <a href="#" class="item">{% trans 'login and register' %}</a>
-            <a href="#" class="item">{% trans 'provider' %}</a>
-            <a href="#" class="item">{% trans 'traveller' %}</a>
-            <a href="#" class="item">{% trans 'review' %}</a>
-        </div>        
-    </div> -->
+    <a class="item not_mobile" href="{% url 'help_problem' 'all' 'all' %}">{% trans 'become a provider' %}</a>
     <a class="item not_mobile" href="{% url 'help_problem' 'all' 'all' %}">{% trans "help" %}</a>
 
     {% include "core/header/__header_custom_menu.html" %}

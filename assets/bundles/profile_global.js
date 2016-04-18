@@ -128,13 +128,18 @@
 		$(window).resize(init_sidebar);
 
 		function init_button() {
-			$('.masthead .ui.dropdown').dropdown({});
+			$('.masthead .ui.dropdown').dropdown({
+				on: 'hover'
+			});
 
 			$(".sidebar_click").click(function () {
 				$('.profile_sidebar.sidebar').sidebar('setting', 'dimPage', false).sidebar('setting', 'closable', false).sidebar('toggle');
 
 				if (if_use) {
-					$(".reismann_logo").toggle(500, function () {});
+					$(".reismann_logo").toggle(500, function () {
+						sidebar_state = -sidebar_state;
+						if_use = true;
+					});
 				} else {
 					sidebar_state = -sidebar_state;
 					if_use = true;

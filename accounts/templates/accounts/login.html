@@ -17,8 +17,8 @@
       <a href="{% url 'index' %}">{% trans 'Reismann' %}</a>
     </h2>
     <div class="ui segment">
-      <h5 class="ui center aligned header">{% trans 'Sign in to start your session' %}</h5>
-      <form class="ui form" action="" method="post">
+      <h4 class="ui center aligned header">{% trans 'Sign in to start your session' %}</h4>
+      <form class="ui large form" action="" method="post">
         {% csrf_token %}
         
         {{ form.non_field_errors }}
@@ -40,9 +40,9 @@
         <div class="field">
           <div class="ui checkbox">
             {{ form.remember_me }} 
-            <label>{% trans 'Remember Me' %}</label>
+            {{ form.remember_me.label_tag }}
           </div>
-          <button class="ui right floated primary button" type="submit">{% trans 'Sign In' %}</button>
+          <button class="ui right floated brand_blue button" type="submit">{% trans 'Sign In' %}</button>
         </div>
         <div class="ui error message">
         </div>

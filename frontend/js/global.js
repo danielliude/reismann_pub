@@ -51,7 +51,9 @@ $(document).ready(function() {
 	init_component()
 
 	function init_component() {
-		$('.masthead .ui.dropdown').dropdown({})
+		$('.masthead .ui.dropdown').dropdown({
+			on : 'hover'
+		})
 	}
 
 	$(window).resize(highly_adaptive)

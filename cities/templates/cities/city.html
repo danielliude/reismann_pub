@@ -17,9 +17,10 @@
 {% block content %}
 <div class="city_img" style="background-image: url('{{ banner_image.url }}');"></div>
 <div class="ui segment search_form">
+  <br>
   <div class="ui doubling grid container">
     <div class="sixteen wide tablet four wide computer column">
-      <label>{% trans 'Service types' %}</label>
+      <label><b>{% trans 'Service types' %}</b></label>
     </div>
 
     <div class="sixteen wide tablet twelve wide computer column">
@@ -34,7 +35,7 @@
       </div>
     </div>
     <div class="sixteen wide tablet four wide computer column">
-      <label>{% trans 'Service people' %}</label>
+      <label><b>{% trans 'Service people' %}</b></label>
     </div>
     <div class="sixteen wide tablet twelve wide computer column">
       <div class="ui grid">
@@ -47,7 +48,7 @@
       </div>
     </div>
     <div class="sixteen wide tablet four wide computer column">
-      <label>{% trans 'Service cities' %}</label>
+      <label><b>{% trans 'Service cities' %}</b></label>
     </div>
     <div class="sixteen wide tablet twelve wide computer column">
       <div class="ui grid">
@@ -58,7 +59,7 @@
     </div>
     <div class="ui grid hidden_content" style="display: none;">
       <div class="sixteen wide tablet four wide computer column hidden">
-        <label>{% trans 'Service languages' %}</label>
+        <label><b>{% trans 'Service languages' %}</b></label>
       </div>
       <div class="sixteen wide tablet twelve wide computer column hidden">
         <div class="ui three column doubling grid">
@@ -72,7 +73,7 @@
         </div>
       </div>
       <div class="sixteen wide tablet four wide computer column hidden">
-        <label>{% trans 'Service tags' %}</label>
+        <label><b>{% trans 'Service tags' %}</b></label>
       </div>
       <div class="sixteen wide tablet twelve wide computer column hidden">
         <div class="ui three column doubling grid">
@@ -87,6 +88,7 @@
       </div>
     </div>
   </div>
+  <br>
 </div>
 <div class="ui grid container search_button">
   <div class="row search_head" style="padding-left: 14px !important;">
@@ -129,7 +131,7 @@
     <button class="large ui fluid center aligned black button more_loader">加载更多</button>
   </div>
 </div>
-
+<br>
 {% endblock %}
 
 

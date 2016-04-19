@@ -4,19 +4,6 @@ body {
 /*--------------
     city_img
 ---------------*/
-.city_img {
-  width: 100%;
-  height: 400px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; }
-  @media only screen and (max-width: 767px) {
-    .city_img {
-      height: 300px; } }
-  @media only screen and (max-width: 319px) {
-    .city_img {
-      height: 200px; } }
-
 /*--------------
     search_form
 ---------------*/

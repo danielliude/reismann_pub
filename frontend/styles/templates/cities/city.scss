@@ -1,3 +1,5 @@
+@import '../../base/responsive';
+
 body {
   background-color: rgb(243, 243, 243);
 }
@@ -6,12 +8,18 @@ body {
     city_img
 ---------------*/
 .city_img {
-  height: 200px;
   width: 100%;
+  height: 400px;
   // background-image: url('/static/images/dummy/banner.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover; 
+  @include GT(S) {
+    height: 300px;
+  }
+  @include GT(X) {
+    height: 200px;
+  }
 }
 
 /*--------------

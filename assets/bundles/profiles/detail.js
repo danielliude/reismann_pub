@@ -61,10 +61,15 @@
 	        $('.profile_form .ui.dropdown').dropdown();
 	        $('#id_birthday').daterangepicker({
 	            format: 'YYYY-MM-DD',
-	            singleDatePicker: true
+	            singleDatePicker: true,
+	            showDropdowns: true
 	        }, function (start, end, label) {
 	            console.log(start.toISOString(), end.toISOString(), label);
 	        });
+
+	        // $('#id_birthday').calendar({
+	        //   type: 'date'
+	        // });
 	    }
 	    function init_form() {
 	        $('.ui.form').form({
@@ -9998,6 +10003,7 @@
 
 	    if (true) {
 	        var momentjs = __webpack_require__(114);
+	        momentjs.locale('zh-cn');
 	        var jQuery = $;
 	        if (!jQuery) {
 	            try {

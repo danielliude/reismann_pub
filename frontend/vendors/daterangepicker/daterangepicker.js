@@ -10,6 +10,7 @@
 
     if(typeof exports !== 'undefined') {
         var momentjs = require('../moment/moment');
+        momentjs.locale('zh-cn');
         var jQuery = $;
         if (!jQuery) {
             try {

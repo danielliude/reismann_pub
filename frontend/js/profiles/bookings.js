@@ -11,7 +11,8 @@ $(function() {
         $('.bookings_write_form .ui.dropdown').dropdown();
         $('#id_start_time, #id_end_time').daterangepicker({
             format: 'YYYY-MM-DD',
-            singleDatePicker: true
+            singleDatePicker: true,
+            showDropdowns: true
         }, function(start, end, label) {
             console.log(start.toISOString(), end.toISOString(), label);
         });

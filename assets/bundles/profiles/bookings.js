@@ -61,7 +61,8 @@
 	        $('.bookings_write_form .ui.dropdown').dropdown();
 	        $('#id_start_time, #id_end_time').daterangepicker({
 	            format: 'YYYY-MM-DD',
-	            singleDatePicker: true
+	            singleDatePicker: true,
+	            showDropdowns: true
 	        }, function (start, end, label) {
 	            console.log(start.toISOString(), end.toISOString(), label);
 	        });
@@ -10013,6 +10014,7 @@
 
 	    if (true) {
 	        var momentjs = __webpack_require__(114);
+	        momentjs.locale('zh-cn');
 	        var jQuery = $;
 	        if (!jQuery) {
 	            try {

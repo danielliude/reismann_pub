@@ -1,5 +1,6 @@
 {% extends "profiles/__profile_base.html" %}
 {% load render_bundle from webpack_loader %}
+{% load i18n staticfiles %}
 {% block stylesheets %}
     {% render_bundle 'profiles/dashboard' 'css' %}
 {% endblock %}
@@ -10,9 +11,40 @@
 {% block content %}  
   <div class="ui grid dashboard_grid">
     <div class="column">
-      {% block profile_box %} {% include "profiles/__profile_box.html" %} {% endblock %}
-      {% block service_box %} {% include "services/__service_box.html" %} {% endblock %}
-      {% block service_short_list %} {% include "services/__service_short_list.html" %} {% endblock %}
+      {% include "profiles/__profile_box.html" %} 
+      <div class="ui segment">
+  		<div class="ui middle aligned selection  divided list">
+		  <a class="item">
+		    <div class="right floated content">
+		      <div class="header">{{ number_followers }}</div>
+		    </div>
+		    <img class="ui avatar image" src="/static/images/dummy/avatar2.png">
+		    <div class="content">
+		    	<div class="header">{% trans 'Followers' %}</div>
+		    </div>
+		  </a>
+		  <a class="item">
+		    <div class="right floated content">
+		      <div class="header">{{ number_following }}</div>
+		    </div>
+		    <img class="ui avatar image" src="/static/images/dummy/avatar3.png">
+		    <div class="content">
+		    	<div class="header">{% trans 'Following' %}</div>
+		    </div>
+		  </a>
+		  <a class="item">
+		    <div class="right floated content">
+		      <div class="header">{{ number_bookings }}</div>
+		    </div>
+		    <img class="ui avatar image" src="/static/images/dummy/avatar5.png">
+		    <div class="content">
+		    	<div class="header">{% trans 'Bookings' %}</div>
+		    </div>
+		  </a>
+		</div>
+      </div>
+      {% include "services/__service_box.html" %} 
+      {% include "services/__service_short_list.html" %}
     </div>
   </div>
 {% endblock %} 

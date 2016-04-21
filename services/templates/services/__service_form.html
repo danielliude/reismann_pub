@@ -23,9 +23,15 @@
   <div class="field">
     <label>{{ form.price.label }}</label>
     <div class="ui right labeled input">
-      <div class="ui label">$</div>
+      <select class="ui compact selection dropdown">
+        <option selected="" value="euro">€</option>
+        <option value="yen">¥</option>
+      </select>
       {{ form.price }}
-      <div class="ui basic label">.00</div>
+      <select class="ui compact selection dropdown">
+        <option selected="" value="day">{% trans 'per day' %}</option>
+        <option value="hour">{% trans 'per hour' %}</option>
+      </select>
     </div>
   </div>
   {{ form.type.errors }}

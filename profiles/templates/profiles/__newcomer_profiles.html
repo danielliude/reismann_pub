@@ -6,7 +6,6 @@
     <div class="column">
     	<div class="ui segment padding">
 			<a href="{% url 'profiles:profile' profile.user.username %}" class="profile_map" style="background-image: url('{{ profile.get_card_image_url }}');">
-				<div class="filter_map"></div>
 			</a>
 			<a href="{% url 'profiles:profile' profile.user.username %}" class="ui tiny circular image">
 	      	<img  src="{{ profile.get_avatar_url }}" alt="User Avatar">

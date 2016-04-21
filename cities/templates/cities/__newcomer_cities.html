@@ -5,10 +5,11 @@
 <div class="ui three column stackable doubling grid container city_content">
   {% for city in newcomer_cities %}
     <div class="column">
-	    <a href="cities/show/{{ city.name }}" class="city_map" style="background-image: url('{{ city.card_image.url }}');">
-	     <div class="filter_map"></div>	
-        <span class="title_map">{{ city.name }}</span>
-      </a>
+    	<div class="ui basic segment" style="padding:0px;">
+		  <a href="cities/show/{{ city.name }}" class="city_map" style="background-image: url('{{ city.card_image.url }}');">
+	        <span class="title_map">{{ city.name }}</span>
+	      </a>
+	    </div>
     </div>
   {% endfor %}
 </div>

@@ -12,8 +12,9 @@
 @pageFont 		   : Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
 
 
-
 /*---  Colors  ---*/
+
+@pageBackground      : rgb(243, 243, 243);
 
 @blue           : #3c8dbc;
 @green 			: #21A23F;

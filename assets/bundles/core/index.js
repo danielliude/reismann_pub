@@ -67,19 +67,6 @@
 	    $('.ui.search').search({
 	      source: content
 	    });
-
-	    $('.filter_map').mouseenter(function () {
-	      $(this).animate({ opacity: 0.2 }, 200);
-	    });
-	    $('.filter_map').mouseout(function () {
-	      $(this).animate({ opacity: 0 }, 200);
-	    });
-	    $('.title_map').mouseenter(function () {
-	      $(this).prev().animate({ opacity: 0.2 }, 200);
-	    });
-	    $('.title_map').mouseout(function () {
-	      $(this).prev().animate({ opacity: 0 }, 200);
-	    });
 	  }
 
 	  function init_search() {

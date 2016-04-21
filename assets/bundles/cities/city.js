@@ -53,16 +53,6 @@
 	    var page = 1;
 	    var page_num = 21;
 	    init_button();
-	    init_filter();
-
-	    function init_filter() {
-	        $(document).on('mouseenter', '.filter_map', function () {
-	            $(this).animate({ opacity: 0.2 }, 200);
-	        });
-	        $(document).on('mouseout', '.filter_map', function () {
-	            $(this).animate({ opacity: 0 }, 200);
-	        });
-	    }
 
 	    function init_button() {
 	        $('.search_form .ui.dropdown').dropdown();
@@ -142,7 +132,7 @@
 	    function show_data(ret) {
 	        var html = '';
 	        for (var i in ret) {
-	            html += '<div class="column">' + '<div class="ui segment padding">' + '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url + '\');"><div class="filter_map"></div></a>' + '<a href="' + ret[i].image_url + '" class="ui tiny circular image">' + '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' + '</a>' + '<div class="ui segment">' + '<div class="row"> ' + '<div class="ui header">' + ret[i].name_of_username + ' ' + ret[i].short_description + '</div>' + '<span>' + ret[i].cities + '</span>' + '</div>' + '<div class="ui red header average_price">€ ' + ret[i].price + '</div>' + '<div class="row content">' + '<p>' + ret[i].title.substring(0, 100) + (ret[i].title.length > 100 ? '...' : '') + '</p>' + '</div>' + '</div>' + '</div>' + '</div>';
+	            html += '<div class="column">' + '<div class="ui segment padding">' + '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url + '\');"></a>' + '<a href="' + ret[i].image_url + '" class="ui tiny circular image">' + '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' + '</a>' + '<div class="ui segment">' + '<div class="row"> ' + '<div class="ui header">' + ret[i].name_of_username + ' ' + ret[i].short_description + '</div>' + '<span>' + ret[i].cities + '</span>' + '</div>' + '<div class="ui red header average_price">€ ' + ret[i].price + '</div>' + '<div class="row content">' + '<p>' + ret[i].title.substring(0, 100) + (ret[i].title.length > 100 ? '...' : '') + '</p>' + '</div>' + '</div>' + '</div>' + '</div>';
 	        }
 	        $(".search_profile").append(html);
 	    }

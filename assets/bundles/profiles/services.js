@@ -70,13 +70,11 @@
 	                    rules: [{
 	                        type: 'empty',
 	                        prompt: 'Please enter your title'
+	                    }, {
+	                        type: 'maxLength[10]',
+	                        prompt: 'Username should have at most 10 letters'
 	                    }]
 	                },
-
-	                // {
-	                //   type   : 'minLength[3]',
-	                //   prompt : 'Username should have at least 3 letters'
-	                // },
 	                content: {
 	                    identifier: 'content',
 	                    rules: [{
@@ -106,6 +104,9 @@
 	                    rules: [{
 	                        type: 'empty',
 	                        prompt: 'Please enter your cities'
+	                    }, {
+	                        type: 'maxCount[5]',
+	                        prompt: 'Please select at most five cities'
 	                    }]
 	                },
 	                categories: {

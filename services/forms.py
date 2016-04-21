@@ -48,9 +48,8 @@ class ServiceForm(forms.ModelForm):
                                      queryset=City.objects.all())
 
   categories = forms.ModelMultipleChoiceField(label=_('Categories'),
-                                         widget=forms.SelectMultiple(attrs={
+                                         widget=forms.Select(attrs={
                                            'class': 'ui fluid search dropdown',
-                                           'multiple' : "",
                                            'placeholder': _('service categories')
                                          }),
                                          queryset=ServiceCategory.objects.all())

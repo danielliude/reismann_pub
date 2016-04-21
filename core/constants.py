@@ -6,6 +6,21 @@ GENDER_CHOICES = (
   (2, _('Female')),
 )
 
+PROFESSION_CHOICES = (
+  ('', _('profession')),
+  (1, _('Student')),
+  (2, _('Engineer')),
+  (3, _('Artist')),
+  (4, _('Performer')),
+  (5, _('Manager')),
+  (6, _('Doctor')),
+  (7, _('Civilian')),
+  (8, _('Accountant')),
+  (9, _('Lawyer')),
+  (10, _('Freelancer')),
+  (11, _('Others')),
+)
+
 SERVICE_TYPE_CHOICES = (
   (1, _('Part time')),
   (2, _('Full time')),

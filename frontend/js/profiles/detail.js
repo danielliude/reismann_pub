@@ -16,10 +16,6 @@ $(function() {
         }, function(start, end, label) {
             console.log(start.toISOString(), end.toISOString(), label);
         });
-
-        // $('#id_birthday').calendar({
-        //   type: 'date'
-        // });
     }
     function init_form() {
         $('.ui.form').form({
@@ -51,6 +47,15 @@ $(function() {
                         },
                     ]
                 },
+                profession: {
+                    identifier  : 'profession',
+                    rules: [
+                        {
+                          type   : 'empty',
+                          prompt : 'Please enter your profession'
+                        },
+                    ]
+                },
                 birthday: {
                     identifier  : 'birthday',
                     rules: [
@@ -66,15 +71,6 @@ $(function() {
                         {
                           type   : 'empty',
                           prompt : 'Please enter your location'
-                        },
-                    ]
-                },
-                short_description: {
-                    identifier  : 'short_description',
-                    rules: [
-                        {
-                          type   : 'empty',
-                          prompt : 'Please enter your short_description'
                         },
                     ]
                 },

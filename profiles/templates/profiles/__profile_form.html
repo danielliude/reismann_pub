@@ -1,30 +1,21 @@
 {% load i18n %}
 
-<div class="ui blue segment profile_form">
+<div class="ui blue padded segment profile_form">
   <h3 class="ui center aligned header">{% trans 'Edit profile' %}</h3>
   <form class="ui form" action="" enctype="multipart/form-data" method="post">
+    <br>
     {% csrf_token %}
     
     {{ form.non_field_errors }}
-<!--     {{ form.usernname.errors }}
-    <div class="field">
-      <label>{{ form.username.label }}</label>
-      <div class="ui corner labeled input">
-        {{ form.username }}
-        <div class="ui corner label">
-          <i class="asterisk icon"></i>
-        </div>
-      </div>
-    </div> -->
     {{ form.first_name.errors }}
-    <div class="field">
+    <div class="required field">
       <label>{{ form.first_name.label }}</label>
       <div class="ui icon input">
         {{ form.first_name }}
       </div>
     </div>
     {{ form.last_name.errors }}
-    <div class="field">
+    <div class="required field">
       <label>{{ form.last_name.label }}</label>
       <div class="ui icon input">
         {{ form.last_name }}
@@ -32,9 +23,14 @@
     </div>
 
     {{ form.gender.errors }}
-    <div class="field">
+    <div class="required field">
         <label>{{ form.gender.label }}</label>
         {{ form.gender }}
+    </div>
+    {{ form.profession.errors }}
+    <div class="required field">
+        <label>{{ form.profession.label }}</label>
+        {{ form.profession }}
     </div>
     {{ form.avatar.errors }}
     <div class="field">
@@ -44,7 +40,7 @@
       </div>
     </div>
     {{ form.birthday.errors }}
-    <div class="field">
+    <div class="required field">
       <label>{{ form.birthday.label }}</label>
       <div class="ui icon input">
           {{ form.birthday }}
@@ -71,18 +67,19 @@
       </div>
     </div>
     {{ form.bio.errors }}
-    <div class="field">
+    <div class="required field">
       <label>{{ form.bio.label }}</label>
       {{ form.bio }}
     </div>
 
-     <div class="field">
+<!--      <div class="field">
       <div class="ui checkbox">
         {{ form.is_active}}
         {{ form.is_active.label_tag }}
       </div>
-    </div>
+    </div> -->
 
+    <br>
     <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
     <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
     <div class="ui error message">

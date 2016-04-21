@@ -7,7 +7,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from easy_thumbnails.widgets import ImageClearableFileInput
 
-from core.constants import GENDER_CHOICES
+from core.constants import GENDER_CHOICES, PROFESSION_CHOICES
 from cities.models import City
 from profiles.models import Profile
 
@@ -23,6 +23,9 @@ class ProfileForm(forms.ModelForm):
   gender = forms.ChoiceField(label=_('gender'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
                              choices=GENDER_CHOICES)
+  profession = forms.ChoiceField(label=_('profession'),
+                             widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
+                             choices=PROFESSION_CHOICES)
   avatar = forms.ImageField(label=_('avatar'),
                              widget=ImageClearableFileInput(attrs={}),
                              required=False)

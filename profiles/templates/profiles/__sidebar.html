@@ -30,11 +30,30 @@
       <i class="dashboard icon"></i>
       {% trans 'Dashboard' %}
     </a>
+    <a class="item {% if url_name == 'detail' %}active{% endif %}" href="{% url 'profiles:detail' profile.user.username %}">
+      <i class="user icon"></i>
+      {% trans 'Profile' %}
+    </a>
+    <a class="item {% if url_name == 'setting' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
+      <i class="setting icon"></i>
+      {% trans 'Setting' %}
+    </a>
+    <a class="item {% if url_name == 'homepage' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
+      <i class="home icon"></i>
+      {% trans 'Homepage' %}
+    </a>
+    <a class="item {% if url_name == 'album' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
+      <i class="file image outline icon"></i>
+      {% trans 'Album' %}
+    </a>
+    <a class="item {% if url_name == 'services' %}active{% endif %}" href="{% url 'profiles:services' profile.user.username %}">
+      <i class="server icon"></i>
+      {% trans 'Services' %}
+    </a>
     <a class="item {% if url_name == 'bookings' %}active{% endif %}" href="{% url 'profiles:bookings' profile.user.username %}">
       <i class="bookmark icon"></i>
       {% trans 'Bookings' %}
     </a>
-
     <div class="ui inverted accordion item">
       <div class="item" style="padding-right:0px;">
         <div class="title">
@@ -51,26 +70,25 @@
           </a>
         </div>  
       </div>
-    </div>  
-
-
-      
-    <a class="item {% if url_name == 'detail' %}active{% endif %}" href="{% url 'profiles:detail' profile.user.username %}">
-      <i class="user icon"></i>
-      {% trans 'Profile' %}
-    </a>
+    </div> 
     <a class="item {% if url_name == 'contact' %}active{% endif %}" href="{% url 'profiles:contact' profile.user.username %}">
       <i class="phone icon"></i>
       {% trans 'Contact' %}
     </a>
-    <a class="item {% if url_name == 'services' %}active{% endif %}" href="{% url 'profiles:services' profile.user.username %}">
-      <i class="server icon"></i>
-      {% trans 'Services' %}
+
+    <a class="item {% if url_name == 'verification' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
+      <i class="archive icon"></i>
+      {% trans 'Per.verification' %}
     </a>
+    
     <a class="item" href="{% url 'accounts:logout' %}">
       <i class="sign out icon"></i>
       {% trans 'Quit' %}
     </a>
     {% endwith %}
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
 

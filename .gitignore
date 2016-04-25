@@ -2,7 +2,7 @@ static/
 *.pyc
 .idea/*
 media/*
-reismann/alex_settings.py
+reismann/specific_settings_private.py
 reismann/images/*
 frontend/node_modules
 frontend/npm-debug.log

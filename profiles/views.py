@@ -9,6 +9,7 @@ from guardian.decorators import permission_required_or_403
 from profiles.models import Profile
 from profiles.forms import ProfileForm, ProfileIdForm
 from profiles.utils import get_user_profile
+from profiles.managers import ProfileMailManager
 from core.utils import ExtraContextTemplateView
 from contacts.forms import ContactForm
 from contacts.utils import get_user_contact
@@ -178,22 +179,34 @@ def verification(request, username, edit_id_form=ProfileIdForm,
 
   form = edit_id_form(instance=profile)
 
+  if not profile.id_image and not profile.second_id_image:
+     profile.id_status = 1
+  else:
+     if profile.id_status == 1:
+        profile.id_status = 2
+
+  profile.save()
+
   if request.method == 'POST':
     form = edit_id_form(request.POST, request.FILES, instance=profile)
 
     if form.is_valid():
         form.save()
 
+        m = ProfileMailManager()
+        m.send_notification_email_to_administrator(user)
+
         if success_url:
             redirect_to = success_url
         else:
-            redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
+            redirect_to = reverse('profiles:verification', kwargs={'username': username})
 
         return redirect(redirect_to)
 
   if not extra_context: extra_context = dict()
   extra_context['form'] = form
   extra_context['service_categories'] = get_active_service_categories()
+  extra_context['verification_state'] = profile.id_status
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['services'] = services

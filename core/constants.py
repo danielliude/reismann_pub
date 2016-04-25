@@ -43,6 +43,13 @@ SERVICE_STATUS = (
   (3, _('Not active')),
 )
 
+IDENTIFICATION_STATUS = (
+  (1, _('Not started')),
+  (2, _('Waiting for approval')),
+  (3, _('Approved')),
+  (4, _('Declined')),
+)
+
 MUGSHOT_SETTINGS = {'size': (140, 140), 'crop': 'smart'}
 
 SERVICE_CARD_IMAGE_SETTINGS = {'size': (800, 600), 'crop': 'smart'}

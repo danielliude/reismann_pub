@@ -11,15 +11,11 @@
     </div>
   </h3>
 
-  <form class="ui form" action="" enctype="multipart/form-data" method="post">
-    <br>
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-
     <div class="ui top attached clearing segment">
       <h5 class="ui left floated header">
-        {% trans 'ID verification' %}&nbsp;&nbsp;
+        {% trans 'Moderation status' %}&nbsp;&nbsp;
       </h5>
+
       <h5 class="ui left floated header">
         {% if verification_state == 1 %}
           <div class="ui grey label">{% trans 'Not started' %}</div>
@@ -30,9 +26,21 @@
         {% elif verification_state == 4 %}
           <div class="ui red label">{% trans 'Declined' %}</div>
         {% endif %}
-        
+       </h5>
+    </div>
+
+
+
+  <form class="ui form" action="" enctype="multipart/form-data" method="post">
+    <br>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="ui top attached clearing segment">
+      <h5 class="ui left floated header">
+        {% trans 'ID document' %}&nbsp;&nbsp;
       </h5>
     </div>
+
     <div class="ui secondary attached segment">
       {{ form.id_image.errors }}
       <div class="field">
@@ -46,7 +54,7 @@
 
     <div class="ui top attached clearing segment">
       <h5 class="ui left floated header">
-        {% trans 'other verification' %}
+        {% trans 'Other documents for verification (Driving license, student card, etc )' %}
       </h5>
     </div>
     <div class="ui secondary attached segment">

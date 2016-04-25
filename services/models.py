@@ -9,7 +9,7 @@ from redactor.fields import RedactorField
 from easy_thumbnails.fields import ThumbnailerImageField
 
 from core.constants import SERVICE_TYPE_CHOICES, SERVICE_CARD_IMAGE_SETTINGS, SERVICE_STATUS
-from core.uploads import upload_to_service_card
+from core.uploads import upload_to_service_card, upload_to_service_content
 
 from configurations.models import ServiceCategory, ServiceTag, ServiceLanguage
 from cities.models import City
@@ -42,7 +42,7 @@ class Service(models.Model):
                                 help_text=_('tags of service help text'),
                                 related_name='services')
 
-  content = RedactorField(verbose_name=_('service content'), default="service content")
+  content = RedactorField(verbose_name=_('service content'), default="service content", upload_to= upload_to_service_content)
 
   languages = models.ManyToManyField(ServiceLanguage, verbose_name=_('languages of service'),
                                      help_text=_('languages of service help text'),

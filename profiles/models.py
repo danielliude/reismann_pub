@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from easy_thumbnails.fields import ThumbnailerImageField
 
-from core.constants import MUGSHOT_SETTINGS, GENDER_CHOICES, PROFILE_CARD_IMAGE_SETTINGS, PROFESSION_CHOICES
+from core.constants import MUGSHOT_SETTINGS, GENDER_CHOICES, PROFILE_CARD_IMAGE_SETTINGS, PROFESSION_CHOICES, IDENTIFICATION_STATUS
 from core.uploads import upload_to_avatar, upload_to_profile_card, upload_to_profile_id_card
 from configurations.utils import get_profile_card_fallback_url, get_avatar_fallback_url
 from cities.models import City
@@ -33,6 +33,8 @@ class Profile(models.Model):
 
   second_id_image = models.ImageField(_('Second id card'), blank=True, upload_to=upload_to_profile_id_card,
                                   help_text= _('second id card'))
+
+  id_status = models.PositiveIntegerField(_('identification status'), choices=IDENTIFICATION_STATUS, blank=True, null=True, default=1)
 
   gender = models.PositiveSmallIntegerField(_('Gender'), choices=GENDER_CHOICES,
                                             blank=True, null=True, help_text=_('gender'))

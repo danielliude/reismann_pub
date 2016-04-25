@@ -22,11 +22,13 @@
       </h5>
       <h5 class="ui left floated header">
         {% if verification_state == 1 %}
-          <div class="ui red label">{% trans 'not validation' %}</div>
+          <div class="ui grey label">{% trans 'Not started' %}</div>
         {% elif verification_state == 2 %}
-          <div class="ui yellow label">{% trans 'waiting for approval' %}</div>
+          <div class="ui yellow label">{% trans 'Waiting for approval' %}</div>
         {% elif verification_state == 3 %}
-          <div class="ui green label">{% trans 'approved' %}</div>
+          <div class="ui green label">{% trans 'Approved' %}</div>
+        {% elif verification_state == 4 %}
+          <div class="ui red label">{% trans 'Declined' %}</div>
         {% endif %}
         
       </h5>

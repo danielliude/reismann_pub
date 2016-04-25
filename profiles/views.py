@@ -167,7 +167,7 @@ def detail(request, username, edit_profile_form=ProfileForm,
 @secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
 def verification(request, username, edit_id_form=ProfileIdForm,
-                 template_name='profiles/detail_id.html', success_url=None,
+                 template_name='profiles/verification.html', success_url=None,
                  extra_context=None, **kwargs):
 
   user = get_object_or_404(User, username__iexact=username)

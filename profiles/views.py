@@ -194,6 +194,7 @@ def verification(request, username, edit_id_form=ProfileIdForm,
   if not extra_context: extra_context = dict()
   extra_context['form'] = form
   extra_context['service_categories'] = get_active_service_categories()
+  extra_context['verification_state'] = profile.id_status
   extra_context['profile'] = profile
   extra_context['contact'] = contact
   extra_context['services'] = services

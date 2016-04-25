@@ -161,12 +161,24 @@ def city(request, city_name, template_name='cities/city.html'):
                 service_dict['title'] = service.title
                 services_new.append(service_dict)
 
+
             page = int(request.POST.get('page'))
             page_num = 21
             page_start = (page-1) * page_num
             page_end   = page * page_num
             num        = len(services_new)
             services_new = services_new[page_start:page_end]
+
+            #it is a test ,need to modify
+            for service in services_new:
+                tem = {}
+                service['all_service'] = []
+                tem['categorie'] = "booking"
+                tem['title']     = "test"
+                tem['price']     = "12/day"
+                tem['active']     = 'true'
+                service['all_service'].append(tem)
+                service['all_service'].append(tem)
 
             temp = {'num': num, 'services_new' : services_new}
             return JsonResponse(temp)
@@ -183,6 +195,16 @@ def city(request, city_name, template_name='cities/city.html'):
             if city:
                 banner_image = city[0].banner_image
                 services = services.filter(cities = city)
+
+        for service in services:
+            tem = {}
+            service.all_service = []
+            tem['categorie'] = "booking"
+            tem['title']     = "test"
+            tem['price']     = "12/day"
+            tem['active']     = 'true'
+            service.all_service.append(tem)
+            service.all_service.append(tem)
 
         context = {
             'form': form,

@@ -116,9 +116,24 @@
             <div class="ui header">{{ service.user.profile.get_full_name_or_username }} {{ service.user.profile.short_description }}</div>
             <span>{% for city in service.cities.all %}{% if not forloop.last %}{{ city.name }} , {% else %}{{ city.name }}{% endif %} {% endfor %}</span>
           </div>
-          <div class="ui red header average_price">€ {{ service.price }}</div>
+          <!-- <div class="ui red header average_price">€ {{ service.price }}</div> -->
           <div class="row content">
-            <p>{{ service.title | slice:"100" }}{% if service.title|length > 100 %}...{% endif %}</p>
+            <div class="ui three column padded grid">
+              {% for serv in  service.all_service %}
+                <div class="row" style="padding:0.3rem 0;">
+                  <div class="left floated column" style="padding-left:0px;">
+                    <label class="ui {% if serv.active == 'true' %} blue {% endif %} label">{{serv.categorie}}</label>
+                  </div>
+                  <div class="center aligned column">
+                    <span>{{serv.categorie}}</span>
+                  </div>
+                  <div class="right floated right aligned column" style="padding-right:0px;">
+                    <label class="ui label">{{serv.price}}</label>
+                  </div>
+                </div>
+              {% endfor %}
+
+            </div>
           </div>
         </div>
       </div>

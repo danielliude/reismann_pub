@@ -166,7 +166,7 @@ def detail(request, username, edit_profile_form=ProfileForm,
 
 @secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
-def detail_id(request, username, edit_id_form=ProfileIdForm,
+def verification(request, username, edit_id_form=ProfileIdForm,
                  template_name='profiles/detail_id.html', success_url=None,
                  extra_context=None, **kwargs):
 
@@ -240,9 +240,3 @@ def contact(request, username, edit_contact_form=ContactForm,
   extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
-
-
-
-
-
-

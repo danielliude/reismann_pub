@@ -6,8 +6,8 @@ urlpatterns = [
     url(r'^(?P<username>[\@\.\w-]+)/$', views.profile, name='profile'),
     url(r'^(?P<username>[\@\.\w-]+)/dashboard$', views.dashboard, name='dashboard'),
     url(r'^(?P<username>[\@\.\w-]+)/detail/$', views.detail, name='detail'),
-    url(r'^(?P<username>[\@\.\w-]+)/detail_id/$', views.detail_id, name='detail_id'),
     url(r'^(?P<username>[\@\.\w-]+)/contact/$', views.contact, name='contact'),
+    url(r'^(?P<username>[\@\.\w-]+)/verification/$', views.verification, name='verification'),
 
     url(r'^', include('services.urls')),
     url(r'^', include('insite_messages.urls')),

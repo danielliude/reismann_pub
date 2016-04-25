@@ -1,0 +1,72 @@
+{% extends "profiles/__profile_base.html" %}
+{% load render_bundle from webpack_loader %}
+{% load i18n %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/verification' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/verification' 'js' %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui grid verification_grid">
+      <div class="column">
+		<div class="ui blue padded segment profile_form">
+		  <h3 class="ui center aligned header">{% trans 'Personal Verification' %}</h3>
+		  <form class="ui form" action="" enctype="multipart/form-data" method="post">
+		    <br>
+		    {% csrf_token %}
+
+		    <div class="ui top attached clearing segment">
+		    	<h5 class="ui left floated header">
+		    		{% trans 'ID verification' %}&nbsp;&nbsp;
+		    	</h5>
+		    	<h5 class="ui left floated header">
+		    		{% if verification_state == 1 %}
+			    		<div class="ui red label">{% trans 'not validation' %}</div>
+		            {% elif verification_state == 2 %}
+			            <div class="ui yellow label">{% trans 'waiting for approval' %}</div>
+		            {% elif verification_state == 3 %}
+			            <div class="ui green label">{% trans 'approved' %}</div>
+		            {% endif %}
+		    		
+		    	</h5>
+		    </div>
+		    <div class="ui secondary attached segment">
+			    {{ form.avatar.errors }}
+			    <div class="field">
+			      <label>{{ form.avatar.label }}</label>
+			      <div class="ui checkbox">
+			        {{ form.avatar }}
+			      </div>
+			    </div>
+		    </div>
+		    <br>
+
+		    <div class="ui top attached clearing segment">
+		    	<h5 class="ui left floated header">
+		    		{% trans 'other verification' %}
+		    	</h5>
+		    </div>
+		    <div class="ui secondary attached segment">
+			    {{ form.card_image.errors }}
+			    <div class="field">
+			      <label>{{ form.card_image.label }}</label>
+			      <div class="ui checkbox">
+			        {{ form.card_image }}
+			      </div>
+			    </div>
+		    </div>
+		    
+		    <br>
+		    <br>
+		    <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+		    <a href="{% url 'profiles:verification' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
+		    <div class="ui error message">
+		    </div>
+		  </form>
+		</div>
+
+      </div>
+    </div>
+{% endblock %} 

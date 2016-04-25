@@ -202,7 +202,48 @@ def contact(request, username, edit_contact_form=ContactForm,
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 
+@secure_required
+def verification(request, username, edit_profile_form=ProfileForm,
+                 template_name='profiles/verification.html', success_url=None,
+                 extra_context=None, **kwargs):
 
+  user = get_object_or_404(User, username__iexact=username)
+
+  profile = get_user_profile(user)
+  # contact = get_user_contact(user)
+  # services = get_user_services(user)
+
+  # user_initial = {'first_name': user.first_name,
+  #                 'last_name': user.last_name}
+
+  # form = edit_profile_form(instance=profile, initial=user_initial)
+
+  if request.method == 'POST':
+    # form = edit_profile_form(request.POST, request.FILES, instance=profile, initial=user_initial)
+
+    # if form.is_valid():
+    #   profile = form.save()
+
+    #   if success_url:
+    #     redirect_to = success_url
+    #   else: 
+      redirect_to = reverse('profiles:verification', kwargs={'username': username})
+
+      return redirect(redirect_to)
+
+  if not extra_context: extra_context = dict()
+  extra_context['verification_state'] = 1
+  # extra_context['form'] = form
+  # extra_context['service_categories'] = get_active_service_categories()
+  extra_context['profile'] = profile
+  # extra_context['contact'] = contact
+  # extra_context['services'] = services
+  # extra_context['view_own_profile'] = view_own_profile(request, username)
+
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
+
+  return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 
 

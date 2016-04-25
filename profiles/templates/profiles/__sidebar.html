@@ -76,7 +76,7 @@
       {% trans 'Contact' %}
     </a>
 
-    <a class="item {% if url_name == 'verification' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
+    <a class="item {% if url_name == 'verification' %}active{% endif %}" href="{% url 'profiles:verification' profile.user.username %}">
       <i class="archive icon"></i>
       {% trans 'Per.verification' %}
     </a>

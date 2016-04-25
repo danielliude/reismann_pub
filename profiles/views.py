@@ -7,7 +7,7 @@ from userena.decorators import secure_required
 from guardian.decorators import permission_required_or_403
 
 from profiles.models import Profile
-from profiles.forms import ProfileForm
+from profiles.forms import ProfileForm, ProfileIdForm
 from profiles.utils import get_user_profile
 from core.utils import ExtraContextTemplateView
 from contacts.forms import ContactForm
@@ -150,6 +150,46 @@ def detail(request, username, edit_profile_form=ProfileForm,
       else: redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
 
       return redirect(redirect_to)
+
+  if not extra_context: extra_context = dict()
+  extra_context['form'] = form
+  extra_context['service_categories'] = get_active_service_categories()
+  extra_context['profile'] = profile
+  extra_context['contact'] = contact
+  extra_context['services'] = services
+  extra_context['view_own_profile'] = view_own_profile(request, username)
+
+  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
+
+  return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+
+@secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
+def detail_id(request, username, edit_id_form=ProfileIdForm,
+                 template_name='profiles/detail_id.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+  user = get_object_or_404(User, username__iexact=username)
+
+  profile = get_user_profile(user)
+  contact = get_user_contact(user)
+  services = get_user_services(user)
+
+  form = edit_id_form(instance=profile)
+
+  if request.method == 'POST':
+    form = edit_id_form(request.POST, request.FILES, instance=profile)
+
+    if form.is_valid():
+        form.save()
+
+        if success_url:
+            redirect_to = success_url
+        else:
+            redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
+
+        return redirect(redirect_to)
 
   if not extra_context: extra_context = dict()
   extra_context['form'] = form

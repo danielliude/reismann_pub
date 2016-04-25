@@ -1,0 +1,34 @@
+{% load i18n %}
+
+<div class="ui blue padded segment profile_form">
+  <h3 class="ui center aligned header">{% trans 'Id indentifications' %}</h3>
+  <h2 class="ui center aligned header">{% trans 'Please upload the image of your ID or other document' %}</h2>
+
+  <form class="ui form" action="" enctype="multipart/form-data" method="post">
+    <br>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    {{ form.id_image.errors }}
+    <div class="field">
+      <label>{{ form.id_image.label }}</label>
+      <div class="ui icon input">
+        {{ form.id_image }}
+      </div>
+    </div>
+    {{ form.last_name.errors }}
+    <div class="field">
+      <label>{{ form.second_id_image.label }}</label>
+      <div class="ui icon input">
+        {{ form.second_id_image }}
+      </div>
+    </div>
+
+    <br>
+    <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+    <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
+    <div class="ui error message">
+    </div>
+  </form>
+
+</div>

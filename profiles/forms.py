@@ -13,6 +13,19 @@ from profiles.models import Profile
 
 logger = logging.getLogger('accounts')
 
+class ProfileIdForm(forms.ModelForm):
+
+    id_image = forms.ImageField(label=_('Id image'),
+                                widget=ImageClearableFileInput(attrs={}),
+                                required=False)
+    second_id_image = forms.ImageField(label=_('Another Id'),
+                            widget=ImageClearableFileInput(attrs={}),
+                            required=False)
+
+    class Meta:
+        model = Profile
+        fields = ['id_image', 'second_id_image']
+
 class ProfileForm(forms.ModelForm):
   first_name = forms.CharField(label=_('First name'),
                                max_length=30,
@@ -20,32 +33,32 @@ class ProfileForm(forms.ModelForm):
   last_name = forms.CharField(label=_('Last name'),
                               max_length=30,
                               widget=forms.TextInput(attrs={'placeholder': _('Last name')}))
-  gender = forms.ChoiceField(label=_('gender'),
+  gender = forms.ChoiceField(label=_('Gender'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
                              choices=GENDER_CHOICES)
-  profession = forms.ChoiceField(label=_('profession'),
+  profession = forms.ChoiceField(label=_('Profession'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
                              choices=PROFESSION_CHOICES)
-  avatar = forms.ImageField(label=_('avatar'),
+  avatar = forms.ImageField(label=_('Avatar'),
                              widget=ImageClearableFileInput(attrs={}),
                              required=False)
-  birthday = forms.DateField(label=_('birthday'),
+  birthday = forms.DateField(label=_('Birthday'),
                              widget=forms.DateInput(attrs={'required': True},
                                                     format='%Y-%m-%d'),
                              input_formats=['%Y-%m-%d'])
-  location = forms.ModelChoiceField(label=_('profile location'),
+  location = forms.ModelChoiceField(label=_('Location'),
                                     widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
                                     queryset=City.objects.all())
-  short_description = forms.CharField(label=_('profile short description'), max_length=255,
+  short_description = forms.CharField(label=_('Short description'), max_length=255,
                                       widget=forms.TextInput(attrs={}),
                                       required=False)
-  card_image = forms.ImageField(label=_('profile card image'),
+  card_image = forms.ImageField(label=_('Card image'),
                                 widget=ImageClearableFileInput(attrs={}),
                                 required=False)
-  bio = forms.CharField(label=_('profile bio'),
+  bio = forms.CharField(label=_('Biography'),
                         widget=forms.Textarea(attrs={}),
                         required=False)
-  is_active = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('is active')}),
+  is_active = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('Is active')}),
                        required= False,
                        label=_('active'))
 

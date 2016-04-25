@@ -21,23 +21,10 @@
         {{ form.last_name }}
       </div>
     </div>
-
     {{ form.gender.errors }}
     <div class="required field">
         <label>{{ form.gender.label }}</label>
         {{ form.gender }}
-    </div>
-    {{ form.profession.errors }}
-    <div class="required field">
-        <label>{{ form.profession.label }}</label>
-        {{ form.profession }}
-    </div>
-    {{ form.avatar.errors }}
-    <div class="field">
-      <label>{{ form.avatar.label }}</label>
-      <div class="ui checkbox">
-        {{ form.avatar }}
-      </div>
     </div>
     {{ form.birthday.errors }}
     <div class="required field">
@@ -52,11 +39,23 @@
       <label>{{ form.location.label }}</label>
       {{ form.location }}
     </div>
+    {{ form.profession.errors }}
+    <div class="field">
+        <label>{{ form.profession.label }}</label>
+        {{ form.profession }}
+    </div>
     {{ form.short_description.errors }}
     <div class="field">
       <label>{{ form.short_description.label }}</label>
       <div class="ui icon input">
         {{ form.short_description }}
+      </div>
+    </div>
+    {{ form.avatar.errors }}
+    <div class="field">
+      <label>{{ form.avatar.label }}</label>
+      <div class="ui checkbox">
+        {{ form.avatar }}
       </div>
     </div>
     {{ form.card_image.errors }}
@@ -72,12 +71,12 @@
       {{ form.bio }}
     </div>
 
-<!--      <div class="field">
+     <div class="field">
       <div class="ui checkbox">
         {{ form.is_active}}
         {{ form.is_active.label_tag }}
       </div>
-    </div> -->
+    </div>
 
     <br>
     <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>

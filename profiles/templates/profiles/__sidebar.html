@@ -34,10 +34,6 @@
       <i class="user icon"></i>
       {% trans 'Profile' %}
     </a>
-    <a class="item {% if url_name == 'setting' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
-      <i class="setting icon"></i>
-      {% trans 'Setting' %}
-    </a>
     <a class="item {% if url_name == 'homepage' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
       <i class="home icon"></i>
       {% trans 'Homepage' %}
@@ -76,11 +72,14 @@
       {% trans 'Contact' %}
     </a>
 
-    <a class="item {% if url_name == 'verification' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
+    <a class="item {% if url_name == 'detail_id' %}active{% endif %}" href="{% url 'profiles:detail_id' profile.user.username %}">
       <i class="archive icon"></i>
-      {% trans 'Per.verification' %}
+      {% trans 'Verification' %}
     </a>
-    
+    <a class="item {% if url_name == 'setting' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
+      <i class="setting icon"></i>
+      {% trans 'Settings' %}
+    </a>
     <a class="item" href="{% url 'accounts:logout' %}">
       <i class="sign out icon"></i>
       {% trans 'Quit' %}

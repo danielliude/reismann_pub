@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from easy_thumbnails.fields import ThumbnailerImageField
 
 from core.constants import MUGSHOT_SETTINGS, GENDER_CHOICES, PROFILE_CARD_IMAGE_SETTINGS, PROFESSION_CHOICES
-from core.uploads import upload_to_avatar, upload_to_profile_card
+from core.uploads import upload_to_avatar, upload_to_profile_card, upload_to_profile_id_card
 from configurations.utils import get_profile_card_fallback_url, get_avatar_fallback_url
 from cities.models import City
 from profiles.managers import ProfileManager
@@ -19,28 +19,36 @@ class Profile(models.Model):
   user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name='profile')
 
   is_active = models.BooleanField(default=False, verbose_name=_('profile is active'),
-                                  help_text=_('profile is active help text'))
+                                  help_text=_('profile is active'))
 
-  avatar = ThumbnailerImageField(_('avatar'), blank=True, upload_to=upload_to_avatar,
-                                 resize_source=MUGSHOT_SETTINGS, help_text=_('profile avatar help text'))
+  avatar = ThumbnailerImageField(_('Avatar'), blank=True, upload_to=upload_to_avatar,
+                                 resize_source=MUGSHOT_SETTINGS, help_text=_('profile avatar'))
 
-  card_image = ThumbnailerImageField(_('profile card image'), blank=True, upload_to=upload_to_profile_card,
+  card_image = ThumbnailerImageField(_('Card image'), blank=True, upload_to=upload_to_profile_card,
                                      resize_source=PROFILE_CARD_IMAGE_SETTINGS,
-                                     help_text=_('profile card image help text'))
+                                     help_text=_('card image'))
 
-  gender = models.PositiveSmallIntegerField(_('gender'), choices=GENDER_CHOICES,
-                                            blank=True, null=True)
+  id_image = models.ImageField(_('Id card'), blank=True, upload_to=upload_to_profile_id_card,
+                                  help_text= _('id card'))
 
-  profession = models.PositiveSmallIntegerField(_('profession'), choices=PROFESSION_CHOICES,
-                                            blank=True, null=True)
+  second_id_image = models.ImageField(_('Second id card'), blank=True, upload_to=upload_to_profile_id_card,
+                                  help_text= _('second id card'))
 
-  birthday = models.DateField(_('birthday'), blank=True, null=True)
+  gender = models.PositiveSmallIntegerField(_('Gender'), choices=GENDER_CHOICES,
+                                            blank=True, null=True, help_text=_('gender'))
 
-  location = models.ForeignKey(City, blank=True, null=True, verbose_name=_('profile location'))
+  profession = models.PositiveSmallIntegerField(_('Profession'), choices=PROFESSION_CHOICES,
+                                            blank=True, null=True, help_text=_('profession'))
 
-  short_description = models.CharField(_('profile short description'), blank=True, null=True, max_length=255)
+  birthday = models.DateField(_('Birthday'), blank=True, null=True, help_text=_('birthday'))
 
-  bio = models.TextField(_('profile bio'), blank=True, null=True)
+  location = models.ForeignKey(City, blank=True, null=True, verbose_name=_('location'),
+                                help_text='location')
+
+  short_description = models.CharField(_('Short description'), blank=True, null=True,
+                                       max_length=255, help_text= _('short description'))
+
+  bio = models.TextField(_('Biography'), blank=True, null=True)
 
   created_at = models.DateTimeField(auto_now_add=True)
 

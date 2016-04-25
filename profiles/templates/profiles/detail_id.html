@@ -1,0 +1,16 @@
+{% extends "profiles/__profile_base.html" %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/detail' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/detail' 'js' %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui grid detail_grid">
+      <div class="column">
+        {% include 'profiles/__profile_id_form.html' %}
+      </div>
+    </div>
+{% endblock %}

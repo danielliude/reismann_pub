@@ -81,7 +81,6 @@ class ServiceForm(forms.ModelForm):
     super(ServiceForm, self).__init__(*args, **kwargs)
 
   def save(self, username, force_insert=False, force_update=False, commit=True):
-
     try:
         user = User.objects.get(username = username)
     except User.DoesNotExist:

@@ -47,9 +47,15 @@
           <td></td>
           <td></td>
           <td>
+            {% if show_add_service == True %}
             <a class="ui green label" href="add">
               <i class="edit icon"></i>{% trans 'add' %}
             </a>
+            {% else %}
+            <a class="ui green label disabled" href="">
+              <i class="edit icon"></i>{% trans 'add' %}
+            </a>
+            {% endif %}
         </tr>
       </tbody>
     </table>

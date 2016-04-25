@@ -20,6 +20,7 @@ from configurations.utils import get_active_service_categories
 
 from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages, makeContextForAllServices
 from services.models import ServiceRating
+from services.utils import get_user_services
 
 from services.managers import ServiceMailManager
 
@@ -33,14 +34,16 @@ def service_add(request, username, edit_service_form=ServiceForm,
 
         user = get_object_or_404(User, username__iexact=username)
 
+        if get_user_services(user).count() >= 3:
+            url = reverse('profiles:services', kwargs={'username':request.user.username})
+            return HttpResponseRedirect(url)
+
         profile = get_user_profile(user)
         contact = get_user_contact(user)
 
-        form = edit_service_form()
-
         if request.method == 'POST':
-            form = edit_service_form(request.POST, request.FILES)
 
+            form = edit_service_form(request.POST, request.FILES)
             if form.is_valid():
               service = form.save(username = username)
               service.status = 1
@@ -55,6 +58,8 @@ def service_add(request, username, edit_service_form=ServiceForm,
               else:
                 redirect_to = reverse('profiles:services', kwargs={'username': username})
               return redirect(redirect_to)
+
+        form = edit_service_form()
 
         if not extra_context: extra_context = dict()
         extra_context['form'] = form
@@ -219,6 +224,11 @@ def services(request, username,
       extra_context['services'] = services
       extra_context['profile'] = profile
       extra_context['contact'] = contact
+
+      if get_user_services(user).count() >= 3:
+        extra_context['show_add_service'] = False
+      else:
+        extra_context['show_add_service'] = True
 
       extra_context = makeContextForDetails(request, extra_context)
       extra_context = makeContextForMessages(request, extra_context)

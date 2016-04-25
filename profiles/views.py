@@ -19,6 +19,7 @@ from followship.utils import get_number_followers, get_number_following
 from bookings.utils import get_number_bookings
 from configurations.utils import get_active_service_categories
 from insite_messages.models import Message
+from services.models import Service
 
 
 logger = logging.getLogger("profiles")
@@ -68,8 +69,11 @@ def makeContextForAllServices(request, user, context):
     context['unique_categories'] = unique_categories
     context['services_rating'] = services_rating
 
-    return context
+    random_services = Service.objects.filter(user = user)
+    if random_services:
+        context['provider_service'] = random_services[0]
 
+    return context
 
 def profile(request, username, template_name="profiles/profile.html",
                    extra_context=None, **kwargs):

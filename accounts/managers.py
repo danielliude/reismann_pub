@@ -13,6 +13,7 @@ from accounts.settings import ACCOUNT_ACTIVATED, ANONYMOUS_USER_ID
 from profiles.models import Profile
 from contacts.models import Contact
 from services.models import Service
+from profiles.models import ProfileSettings
 
 from guardian.shortcuts import assign_perm, get_perms
 
@@ -41,6 +42,10 @@ class RegistrationManager(UserManager):
 
     registration = self.create_registration(new_user)
     profile = Profile.objects.create_profile(new_user)
+    set = ProfileSettings(profile_is_active = True, email_notifications = True)
+    set.save()
+    profile.settings = set
+    profile.save()
     contact = Contact.objects.create_contact(new_user)
 
     if send_email:

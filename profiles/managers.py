@@ -16,7 +16,6 @@ class ProfileManager(models.Manager):
       profile = self.get(user=user)
     except self.model.DoesNotExist:
       profile = self.create(user=user)
-
     for perm in ASSIGNED_PERMISSIONS['profile']:
       assign_perm(perm[0], user, profile)
 

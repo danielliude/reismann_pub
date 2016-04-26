@@ -1,0 +1,29 @@
+{% load i18n %}
+
+<div class="ui blue padded segment profile_form">
+
+  <form class="ui form" action="" enctype="multipart/form-data" method="post">
+
+    <br>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+     <div class="field">
+      <div class="ui checkbox">
+        {{ form.profile_is_active}}
+        {{ form.profile_is_active.label_tag }}
+      </div>
+    </div>
+    <br>
+    <div class="field">
+      <div class="ui checkbox">
+        {{ form.email_notifications}}
+        {{ form.email_notifications.label_tag }}
+      </div>
+    </div>
+
+    <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+    <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
+    <div class="ui error message">
+    </div>
+  </form>
+</div>

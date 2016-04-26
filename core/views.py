@@ -25,11 +25,11 @@ def index(request):
 
     else:
 
-      popular_profiles = sorted(Profile.objects.filter(is_active=True) \
+      popular_profiles = sorted(Profile.objects.filter(settings__profile_is_active=True) \
                         .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True)) \
                         .order_by('created_at')[:6], key=lambda x: random.random())
 
-      newcomer_profiles = Profile.objects.filter(is_active=True) \
+      newcomer_profiles = Profile.objects.filter(settings__profile_is_active=True) \
                             .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True)) \
                             .order_by('created_at')[:6]
 

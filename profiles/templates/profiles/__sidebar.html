@@ -66,16 +66,13 @@
           </a>
         </div>  
       </div>
-    </div> 
-    <a class="item {% if url_name == 'contact' %}active{% endif %}" href="{% url 'profiles:contact' profile.user.username %}">
-      <i class="phone icon"></i>
-      {% trans 'Contact' %}
-    </a>
+    </div>
+
     <a class="item {% if url_name == 'verification' %}active{% endif %}" href="{% url 'profiles:verification' profile.user.username %}">
       <i class="archive icon"></i>
       {% trans 'Verification' %}
     </a>
-    <a class="item {% if url_name == 'setting' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
+    <a class="item {% if url_name == 'settings' %}active{% endif %}" href="{% url 'profiles:settings' profile.user.username %}">
       <i class="setting icon"></i>
       {% trans 'Settings' %}
     </a>

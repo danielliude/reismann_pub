@@ -13,13 +13,19 @@ from cities.models import City
 from profiles.managers import ProfileManager
 from services.utils import get_user_services
 
+class ProfileSettings(models.Model):
+
+  profile_is_active = models.BooleanField(default=False, verbose_name=_('profile is active'),
+                                  help_text=_('profile is active'))
+
+  email_notifications = models.BooleanField(default=True, verbose_name=_('email notifications'),
+                                              help_text=_('get email notifications'))
 
 class Profile(models.Model):
 
   user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name='profile')
 
-  is_active = models.BooleanField(default=False, verbose_name=_('profile is active'),
-                                  help_text=_('profile is active'))
+  settings = models.OneToOneField(ProfileSettings, unique=True, verbose_name=_('settings'), related_name='profile', blank = True, null = True)
 
   avatar = ThumbnailerImageField(_('Avatar'), blank=True, upload_to=upload_to_avatar,
                                  resize_source=MUGSHOT_SETTINGS, help_text=_('profile avatar'))

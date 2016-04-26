@@ -9,9 +9,22 @@ from easy_thumbnails.widgets import ImageClearableFileInput
 
 from core.constants import GENDER_CHOICES, PROFESSION_CHOICES
 from cities.models import City
-from profiles.models import Profile
+from profiles.models import Profile, ProfileSettings
+from contacts.models import Contact
 
 logger = logging.getLogger('accounts')
+
+class SettingsForm(forms.ModelForm):
+    profile_is_active = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('Profile is active')}),
+                       required= False,
+                       label=_('Profile is active'))
+    email_notifications = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('Email notifications')}),
+                       required= False,
+                       label=_('Email notifications'))
+
+    class Meta:
+        model = ProfileSettings
+        fields = ['profile_is_active', 'email_notifications']
 
 class ProfileIdForm(forms.ModelForm):
 
@@ -27,6 +40,7 @@ class ProfileIdForm(forms.ModelForm):
         fields = ['id_image', 'second_id_image']
 
 class ProfileForm(forms.ModelForm):
+
   first_name = forms.CharField(label=_('First name'),
                                max_length=30,
                                widget=forms.TextInput(attrs={'placeholder': _('First name')}), required = True)
@@ -58,9 +72,6 @@ class ProfileForm(forms.ModelForm):
   bio = forms.CharField(label=_('Biography'),
                         widget=forms.Textarea(attrs={}),
                         required=True)
-  is_active = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('Is active')}),
-                       required= False,
-                       label=_('active'))
 
   def __init__(self, *args, **kw):
     super(ProfileForm, self).__init__(*args, **kw)
@@ -81,6 +92,7 @@ class ProfileForm(forms.ModelForm):
 
   def save(self, force_insert=False, force_update=False, commit=True):
     profile = super(ProfileForm, self).save(commit=commit)
+
     user = profile.user
     user.first_name = self.cleaned_data['first_name']
     user.last_name = self.cleaned_data['last_name']

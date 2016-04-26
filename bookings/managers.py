@@ -44,7 +44,7 @@ class BookingMailManager():
 
   def send_notification_email_for_provider(self, booking):
 
-    if booking.recipient.contact.email_notifications == True:
+    if booking.recipient.profile.settings.email_notifications == True:
         if booking.recipient.contact.email:
             context = {'booking': booking,
                        'site': Site.objects.get_current()}
@@ -58,7 +58,7 @@ class BookingMailManager():
 
   def send_successful_booking_email_for_user(self, booking):
 
-    if booking.sender.contact.email_notifications == True:
+    if booking.sender.profile.settings.email_notifications == True:
         if booking.sender.contact.email:
 
             context = {'user_first_name': booking.sender.first_name,
@@ -89,7 +89,7 @@ class BookingMailManager():
 
   def send_notification_booking_email_for_user(self, booking):
 
-    if booking.sender.contact.email_notifications == True:
+    if booking.sender.profile.settings.email_notifications == True:
         if booking.sender.contact.email:
             context = {'user_first_name': booking.sender.first_name,
                        'user_last_name': booking.sender.last_name,
@@ -105,7 +105,7 @@ class BookingMailManager():
 
   def send_successful_booking_email_for_provider(self, booking):
 
-    if booking.recipient.contact.email_notifications == True:
+    if booking.recipient.profile.settings.email_notifications == True:
         if booking.recipient.contact.email:
             context = {'provider_first_name': booking.recipient.first_name,
                        'provider_last_name': booking.recipient.last_name,
@@ -133,7 +133,7 @@ class BookingMailManager():
 
   def send_notification_booking_email_for_provider(self, booking):
 
-    if booking.recipient.contact.email_notifications == True:
+    if booking.recipient.profile.settings.email_notifications == True:
         if booking.recipient.contact.email:
             context = {'provider_first_name': booking.recipient.first_name,
                        'provider_last_name': booking.recipient.last_name,

@@ -10,3 +10,5 @@ zheng_settings.py
 db.sqlite3
 requirements.txt
 yongjie_settings.py
+reismann/local_settings.py
+.DS_Store

@@ -3,7 +3,7 @@
 <form class="ui form service_form" action="" enctype="multipart/form-data" method="post">
   <br>
   {% csrf_token %}
-  
+  {{ form.media }}
   {{ form.non_field_errors }}
   {{ form.title.errors }}
   <div class="required field">
@@ -13,37 +13,32 @@
     </div>
   </div>
   {{ form.content.errors }}
-  {{ form.media }}
   <div class="required field">
     <label>{{ form.content.label }}</label>
     <div class="ui input">
       {{ form.content }}
     </div>
   </div>
+  {{ form.category.errors }}
+  <div class="required field">
+      <label>{{ form.category.label }}</label>
+      {{ form.category }}
+  </div>
+  {{ form.currency.errors }}
   {{ form.price.errors }}
+  {{ form.price_type.errors }}
   <div class="required field">
     <label>{{ form.price.label }}</label>
     <div class="ui right labeled input">
-      <select class="ui compact selection dropdown">
-        <option selected="" value="euro">€</option>
-        <option value="yen">¥</option>
-      </select>
+      {{ form.currency }}
       {{ form.price }}
-      <select class="ui compact selection dropdown">
-        <option selected="" value="day">{% trans 'per day' %}</option>
-        <option value="hour">{% trans 'per hour' %}</option>
-      </select>
+      {{ form.price_type }}
     </div>
   </div>
   {{ form.type.errors }}
   <div class="required field">
       <label>{{ form.type.label }}</label>
       {{ form.type }}
-  </div>
-  {{ form.categories.errors }}
-  <div class="required field">
-      <label>{{ form.categories.label }}</label>
-      {{ form.categories }}
   </div>
   {{ form.cities.errors }}
   <div class="required field">

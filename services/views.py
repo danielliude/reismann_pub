@@ -44,6 +44,7 @@ def service_add(request, username, edit_service_form=ServiceForm,
         if request.method == 'POST':
 
             form = edit_service_form(request.POST, request.FILES)
+            print(form.is_valid)
             if form.is_valid():
               service = form.save(username = username)
               service.status = 1

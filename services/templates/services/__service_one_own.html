@@ -27,10 +27,8 @@
       {% endfor %}
     </div>
     <div class="item style_label">
-      <div class="header">{% trans 'Categories' %}</div>
-      {% for category in service.categories.all %}
-        <a class="ui green label">{{ category.name }}</a>
-      {% endfor %}
+      <div class="header">{% trans 'Category' %}</div>
+        <a class="ui green label">{{ service.category.name }}</a>
     </div>
     <div class="item style_label">
       <div class="header">{% trans 'Languages' %}</div>

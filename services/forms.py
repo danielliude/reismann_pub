@@ -10,7 +10,7 @@ from cities.models import City
 
 from services.models import Service
 
-from core.constants import SERVICE_TYPE_CHOICES
+from core.constants import SERVICE_TYPE_CHOICES, SERVICE_PRICE_TYPE_CHOICES, SERVICE_CURRENCY_CHOICES
 
 import logging
 
@@ -25,16 +25,22 @@ class ServiceForm(forms.ModelForm):
   title = forms.CharField(widget=forms.TextInput(attrs={
                             'placeholder': _('service title')}),
                           label=_('Title'),
-                          max_length=150)
+                          max_length=10, required=True)
 
   content = forms.CharField(widget=RedactorEditor(attrs={
                              'placeholder': _('service content'),
                              'cols': "20",
                              'rows': "5"}),
                             label=_('Content'),
-                            max_length=3000)
+                            max_length=3000, required= True)
+
+  currency = forms.ChoiceField(label=_('Price type'),
+                           choices = SERVICE_CURRENCY_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui compact selection dropdown', 'required': True}), required=True)
 
   price = forms.IntegerField(min_value=1, max_value=1000, required=True, label=_('Price'))
+
+  price_type = forms.ChoiceField(label=_('Price type'),
+                           choices = SERVICE_PRICE_TYPE_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui compact selection dropdown', 'required': True}), required=True)
 
   type = forms.ChoiceField(label=_('Type'),
                            choices = SERVICE_TYPE_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'required': True}), required=True)
@@ -47,10 +53,10 @@ class ServiceForm(forms.ModelForm):
                                      }),
                                      queryset=City.objects.all())
 
-  categories = forms.ModelMultipleChoiceField(label=_('Categories'),
+  category = forms.ModelChoiceField(label=_('Category'),
                                          widget=forms.Select(attrs={
                                            'class': 'ui fluid search dropdown',
-                                           'placeholder': _('service categories')
+                                           'placeholder': _('service category')
                                          }),
                                          queryset=ServiceCategory.objects.all())
 

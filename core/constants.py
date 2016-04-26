@@ -26,6 +26,16 @@ SERVICE_TYPE_CHOICES = (
   (2, _('Full time')),
 )
 
+SERVICE_PRICE_TYPE_CHOICES = (
+  (1, _('Per day')),
+  (2, _('Per hour')),
+)
+
+SERVICE_CURRENCY_CHOICES = (
+  (1, _('€')),
+  (2, _('¥')),
+)
+
 BOOKING_STATUS = (
   (1, _('Negotiation by customer')),
   (2, _('Negotiation by provider')),

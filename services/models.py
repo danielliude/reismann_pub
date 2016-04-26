@@ -8,7 +8,7 @@ from redactor.fields import RedactorField
 
 from easy_thumbnails.fields import ThumbnailerImageField
 
-from core.constants import SERVICE_TYPE_CHOICES, SERVICE_CARD_IMAGE_SETTINGS, SERVICE_STATUS
+from core.constants import SERVICE_TYPE_CHOICES, SERVICE_CARD_IMAGE_SETTINGS, SERVICE_STATUS, SERVICE_CURRENCY_CHOICES, SERVICE_PRICE_TYPE_CHOICES
 from core.uploads import upload_to_service_card, upload_to_service_content
 
 from configurations.models import ServiceCategory, ServiceTag, ServiceLanguage
@@ -30,13 +30,19 @@ class Service(models.Model):
 
   price = models.DecimalField(_('service price'), blank=True, null=True, max_digits=6, decimal_places=2)
 
+  currency = models.PositiveSmallIntegerField(_('service currency'), choices=SERVICE_CURRENCY_CHOICES,
+                                          blank=True, null=True)
+
+  price_type = models.PositiveSmallIntegerField(_('service type'), choices=SERVICE_PRICE_TYPE_CHOICES,
+                                          blank=True, null=True)
+
   card_image = ThumbnailerImageField(_('card image'), blank=True, upload_to=upload_to_service_card,
                                      resize_source=SERVICE_CARD_IMAGE_SETTINGS,
                                      help_text=_('service card image help text'))
 
-  categories = models.ManyToManyField(ServiceCategory, verbose_name=_('categories of service'),
-                                      help_text=_('categories of service help text'),
-                                      related_name='services')
+  category = models.ForeignKey(ServiceCategory, verbose_name=_('service category'),
+                                      help_text=_('service category help text'),
+                                      related_name='services', blank=True, null= True)
 
   tags = models.ManyToManyField(ServiceTag, verbose_name=_('tags of service'),
                                 help_text=_('tags of service help text'),

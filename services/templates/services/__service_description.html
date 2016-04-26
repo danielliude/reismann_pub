@@ -27,12 +27,10 @@
         {% endfor %}
       </div>
       <div class="four wide column" style="min-width:120px;">
-        <i class="folder icon"></i> {% trans 'categories' %}
+        <i class="folder icon"></i> {% trans 'category' %}
       </div>
       <div class="twelve wide column" style="margin-bottom:-5px;">
-        {% for category in service.categories.all %}
-          <a class="ui green label" style="margin-bottom:5px;">{{ category.name }}</a>
-        {% endfor %}
+          <a class="ui green label" style="margin-bottom:5px;">{{ service.category.name }}</a>
       </div>
       <div class="four wide column" style="min-width:120px;">
         <i class="flag icon"></i> {% trans 'languages' %}

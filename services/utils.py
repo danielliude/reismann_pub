@@ -35,7 +35,7 @@ def get_distinct(user, field_name):
 
 def get_distinct_categories(user):
 
-    ids = get_distinct(user, 'categories')
+    ids = get_distinct(user, 'category')
     return ServiceCategory.objects.filter(id__in=ids)
 
 def get_distinct_tags(user):

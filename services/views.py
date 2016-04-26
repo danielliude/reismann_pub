@@ -42,7 +42,7 @@ def service_add(request, username, edit_service_form=ServiceForm,
         contact = get_user_contact(user)
 
         form = edit_service_form()
-        
+
         if request.method == 'POST':
 
             form = edit_service_form(request.POST, request.FILES)

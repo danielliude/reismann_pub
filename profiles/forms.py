@@ -29,26 +29,26 @@ class ProfileIdForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
   first_name = forms.CharField(label=_('First name'),
                                max_length=30,
-                               widget=forms.TextInput(attrs={'placeholder': _('First name')}))
+                               widget=forms.TextInput(attrs={'placeholder': _('First name')}), required = True)
   last_name = forms.CharField(label=_('Last name'),
                               max_length=30,
-                              widget=forms.TextInput(attrs={'placeholder': _('Last name')}))
+                              widget=forms.TextInput(attrs={'placeholder': _('Last name')}), required = True)
   gender = forms.ChoiceField(label=_('Gender'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                             choices=GENDER_CHOICES)
+                             choices=GENDER_CHOICES, required = True)
   profession = forms.ChoiceField(label=_('Profession'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                             choices=PROFESSION_CHOICES)
+                             choices=PROFESSION_CHOICES, required = True)
   avatar = forms.ImageField(label=_('Avatar'),
                              widget=ImageClearableFileInput(attrs={}),
                              required=False)
   birthday = forms.DateField(label=_('Birthday'),
                              widget=forms.DateInput(attrs={'required': True},
                                                     format='%Y-%m-%d'),
-                             input_formats=['%Y-%m-%d'])
+                             input_formats=['%Y-%m-%d'], required = True)
   location = forms.ModelChoiceField(label=_('Location'),
                                     widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                                    queryset=City.objects.all())
+                                    queryset=City.objects.all(), required= True)
   short_description = forms.CharField(label=_('Short description'), max_length=255,
                                       widget=forms.TextInput(attrs={}),
                                       required=False)
@@ -57,7 +57,7 @@ class ProfileForm(forms.ModelForm):
                                 required=False)
   bio = forms.CharField(label=_('Biography'),
                         widget=forms.Textarea(attrs={}),
-                        required=False)
+                        required=True)
   is_active = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('Is active')}),
                        required= False,
                        label=_('active'))

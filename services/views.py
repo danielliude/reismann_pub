@@ -41,10 +41,11 @@ def service_add(request, username, edit_service_form=ServiceForm,
         profile = get_user_profile(user)
         contact = get_user_contact(user)
 
+        form = edit_service_form()
+        
         if request.method == 'POST':
 
             form = edit_service_form(request.POST, request.FILES)
-            print(form.is_valid)
             if form.is_valid():
               service = form.save(username = username)
               service.status = 1
@@ -59,8 +60,6 @@ def service_add(request, username, edit_service_form=ServiceForm,
               else:
                 redirect_to = reverse('profiles:services', kwargs={'username': username})
               return redirect(redirect_to)
-
-        form = edit_service_form()
 
         if not extra_context: extra_context = dict()
         extra_context['form'] = form

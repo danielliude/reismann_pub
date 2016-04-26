@@ -9,13 +9,6 @@
 {% endblock %}
 
 {% block content %}
-    <div class="ui animated large  fade button fixed_position" tabindex="0">
-      <div class="visible content">Top</div>
-      <div class="hidden content">
-        <i class="angle up icon"></i>
-      </div>
-    </div>
-
     {% include "core/__index_banner.html" %}
 
     {% if popular_profiles|length > 0 %}
@@ -35,7 +28,11 @@
         {% include 'cities/__popular_cities.html' with popular_cities=popular_cities %}
         {% endif %}
     </div>
-    <img src="http://127.0.0.1:8000/static/images/dummy/banner_1.jpg" style="display:none;">
-    <img src="http://127.0.0.1:8000/static/images/dummy/banner_2.jpg" style="display:none;">
-    <img src="http://127.0.0.1:8000/static/images/dummy/banner_3.jpg" style="display:none;">
+
+    <div class="ui animated large fade button fixed_position" tabindex="0">
+      <div class="visible content">Top</div>
+      <div class="hidden content">
+        <i class="angle up icon"></i>
+      </div>
+    </div>
 {% endblock %}

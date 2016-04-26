@@ -51,7 +51,7 @@
 
 	$(function () {
 	    init_button();
-	    init_form();
+	    // init_form()
 
 	    function init_button() {
 	        $(".service_show [multiple='multiple']").each(function () {

@@ -1,7 +1,7 @@
 import '../../styles/templates/accounts/password_reset.scss'
 
 $(function() {
-    init_form()
+    // init_form()
 
     function init_form() {
         $('.ui.form').form({

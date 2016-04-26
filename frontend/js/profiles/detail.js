@@ -5,7 +5,7 @@ import '../../vendors/daterangepicker/daterangepicker.js'
 
 $(function() {
     init_button()
-    init_form()
+    // init_form()
 
     function init_button() {
         $('.profile_form .ui.dropdown').dropdown();

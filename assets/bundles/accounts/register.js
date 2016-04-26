@@ -50,7 +50,7 @@
 	__webpack_require__(9);
 
 	$(function () {
-	    init_form();
+	    // init_form()
 	    init_model();
 
 	    function init_form() {

@@ -2,7 +2,7 @@ import '../../styles/templates/profiles/message.scss'
 
 $(function() {
     init_button()
-    init_form()
+    // init_form()
 
     function init_button() {
         $('.message_write_form .ui.dropdown').dropdown();

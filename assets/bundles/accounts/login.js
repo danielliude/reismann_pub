@@ -49,7 +49,7 @@
 	__webpack_require__(1);
 
 	$(function () {
-	    init_form();
+	    // init_form()
 
 	    function init_form() {
 	        $('.ui.form').form({

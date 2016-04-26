@@ -1,7 +1,7 @@
 import '../../styles/templates/accounts/register.scss'
 
 $(function() {
-    init_form()
+    // init_form()
     init_model()
 
     function init_form() {

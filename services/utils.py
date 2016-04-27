@@ -25,6 +25,12 @@ def get_user_services(user):
     services = Service.objects.filter(user = user)
     return services
 
+def get_user_active_services(user):
+
+    services = Service.objects.filter(user = user, status = 2)
+    return services
+
+
 def get_service_by_id(id):
 
     return Service.objects.get(pk = id)

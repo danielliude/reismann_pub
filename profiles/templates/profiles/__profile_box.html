@@ -42,6 +42,8 @@
         {% if request.user.is_authenticated %}
           {% if view_own_profile %}
             <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue fluid button"><b>{% trans 'Edit profile' %}</b></a><br>
+
+            <a href="{% url 'profiles:profile' profile.user.username %}" class="ui brand_blue fluid button"><b>{% trans 'View profile' %}</b></a><br>
           {% else %}
             <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="ui brand_blue fluid button"><b>{% trans 'Follow me' %}</b></a><br>
             <a href="{% url 'profiles:booking_add' profile.user.username provider_service.id %}" class="ui brand_blue fluid button"><b>{% trans 'Book provider' %}</b></a>

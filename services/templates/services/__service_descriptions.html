@@ -1,12 +1,7 @@
 {% load i18n %}
 
 <div class="ui segment profiles_services">
-  {% if view_own_profile %}
-    <h3>{% trans 'My services' %}</h3>
-  {% else %}
-    <h3>{% trans 'Services' %}</h3>
-  {% endif %}
-
+  <h3>{% trans 'Services' %}</h3>
   {% for service in services %}
     <div class="row" onclick="window.document.location='services/view/{{ service.id }}/';">
       <h4> {{ service.title }}</h4>
@@ -55,9 +50,11 @@
 
       {% if request.user.is_authenticated %}
         {% if view_own_profile %}
-          <a class="ui brand_blue right floated button" href="{% url 'profiles:service_edit' profile.user.username service.id %}"><b>{% trans 'Edit service' %}</b></a>
+          <a class="ui brand_blue right floated button disabled" href=""><b>{% trans 'Book service' %}</b></a>
+          <a class="ui brand_blue right floated button" href="{% url 'profiles:service_view' profile.user.username service.id %}"><b>{% trans 'View service' %}</b></a>
         {% else %}
-          <a class="ui brand_blue right floated button" href="{% url 'profiles:booking_add' profile.user.username service.id %}"><b>{% trans 'Book me' %}</b></a>
+          <a class="ui brand_blue right floated button" href="{% url 'profiles:booking_add' profile.user.username service.id %}"><b>{% trans 'Book service' %}</b></a>
+          <a class="ui brand_blue right floated button" href="{% url 'profiles:service_view' profile.user.username service.id %}"><b>{% trans 'View service' %}</b></a>
         {% endif %}
       {% else %}
         <a class="ui brand_blue right floated button" href="{% url 'accounts:login' %}"><b>{% trans 'Log in to book' %}</b></a>

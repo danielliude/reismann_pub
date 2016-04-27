@@ -34,10 +34,6 @@
       <i class="user icon"></i>
       {% trans 'Profile' %}
     </a>
-    <a class="item {% if url_name == 'homepage' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
-      <i class="home icon"></i>
-      {% trans 'Homepage' %}
-    </a>
     <a class="item {% if url_name == 'album' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
       <i class="file image outline icon"></i>
       {% trans 'Album' %}

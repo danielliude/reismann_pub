@@ -1,0 +1,65 @@
+{% extends "profiles/__profile_base.html" %}
+{% load render_bundle from webpack_loader %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block stylesheets %}
+  {% render_bundle 'profiles/album' 'css' %}
+{% endblock %}
+
+{% block javascripts %}
+  {% render_bundle 'profiles/album' 'js' %}
+{% endblock %}
+
+{% block content %}
+  <div class="ui grid segment blue album_grid">
+    <div class="row">
+      <h3>{% trans 'Photo Center' %}</h3>
+    </div>
+
+    <form method="post" action="">
+      {% csrf_token %}
+      
+      <div class="ui grid">
+        {% for image in images %}
+          <div class="four wide column">
+            <label>
+              <img src="{% thumbnail image.image 140x140 crop='smart' %}" />
+              <input type="checkbox" name="selected" value="{{ image.id }}" {% if image.is_in_my_album %}checked{% endif %} />
+            </label>
+          </div>
+        {% endfor %}
+
+        <div class="row">
+          <div class="column">
+            <p>{% trans 'To display some of above photos on my profile page, please select the checkboxes and click save.' %}</p>
+            <input class="button blue ui" type="submit" name="select" value="{% trans 'Save' %}" />
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="ui grid segment blue album_grid">
+    <div class="column">
+      <h3>{% trans 'Upload an image to Photo Center' %}</h3>
+      <form class="ui form {% if form.errors %}error{% endif %}" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="required field">
+          {{ form.image }}
+        </div>
+
+        <div class="field">
+          <input type="submit" name="upload" value="{% trans 'Upload Image' %}" class="ui blue submit button" />
+        </div>
+
+        <div class="ui error message">
+          {{ form.image.errors }}
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %} 

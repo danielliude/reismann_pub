@@ -2,7 +2,10 @@ import logging
 
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import render
+from django.http import Http404
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from userena.decorators import secure_required
 from guardian.decorators import permission_required_or_403
 
@@ -19,6 +22,8 @@ from bookings.utils import get_number_bookings
 from configurations.utils import get_active_service_categories
 from insite_messages.models import Message
 from services.models import Service
+from album.forms import AlbumImageUploadForm
+from album.models import AlbumImage, MyAlbum
 
 
 logger = logging.getLogger("profiles")
@@ -304,3 +309,45 @@ def contact(request, username, edit_contact_form=ContactForm,
   extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+
+
+@secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
+def album(request, username):
+
+    user = get_object_or_404(User, username__iexact=username)
+
+    if request.method == 'POST':
+        if request.POST.get('select'):
+            selected_image_ids = request.POST.getlist('selected')
+            selected_images = AlbumImage.objects.filter(user=user, id__in=selected_image_ids)
+            if selected_images.exists():
+                my_album, _c = MyAlbum.objects.get_or_create(user=user)
+                my_album.images.clear()
+                for image in selected_images:
+                    my_album.images.add(image)
+            return redirect(request.path)
+        else:
+            form = AlbumImageUploadForm(request.POST, request.FILES)
+            form.user = user
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.image_size = obj.image.size
+                obj.user = user
+                obj.save()
+                return redirect(request.path)
+    else:
+        form = AlbumImageUploadForm()
+
+    context = {
+        'form': form,
+        'images': AlbumImage.objects.filter(user=user),
+
+        'profile': get_user_profile(user),
+        'contact': get_user_contact(user),
+        'services': get_user_services(user),
+        'service_categories': get_active_service_categories(),
+    }
+    context = makeContextForDetails(request, context)
+    context = makeContextForMessages(request, context)
+    return render(request, 'profiles/album.html', context)

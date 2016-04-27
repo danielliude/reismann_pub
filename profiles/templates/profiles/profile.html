@@ -1,5 +1,6 @@
 {% extends "core/__global.html" %}
 {% load render_bundle from webpack_loader %}
+{% load thumbnail %}
 
 {% block stylesheets %}
     {% render_bundle 'profiles/profile' 'css' %}
@@ -25,6 +26,19 @@
           <div class="sixteen wide column">
             {% include "services/__service_descriptions.html" %}
           </div>
+          
+          <div class="sixteen wide column">
+            <div class="ui grid">
+              {% for image in profile.user.my_album.images.all %}
+                <div class="four wide column">
+                  <a href="{{ image.image.url }}">
+                    <img src="{% thumbnail image.image 140x140 crop='smart' %}" />
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="computer only five wide column">

@@ -16,29 +16,29 @@ class ContactForm(forms.ModelForm):
   """
   phone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('telephone number')}),
                           required= True,
-                          label=_('telephone number'),
+                          label=_('Telephone number'),
                           max_length=30)
 
   email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder': _('contact email')}),
                           required= True,
-                          label=_('contact email'),
+                          label=_('Contact email'),
                           max_length=200)
 
   weibo = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('weibo account')}),
                           required= False,
-                          label=_('weibo account'),
+                          label=_('Weibo account'),
                           max_length=30)
   wechat = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('wechat account')}),
                           required= False,
-                          label=_('wechat account'),
+                          label=_('Wechat account'),
                           max_length=30)
   qq = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('qq account')}),
-                       label=_('qq account'),
+                       label=_('Qq account'),
                        max_length=30)
 
   email_notifications = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('email notifications')}),
                        required= False,
-                       label=_('email notifications'))
+                       label=_('Email notifications'))
 
 
   class Meta:

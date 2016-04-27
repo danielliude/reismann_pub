@@ -1,4 +1,9 @@
+#coding=utf-8
+
 from django.utils.translation import ugettext_lazy as _
+
+ALBUM_IMAGES_QTY = 20
+ALBUM_IMAGES_SIZE = 20 * 1024 * 1024
 
 GENDER_CHOICES = (
   ('', _('gender')),

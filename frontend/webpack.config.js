@@ -19,6 +19,7 @@ module.exports = {
     'profiles/profile': './js/profiles/profile',
     'profiles/dashboard': './js/profiles/dashboard',
     'profiles/contact': './js/profiles/contact',
+    'profiles/album': './js/profiles/album',
     'profiles/detail': './js/profiles/detail',
     'profiles/services': './js/profiles/services',
     'profiles/message': './js/profiles/message',

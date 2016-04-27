@@ -28,6 +28,7 @@ def upload_to_profile_card(instance, filename):
                                              'hash': hash[:10],
                                              'extension': extension}
 
+
 def upload_to_profile_id_card(instance, filename):
   extension = filename.split('.')[-1].lower()
   salt, hash = generate_sha1(instance.id)
@@ -39,3 +40,15 @@ def upload_to_service_content(instance, filename):
   salt, hash = generate_sha1(instance.id)
   path = 'reismann/images/services/content'
   return '%(path)s%(hash)s.%(extension)s' % {'path': path, 'hash': hash[:10], 'extension': extension}
+
+
+def upload_to_album(instance, filename):
+    extension = filename.split('.')[-1].lower()
+    salt, hash = generate_sha1(instance.id)
+    kw = {
+        'path': 'reismann/images/album',
+        'username': instance.user.username,
+        'hash': hash[:10],
+        'extension': extension,
+    }
+    return '%(path)s/%(username)s/%(hash)s.%(extension)s' % kw

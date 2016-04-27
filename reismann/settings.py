@@ -75,6 +75,7 @@ INSTALLED_APPS = (
   'followship',
   'bookings',
   'webpack_loader',
+  'album',
 )
 
 SESSION_COOKIE_AGE = 360
@@ -196,3 +197,9 @@ LOGGING = {
     }
   },
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
+

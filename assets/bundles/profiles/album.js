@@ -47,22 +47,29 @@
 
 	'use strict';
 
-	__webpack_require__(128);
+	__webpack_require__(109);
 
 	$(function () {
-		init();
+	    init_form();
 
-		function init() {
-			$('.ui.sticky').sticky({
-				context: '.profile_content',
-				offset: 0
-			});
-		}
+	    function init_form() {
+	        $('.ui.form').form({
+	            fields: {
+	                image: {
+	                    identifier: 'image',
+	                    rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please upload an image'
+	                    }]
+	                }
+	            }
+	        });
+	    }
 	});
 
 /***/ },
 
-/***/ 128:
+/***/ 109:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

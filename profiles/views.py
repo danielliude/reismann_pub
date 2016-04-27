@@ -13,8 +13,7 @@ from profiles.managers import ProfileMailManager
 from core.utils import ExtraContextTemplateView
 from contacts.forms import ContactForm
 from contacts.utils import get_user_contact
-from services.utils import get_user_services
-from services.utils import get_distinct_categories, get_distinct_cities,get_distinct_languages,get_distinct_tags, get_services_rating
+from services.utils import get_distinct_categories, get_distinct_cities,get_distinct_languages,get_distinct_tags, get_services_rating, get_user_services, get_user_active_services
 from followship.utils import get_number_followers, get_number_following
 from bookings.utils import get_number_bookings
 from configurations.utils import get_active_service_categories
@@ -83,7 +82,7 @@ def profile(request, username, template_name="profiles/profile.html",
   user = get_object_or_404(User, username__iexact=username)
 
   profile = get_user_profile(user)
-  services = get_user_services(user)
+  services = get_user_active_services(user)
 
   extra_context['profile'] = profile
   extra_context['services'] = services

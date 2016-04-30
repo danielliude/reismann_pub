@@ -1,0 +1,15 @@
+.ui.grid.setting_grid {
+	max-width: 700px;
+	margin: 80px auto;
+}
+
+.ui.segment.setting_form {
+	margin-bottom: 2.5rem;
+	ul.errorlist {
+		list-style: none;
+		-webkit-padding-start: 0; 
+		li {
+			color: #dd4b39; 
+		}
+	}
+}

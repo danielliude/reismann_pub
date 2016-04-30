@@ -26,7 +26,17 @@
     </div>
     <div class="item">
       <div class="header">{% trans 'Price' %}</div>
-      {{ booking.price }}
+      {% if booking.service.currency == 1 %}
+        {% trans '€' %}
+      {% elif booking.service.currency == 2 %}
+        {% trans '¥' %}
+      {% endif %}
+      {{ booking.price|floatformat:"0" }}/
+      {% if booking.service.price_type == 1 %}
+        {% trans 'day' %}
+      {% elif booking.service.price_type == 2 %}
+        {% trans 'hour' %}
+      {% endif %}
     </div>
     <div class="item">
       <div class="header">{% trans 'Number of customers' %}</div>

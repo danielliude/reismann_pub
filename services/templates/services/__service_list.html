@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="ui blue segment service_show">
+<div class="ui blue padded segment service_show">
   <h3 class="ui center aligned header">{% trans 'Available services' %}</h3>
 
   <table class="ui striped table">
@@ -17,8 +17,20 @@
         {% for service in services %}
         <tr onclick="window.document.location='view/own/{{ service.id }}/';">
             <td>{{ service.title }}</td>
-            <td>{{ service.price}}</td>
-            <td>{{ service.created_at }}</td>
+            <td>
+              {% if service.currency == 1 %}
+                {% trans '€' %}
+              {% elif service.currency == 2 %}
+                {% trans '¥' %}
+              {% endif %}
+              {{ service.price|floatformat:"0" }}/
+              {% if service.price_type == 1 %}
+                {% trans 'day' %}
+              {% elif service.price_type == 2 %}
+                {% trans 'hour' %}
+              {% endif %}
+            </td>
+            <td>{{ service.created_at|date:"Y-m-d H:i:s" }}</td>
 
             {% if service.status == 1 %}
                 <td><span class="ui red label">{% trans 'Moderation' %}</span></td>

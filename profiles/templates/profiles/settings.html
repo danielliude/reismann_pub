@@ -1,18 +1,16 @@
 {% extends "profiles/__profile_base.html" %}
 {% load render_bundle from webpack_loader %}
 {% block stylesheets %}
-{#    {% render_bundle 'profiles/settings' 'css' %}#}
+   {% render_bundle 'profiles/setting' 'css' %}
 {% endblock %}
 {% block javascripts %}
-{#    {% render_bundle 'profiles/settings' 'js' %}#}
+   {% render_bundle 'profiles/setting' 'js' %}
 {% endblock %}
 
 {% block content %}
-	<div class="ui grid">
+	<div class="ui grid setting_grid">
 	  <div class="column">
-          <div class="ui blue padded segment">
-                {% include 'profiles/__settings_form.html' %}
-            </div>
+        {% include 'profiles/__settings_form.html' %}
 	  </div>
 	</div>
 {% endblock %}

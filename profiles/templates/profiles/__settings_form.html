@@ -1,7 +1,7 @@
 {% load i18n %}
 
-<div class="ui blue padded segment profile_form">
-
+<div class="ui blue padded segment setting_form">
+  <h3 class="ui center aligned header">{% trans 'Settings' %}</h3>
   <form class="ui form" action="" enctype="multipart/form-data" method="post">
 
     <br>
@@ -13,7 +13,6 @@
         {{ form.profile_is_active.label_tag }}
       </div>
     </div>
-    <br>
     <div class="field">
       <div class="ui checkbox">
         {{ form.email_notifications}}
@@ -21,7 +20,8 @@
       </div>
     </div>
 
-    <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+    <br>
+    <button class="fluid ui primary button" type="submit" style="margin-bottom:8px;">{% trans 'Save changes' %}</button>
     <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
     <div class="ui error message">
     </div>

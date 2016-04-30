@@ -71,33 +71,20 @@
       {{ form.bio }}
     </div>
 
-     <div class="field">
-      <div class="ui checkbox">
-        {{ form.is_active}}
-        {{ form.is_active.label_tag }}
-      </div>
-    </div>
-
     {{ contactForm.email.error }}
-    <div class="field">
+    <div class="required field">
         <label>{{ contactForm.email.label }}</label>
         {{ contactForm.email }}
     </div>
 
     {{ contactForm.phone.error }}
-    <div class="field">
+    <div class="required field">
         <label>{{ contactForm.phone.label }}</label>
         {{ contactForm.phone }}
     </div>
 
-    {{ contactForm.weibo.error }}
-    <div class="field">
-        <label>{{ contactForm.weibo.label }}</label>
-        {{ contactForm.weibo }}
-    </div>
-
     {{ contactForm.wechat.error }}
-    <div class="field">
+    <div class="required field">
         <label>{{ contactForm.wechat.label }}</label>
         {{ contactForm.wechat }}
     </div>
@@ -106,6 +93,12 @@
     <div class="field">
         <label>{{ contactForm.qq.label }}</label>
         {{ contactForm.qq}}
+    </div>
+
+    {{ contactForm.weibo.error }}
+    <div class="field">
+        <label>{{ contactForm.weibo.label }}</label>
+        {{ contactForm.weibo }}
     </div>
 
     <br>

@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^(?P<username>[\@\.\w-]+)/bookings/edit/(?P<booking_id>[0-9]+)/$', views.booking_edit, name='booking_edit'),
     url(r'^(?P<username>[\@\.\w-]+)/bookings/reject/(?P<booking_id>[0-9]+)/$', views.booking_reject, name='booking_reject'),
     url(r'^(?P<username>[\@\.\w-]+)/bookings/approve/(?P<booking_id>[0-9]+)/$', views.booking_approve, name='booking_approve'),
-    url(r'^(?P<username>[\@\.\w-]+)/bookings/remove/(?P<booking_id>[0-9]+)/$', views.booking_remove, name='booking_remove'),
+    url(r'^(?P<username>[\@\.\w-]+)/bookings/remove/(?P<booking_id>[0-9]+)/$', views.booking_delete, name='booking_delete'),
+    url(r'^(?P<username>[\@\.\w-]+)/bookings/cancel/(?P<booking_id>[0-9]+)/$', views.booking_cancel, name='booking_cancel'),
 
 ]

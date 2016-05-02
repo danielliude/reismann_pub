@@ -14,7 +14,7 @@ from profiles.views import makeContextForDetails, makeContextForMessages
 from profiles.utils import get_user_profile
 from bookings.utils import get_booking_by_id
 
-from datetime import datetime
+from _datetime import datetime
 from bookings.managers import BookingMailManager as mailer
 from services.models import Service
 
@@ -105,9 +105,9 @@ def booking_reject(request, username, booking_id):
 
         if user:
             if user.has_perm('reject_booking', booking):
-                if booking.sender == user:
+                if(booking.sender == user):
                     booking.status = 3
-                elif booking.recipient == user:
+                elif(booking.recipient == user):
                     booking.status = 4
                 booking.save()
 
@@ -124,9 +124,9 @@ def booking_approve(request, username, booking_id):
 
         if user:
             if user.has_perm('approve_booking', booking):
-                if user == booking.sender:
+                if(user == booking.sender):
                     booking.status = 5
-                elif user == booking.recipient:
+                elif(user == booking.recipient):
                     booking.status = 6
                 booking.save()
 
@@ -221,7 +221,7 @@ def booking_edit(request, username, booking_id, edit_booking_form = BookingForm,
 
 @secure_required
 @permission_required_or_403('bookings.delete_booking')
-def booking_remove(request, username, booking_id, template_name='bookings/bookings.html', success_url=None,
+def booking_delete(request, username, booking_id, template_name='bookings/bookings.html', success_url=None,
                  extra_context=None, **kwargs):
 
     if request.user.username == username:
@@ -230,20 +230,18 @@ def booking_remove(request, username, booking_id, template_name='bookings/bookin
         booking = get_booking_by_id(booking_id)
 
         if user:
-            # if user.has_perm('delete_booking', booking):
+            if user.has_perm('delete_booking', booking):
+                if(booking.sender == user):
+                    booking.sender_deleted_at = datetime.now()
+                    booking.status = 7
+                    booking.save()
+                elif(booking.recipient == user):
+                    booking.recipient_deleted_at = datetime.now()
+                    booking.status = 8
+                    booking.save()
 
-            if(booking.sender == user):
-                booking.sender_deleted_at = datetime.now()
-                booking.status = 7
-                booking.save()
-
-            if(booking.recipient == user):
-                booking.recipient_deleted_at = datetime.now()
-                booking.status = 8
-                booking.save()
-
-            if(booking.recipient_deleted_at is not None and booking.sender_deleted_at is not None):
-                booking.delete()
+                if(booking.recipient_deleted_at is not None and booking.sender_deleted_at is not None):
+                    booking.delete()
 
 
         url = reverse('profiles:bookings', kwargs={'username':user.username})
@@ -254,4 +252,29 @@ def booking_remove(request, username, booking_id, template_name='bookings/bookin
         return HttpResponseRedirect(url)
 
 
+@secure_required
+@permission_required_or_403('bookings.cancel_booking')
+def booking_cancel(request, username, booking_id, template_name='bookings/bookings.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+    if request.user.username == username:
+
+        user = get_object_or_404(User, username__iexact=username)
+        booking = get_booking_by_id(booking_id)
+
+        if user:
+            # if user.has_perm('cancel_booking', booking):
+            if(booking.sender == user):
+                booking.status = 9
+                booking.save()
+            elif(booking.recipient == user):
+                booking.status = 10
+                booking.save()
+
+        url = reverse('profiles:bookings', kwargs={'username':user.username})
+        return HttpResponseRedirect(url)
+
+    else:
+        url = reverse('profiles:bookings', kwargs={'username':request.user.username})
+        return HttpResponseRedirect(url)
 

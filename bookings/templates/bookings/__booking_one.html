@@ -57,9 +57,13 @@
       {% elif booking.status == 6%}
         <a class="ui green label">{% trans 'Approved' %}</a>
       {% elif booking.status == 7%}
-        <a class="ui red label">{% trans 'Removed' %}</a>
+        <a class="ui red label">{% trans 'Removed by customer' %}</a>
       {% elif booking.status == 8%}
-        <a class="ui red label">{% trans 'Removed' %}</a>
+        <a class="ui red label">{% trans 'Removed by provider' %}</a>
+      {% elif booking.status == 9%}
+        <a class="ui red label">{% trans 'Canceled by customer' %}</a>
+      {% elif booking.status == 10%}
+        <a class="ui red label">{% trans 'Canceled by provider' %}</a>
       {% endif %}
     </div>
     <div class="item">
@@ -76,34 +80,28 @@
           <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}" class="ui brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
           <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}" class="ui green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
           <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
-          <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
-        {% elif booking.status != 2 %}
-          <a class="ui disabled brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
-          <a class="ui disabled green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
-          <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
-          <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
+          <a href="{% url 'profiles:booking_cancel' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'cancel' %}</a>
+        {% elif booking.status == 9 or booking.status == 10 or booking.status == 8 or booking.status == 7%}
+          <a href="{% url 'profiles:booking_delete' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'delete' %}</a>
         {% else %}
           <a class="ui disabled brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
           <a class="ui disabled green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
           <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
-          <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
+          <a href="{% url 'profiles:booking_cancel' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'cancel' %}</a>
         {% endif %}
       {% elif request.user == booking.recipient %}
         {% if booking.status == 2 %}
           <a href="{% url 'profiles:booking_edit' request.user.username booking.id %}" class="ui brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
           <a href="{% url 'profiles:booking_approve' request.user.username booking.id %}" class="ui green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
           <a href="{% url 'profiles:booking_reject' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
-          <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
-        {% elif booking.status != 1 %}
-          <a class="ui disabled brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
-          <a class="ui disabled green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
-          <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
-          <a href="{% url 'profiles:booking_remove' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
+          <a href="{% url 'profiles:booking_cancel' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'cancel' %}</a>
+        {% elif booking.status == 9 or booking.status == 10 or booking.status == 8 or booking.status == 7%}
+          <a href="{% url 'profiles:booking_delete' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'delete' %}</a>
         {% else %}
           <a class="ui disabled brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
           <a class="ui disabled green button"><i class="angellist icon"></i>{% trans 'approve' %}</a>
           <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'reject' %}</a>
-          <a class="ui disabled red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
+          <a href="{% url 'profiles:booking_cancel' request.user.username booking.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'cancel' %}</a>
         {% endif %}
       {% endif %}
     </div>

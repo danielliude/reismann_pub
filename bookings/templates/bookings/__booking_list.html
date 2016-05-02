@@ -16,7 +16,7 @@
     </thead>
     <tbody>
     {% for booking in bookings %}
-      <tr onclick="window.document.location='view/{{ booking.id }}/';">
+      <tr onclick="window.document.location='{% url 'profiles:booking_view' profile.user.username booking.id%}';">
         {% if booking.sender == user %}
           <td>
             <h4 class= "ui image header">
@@ -75,21 +75,34 @@
         </td>
         <td>
           {% if booking.status == 1 %}
-            <a class="ui brand_blue label">{% trans 'Negotiation' %} </a>
+            {% if booking.sender == request.user %}
+                <a class="ui brand_blue label">{% trans 'User should reply' %} </a>
+            {% else %}
+                <a class="ui brand_blue label">{% trans 'Customer should reply' %} </a>
+            {% endif %}
           {% elif booking.status == 2%}
-            <a class="ui brand_blue label">{% trans 'Negotiation' %}</a>
+            {% if booking.recipient == request.user %}
+                <a class="ui brand_blue label">{% trans 'You should reply' %}</a>
+            {% else%}
+                <a class="ui brand_blue label">{% trans 'Provider should reply' %}</a>
+            {% endif %}
+
           {% elif booking.status == 3%}
-            <a class="ui red label">{% trans 'Rejected' %}</a>
+            <a class="ui red label">{% trans 'Rejected by customer' %}</a>
           {% elif booking.status == 4%}
-            <a class="ui red label">{% trans 'Rejected' %}</a>
+            <a class="ui red label">{% trans 'Rejected provider' %}</a>
           {% elif booking.status == 5%}
-            <a class="ui green label">{% trans 'Approved' %}</a>
+            <a class="ui green label">{% trans 'Approved by customer' %}</a>
           {% elif booking.status == 6%}
-            <a class="ui green label">{% trans 'Approved' %}</a>
+            <a class="ui green label">{% trans 'Approved by provider' %}</a>
           {% elif booking.status == 7%}
-            <a class="ui red label">{% trans 'Removed' %}</a>
+            <a class="ui red label">{% trans 'Removed by customer' %}</a>
           {% elif booking.status == 8%}
-            <a class="ui red label">{% trans 'Removed' %}</a>
+            <a class="ui red label">{% trans 'Removed by provider' %}</a>
+          {% elif booking.status == 9%}
+            <a class="ui red label">{% trans 'Canceled by customer' %}</a>
+          {% elif booking.status == 10%}
+            <a class="ui red label">{% trans 'Canceled by provider' %}</a>
           {% endif %}
         </td>
         <td>

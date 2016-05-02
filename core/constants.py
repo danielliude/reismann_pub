@@ -48,8 +48,10 @@ BOOKING_STATUS = (
   (4, _('Rejected by provider')),
   (5, _('Approved by customer')),
   (6, _('Approved by provider')),
-  (7, _('Removed by customer')),
-  (8, _('Removed by provider')),
+  (7, _('Deleted by customer')),
+  (8, _('Deleted by provider')),
+  (9, _('Canceled by customer')),
+  (10, _('Canceled by provider')),
 )
 
 SERVICE_STATUS = (
@@ -98,13 +100,15 @@ ASSIGNED_PERMISSIONS = {
      ('change_booking', 'Can change booking'),
      ('delete_booking', 'Can delete booking'),
      ('reject_booking', 'Can reject booking'),
-     ('approve_booking', 'Can approve booking')),
+     ('approve_booking', 'Can approve booking'),
+     ('cancel_booking', 'Can cancel booking')),
    'booking_recipient':
     (('view_booking', 'Can view booking'),
      ('change_booking', 'Can change booking'),
      ('delete_booking', 'Can delete booking'),
      ('reject_booking', 'Can reject booking'),
-     ('approve_booking', 'Can approve booking')),
+     ('approve_booking', 'Can approve booking'),
+     ('cancel_booking', 'Can cancel booking')),
 
 }
 
@@ -124,6 +128,7 @@ GLOBAL_PERMISSIONS = {
      ('bookings.view_booking', 'Can view booking'),
      ('bookings.change_booking', 'Can change booking'),
      ('bookings.reject_booking', 'Can reject booking'),
-     ('bookings.reject_booking', 'Can reject booking'),
-     ('bookings.approve_booking', 'Can approve booking')),
+     ('bookings.delete_booking', 'Can delete booking'),
+     ('bookings.approve_booking', 'Can approve booking'),
+     ('bookings.cancel_booking', 'Can cancel booking')),
 }

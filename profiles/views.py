@@ -1,9 +1,10 @@
 import logging
+import json
 
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.shortcuts import render
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from userena.decorators import secure_required
@@ -316,6 +317,11 @@ def contact(request, username, edit_contact_form=ContactForm,
 def album(request, username):
 
     user = get_object_or_404(User, username__iexact=username)
+
+    if request.is_ajax():
+        images = AlbumImage.objects.filter(user=user)
+        data = [{'thumb': i.image.url, 'filelink': i.image.url} for i in images]
+        return HttpResponse(json.dumps(data), content_type='application/json')
 
     if request.method == 'POST':
         if request.POST.get('select'):

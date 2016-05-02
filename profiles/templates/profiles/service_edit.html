@@ -7,6 +7,10 @@
     {% render_bundle 'profiles/services' 'js' %}
 {% endblock %}
 
+{% block extra_head %}
+  <script>var redactor_custom_options = {'imageManagerJson': '{% url "profiles:album" profile.user.username %}'};</script>
+{% endblock %}
+
 {% block content %}
     <div class="ui grid service_grid">
       <div class="column">

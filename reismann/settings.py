@@ -170,7 +170,10 @@ ANONYMOUS_USER_ID = -1
 # Mail Server Configuration MOVED TO LOCAL SETTINGS
 
 # Redactor Configuration
-REDACTOR_OPTIONS = {'lang': 'zh_cn'}
+REDACTOR_OPTIONS = {
+  'lang': 'zh_cn',
+  'plugins': ['imagemanager'],
+}
 REDACTOR_UPLOAD = 'reismann/images/services/redactor/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 REDACTOR_AUTH_DECORATOR = 'django.contrib.auth.decorators.login_required'

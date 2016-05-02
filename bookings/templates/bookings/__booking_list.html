@@ -9,8 +9,11 @@
         <th>{% trans "Customer" %}</th>
         <th>{% trans "Provider" %}</th>
         <th>{% trans "Service" %}</th>
+        <th>{% trans "Start date" %}</th>
+        <th>{% trans "End date" %}</th>
         <th>{% trans "Price" %}</th>
         <th>{% trans "Status" %}</th>
+        <th>{% trans "Rating" %}</th>
         <th>{% trans "View" %}</th>
       </tr>
     </thead>
@@ -60,6 +63,8 @@
           </td>
         {% endif %}
         <td>{{ booking.service.title}}</td>
+        <td>{{ booking.start_time|date:"Y-m-d" }}</td>
+        <td>{{ booking.end_time|date:"Y-m-d" }}</td>
         <td>
           {% if booking.service.currency == 1 %}
             {% trans '€' %}
@@ -105,6 +110,7 @@
             <a class="ui red label">{% trans 'Canceled by provider' %}</a>
           {% endif %}
         </td>
+        <td>{{ booking.rating }}</td>
         <td>
           <a class="ui green label" href="view/{{ booking.id }}/">
             <i class="unhide icon"></i>{% trans 'view' %}
@@ -113,6 +119,9 @@
       </tr>
     {% endfor %}
       <tr>
+        <td></td>
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>

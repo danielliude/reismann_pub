@@ -69,6 +69,14 @@
     height: 38px; }
   .ui.grid.banner .information .left_aligned {
     text-align: left; }
+  .ui.grid.banner .information .further_serrch {
+    display: block;
+    position: absolute;
+    right: 3px;
+    bottom: -16px;
+    color: #fff; }
+    .ui.grid.banner .information .further_serrch:hover {
+      color: #FF7E66; }
 
 /*--------------
     profile_content

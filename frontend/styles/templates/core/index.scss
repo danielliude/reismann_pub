@@ -80,6 +80,16 @@
     .left_aligned {
       text-align: left;
     }
+    .further_serrch {
+      display: block;
+      position: absolute;
+      right: 3px;
+      bottom: -16px;
+      color: #fff;
+      &:hover {
+        color: #FF7E66;
+      }
+    }
   }
 }
 

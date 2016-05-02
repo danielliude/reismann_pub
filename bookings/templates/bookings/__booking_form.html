@@ -30,13 +30,15 @@
     <label>{{ form.number_of_customers.label }}</label>
     {{ form.number_of_customers }}
   </div>
+  {{ form.currency.errors }}
   {{ form.price.errors }}
-  <div class="field">
+  {{ form.price_type.errors }}
+  <div class="required field">
     <label>{{ form.price.label }}</label>
     <div class="ui right labeled input">
-      <!-- <div class="ui label">$</div> -->
+      {{ form.currency }}
       {{ form.price }}
-      <div class="ui basic label">.00</div>
+      {{ form.price_type }}
     </div>
   </div>
   {{ form.meeting_point.errors }}

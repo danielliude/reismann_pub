@@ -15,7 +15,7 @@
 					<div class="ui header">{{ profile.get_full_name_or_username }} {{ profile.short_description }}</div>
 					<span>{{ profile.location.get_full_location }}</span>
 				</div>
-				<div class="ui red header average_price">€ {{ profile.average_price }} average price</div>
+				<div class="ui red header average_price">€ {{ profile.average_price }}</div>
 				<div class="row content">
 					<p>{{ profile.bio | slice:"250" }}{% if profile.bio|length > 250 %}...{% endif %}</p>
 				</div>

@@ -21,10 +21,13 @@ class SettingsForm(forms.ModelForm):
     email_notifications = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('Email notifications')}),
                        required= False,
                        label=_('Email notifications'))
+    show_real_name = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('Show real name')}),
+                   required= False,
+                   label=_('Show real name in Profile'))
 
     class Meta:
         model = ProfileSettings
-        fields = ['profile_is_active', 'email_notifications']
+        fields = ['profile_is_active', 'email_notifications', 'show_real_name']
 
 class ProfileIdForm(forms.ModelForm):
 

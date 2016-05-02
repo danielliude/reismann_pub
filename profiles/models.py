@@ -21,6 +21,9 @@ class ProfileSettings(models.Model):
   email_notifications = models.BooleanField(default=True, verbose_name=_('email notifications'),
                                               help_text=_('get email notifications'))
 
+  show_real_name = models.BooleanField(default=False, verbose_name=_('real name'),
+                                              help_text=_('show real name'))
+
 class Profile(models.Model):
 
   user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name='profile')
@@ -128,6 +131,15 @@ class Profile(models.Model):
     user = self.user
     if user.first_name or user.last_name:
       name = _("%(first_name)s %(last_name)s") % {'first_name': user.first_name, 'last_name': user.last_name}
+    else:
+      name = "%(username)s" % {'username': user.username}
+
+    return name.strip()
+
+  def get_short_name_or_username(self):
+    user = self.user
+    if user.first_name or user.last_name:
+      name = _("%(first_name)s %(last_name)s") % {'first_name': user.first_name, 'last_name': user.last_name[:1]+"."}
     else:
       name = "%(username)s" % {'username': user.username}
 

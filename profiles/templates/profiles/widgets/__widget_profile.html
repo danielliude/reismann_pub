@@ -4,7 +4,12 @@
   <img class="ui tiny circular left floated image" src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile avatar' %}">
 
   <div style="padding-left:100px;padding-top:10px;">
+  {% if profile.settings.show_real_name %}
     <h3 class="ui header">{{ profile.get_full_name_or_username }}</h3>
+  {% else %}
+    <h3 class="ui header">{{ profile.get_short_name_or_username }}</h3>
+  {% endif %}
+
     {% if profile.short_description %}
       <h5>{{ profile.short_description }}</h5>
     {% endif %}

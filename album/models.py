@@ -26,7 +26,7 @@ class MyAlbum(models.Model):
 
     user = models.OneToOneField('auth.User', unique=True, verbose_name=_('user'), related_name='my_album')
 
-    images = models.ManyToManyField(AlbumImage, null=True, blank=True, verbose_name=_('Images'))
+    images = models.ManyToManyField(AlbumImage, blank=True, verbose_name=_('Images'))
 
     class Meta:
         verbose_name = _('My Album')

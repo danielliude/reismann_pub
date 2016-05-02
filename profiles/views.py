@@ -155,10 +155,8 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
     contactForm = contact_form (request.POST, request.FILES, instance = contact)
 
     if form.is_valid():
-        print(form.is_valid())
         form.save()
     if contactForm.is_valid():
-        print(contactForm.is_valid())
         contactForm.save()
 
     if success_url:

@@ -32,7 +32,7 @@
 		    	<div class="header">{% trans 'Following' %}</div>
 		    </div>
 		  </a>
-		  <a class="item">
+		  <a class="item" href = "{% url 'profiles:bookings' profile.user.username %}">
 		    <div class="right floated content">
 		      <div class="header">{{ number_bookings }}</div>
 		    </div>

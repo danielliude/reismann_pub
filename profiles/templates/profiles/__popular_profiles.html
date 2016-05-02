@@ -11,8 +11,12 @@
 		      <img  src="{{ profile.get_avatar_url }}" alt="User Avatar">
 				</a>
 				<div class="ui segment">
-					<div class="row"> 
+					<div class="row">
+                        {% if profile.settings.show_full_name == True %}
 						<div class="ui header">{{ profile.get_full_name_or_username }} {{ profile.short_description }}</div>
+                        {% else %}
+                        <div class="ui header">{{ profile.get_short_name_or_username }} {{ profile.short_description }}</div>
+                        {% endif %}
 						<span>{{ profile.location.get_full_location }}</span>
 					</div>
 					<div class="ui red header average_price">€ {{ profile.average_price }}</div>

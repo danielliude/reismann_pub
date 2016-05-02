@@ -183,8 +183,7 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
 
 @secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
-def settings(request, username, settings_form=SettingsForm,
-                 template_name='profiles/settings.html', success_url=None,
+def settings(request, username, template_name='profiles/settings.html', success_url=None,
                  extra_context=None, **kwargs):
 
   user = get_object_or_404(User, username__iexact=username)
@@ -193,17 +192,19 @@ def settings(request, username, settings_form=SettingsForm,
   contact = get_user_contact(user)
   services = get_user_services(user)
 
-  settingsForm = settings_form(instance = profile.settings)
+  settingsForm = SettingsForm(instance = profile.settings)
 
   if request.method == 'POST':
-    settingsForm = settings_form(request.POST, request.FILES)
+    settingsForm = SettingsForm(request.POST, request.FILES)
 
     if settingsForm.is_valid():
-      settingsForm.save()
+      set = settingsForm.save()
+      profile.settings = set
+      profile.save()
 
       if success_url:
         redirect_to = success_url
-      else: redirect_to = reverse('profiles:settings', kwargs={'username': username})
+      else: redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
 
       return redirect(redirect_to)
 

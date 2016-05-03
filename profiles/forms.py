@@ -25,9 +25,13 @@ class SettingsForm(forms.ModelForm):
                    required= False,
                    label=_('Show real name in Profile'))
 
+    is_provider = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('Provider functionality')}),
+                   required= False,
+                   label=_('Provider functionality'))
+
     class Meta:
         model = ProfileSettings
-        fields = ['profile_is_active', 'email_notifications', 'show_real_name']
+        fields = ['profile_is_active', 'email_notifications', 'show_real_name', 'is_provider']
 
 class ProfileIdForm(forms.ModelForm):
 

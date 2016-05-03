@@ -36,8 +36,23 @@
 
     <div class="item">
       <div class="content">
-        <b>{% trans 'Active' %}</b>
-        <span class="right_absolute">{{ profile.settings.profile_is_active }}</span>
+        <b>{% trans 'Profile is active:' %}</b>
+        {% if profile.settings.profile_is_active %}
+            <span class="right_absolute"><a class="ui green label">{% trans 'yes' %}</a></span>
+         {% else %}
+            <span class="right_absolute"><a class="ui red label">{% trans 'no' %}</a></span>
+         {% endif %}
+      </div>
+    </div>
+
+     <div class="item">
+      <div class="content">
+        <b>{% trans 'You are provider:' %}</b>
+        {% if profile.settings.is_provider %}
+            <span class="right_absolute"><a class="ui green label">{% trans 'yes' %}</a></span>
+         {% else %}
+            <span class="right_absolute"><a class="ui red label">{% trans 'no' %}</a></span>
+         {% endif %}
       </div>
     </div>
 

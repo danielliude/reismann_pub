@@ -27,6 +27,13 @@
       </div>
     </div>
 
+    <div class="field">
+      <div class="ui checkbox">
+        {{ form.is_provider}}
+        {{ form.is_provider.label_tag }}
+      </div>
+    </div>
+
     <br>
     <button class="fluid ui primary button" type="submit" style="margin-bottom:8px;">{% trans 'Save changes' %}</button>
     <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>

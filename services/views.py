@@ -39,6 +39,11 @@ def service_add(request, username, edit_service_form=ServiceForm,
             return HttpResponseRedirect(url)
 
         profile = get_user_profile(user)
+
+        if profile.settings.is_provider == False:
+            url = reverse('profiles:services', kwargs={'username':request.user.username})
+            return HttpResponseRedirect(url)
+
         contact = get_user_contact(user)
 
         form = edit_service_form()

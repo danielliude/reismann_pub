@@ -40,10 +40,7 @@
       <i class="user icon"></i>
       {% trans 'Profile' %}
     </a>
-    <a class="item {% if url_name == 'homepage' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
-      <i class="home icon"></i>
-      {% trans 'Homepage' %}
-    </a>
+    {% if profile.settings.is_provider == True %}
     <a class="item {% if url_name == 'album' %}active{% endif %}" href="{% url 'profiles:album' profile.user.username %}">
       <i class="file image outline icon"></i>
       {% trans 'Album' %}
@@ -52,6 +49,7 @@
       <i class="server icon"></i>
       {% trans 'Services' %}
     </a>
+    {% endif %}
     <a class="item {% if url_name == 'bookings' %}active{% endif %}" href="{% url 'profiles:bookings' profile.user.username %}">
       <i class="bookmark icon"></i>
       {% trans 'Bookings' %}

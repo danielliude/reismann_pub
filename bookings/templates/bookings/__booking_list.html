@@ -63,8 +63,8 @@
           </td>
         {% endif %}
         <td>{{ booking.service.title}}</td>
-        <td>{{ booking.start_time|date:"Y-m-d" }}</td>
-        <td>{{ booking.end_time|date:"Y-m-d" }}</td>
+        <td>{{ booking.service_starts_at|date:"Y-m-d" }}</td>
+        <td>{{ booking.service_ends_at|date:"Y-m-d" }}</td>
         <td>
           {% if booking.service.currency == 1 %}
             {% trans '€' %}
@@ -110,7 +110,7 @@
             <a class="ui red label">{% trans 'Canceled by provider' %}</a>
           {% endif %}
         </td>
-        <td>{{ booking.rating }}</td>
+        <td>{{ booking.service.gen_stars }}</td>
         <td>
           <a class="ui green label" href="view/{{ booking.id }}/">
             <i class="unhide icon"></i>{% trans 'view' %}

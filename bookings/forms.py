@@ -10,6 +10,8 @@ from services.models import Service
 from datetime import datetime
 from django.utils.timezone import utc
 
+from core.constants import SERVICE_TYPE_CHOICES, SERVICE_CURRENCY_CHOICES, SERVICE_PRICE_TYPE_CHOICES
+
 class BookingForm(forms.ModelForm):
 
   service = forms.ModelChoiceField(required=True,
@@ -36,12 +38,17 @@ class BookingForm(forms.ModelForm):
                                            widget = forms.NumberInput(attrs={'class': 'required form-control', 
                                                                              'required': True,
                                                                              'placeholder': _('Number of customers')}))
+  currency = forms.ChoiceField(label=_('Price type'),
+                           choices = SERVICE_CURRENCY_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui compact selection dropdown', 'required': True}), required=True)
 
-  price = forms.IntegerField(min_value=1, required=False,
+  price = forms.IntegerField(min_value=1, max_value=1000, required=False,
                              label = _('Price'),
                              widget = forms.NumberInput(attrs={'class': 'required',
                                                                'required': True,
                                                                'placeholder': _('negotiation price')}))
+
+  price_type = forms.ChoiceField(label=_('Price type'),
+                           choices = SERVICE_PRICE_TYPE_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui compact selection dropdown', 'required': True}), required=True)
 
   meeting_point = forms.CharField(required=False,
                                   max_length=200, label = _('Meeting point'),

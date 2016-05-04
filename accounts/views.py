@@ -57,7 +57,7 @@ def login(request, login_form=AuthenticationForm, template_name='accounts/login.
         if remember_me:
             request.session.set_expiry(ACCOUNT_LOGIN_REMEMBER_ME_DAYS[1] * 86400)
         else:
-            request.session.set_expiry(0)
+            request.session.set_expiry(20000)
 
         redirect_to = login_redirect(request.REQUEST.get(REDIRECT_FIELD_NAME), user)
 

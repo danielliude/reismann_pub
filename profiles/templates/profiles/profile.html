@@ -26,7 +26,8 @@
           <div class="sixteen wide column">
             {% include "services/__service_descriptions.html" %}
           </div>
-          
+
+        {% if profile.settings.is_provider %}
           <div class="sixteen wide column">
             <div class="ui grid">
               {% for image in profile.user.my_album.images.all %}
@@ -38,6 +39,7 @@
               {% endfor %}
             </div>
           </div>
+        {% endif %}
 
         </div>
       </div>

@@ -1,5 +1,6 @@
 {% load i18n %}
 
+{% if profile.settings.is_provider %}
 <div class="ui blue segment all_services">
   <h3>{% trans 'All services' %}</h3>
 
@@ -42,3 +43,4 @@
   </div>
   
 </div>
+{% endif %}

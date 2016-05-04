@@ -95,7 +95,7 @@ class ProfileForm(forms.ModelForm):
 
   class Meta:
     model = Profile
-    exclude = ['user', 'privacy', 'settings', 'id_image', 'second_id_image', 'id_status']
+    exclude = ['user', 'privacy', 'settings', 'id_image', 'second_id_image', 'id_status', 'is_moderated']
 
   def save(self, force_insert=False, force_update=False, commit=True):
     profile = super(ProfileForm, self).save(commit=commit)

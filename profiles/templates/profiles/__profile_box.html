@@ -34,6 +34,7 @@
       </div>
     </div>
 
+    {% if view_own_profile %}
     <div class="item">
       <div class="content">
         <b>{% trans 'Profile is active:' %}</b>
@@ -55,6 +56,7 @@
          {% endif %}
       </div>
     </div>
+    {% endif %}
 
     <div class="item">
       <div class="content">

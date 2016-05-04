@@ -68,6 +68,8 @@ class Profile(models.Model):
 
   updated_at = models.DateTimeField(auto_now=True)
 
+  is_moderated = models.BooleanField(default=False, verbose_name=_('Is moderated'),
+                                              help_text=_('is moderated'))
   objects = ProfileManager()
 
   class Meta:

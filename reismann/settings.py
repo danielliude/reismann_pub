@@ -50,6 +50,9 @@ SITE_ID = 1
 
 ROOT_URLCONF = 'reismann.urls'
 
+NORECAPTCHA_SITE_KEY  = '6LdaCh8TAAAAAPwmk1Brr-FuI5AZxIVDa_lSh9Wg'
+NORECAPTCHA_SECRET_KEY = '6LdaCh8TAAAAAI4qqiLsLS30sXPvA_2KqaGhn0Si'
+
 # Application definition
 INSTALLED_APPS = (
   'django.contrib.contenttypes',
@@ -76,6 +79,7 @@ INSTALLED_APPS = (
   'bookings',
   'webpack_loader',
   'album',
+  'nocaptcha_recaptcha'
 )
 
 SESSION_COOKIE_AGE = 360

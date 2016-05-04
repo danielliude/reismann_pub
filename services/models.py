@@ -96,7 +96,6 @@ class Service(models.Model):
         a = service_ratings.aggregate(Avg('rating')).get('rating__avg')
 
     output = '<div class="ui star rating" data-rating="' + str(a) +'" data-max-rating="5"></div>'
-    print(output)
     return mark_safe(output)
 
 class ServiceRating(models.Model):

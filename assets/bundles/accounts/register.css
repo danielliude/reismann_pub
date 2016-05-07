@@ -1,8 +1,5 @@
-body {
-  background-color: #f3f3f3; }
-
 .ui.grid.register-content {
-  max-width: 500px;
+  max-width: 470px;
   margin: 30px auto; }
 
 .register-content .icon_button {

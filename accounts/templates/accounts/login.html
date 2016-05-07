@@ -18,7 +18,7 @@
     </h2>
     <div class="ui segment">
       <h4 class="ui center aligned header">{% trans 'Sign in to start your session' %}</h4>
-      <form class="ui large form" action="" method="post">
+      <form class="ui form" action="" method="post">
         {% csrf_token %}
         
         {{ form.non_field_errors }}

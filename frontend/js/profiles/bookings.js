@@ -5,6 +5,7 @@ import '../../vendors/daterangepicker/daterangepicker.js'
 
 $(function() {
     init_button()
+    init_rating()
     // init_form()
 
     function init_button() {
@@ -16,6 +17,11 @@ $(function() {
         }, function(start, end, label) {
             console.log(start.toISOString(), end.toISOString(), label);
         });
+    }
+
+    function init_rating() {
+        $('.ui.rating').rating('disable');
+        $('.ui.rating').rating();
     }
 
     function init_form() {

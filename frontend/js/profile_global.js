@@ -25,6 +25,7 @@ import '../semantic/dist/components/table.min.css'
 import '../semantic/dist/components/list.min.css'
 import '../semantic/dist/components/transition.min.css'
 import '../semantic/dist/components/accordion.min.css'
+import '../semantic/dist/components/rating.min.css'
 import '../styles/profile_global.scss'
 
 import 'expose?jQuery!expose?$!jquery'
@@ -36,6 +37,7 @@ import '../semantic/dist/components/search.min.js'
 import '../semantic/dist/components/sidebar.min.js'
 import '../semantic/dist/components/transition.min.js'
 import '../semantic/dist/components/accordion.min.js'
+import '../semantic/dist/components/rating.min.js'
 
 $(function() {
 	var sidebar_state = -1   //-1 is the meaning of hiding

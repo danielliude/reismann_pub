@@ -5,12 +5,12 @@
   
   {{ form.non_field_errors }}
   {{ form.service.errors }}
-  <div class="field">
+  <div class="required field">
     <label>{{ form.service.label }}</label>
     {{ form.service }}
   </div>
   {{ form.start_time.errors }}
-  <div class="field">
+  <div class="required field">
     <label>{{ form.start_time.label }}</label>
     <div class="ui icon input">
       {{ form.start_time }}
@@ -18,7 +18,7 @@
     </div>
   </div>
   {{ form.end_time.errors }}
-  <div class="field">
+  <div class="required field">
     <label>{{ form.end_time.label }}</label>
     <div class="ui icon input">
       {{ form.end_time }}
@@ -26,7 +26,7 @@
     </div>
   </div>
   {{ form.number_of_customers.errors }}
-  <div class="field">
+  <div class="required field">
     <label>{{ form.number_of_customers.label }}</label>
     {{ form.number_of_customers }}
   </div>
@@ -57,6 +57,7 @@
     {{ form.booking_remark }}
   </div>
 
+  <br>
   <button class="fluid ui brand_blue button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
   <a href="{% url 'profiles:bookings' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
   <div class="ui error message">

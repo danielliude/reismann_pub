@@ -72,7 +72,7 @@ def outbox_messages(request, username,
 
 @secure_required
 @permission_required_or_403('insite_messages.add_message')
-def message_write(request, username, write_message_form=MessageComposeForm,
+def message_write(request, username, recipient=None, write_message_form=MessageComposeForm,
                 template_name='insite_messages/message_write.html', success_url=None,
                 extra_context=None, **kwargs):
 
@@ -81,7 +81,12 @@ def message_write(request, username, write_message_form=MessageComposeForm,
         profile = get_user_profile(user)
         contact = get_user_contact(user)
 
-        form = write_message_form()
+        initial_recipient = {}
+        if recipient:
+            rec_user = get_object_or_404(User, username__iexact=recipient)
+            initial_recipient = {'recipient': rec_user.id}
+
+        form = write_message_form(initial = initial_recipient)
 
         if request.method == 'POST':
             form = write_message_form(request.POST, request.FILES)

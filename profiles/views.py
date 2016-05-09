@@ -356,3 +356,20 @@ def album(request, username):
     context = makeContextForDetails(request, context)
     context = makeContextForMessages(request, context)
     return render(request, 'profiles/album.html', context)
+
+@secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
+def set_album_image(request, username):
+    user = get_object_or_404(User, username__iexact=username)
+    profile = get_user_profile(user)
+
+    qs = AlbumImage.objects.filter(user=user, id=request.GET.get('img_id'))
+    if qs.exists():
+        the_image = qs[0]
+        if request.GET.get('is_avatar') == '1':
+            profile.avatar = the_image.image
+        else:
+            profile.card_image = the_image.image
+        profile.save()
+        return HttpResponse(the_image.image.url)
+    raise Http404

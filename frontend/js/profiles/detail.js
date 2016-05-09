@@ -3,6 +3,11 @@ import '../../vendors/daterangepicker/daterangepicker.css'
 
 import '../../vendors/daterangepicker/daterangepicker.js'
 
+import '../../semantic/dist/components/dimmer.min.css'
+import '../../semantic/dist/components/dimmer.min.js'
+import '../../semantic/dist/components/modal.min.js'
+import '../../semantic/dist/components/modal.min.css'
+
 $(function() {
     init_button()
     // init_form()
@@ -86,4 +91,23 @@ $(function() {
             }
         })
     }
+
+  $('.change_avatar, .change_card_image').click(function(){
+    $(this).addClass('clicked');
+    $('.ui.modal').modal('show');
+  });
+
+  $('.album-image').click(function(){
+    var is_avatar = '0';
+    if( $('.clicked').length && $('.clicked').hasClass('change_avatar') ) is_avatar = '1';
+    var img_id = $(this).data('img_id');
+    $.get(set_album_image_url, {'is_avatar': is_avatar, 'img_id': img_id}, function(data){
+      if ( is_avatar == '1' )
+        $('.avatar').find('img').remove().end().append( '<img src="' + data + '" />' );
+      else
+        $('.card_image').find('img').remove().end().append( '<img src="' + data + '" />' );
+      $('.clicked').removeClass('clicked');
+      $('.ui.modal').modal('hide');
+    });
+  });
 })

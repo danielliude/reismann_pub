@@ -7,6 +7,11 @@
     {% render_bundle 'profiles/detail' 'js' %}
 {% endblock %}
 
+{% block extra_head %}
+  <script>var set_album_image_url = "{% url 'profiles:set_album_image' profile.user.username %}";</script>
+{% endblock %}
+
+
 {% block content %}
     <div class="ui grid detail_grid">
       <div class="column">

@@ -31,15 +31,3 @@ class MyAlbum(models.Model):
     class Meta:
         verbose_name = _('My Album')
         verbose_name_plural = _('My Album')
-
-
-class MyAvatar(models.Model):
-    ''' Selected one image as my avatar '''
-
-    user = models.OneToOneField('auth.User', unique=True, verbose_name=_('user'), related_name='avatar')
-
-    image = models.ForeignKey(AlbumImage, verbose_name=_('Avatar'))
-
-    class Meta:
-        verbose_name = _('My Avatar')
-        verbose_name_plural = _('My Avatar')

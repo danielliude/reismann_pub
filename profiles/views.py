@@ -151,20 +151,26 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   contactForm = contact_form(instance = contact)
 
   if request.method == 'POST':
-    form = profile_form(request.POST, request.FILES, instance=profile, initial=user_initial)
-    contactForm = contact_form (request.POST, request.FILES, instance = contact)
+    form = profile_form(request.POST, request.FILES, initial=user_initial)
+    contactForm = contact_form (request.POST, request.FILES)
 
+    ok = True
     if form.is_valid():
         form.save()
+    else:
+        ok = False
     if contactForm.is_valid():
         contactForm.save()
-
-    if success_url:
-        redirect_to = success_url
     else:
-        redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
+        ok = False
 
-    return redirect(redirect_to)
+    if ok:
+        if success_url:
+            redirect_to = success_url
+        else:
+            redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
+
+        return redirect(redirect_to)
 
   if not extra_context: extra_context = dict()
   extra_context['form'] = form

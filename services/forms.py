@@ -88,8 +88,8 @@ class ServiceForm(forms.ModelForm):
 
   def clean_cities(self):
       value = self.cleaned_data['cities']
-      if len(value) > 3:
-          raise forms.ValidationError("You can't select more than 3 cities.")
+      if len(value) > 5:
+          raise forms.ValidationError("You can't select more than 5 cities.")
       return value
 
   def save(self, username, force_insert=False, force_update=False, commit=True):

@@ -151,8 +151,8 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   contactForm = contact_form(instance = contact)
 
   if request.method == 'POST':
-    form = profile_form(request.POST, request.FILES, initial=user_initial)
-    contactForm = contact_form (request.POST, request.FILES)
+    form = profile_form(request.POST, request.FILES, instance = profile, initial=user_initial)
+    contactForm = contact_form (request.POST, request.FILES, instance = contact)
 
     ok = True
     if form.is_valid():

@@ -87,7 +87,12 @@
 
 {% else %}
 <div class="right menu">
+  {% if request.path != '/accounts/register/' %}
   <a class="item" href="{% url 'accounts:login' %}?next={{request.path}}">{% trans 'signin' %}</a>
+  {% else %}
+  <a class="item" href="{% url 'accounts:login' %}">{% trans 'signin' %}</a>
+  {% endif %}
+
   <a class="item" href="{% url 'accounts:register' %}">{% trans 'register' %}</a>
 </div>
 {% endif %}

@@ -151,20 +151,26 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   contactForm = contact_form(instance = contact)
 
   if request.method == 'POST':
-    form = profile_form(request.POST, request.FILES, instance=profile, initial=user_initial)
+    form = profile_form(request.POST, request.FILES, instance = profile, initial=user_initial)
     contactForm = contact_form (request.POST, request.FILES, instance = contact)
 
+    ok = True
     if form.is_valid():
         form.save()
+    else:
+        ok = False
     if contactForm.is_valid():
         contactForm.save()
-
-    if success_url:
-        redirect_to = success_url
     else:
-        redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
+        ok = False
 
-    return redirect(redirect_to)
+    if ok:
+        if success_url:
+            redirect_to = success_url
+        else:
+            redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
+
+        return redirect(redirect_to)
 
   if not extra_context: extra_context = dict()
   extra_context['form'] = form
@@ -318,7 +324,7 @@ def album(request, username):
     user = get_object_or_404(User, username__iexact=username)
 
     if request.is_ajax():
-        images = AlbumImage.objects.filter(user=user)
+        images = AlbumImage.objects.active_images(user)
         data = [{'thumb': i.image.url, 'filelink': i.image.url} for i in images]
         return HttpResponse(json.dumps(data), content_type='application/json')
 
@@ -339,7 +345,9 @@ def album(request, username):
                 obj = form.save(commit=False)
                 obj.image_size = obj.image.size
                 obj.user = user
+                obj.status = 1
                 obj.save()
+                obj.send_notification_email_to_administrator()
                 return redirect(request.path)
     else:
         form = AlbumImageUploadForm()
@@ -356,3 +364,20 @@ def album(request, username):
     context = makeContextForDetails(request, context)
     context = makeContextForMessages(request, context)
     return render(request, 'profiles/album.html', context)
+
+@secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
+def set_album_image(request, username):
+    user = get_object_or_404(User, username__iexact=username)
+    profile = get_user_profile(user)
+
+    qs = AlbumImage.objects.filter(user=user, id=request.GET.get('img_id'))
+    if qs.exists():
+        the_image = qs[0]
+        if request.GET.get('is_avatar') == '1':
+            profile.avatar = the_image.image
+        else:
+            profile.card_image = the_image.image
+        profile.save()
+        return HttpResponse(the_image.image.url)
+    raise Http404

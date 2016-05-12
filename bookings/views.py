@@ -14,7 +14,11 @@ from profiles.views import makeContextForDetails, makeContextForMessages
 from profiles.utils import get_user_profile
 from bookings.utils import get_booking_by_id
 
-from _datetime import datetime
+try:
+    from _datetime import datetime
+except ImportError:
+    from datetime import datetime
+
 from bookings.managers import BookingMailManager as mailer
 from services.models import Service
 

@@ -20,7 +20,10 @@ from guardian.shortcuts import assign_perm, get_perms
 from core.constants import ASSIGNED_PERMISSIONS
 from core.constants import GLOBAL_PERMISSIONS
 
-from _datetime import datetime
+try:
+  from _datetime import datetime
+except ImportError:
+  import datetime
 
 import re
 

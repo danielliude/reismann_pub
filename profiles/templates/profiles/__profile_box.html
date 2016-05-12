@@ -79,10 +79,15 @@
             <a href="{% url 'profiles:profile' profile.user.username %}" class="ui brand_blue fluid button"><b>{% trans 'View profile' %}</b></a>
           {% else %}
             <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.4rem;"><b>{% trans 'Follow me' %}</b></a>
+            <a href="{% url 'profiles:message_write' request.user.username profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.4rem;"><b>{% trans 'Write a message' %}</b></a>
             {% if provider_service.id %}
             <a href="{% url 'profiles:booking_add' profile.user.username provider_service.id %}" class="ui brand_blue fluid button"><b>{% trans 'Book provider' %}</b></a>
             {% endif %}
             {% endif %}
+        {% else %}
+            <a href="" class="ui brand_blue fluid button disabled" style="margin-bottom:0.4rem;"><b>{% trans 'Follow me' %}</b></a>
+            <a href="" class="ui brand_blue fluid button disabled" style="margin-bottom:0.4rem;"><b>{% trans 'Write a message' %}</b></a>
+            <a href="" class="ui brand_blue fluid button disabled"><b>{% trans 'Book provider' %}</b></a>
         {% endif %}
       </div>
     </div>

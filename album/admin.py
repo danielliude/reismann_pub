@@ -1,8 +1,11 @@
 from django.contrib import admin
-from .models import AlbumImage, MyAlbum, MyAvatar
+from .models import AlbumImage, MyAlbum
 
-admin.site.register(AlbumImage)
+
+class AlbumImageAdmin(admin.ModelAdmin):
+    list_display = ('user', 'image', 'status')
+    list_editable = ('status', )
+
+admin.site.register(AlbumImage, AlbumImageAdmin)
 
 admin.site.register(MyAlbum)
-
-admin.site.register(MyAvatar)

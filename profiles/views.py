@@ -324,7 +324,7 @@ def album(request, username):
     user = get_object_or_404(User, username__iexact=username)
 
     if request.is_ajax():
-        images = AlbumImage.objects.filter(user=user)
+        images = AlbumImage.objects.active_images(user)
         data = [{'thumb': i.image.url, 'filelink': i.image.url} for i in images]
         return HttpResponse(json.dumps(data), content_type='application/json')
 
@@ -345,7 +345,9 @@ def album(request, username):
                 obj = form.save(commit=False)
                 obj.image_size = obj.image.size
                 obj.user = user
+                obj.status = 1
                 obj.save()
+                obj.send_notification_email_to_administrator()
                 return redirect(request.path)
     else:
         form = AlbumImageUploadForm()

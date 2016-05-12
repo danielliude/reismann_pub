@@ -60,6 +60,8 @@ SERVICE_STATUS = (
   (3, _('Not active')),
 )
 
+ALBUM_IMAGE_STATUS = SERVICE_STATUS
+
 IDENTIFICATION_STATUS = (
   (1, _('Not started')),
   (2, _('Waiting for approval')),

@@ -31,11 +31,13 @@
           <div class="sixteen wide column">
             <div class="ui grid">
               {% for image in profile.user.my_album.images.all %}
+                {% if image.is_active %}
                 <div class="four wide column">
                   <a href="{{ image.image.url }}">
                     <img src="{% thumbnail image.image 140x140 crop='smart' %}" />
                   </a>
                 </div>
+                {% endif %}
               {% endfor %}
             </div>
           </div>

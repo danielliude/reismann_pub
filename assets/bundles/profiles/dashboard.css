@@ -1,6 +1,10 @@
 .ui.grid.dashboard_grid {
   max-width: 700px;
   margin: 80px auto; }
+  .ui.grid.dashboard_grid .h_content h1, .ui.grid.dashboard_grid .h_content h2, .ui.grid.dashboard_grid .h_content h3, .ui.grid.dashboard_grid .h_content h4, .ui.grid.dashboard_grid .h_content h5 {
+    margin: 0.5rem 0; }
+  .ui.grid.dashboard_grid .h_content h2 {
+    margin-top: 0rem; }
 
 .ui.segment.profile_info .ui.blue.segment {
   padding-bottom: 20px; }

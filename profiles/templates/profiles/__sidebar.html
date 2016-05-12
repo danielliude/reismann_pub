@@ -11,27 +11,27 @@
       $('.profile_sidebar').addClass('visible')
     }
   </script>
+    {% with request.resolver_match.url_name as url_name %}
 
     <div class="ui header item">{% trans 'Profile sidebar' %}</div>
+    {% if url_name != 'dashboard' %}
     <div class="ui center aligned  padded grid" style="background-color:#272727;">
       <div class="row">
         <div class="eight wide column" style="padding-right:0px;">
           <img class="ui tiny avatar image" src="{{ user.profile.get_avatar_url }}">
         </div>
         <div class="eight wide column" style="padding-left:0px;padding-top:12px;">
-
           {% if profile.settings.show_real_name %}
           <h4>{{ user.profile.get_full_name_or_username }}</h4>
           {% else %}
           <h4>{{ user.profile.get_short_name_or_username }}</h4>
           {% endif %}
-
           <p><i class="circle green icon"></i>{% trans 'Online' %}</p>
         </div>
-        
       </div>
     </div>
-    {% with request.resolver_match.url_name as url_name %}
+    {% endif %}
+    
     <a class="item {% if url_name == 'dashboard' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
       <i class="dashboard icon"></i>
       {% trans 'Dashboard' %}

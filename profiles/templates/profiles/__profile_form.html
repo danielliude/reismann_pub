@@ -7,18 +7,18 @@
     {% csrf_token %}
     
     {{ form.non_field_errors }}
-    {{ form.first_name.errors }}
-    <div class="required field">
-      <label>{{ form.first_name.label }}</label>
-      <div class="ui icon input">
-        {{ form.first_name }}
-      </div>
-    </div>
     {{ form.last_name.errors }}
     <div class="required field">
       <label>{{ form.last_name.label }}</label>
       <div class="ui icon input">
         {{ form.last_name }}
+      </div>
+    </div>
+    {{ form.first_name.errors }}
+    <div class="required field">
+      <label>{{ form.first_name.label }}</label>
+      <div class="ui icon input">
+        {{ form.first_name }}
       </div>
     </div>
     {{ form.gender.errors }}

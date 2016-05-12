@@ -5,6 +5,11 @@
   {% csrf_token %}
   {{ form.media }}
   {{ form.non_field_errors }}
+  {{ form.category.errors }}
+  <div class="required field">
+      <label>{{ form.category.label }}</label>
+      {{ form.category }}
+  </div>
   {{ form.title.errors }}
   <div class="required field">
     <label>{{ form.title.label }}</label>
@@ -18,11 +23,6 @@
     <div class="ui input">
       {{ form.content }}
     </div>
-  </div>
-  {{ form.category.errors }}
-  <div class="required field">
-      <label>{{ form.category.label }}</label>
-      {{ form.category }}
   </div>
   {{ form.currency.errors }}
   {{ form.price.errors }}

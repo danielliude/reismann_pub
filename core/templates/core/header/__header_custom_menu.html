@@ -2,7 +2,7 @@
 
 {% if user.is_authenticated %}
 <div class="right menu">
-  <div class="ui top right pointing dropdown item">
+  <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:inbox_messages' user.username %}'">
     <i class="icon mail outline"></i> 
     <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{{ unread_messages.count }}</div>
 
@@ -33,7 +33,9 @@
 
     </div>
     <div class="menu"> 
-      <div class="item" style="display:none"></div>
+      <a href="{% url 'profiles:dashboard' user.username %}" class="item">{% trans 'dashboard' %}</a>
+      <a href="{% url 'accounts:logout' %}" class="item">{% trans 'sign out' %}</a>
+      <!-- <div class="item" style="display:none"></div>
       <div class="ui card card_info">
         <div class="content">
           <img class="right floated mini ui image" src="{{ user.profile.get_avatar_url }}">
@@ -73,16 +75,16 @@
             <a href="{% url 'accounts:logout' %}" class="ui basic red button">{% trans 'sign out' %}</a>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
-  <div class="ui mobile dropdown item">
+<!--   <div class="ui mobile dropdown item">
     <i class="sidebar icon"></i>
     <div class="menu">
       <a class="item" href="{% url 'help_problem' 'all' 'all' %}">{% trans 'become a provider' %}</a>
       <a class="item" href="{% url 'help_problem' 'all' 'all' %}">{% trans "help" %}</a>
     </div>
-  </div>
+  </div> -->
 </div>
 
 {% else %}

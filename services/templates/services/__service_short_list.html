@@ -1,11 +1,33 @@
 {% load i18n %}
 
 <div class="ui blue segment service_short_list">
-  <h3>{% trans 'My services' %}</h3>
+  <h3>{% trans 'Num of services' %} : {{ services|length }}</h3>
+  <div class="ui middle aligned animated list">
+    {% for service in services %}
+      <a class="item" href="services/view/own/{{ service.id }}/">
 
-  <div class="ui divided items">
+        <div class="content">
+          <div class="header">
+            <i class="map marker icon"></i>
+            {{ service.title }}
+            {% if service.status == 1 %}
+              <span class="ui red label">{% trans 'Moderation' %}</span>
+            {% elif service.status == 2 %}
+              <span class="ui green label">{% trans 'Active' %}</span>
+            {% elif service.status == 3 %}
+              <span class="ui gray label">{% trans 'Not active' %}</span>
+            {% else %}
+              <span class="ui gray label">{% trans 'Not active' %}</span>      
+            {% endif %}
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+<!--   <div class="ui items">
     <div class="item">
-      <h4>{% trans 'Num of services' %} : {{ services|length }}</h4>
+      <h3>{% trans 'Num of services' %} : {{ services|length }}</h3>
     </div>
     {% for service in services %}
       <div class="item">
@@ -25,4 +47,5 @@
         </div>
       </div>
     {% endfor %}
+  </div> -->
 </div>

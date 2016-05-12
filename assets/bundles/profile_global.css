@@ -247,6 +247,9 @@
 img {
   max-width: 100%; }
 
+.redactor-toolbar {
+  z-index: 1 !important; }
+
 /*--------------
     Masthead
 ---------------*/

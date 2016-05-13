@@ -11,8 +11,10 @@
         {% if profile.settings.show_real_name %}
         <h5>{{ profile.get_full_name_or_username }}</h5>
         {% endif %}
+        {% if profile.settings.is_provider %}
         <h5>{{ profile.short_description }}</h5>
         <h5>{{ profile.gender }},{{ profile.profession }},{{ profile.location }},{{ profile.location }}</h5>
+        {% endif %}
       </div>
       <div class="one wide column">
         {% if profile.settings.is_provider %}

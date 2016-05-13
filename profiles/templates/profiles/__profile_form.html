@@ -8,6 +8,7 @@
     {% csrf_token %}
     
     {{ form.non_field_errors }}
+
     {{ form.last_name.errors }}
     <div class="required field">
       <label>{{ form.last_name.label }}</label>
@@ -15,6 +16,7 @@
         {{ form.last_name }}
       </div>
     </div>
+
     {{ form.first_name.errors }}
     <div class="required field">
       <label>{{ form.first_name.label }}</label>
@@ -22,11 +24,14 @@
         {{ form.first_name }}
       </div>
     </div>
+
+    {% if profile.settings.is_provider %}
     {{ form.gender.errors }}
     <div class="required field">
         <label>{{ form.gender.label }}</label>
         {{ form.gender }}
     </div>
+
     {{ form.birthday.errors }}
     <div class="required field">
       <label>{{ form.birthday.label }}</label>
@@ -35,16 +40,19 @@
           <i class="calendar icon"></i>
       </div>
     </div>
+
     {{ form.location.errors }}
     <div class="required field">
       <label>{{ form.location.label }}</label>
       {{ form.location }}
     </div>
+
     {{ form.profession.errors }}
     <div class="required field">
         <label>{{ form.profession.label }}</label>
         {{ form.profession }}
     </div>
+
     {{ form.short_description.errors }}
     <div class="field">
       <label>{{ form.short_description.label }}</label>
@@ -53,26 +61,8 @@
       </div>
     </div>
 
-    <div style="display:none">
-
     {{ form.avatar.errors }}
-    <div class="field">
-      <label>{{ form.avatar.label }}</label>
-      <div class="ui checkbox">
-        {{ form.avatar }}
-      </div>
-    </div>
-    {{ form.card_image.errors }}
-    <div class="field">
-      <label>{{ form.card_image.label }}</label>
-      <div class="ui checkbox">
-        {{ form.card_image }}
-      </div>
-    </div>
-
-    </div>
-
-    <div class="field">
+    <div class="required field">
       <label>{{ form.avatar.label }}</label>
       <div class="avatar">
         {% if profile.avatar %}<img src="{{ profile.avatar.url }}" />{% endif %}
@@ -80,7 +70,8 @@
       <button type="button" class="change_avatar ui button">{% trans 'Change Avatar' %}</button>
     </div>
 
-    <div class="field">
+    {{ form.card_image.errors }}
+    <div class="required field">
       <label>{{ form.card_image.label }}</label>
       <div class="card_image">
         {% if profile.card_image %}<img src="{{ profile.card_image.url }}" />{% endif %}
@@ -104,11 +95,14 @@
       <label>{{ form.bio.label }}</label>
       {{ form.bio }}
     </div>
+    {% endif %}
 
     {{ contactForm.email.error }}
     <div class="required field">
         <label>{{ contactForm.email.label }}</label>
+        <div class="ui disabled input">
         {{ contactForm.email }}
+        </div>
     </div>
 
     {{ contactForm.phone.error }}
@@ -117,6 +111,7 @@
         {{ contactForm.phone }}
     </div>
 
+    {% if profile.settings.is_provider %}
     {{ contactForm.wechat.error }}
     <div class="required field">
         <label>{{ contactForm.wechat.label }}</label>
@@ -134,6 +129,7 @@
         <label>{{ contactForm.weibo.label }}</label>
         {{ contactForm.weibo }}
     </div>
+    {% endif %}
 
     <br>
     <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>

@@ -18,7 +18,6 @@ class ContactForm(forms.ModelForm):
                           required= True,
                           label=_('Telephone number'),
                           max_length=30)
-
   email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder': _('contact email')}),
                           required= True,
                           label=_('Contact email'),

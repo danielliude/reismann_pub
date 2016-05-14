@@ -57,6 +57,10 @@
 				context: '.profile_content',
 				offset: 0
 			});
+
+			$(".not_login").click(function () {
+				alert('please login for this action');
+			});
 		}
 	});
 

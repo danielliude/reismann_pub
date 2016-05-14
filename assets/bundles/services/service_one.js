@@ -50,14 +50,17 @@
 	__webpack_require__(136);
 
 	$(function () {
+		init();
 		init_rating();
 		send_message();
-		init_sticky();
 
-		function init_sticky() {
+		function init() {
 			$('.ui.sticky').sticky({
 				context: '.profile_content',
 				offset: 0
+			});
+			$(".not_login").click(function () {
+				alert('please login for this action');
 			});
 		}
 

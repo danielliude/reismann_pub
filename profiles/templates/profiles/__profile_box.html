@@ -2,12 +2,12 @@
 
 <div class="ui segment profile_info">
   <div class="ui secondary blue inverted segment">
-    <div class="ui  grid">
+    <div class="ui grid">
       <div class="four wide column">
         <img class="ui  circular left floated image" src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile picture' %}">
       </div>
       <div class="eleven wide column middle aligned h_content">
-        <h2>Nickname</h2>
+        <h2>{{ profile.user.username }}</h2>
         {% if profile.settings.show_real_name %}
         <h5>{{ profile.get_full_name_or_username }}</h5>
         {% endif %}

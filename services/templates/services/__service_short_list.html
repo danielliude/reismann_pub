@@ -4,8 +4,7 @@
   <h3>{% trans 'Num of services' %} : {{ services|length }}</h3>
   <div class="ui middle aligned animated list">
     {% for service in services %}
-      <a class="item" href="services/view/own/{{ service.id }}/">
-
+      <a class="item" href="{% url 'profiles:service_view' service.user.username service.id %}">
         <div class="content">
           <div class="header">
             <i class="map marker icon"></i>

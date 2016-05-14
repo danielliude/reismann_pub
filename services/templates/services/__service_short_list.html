@@ -8,43 +8,12 @@
         <div class="content">
           <div class="header">
             <i class="map marker icon"></i>
-            {{ service.title }}
-            {% if service.status == 1 %}
-              <span class="ui red label">{% trans 'Moderation' %}</span>
-            {% elif service.status == 2 %}
-              <span class="ui green label">{% trans 'Active' %}</span>
-            {% elif service.status == 3 %}
-              <span class="ui gray label">{% trans 'Not active' %}</span>
-            {% else %}
-              <span class="ui gray label">{% trans 'Not active' %}</span>      
+            {% if service.status == 2 %}   
+              {{ service.title }} {{ service.currency }}{{ service.price }}/{{ service.price_type }}
             {% endif %}
           </div>
         </div>
       </a>
     {% endfor %}
   </div>
-
-<!--   <div class="ui items">
-    <div class="item">
-      <h3>{% trans 'Num of services' %} : {{ services|length }}</h3>
-    </div>
-    {% for service in services %}
-      <div class="item">
-        <div class="content">
-          <a class="header" href="services/view/own/{{ service.id }}/">
-            <i class="map marker icon"></i>{{ service.title }}         
-            {% if service.status == 1 %}
-              <span class="ui red label">{% trans 'Moderation' %}</span>
-            {% elif service.status == 2 %}
-              <span class="ui green label">{% trans 'Active' %}</span>
-            {% elif service.status == 3 %}
-              <span class="ui gray label">{% trans 'Not active' %}</span>
-            {% else %}
-              <span class="ui gray label">{% trans 'Not active' %}</span>      
-            {% endif %}
-          </a>
-        </div>
-      </div>
-    {% endfor %}
-  </div> -->
 </div>

@@ -1,6 +1,6 @@
 {% extends "core/__global.html" %}
 {% load render_bundle from webpack_loader %}
-{% load thumbnail %}
+{% load i18n %}
 
 {% block stylesheets %}
     {% render_bundle 'profiles/profile' 'css' %}
@@ -16,39 +16,29 @@
         <div class="ui rail">
           <div class="ui sticky">
             {% include "profiles/__profile_box.html" %}
+            <button class="ui fluid blue button" style="margin-bottom:0.3rem;">{% trans 'Follow me' %}</button>
+            <button class="ui fluid blue button" style="margin-bottom:0.3rem;">{% trans 'Send a message' %}</button>
+            <button class="ui fluid blue button">{% trans 'Booking me' %}</button>
             {% if profile.settings.is_provider %}
-              
               {% include "services/__service_short_list.html" %}
+              {% include "profiles/__share_box.html" %}
+              {% include "profiles/__rating_box.html" %}
             {% endif %}
           </div>
         </div>
       </div>
       <div class="sixteen wide tablet eleven wide computer column">
-        <div class="ui padding grid">
-          <div class="computer only sixteen wide column">
+        <!-- <div class="ui padding grid"> -->
+ <!--          <div class="computer only sixteen wide column">
             {% include "profiles/widgets/__widget_profile.html" %}
-          </div>
-          <div class="sixteen wide column">
-            {% include "services/__service_descriptions.html" %}
-          </div>
+          </div> -->
+          <!-- <div class="sixteen wide column"> -->
+          <!-- </div> -->
+        {% include "services/__service_descriptions.html" %}
 
-        {% if profile.settings.is_provider %}
-          <div class="sixteen wide column">
-            <div class="ui grid">
-              {% for image in profile.user.my_album.images.all %}
-                {% if image.is_active %}
-                <div class="four wide column">
-                  <a href="{{ image.image.url }}">
-                    <img src="{% thumbnail image.image 140x140 crop='smart' %}" />
-                  </a>
-                </div>
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-        {% endif %}
+        
 
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>

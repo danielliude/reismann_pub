@@ -13,35 +13,35 @@
     <div class="column">
       {% include "profiles/__profile_box.html" %} 
       <div class="ui segment">
-  		<div class="ui middle aligned selection  divided list">
-		  <a class="item">
-		    <div class="right floated content">
-		      <div class="header">{{ number_followers }}</div>
-		    </div>
-		    <img class="ui avatar image" src="/static/images/dummy/avatar2.png">
-		    <div class="content">
-		    	<div class="header">{% trans 'Followers' %}</div>
-		    </div>
-		  </a>
-		  <a class="item">
-		    <div class="right floated content">
-		      <div class="header">{{ number_following }}</div>
-		    </div>
-		    <img class="ui avatar image" src="/static/images/dummy/avatar3.png">
-		    <div class="content">
-		    	<div class="header">{% trans 'Following' %}</div>
-		    </div>
-		  </a>
-		  <a class="item" href = "{% url 'profiles:bookings' profile.user.username %}">
-		    <div class="right floated content">
-		      <div class="header">{{ number_bookings }}</div>
-		    </div>
-		    <img class="ui avatar image" src="/static/images/dummy/avatar5.png">
-		    <div class="content">
-		    	<div class="header">{% trans 'Bookings' %}</div>
-		    </div>
-		  </a>
-		</div>
+	  		<div class="ui middle aligned selection  divided list">
+				  <a class="item">
+				    <div class="right floated content">
+				      <div class="header">{{ number_followers }}</div>
+				    </div>
+				    <img class="ui avatar image" src="/static/images/dummy/avatar2.png">
+				    <div class="content">
+				    	<div class="header">{% trans 'Followers' %}</div>
+				    </div>
+				  </a>
+				  <a class="item">
+				    <div class="right floated content">
+				      <div class="header">{{ number_following }}</div>
+				    </div>
+				    <img class="ui avatar image" src="/static/images/dummy/avatar3.png">
+				    <div class="content">
+				    	<div class="header">{% trans 'Following' %}</div>
+				    </div>
+				  </a>
+				  <a class="item" href = "{% url 'profiles:bookings' profile.user.username %}">
+				    <div class="right floated content">
+				      <div class="header">{{ number_bookings }}</div>
+				    </div>
+				    <img class="ui avatar image" src="/static/images/dummy/avatar5.png">
+				    <div class="content">
+				    	<div class="header">{% trans 'Bookings' %}</div>
+				    </div>
+				  </a>
+				</div>
       </div>
       {% if profile.settings.is_provider %}
       <!-- {% include "services/__service_box.html" %}  -->

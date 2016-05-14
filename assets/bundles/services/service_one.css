@@ -30,6 +30,12 @@ body {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem; }
 
+.ui.segment.profile_info .h_content h1, .ui.segment.profile_info .h_content h2, .ui.segment.profile_info .h_content h3, .ui.segment.profile_info .h_content h4, .ui.segment.profile_info .h_content h5 {
+  margin: 0.5rem 0; }
+
+.ui.segment.profile_info .h_content h2 {
+  margin-top: 0rem; }
+
 .ui.segment.all_services {
   margin-bottom: 2rem; }
   .ui.segment.all_services .ui.divided.items > .item {

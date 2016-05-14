@@ -16,11 +16,11 @@
         <h5>{{ profile.gender }},{{ profile.profession }},{{ profile.location }},{{ profile.location }}</h5>
         {% endif %}
       </div>
-      <div class="one wide column">
+      <div class="one wide tablet only {% if request.resolver_match.url_name == 'dashboard' %} computer only {% endif %} column">
         {% if profile.settings.is_provider %}
-          <a class="ui large blue right ribbon label">Provider</a>
+          <a class="ui large blue right ribbon label">{% trans 'Provider' %}</a>
         {% else %}
-          <a class="ui large blue right ribbon label">Customer</a>
+          <a class="ui large blue right ribbon label">{% trans 'Customer' %}</a>
         {% endif %}
       </div>
     </div>

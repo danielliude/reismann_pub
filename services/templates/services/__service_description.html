@@ -1,7 +1,57 @@
 {% load i18n %}
 
 {% if profile.settings.is_provider %}
-<div class="ui segment profiles_services">
+<h2 class="ui center aligned header">{% trans 'Service category' %}</h2>
+<div class="ui segment">
+  <h4>{% trans 'Title' %}</h4>
+  <p>{{ service.title }}</p>
+</div>
+<div class="ui segment">
+  <h4>{% trans 'Service description' %}</h4>
+  <p>{{ service.content|safe }}</p>
+</div>
+<div class="ui segment">
+  <h4>{% trans 'Rating and comment:' %}{{ ratings|length }}</h4>
+  {% if ratings|length != 0 %}
+      <div class="ui comments">
+        {% for rating in ratings %}
+        <div class="comment">
+          <a class="avatar">
+            <img src="{{ rating.user.profile.get_avatar_url }}">
+          </a>
+          <div class="content">
+            {% if request.user.username %}
+                <a class="author">{% trans 'User' %} {{ rating.user.username }}</a>
+            {% else %}
+                <a class="author">{% trans 'Anonymous user' %}</a>
+            {% endif %}
+            <div class="metadata">
+              <span class="date">{% trans 'Created at: ' %}{{ rating.created_at }}</span>
+            </div>
+            {{ rating.gen_stars }}
+            <div class="text">{{ rating.comment }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if form %}
+      <div class='row'>
+        <form method="post" class="ui form">
+          {% csrf_token %}
+          <div class="field">
+            <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
+            {{form.comment}}
+          </div>
+          <div class="ui brand_blue labeled submit icon button"><i class="icon edit"></i> {% trans 'Send your comment' %}</div>
+        </form>
+      </div>
+      <br>
+    {% endif %}
+</div>
+
+<!-- <div class="ui segment profiles_services">
   {% if view_own_profile %}
     <h3>{% trans 'My services' %}</h3>
   {% else %}
@@ -110,5 +160,5 @@
       <br>
     {% endif %}
   </div>
-</div>
+</div> -->
 {% endif %}

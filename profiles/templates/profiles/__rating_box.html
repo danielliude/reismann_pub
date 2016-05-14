@@ -1,0 +1,28 @@
+{% load i18n %}
+
+{% if ratings|length != 0 %}
+<div class="ui segment">
+  <h4>{% trans 'Rating and comment:' %}{{ ratings|length }}</h4>
+  <div class="ui comments">
+    {% for rating in ratings %}
+    <div class="comment">
+      <a class="avatar">
+        <img src="{{ rating.user.profile.get_avatar_url }}">
+      </a>
+      <div class="content">
+        {% if request.user.username %}
+            <a class="author">{% trans 'User' %} {{ rating.user.username }}</a>
+        {% else %}
+            <a class="author">{% trans 'Anonymous user' %}</a>
+        {% endif %}
+        <div class="metadata">
+          <span class="date">{% trans 'Created at: ' %}{{ rating.created_at }}</span>
+        </div>
+        {{ rating.gen_stars }}
+        <div class="text">{{ rating.comment }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

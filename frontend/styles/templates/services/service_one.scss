@@ -38,6 +38,14 @@ body {
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
 	}
+	.h_content {
+		h1, h2, h3, h4, h5 {
+			margin: 0.5rem 0;
+		}
+		h2 {
+			margin-top: 0rem;
+		}
+	}
 }
 
 

@@ -7,7 +7,7 @@
               || document.body.clientWidth;
         return parseInt(w)
     }
-    if(window_width() > 992) {
+    if(parseInt(window_width()) > 992) {
       $('.profile_sidebar').addClass('visible')
     }
   </script>
@@ -21,11 +21,7 @@
           <img class="ui tiny avatar image" src="{{ user.profile.get_avatar_url }}">
         </div>
         <div class="eight wide column" style="padding-left:0px;padding-top:12px;">
-          {% if profile.settings.show_real_name %}
-          <h4>{{ user.profile.get_full_name_or_username }}</h4>
-          {% else %}
-          <h4>{{ user.profile.get_short_name_or_username }}</h4>
-          {% endif %}
+          <h4>{{ user.username }}</h4>
           <p><i class="circle green icon"></i>{% trans 'Online' %}</p>
         </div>
       </div>
@@ -36,10 +32,12 @@
       <i class="dashboard icon"></i>
       {% trans 'Dashboard' %}
     </a>
+
     <a class="item {% if url_name == 'detail' %}active{% endif %}" href="{% url 'profiles:detail' profile.user.username %}">
       <i class="user icon"></i>
       {% trans 'Profile' %}
     </a>
+
     {% if profile.settings.is_provider == True %}
     <a class="item {% if url_name == 'album' %}active{% endif %}" href="{% url 'profiles:album' profile.user.username %}">
       <i class="file image outline icon"></i>
@@ -50,6 +48,7 @@
       {% trans 'Services' %}
     </a>
     {% endif %}
+
     <a class="item {% if url_name == 'bookings' %}active{% endif %}" href="{% url 'profiles:bookings' profile.user.username %}">
       <i class="bookmark icon"></i>
       {% trans 'Bookings' %}
@@ -85,7 +84,6 @@
       {% trans 'Quit' %}
     </a>
     {% endwith %}
-    <br>
     <br>
     <br>
     <br>

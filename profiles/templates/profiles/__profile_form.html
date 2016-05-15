@@ -41,10 +41,18 @@
       </div>
     </div>
 
-    {{ form.location.errors }}
-    <div class="required field">
-      <label>{{ form.location.label }}</label>
-      {{ form.location }}
+    <div class="two fields">
+      {{ form.country.errors }}
+      <div class="required field">
+        <label>{{ form.country.label }}</label>
+        {{ form.country }}
+      </div>
+
+      {{ form.location.errors }}
+      <div class="required field">
+        <label>{{ form.location.label }}</label>
+        {{ form.location }}
+      </div>
     </div>
 
     {{ form.profession.errors }}
@@ -111,9 +119,8 @@
         {{ contactForm.phone }}
     </div>
 
-    {% if profile.settings.is_provider %}
     {{ contactForm.wechat.error }}
-    <div class="required field">
+    <div class="field">
         <label>{{ contactForm.wechat.label }}</label>
         {{ contactForm.wechat }}
     </div>
@@ -124,6 +131,7 @@
         {{ contactForm.qq}}
     </div>
 
+    {% if profile.settings.is_provider %}
     {{ contactForm.weibo.error }}
     <div class="field">
         <label>{{ contactForm.weibo.label }}</label>

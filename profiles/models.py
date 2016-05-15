@@ -1,6 +1,9 @@
 import datetime
 import statistics
 
+from redactor.fields import RedactorField
+from core.uploads import upload_to_service_content
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
@@ -9,7 +12,7 @@ from easy_thumbnails.fields import ThumbnailerImageField
 from core.constants import MUGSHOT_SETTINGS, GENDER_CHOICES, PROFILE_CARD_IMAGE_SETTINGS, PROFESSION_CHOICES, IDENTIFICATION_STATUS
 from core.uploads import upload_to_avatar, upload_to_profile_card, upload_to_profile_id_card
 from configurations.utils import get_profile_card_fallback_url, get_avatar_fallback_url
-from cities.models import City
+from cities.models import City, Country
 from profiles.managers import ProfileManager
 from services.utils import get_user_services
 
@@ -59,10 +62,13 @@ class Profile(models.Model):
   location = models.ForeignKey(City, blank=True, null=True, verbose_name=_('location'),
                                 help_text='location')
 
+  country = models.ForeignKey(Country, blank=True, null=True, verbose_name=_('country'),
+                                help_text='country')
+
   short_description = models.CharField(_('Short description'), blank=True, null=True,
                                        max_length=255, help_text= _('short description'))
 
-  bio = models.TextField(_('Biography'), blank=True, null=True)
+  bio = RedactorField(verbose_name=_('Biography'), default="Biography", upload_to= upload_to_service_content)
 
   created_at = models.DateTimeField(auto_now_add=True)
 

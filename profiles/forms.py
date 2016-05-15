@@ -3,12 +3,14 @@ from __future__ import unicode_literals
 import logging
 from collections import OrderedDict
 
+from redactor.widgets import RedactorEditor
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from easy_thumbnails.widgets import ImageClearableFileInput
 
 from core.constants import GENDER_CHOICES, PROFESSION_CHOICES
-from cities.models import City
+from cities.models import City, Country
 from profiles.models import Profile, ProfileSettings
 from contacts.models import Contact
 
@@ -67,8 +69,11 @@ class ProfileForm(forms.ModelForm):
                              widget=forms.DateInput(attrs={'required': True},
                                                     format='%Y-%m-%d'),
                              input_formats=['%Y-%m-%d'], required = True)
-  location = forms.ModelChoiceField(label=_('Location'),
-                                    widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
+  country = forms.ModelChoiceField(label=_('Country'),
+                                    widget=forms.Select(attrs={'class': 'ui search dropdown'}),
+                                    queryset=Country.objects.all(), required= True)
+  location = forms.ModelChoiceField(label=_('City'),
+                                    widget=forms.Select(attrs={'class': 'ui search dropdown'}),
                                     queryset=City.objects.all(), required= True)
   short_description = forms.CharField(label=_('Short description'), max_length=255,
                                       widget=forms.TextInput(attrs={}),
@@ -76,9 +81,15 @@ class ProfileForm(forms.ModelForm):
   card_image = forms.ImageField(label=_('Card image'),
                                 widget=ImageClearableFileInput(attrs={}),
                                 required=False)
-  bio = forms.CharField(label=_('Biography'),
-                        widget=forms.Textarea(attrs={}),
-                        required=True)
+  # bio = forms.CharField(label=_('Biography'),
+  #                       widget=forms.Textarea(attrs={}),
+  #                       required=True)
+  bio = forms.CharField(widget=RedactorEditor(attrs={
+                             'placeholder': _('Biography'),
+                             'cols': "20",
+                             'rows': "5"}),
+                            label=_('Biography'),
+                            max_length=3000, required= True)
 
   def __init__(self, *args, **kw):
     super(ProfileForm, self).__init__(*args, **kw)
@@ -96,6 +107,9 @@ class ProfileForm(forms.ModelForm):
   class Meta:
     model = Profile
     exclude = ['user', 'privacy', 'settings', 'id_image', 'second_id_image', 'id_status', 'is_moderated']
+    widgets = {
+      'bio': RedactorEditor()
+        }
 
   def save(self, force_insert=False, force_update=False, commit=True):
     profile = super(ProfileForm, self).save(commit=commit)

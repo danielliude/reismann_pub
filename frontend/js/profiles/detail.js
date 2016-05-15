@@ -12,6 +12,7 @@ $(function() {
   init_button()
   // init_form()
   init_album()
+  country_city()
 
   function init_button() {
     $('.profile_form .ui.dropdown').dropdown();
@@ -114,4 +115,38 @@ $(function() {
       });
     });
   }
+
+  function country_city() {
+    $.get('/cities/get_cities', function(data) {
+      refresh_location(data, $("#id_country").val())
+      $('#id_country').parent().dropdown({
+        onChange: function(value, text, $selectedItem) {
+          console.log(value, text, $selectedItem)
+          if(!value) {
+            $("#id_location").empty().siblings('.text').text('')
+            return;
+          }
+
+          refresh_location(data, value)
+        }
+      })
+    });
+  }
+
+  function refresh_location(data, value) {
+    var html = ''
+    for(var i=0; i<data.length; i++) {
+      if(data[i].country == value) {
+        if(html) {
+          html += '<option value="' + data[i].id + '">' + data[i].name + '</option>'
+        } else {
+          html += '<option value="' + data[i].id + '" selected="selected">' + data[i].name + '</option>'
+         $("#id_location").siblings('.text').text(data[i].name)
+        }
+      }
+    }
+
+    $("#id_location").empty().append(html).parent().dropdown('refresh')
+  } 
+
 })

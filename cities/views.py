@@ -216,3 +216,21 @@ def city(request, city_name, template_name='cities/city.html'):
         context = makeContextForDetails(request, context)
 
         return render(request, 'cities/city.html', context)
+
+def get_cities(request):
+    if request.is_ajax():
+        cities = City.objects.all()
+        data = []
+        results = []
+        mimetype = 'application/json'
+        for city in cities:
+            city_json = {}
+            city_json['id'] = city.id
+            city_json['name'] = city.name
+            city_json['country'] = city.country.id
+            results.append(city_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+
+    return HttpResponse(data, mimetype)

@@ -66,17 +66,15 @@ def makeContextForAllServices(request, user, context):
     unique_cities = get_distinct_cities(user)
     unique_languages = get_distinct_languages(user)
     unique_categories = get_distinct_categories(user)
-    services_rating = get_services_rating(user)
+    provider_rating = get_services_rating(user)
+
 
     context['unique_tags'] = unique_tags
     context['unique_cities'] = unique_cities
     context['unique_languages'] = unique_languages
     context['unique_categories'] = unique_categories
-    context['services_rating'] = services_rating
+    context['provider_rating'] = provider_rating
 
-    random_services = Service.objects.filter(user = user)
-    if random_services:
-        context['provider_service'] = random_services[0]
 
     return context
 
@@ -86,20 +84,15 @@ def profile(request, username, template_name="profiles/profile.html",
   if not extra_context: extra_context = dict()
 
   user = get_object_or_404(User, username__iexact=username)
-
+  services = get_user_active_services(user=user)
   profile = get_user_profile(user)
-  services = get_user_active_services(user)
 
   extra_context['profile'] = profile
-  extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
+  extra_context['services'] = services
 
-  if request.user.is_authenticated:
-    contact = get_user_contact(user)
-    extra_context['contact'] = contact
-
-  extra_context = makeContextForAllServices(request, user, extra_context)
-  extra_context = makeContextForDetails(request, extra_context)
+  # extra_context = makeContextForAllServices(request, user, extra_context)
+  # extra_context = makeContextForDetails(request, extra_context)
   extra_context = makeContextForMessages(request, extra_context)
 
 

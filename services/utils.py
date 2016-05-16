@@ -18,8 +18,6 @@ def get_services_rating(user):
     else:
         return 0
 
-
-
 def get_user_services(user):
 
     services = Service.objects.filter(user = user)
@@ -29,7 +27,6 @@ def get_user_active_services(user):
 
     services = Service.objects.filter(user = user, status = 2)
     return services
-
 
 def get_service_by_id(id):
 

@@ -71,7 +71,6 @@
 
 	    function init_rating() {
 	        $('.ui.rating').rating('disable');
-	        $('.ui.rating').rating();
 	    }
 
 	    function init_form() {

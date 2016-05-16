@@ -98,19 +98,19 @@ ASSIGNED_PERMISSIONS = {
      ('change_message', 'Can change message'),
      ('delete_message', 'Can delete message')),
   'booking_sender':
-    (('view_booking', 'Can view booking'),
+    (('add_booking', 'Can add booking'),
+     ('view_booking', 'Can view booking'),
      ('change_booking', 'Can change booking'),
      ('delete_booking', 'Can delete booking'),
      ('reject_booking', 'Can reject booking'),
-     ('approve_booking', 'Can approve booking'),
-     ('cancel_booking', 'Can cancel booking')),
+     ('approve_booking', 'Can approve booking')),
    'booking_recipient':
-    (('view_booking', 'Can view booking'),
+    (('add_booking', 'Can add booking'),
+     ('view_booking', 'Can view booking'),
      ('change_booking', 'Can change booking'),
      ('delete_booking', 'Can delete booking'),
      ('reject_booking', 'Can reject booking'),
-     ('approve_booking', 'Can approve booking'),
-     ('cancel_booking', 'Can cancel booking')),
+     ('approve_booking', 'Can approve booking')),
 
 }
 

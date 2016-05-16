@@ -28,17 +28,9 @@
       <tr>
         <td><b>{% trans 'Price:' %}</b></td>
         <td>
-          {% if booking.service.currency == 1 %}
-            {% trans '€' %}
-          {% elif booking.service.currency == 2 %}
-            {% trans '¥' %}
-          {% endif %}
+          {{ booking.service.get_currency_display }}
           {{ booking.price|floatformat:"0" }}/
-          {% if booking.service.price_type == 1 %}
-            {% trans 'day' %}
-          {% elif booking.service.price_type == 2 %}
-            {% trans 'hour' %}
-          {% endif %}
+          {{ booking.service.get_price_type_display }}
         </td>
       </tr>
       <tr>

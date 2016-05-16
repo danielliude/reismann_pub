@@ -184,6 +184,7 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
 
             if form.is_valid():
               message = form.save(user)
+              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has replied on your message')
               message.save()
 
               if success_url:

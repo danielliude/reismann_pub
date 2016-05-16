@@ -10,7 +10,7 @@
 {% block extra_head %}
   <script>	
   	var set_album_image_url = "{% url 'profiles:set_album_image' profile.user.username %}";
-	var redactor_custom_options = {'imageManagerJson': '{% url "profiles:album" profile.user.username %}'};
+	  var redactor_custom_options = {'imageManagerJson': '{% url "profiles:album" profile.user.username %}'};
   </script>
 {% endblock %}
 

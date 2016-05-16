@@ -2,7 +2,7 @@ import _datetime as datetime
 import statistics
 
 from redactor.fields import RedactorField
-from core.uploads import upload_to_service_content
+from core.uploads import upload_to_profiles_bio
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -68,7 +68,7 @@ class Profile(models.Model):
   short_description = models.CharField(_('Short description'), blank=True, null=True,
                                        max_length=255, help_text= _('short description'))
 
-  bio = RedactorField(verbose_name=_('Biography'), default="Biography", upload_to= upload_to_service_content)
+  bio = RedactorField(verbose_name=_('Biography'), default="Biography", upload_to= upload_to_profiles_bio)
 
   created_at = models.DateTimeField(auto_now_add=True)
 

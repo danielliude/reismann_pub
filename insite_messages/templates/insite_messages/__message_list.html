@@ -64,7 +64,7 @@
       </td>
     {% endif %}
       <td>{{ message.subject }}</td>
-      <td>{{ message.sent_at }}</td>
+      <td>{{ message.sent_at|date:"Y-m-d H:i:s" }}</td>
       <td>
         {% ifequal message.status "Read" %}
           <a class="ui green label">{{ message.status }}</a>

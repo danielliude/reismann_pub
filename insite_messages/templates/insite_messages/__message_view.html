@@ -3,7 +3,41 @@
 <div class="ui blue segment message_show">
   <h3 class="ui center aligned header">{% trans 'Message' %}</h3>
 
-  <h3>{{ message.subject }}</h3>
+  <table class="ui very basic unstackable large table" style="max-width:400px;">
+    <tbody>
+      <tr>
+        <td><b>{% trans 'From:' %}</b></td>
+        <td>{{ message.sender }}</td>
+      </tr>
+      <tr>
+        <td><b>{% trans 'Time:' %}</b></td>
+        <td>{{ message.sent_at|date:"Y-m-d H:i:s" }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 class="ui header" style="margin-top:-0.5rem;">{% trans 'Title:' %}</h4>
+  <div class="ui segment">
+    {{ message.subject }}
+  </div>
+  <h4 class="ui header" style="margin-top:1rem;">{% trans 'Text:' %}</h4>
+  <div class="ui segment">
+    {{ message.body }}
+  </div>
+  <br>
+
+  <div class="style_button">
+    {% if message.sender != user %}
+      <a href="{% url 'profiles:message_reply' profile.user.username message.id %}" class="ui green button"><i class="reply icon"></i>Reply</a>
+      <a href="{% url 'profiles:message_remove' profile.user.username message.id %}" class="ui red button"><i class="remove icon"></i>Delete</a>
+    {% else %}
+      {% if message %}
+        <a href="{% url 'profiles:message_remove' profile.user.username message.id %}" class="ui red button"><i class="remove icon"></i>Delete</a>
+      {% endif %}
+    {% endif %}
+  </div>
+
+<!--   <h3>{{ message.subject }}</h3>
   <h5 class="ui header">{% trans 'From: ' %}{{ message.sender }} <div class="sub header">{{ message.sent_at }}</div></h5>
   {{ message.body }}
   <br>
@@ -17,5 +51,5 @@
     {% endif %}
   {% endif %}
   <br>
-  <br>
+  <br> -->
 </div>

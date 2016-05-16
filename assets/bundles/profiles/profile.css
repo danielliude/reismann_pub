@@ -39,3 +39,8 @@ body {
   .ui.segment.all_services .ui.label {
     padding: 4px 6px;
     margin-bottom: 5px; }
+
+.ui.comments {
+  max-width: 100%; }
+  .ui.comments .content .ui.rating {
+    padding-left: 10px; }

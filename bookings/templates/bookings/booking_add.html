@@ -7,6 +7,12 @@
     {% render_bundle 'profiles/bookings' 'js' %}
 {% endblock %}
 
+{% block extra_head %}
+  <script>	
+	var redactor_custom_options = {'imageManagerJson': '{% url "profiles:album" profile.user.username %}'};
+  </script>
+{% endblock %}
+
 {% block content %}
     <div class="ui grid booking_add_grid">
       <div class="column">

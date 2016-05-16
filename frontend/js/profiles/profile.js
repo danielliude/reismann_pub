@@ -11,6 +11,8 @@ $(function() {
 	      })
 	    ;
 
+	    $('.ui.comments .ui.rating').rating('disable');
+
 	    $(".not_login").click(function() {
 	    	alert('please login for this action')
 	    });

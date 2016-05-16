@@ -3,7 +3,75 @@
 <div class="ui blue segment service_show">
   <h3 class="ui center aligned header">{% trans 'Service' %}</h3>
 
-  <div class="ui large relaxed list">
+  <table class="ui very basic unstackable large table style_label" style="max-width:400px;">
+    <tbody>
+      <tr>
+        <td><b>{% trans 'Title:' %}</b></td>
+        <td>{{ service.title }}</td>
+      </tr>
+      <tr>
+        <td><b>{% trans 'Price:' %}</b></td>
+        <td>
+          {{ service.get_currency_display }}
+          {{ service.price|floatformat:"0" }}/
+          {{ service.get_price_type_display }}
+        </td>
+      </tr>
+      <tr>
+        <td><b>{% trans 'Type:' %}</b></td>
+        <td>{{ service.get_type_display }}</td>
+      </tr>
+      <tr>
+        <td><b>{% trans 'Cities:' %}</b></td>
+        <td>
+          {% for city in service.cities.all %}
+            <a class="ui brand_blue label">{{ city.name }}</a>
+          {% endfor %}
+        </td>
+      </tr>
+      <tr>
+        <td><b>{% trans 'Category:' %}</b></td>
+        <td><a class="ui green label">{{ service.category.name }}</a></td>
+      </tr>
+      <tr>
+        <td><b>{% trans 'Languages:' %}</b></td>
+        <td>
+          {% for language in service.languages.all %}
+            <a class="ui yellow label">{{ language.name }}</a>
+          {% endfor %}
+        </td>
+      </tr>
+      <tr>
+        <td><b>{% trans 'Tags:' %}</b></td>
+        <td>
+          {% for tag in service.tags.all %}
+            <a class="ui red label">{{ tag.name }}</a>
+          {% endfor %}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 class="ui header" style="margin-top:-0.5rem;">{% trans 'Content:' %}</h4>
+  <div class="ui segment">
+    {{ service.content|safe }}
+  </div>
+  <br>
+
+  <div class="style_button">
+    <a href="{% url 'profiles:service_edit' request.user.username service.id %}" class="ui brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
+    {% ifequal service.status 3 %}
+        <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui green button"><i class="unlock icon"></i>{% trans 'Activate' %}</a>
+    {% endifequal %}
+
+    {% ifequal service.status 2 %}
+        <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui grey button"><i class="lock icon"></i>{% trans 'Deactivate' %}</a>
+    {% endifequal %}
+
+    <a href="{% url 'profiles:service_remove' request.user.username service.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
+  </div>
+
+<!--   <div class="ui large relaxed list">
     <div class="item">
       <div class="header">{% trans 'Title' %}</div>
       {{ service.title }}
@@ -72,7 +140,7 @@
       </div>
 
     </div>
-  </div>
+  </div> -->
 </div>
 
 

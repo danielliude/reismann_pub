@@ -66,17 +66,9 @@
         <td>{{ booking.service_starts_at|date:"Y-m-d" }}</td>
         <td>{{ booking.service_ends_at|date:"Y-m-d" }}</td>
         <td>
-          {% if booking.service.currency == 1 %}
-            {% trans '€' %}
-          {% elif booking.service.currency == 2 %}
-            {% trans '¥' %}
-          {% endif %}
+          {{ booking.service.get_currency_display }}
           {{ booking.price|floatformat:"0" }}/
-          {% if booking.service.price_type == 1 %}
-            {% trans 'day' %}
-          {% elif booking.service.price_type == 2 %}
-            {% trans 'hour' %}
-          {% endif %}
+          {{ booking.service.get_price_type_display }}
         </td>
         <td>
           {% if booking.status == 1 %}
@@ -91,7 +83,6 @@
             {% else%}
                 <a class="ui brand_blue label">{% trans 'Provider should reply' %}</a>
             {% endif %}
-
           {% elif booking.status == 3%}
             <a class="ui red label">{% trans 'Rejected by customer' %}</a>
           {% elif booking.status == 4%}

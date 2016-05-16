@@ -38,6 +38,9 @@ def upload_to_profile_id_card(instance, filename):
 def upload_to_service_content():
   return 'reismann/images/services/content'
 
+def upload_to_profiles_bio():
+  return 'reismann/images/profiles/bio'
+
 
 def upload_to_album(instance, filename):
     extension = filename.split('.')[-1].lower()

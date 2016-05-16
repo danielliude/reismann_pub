@@ -2,7 +2,7 @@
 
 <form class="ui form bookings_write_form" action="" enctype="multipart/form-data" method="post">
   {% csrf_token %}
-  
+  {{ form.media }}
   {{ form.non_field_errors }}
   {{ form.service.errors }}
   <div class="required field">

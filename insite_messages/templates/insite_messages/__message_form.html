@@ -5,22 +5,17 @@
   
   {{ form.non_field_errors }}
   {{ form.recipient.errors }}
-  <div class="field">
+  <div class="required field">
     <label>{{ form.recipient.label }}</label>
     {{ form.recipient }}
   </div>
   {{ form.subject.errors }}
-  <div class="field">
+  <div class="required field">
     <label>{{ form.subject.label }}</label>
-    <div class="ui corner labeled input">
-      {{ form.subject }}
-      <div class="ui corner label">
-        <i class="asterisk icon"></i>
-      </div>
-    </div>
+    {{ form.subject }}
   </div>
   {{ form.body.errors }}
-  <div class="field">
+  <div class="required field">
     <label>{{ form.body.label }}</label>
     {{ form.body }}
   </div>

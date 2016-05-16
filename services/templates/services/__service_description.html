@@ -26,7 +26,7 @@
                 <a class="author">{% trans 'Anonymous user' %}</a>
             {% endif %}
             <div class="metadata">
-              <span class="date">{% trans 'Created at: ' %}{{ rating.created_at }}</span>
+              <span class="date">{% trans 'Created at: ' %}{{ rating.created_at|date:"Y-m-d H:i:s" }}</span>
             </div>
             {{ rating.gen_stars }}
             <div class="text">{{ rating.comment }}</div>

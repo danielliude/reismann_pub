@@ -103,14 +103,18 @@ ASSIGNED_PERMISSIONS = {
      ('change_booking', 'Can change booking'),
      ('delete_booking', 'Can delete booking'),
      ('reject_booking', 'Can reject booking'),
+     ('cancel_booking', 'Can cancel booking'),
      ('approve_booking', 'Can approve booking')),
+
    'booking_recipient':
     (('add_booking', 'Can add booking'),
      ('view_booking', 'Can view booking'),
      ('change_booking', 'Can change booking'),
      ('delete_booking', 'Can delete booking'),
      ('reject_booking', 'Can reject booking'),
+     ('cancel_booking', 'Can cancel booking'),
      ('approve_booking', 'Can approve booking')),
+
 
 }
 

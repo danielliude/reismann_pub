@@ -1,4 +1,4 @@
-import datetime
+import _datetime as datetime
 import statistics
 
 from redactor.fields import RedactorField

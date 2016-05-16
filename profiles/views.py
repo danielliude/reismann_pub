@@ -54,12 +54,17 @@ def makeContextForDetails(request, context):
 def makeContextForMessages(request, context):
 
     if request.user.is_authenticated():
+        context['notifications'] = request.user.notifications.unread()
+    return context
+
+def makeContextForNotifications(request, context):
+
+    if request.user.is_authenticated():
 
         unread_messages = Message.objects.unread_for(request.user)
         context['unread_messages'] = unread_messages
 
     return context
-
 def makeContextForAllServices(request, user, context):
 
     unique_tags = get_distinct_tags(user)
@@ -91,10 +96,8 @@ def profile(request, username, template_name="profiles/profile.html",
   extra_context['view_own_profile'] = view_own_profile(request, username)
   extra_context['services'] = services
 
-  # extra_context = makeContextForAllServices(request, user, extra_context)
-  # extra_context = makeContextForDetails(request, extra_context)
   extra_context = makeContextForMessages(request, extra_context)
-
+  extra_context = makeContextForNotifications(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 

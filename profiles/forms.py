@@ -81,9 +81,6 @@ class ProfileForm(forms.ModelForm):
   card_image = forms.ImageField(label=_('Card image'),
                                 widget=ImageClearableFileInput(attrs={}),
                                 required=False)
-  # bio = forms.CharField(label=_('Biography'),
-  #                       widget=forms.Textarea(attrs={}),
-  #                       required=True)
   bio = forms.CharField(widget=RedactorEditor(attrs={
                              'placeholder': _('Biography'),
                              'cols': "20",

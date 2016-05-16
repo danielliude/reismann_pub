@@ -56,7 +56,7 @@ class BookingForm(forms.ModelForm):
                                       'placeholder': _('meeting point')}),)
 
   booking_content = forms.CharField(required=False,
-                                    widget=forms.Textarea(attrs={
+                                    widget=RedactorEditor(attrs={
                                         'placeholder': _('booking content'),
                                         'cols': "20",
                                         'rows': "5"}),
@@ -64,7 +64,7 @@ class BookingForm(forms.ModelForm):
                                     max_length=600)
 
   booking_remark = forms.CharField(required=False,
-                                   widget=forms.Textarea(attrs={
+                                   widget=RedactorEditor(attrs={
                                         'placeholder': _('booking remark'),
                                         'cols': "20",
                                         'rows': "5"}),

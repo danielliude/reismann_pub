@@ -13,7 +13,7 @@
         {% endif %}
         {% if profile.settings.is_provider %}
         <h5>{{ profile.short_description }}</h5>
-        <h5>{{ profile.gender }},{{ profile.profession }},{{ profile.location }},{{ profile.location }}</h5>
+        <h5>{{ profile.get_gender_display }}, {{ profile.get_profession_display }}, {{ profile.location }}, {{ profile.country }}</h5>
         {% endif %}
       </div>
       <div class="one wide tablet only {% if request.resolver_match.url_name == 'dashboard' %} computer only {% endif %} column">

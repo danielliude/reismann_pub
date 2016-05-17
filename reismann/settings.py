@@ -79,7 +79,8 @@ INSTALLED_APPS = (
   'bookings',
   'webpack_loader',
   'album',
-  'nocaptcha_recaptcha'
+  'nocaptcha_recaptcha',
+  'notifications',
 )
 
 SESSION_COOKIE_AGE = 360

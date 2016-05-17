@@ -1,25 +1,24 @@
 {% load i18n staticfiles %}
-
+{% load notifications_tags %}
+{% notifications_unread as unread_count%}
 {% if user.is_authenticated %}
 <div class="right menu">
   <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:inbox_messages' user.username %}'">
-    <i class="icon mail outline"></i> 
-    <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{{ unread_messages.count }}</div>
+    <i class="icon alarm outline"></i>
+    <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{{ unread_count }}</div>
 
     <div class="menu" style="width:250px;">
-      <div class="item">{% trans "You have" %} {{ unread_messages.count }} {% trans " unread messages" %}</div>
+      <div class="item">{% trans "You have " %}{{ unread_count }}{% trans " unread notifications" %}</div>
       <div class="divider"></div>
-      {% for message in unread_messages %}
-        <a href="{% url 'profiles:message_view' user.username message.id%}" class="item unread_info">
-          <img class="ui avatar image" src="{{ message.sender.profile.get_avatar_url }}">
-            <span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">{{ message.sender }}</span>
-            <small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>{{ message.minutes_past}}</small>
-            <span class="subject" style="position:absolute;left:53px;top:25px;">{{ message.subject }}</span>
+      {% for notification in notifications %}
+        <a href="" class="item unread_info">
+          <img class="ui avatar image" src="{{ notification.actor.profile.get_avatar_url }}">
+            <span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">{{ notification.actor }}</span>
+            <small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>{{ notification.timesince}}</small>
+            <span class="subject" style="position:absolute;left:53px;top:25px;">{{ notification.verb }}</span>
         </a>
         <div class="divider"></div>
       {% endfor %}
-      <a class="item" href="{% url 'profiles:inbox_messages' user.username %}">{% trans 'see inbox messages' %}</a>
-      <a class="item" href="{% url 'profiles:outbox_messages' user.username %}">{% trans 'see outbox messages' %}</a>
     </div>
   </div>
   <div class="ui top right pointing dropdown item">
@@ -31,56 +30,9 @@
     <div class="menu"> 
       <a href="{% url 'profiles:dashboard' user.username %}" class="item">{% trans 'dashboard' %}</a>
       <a href="{% url 'accounts:logout' %}" class="item">{% trans 'sign out' %}</a>
-      <!-- <div class="item" style="display:none"></div>
-      <div class="ui card card_info">
-        <div class="content">
-          <img class="right floated mini ui image" src="{{ user.profile.get_avatar_url }}">
-          <div class="header">{{ user.profile.get_full_name_or_username }} </div>
-          <div class="meta">{{ user.profile.short_description }}</div>
-          <div class="ui description center aligned three column divided padded grid">
-            <div class="column">
-              <div class="ui grey statistic">
-                <div class="value">
-                  {{ number_followers }}
-                </div>
-                <div class="">{% trans 'Followers' %}</div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="ui grey statistic">
-                <div class="value">
-                  {{ number_following }}
-                </div>
-                <div class="">{% trans 'Following' %}</div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="ui grey statistic">
-                <div class="value">
-                  {{ number_bookings }}
-                </div>
-                <div class="">{% trans 'Bookings' %}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="extra content">
-          <div class="ui three buttons">
-            <a href="{% url 'profiles:profile' user.username %}" class="ui basic green button">{% trans 'profile' %}</a>
-            <a href="{% url 'profiles:dashboard' user.username %}" class="ui basic blue button" style="padding-left:12px">{% trans 'dashboard' %}</a>
-            <a href="{% url 'accounts:logout' %}" class="ui basic red button">{% trans 'sign out' %}</a>
-          </div>
-        </div>
-      </div> -->
+
     </div>
   </div>
-<!--   <div class="ui mobile dropdown item">
-    <i class="sidebar icon"></i>
-    <div class="menu">
-      <a class="item" href="{% url 'help_problem' 'all' 'all' %}">{% trans 'become a provider' %}</a>
-      <a class="item" href="{% url 'help_problem' 'all' 'all' %}">{% trans "help" %}</a>
-    </div>
-  </div> -->
 </div>
 
 {% else %}

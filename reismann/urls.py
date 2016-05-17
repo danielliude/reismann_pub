@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
+import notifications.urls
 
 from core import views
 
@@ -36,6 +37,7 @@ urlpatterns = patterns('',
   url(r'^redactor/', include('redactor.urls')),
   url(r'^grappelli/', include('grappelli.urls')),
   url(r'^admin/', include(admin.site.urls)),
+  url('^inbox/notifications/', include(notifications.urls, namespace='notifications')),
 )
 
 urlpatterns += staticfiles_urlpatterns()

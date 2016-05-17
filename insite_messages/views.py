@@ -14,6 +14,7 @@ from contacts.utils import get_user_contact
 from insite_messages.models import Message
 from insite_messages.forms import MessageComposeForm
 from profiles.views import makeContextForDetails, makeContextForMessages
+from notifications.signals import notify
 
 
 @secure_required
@@ -94,7 +95,8 @@ def message_write(request, username, recipient=None, write_message_form=MessageC
             if form.is_valid():
               message = form.save(user)
               message.sent_at = datetime.utcnow().replace(tzinfo=utc)
-              message.send_notification_email_to_recipient()
+              # message.send_notification_email_to_recipient()
+              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has sent new message')
               message.save()
 
               if success_url:
@@ -182,6 +184,7 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
 
             if form.is_valid():
               message = form.save(user)
+              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has replied on your message')
               message.save()
 
               if success_url:

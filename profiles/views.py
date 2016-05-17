@@ -199,7 +199,7 @@ def settings(request, username, template_name='profiles/settings.html', success_
     settingsForm = SettingsForm(request.POST, request.FILES, instance = settings)
 
     if settingsForm.is_valid():
-      set = settingsForm.save()
+      settingsForm.save()
 
       if success_url:
         redirect_to = success_url

@@ -47,11 +47,13 @@ class SettingsForm(forms.ModelForm):
     def save(self, force_insert=False, force_update=False, commit=True):
         instance = super(SettingsForm, self).save(commit=False)
 
-        active = self.cleaned_data['profile_is_active']
-        if active:
-            instance.status = 2
-        else:
-            instance.status = 3
+        if self.fields['profile_is_active'].widget.attrs['disabled'] != 'disabled':
+            
+            active = self.cleaned_data['profile_is_active']
+            if active:
+                instance.status = 2
+            else:
+                instance.status = 3
 
         if commit:
             instance.save()

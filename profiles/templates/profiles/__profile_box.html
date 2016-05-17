@@ -12,8 +12,8 @@
         <h5>{{ profile.get_full_name_or_username }}</h5>
         {% endif %}
         {% if profile.settings.is_provider %}
-        <h5>{{ profile.short_description }}</h5>
-        <h5>{{ profile.get_gender_display }}, {{ profile.get_profession_display }}, {{ profile.location }}, {{ profile.country }}</h5>
+        <h5>{{ profile.short_description|default:"" }}</h5>
+        <h5>{% if profile.age %}{{ profile.age}}{% trans ' years old, ' %}{% endif %}{% if profile.get_profession_display%}{{ profile.get_profession_display|default:"" }}, {% endif %}{% if profile.location %}{{ profile.location }}, {% endif %}{% if profile.country%}{{ profile.country}}{% endif %}</h5>
         {% endif %}
       </div>
       <div class="one wide tablet only {% if request.resolver_match.url_name == 'dashboard' %} computer only {% endif %} column">

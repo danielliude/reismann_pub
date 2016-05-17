@@ -12,6 +12,10 @@
   <div class="ui grid dashboard_grid">
     <div class="column">
       {% include "profiles/__profile_box.html" %} 
+      {% if profile.settings.is_provider %}
+	      <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Edit profile' %}</b></a>
+	      <a href="{% url 'profiles:profile' profile.user.username %}" class="ui brand_blue fluid button"><b>{% trans 'View profile' %}</b></a>
+      {% endif %}
       <div class="ui segment">
 	  		<div class="ui middle aligned selection  divided list">
 				  <a class="item">

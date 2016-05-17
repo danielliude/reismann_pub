@@ -9,32 +9,16 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from easy_thumbnails.fields import ThumbnailerImageField
 
-from core.constants import MUGSHOT_SETTINGS, GENDER_CHOICES, PROFILE_CARD_IMAGE_SETTINGS, PROFESSION_CHOICES, IDENTIFICATION_STATUS
+from core.constants import MUGSHOT_SETTINGS, GENDER_CHOICES, PROFILE_CARD_IMAGE_SETTINGS, PROFESSION_CHOICES, IDENTIFICATION_STATUS, PROFILE_STATUS
 from core.uploads import upload_to_avatar, upload_to_profile_card, upload_to_profile_id_card
 from configurations.utils import get_profile_card_fallback_url, get_avatar_fallback_url
 from cities.models import City, Country
 from profiles.managers import ProfileManager
 from services.utils import get_user_services
 
-class ProfileSettings(models.Model):
-
-  profile_is_active = models.BooleanField(default=False, verbose_name=_('profile is active'),
-                                  help_text=_('profile is active'))
-
-  email_notifications = models.BooleanField(default=True, verbose_name=_('email notifications'),
-                                              help_text=_('get email notifications'))
-
-  show_real_name = models.BooleanField(default=False, verbose_name=_('real name'),
-                                              help_text=_('show real name'))
-
-  is_provider = models.BooleanField(default=True, verbose_name=_('provider functionality'),
-                                              help_text=_('provider functionality'))
-
 class Profile(models.Model):
 
   user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name='profile')
-
-  settings = models.OneToOneField(ProfileSettings, unique=True, verbose_name=_('settings'), related_name='profile', blank = True, null = True)
 
   avatar = ThumbnailerImageField(_('Avatar'), blank=True, upload_to=upload_to_avatar,
                                  resize_source=MUGSHOT_SETTINGS, help_text=_('profile avatar'))
@@ -74,8 +58,6 @@ class Profile(models.Model):
 
   updated_at = models.DateTimeField(auto_now=True)
 
-  is_moderated = models.BooleanField(default=False, verbose_name=_('Is moderated'),
-                                              help_text=_('is moderated'))
   objects = ProfileManager()
 
   class Meta:
@@ -155,3 +137,26 @@ class Profile(models.Model):
       name = "%(username)s" % {'username': user.username}
 
     return name.strip()
+
+class ProfileSettings(models.Model):
+
+  profile = models.OneToOneField(Profile, unique=True, verbose_name=_('settings'), related_name='settings', blank = True, null = True)
+
+  status = models.PositiveSmallIntegerField(_('profile status'), choices=PROFILE_STATUS,
+                                              blank=True, null=True, default=1)
+
+  email_notifications = models.BooleanField(default=True, verbose_name=_('email notifications'),
+                                              help_text=_('get email notifications'))
+
+  show_real_name = models.BooleanField(default=False, verbose_name=_('real name'),
+                                              help_text=_('show real name'))
+
+  is_provider = models.BooleanField(default=True, verbose_name=_('provider functionality'),
+                                              help_text=_('provider functionality'))
+
+  class Meta:
+    verbose_name = _('Profile settings')
+    verbose_name_plural = _('Profiles settings')
+
+  def __str__(self):
+    return _('Profile settings for %(username)s') % {'username': self.profile.user.username}

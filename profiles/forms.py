@@ -33,7 +33,29 @@ class SettingsForm(forms.ModelForm):
 
     class Meta:
         model = ProfileSettings
-        fields = ['profile_is_active', 'email_notifications', 'show_real_name', 'is_provider']
+        fields = ['email_notifications', 'show_real_name', 'is_provider']
+
+    def __init__(self, *args, **kwargs):
+        super(SettingsForm, self).__init__(*args, **kwargs)
+        if self.instance.status == 2:
+            self.fields['profile_is_active'].initial = True
+        elif self.instance.status == 3:
+            self.fields['profile_is_active'].initial = False
+        else:
+            self.fields['profile_is_active'].widget.attrs['disabled'] = 'disabled'
+
+    def save(self, force_insert=False, force_update=False, commit=True):
+        instance = super(SettingsForm, self).save(commit=False)
+
+        active = self.cleaned_data['profile_is_active']
+        if active:
+            instance.status = 2
+        else:
+            instance.status = 3
+
+        if commit:
+            instance.save()
+        return instance
 
 class ProfileIdForm(forms.ModelForm):
 

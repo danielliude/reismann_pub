@@ -31,14 +31,11 @@
   <div class="ui divided items">
     <div class="item">
       <div class="content">
-        <b>{% trans 'Profile is active:' %}</b>
-        {% if profile.settings.profile_is_active %}
-            <span class="right_absolute"><a class="ui green label">{% trans 'yes' %}</a></span>
-         {% else %}
-            <span class="right_absolute"><a class="ui red label">{% trans 'no' %}</a></span>
-         {% endif %}
+        <b>{% trans 'Profile status:' %}</b>
+            <span class="right_absolute"><a class="ui red label">{{ profile.settings.get_status_display }}</a></span>
       </div>
     </div>
+
   </div>
 <!--   <div class="ui divided items">
     <div class="item">

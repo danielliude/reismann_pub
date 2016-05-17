@@ -11,8 +11,10 @@ from easy_thumbnails.fields import ThumbnailerImageField
 from accounts.models import Registration
 
 from profiles.models import Profile
+from profiles.models import ProfileSettings
 
 from services.models import Service
+
 
 class ProfileInline(admin.StackedInline):
   model = Profile
@@ -36,7 +38,7 @@ class ServiceInline(admin.StackedInline):
   }
 
 class AccountAdmin(UserAdmin, GuardedModelAdmin):
-  inlines = [ProfileInline, RegistrationInline, ServiceInline,]
+  inlines = [ProfileInline, RegistrationInline, ServiceInline]
   fieldsets = (
     (None, {'fields': ('username', 'password')}),
     (_('Personal info'), {

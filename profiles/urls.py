@@ -6,7 +6,6 @@ urlpatterns = [
     url(r'^(?P<username>[\@\.\w-]+)/$', views.profile, name='profile'),
     url(r'^(?P<username>[\@\.\w-]+)/dashboard$', views.dashboard, name='dashboard'),
     url(r'^(?P<username>[\@\.\w-]+)/detail/$', views.detail, name='detail'),
-    url(r'^(?P<username>[\@\.\w-]+)/contact/$', views.contact, name='contact'),
     url(r'^(?P<username>[\@\.\w-]+)/verification/$', views.verification, name='verification'),
     url(r'^(?P<username>[\@\.\w-]+)/settings/$', views.settings, name='settings'),
     url(r'^(?P<username>[\@\.\w-]+)/album/$', views.album, name='album'),

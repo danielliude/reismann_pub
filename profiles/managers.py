@@ -10,12 +10,12 @@ SHA1_RE = re.compile('^[a-f0-9]{40}$')
 
 class ProfileManager(models.Manager):
 
-  def create_profile(self, user, settings):
+  def create_profile(self, user):
 
     try:
       profile = self.get(user=user)
     except self.model.DoesNotExist:
-      profile = self.create(user=user, settings = settings)
+      profile = self.create(user=user)
       profile.save()
     for perm in ASSIGNED_PERMISSIONS['profile']:
       assign_perm(perm[0], user, profile)

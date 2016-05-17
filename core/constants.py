@@ -60,6 +60,13 @@ SERVICE_STATUS = (
   (3, _('Not active')),
 )
 
+PROFILE_STATUS = (
+  (1, _('Moderation')),
+  (2, _('Active')),
+  (3, _('Not active')),
+  (4, _('Suspended')),
+)
+
 ALBUM_IMAGE_STATUS = SERVICE_STATUS
 
 IDENTIFICATION_STATUS = (

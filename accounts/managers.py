@@ -44,9 +44,9 @@ class RegistrationManager(UserManager):
       assign_perm(perm[0], new_user)
 
     registration = self.create_registration(new_user)
-    settings = ProfileSettings(profile_is_active = True, email_notifications = True)
+    profile = Profile.objects.create_profile(new_user)
+    settings = ProfileSettings(profile = profile, status = 1, email_notifications = True)
     settings.save()
-    profile = Profile.objects.create_profile(new_user, settings)
     contact = Contact.objects.create_contact(new_user)
 
     if send_email:

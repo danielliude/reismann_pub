@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from userena.decorators import secure_required
 from guardian.decorators import permission_required_or_403
 
-from profiles.models import Profile
+from profiles.models import Profile, ProfileSettings
 from profiles.forms import ProfileForm, ProfileIdForm, SettingsForm
 from profiles.utils import get_user_profile
 from profiles.managers import ProfileMailManager
@@ -22,7 +22,7 @@ from followship.utils import get_number_followers, get_number_following
 from bookings.utils import get_number_bookings
 from configurations.utils import get_active_service_categories
 from insite_messages.models import Message
-from services.models import Service
+
 from album.forms import AlbumImageUploadForm
 from album.models import AlbumImage, MyAlbum
 
@@ -99,7 +99,6 @@ def makeContextForProfile(request, user, context):
         else:
             user_rating = 0
             context['profile_rating'] = user_rating
-
     return context
 
 def profile(request, username, template_name="profiles/profile.html",
@@ -191,20 +190,16 @@ def settings(request, username, template_name='profiles/settings.html', success_
                  extra_context=None, **kwargs):
 
   user = get_object_or_404(User, username__iexact=username)
-
   profile = get_user_profile(user)
-  contact = get_user_contact(user)
-  services = get_user_services(user)
 
-  settingsForm = SettingsForm(instance = profile.settings)
+  settings = ProfileSettings.objects.get(profile = profile.id)
+  settingsForm = SettingsForm(instance = settings)
 
   if request.method == 'POST':
-    settingsForm = SettingsForm(request.POST, request.FILES)
+    settingsForm = SettingsForm(request.POST, request.FILES, instance = settings)
 
     if settingsForm.is_valid():
       set = settingsForm.save()
-      profile.settings = set
-      profile.save()
 
       if success_url:
         redirect_to = success_url
@@ -214,14 +209,10 @@ def settings(request, username, template_name='profiles/settings.html', success_
 
   if not extra_context: extra_context = dict()
   extra_context['form'] = settingsForm
-  extra_context['service_categories'] = get_active_service_categories()
   extra_context['profile'] = profile
-  extra_context['contact'] = contact
-  extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
-  extra_context = makeContextForDetails(request, extra_context)
-  extra_context = makeContextForMessages(request, extra_context)
+  extra_context = makeContextForNotifications(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -272,48 +263,9 @@ def verification(request, username, edit_id_form=ProfileIdForm,
   extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
-  extra_context = makeContextForDetails(request, extra_context)
   extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
-
-@secure_required
-# @permission_required_or_403('change_contact', (Contact, 'user__username', 'username'))
-def contact(request, username, edit_contact_form=ContactForm,
-                 template_name='profiles/contact.html', success_url=None,
-                 extra_context=None, **kwargs):
-
-  user = get_object_or_404(User, username__iexact=username)
-  profile = get_user_profile(user)
-  contact = get_user_contact(user)
-  services = get_user_services(user)
-
-  form = edit_contact_form(instance=contact)
-
-  if request.method == 'POST':
-    form = edit_contact_form(request.POST, request.FILES, instance=contact)
-
-    if form.is_valid():
-      contact = form.save()
-
-      if success_url:
-        redirect_to = success_url
-      else:
-        redirect_to = reverse('profiles:contact', kwargs={'username': username})
-      return redirect(redirect_to)
-
-  if not extra_context: extra_context = dict()
-  extra_context['form'] = form
-  extra_context['service_categories'] = get_active_service_categories()
-  extra_context['profile'] = profile
-  extra_context['contact'] = contact
-  extra_context['services'] = services
-
-  extra_context = makeContextForDetails(request, extra_context)
-  extra_context = makeContextForMessages(request, extra_context)
-
-  return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
-
 
 @secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))

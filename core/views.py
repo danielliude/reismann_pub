@@ -25,7 +25,7 @@ def index(request):
 
     else:
 
-      popular_profiles = sorted(Profile.objects.filter(settings__profile_is_active=True, settings__is_provider=True, is_moderated=True) \
+      popular_profiles = sorted(Profile.objects.filter(settings__is_provider=True, settings__status = 2) \
                         .exclude(Q(user__is_staff=True) | Q(user__is_superuser=True)) \
                         .order_by('created_at')[:6], key=lambda x: random.random())
 

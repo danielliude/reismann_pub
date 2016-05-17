@@ -18,7 +18,7 @@ from services.utils import get_user_services, get_service_by_id
 
 from configurations.utils import get_active_service_categories
 
-from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages, makeContextForAllServices
+from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages
 from services.models import ServiceRating
 from services.utils import get_user_services
 
@@ -194,7 +194,7 @@ def service_view(request, username, service_id,
         canRate = False
 
     extra_context['view_own_profile'] = view_own_profile(request, username)
-    extra_context = makeContextForAllServices(request, user, extra_context)
+    # extra_context = makeContextForAllServices(request, user, extra_context)
     extra_context = makeContextForDetails(request, extra_context)
     extra_context = makeContextForMessages(request, extra_context)
 

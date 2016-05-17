@@ -8,9 +8,7 @@
         <div class="content">
           <div class="header">
             <i class="map marker icon"></i>
-            {% if service.status == 2 %}   
               {{ service.title }}&nbsp;&nbsp;&nbsp;&nbsp;{{ service.get_currency_display }}{{ service.price }}/{{ service.get_price_type_display }}
-            {% endif %}
           </div>
         </div>
       </a>

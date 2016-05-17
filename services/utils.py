@@ -5,11 +5,14 @@ from itertools import chain
 
 def get_services_rating(user):
 
+    # get all services for user
     services = Service.objects.filter(user = user)
 
     result = []
     for service in services:
-        result = list(chain(result, ServiceRating.objects.filter(service = service)))
+        # if service is active
+        if service.status == 2:
+            result = list(chain(result, ServiceRating.objects.filter(service = service)))
 
     all_price = sum(c.rating for c in result)
 

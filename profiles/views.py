@@ -45,19 +45,22 @@ def makeContextForDetails(request, context):
         number_followers = get_number_followers(request.user)
         number_following = get_number_following(request.user)
         number_bookings = get_number_bookings(request.user)
+
         context['number_followers'] = number_followers
         context['number_following'] = number_following
         context['number_bookings'] = number_bookings
 
     return context
 
-def makeContextForMessages(request, context):
+def makeContextForNotifications(request, context):
 
     if request.user.is_authenticated():
+
         context['notifications'] = request.user.notifications.unread()
+
     return context
 
-def makeContextForNotifications(request, context):
+def makeContextForMessages(request, context):
 
     if request.user.is_authenticated():
 
@@ -65,21 +68,37 @@ def makeContextForNotifications(request, context):
         context['unread_messages'] = unread_messages
 
     return context
-def makeContextForAllServices(request, user, context):
 
-    unique_tags = get_distinct_tags(user)
-    unique_cities = get_distinct_cities(user)
-    unique_languages = get_distinct_languages(user)
-    unique_categories = get_distinct_categories(user)
-    provider_rating = get_services_rating(user)
+def makeContextForActiveServices(user, context):
+
+    services = get_user_active_services(user=user)
+    context['services'] = services
+
+    return context
 
 
-    context['unique_tags'] = unique_tags
-    context['unique_cities'] = unique_cities
-    context['unique_languages'] = unique_languages
-    context['unique_categories'] = unique_categories
-    context['provider_rating'] = provider_rating
+def makeContextForAllUserServices(user, context):
 
+    services = get_user_services(user = user)
+    context['services'] = services
+
+    return context
+
+def makeContextForProfile(request, user, context):
+
+    profile = get_user_profile(user)
+    context['profile'] = profile
+
+    context['view_own_profile'] = view_own_profile(request, user.username)
+
+    if request.user.is_authenticated():
+
+        if profile.settings.is_provider:
+            provider_rating = get_services_rating(user)
+            context['profile_rating'] = provider_rating
+        else:
+            user_rating = 0
+            context['profile_rating'] = user_rating
 
     return context
 
@@ -89,14 +108,8 @@ def profile(request, username, template_name="profiles/profile.html",
   if not extra_context: extra_context = dict()
 
   user = get_object_or_404(User, username__iexact=username)
-  services = get_user_active_services(user=user)
-  profile = get_user_profile(user)
-
-  extra_context['profile'] = profile
-  extra_context['view_own_profile'] = view_own_profile(request, username)
-  extra_context['services'] = services
-
-  extra_context = makeContextForMessages(request, extra_context)
+  extra_context = makeContextForProfile(request, user, extra_context)
+  extra_context = makeContextForActiveServices(user, extra_context)
   extra_context = makeContextForNotifications(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
@@ -108,22 +121,12 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
 
   user = get_object_or_404(User, username__iexact=username)
 
-  profile = get_user_profile(user)
-  contact = get_user_contact(user)
-  services = get_user_services(user)
-
-  user_initial = {'first_name': user.first_name,
-                  'last_name': user.last_name}
-
   if not extra_context: extra_context = dict()
-  extra_context['service_categories'] = get_active_service_categories()
-  extra_context['profile'] = profile
-  extra_context['contact'] = contact
-  extra_context['services'] = services
-  extra_context['view_own_profile'] = view_own_profile(request, username)
 
-  extra_context = makeContextForAllServices(request, user, extra_context)
+  extra_context = makeContextForNotifications(request, extra_context)
+  extra_context = makeContextForProfile(request, user, extra_context)
   extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForAllUserServices(user, extra_context)
   extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
@@ -138,7 +141,6 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
 
   profile = get_user_profile(user)
   contact = get_user_contact(user)
-  services = get_user_services(user)
 
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
@@ -169,15 +171,15 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
         return redirect(redirect_to)
 
   if not extra_context: extra_context = dict()
+
   extra_context['form'] = form
   extra_context['contactForm'] = contactForm
-  extra_context['service_categories'] = get_active_service_categories()
+
   extra_context['profile'] = profile
   extra_context['contact'] = contact
-  extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
-  extra_context = makeContextForDetails(request, extra_context)
+  extra_context = makeContextForNotifications(request, extra_context)
   extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)

@@ -27,7 +27,7 @@ class ProfileSettings(models.Model):
   show_real_name = models.BooleanField(default=False, verbose_name=_('real name'),
                                               help_text=_('show real name'))
 
-  is_provider = models.BooleanField(default=True, verbose_name=_('Provider functionality'),
+  is_provider = models.BooleanField(default=True, verbose_name=_('provider functionality'),
                                               help_text=_('provider functionality'))
 
 class Profile(models.Model):

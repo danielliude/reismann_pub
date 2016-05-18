@@ -60,11 +60,11 @@
         <div class="active content">
           <a class="item {% if url_name == 'followers' %}active{% endif %}" href="{% url 'profiles:followers' profile.user.username %}">
               <i class="arrow circle left icon"></i>
-              {% trans 'followers' %}
+              {% trans 'Followers' %}
           </a>
           <a class="item {% if url_name == 'followings' %}active{% endif %}" href="{% url 'profiles:followings' profile.user.username %}">
               <i class="arrow circle right icon"></i>
-              {% trans 'followings' %}
+              {% trans 'Followings' %}
           </a>
         </div>  
       </div>

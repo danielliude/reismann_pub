@@ -28,6 +28,8 @@ from album.models import AlbumImage, MyAlbum
 
 from followship.models import FollowingManager
 
+from services.models import Service
+
 
 logger = logging.getLogger("profiles")
 
@@ -112,6 +114,13 @@ def profile(request, username, template_name="profiles/profile.html",
   if not extra_context: extra_context = dict()
 
   user = get_object_or_404(User, username__iexact=username)
+
+  try:
+    provider_service = Service.objects.get(user = user)
+  except Service.DoesNotExist:
+      provider_service = None
+
+  extra_context['provider_service'] = provider_service
   extra_context = makeContextForProfile(request, user, extra_context)
   extra_context = makeContextForActiveServices(user, extra_context)
   extra_context = makeContextForNotifications(request, extra_context)

@@ -8,7 +8,7 @@ from guardian.decorators import permission_required_or_403
 from django.shortcuts import get_object_or_404
 from core.utils import ExtraContextTemplateView
 from followship.models import Follow
-from profiles.views import makeContextForNotifications, makeContextForProfile
+from profiles.views import makeContextForNotifications, makeContextForProfile, makeContextForAllUserServices, makeContextForMessages
 
 def follow(request, follower, followee):
 
@@ -53,6 +53,7 @@ def followings(request, username,
 
   extra_context = makeContextForNotifications(request, extra_context)
   extra_context = makeContextForProfile(request, user, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 

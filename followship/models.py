@@ -115,6 +115,13 @@ class Follow(models.Model):
 
   objects = FollowingManager()
 
+  class Meta:
+    verbose_name = _('Follow')
+    verbose_name_plural = _('Follows')
+    permissions = (
+        ('view_follow', _('view follow')),
+    )
+
   def __str__(self):
     return "User #%s follows #%s" % (self.follower.username, self.followee.username)
 

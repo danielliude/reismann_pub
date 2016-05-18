@@ -5,7 +5,11 @@
     <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Edit profile' %}</b></a>
     <a href="{% url 'profiles:profile' profile.user.username %}" class="ui brand_blue fluid button"><b>{% trans 'View profile' %}</b></a>
   {% else %}
-    <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Follow me' %}</b></a>
+      {% if follows %}
+          <a href="{% url 'profiles:unfollow' request.user.username profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Unfollow me' %}</b></a>
+      {% else %}
+          <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Follow me' %}</b></a>
+      {% endif %}
     <a href="{% url 'profiles:message_write' request.user.username profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Write a message' %}</b></a>
     {% with services.first as provider_service %}
     {% if profile.settings.is_provider %}

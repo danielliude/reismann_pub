@@ -26,6 +26,8 @@ from insite_messages.models import Message
 from album.forms import AlbumImageUploadForm
 from album.models import AlbumImage, MyAlbum
 
+from followship.models import FollowingManager
+
 
 logger = logging.getLogger("profiles")
 
@@ -87,12 +89,15 @@ def makeContextForAllUserServices(user, context):
 def makeContextForProfile(request, user, context):
 
     profile = get_user_profile(user)
-    context['profile'] = profile
 
+    follow_manager = FollowingManager()
+    follows = follow_manager.follows(follower=request.user, followee=profile.user)
+
+    context['follows'] = follows
+    context['profile'] = profile
     context['view_own_profile'] = view_own_profile(request, user.username)
 
     if request.user.is_authenticated():
-
         if profile.settings.is_provider:
             provider_rating = get_services_rating(user)
             context['profile_rating'] = provider_rating
@@ -165,10 +170,11 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
 
   if not extra_context: extra_context = dict()
 
+
+
   extra_context['form'] = form
   extra_context['contactForm'] = contactForm
-  extra_context['profile'] = profile
-  extra_context['view_own_profile'] = view_own_profile(request, username)
+  extra_context = makeContextForProfile(request, user, extra_context)
   extra_context = makeContextForNotifications(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)

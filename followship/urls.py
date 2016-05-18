@@ -4,6 +4,7 @@ from followship import views
 urlpatterns = [
     # View services included in profiles
     url(r'(?P<follower>[\@\.\w-]+)/follow/(?P<followee>\w+)/$', views.follow, name='follow'),
+    url(r'(?P<follower>[\@\.\w-]+)/unfollow/(?P<followee>\w+)/$', views.unfollow, name='unfollow'),
 
     url(r'^(?P<username>[\@\.\w-]+)/followers/$', views.followers, name='followers'),
     url(r'^(?P<username>[\@\.\w-]+)/followings/$', views.followings, name='followings'),

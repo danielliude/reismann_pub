@@ -22,6 +22,18 @@ def follow(request, follower, followee):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+def unfollow(request, follower, followee):
+
+    follower_object = User.objects.get(username = follower)
+    followee_object = User.objects.get(username = followee)
+
+    if follower and followee:
+        if Follow.objects.follows(follower_object, followee_object):
+            Follow.objects.unfollow(follower_object, followee_object)
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 @secure_required
 @permission_required_or_403('followship.view_followers')
 def followers(request, username,

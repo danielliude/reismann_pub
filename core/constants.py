@@ -143,5 +143,7 @@ GLOBAL_PERMISSIONS = {
      ('bookings.reject_booking', 'Can reject booking'),
      ('bookings.delete_booking', 'Can delete booking'),
      ('bookings.approve_booking', 'Can approve booking'),
-     ('bookings.cancel_booking', 'Can cancel booking')),
+     ('bookings.cancel_booking', 'Can cancel booking'),
+
+    ('followship.view_follow', 'Can view follow')),
 }

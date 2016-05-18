@@ -8,6 +8,8 @@
     {% csrf_token %}
     {{ form.media }}
     {{ form.non_field_errors }}
+    {{ contactForm.non_field_errors }}
+
     {{ form.last_name.errors }}
     <div class="required field">
       <label>{{ form.last_name.label }}</label>
@@ -113,7 +115,7 @@
     </div>
 
     {{ contactForm.phone.error }}
-    <div class="required field">
+    <div class="field">
         <label>{{ contactForm.phone.label }}</label>
         {{ contactForm.phone }}
     </div>

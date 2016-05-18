@@ -14,14 +14,15 @@ class ContactForm(forms.ModelForm):
   """
   Form for creating or editing a new contact.
   """
-  phone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('telephone number')}),
-                          required= True,
-                          label=_('Telephone number'),
-                          max_length=30)
   email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder': _('contact email')}),
-                          required= True,
+                          required=False,
                           label=_('Contact email'),
                           max_length=200)
+
+  phone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('telephone number')}),
+                          required= False,
+                          label=_('Telephone number'),
+                          max_length=30)
 
   weibo = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('weibo account')}),
                           required= False,
@@ -32,17 +33,29 @@ class ContactForm(forms.ModelForm):
                           label=_('Wechat account'),
                           max_length=30)
   qq = forms.CharField(widget=forms.TextInput(attrs={'placeholder': _('qq account')}),
+                       required=False,
                        label=_('Qq account'),
                        max_length=30)
-
-  email_notifications = forms.BooleanField(widget=forms.CheckboxInput(attrs={'placeholder': _('email notifications')}),
-                       required= False,
-                       label=_('Email notifications'))
 
 
   class Meta:
     model = Contact
     exclude = ['user']
+
+  def __init__(self, *args, **kw):
+    super(ContactForm, self).__init__(*args, **kw)
+
+    # disable some fields on the second edition
+    instance = getattr(self, 'instance', None)
+    if instance.email:
+        self.fields['email'].widget.attrs['disabled'] = 'disabled'
+
+  def clean_email(self):
+      instance = getattr(self, 'instance', None)
+      if instance.email:
+          return instance.email
+      else:
+          return self.cleaned_data['email']
 
   def save(self, force_insert=False, force_update=False, commit=True):
     contact = super(ContactForm, self).save(commit=commit)

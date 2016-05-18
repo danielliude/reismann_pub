@@ -144,42 +144,32 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
 
-  form = profile_form(instance=profile, initial=user_initial)
-  contactForm = contact_form(instance = contact)
-
-  if request.method == 'POST':
+  if request.POST:
     form = profile_form(request.POST, request.FILES, instance = profile, initial=user_initial)
     contactForm = contact_form (request.POST, request.FILES, instance = contact)
 
-    ok = True
-    if form.is_valid():
-        form.save()
-    else:
-        ok = False
-    if contactForm.is_valid():
-        contactForm.save()
-    else:
-        ok = False
+    if form.is_valid() and contactForm.is_valid():
 
-    if ok:
+        form.save()
+        contactForm.save()
+
         if success_url:
             redirect_to = success_url
         else:
             redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
-
         return redirect(redirect_to)
+
+
+  form = profile_form(instance=profile, initial=user_initial)
+  contactForm = contact_form(instance = contact)
 
   if not extra_context: extra_context = dict()
 
   extra_context['form'] = form
   extra_context['contactForm'] = contactForm
-
   extra_context['profile'] = profile
-  extra_context['contact'] = contact
   extra_context['view_own_profile'] = view_own_profile(request, username)
-
   extra_context = makeContextForNotifications(request, extra_context)
-  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 

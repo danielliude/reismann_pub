@@ -51,6 +51,11 @@
       <i class="bookmark icon"></i>
       {% trans 'Bookings' %}
     </a>
+    <a class="item {% if url_name == 'view_follow' %}active{% endif %}" href="{% url 'profiles:view_follow' profile.user.username %}">
+      <i class="users icon"></i>
+      {% trans 'Follow' %}
+    </a>
+
     <div class="ui inverted accordion item">
       <div class="item" style="padding-right:0px;">
         <div class="title">
@@ -82,8 +87,6 @@
       {% trans 'Quit' %}
     </a>
     {% endwith %}
-    <br>
-    <br>
     <br>
 </div>
 

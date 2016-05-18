@@ -331,3 +331,4 @@ def set_album_image(request, username):
         profile.save()
         return HttpResponse(the_image.image.url)
     raise Http404
+

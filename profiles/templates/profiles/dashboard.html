@@ -17,7 +17,7 @@
       {% endif %}
       <div class="ui segment">
 	  		<div class="ui middle aligned selection  divided list">
-				  <a class="item">
+				  <a class="item" href="{% url 'profiles:view_follow' profile.user.username %}">
 				    <div class="right floated content">
 				      <div class="header">{{ number_followers }}</div>
 				    </div>
@@ -26,7 +26,7 @@
 				    	<div class="header">{% trans 'Followers' %}</div>
 				    </div>
 				  </a>
-				  <a class="item">
+				  <a class="item" href="{% url 'profiles:view_follow' profile.user.username %}">
 				    <div class="right floated content">
 				      <div class="header">{{ number_following }}</div>
 				    </div>

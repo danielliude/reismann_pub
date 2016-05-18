@@ -28,6 +28,8 @@
     </div>
   </div>
   
+  {% with request.resolver_match.url_name as url_name %}
+  {% if url_name == 'dashboard' %}
   <div class="ui divided items">
     <div class="item">
       <div class="content">
@@ -35,8 +37,9 @@
             <span class="right_absolute"><a class="ui red label">{{ profile.settings.get_status_display }}</a></span>
       </div>
     </div>
-
   </div>
+  {% endif %}
+  {% endwith %}
 <!--   <div class="ui divided items">
     <div class="item">
       <div class="content">

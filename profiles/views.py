@@ -115,12 +115,10 @@ def profile(request, username, template_name="profiles/profile.html",
 
   user = get_object_or_404(User, username__iexact=username)
 
-  try:
-    provider_service = Service.objects.filter(user = user)[0]
-  except Service.DoesNotExist:
-    provider_service = None
 
-  extra_context['provider_service'] = provider_service
+  provider_service = Service.objects.filter(user = user).first()
+  if provider_service:
+    extra_context['provider_service'] = provider_service
   extra_context = makeContextForProfile(request, user, extra_context)
   extra_context = makeContextForActiveServices(user, extra_context)
   extra_context = makeContextForNotifications(request, extra_context)

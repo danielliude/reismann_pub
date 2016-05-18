@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="ui grid follow_grid">
+    <div class="ui relaxed grid follow_grid">
       <div class="column">
           <div class="ui blue segment">
             <h3 class="ui center aligned header">{% trans 'Followers' %}</h3>
@@ -17,20 +17,8 @@
             <div class="ui four column grid">
               {% for follower in followers %}
               <div class="center aligned column">
-                <img class="ui circular centered image" src="{{ follower.profile.get_avatar_url }}">
+                <a href="{% url 'profiles:profile' follower.username %}"><img class="ui circular small centered image" src="{{ follower.profile.get_avatar_url }}"></a>
                 <p>{{ follower.username }}</p>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-          <div class="ui blue segment">
-            <h3 class="ui center aligned header">{% trans 'Following' %}</h3>
-            <br>
-            <div class="ui four column center aligned grid">
-              {% for following in followings %}
-              <div class="column">
-                <img class="ui circular centered image" src="{{ following.profile.get_avatar_url }}">
-                <p>{{ following.username }}</p>
               </div>
               {% endfor %}
             </div>

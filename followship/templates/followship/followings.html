@@ -1,0 +1,28 @@
+{% extends "profiles/__profile_base.html" %}
+{% load i18n %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/follow' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/follow' 'js' %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui relaxed grid follow_grid">
+      <div class="column">
+          <div class="ui blue segment">
+            <h3 class="ui center aligned header">{% trans 'Followings' %}</h3>
+            <br>
+            <div class="ui four column grid">
+              {% for following in followings %}
+              <div class="center aligned column">
+                <a href="{% url 'profiles:profile' following.username %}"><img class="ui circular small centered image" src="{{ following.profile.get_avatar_url }}"></a>
+                <p>{{ following.username }}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+      </div>
+    </div>
+{% endblock %} 

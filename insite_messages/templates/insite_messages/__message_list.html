@@ -17,7 +17,7 @@
     {% if message.sender == user %}
       <td>
         <h4 class= "ui image header">
-          <img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+          <a href="{% url 'profiles:profile' message.sender.profile.user.username %}"><img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image"></a>
           <div class="content">
               {% trans "Me" %}
               <div class="sub header">{{ message.sender.profile.location }}</div>
@@ -27,7 +27,7 @@
     {% else %}
       <td>
         <h5 class= "ui image header">
-          <img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+          <a href="{% url 'profiles:profile' message.sender.profile.user.username %}"><img src="{{ message.sender.profile.get_avatar_url }}" class="ui mini rounded image"></a>
           <div class="ui content">
             {{ message.sender }}
             <div class="sub header">
@@ -41,7 +41,7 @@
     {% if message.recipient == user %}
       <td>
         <h5 class= "ui image header">
-          <img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+          <a href="{% url 'profiles:profile' message.recipient.profile.user.username %}"><img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image"></a>
           <div class="content">
             {% trans "Me" %}
             <div class="sub header">
@@ -53,7 +53,7 @@
     {% else %}
       <td>
         <h5 class= "ui image header">
-          <img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+          <a href="{% url 'profiles:profile' message.recipient.profile.user.username %}"><img src="{{ message.recipient.profile.get_avatar_url }}" class="ui mini rounded image"></a>
           <div class="content">
             {{ message.recipient }}
             <div class="sub header">

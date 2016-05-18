@@ -23,7 +23,7 @@
         {% if booking.sender == user %}
           <td>
             <h4 class= "ui image header">
-              <img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+              <a href="{% url 'profiles:profile' booking.sender.profile.user.username %}"><img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image"></a>
               <div class="content">
                 {% trans "Me" %}
                 <div class="sub header">{{ booking.sender.profile.location }}</div>
@@ -33,7 +33,7 @@
         {% else %}
           <td>
             <h5 class= "ui image header">
-              <img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image">
+              <a href="{% url 'profiles:profile' booking.sender.profile.user.username %}"><img src="{{ booking.sender.profile.get_avatar_url }}" class="ui mini rounded image"></a>
               <div class="ui content">
                 {{ booking.sender }}
                 <div class="sub header">{{ booking.sender.profile.location }}</div>
@@ -44,7 +44,7 @@
         {% if booking.recipient == user %}
           <td>
             <h5 class= "ui image header">
-              <img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+              <a href="{% url 'profiles:profile' booking.recipient.profile.user.username %}"><img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image"></a>
               <div class="content">
                 {% trans "Me" %}
                 <div class="sub header">{{ booking.recipient.profile.location }}</div>
@@ -54,7 +54,7 @@
         {% else %}
           <td>
             <h5 class= "ui image header">
-              <img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image">
+              <a href="{% url 'profiles:profile' booking.recipient.profile.user.username %}"><img src="{{ booking.recipient.profile.get_avatar_url }}" class="ui mini rounded image"></a>
               <div class="content">
                 {{ booking.recipient }}
                 <div class="sub header">{{ booking.recipient.profile.location }}</div>

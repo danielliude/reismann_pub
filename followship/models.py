@@ -119,7 +119,8 @@ class Follow(models.Model):
     verbose_name = _('Follow')
     verbose_name_plural = _('Follows')
     permissions = (
-        ('view_follow', _('view follow')),
+        ('view_followers', _('view followers')),
+        ('view_followings', _('view followings')),
     )
 
   def __str__(self):

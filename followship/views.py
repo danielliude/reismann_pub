@@ -23,7 +23,7 @@ def follow(request, follower, followee):
 
 
 @secure_required
-@permission_required_or_403('followship.followers')
+@permission_required_or_403('followship.view_followers')
 def followers(request, username,
                 template_name='followship/followers.html',
                 extra_context=None, **kwargs):
@@ -40,7 +40,7 @@ def followers(request, username,
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 @secure_required
-@permission_required_or_403('followship.followings')
+@permission_required_or_403('followship.view_followings')
 def followings(request, username,
                 template_name='followship/followings.html',
                 extra_context=None, **kwargs):

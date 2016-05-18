@@ -116,9 +116,9 @@ def profile(request, username, template_name="profiles/profile.html",
   user = get_object_or_404(User, username__iexact=username)
 
   try:
-    provider_service = Service.objects.get(user = user)
+    provider_service = Service.objects.filter(user = user)[0]
   except Service.DoesNotExist:
-      provider_service = None
+    provider_service = None
 
   extra_context['provider_service'] = provider_service
   extra_context = makeContextForProfile(request, user, extra_context)
@@ -178,8 +178,6 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   contactForm = contact_form(instance = contact)
 
   if not extra_context: extra_context = dict()
-
-
 
   extra_context['form'] = form
   extra_context['contactForm'] = contactForm

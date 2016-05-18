@@ -73,19 +73,20 @@ class ProfileIdForm(forms.ModelForm):
         model = Profile
         fields = ['id_image', 'second_id_image']
 
+
 class ProfileForm(forms.ModelForm):
 
   first_name = forms.CharField(label=_('First name'),
                                max_length=30,
-                               widget=forms.TextInput(attrs={'placeholder': _('First name')}), required = True)
+                               widget=forms.TextInput(attrs={'placeholder': _('First name')}), required = False)
   last_name = forms.CharField(label=_('Last name'),
                               max_length=30,
-                              widget=forms.TextInput(attrs={'placeholder': _('Last name')}), required = True)
+                              widget=forms.TextInput(attrs={'placeholder': _('Last name')}), required = False)
   gender = forms.ChoiceField(label=_('Gender'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                             choices=GENDER_CHOICES, required = True)
+                             choices=GENDER_CHOICES, required = False)
   profession = forms.ChoiceField(label=_('Profession'),
-                             widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
+                             widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'placeholder': _('Gender')}),
                              choices=PROFESSION_CHOICES, required = True)
   avatar = forms.ImageField(label=_('Avatar'),
                              widget=ImageClearableFileInput(attrs={}),
@@ -93,7 +94,7 @@ class ProfileForm(forms.ModelForm):
   birthday = forms.DateField(label=_('Birthday'),
                              widget=forms.DateInput(attrs={'required': True},
                                                     format='%Y-%m-%d'),
-                             input_formats=['%Y-%m-%d'], required = True)
+                             input_formats=['%Y-%m-%d'], required = False)
   country = forms.ModelChoiceField(label=_('Country'),
                                     widget=forms.Select(attrs={'class': 'ui search dropdown'}),
                                     queryset=Country.objects.all(), required= True)
@@ -113,6 +114,13 @@ class ProfileForm(forms.ModelForm):
                             label=_('Biography'),
                             max_length=3000, required= True)
 
+  class Meta:
+    model = Profile
+    exclude = ['user', 'privacy', 'settings', 'id_image', 'second_id_image', 'id_status', 'is_moderated']
+    widgets = {
+      'bio': RedactorEditor()
+        }
+
   def __init__(self, *args, **kw):
     super(ProfileForm, self).__init__(*args, **kw)
     try:
@@ -126,19 +134,59 @@ class ProfileForm(forms.ModelForm):
       new_order.extend(list(self.fields.items())[:-2])
       self.fields = OrderedDict(new_order)
 
-  class Meta:
-    model = Profile
-    exclude = ['user', 'privacy', 'settings', 'id_image', 'second_id_image', 'id_status', 'is_moderated']
-    widgets = {
-      'bio': RedactorEditor()
-        }
+    # disable some fields on the second edition
+    instance = getattr(self, 'instance', None)
+    if instance.gender:
+        self.fields['gender'].widget.attrs['disabled'] = 'disabled'
+    if instance.birthday:
+        self.fields['birthday'].widget.attrs['disabled'] = 'disabled'
+    if instance.user.first_name:
+        self.fields['first_name'].widget.attrs['disabled'] = 'disabled'
+    if instance.user.last_name:
+        self.fields['last_name'].widget.attrs['disabled'] = 'disabled'
+
+  def clean_first_name(self):
+      instance = getattr(self, 'instance', None)
+      if instance.user.first_name:
+          return instance.user.first_name
+      else:
+          return self.cleaned_data['first_name']
+
+  def clean_last_name(self):
+      instance = getattr(self, 'instance', None)
+      if instance.user.last_name:
+          return instance.user.last_name
+      else:
+          return self.cleaned_data['last_name']
+
+  def clean_gender(self):
+      instance = getattr(self, 'instance', None)
+      if instance.gender:
+          self.fields['gender'].initial = 1
+          return instance.gender
+      else:
+          return self.cleaned_data['gender']
+
+  def clean_birthday(self):
+      instance = getattr(self, 'instance', None)
+      if instance.birthday:
+          return instance.birthday
+      else:
+          return self.cleaned_data['birthday']
 
   def save(self, force_insert=False, force_update=False, commit=True):
     profile = super(ProfileForm, self).save(commit=commit)
 
     user = profile.user
-    user.first_name = self.cleaned_data['first_name']
-    user.last_name = self.cleaned_data['last_name']
-    user.save()
+
+
+    self.fields['birthday'].widget.attrs.pop('disabled', None)
+    self.fields['first_name'].widget.attrs.pop('disabled', None)
+    self.fields['last_name'].widget.attrs.pop('disabled', None)
+
+    if not user.first_name and not user.last_name:
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.save()
 
     return profile

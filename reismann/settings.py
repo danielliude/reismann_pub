@@ -79,7 +79,6 @@ INSTALLED_APPS = (
   'bookings',
   'webpack_loader',
   'album',
-  'nocaptcha_recaptcha',
   'notifications',
 )
 

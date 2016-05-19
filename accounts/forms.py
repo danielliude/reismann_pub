@@ -13,8 +13,6 @@ from accounts.settings import ACCOUNT_ACTIVATION_REQUIRED, ACCOUNT_ACTIVATED, \
   ACCOUNT_FORBIDDEN_USERNAMES, ACCOUNTS_REGISTRATION_ACTIVATION_DAYS, \
   ACCOUNT_LOGIN_REMEMBER_ME_DAYS
 
-from nocaptcha_recaptcha.fields import NoReCaptchaField
-
 from django.contrib.auth.models import Permission
 
 import logging
@@ -42,8 +40,6 @@ class RegistrationForm(forms.Form):
   password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': _('Repeat password')},
                                                          render_value=False),
                                                          label=_("Repeat password"))
-
-  captcha = NoReCaptchaField()
 
   tos = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'required'}),
                            label= mark_safe('I have read and agree to the <a href="#" id="ui_model">terms</a> of service'),

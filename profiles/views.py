@@ -93,9 +93,10 @@ def makeContextForProfile(request, user, context):
     profile = get_user_profile(user)
 
     follow_manager = FollowingManager()
-    follows = follow_manager.follows(follower=request.user, followee=profile.user)
+    if request.user and profile.user:
+        follows = follow_manager.follows(follower=request.user, followee=profile.user)
+        context['follows'] = follows
 
-    context['follows'] = follows
     context['profile'] = profile
     context['view_own_profile'] = view_own_profile(request, user.username)
 

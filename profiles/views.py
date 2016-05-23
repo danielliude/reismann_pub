@@ -11,7 +11,7 @@ from userena.decorators import secure_required
 from guardian.decorators import permission_required_or_403
 
 from profiles.models import Profile, ProfileSettings
-from profiles.forms import ProfileForm, ProfileIdForm, SettingsForm
+from profiles.forms import ProfileForm, ProfileIdForm, SettingsForm, ProfileFormCustomer
 from profiles.utils import get_user_profile
 from profiles.managers import ProfileMailManager
 from core.utils import ExtraContextTemplateView
@@ -158,7 +158,11 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
                   'last_name': user.last_name}
 
   if request.POST:
-    form = profile_form(request.POST, request.FILES, instance = profile, initial=user_initial)
+    if profile.settings.is_provider:
+        form = profile_form(request.POST, request.FILES, instance = profile, initial=user_initial)
+    else:
+        form = ProfileFormCustomer(request.POST, request.FILES, instance = profile, initial=user_initial)
+
     contactForm = contact_form (request.POST, request.FILES, instance = contact)
 
     if form.is_valid() and contactForm.is_valid():
@@ -172,8 +176,11 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
             redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
         return redirect(redirect_to)
 
+  if profile.settings.is_provider:
+      form = profile_form(instance=profile, initial=user_initial)
+  else:
+      form = ProfileFormCustomer(instance = profile, initial=user_initial)
 
-  form = profile_form(instance=profile, initial=user_initial)
   contactForm = contact_form(instance = contact)
 
   if not extra_context: extra_context = dict()

@@ -26,13 +26,13 @@
       </div>
     </div>
 
-    {% if profile.settings.is_provider %}
     {{ form.gender.errors }}
     <div class="required field">
         <label>{{ form.gender.label }}</label>
         {{ form.gender }}
     </div>
 
+    {% if profile.settings.is_provider %}
     {{ form.birthday.errors }}
     <div class="required field">
       <label>{{ form.birthday.label }}</label>

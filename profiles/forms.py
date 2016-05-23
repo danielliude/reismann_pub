@@ -74,6 +74,85 @@ class ProfileIdForm(forms.ModelForm):
         fields = ['id_image', 'second_id_image']
 
 
+class ProfileFormCustomer(forms.ModelForm):
+
+    first_name = forms.CharField(label=_('First name'),
+                                 max_length=30,
+                                 widget=forms.TextInput(attrs={'placeholder': _('First name')}), required=False)
+
+
+    last_name = forms.CharField(label=_('Last name'),
+                                max_length=30,
+                                widget=forms.TextInput(attrs={'placeholder': _('Last name')}), required=False)
+    gender = forms.ChoiceField(label=_('Gender'),
+                               widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
+                               choices=GENDER_CHOICES, required=False)
+
+    class Meta:
+        model = Profile
+        exclude = ['user', 'privacy', 'settings', 'id_image', 'second_id_image', 'id_status', 'is_moderated', 'profession', 'avatar', 'birthday', 'country', 'location', 'short_description', 'card_image', 'bio']
+
+    def __init__(self, *args, **kw):
+        super(ProfileFormCustomer, self).__init__(*args, **kw)
+        try:
+            new_order = self.fields.keyOrder[:-2]
+            new_order.insert(0, 'first_name')
+            new_order.insert(1, 'last_name')
+            self.fields.keyOrder = new_order
+        except AttributeError:  # in Django > 1.7
+            new_order = [('first_name', self.fields['first_name']),
+                         ('last_name', self.fields['last_name'])]
+            new_order.extend(list(self.fields.items())[:-2])
+            self.fields = OrderedDict(new_order)
+
+        # disable some fields on the second edition
+        instance = getattr(self, 'instance', None)
+        if instance.gender:
+            self.fields['gender'].widget.attrs['disabled'] = 'disabled'
+        if instance.user.first_name:
+            self.fields['first_name'].widget.attrs['disabled'] = 'disabled'
+        if instance.user.last_name:
+            self.fields['last_name'].widget.attrs['disabled'] = 'disabled'
+
+    def clean_first_name(self):
+        instance = getattr(self, 'instance', None)
+        if instance.user.first_name:
+            return instance.user.first_name
+        else:
+            return self.cleaned_data['first_name']
+
+    def clean_last_name(self):
+        instance = getattr(self, 'instance', None)
+        if instance.user.last_name:
+            return instance.user.last_name
+        else:
+            return self.cleaned_data['last_name']
+
+    def clean_gender(self):
+        instance = getattr(self, 'instance', None)
+        if instance.gender:
+            self.fields['gender'].initial = 1
+            return instance.gender
+        else:
+            return self.cleaned_data['gender']
+
+
+    def save(self, force_insert=False, force_update=False, commit=True):
+        profile = super(ProfileFormCustomer, self).save(commit=commit)
+
+        user = profile.user
+
+        self.fields['gender'].widget.attrs.pop('disabled', None)
+        self.fields['first_name'].widget.attrs.pop('disabled', None)
+        self.fields['last_name'].widget.attrs.pop('disabled', None)
+
+        if not user.first_name and not user.last_name:
+            user.first_name = self.cleaned_data['first_name']
+            user.last_name = self.cleaned_data['last_name']
+            user.save()
+
+        return profile
+
 class ProfileForm(forms.ModelForm):
 
   first_name = forms.CharField(label=_('First name'),
@@ -179,7 +258,7 @@ class ProfileForm(forms.ModelForm):
 
     user = profile.user
 
-
+    self.fields['gender'].widget.attrs.pop('disabled', None)
     self.fields['birthday'].widget.attrs.pop('disabled', None)
     self.fields['first_name'].widget.attrs.pop('disabled', None)
     self.fields['last_name'].widget.attrs.pop('disabled', None)

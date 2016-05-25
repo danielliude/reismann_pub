@@ -11,11 +11,14 @@ from guardian.decorators import permission_required_or_403
 from profiles.utils import get_user_profile
 from core.utils import ExtraContextTemplateView
 from contacts.utils import get_user_contact
+
 from insite_messages.models import Message
 from insite_messages.forms import MessageComposeForm
-from profiles.views import makeContextForDetails, makeContextForMessages
-from notifications.signals import notify
+from insite_messages.managers import MessageMailManager as mailer
 
+from profiles.views import makeContextForDetails, makeContextForMessages
+
+from notifications.signals import notify
 
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
@@ -95,9 +98,14 @@ def message_write(request, username, recipient=None, write_message_form=MessageC
             if form.is_valid():
               message = form.save(user)
               message.sent_at = datetime.utcnow().replace(tzinfo=utc)
-              # message.send_notification_email_to_recipient()
-              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has sent new message')
               message.save()
+
+              # send email about internal message
+              m = mailer()
+              m.send_email_new_message_to_recipient(message=message)
+
+              # create notification about internal message
+              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has sent new message')
 
               if success_url:
                 redirect_to = success_url
@@ -184,8 +192,14 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
 
             if form.is_valid():
               message = form.save(user)
-              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has replied on your message')
               message.save()
+
+              # send email about replied internal message
+              m = mailer()
+              m.send_email_replied_message_to_recipient(message=message)
+
+              # create internal notification
+              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has replied on your message')
 
               if success_url:
                 redirect_to = success_url

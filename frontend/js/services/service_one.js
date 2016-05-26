@@ -6,15 +6,18 @@ $(function() {
 	send_message()
 
 	function init() {
-	    $('.ui.sticky')
-	      .sticky({
-	        context: '.profile_content',
-	        offset: 0,   
-	      })
-	    ;
+	    // $('.ui.sticky')
+	    //   .sticky({
+	    //     context: '.profile_content',
+	    //     offset: 0,   
+	    //   })
+	    // ;
 	    $(".not_login").click(function() {
 	    	alert('please login for this action')
 	    });
+	    $('.ui.dropdown')
+		  .dropdown()
+		;
 	}
 
 	function init_rating() {

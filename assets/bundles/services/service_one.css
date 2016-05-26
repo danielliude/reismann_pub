@@ -1,5 +1,5 @@
-body {
-  background-color: #f3f3f3; }
+.ui.container {
+  max-width: 950px !important; }
 
 .ui.comments {
   max-width: 100%; }

@@ -2,25 +2,38 @@
 
 {% if request.user.is_authenticated %}
   {% if view_own_profile %}
-    <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Edit profile' %}</b></a>
-    <a href="{% url 'profiles:profile' profile.user.username %}" class="ui brand_blue fluid button"><b>{% trans 'View profile' %}</b></a>
+    <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue button" style="margin-bottom:0.3rem;"><b>{% trans 'Edit profile' %}</b></a>
   {% else %}
-      {% if follows %}
-          <a href="{% url 'profiles:unfollow' request.user.username profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Unfollow me' %}</b></a>
-      {% else %}
-          <a href="{% url 'profiles:follow' request.user.username profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Follow me' %}</b></a>
+    <a href="{% url 'profiles:message_write' request.user.username profile.user.username %}" class="ui brand_blue button" style="margin-bottom:0.3rem;"><i class="icon mail outline"></i>发消息</a>
+    {% if service %}
+      {% if profile.settings.is_provider %}
+      <a href="{% url 'profiles:booking_add' profile.user.username service.id %}" class="ui brand button"><i class="icon heart"></i>预订</a>
       {% endif %}
-    <a href="{% url 'profiles:message_write' request.user.username profile.user.username %}" class="ui brand_blue fluid button" style="margin-bottom:0.3rem;"><b>{% trans 'Write a message' %}</b></a>
-    {% with services.first as provider_service %}
-    {% if profile.settings.is_provider %}
+    {% else %}
+      {% with services.first as provider_service %}
+      {% if profile.settings.is_provider %}
         {% if provider_service %}
-            <a href="{% url 'profiles:booking_add' profile.user.username provider_service.id %}" class="ui brand_blue fluid button"><b>{% trans 'Book provider' %}</b></a>
+          <a href="{% url 'profiles:booking_add' profile.user.username provider_service.id %}" class="ui brand button"><i class="icon heart"></i>预订</a>
         {% endif %}
+      {% endif %}
+      {% endwith %}
     {% endif %}
-    {% endwith %}
-	{% endif %}
+    <div class="ui dropdown floating icon button">
+      <span>&nbsp;更多功能&nbsp;</span>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        {% if follows %}
+          <a class="item" href="{% url 'profiles:unfollow' request.user.username profile.user.username %}"><i class="minus icon"></i>取消关注</a>
+        {% else %}
+          <a class="item" href="{% url 'profiles:follow' request.user.username profile.user.username %}"><i class="plus icon"></i>关注</a>
+        {% endif %}
+        <a class="item"><i class="ban icon"></i>屏蔽</a>
+        <a class="item"><i class="announcement icon"></i>举报</a>
+      </div>
+    </div>
+  {% endif %}
 {% else %}
-    <a class="ui brand_blue fluid button not_login" style="margin-bottom:0.3rem;"><b>{% trans 'Follow me' %}</b></a>
-    <a class="ui brand_blue fluid button not_login" style="margin-bottom:0.3rem;"><b>{% trans 'Write a message' %}</b></a>
-    <a class="ui brand_blue fluid button not_login"><b>{% trans 'Book provider' %}</b></a>
+  <a class="ui brand_blue button not_login"><i class="icon mail outline"></i>发消息</a>
+  <a class="ui brand button not_login"><i class="icon heart"></i>预订</a>
+  <a class="ui button not_login"><i class="icon list"></i>更多功能</a>
 {% endif %}

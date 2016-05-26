@@ -1,6 +1,7 @@
 {% extends "core/__global.html" %}
 {% load render_bundle from webpack_loader %}
 {% load i18n %}
+{% load thumbnail %}
 
 {% block stylesheets %}
     {% render_bundle 'profiles/profile' 'css' %}
@@ -9,24 +10,15 @@
     {% render_bundle 'profiles/profile' 'js' %}
 {% endblock %}
 
-{% block content %}    
-  <div class="ui grid container profile_content">
-    <div class="row">
-      <div class="sixteen wide tablet five wide computer column">
-        <div class="ui rail">
-          <div class="ui sticky">
-            {% include "profiles/__profile_box.html" %}
-            {% include "profiles/__profile_button.html" %}
-            {% include "services/__service_short_list.html" %}
-            {% include "profiles/__share_box.html" %}
-            {% include "profiles/__rating_box.html" %}
-          </div>
-        </div>
-      </div>
-      <div class="sixteen wide tablet eleven wide computer column">
-        {% include "services/__service_descriptions.html" %}
-      </div>
-    </div>
-  </div>
+{% block content %}  
+  <br>
+  <div class="ui container">
+    {% include "profiles/__profile_top.html" %}
+    {% include "profiles/__profile_services.html" %}
+    {% include "services/__service_descriptions.html" %}
+    {% include "profiles/__rating_box.html" %}
+  </div>  
+  <br>
+  <br>
 {% endblock %}
 

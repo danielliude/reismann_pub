@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="ui segment">
+<div class="ui padded segment">
   <h4>{% trans 'Rating and comments:' %}</h4>
   <div class="ui comments">
     {% for service in services %}
@@ -16,6 +16,7 @@
                 <a class="author">{% trans 'Anonymous user' %}</a>
             {% endif %}
             <div class="metadata">
+              <span class="date">{% trans 'Created at: ' %}{{ rating.created_at|date:"Y-m-d H:i:s" }}</span>
               {{ rating.gen_stars }}
             </div>
             <div class="text">{{ rating.comment }}</div>

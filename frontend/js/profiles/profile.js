@@ -2,6 +2,7 @@ import '../../styles/templates/profiles/profile.scss'
 import '../../semantic/dist/components/tab.min.css'
 import '../../semantic/dist/components/tab.min.js'
 
+
 $(function() {
 	init() 
 
@@ -26,5 +27,10 @@ $(function() {
 		$('.ui.dropdown')
 		  .dropdown()
 		;
+
+		Galleria.loadTheme('http://cdn.bootcss.com/galleria/1.4.2/themes/classic/galleria.classic.min.js');
+
+    // Initialize Galleria
+	    Galleria.run('#galleria');
 	}
 })

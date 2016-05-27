@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <div class="ui padded segment">
-  <h4>{% trans 'Rating and comments:' %}</h4>
+  <h3 style="color: #555555;font-weight: 300;">{% trans 'Rating and comments:' %}</h3>
   <div class="ui comments">
     {% for service in services %}
       {% for rating in service.service_rating.all %}

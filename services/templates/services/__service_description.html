@@ -2,11 +2,13 @@
 
 {% if profile.settings.is_provider %}
 <div class="ui padded segment">
-  <h4 class="ui center aligned header">{{ service.title }}</h4>
+  <h2 class="ui center aligned header" style="color: #555555;font-weight: 300;margin-top:0px;">{{ service.title }}</h2>
   <p>{{ service.content|safe }}</p>
+  <br>
+  <br>
 </div>
 <div class="ui padded segment">
-  <h4>{% trans 'Rating and comment:' %}{{ ratings|length }}</h4>
+  <h3 style="color: #555555;font-weight: 300;">{% trans 'Rating and comment:' %}{{ ratings|length }}</h3>
   {% if ratings|length != 0 %}
       <div class="ui comments">
         {% for rating in ratings %}

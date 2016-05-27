@@ -18,7 +18,7 @@ from services.utils import get_user_services, get_service_by_id
 
 from configurations.utils import get_active_service_categories
 
-from profiles.views import view_own_profile, makeContextForDetails, makeContextForMessages
+from profiles.views import view_own_profile, makeContextForDetails, makeContextForNotifications
 from services.models import ServiceRating
 from services.utils import get_user_services
 
@@ -72,7 +72,7 @@ def service_add(request, username, edit_service_form=ServiceForm,
         extra_context['profile'] = profile
         extra_context['contact'] = contact
 
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
         extra_context = makeContextForDetails(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
@@ -122,7 +122,7 @@ def service_edit(request, username, service_id, edit_service_form=ServiceForm,
         extra_context['service'] = service
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -146,7 +146,7 @@ def service_view_own(request, username, service_id,
         service = get_service_by_id(service_id)
         extra_context['service'] = service
 
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
         extra_context = makeContextForDetails(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
@@ -194,9 +194,8 @@ def service_view(request, username, service_id,
         canRate = False
 
     extra_context['view_own_profile'] = view_own_profile(request, username)
-    # extra_context = makeContextForAllServices(request, user, extra_context)
     extra_context = makeContextForDetails(request, extra_context)
-    extra_context = makeContextForMessages(request, extra_context)
+    extra_context = makeContextForNotifications(request, extra_context)
 
     if request.method == 'POST':
         form = ServiceRatingForm(request.POST)
@@ -236,7 +235,7 @@ def services(request, username,
         extra_context['show_add_service'] = True
 
       extra_context = makeContextForDetails(request, extra_context)
-      extra_context = makeContextForMessages(request, extra_context)
+      extra_context = makeContextForNotifications(request, extra_context)
 
       return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)

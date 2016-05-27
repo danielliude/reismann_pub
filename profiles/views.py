@@ -139,7 +139,6 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
   extra_context = makeContextForProfile(request, user, extra_context)
   extra_context = makeContextForDetails(request, extra_context)
   extra_context = makeContextForAllUserServices(user, extra_context)
-  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -220,9 +219,22 @@ def settings(request, username, template_name='profiles/settings.html', success_
   extra_context['form'] = settingsForm
   extra_context['profile'] = profile
   extra_context['view_own_profile'] = view_own_profile(request, username)
-
   extra_context = makeContextForNotifications(request, extra_context)
 
+  return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+
+@secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
+def notifications(request, username, template_name='profiles/notifications.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+  user = get_object_or_404(User, username__iexact=username)
+  profile = get_user_profile(user)
+
+  if not extra_context: extra_context = dict()
+
+  extra_context['profile'] = profile
+  extra_context = makeContextForNotifications(request, extra_context)
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 @secure_required
@@ -272,7 +284,7 @@ def verification(request, username, edit_id_form=ProfileIdForm,
   extra_context['services'] = services
   extra_context['view_own_profile'] = view_own_profile(request, username)
 
-  extra_context = makeContextForMessages(request, extra_context)
+  extra_context = makeContextForNotifications(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
@@ -321,7 +333,7 @@ def album(request, username):
         'service_categories': get_active_service_categories(),
     }
     context = makeContextForDetails(request, context)
-    context = makeContextForMessages(request, context)
+    context = makeContextForNotifications(request, context)
     return render(request, 'profiles/album.html', context)
 
 @secure_required

@@ -31,6 +31,10 @@
       {% trans 'Dashboard' %}
     </a>
 
+    <a class="item {% if url_name == 'notifications' %}active{% endif %}" href="{% url 'profiles:notifications' profile.user.username %}">
+      <i class="alarm icon"></i>
+      {% trans 'Notifications' %}
+    </a>
     <a class="item {% if url_name == 'detail' %}active{% endif %}" href="{% url 'profiles:detail' profile.user.username %}">
       <i class="user icon"></i>
       {% trans 'Profile' %}

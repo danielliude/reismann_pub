@@ -16,7 +16,7 @@ from insite_messages.models import Message
 from insite_messages.forms import MessageComposeForm
 from insite_messages.managers import MessageMailManager as mailer
 
-from profiles.views import makeContextForDetails, makeContextForMessages
+from profiles.views import makeContextForDetails, makeContextForNotifications
 
 from notifications.signals import notify
 
@@ -37,7 +37,7 @@ def inbox_messages(request, username,
       extra_context['profile'] = profile
 
       extra_context = makeContextForDetails(request, extra_context)
-      extra_context = makeContextForMessages(request, extra_context)
+      extra_context = makeContextForNotifications(request, extra_context)
 
       return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -64,7 +64,7 @@ def outbox_messages(request, username,
       extra_context['profile'] = profile
 
       extra_context = makeContextForDetails(request, extra_context)
-      extra_context = makeContextForMessages(request, extra_context)
+      extra_context = makeContextForNotifications(request, extra_context)
 
       return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -119,7 +119,7 @@ def message_write(request, username, recipient=None, write_message_form=MessageC
         extra_context['contact'] = contact
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -155,7 +155,7 @@ def message_view(request, username, message_id, write_message_form=MessageCompos
         extra_context['profile'] = profile
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -213,7 +213,7 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
         extra_context['contact'] = contact
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)

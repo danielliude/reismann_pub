@@ -3,7 +3,7 @@
 {% notifications_unread as unread_count%}
 {% if user.is_authenticated %}
 <div class="right menu">
-  <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:inbox_messages' user.username %}'">
+  <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:notifications' user.username %}'">
     <i class="icon alarm outline"></i>
     <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{{ unread_count }}</div>
 

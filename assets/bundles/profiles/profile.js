@@ -49,9 +49,9 @@
 
 	__webpack_require__(130);
 
-	__webpack_require__(140);
+	__webpack_require__(132);
 
-	__webpack_require__(142);
+	__webpack_require__(134);
 
 	$(function () {
 		init();
@@ -73,6 +73,11 @@
 			$('.menu .item').tab();
 
 			$('.ui.dropdown').dropdown();
+
+			Galleria.loadTheme('http://cdn.bootcss.com/galleria/1.4.2/themes/classic/galleria.classic.min.js');
+
+			// Initialize Galleria
+			Galleria.run('#galleria');
 		}
 	});
 
@@ -85,14 +90,14 @@
 
 /***/ },
 
-/***/ 140:
+/***/ 132:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 142:
+/***/ 134:
 /***/ function(module, exports) {
 
 	/*!

@@ -3,22 +3,22 @@
 <div class="ui segment">
   <div class="ui grid">
     <div class="four wide column">
-      <img class="ui centered small image" src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile picture' %}">
+      <img style="box-shadow: #333333 1px 1px 20px 0;" class="ui centered small image" src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile picture' %}">
     </div>
     <div class="eight wide column">
-      <h3 style="color: #555555;font-weight: 300;">{{ profile.user.username }}{% if profile.get_gender_display%},{{ profile.get_gender_display|default:"" }}{% endif %}{% if profile.age %}/{{ profile.age}}{% trans ' years old, ' %}{% endif %}</h3>
-      <div class="sub header" style="margin-top:-1rem;">{% if profile.location %}{{ profile.location }}{% endif %}{% if profile.country%},{{ profile.country}}{% endif %}</div>
-      <div class="ui divider"></div>
-      <table class="ui very basic unstackable compact fixed  table">
+      <h3 style="color: #555555;font-weight: 300;">{{ profile.user.username }}{% if profile.get_gender_display%}, {{ profile.get_gender_display|default:"" }}{% endif %}{% if profile.age %}/{{ profile.age}}{% endif %}</h3>
+      <div class="sub header" style="margin-top:-1rem;">{% if profile.location %}{{ profile.location }}{% endif %}{% if profile.country%}, {{ profile.country}}{% endif %}</div>
+      <div style="border-color: #888888;border-bottom-width: 0px;" class="ui black divider"></div>
+      <table class="ui very basic unstackable compact fixed table">
         <tbody>
           <tr>
-            <td>职业：</td>
+            <td class="grey_and_bold">职业：</td>
             <td>{% if profile.get_profession_display%}{{ profile.get_profession_display|default:"" }}{% endif %}</td>
-            <td>语言：</td>
+            <td class="grey_and_bold">语言：</td>
             <td>未知</td>
           </tr>
           <tr>
-            <td style="border:0px;">个性签名：</td>
+            <td class="grey_and_bold" style="border:0px;">个性签名：</td>
             <td style="border:0px;" colspan="3">{{ profile.short_description }}</td>
           </tr>
         </tbody>

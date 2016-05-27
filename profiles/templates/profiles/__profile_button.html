@@ -1,10 +1,11 @@
 {% load i18n %}
 
+<div class="all_buttons">
 {% if request.user.is_authenticated %}
   {% if view_own_profile %}
-    <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue button" style="margin-bottom:0.3rem;"><b>{% trans 'Edit profile' %}</b></a>
+<!--     <a href="{% url 'profiles:detail' profile.user.username %}" class="ui brand_blue button"><b>{% trans 'Edit profile' %}</b></a> -->
   {% else %}
-    <a href="{% url 'profiles:message_write' request.user.username profile.user.username %}" class="ui brand_blue button" style="margin-bottom:0.3rem;"><i class="icon mail outline"></i>发消息</a>
+    <a href="{% url 'profiles:message_write' request.user.username profile.user.username %}" class="ui brand_blue button"><i class="icon mail outline"></i>发消息</a>
     {% if service %}
       {% if profile.settings.is_provider %}
       <a href="{% url 'profiles:booking_add' profile.user.username service.id %}" class="ui brand button"><i class="icon heart"></i>预订</a>
@@ -18,8 +19,8 @@
       {% endif %}
       {% endwith %}
     {% endif %}
-    <div class="ui dropdown floating icon button">
-      <span>&nbsp;更多功能&nbsp;</span>
+    <div class="ui dropdown floating icon grey basic button">
+      <span style="color:#000;">更多功能</span>
       <i class="dropdown icon"></i>
       <div class="menu">
         {% if follows %}
@@ -35,5 +36,6 @@
 {% else %}
   <a class="ui brand_blue button not_login"><i class="icon mail outline"></i>发消息</a>
   <a class="ui brand button not_login"><i class="icon heart"></i>预订</a>
-  <a class="ui button not_login"><i class="icon list"></i>更多功能</a>
+  <a class="ui button not_login" style="color:#000;"><i class="icon list"></i>更多功能</a>
 {% endif %}
+</div>

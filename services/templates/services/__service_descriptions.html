@@ -8,20 +8,26 @@
   </div>
   <div style="border:0px;" class="ui bottom attached tab padded segment active" data-tab="first">
     <p>{{ profile.bio|safe }}</p>
+    <br>
+    <br>
   </div>
   <div style="border:0px;" class="ui bottom attached tab padded segment" data-tab="second">
     {% if profile.settings.is_provider %}
-      <div class="ui grid">
+      <!-- <div class="ui grid"> -->
+        <div id="galleria">
         {% for image in profile.user.my_album.images.all %}
           {% if image.is_active %}
-          <div class="four wide column">
+          <!-- <div class="four wide column"> -->
             <a href="{{ image.image.url }}">
               <img src="{% thumbnail image.image 280x280 crop='smart' %}" />
             </a>
-          </div>
+          <!-- </div> -->
           {% endif %}
         {% endfor %}
-      </div>
+        </div>
+      <!-- </div> -->
     {% endif %}
+    <br>
+    <br>
   </div>
 </div>

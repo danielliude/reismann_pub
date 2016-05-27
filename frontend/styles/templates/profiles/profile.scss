@@ -2,6 +2,74 @@
 	max-width: 950px!important;
 }
 
+body {
+	font-family: "Microsoft YaHei",Verdana,"Bitstream Vera Sans",sans-serif;
+}
+
+.all_buttons {
+	.ui.button {
+		margin: 0.3rem 0;
+		width: 31%;
+		max-width: 110px;
+	    text-align: center;
+	    font-weight: normal;
+	    padding: 0.72571429em 1.2em;
+        font-size: 0.9rem;
+	}
+	.ui.brand_blue.button {
+		background-color: #428bca;
+	    border-color: #357ebd;
+	    &:hover {
+	    	background-color: #3071a9;
+		    border-color: #285e8e;
+	    }
+	}
+	.ui.brand.button {
+		background-color: #FF5026;
+	    border-color: #FF5026;
+	    opacity: 0.8;
+	    &:hover {
+	    	opacity: 1;
+	    }
+	}
+}
+
+.ui.table {
+	font-size: 0.9em;
+	tbody tr {
+		cursor: pointer;
+	}
+}
+
+.ui.label {
+	font-weight: normal;
+}
+
+.grey_and_bold {
+	color: #999;
+	font-weight: 700;
+}
+
+
+#galleria {
+ 	width:450px; 
+ 	height:600px;
+ 	margin:0px auto
+}
+
+.galleria-thumbnails {
+	margin: 0 auto;
+}
+
+.galleria-container {
+	background-color: transparent;
+}
+
+.ui.label.equal_width {
+	text-align: center;
+}
+
+
 .ui.grid.profile_content {
 	margin-top: 2rem;
 	margin-bottom: 2rem;

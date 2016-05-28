@@ -12,7 +12,7 @@
           <tr onclick="window.document.location='{% url 'profiles:service_view' service.user.username service.id %}';">
             <td><div class="ui green label equal_width">{{ service.category }}</div></td>
             <td>{{ service.title }}</td>
-            <td>{{ service.get_currency_display }} {{ service.price }}/{{ service.get_price_type_display | cut:'Per ' }}</td>
+            <td>{{ service.get_currency_display }} {{ service.price|floatformat}}/{{ service.get_price_type_display | cut:'Per ' }}</td>
           </tr>
           {% endfor %}
         </tbody>

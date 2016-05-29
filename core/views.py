@@ -83,7 +83,6 @@ def help_problem(request, problem_type, serial_id, template_name='core/help/prob
 
   return render(request, 'core/help/problem.html', context)
 
-
 def contact_info(request):
   context = {}
   context = makeContextForNotifications(request, context)

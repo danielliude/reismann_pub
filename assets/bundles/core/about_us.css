@@ -1,5 +1,6 @@
-body {
-  background-color: #f3f3f3; }
+.highly_adaptive {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15); }
 
 /*--------------
     city_img
@@ -16,10 +17,17 @@ body {
 ---------------*/
 .about_us p {
   color: rgba(0, 0, 0, 0.68);
-  font-size: 1.3em; }
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem; }
+
+.about_us .second.header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(22, 15, 15, 0.68);
+  padding-top: 0.5rem; }
 
 .about_us .sub.header {
-  font-size: 2em; }
+  font-size: 1.7rem; }
 
 .about_us .ui.list > a.item {
   color: rgba(0, 0, 0, 0.68); }

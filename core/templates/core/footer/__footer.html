@@ -1,34 +1,14 @@
 {% load i18n %}
 
-<div class="ui inverted vertical segment footer">
-  <div class="ui three column left aligned stackable doubling grid container">
-    <div class="column">
-      <h5 class="ui inverted header">{% trans "About us" %}</h5>
-      <div class="ui inverted link list">
-        <a class="item" href="{% url 'about_us' 'about_us' %}">{% trans "About us" %}</a>
-        <a class="item" href="{% url 'about_us' 'service_term' %}">{% trans "Terms of services" %}</a>
-        <a class="item" href="{% url 'about_us' 'privacy_protect' %}">{% trans "Privacy protection" %}</a>
-        <a class="item" href="{% url 'about_us' 'disclaimer' %}">{% trans "Disclaimer of liability" %}</a>
-      </div>
+<div class="ui container">
+  <div class="ui center aligned basic segment footer">
+    <div class="ui horizontal list">
+      <a class="item" href="{% url 'about_us' 'about_us' %}">{% trans "About us" %}</a>
+      <a class="item" href="{% url 'about_us' 'service_term' %}">{% trans "Terms of services" %}</a>
+      <a class="item" href="{% url 'help_problem' 'all' 'all' %}">{% trans "Help" %}</a>
+      <a class="item" href="{% url 'about_us' 'photo_copyright' %}">{% trans "Photo copyright" %}</a>
+      <a class="item" href="{% url 'contact_info' %}">{% trans "Contact" %}</a>
     </div>
-    <div class="column">
-      <h5 class="ui inverted header">{% trans "Help" %}</h5>
-      <div class="ui inverted link list">
-        <a class="item" href="{% url 'help_problem' 'all' 'all' %}">{% trans "Q&A" %}</a>
-        <a class="item" href="{% url 'help_problem' 'novice' '1' %}">{% trans "Novice on the road" %}</a>
-      </div>
-    </div>
-    <div class="column">
-      <h5 class="ui inverted header">{% trans "Contact" %}</h5>
-      <div class="ui inverted link list">
-        <a class="item" href="{% url 'contact_info' %}"><i class="mail outline icon"></i> {% trans "Team@reismann.de" %}</a>
-        <a class="item" href="{% url 'contact_info' %}"><i class="call icon"></i> {% trans "+49 222 333 222" %}</a>
-        <a class="item" href="{% url 'contact_info' %}"><i class="weibo icon"></i> {% trans "Official micro-blog" %}</a>
-        <a class="item" href="{% url 'contact_info' %}"><i class="wechat icon"></i> {% trans "WeChat public number" %}</a>
-      </div>
-    </div>
+    <p class="copyright">{% trans 'Copyright © 2016 frelanvo LLC. All rights reserved' %}</p>
   </div>
-</div>
-<div class="ui inverted vertical segment center aligned copyright">
-  <h6 class="ui header">Copyright &copy; 2015 Reismann GmbH</h6>
 </div>

@@ -58,7 +58,7 @@ $(document).ready(function() {
 
 	$(window).resize(highly_adaptive)
 	function highly_adaptive() {
-		var h = window_height() - $(".masthead").innerHeight() - $(".footer").innerHeight() - $(".copyright").innerHeight()
+		var h = window_height() - $(".masthead").innerHeight() - $(".footer").innerHeight() 
 
 		$(".highly_adaptive").css("min-height", h+"px")
 	}

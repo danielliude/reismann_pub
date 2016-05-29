@@ -57,17 +57,21 @@ img {
     footer
 ---------------*/
 .ui.segment.footer {
-  background-color: #252528;
-  color: #b3b3b3;
-  padding-top: 28px;
-  padding-bottom: 26px;
-  .header {
-    color: #ffffff;
-    font-size: 16px;
-  }
+  padding: 2.5rem 0rem 4.5rem 0rem;
   a {
+    color: #5E5252;
     line-height: 2rem;
+    &:hover {
+      color: #5E5252;
+      text-decoration:underline;
+    }
   }
+}
+
+.copyright {
+  color: #999;
+  margin-top: 5px;
+  font-size: 0.9rem;
 }
 
 

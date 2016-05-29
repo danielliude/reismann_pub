@@ -2,17 +2,17 @@
 
 <div class="ui basic segment">
   <div class="ui large breadcrumb">
-    <a href="{% url 'index' %}" class="section"><i class="home icon"></i>主页</a>
+    <a href="{% url 'about_us' 'about_us' %}" class="section"><i class="home icon"></i>主页</a>
     <i class="right chevron icon divider"></i>
     {% if problem_type == 'all' %}
-	    <div class="active section">常见问题</div>
+	    <div class="section">帮助中心</div>
     {% else %} 
-	    <a href="{% url 'help_problem' 'all' 'all' %}" class="section">常见问题</a>
+	    <a href="{% url 'help_problem' 'all' 'all' %}" class="section">帮助中心</a>
 	    <i class="right chevron icon divider"></i>
-	    <div class="active section">
+	    <div class="section">
         {% if problem_type == 'novice' %}
           新手上路
-        {% elif problem_type == 'novice' %}
+        {% elif problem_type == 'login_register' %}
           注册与登录
         {% elif problem_type == 'manager_account' %}
           管理您的账户

@@ -96,8 +96,6 @@ MIDDLEWARE_CLASSES = (
   'userena.middleware.UserenaLocaleMiddleware',
   'django.middleware.locale.LocaleMiddleware',
 )
-
-# LANGUAGE_CODE = 'zh_cn'
  
 
 TEMPLATES = [

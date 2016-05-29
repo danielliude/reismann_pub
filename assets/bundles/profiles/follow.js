@@ -49,9 +49,9 @@
 
 	__webpack_require__(126);
 
-	__webpack_require__(132);
+	__webpack_require__(128);
 
-	__webpack_require__(134);
+	__webpack_require__(130);
 
 	$(function () {
 	  $('.tabular.menu .item').tab();
@@ -66,14 +66,14 @@
 
 /***/ },
 
-/***/ 132:
+/***/ 128:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 134:
+/***/ 130:
 /***/ function(module, exports) {
 
 	/*!

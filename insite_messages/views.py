@@ -23,17 +23,20 @@ from notifications.signals import notify
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
 def inbox_messages(request, username,
-                template_name='insite_messages/inbox_messages.html',
+                template_name='insite_messages/messages.html',
                 extra_context=None, **kwargs):
 
   if request.user.username == username:
 
       user = get_object_or_404(User, username__iexact=username)
       profile = get_user_profile(user)
-      messages = Message.objects.inbox_for(user)
+      inbox_messages = Message.objects.inbox_for(user)
+      outbox_messages = Message.objects.outbox_for(user)
 
       if not extra_context: extra_context = dict()
-      extra_context['messages'] = messages
+      extra_context['inbox_messages'] = inbox_messages
+      extra_context['outbox_messages'] = outbox_messages
+      extra_context['inbox_page'] = 'true'
       extra_context['profile'] = profile
 
       extra_context = makeContextForDetails(request, extra_context)
@@ -50,17 +53,20 @@ def inbox_messages(request, username,
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
 def outbox_messages(request, username,
-                template_name='insite_messages/outbox_messages.html',
+                template_name='insite_messages/messages.html',
                 extra_context=None, **kwargs):
 
   if request.user.username == username:
 
       user = get_object_or_404(User, username__iexact=username)
       profile = get_user_profile(user)
-      messages = Message.objects.outbox_for(user)
+      inbox_messages = Message.objects.inbox_for(user)
+      outbox_messages = Message.objects.outbox_for(user)
 
       if not extra_context: extra_context = dict()
-      extra_context['messages'] = messages
+      extra_context['inbox_messages'] = inbox_messages
+      extra_context['outbox_messages'] = outbox_messages
+      extra_context['outbox_page'] = 'true'
       extra_context['profile'] = profile
 
       extra_context = makeContextForDetails(request, extra_context)

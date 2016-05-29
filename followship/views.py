@@ -37,7 +37,7 @@ def unfollow(request, follower, followee):
 @secure_required
 @permission_required_or_403('followship.view_followers')
 def followers(request, username,
-                template_name='followship/followers.html',
+                template_name='followship/followship.html',
                 extra_context=None, **kwargs):
 
   user = get_object_or_404(User, username__iexact=username)
@@ -45,23 +45,28 @@ def followers(request, username,
   if not extra_context: extra_context = dict()
 
   extra_context['followers'] = Follow.objects.followers(user)
+  extra_context['followings'] = Follow.objects.followings(user)
+  extra_context['followers_page'] = 'true'
 
   extra_context = makeContextForNotifications(request, extra_context)
   extra_context = makeContextForProfile(request, user, extra_context)
+  extra_context = makeContextForMessages(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 @secure_required
 @permission_required_or_403('followship.view_followings')
 def followings(request, username,
-                template_name='followship/followings.html',
+                template_name='followship/followship.html',
                 extra_context=None, **kwargs):
 
   user = get_object_or_404(User, username__iexact=username)
 
   if not extra_context: extra_context = dict()
 
+  extra_context['followers'] = Follow.objects.followers(user)
   extra_context['followings'] = Follow.objects.followings(user)
+  extra_context['followings_page'] = 'true'
 
   extra_context = makeContextForNotifications(request, extra_context)
   extra_context = makeContextForProfile(request, user, extra_context)

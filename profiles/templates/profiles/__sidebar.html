@@ -14,17 +14,6 @@
     {% with request.resolver_match.url_name as url_name %}
 
     <div class="ui header item">{% trans 'Profile sidebar' %}</div>
-<!--     <div class="ui center aligned  padded grid" style="background-color:#272727;">
-      <div class="row">
-        <div class="eight wide column" style="padding-right:0px;">
-          <img class="ui tiny avatar image" src="{{ user.profile.get_avatar_url }}">
-        </div>
-        <div class="eight wide column" style="padding-left:0px;padding-top:12px;">
-          <h4>{{ user.username }}</h4>
-          <p><i class="circle green icon"></i>{% trans 'Online' %}</p>
-        </div>
-      </div>
-    </div> -->
     
     <a class="item {% if url_name == 'dashboard' %}active{% endif %}" href="{% url 'profiles:dashboard' profile.user.username %}">
       <i class="dashboard icon"></i>
@@ -56,41 +45,15 @@
       {% trans 'Bookings' %}
     </a>
 
-    <div class="ui inverted accordion item">
-      <div class="item" style="padding-right:0px;">
-        <div class="title">
-          {% trans 'Followship' %}
-        </div>
-        <div class="active content">
-          <a class="item {% if url_name == 'followers' %}active{% endif %}" href="{% url 'profiles:followers' profile.user.username %}">
-              <i class="arrow circle left icon"></i>
-              {% trans 'Followers' %}
-          </a>
-          <a class="item {% if url_name == 'followings' %}active{% endif %}" href="{% url 'profiles:followings' profile.user.username %}">
-              <i class="arrow circle right icon"></i>
-              {% trans 'Followings' %}
-          </a>
-        </div>  
-      </div>
-    </div>
+    <a class="item {% if url_name == 'followers' or url_name == 'followings'  %}active{% endif %}" href="{% url 'profiles:followers' profile.user.username %}">
+      <i class="heart icon"></i>
+      {% trans 'Followship' %}
+    </a>
 
-    <div class="ui inverted accordion item">
-      <div class="item" style="padding-right:0px;">
-        <div class="title">
-          {% trans 'Messages' %}
-        </div>
-        <div class="active content">
-          <a class="item {% if url_name == 'inbox_messages' %}active{% endif %}" href="{% url 'profiles:inbox_messages' profile.user.username %}">
-              <i class="arrow circle left icon"></i>
-              {% trans 'Inbox' %}
-          </a>
-          <a class="item {% if url_name == 'outbox_messages' %}active{% endif %}" href="{% url 'profiles:outbox_messages' profile.user.username %}">
-              <i class="arrow circle right icon"></i>
-              {% trans 'Outbox' %}
-          </a>
-        </div>  
-      </div>
-    </div>
+    <a class="item {% if url_name == 'inbox_messages' or url_name == 'outbox_messages'  %}active{% endif %}" href="{% url 'profiles:inbox_messages' profile.user.username %}">
+      <i class="mail outline icon"></i>
+      {% trans 'Messages' %}
+    </a>
 
     <a class="item {% if url_name == 'verification' %}active{% endif %}" href="{% url 'profiles:verification' profile.user.username %}">
       <i class="archive icon"></i>

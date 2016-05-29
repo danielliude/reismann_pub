@@ -36,20 +36,4 @@
       {% endif %}
     {% endif %}
   </div>
-
-<!--   <h3>{{ message.subject }}</h3>
-  <h5 class="ui header">{% trans 'From: ' %}{{ message.sender }} <div class="sub header">{{ message.sent_at }}</div></h5>
-  {{ message.body }}
-  <br>
-  <br>
-  {% if message.sender != user %}
-    <a href="{% url 'profiles:message_reply' profile.user.username message.id %}" class="ui right floated green button"><i class="reply icon"></i></a>
-    <a href="{% url 'profiles:message_remove' profile.user.username message.id %}" class="ui right floated red button"><i class="remove icon"></i></a>
-  {% else %}
-    {% if message %}
-      <a href="{% url 'profiles:message_remove' profile.user.username message.id %}" class="ui right floated red button"><i class="remove icon"></i></a>
-    {% endif %}
-  {% endif %}
-  <br>
-  <br> -->
 </div>

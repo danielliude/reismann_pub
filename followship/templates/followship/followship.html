@@ -1,0 +1,42 @@
+{% extends "profiles/__profile_base.html" %}
+{% load i18n %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/follow' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/follow' 'js' %}
+{% endblock %}
+
+{% block content %}
+  <div class="ui grid follow_grid">
+    <div class="column">
+      <div class="ui segment" style="padding:2rem 0 1rem 0;">
+        <div class="ui top attached tabular menu" style="margin-left:0px;padding-left:2rem;">
+          <a class="{% if followers_page %}active{% endif %} item" data-tab="first">{% trans 'Followers' %}</a>
+          <a class="{% if followings_page %}active{% endif %} item" data-tab="second">{% trans 'Followings' %}</a>
+        </div>
+        <div style="border:0px;" class="ui bottom attached tab padded segment {% if followers_page %}active{% endif %}" data-tab="first">
+          <div class="ui four column grid">
+            {% for follower in followers %}
+            <div class="center aligned column">
+              <a href="{% url 'profiles:profile' follower.username %}"><img class="ui circular small centered image" src="{{ follower.profile.get_avatar_url }}"></a>
+              <p>{{ follower.username }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div style="border:0px;" class="ui bottom attached tab padded segment {% if followings_page %}active{% endif %}" data-tab="second">
+          <div class="ui four column grid">
+            {% for following in followings %}
+            <div class="center aligned column">
+              <a href="{% url 'profiles:profile' following.username %}"><img class="ui circular small centered image" src="{{ following.profile.get_avatar_url }}"></a>
+              <p>{{ following.username }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %} 

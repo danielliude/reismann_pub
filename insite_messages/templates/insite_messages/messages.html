@@ -1,0 +1,32 @@
+{% extends "profiles/__profile_base.html" %}
+{% load i18n %}
+{% load render_bundle from webpack_loader %}
+{% block stylesheets %}
+    {% render_bundle 'profiles/message' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'profiles/message' 'js' %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui grid message_grid">
+      <div class="column">
+        <div class="ui segment" style="padding:2rem 0 0 0;">
+          <div class="ui top attached tabular menu" style="margin-left:0px;padding-left:2rem;">
+            <a class="{% if inbox_page %}active{% endif %} item" data-tab="first">{% trans 'Inbox message' %}</a>
+            <a class="{% if outbox_page %}active{% endif %} item" data-tab="second">{% trans 'Outbox message' %}</a>
+          </div>
+          <div style="border:0px;" class="ui bottom attached tab padded segment {% if inbox_page %}active{% endif %}" data-tab="first">
+            {% with inbox_messages as messages %}
+            {% include 'insite_messages/__message_list.html' %}
+            {% endwith %}
+          </div>
+          <div style="border:0px;" class="ui bottom attached tab padded segment {% if outbox_page %}active{% endif %}" data-tab="second">
+            {% with outbox_messages as messages %}
+            {% include 'insite_messages/__message_list.html' %}
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %} 

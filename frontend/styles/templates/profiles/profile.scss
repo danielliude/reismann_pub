@@ -75,56 +75,6 @@ body {
 	margin-bottom: 2rem;
 }
 
-.ui.segment.profiles_services {
-	padding-bottom: 0px;
-	margin-bottom: 40px;
-	.ui.grid>.column {
-		padding-left: 0rem;
-		padding-top: 0rem;
-	}
-	.ui.label {
-		padding: 4px 6px;
-	}
-}
-
-
-
-.ui.segment.profile_info {
-	.ui.blue.segment {
-		padding-bottom: 20px;
-	}
-	.right_absolute {
-		position: absolute;
-		right: 1rem;
-	}
-	.ui.divided.items>.item {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
-	}
-	.h_content {
-		h1, h2, h3, h4, h5 {
-			margin: 0.5rem 0;
-		}
-		h2 {
-			margin-top: 0rem;
-		}
-	}
-}
-
-
-.ui.segment.all_services {
-	margin-bottom: 2rem;
-	.ui.divided.items>.item {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
-	}
-	.ui.label {
-		padding: 4px 6px;
-		margin-bottom: 5px;
-	}
-}
-
-
 .ui.comments {
 	max-width: 100%;
 	.content .ui.rating {

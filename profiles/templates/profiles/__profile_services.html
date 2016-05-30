@@ -1,8 +1,10 @@
+{% load i18n %}
+
 <div class="ui segment">
   <div class="ui middle aligned grid">
     <div class="three wide column">
       <div class="ui basic center aligned segment">
-        <h3 class="grey_and_bold" style="margin: {% if services|length == 1 or services|length == 0 %}0{%elif services|length == 2 %}0.7{% else %}1.3{% endif %}rem 0px;">服务</h3>
+        <h3 class="grey_and_bold" style="margin: {% if services|length == 1 or services|length == 0 %}0{%elif services|length == 2 %}0.7{% else %}1.3{% endif %}rem 0px;">{% trans 'services' %}</h3>
       </div>
     </div>
     <div class="thirteen wide column">
@@ -12,7 +14,7 @@
           <tr onclick="window.document.location='{% url 'profiles:service_view' service.user.username service.id %}';">
             <td><div class="ui green label equal_width">{{ service.category }}</div></td>
             <td>{{ service.title }}</td>
-            <td>{{ service.get_currency_display }} {{ service.price|floatformat}}/{{ service.get_price_type_display | cut:'Per ' }}</td>
+            <td>{{ service.get_currency_display }} {{ service.price }}/{{ service.get_price_type_display | cut:'Per ' }}</td>
           </tr>
           {% endfor %}
         </tbody>

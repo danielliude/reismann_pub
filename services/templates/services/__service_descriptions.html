@@ -3,8 +3,8 @@
 
 <div class="ui segment" style="padding:1rem 0 0 0;">
   <div class="ui top attached tabular menu" style="margin-left:0px;padding-left:1rem;">
-    <a class="active item" data-tab="first">关于我</a>
-    <a class="item" data-tab="second">照片</a>
+    <a class="active item" data-tab="first">{% trans 'about me' %}</a>
+    <a class="item" data-tab="second">{% trans 'photo' %}</a>
   </div>
   <div style="border:0px;" class="ui bottom attached tab padded segment active" data-tab="first">
     <p>{{ profile.bio|safe }}</p>
@@ -13,19 +13,15 @@
   </div>
   <div style="border:0px;" class="ui bottom attached tab padded segment" data-tab="second">
     {% if profile.settings.is_provider %}
-      <!-- <div class="ui grid"> -->
-        <div id="galleria">
-        {% for image in profile.user.my_album.images.all %}
-          {% if image.is_active %}
-          <!-- <div class="four wide column"> -->
-            <a href="{{ image.image.url }}">
-              <img src="{% thumbnail image.image 280x280 crop='smart' %}" />
-            </a>
-          <!-- </div> -->
-          {% endif %}
-        {% endfor %}
-        </div>
-      <!-- </div> -->
+      <div id="galleria">
+      {% for image in profile.user.my_album.images.all %}
+        {% if image.is_active %}
+          <a href="{{ image.image.url }}">
+            <img src="{% thumbnail image.image 280x280 crop='smart' %}" />
+          </a>
+        {% endif %}
+      {% endfor %}
+      </div>
     {% endif %}
     <br>
     <br>

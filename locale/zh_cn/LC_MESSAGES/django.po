@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-29 22:36+0800\n"
+"POT-Creation-Date: 2016-05-30 00:14+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1979,7 +1979,7 @@ msgstr ""
 #: .\profiles\templates\profiles\__profile_box.html:7
 #: .\profiles\templates\profiles\__profile_top.html:6
 msgid "user profile picture"
-msgstr ""
+msgstr "用户头像"
 
 #: .\profiles\templates\profiles\__profile_box.html:16
 msgid " years old, "
@@ -1989,65 +1989,40 @@ msgstr ""
 msgid "Profile status:"
 msgstr ""
 
-#: .\profiles\templates\profiles\__profile_box.html:46
-msgid "Age"
-msgstr ""
+#: .\profiles\templates\profiles\__profile_button.html:7
+#: .\profiles\templates\profiles\__profile_button.html:36
+msgid "messages"
+msgstr "发消息"
 
-#: .\profiles\templates\profiles\__profile_box.html:48
-msgid "Years old"
-msgstr ""
+#: .\profiles\templates\profiles\__profile_button.html:10
+#: .\profiles\templates\profiles\__profile_button.html:16
+#: .\profiles\templates\profiles\__profile_button.html:37
+msgid "booking"
+msgstr "预定"
 
-#: .\profiles\templates\profiles\__profile_box.html:50
-#: .\profiles\templates\profiles\__profile_box.html:60
-msgid "unknown"
-msgstr ""
+#: .\profiles\templates\profiles\__profile_button.html:22
+#: .\profiles\templates\profiles\__profile_button.html:38
+msgid "more fun"
+msgstr "更多功能"
 
-#: .\profiles\templates\profiles\__profile_box.html:56
-msgid "Location"
-msgstr ""
+#: .\profiles\templates\profiles\__profile_button.html:26
+msgid "not follow"
+msgstr "取消关注"
 
-#: .\profiles\templates\profiles\__profile_box.html:68
-msgid "Profile is active:"
-msgstr ""
+#: .\profiles\templates\profiles\__profile_button.html:28
+msgid "follow"
+msgstr "关注"
 
-#: .\profiles\templates\profiles\__profile_box.html:70
-#: .\profiles\templates\profiles\__profile_box.html:81
-msgid "yes"
-msgstr ""
+#: .\profiles\templates\profiles\__profile_button.html:30
+msgid "shielding"
+msgstr "屏蔽"
 
-#: .\profiles\templates\profiles\__profile_box.html:72
-#: .\profiles\templates\profiles\__profile_box.html:83
-msgid "no"
-msgstr ""
+#: .\profiles\templates\profiles\__profile_button.html:31
+msgid "inform"
+msgstr "举报"
 
-#: .\profiles\templates\profiles\__profile_box.html:79
-msgid "You are provider:"
-msgstr ""
-
-#: .\profiles\templates\profiles\__profile_box.html:93
-#: .\profiles\templates\profiles\__profile_button.html:6
 #: .\profiles\templates\profiles\__profile_form.html:5
 msgid "Edit profile"
-msgstr ""
-
-#: .\profiles\templates\profiles\__profile_box.html:94
-#: .\profiles\templates\profiles\dashboard.html:16
-msgid "View profile"
-msgstr ""
-
-#: .\profiles\templates\profiles\__profile_box.html:96
-#: .\profiles\templates\profiles\__profile_box.html:103
-msgid "Follow me"
-msgstr ""
-
-#: .\profiles\templates\profiles\__profile_box.html:97
-#: .\profiles\templates\profiles\__profile_box.html:104
-msgid "Write a message"
-msgstr ""
-
-#: .\profiles\templates\profiles\__profile_box.html:99
-#: .\profiles\templates\profiles\__profile_box.html:105
-msgid "Book provider"
 msgstr ""
 
 #: .\profiles\templates\profiles\__profile_form.html:79
@@ -2062,29 +2037,51 @@ msgstr ""
 msgid "Select one image from your photo center"
 msgstr ""
 
+#: .\profiles\templates\profiles\__profile_services.html:7
+#, fuzzy
+#| msgid "Terms of services"
+msgid "services"
+msgstr "服务"
+
+#: .\profiles\templates\profiles\__profile_top.html:15
+msgid "profession:"
+msgstr "职业："
+
+#: .\profiles\templates\profiles\__profile_top.html:17
+msgid "language:"
+msgstr "语言："
+
+#: .\profiles\templates\profiles\__profile_top.html:21
+msgid "signature:"
+msgstr "个性签名："
+
 #: .\profiles\templates\profiles\__rating_box.html:4
 msgid "Rating and comments:"
-msgstr ""
+msgstr "星级和评论："
 
 #: .\profiles\templates\profiles\__rating_box.html:14
 #: .\services\templates\services\__service_description.html:21
 msgid "User"
-msgstr ""
+msgstr "用户"
 
 #: .\profiles\templates\profiles\__rating_box.html:16
 #: .\services\templates\services\__service_description.html:23
 msgid "Anonymous user"
-msgstr ""
+msgstr "匿名用户"
 
 #: .\profiles\templates\profiles\__rating_box.html:19
 #: .\services\templates\services\__service_description.html:26
 msgid "Created at: "
-msgstr ""
+msgstr "创于："
 
 #: .\profiles\templates\profiles\__settings_form.html:4
 #: .\profiles\templates\profiles\__sidebar.html:64
 msgid "Settings"
 msgstr ""
+
+#: .\profiles\templates\profiles\__share_box.html:3
+msgid "Scan,collection,share"
+msgstr "扫一扫，收藏，分享"
 
 #: .\profiles\templates\profiles\__sidebar.html:16
 msgid "Profile sidebar"
@@ -2150,6 +2147,10 @@ msgstr ""
 
 #: .\profiles\templates\profiles\album.html:63
 msgid "Upload Image"
+msgstr ""
+
+#: .\profiles\templates\profiles\dashboard.html:16
+msgid "View profile"
 msgstr ""
 
 #: .\profiles\templates\profiles\dashboard.html:35
@@ -2259,7 +2260,7 @@ msgstr ""
 msgid "Latest Django News"
 msgstr ""
 
-#: .\reismann\settings.py:173
+#: .\reismann\settings.py:171
 msgid "reismann admin interface"
 msgstr ""
 
@@ -2411,11 +2412,21 @@ msgstr ""
 
 #: .\services\templates\services\__service_description.html:11
 msgid "Rating and comment:"
-msgstr ""
+msgstr "星级和评论："
 
 #: .\services\templates\services\__service_description.html:44
 msgid "Send your comment"
-msgstr ""
+msgstr "发送"
+
+#: .\services\templates\services\__service_descriptions.html:6
+#, fuzzy
+#| msgid "about me"
+msgid "about me"
+msgstr "关于我"
+
+#: .\services\templates\services\__service_descriptions.html:7
+msgid "photo"
+msgstr "照片"
 
 #: .\services\templates\services\__service_form_add.html:4
 msgid "Add service"

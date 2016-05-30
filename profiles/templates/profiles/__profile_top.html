@@ -12,13 +12,13 @@
       <table class="ui very basic unstackable compact fixed table">
         <tbody>
           <tr>
-            <td class="grey_and_bold">职业：</td>
+            <td class="grey_and_bold">{% trans 'profession:' %}</td>
             <td>{% if profile.get_profession_display%}{{ profile.get_profession_display|default:"" }}{% endif %}</td>
-            <td class="grey_and_bold">语言：</td>
-            <td>未知</td>
+            <td class="grey_and_bold">{% trans 'language:' %}</td>
+            <td>not know</td>
           </tr>
           <tr>
-            <td class="grey_and_bold" style="border:0px;">个性签名：</td>
+            <td class="grey_and_bold" style="border:0px;">{% trans 'signature:' %}</td>
             <td style="border:0px;" colspan="3">{{ profile.short_description }}</td>
           </tr>
         </tbody>

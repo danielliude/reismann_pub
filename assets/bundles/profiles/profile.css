@@ -66,41 +66,6 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem; }
 
-.ui.segment.profiles_services {
-  padding-bottom: 0px;
-  margin-bottom: 40px; }
-  .ui.segment.profiles_services .ui.grid > .column {
-    padding-left: 0rem;
-    padding-top: 0rem; }
-  .ui.segment.profiles_services .ui.label {
-    padding: 4px 6px; }
-
-.ui.segment.profile_info .ui.blue.segment {
-  padding-bottom: 20px; }
-
-.ui.segment.profile_info .right_absolute {
-  position: absolute;
-  right: 1rem; }
-
-.ui.segment.profile_info .ui.divided.items > .item {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem; }
-
-.ui.segment.profile_info .h_content h1, .ui.segment.profile_info .h_content h2, .ui.segment.profile_info .h_content h3, .ui.segment.profile_info .h_content h4, .ui.segment.profile_info .h_content h5 {
-  margin: 0.5rem 0; }
-
-.ui.segment.profile_info .h_content h2 {
-  margin-top: 0rem; }
-
-.ui.segment.all_services {
-  margin-bottom: 2rem; }
-  .ui.segment.all_services .ui.divided.items > .item {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem; }
-  .ui.segment.all_services .ui.label {
-    padding: 4px 6px;
-    margin-bottom: 5px; }
-
 .ui.comments {
   max-width: 100%; }
   .ui.comments .content .ui.rating {

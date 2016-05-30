@@ -10,6 +10,10 @@ from core.utils import ExtraContextTemplateView
 from followship.models import Follow
 from profiles.views import makeContextForNotifications, makeContextForProfile, makeContextForAllUserServices, makeContextForMessages
 
+from followship.managers import FollowshipMailManager as mailer
+
+from notifications.signals import notify
+
 def follow(request, follower, followee):
 
     follower_object = User.objects.get(username = follower)
@@ -18,6 +22,13 @@ def follow(request, follower, followee):
     if follower and followee:
         if not Follow.objects.follows(follower_object, followee_object):
             Follow.objects.follow(follower_object, followee_object)
+
+            # create internal notification
+            notify.send(sender = follower_object, recipient=followee_object, verb=u'has started following you')
+
+            # send email about internal message
+            m = mailer()
+            m.send_email_new_follower(user = followee_object)
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -30,6 +41,13 @@ def unfollow(request, follower, followee):
     if follower and followee:
         if Follow.objects.follows(follower_object, followee_object):
             Follow.objects.unfollow(follower_object, followee_object)
+
+            # create internal notification
+            notify.send(sender = follower_object, recipient=followee_object, verb=u'has unfollowed you')
+
+            # send email about internal message
+            m = mailer()
+            m.send_email_lost_follower(user=followee_object)
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

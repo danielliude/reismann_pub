@@ -1,0 +1,10 @@
+{% load i18n %}{% autoescape off %}{% load url from future %}
+{% if not without_usernames %}{% blocktrans with user.username as username %}Dear {{ username }},{% endblocktrans %}
+{% endif %}
+{% blocktrans with site.name as site %}You have new follower at {{ site }}. Log in for more details!{% endblocktrans %}
+
+{% trans "Thanks for using our site!" %}
+
+{% trans "Sincerely" %},
+{{ site.name }}
+{% endautoescape %}

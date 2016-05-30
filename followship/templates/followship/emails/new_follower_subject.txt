@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans with site.name as site %}You have a new follower at {{ site }}.{% endblocktrans %}

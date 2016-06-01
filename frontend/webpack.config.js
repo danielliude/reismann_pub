@@ -27,6 +27,7 @@ module.exports = {
     'profiles/follow': './js/profiles/follow',
     'profiles/verification': './js/profiles/verification',
     'profiles/setting': './js/profiles/setting',
+    'profiles/notifications': './js/profiles/notifications',
     'core/about_us': './js/core/about_us',
     'core/help': './js/core/help',
     'core/contact_info': './js/core/contact_info',

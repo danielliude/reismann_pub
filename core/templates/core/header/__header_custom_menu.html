@@ -1,23 +1,47 @@
 {% load i18n staticfiles %}
 {% load notifications_tags %}
+
+<script src="{% static 'notifications/notify.js' %}" type="text/javascript"></script>
+<script type="text/javascript">
+function get_date(d) {
+  return d.replace('T', ' ').replace('Z', '')
+}
+function fill_notification_list(data) {
+    $('.unread_info').remove()
+    var html = ''
+    for (var i=0; i < data.unread_list.length; i++) {
+        var item = data.unread_list[i];
+        html += '<a href="" class="item unread_info">' + 
+                  '<img class="ui avatar image" src="">' +
+                  '<span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">' + item.actor + '</span>' +
+                  '<small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>' +  get_date(item.timestamp) + '</small>' +
+                  '<span class="subject" style="position:absolute;left:53px;top:25px;">' + item.verb + '</span>' +
+                '</a>' +
+                '<div class="divider unread_info"></div>'
+    }
+    $(".update_notifications").after(html)
+}
+</script>
+{% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge'  %}
 {% notifications_unread as unread_count%}
 {% if user.is_authenticated %}
 <div class="right menu">
   <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:notifications' user.username %}'">
     <i class="icon alarm outline"></i>
-    <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{{ unread_count }}</div>
+    <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{% live_notify_badge %}</div>
 
-    <div class="menu" style="width:250px;">
-      <div class="item">{% trans "You have " %}{{ unread_count }}{% trans " unread notifications" %}</div>
-      <div class="divider"></div>
+    <div class="menu" style="width:300px;">
+      <div class="item">{% trans "You have " %}{% live_notify_badge %}{% trans " unread notifications" %}</div>
+      <div class="divider update_notifications"></div>
+
       {% for notification in notifications %}
-        <a href="" class="item unread_info">
+<!--         <a href="" class="item unread_info">
           <img class="ui avatar image" src="{{ notification.actor.profile.get_avatar_url }}">
             <span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">{{ notification.actor }}</span>
             <small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>{{ notification.timesince}}</small>
             <span class="subject" style="position:absolute;left:53px;top:25px;">{{ notification.verb }}</span>
         </a>
-        <div class="divider"></div>
+        <div class="divider"></div> -->
       {% endfor %}
     </div>
   </div>

@@ -10,7 +10,7 @@ from userena.decorators import secure_required
 from bookings.models import Booking
 from bookings.forms import BookingForm
 
-from profiles.views import makeContextForDetails, makeContextForMessages
+from profiles.views import makeContextForDetails, makeContextForNotifications
 from profiles.utils import get_user_profile
 from bookings.utils import get_booking_by_id
 
@@ -21,6 +21,8 @@ except ImportError:
 
 from bookings.managers import BookingMailManager as mailer
 from services.models import Service
+
+from notifications.signals import notify
 
 @secure_required
 @permission_required_or_403('bookings.view_booking')
@@ -40,7 +42,7 @@ def bookings(request, username,
         extra_context['bookings']= bookings
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                       extra_context=extra_context)(request)
@@ -74,8 +76,13 @@ def booking_add(request, username, service_id, booking_form = BookingForm,
 
                   booking = form.save(user)
 
+                  # send email to provider
                   m = mailer()
                   m.send_notification_email_for_provider(booking)
+
+                  # create internal notification
+                  notify.send(sender = booking.sender, recipient=booking.recipient, action_object=booking,
+                              verb=u'has created new booking')
 
                   if success_url:
                     redirect_to = success_url
@@ -91,7 +98,7 @@ def booking_add(request, username, service_id, booking_form = BookingForm,
             extra_context['profile'] = profile
 
             extra_context = makeContextForDetails(request, extra_context)
-            extra_context = makeContextForMessages(request, extra_context)
+            extra_context = makeContextForNotifications(request, extra_context)
 
             return ExtraContextTemplateView.as_view(template_name=template_name,
                                                   extra_context=extra_context)(request)
@@ -110,9 +117,20 @@ def booking_reject(request, username, booking_id):
         if user:
             if user.has_perm('reject_booking', booking):
                 if(booking.sender == user):
+
                     booking.status = 3
+
+                    # create internal notification
+                    notify.send(sender = booking.sender, recipient=booking.recipient, action_object=booking,
+                                verb=u'has been rejected')
+
                 elif(booking.recipient == user):
+
                     booking.status = 4
+
+                    # create internal notification
+                    notify.send(sender = booking.recipient, recipient=booking.sender, action_object=booking,
+                                verb=u'has been rejected')
                 booking.save()
 
     url = reverse('profiles:bookings', kwargs={'username':request.user.username})
@@ -130,8 +148,17 @@ def booking_approve(request, username, booking_id):
             if user.has_perm('approve_booking', booking):
                 if(user == booking.sender):
                     booking.status = 5
+
+                    # create internal notification
+                    notify.send(sender = booking.sender, recipient=booking.recipient, action_object=booking,
+                                verb=u'has been approved')
+
                 elif(user == booking.recipient):
                     booking.status = 6
+
+                    # create internal notification
+                    notify.send(sender = booking.recipient, recipient=booking.sender, action_object=booking,
+                                verb=u'has been approved')
                 booking.save()
 
                 m = mailer()
@@ -164,7 +191,7 @@ def booking_view(request, username, booking_id, template_name = 'bookings/bookin
         extra_context['profile'] = profile
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -198,8 +225,18 @@ def booking_edit(request, username, booking_id, edit_booking_form = BookingForm,
                         m = mailer()
 
                         if(booking.status == 2):
+                            # create internal notification
+                            notify.send(sender=booking.sender, recipient=booking.recipient, action_object=booking,
+                                        verb=u'has been changed by user')
+
+                            # send email about changed booking
                             m.send_notification_booking_email_for_provider(booking)
+
                         elif(booking.status == 1):
+                            # create internal notification
+                            notify.send(sender=booking.recipient, recipient=booking.sender, action_object=booking,
+                                        verb=u'has been changed by provider')
+
                             m.send_notification_booking_email_for_user(booking)
 
                 if success_url:
@@ -214,7 +251,7 @@ def booking_edit(request, username, booking_id, edit_booking_form = BookingForm,
         extra_context['booking'] = booking
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                           extra_context=extra_context)(request)
@@ -271,9 +308,18 @@ def booking_cancel(request, username, booking_id, template_name='bookings/bookin
             if(booking.sender == user):
                 booking.status = 9
                 booking.save()
+
+                # create internal notification
+                notify.send(sender=booking.sender, recipient=booking.recipient, action_object=booking,
+                            verb=u'has been canceled by user')
+
             elif(booking.recipient == user):
                 booking.status = 10
                 booking.save()
+
+                # create internal notification
+                notify.send(sender=booking.recipient, recipient=booking.sender, action_object=booking,
+                            verb=u'has been canceled by provider')
 
         url = reverse('profiles:bookings', kwargs={'username':user.username})
         return HttpResponseRedirect(url)

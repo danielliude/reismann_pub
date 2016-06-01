@@ -9,12 +9,16 @@
   	<i class="{% if about_type == 'service_term' %}black{% endif %} file text icon"></i>
   	服务条款
   </a>
-  <a href="{% url 'about_us' 'privacy_protect' %}" class="{% if about_type == 'privacy_protect' %}active{% endif %} item">
-  	<i class="{% if about_type == 'privacy_protect' %}black{% endif %} file text icon"></i>
-  	隐私保护
+  <a href="{% url 'help_problem' 'all' 'all' %}" class="item">
+  	<i class="file text icon"></i>
+  	帮助中心
   </a>
-  <a href="{% url 'about_us' 'disclaimer' %}" class="{% if about_type == 'disclaimer' %}active{% endif %} item">
-  	<i class="{% if about_type == 'disclaimer' %}black{% endif %} file text icon"></i>
-  	免责声明
+  <a href="{% url 'about_us' 'photo_copyright' %}" class="{% if about_type == 'photo_copyright' %}active{% endif %} item">
+  	<i class="{% if about_type == 'photo_copyright' %}black{% endif %} file text icon"></i>
+  	图片版权
+  </a>
+  <a href="{% url 'about_us' 'contact' %}" class="{% if about_type == 'contact' %}active{% endif %} item">
+    <i class="{% if about_type == 'contact' %}black{% endif %} file text icon"></i>
+    联系我们
   </a>
 </div>

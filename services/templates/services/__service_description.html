@@ -1,17 +1,15 @@
 {% load i18n %}
 
 {% if profile.settings.is_provider %}
-<h2 class="ui center aligned header">{% trans 'Service category' %}</h2>
-<div class="ui segment">
-  <h4>{% trans 'Title' %}</h4>
-  <p>{{ service.title }}</p>
-</div>
-<div class="ui segment">
-  <h4>{% trans 'Service description' %}</h4>
+<div class="ui padded segment">
+  <h5 class="ui right floated header"><a class="ui red tag label">{{ service.get_currency_display }} {{ service.price }}</a></h5>
+  <h2 class="ui center aligned header" style="color: #555555;font-weight: 300;margin-top:0px;">{{ service.title }}</h2>
   <p>{{ service.content|safe }}</p>
+  <br>
+  <br>
 </div>
-<div class="ui segment">
-  <h4>{% trans 'Rating and comment:' %}{{ ratings|length }}</h4>
+<div class="ui padded segment">
+  <h3 style="color: #555555;font-weight: 300;">{% trans 'Rating and comment:' %}{{ ratings|length }}</h3>
   {% if ratings|length != 0 %}
       <div class="ui comments">
         {% for rating in ratings %}
@@ -50,115 +48,4 @@
       <br>
     {% endif %}
 </div>
-
-<!-- <div class="ui segment profiles_services">
-  {% if view_own_profile %}
-    <h3>{% trans 'My services' %}</h3>
-  {% else %}
-    <h3>{% trans 'Services' %}</h3>
-  {% endif %}
-
-  <div class="row">
-    <h4> {{ service.title }}</h4>
-    <h5>{% trans 'Rating: ' %}{{ service.rating|floatformat }}/5</h5>
-    {% if request.user.is_authenticated %}
-        <h5>€ {{ service.price }}</h5>
-    {% else %}
-        <h5>{% trans "Price: login required" %}</h5>
-    {% endif %}
-    <h5> {{ service.get_type_display }}</h5>
-
-    <div class="ui padded grid">
-      <div class="four wide column" style="min-width:120px;">
-        <i class="marker icon"></i> {% trans 'cities' %}
-      </div>
-      <div class="twelve wide column" style="margin-bottom:-5px;">
-        {% for city in service.cities.all %}
-          <a class="ui brand_blue label" style="margin-bottom:5px;">{{ city.name }}</a>
-        {% endfor %}
-      </div>
-      <div class="four wide column" style="min-width:120px;">
-        <i class="folder icon"></i> {% trans 'category' %}
-      </div>
-      <div class="twelve wide column" style="margin-bottom:-5px;">
-          <a class="ui green label" style="margin-bottom:5px;">{{ service.category.name }}</a>
-      </div>
-      <div class="four wide column" style="min-width:120px;">
-        <i class="flag icon"></i> {% trans 'languages' %}
-      </div>
-      <div class="twelve wide column" style="margin-bottom:-5px;">
-        {% for language in service.languages.all %}
-          <a class="ui yellow label" style="margin-bottom:5px;">{{ language.name }}</a>
-        {% endfor %}
-      </div>
-      <div class="four wide column" style="min-width:120px;">
-        <i class="tags icon"></i> {% trans 'tags' %}
-      </div>
-      <div class="twelve wide column" style="margin-bottom:-5px;">
-        {% for tag in service.tags.all %}
-          <a class="ui red label" style="margin-bottom:5px;">{{ tag.name }}</a>
-        {% endfor %}
-      </div>
-    </div>
-    <br>
-    <p>{{ service.content|safe }}</p>
-    <br>
-    {% if request.user.is_authenticated %}
-      {% if view_own_profile %}
-        <a class="ui brand_blue right floated button disabled" href=""><b>{% trans 'Book service' %}</b></a>
-      {% else %}
-        <a class="ui brand_blue right floated button" href="{% url 'profiles:booking_add' profile.user.username service.id %}"><b>{% trans 'Book service' %}</b></a>
-      {% endif %}
-    {% else %}
-      <a class="ui brand_blue right floated button" href="{% url 'accounts:login' %}"><b>{% trans 'Log in to book' %}</b></a>
-    {% endif %}
-
-    <br>
-    <br>
-    <br>
-    <br>
-
-    {% if ratings|length != 0 %}
-      <div class="row">
-        <div class="ui comments">
-          <h3 class="ui dividing header">{% trans "Comments" %}</h3>
-          {% for rating in ratings %}
-          <div class="comment">
-            <a class="avatar">
-              <img src="{{ rating.user.profile.get_avatar_url }}">
-            </a>
-            <div class="content">
-              {% if request.user.username %}
-                  <a class="author">{% trans 'User' %} {{ rating.user.username }}</a>
-              {% else %}
-                  <a class="author">{% trans 'Anonymous user' %}</a>
-              {% endif %}
-              <div class="metadata">
-                <span class="date">{% trans 'Created at: ' %}{{ rating.created_at }}</span>
-              </div>
-              {{ rating.gen_stars }}
-              <div class="text">{{ rating.comment }}</div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
-    <br>
-
-    {% if form %}
-      <div class='row'>
-          <form method="post" class="ui form">
-            {% csrf_token %}
-            <div class="field">
-              <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
-              {{form.comment}}
-            </div>
-            <div class="ui brand_blue labeled submit icon button"><i class="icon edit"></i> {% trans 'Send your comment' %}</div>
-          </form>
-      </div>
-      <br>
-    {% endif %}
-  </div>
-</div> -->
 {% endif %}

@@ -4,6 +4,11 @@ from guardian.shortcuts import assign_perm
 
 from core.constants import ASSIGNED_PERMISSIONS
 
+from core.mail import send_mail
+from django.template.loader import render_to_string
+from django.contrib.sites.models import Site
+from reismann.alex_settings import EMAIL_DEFAULT_FROM_EMAIL
+
 import re
 
 SHA1_RE = re.compile('^[a-f0-9]{40}$')
@@ -52,3 +57,35 @@ class MessageManager(models.Manager):
       return self.filter(
           recipient = user,
           read_at__isnull = True)
+
+
+class MessageMailManager():
+
+  def send_email_new_message_to_recipient(self, message):
+
+    if message.recipient.profile.settings.email_notifications == True:
+
+        context = {'user': message.recipient,
+                   'site': Site.objects.get_current()}
+
+        subject = render_to_string('insite_messages/emails/new_message_subject.txt', context)
+        subject = ''.join(subject.splitlines())
+
+        text = render_to_string('insite_messages/emails/new_message_text.txt', context)
+
+        send_mail(subject, text, None, EMAIL_DEFAULT_FROM_EMAIL, [message.recipient.email])
+
+
+  def send_email_replied_message_to_recipient(self, message):
+
+    if message.recipient.profile.settings.email_notifications == True:
+
+        context = {'user': message.recipient,
+                   'site': Site.objects.get_current()}
+
+        subject = render_to_string('insite_messages/emails/replied_message_subject.txt', context)
+        subject = ''.join(subject.splitlines())
+
+        text = render_to_string('insite_messages/emails/replied_message_text.txt', context)
+
+        send_mail(subject, text, None, EMAIL_DEFAULT_FROM_EMAIL, [message.recipient.email])

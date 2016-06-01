@@ -1,95 +1,29 @@
 {% load i18n %}
 {% load thumbnail %}
 
-<h2 class="ui center aligned header">{{ profile.user.username }}{% trans "'s homepage" %}</h2>
-<div class="ui segment">
-  <h4>{% trans 'Profile description' %}</h4>
-  <p>{{ profile.bio|safe }}</p>
-</div>
-<div class="ui segment">
-  <h4>{% trans 'My picture' %}</h4>
-  {% if profile.settings.is_provider %}
-    <div class="ui grid">
+<div class="ui segment" style="padding:1rem 0 0 0;">
+  <div class="ui top attached tabular menu" style="margin-left:0px;padding-left:1rem;">
+    <a class="active item" data-tab="first">{% trans 'about me' %}</a>
+    <a class="item" data-tab="second">{% trans 'photo' %}</a>
+  </div>
+  <div style="border:0px;" class="ui bottom attached tab padded segment active" data-tab="first">
+    <p>{{ profile.bio|safe }}</p>
+    <br>
+    <br>
+  </div>
+  <div style="border:0px;" class="ui bottom attached tab padded segment" data-tab="second">
+    {% if profile.settings.is_provider %}
+      <div id="galleria">
       {% for image in profile.user.my_album.images.all %}
         {% if image.is_active %}
-        <div class="eight wide column">
           <a href="{{ image.image.url }}">
             <img src="{% thumbnail image.image 280x280 crop='smart' %}" />
           </a>
-        </div>
         {% endif %}
       {% endfor %}
-    </div>
-  {% endif %}
-</div>
-
-
-<!-- <div class="ui segment profiles_services">
-  <h3>{% trans 'Services' %}</h3>
-  {% for service in services %}
-    <div class="row" onclick="window.document.location='services/view/{{ service.id }}/';">
-      <h4> {{ service.title }}</h4>
-      <h5>{% trans 'Rating: ' %}{{ service.rating|floatformat }}/5</h5>
-      {% if request.user.is_authenticated %}
-          <h5>€ {{ service.price }}</h5>
-      {% else %}
-          <h5>{% trans "Price: login required" %}</h5>
-      {% endif %}
-      <h5> {{ service.get_type_display }}</h5>
-
-      <div class="ui padded grid">
-        <div class="four wide column" style="min-width:120px;">
-          <i class="marker icon"></i> {% trans 'cities' %}
-        </div>
-        <div class="twelve wide column" style="margin-bottom:-5px;">
-          {% for city in service.cities.all %}
-            <a class="ui brand_blue label" style="margin-bottom:5px;">{{ city.name }}</a>
-          {% endfor %}
-        </div>
-        <div class="four wide column" style="min-width:120px;">
-          <i class="folder icon"></i> {% trans 'category' %}
-        </div>
-        <div class="twelve wide column" style="margin-bottom:-5px;">
-            <a class="ui green label" style="margin-bottom:5px;">{{ service.category.name }}</a>
-        </div>
-        <div class="four wide column" style="min-width:120px;">
-          <i class="flag icon"></i> {% trans 'languages' %}
-        </div>
-        <div class="twelve wide column" style="margin-bottom:-5px;">
-          {% for language in service.languages.all %}
-            <a class="ui yellow label" style="margin-bottom:5px;">{{ language.name }}</a>
-          {% endfor %}
-        </div>
-        <div class="four wide column" style="min-width:120px;">
-          <i class="tags icon"></i> {% trans 'tags' %}
-        </div>
-        <div class="twelve wide column" style="margin-bottom:-5px;">
-          {% for tag in service.tags.all %}
-            <a class="ui red label" style="margin-bottom:5px;">{{ tag.name }}</a>
-          {% endfor %}
-        </div>
       </div>
-
-      <p>{{ service.content|safe|truncatewords:"150" }}</p>
-
-      {% if request.user.is_authenticated %}
-        {% if view_own_profile %}
-          <a class="ui brand_blue right floated button disabled" href=""><b>{% trans 'Book service' %}</b></a>
-          <a class="ui brand_blue right floated button" href="{% url 'profiles:service_view' profile.user.username service.id %}"><b>{% trans 'View service' %}</b></a>
-        {% else %}
-          <a class="ui brand_blue right floated button" href="{% url 'profiles:booking_add' profile.user.username service.id %}"><b>{% trans 'Book service' %}</b></a>
-          <a class="ui brand_blue right floated button" href="{% url 'profiles:service_view' profile.user.username service.id %}"><b>{% trans 'View service' %}</b></a>
-        {% endif %}
-      {% else %}
-        <a class="ui brand_blue right floated button" href="{% url 'accounts:login' %}"><b>{% trans 'Log in to book' %}</b></a>
-      {% endif %}
-
-      </br>
-      </br>
-      </br>
-    </div>
-    <br>  
-  {% endfor %}
-</div> -->
-
-
+    {% endif %}
+    <br>
+    <br>
+  </div>
+</div>

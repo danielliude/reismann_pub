@@ -20,7 +20,7 @@ class AlbumImage(models.Model):
 
     image_size = models.IntegerField(_('Image Size'), default=0)
 
-    status = models.PositiveIntegerField(_('service status'), choices=ALBUM_IMAGE_STATUS, blank=True, null=True)
+    status = models.PositiveIntegerField(_('Image status'), choices=ALBUM_IMAGE_STATUS, blank=True, null=True)
 
     objects = AlbumImageManager()
 

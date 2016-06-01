@@ -10,7 +10,7 @@ from django.http import HttpResponse
 
 from profiles.models import Profile
 from cities.models import City
-from profiles.views import makeContextForDetails, makeContextForMessages
+from profiles.views import makeContextForDetails, makeContextForNotifications
 
 def index(request):
     city_list = City.objects.filter(is_active=1)
@@ -37,7 +37,7 @@ def index(request):
         'popular_cities': popular_cities,
       }
 
-      context = makeContextForMessages(request, context)
+      context = makeContextForNotifications(request, context)
       context = makeContextForDetails(request, context)
 
       return render(request, 'core/index.html', context)
@@ -68,7 +68,7 @@ def about_us(request, about_type, template_name='core/about/about_us.html'):
   context = {
     'about_type': about_type
   }
-  context = makeContextForMessages(request, context)
+  context = makeContextForNotifications(request, context)
   context = makeContextForDetails(request, context)
 
   return render(request, 'core/about/about_us.html', context)
@@ -78,15 +78,14 @@ def help_problem(request, problem_type, serial_id, template_name='core/help/prob
     'problem_type': problem_type,
     'serial_id': serial_id
   }
-  context = makeContextForMessages(request, context)
+  context = makeContextForNotifications(request, context)
   context = makeContextForDetails(request, context)
 
   return render(request, 'core/help/problem.html', context)
 
-
 def contact_info(request):
   context = {}
-  context = makeContextForMessages(request, context)
+  context = makeContextForNotifications(request, context)
   context = makeContextForDetails(request, context)
 
   return render(request, 'core/contact_info/contact_info.html', context)

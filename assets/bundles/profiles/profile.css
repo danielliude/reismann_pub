@@ -1,44 +1,70 @@
+/*!
+ * # Semantic UI 2.1.8 - Tab
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Copyright 2015 Contributors
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */.ui.tab{display:none}.ui.tab.active,.ui.tab.open{display:block}.ui.tab.loading{position:relative;overflow:hidden;display:block;min-height:250px}.ui.tab.loading *{position:relative!important;left:-10000px!important}.ui.tab.loading.segment:before,.ui.tab.loading:before{position:absolute;content:'';top:100px;left:50%;margin:-1.25em 0 0 -1.25em;width:2.5em;height:2.5em;border-radius:500rem;border:.2em solid rgba(0,0,0,.1)}.ui.tab.loading.segment:after,.ui.tab.loading:after{position:absolute;content:'';top:100px;left:50%;margin:-1.25em 0 0 -1.25em;width:2.5em;height:2.5em;-webkit-animation:button-spin .6s linear;animation:button-spin .6s linear;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;border-radius:500rem;border-color:#767676 transparent transparent;border-style:solid;border-width:.2em;box-shadow:0 0 0 1px transparent}.ui.container {
+  max-width: 950px !important; }
+
 body {
-  background-color: #f3f3f3; }
+  font-family: "Microsoft YaHei",Verdana,"Bitstream Vera Sans",sans-serif; }
+
+.all_buttons .ui.button {
+  margin: 0.3rem 0;
+  width: 31%;
+  max-width: 110px;
+  text-align: center;
+  font-weight: normal;
+  padding: 0.72571429em 1.2em;
+  font-size: 0.9rem; }
+
+.all_buttons .ui.brand_blue.button {
+  background-color: #428bca;
+  border-color: #357ebd; }
+  .all_buttons .ui.brand_blue.button:hover {
+    background-color: #3071a9;
+    border-color: #285e8e; }
+
+.all_buttons .ui.brand.button {
+  background-color: #FF5026;
+  border-color: #FF5026;
+  opacity: 0.8; }
+  .all_buttons .ui.brand.button:hover {
+    opacity: 1; }
+
+.ui.table {
+  font-size: 0.9em; }
+  .ui.table tbody tr {
+    cursor: pointer; }
+
+.ui.label {
+  font-weight: normal; }
+
+.grey_and_bold {
+  color: #999;
+  font-weight: 700; }
+
+#galleria {
+  width: 450px;
+  height: 600px;
+  margin: 0px auto; }
+
+.galleria-thumbnails {
+  margin: 0 auto; }
+
+.galleria-container {
+  background-color: transparent; }
+
+.ui.label.equal_width {
+  text-align: center; }
 
 .ui.grid.profile_content {
   margin-top: 2rem;
   margin-bottom: 2rem; }
-
-.ui.segment.profiles_services {
-  padding-bottom: 0px;
-  margin-bottom: 40px; }
-  .ui.segment.profiles_services .ui.grid > .column {
-    padding-left: 0rem;
-    padding-top: 0rem; }
-  .ui.segment.profiles_services .ui.label {
-    padding: 4px 6px; }
-
-.ui.segment.profile_info .ui.blue.segment {
-  padding-bottom: 20px; }
-
-.ui.segment.profile_info .right_absolute {
-  position: absolute;
-  right: 1rem; }
-
-.ui.segment.profile_info .ui.divided.items > .item {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem; }
-
-.ui.segment.profile_info .h_content h1, .ui.segment.profile_info .h_content h2, .ui.segment.profile_info .h_content h3, .ui.segment.profile_info .h_content h4, .ui.segment.profile_info .h_content h5 {
-  margin: 0.5rem 0; }
-
-.ui.segment.profile_info .h_content h2 {
-  margin-top: 0rem; }
-
-.ui.segment.all_services {
-  margin-bottom: 2rem; }
-  .ui.segment.all_services .ui.divided.items > .item {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem; }
-  .ui.segment.all_services .ui.label {
-    padding: 4px 6px;
-    margin-bottom: 5px; }
 
 .ui.comments {
   max-width: 100%; }

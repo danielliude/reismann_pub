@@ -99,8 +99,9 @@ MIDDLEWARE_CLASSES = (
   'django.middleware.clickjacking.XFrameOptionsMiddleware',
   'django.middleware.security.SecurityMiddleware',
   'userena.middleware.UserenaLocaleMiddleware',
+  'django.middleware.locale.LocaleMiddleware',
 )
-
+ 
 
 TEMPLATES = [
   {
@@ -145,7 +146,8 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = (
-  'locale',
+  # 'locale',
+  os.path.join(BASE_DIR, 'locale'),
 )
 
 AUTH_PROFILE_MODULE = 'profiles.Profile'

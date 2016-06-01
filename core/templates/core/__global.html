@@ -21,6 +21,7 @@
     {% block stylesheets %}{% endblock %}
     {% block header_javascripts %}{% endblock %}
     {% block extra_head %}{% endblock %}
+    {% render_bundle 'global' 'js' %}
 </head>
 
 <body id="home">
@@ -30,7 +31,6 @@
     </div>
     {% block footer %}{% include "core/footer/__footer.html" %}{% endblock %}
 
-    {% render_bundle 'global' 'js' %}
     {% block javascripts %}{% endblock %}
 </body>
 </html>

@@ -47,7 +47,7 @@
 
 	'use strict';
 
-	__webpack_require__(138);
+	__webpack_require__(141);
 
 	$(function () {
 		init();
@@ -55,13 +55,16 @@
 		send_message();
 
 		function init() {
-			$('.ui.sticky').sticky({
-				context: '.profile_content',
-				offset: 0
-			});
+			// $('.ui.sticky')
+			//   .sticky({
+			//     context: '.profile_content',
+			//     offset: 0,  
+			//   })
+			// ;
 			$(".not_login").click(function () {
 				alert('please login for this action');
 			});
+			$('.ui.dropdown').dropdown();
 		}
 
 		function init_rating() {
@@ -92,7 +95,7 @@
 
 /***/ },
 
-/***/ 138:
+/***/ 141:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

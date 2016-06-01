@@ -1,6 +1,8 @@
-body {
-  background-color: rgb(243, 243, 243);
+.highly_adaptive {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(34,36,38,.15);  
 }
+
 
 /*--------------
     city_img
@@ -21,12 +23,19 @@ body {
 ---------------*/
 .help_content {
 	p {
-		color: rgba(0,0,0,.68);
-    font-size: 1.3em;
-	}
-	.sub.header {
-		font-size: 2em;
-	}
+    color: rgba(0,0,0,.68);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  .second.header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgba(22, 15, 15, 0.68);
+    padding-top: 0.5rem;
+  }
+  .sub.header {
+    font-size: 1.7rem;
+  }
 }
 .help_context {
   .ui.accordion {

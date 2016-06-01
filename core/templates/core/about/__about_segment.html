@@ -1,16 +1,20 @@
+{% load i18n %}
+
 <div class="ui basic segment">
   <div class="ui large breadcrumb">
-    <a href="{% url 'index' %}" class="section"><i class="home icon"></i>主页</a>
+    <a href="{% url 'about_us' 'about_us' %}" class="section"><i class="home icon"></i>主页</a>
     <i class="right chevron icon divider"></i>
-    <div class="active section">
+    <div class="section">
     	{% if about_type == 'about_us' %}
 	    	关于我们
     	{% elif about_type == 'service_term' %}
-            服务条项
-    	{% elif about_type == 'privacy_protect' %}
-            隐私保护
-    	{% elif about_type == 'disclaimer' %}
-            免责声明
+            服务条款
+    	{% elif about_type == 'photo_copyright' %}
+            图片版权
+    	{% elif about_type == 'contact' %}
+            联系我们
+        {% else %}
+            帮助中心
     	{% endif %}
     </div>
   </div>    

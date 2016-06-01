@@ -11,30 +11,36 @@ from guardian.decorators import permission_required_or_403
 from profiles.utils import get_user_profile
 from core.utils import ExtraContextTemplateView
 from contacts.utils import get_user_contact
+
 from insite_messages.models import Message
 from insite_messages.forms import MessageComposeForm
-from profiles.views import makeContextForDetails, makeContextForMessages
-from notifications.signals import notify
+from insite_messages.managers import MessageMailManager as mailer
 
+from profiles.views import makeContextForDetails, makeContextForNotifications
+
+from notifications.signals import notify
 
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
 def inbox_messages(request, username,
-                template_name='insite_messages/inbox_messages.html',
+                template_name='insite_messages/messages.html',
                 extra_context=None, **kwargs):
 
   if request.user.username == username:
 
       user = get_object_or_404(User, username__iexact=username)
       profile = get_user_profile(user)
-      messages = Message.objects.inbox_for(user)
+      inbox_messages = Message.objects.inbox_for(user)
+      outbox_messages = Message.objects.outbox_for(user)
 
       if not extra_context: extra_context = dict()
-      extra_context['messages'] = messages
+      extra_context['inbox_messages'] = inbox_messages
+      extra_context['outbox_messages'] = outbox_messages
+      extra_context['inbox_page'] = 'true'
       extra_context['profile'] = profile
 
       extra_context = makeContextForDetails(request, extra_context)
-      extra_context = makeContextForMessages(request, extra_context)
+      extra_context = makeContextForNotifications(request, extra_context)
 
       return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -47,21 +53,24 @@ def inbox_messages(request, username,
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
 def outbox_messages(request, username,
-                template_name='insite_messages/outbox_messages.html',
+                template_name='insite_messages/messages.html',
                 extra_context=None, **kwargs):
 
   if request.user.username == username:
 
       user = get_object_or_404(User, username__iexact=username)
       profile = get_user_profile(user)
-      messages = Message.objects.outbox_for(user)
+      inbox_messages = Message.objects.inbox_for(user)
+      outbox_messages = Message.objects.outbox_for(user)
 
       if not extra_context: extra_context = dict()
-      extra_context['messages'] = messages
+      extra_context['inbox_messages'] = inbox_messages
+      extra_context['outbox_messages'] = outbox_messages
+      extra_context['outbox_page'] = 'true'
       extra_context['profile'] = profile
 
       extra_context = makeContextForDetails(request, extra_context)
-      extra_context = makeContextForMessages(request, extra_context)
+      extra_context = makeContextForNotifications(request, extra_context)
 
       return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -95,9 +104,14 @@ def message_write(request, username, recipient=None, write_message_form=MessageC
             if form.is_valid():
               message = form.save(user)
               message.sent_at = datetime.utcnow().replace(tzinfo=utc)
-              # message.send_notification_email_to_recipient()
-              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has sent new message')
               message.save()
+
+              # send email about internal message
+              m = mailer()
+              m.send_email_new_message_to_recipient(message=message)
+
+              # create notification about internal message
+              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has sent new message')
 
               if success_url:
                 redirect_to = success_url
@@ -111,7 +125,7 @@ def message_write(request, username, recipient=None, write_message_form=MessageC
         extra_context['contact'] = contact
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -147,7 +161,7 @@ def message_view(request, username, message_id, write_message_form=MessageCompos
         extra_context['profile'] = profile
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
@@ -184,8 +198,14 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
 
             if form.is_valid():
               message = form.save(user)
-              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has replied on your message')
               message.save()
+
+              # send email about replied internal message
+              m = mailer()
+              m.send_email_replied_message_to_recipient(message=message)
+
+              # create internal notification
+              notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has replied on your message')
 
               if success_url:
                 redirect_to = success_url
@@ -199,7 +219,7 @@ def message_reply(request, username, message_id, write_message_form=MessageCompo
         extra_context['contact'] = contact
 
         extra_context = makeContextForDetails(request, extra_context)
-        extra_context = makeContextForMessages(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)

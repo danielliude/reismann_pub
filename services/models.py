@@ -28,7 +28,7 @@ class Service(models.Model):
 
   title = models.CharField(_('service title'), blank=True, null=True, default='Service title', max_length=255)
 
-  price = models.DecimalField(_('service price'), blank=True, null=True, max_digits=6, decimal_places=2)
+  price = models.DecimalField(_('service price'), blank=True, null=True, max_digits=6, decimal_places=0)
 
   currency = models.PositiveSmallIntegerField(_('service currency'), choices=SERVICE_CURRENCY_CHOICES,
                                           blank=True, null=True)

@@ -1,0 +1,2515 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-30 00:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\accounts\forms.py:29 .\accounts\forms.py:30
+msgid "Username"
+msgstr "用户名"
+
+#: .\accounts\forms.py:31
+msgid "Username must contain only letters, numbers, dots and underscores."
+msgstr ""
+
+#: .\accounts\forms.py:33 .\accounts\forms.py:34
+#: .\contacts\templates\contacts\__contact_box.html:18
+msgid "Email"
+msgstr "邮件"
+
+#: .\accounts\forms.py:36 .\accounts\forms.py:92 .\accounts\forms.py:93
+#: .\accounts\forms.py:113
+msgid "Password"
+msgstr "密码"
+
+#: .\accounts\forms.py:38
+msgid "Create password"
+msgstr "创建密码"
+
+#: .\accounts\forms.py:40 .\accounts\forms.py:42
+msgid "Repeat password"
+msgstr "重复密码"
+
+#: .\accounts\forms.py:46
+msgid "You must agree to the terms to register."
+msgstr "你必须同意该服务条款"
+
+#: .\accounts\forms.py:51
+msgid ""
+"This email is already in use but not confirmed. Please check your email for "
+"verification steps."
+msgstr ""
+
+#: .\accounts\forms.py:52 .\accounts\forms.py:127
+msgid "This email is already in use. Please supply a different email."
+msgstr ""
+
+#: .\accounts\forms.py:61
+msgid "This username has already existed."
+msgstr ""
+
+#: .\accounts\forms.py:66
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: .\accounts\forms.py:69
+msgid "Password should be more then 8 letters."
+msgstr ""
+
+#: .\accounts\forms.py:90
+msgid "Email or username"
+msgstr ""
+
+#: .\accounts\forms.py:91
+msgid "Email or Username"
+msgstr ""
+
+#: .\accounts\forms.py:96 .\accounts\forms.py:100
+#, python-format
+msgid "Remember me for %(days)s"
+msgstr ""
+
+#: .\accounts\forms.py:109
+msgid ""
+"Please enter a correct username or email and password. Note that both fields "
+"are case-sensitive."
+msgstr ""
+
+#: .\accounts\forms.py:115
+msgid "New email"
+msgstr ""
+
+#: .\accounts\forms.py:125
+msgid "You're already known under this email."
+msgstr ""
+
+#: .\accounts\managers.py:170
+#, python-format
+msgid "No profile found for %(username)s"
+msgstr ""
+
+#: .\accounts\models.py:21 .\album\models.py:17 .\album\models.py:51
+#: .\contacts\models.py:9 .\profiles\models.py:21 .\services\models.py:23
+msgid "user"
+msgstr ""
+
+#: .\accounts\models.py:24
+msgid "last active"
+msgstr ""
+
+#: .\accounts\models.py:25
+msgid "user last active help text"
+msgstr ""
+
+#: .\accounts\models.py:26
+msgid "activation key"
+msgstr ""
+
+#: .\accounts\models.py:28
+msgid "notification send"
+msgstr ""
+
+#: .\accounts\models.py:29
+msgid "registration activation notification send help text."
+msgstr ""
+
+#: .\accounts\models.py:31
+msgid "unconfirmed email address"
+msgstr ""
+
+#: .\accounts\models.py:32
+msgid "registration email unconfirmed help text."
+msgstr ""
+
+#: .\accounts\models.py:34
+msgid "unconfirmed email verification key"
+msgstr ""
+
+#: .\accounts\models.py:37
+msgid "creation date of email confirmation key"
+msgstr ""
+
+#: .\accounts\models.py:44
+msgid "Registration"
+msgstr ""
+
+#: .\accounts\models.py:45
+msgid "Registrations"
+msgstr ""
+
+#: .\accounts\settings.py:7
+msgid "a month"
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_fail.html:4
+#: .\accounts\templates\accounts\activate_retry.html:4
+msgid "Account activation failed."
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_fail.html:8
+#: .\accounts\templates\accounts\activate_retry.html:8
+msgid "Your account could not be activated..."
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_fail.html:10
+msgid ""
+"Your account could not be activated. This could be because your activation "
+"link has aged or you have already acivated your account."
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_fail.html:11
+msgid ""
+"Please try signing up again or contact us if you think something went wrong."
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_retry.html:10
+msgid "Your account could not be activated because activation link is expired."
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_retry.html:11
+msgid "Request a new activation link."
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_retry_success.html:4
+msgid "Account re-activation succeeded."
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_retry_success.html:8
+msgid "Account re-activation"
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_retry_success.html:10
+msgid "You requested a new activation of your account.."
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_retry_success.html:11
+#: .\accounts\templates\accounts\registration_complete.html:11
+msgid ""
+"You have been sent an e-mail with an activation link to the supplied email."
+msgstr ""
+
+#: .\accounts\templates\accounts\activate_retry_success.html:12
+#, python-format
+msgid ""
+"We will store your signup information for %(accounts_activation_days)s days "
+"on our server. "
+msgstr ""
+
+#: .\accounts\templates\accounts\emails\activation_email_message.txt:2
+#: .\bookings\templates\bookings\emails\new_booking_message.txt:2
+#: .\insite_messages\templates\insite_messages\emails\new_message_text.txt:2
+#: .\insite_messages\templates\insite_messages\emails\replied_message_text.txt:2
+#, python-format
+msgid "Dear %(username)s,"
+msgstr ""
+
+#: .\accounts\templates\accounts\emails\activation_email_message.txt:4
+#, python-format
+msgid "Thank you for signing up at %(site)s."
+msgstr ""
+
+#: .\accounts\templates\accounts\emails\activation_email_message.txt:6
+msgid "To activate your account you should click on the link below:"
+msgstr ""
+
+#: .\accounts\templates\accounts\emails\activation_email_message.txt:10
+#: .\accounts\templates\accounts\emails\reset_password_message.txt:14
+#: .\bookings\templates\bookings\emails\new_booking_message.txt:6
+#: .\bookings\templates\bookings\emails\notification_booking_message_for_provider.txt:6
+#: .\bookings\templates\bookings\emails\notification_booking_message_for_user.txt:6
+#: .\bookings\templates\bookings\emails\successful_booking_message_for_provider.txt:34
+#: .\bookings\templates\bookings\emails\successful_booking_message_for_user.txt:36
+#: .\insite_messages\templates\insite_messages\emails\new_message_text.txt:6
+#: .\insite_messages\templates\insite_messages\emails\replied_message_text.txt:6
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: .\accounts\templates\accounts\emails\activation_email_message.txt:12
+#: .\accounts\templates\accounts\emails\reset_password_message.txt:16
+#: .\album\templates\album\emails\notification_image_changed_message_for_admin.txt:12
+#: .\bookings\templates\bookings\emails\new_booking_message.txt:8
+#: .\bookings\templates\bookings\emails\notification_booking_message_for_provider.txt:8
+#: .\bookings\templates\bookings\emails\notification_booking_message_for_user.txt:8
+#: .\bookings\templates\bookings\emails\successful_booking_message_for_provider.txt:36
+#: .\bookings\templates\bookings\emails\successful_booking_message_for_user.txt:38
+#: .\insite_messages\templates\insite_messages\emails\new_message_text.txt:8
+#: .\insite_messages\templates\insite_messages\emails\replied_message_text.txt:8
+#: .\profiles\templates\profiles\emails\notification_id_added_message_for_admin.txt:12
+#: .\services\templates\services\emails\notification_service_changed_message_for_admin.txt:12
+msgid "Sincerely"
+msgstr ""
+
+#: .\accounts\templates\accounts\emails\activation_email_subject.txt:2
+#, python-format
+msgid "Your signup at %(site)s."
+msgstr ""
+
+#: .\accounts\templates\accounts\emails\reset_password_message.txt:2
+#, python-format
+msgid ""
+"You're receiving this e-mail because you requested a password reset\n"
+"for your user account at %(site_name)s"
+msgstr ""
+
+#: .\accounts\templates\accounts\emails\reset_password_message.txt:5
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: .\accounts\templates\accounts\emails\reset_password_message.txt:10
+#, python-format
+msgid ""
+"\n"
+"Your username, in case you've forgotten: %(username)s\n"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:17
+#: .\accounts\templates\accounts\register.html:17
+#: .\core\templates\core\header\__header.html:4
+msgid "Reismann"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:20
+msgid "Sign in to start your session"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:45
+#: .\accounts\templates\accounts\register.html:74
+msgid "Sign In"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:51
+#: .\accounts\templates\accounts\register.html:68
+msgid "- OR -"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:53
+#: .\accounts\templates\accounts\register.html:70
+msgid "Sign in using Facebook"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:54
+#: .\accounts\templates\accounts\register.html:71
+msgid "Sign in using Google"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:57
+msgid "New to us?"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:57
+msgid "Sign Up"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:59
+msgid "Forgot my password?"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:59
+msgid "Retrieve"
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_complete.html:4
+#: .\accounts\templates\accounts\password_reset_confirm_form.html:17
+#: .\accounts\templates\accounts\password_reset_form.html:17
+msgid "Password reset"
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_complete.html:8
+msgid "Log in now"
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_complete.html:10
+#, python-format
+msgid ""
+"You can now <a href=\"%(login_url)s\">log in</a> with your new password."
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_confirm_form.html:12
+#: .\accounts\templates\accounts\password_reset_confirm_form.html:32
+#: .\accounts\templates\accounts\password_reset_form.html:12
+msgid "Reset password"
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_confirm_form.html:20
+msgid "Confirm password reset"
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_done.html:4
+msgid "Password reset email sent"
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_done.html:8
+msgid "Email sent"
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_done.html:10
+msgid ""
+"You will get an email which explains how to reset the password. Follow "
+"instructions and complete your password reset"
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_form.html:20
+msgid "Enter you email into the form"
+msgstr ""
+
+#: .\accounts\templates\accounts\password_reset_form.html:32
+msgid "Send password"
+msgstr ""
+
+#: .\accounts\templates\accounts\register.html:20
+msgid "Register a new membership"
+msgstr ""
+
+#: .\accounts\templates\accounts\register.html:63
+msgid "Register"
+msgstr ""
+
+#: .\accounts\templates\accounts\register.html:74
+msgid "Have a membership?"
+msgstr ""
+
+#: .\accounts\templates\accounts\register.html:80
+msgid "Terms of usage"
+msgstr ""
+
+#: .\accounts\templates\accounts\register.html:82
+msgid ""
+"Here are our terms of usage. Read carefully before registering on the website"
+msgstr ""
+
+#: .\accounts\templates\accounts\register.html:85
+msgid "Close"
+msgstr ""
+
+#: .\accounts\templates\accounts\registration_complete.html:7
+msgid "Signup almost done!"
+msgstr ""
+
+#: .\accounts\templates\accounts\registration_complete.html:9
+msgid "Thank you for signing up with us!"
+msgstr ""
+
+#: .\accounts\templates\accounts\registration_complete.html:12
+#, python-format
+msgid ""
+"We will store your signup information for %(account_activation_days)s days "
+"on our server. "
+msgstr ""
+
+#: .\accounts\views.py:135 .\profiles\views_bak.py:173
+msgid "Your account has been activated and you have been signed in."
+msgstr ""
+
+#: .\album\forms.py:25
+msgid "Image quantity exceeds limitation"
+msgstr ""
+
+#: .\album\forms.py:27
+msgid "Image size exceeds limitation"
+msgstr ""
+
+#: .\album\models.py:19
+msgid "Image"
+msgstr ""
+
+#: .\album\models.py:21
+msgid "Image Size"
+msgstr ""
+
+#: .\album\models.py:23 .\services\models.py:61
+msgid "service status"
+msgstr ""
+
+#: .\album\models.py:28
+msgid "Album Image"
+msgstr ""
+
+#: .\album\models.py:29
+msgid "Album Images"
+msgstr ""
+
+#: .\album\models.py:53
+msgid "Images"
+msgstr ""
+
+#: .\album\models.py:56 .\album\models.py:57
+msgid "My Album"
+msgstr ""
+
+#: .\album\templates\album\emails\notification_image_changed_message_for_admin.txt:3
+#: .\profiles\templates\profiles\emails\notification_id_added_message_for_admin.txt:3
+#: .\services\templates\services\emails\notification_service_changed_message_for_admin.txt:3
+msgid "Dear administrator,"
+msgstr ""
+
+#: .\album\templates\album\emails\notification_image_changed_message_for_admin.txt:5
+#, python-format
+msgid ""
+"Customer has added or modified image and it needs your moderation!\n"
+"\n"
+"You can do it here:\n"
+"http://%(site)s/admin/album/albumimage/%(image_id)s\n"
+"\n"
+msgstr ""
+
+#: .\album\templates\album\emails\notification_image_changed_subject_for_admin.txt:2
+#, python-format
+msgid " Admininstrator information. Image modified by customer at %(site)s."
+msgstr ""
+
+#: .\bookings\forms.py:19
+msgid "service"
+msgstr ""
+
+#: .\bookings\forms.py:20 .\bookings\templates\bookings\__booking_list.html:11
+#: .\bookings\templates\bookings\__booking_one.html:114
+#: .\services\models.py:70
+#: .\services\templates\services\__service_one_own.html:4
+msgid "Service"
+msgstr ""
+
+#: .\bookings\forms.py:24 .\bookings\templates\bookings\__booking_one.html:126
+msgid "Start time"
+msgstr ""
+
+#: .\bookings\forms.py:30 .\bookings\templates\bookings\__booking_one.html:130
+msgid "End time"
+msgstr ""
+
+#: .\bookings\forms.py:37 .\bookings\forms.py:40
+msgid "Number of customers"
+msgstr ""
+
+#: .\bookings\forms.py:41 .\bookings\forms.py:50 .\services\forms.py:37
+#: .\services\forms.py:42
+msgid "Price type"
+msgstr ""
+
+#: .\bookings\forms.py:45 .\bookings\templates\bookings\__booking_list.html:14
+#: .\bookings\templates\bookings\__booking_one.html:134 .\services\forms.py:40
+#: .\services\templates\services\__service_list.html:10
+#: .\services\templates\services\__service_one_own.html:80
+msgid "Price"
+msgstr ""
+
+#: .\bookings\forms.py:48
+msgid "negotiation price"
+msgstr ""
+
+#: .\bookings\forms.py:54 .\bookings\templates\bookings\__booking_one.html:176
+msgid "Meeting point"
+msgstr ""
+
+#: .\bookings\forms.py:56 .\bookings\models.py:25
+msgid "meeting point"
+msgstr ""
+
+#: .\bookings\forms.py:60 .\bookings\models.py:27
+msgid "booking content"
+msgstr ""
+
+#: .\bookings\forms.py:63 .\bookings\templates\bookings\__booking_one.html:180
+msgid "Booking content"
+msgstr ""
+
+#: .\bookings\forms.py:68 .\bookings\models.py:28
+msgid "booking remark"
+msgstr ""
+
+#: .\bookings\forms.py:71 .\bookings\templates\bookings\__booking_one.html:184
+msgid "Booking remark"
+msgstr ""
+
+#: .\bookings\forms.py:82
+msgid "The following service does not exists"
+msgstr ""
+
+#: .\bookings\forms.py:87 .\insite_messages\forms.py:36 .\services\forms.py:99
+#, python-format
+msgid "The following username is incorrect: %(username)s"
+msgstr ""
+
+#: .\bookings\models.py:17
+msgid "booking service"
+msgstr ""
+
+#: .\bookings\models.py:18
+msgid "booking sender"
+msgstr ""
+
+#: .\bookings\models.py:19
+msgid "booking recipient"
+msgstr ""
+
+#: .\bookings\models.py:21
+msgid "service starts at"
+msgstr ""
+
+#: .\bookings\models.py:22
+msgid "service ends at"
+msgstr ""
+
+#: .\bookings\models.py:23
+msgid "number of customers"
+msgstr ""
+
+#: .\bookings\models.py:24
+msgid "booking price"
+msgstr ""
+
+#: .\bookings\models.py:30
+msgid "booking status"
+msgstr ""
+
+#: .\bookings\models.py:32
+msgid "booking read at"
+msgstr ""
+
+#: .\bookings\models.py:34
+msgid "booking sender sent at"
+msgstr ""
+
+#: .\bookings\models.py:35
+msgid "booking sender replied at"
+msgstr ""
+
+#: .\bookings\models.py:36
+msgid "booking sender deleted at"
+msgstr ""
+
+#: .\bookings\models.py:38
+msgid "booking recipient sent at"
+msgstr ""
+
+#: .\bookings\models.py:39
+msgid "booking recipient replied at"
+msgstr ""
+
+#: .\bookings\models.py:40
+msgid "booking recipient deleted at"
+msgstr ""
+
+#: .\bookings\models.py:46 .\bookings\templates\bookings\__booking_one.html:4
+msgid "Booking"
+msgstr ""
+
+#: .\bookings\models.py:47 .\bookings\templates\bookings\__booking_list.html:4
+#: .\profiles\templates\profiles\__sidebar.html:45
+#: .\profiles\templates\profiles\dashboard.html:44
+msgid "Bookings"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_form.html:61
+#: .\contacts\templates\contacts\__contact_form.html:51
+#: .\profiles\templates\profiles\__profile_form.html:144
+#: .\profiles\templates\profiles\__settings_form.html:38
+#: .\profiles\templates\profiles\__verification_form.html:70
+#: .\services\templates\services\__service_form.html:60
+msgid "Save changes"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_form.html:62
+#: .\contacts\templates\contacts\__contact_form.html:52
+#: .\insite_messages\templates\insite_messages\__message_form.html:25
+#: .\profiles\templates\profiles\__profile_form.html:145
+#: .\profiles\templates\profiles\__settings_form.html:39
+#: .\profiles\templates\profiles\__verification_form.html:71
+#: .\services\templates\services\__service_form.html:61
+msgid "Cancel"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_form_add.html:4
+msgid "Add booking"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_form_edit.html:4
+msgid "Edit booking"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:9
+#: .\profiles\templates\profiles\__profile_box.html:23
+msgid "Customer"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:10
+#: .\profiles\templates\profiles\__profile_box.html:21
+msgid "Provider"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:12
+msgid "Start date"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:13
+msgid "End date"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:15
+#: .\insite_messages\templates\insite_messages\__message_list.html:10
+msgid "Status"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:16
+msgid "Rating"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:17
+#: .\insite_messages\templates\insite_messages\__message_list.html:11
+#: .\services\templates\services\__service_list.html:13
+msgid "View"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:28
+#: .\bookings\templates\bookings\__booking_list.html:49
+#: .\insite_messages\templates\insite_messages\__message_list.html:22
+#: .\insite_messages\templates\insite_messages\__message_list.html:46
+#: .\profiles\templates\profiles\__notifications_list.html:24
+#: .\profiles\templates\profiles\__notifications_list.html:45
+msgid "Me"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:76
+msgid "User should reply"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:78
+msgid "Customer should reply"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:82
+msgid "You should reply"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:84
+msgid "Provider should reply"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:87 .\core\constants.py:47
+msgid "Rejected by customer"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:89
+msgid "Rejected provider"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:91 .\core\constants.py:49
+msgid "Approved by customer"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:93 .\core\constants.py:50
+msgid "Approved by provider"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:95
+#: .\bookings\templates\bookings\__booking_one.html:56
+#: .\bookings\templates\bookings\__booking_one.html:166
+msgid "Removed by customer"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:97
+#: .\bookings\templates\bookings\__booking_one.html:58
+#: .\bookings\templates\bookings\__booking_one.html:168
+msgid "Removed by provider"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:99
+#: .\bookings\templates\bookings\__booking_one.html:60
+#: .\bookings\templates\bookings\__booking_one.html:170 .\core\constants.py:53
+msgid "Canceled by customer"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:101
+#: .\bookings\templates\bookings\__booking_one.html:62
+#: .\bookings\templates\bookings\__booking_one.html:172 .\core\constants.py:54
+msgid "Canceled by provider"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:107
+#: .\insite_messages\templates\insite_messages\__message_list.html:77
+msgid "view"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:123
+#: .\services\templates\services\__service_list.html:54
+#: .\services\templates\services\__service_list.html:58
+msgid "add"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:9
+msgid "Service:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:13
+msgid "Sender:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:17
+msgid "Recipient:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:21
+msgid "Start time:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:25
+msgid "End time:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:29
+#: .\services\templates\services\__service_one_own.html:13
+msgid "Price:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:37
+msgid "No. of customer:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:41
+msgid "Book statu:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:44
+#: .\bookings\templates\bookings\__booking_one.html:46
+#: .\bookings\templates\bookings\__booking_one.html:154
+#: .\bookings\templates\bookings\__booking_one.html:156
+msgid "Negotiation"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:48
+#: .\bookings\templates\bookings\__booking_one.html:50
+#: .\bookings\templates\bookings\__booking_one.html:158
+#: .\bookings\templates\bookings\__booking_one.html:160
+msgid "Rejected"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:52
+#: .\bookings\templates\bookings\__booking_one.html:54
+#: .\bookings\templates\bookings\__booking_one.html:162
+#: .\bookings\templates\bookings\__booking_one.html:164 .\core\constants.py:75
+#: .\profiles\templates\profiles\__verification_form.html:23
+msgid "Approved"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:69
+msgid "Booking content:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:74
+msgid "Booking remark:"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:82
+#: .\bookings\templates\bookings\__booking_one.html:89
+#: .\bookings\templates\bookings\__booking_one.html:96
+#: .\bookings\templates\bookings\__booking_one.html:103
+#: .\bookings\templates\bookings\__booking_one.html:190
+#: .\bookings\templates\bookings\__booking_one.html:197
+#: .\bookings\templates\bookings\__booking_one.html:204
+#: .\bookings\templates\bookings\__booking_one.html:211
+#: .\services\templates\services\__service_one_own.html:62
+#: .\services\templates\services\__service_one_own.html:130
+msgid "edit"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:83
+#: .\bookings\templates\bookings\__booking_one.html:90
+#: .\bookings\templates\bookings\__booking_one.html:97
+#: .\bookings\templates\bookings\__booking_one.html:104
+#: .\bookings\templates\bookings\__booking_one.html:191
+#: .\bookings\templates\bookings\__booking_one.html:198
+#: .\bookings\templates\bookings\__booking_one.html:205
+#: .\bookings\templates\bookings\__booking_one.html:212
+msgid "approve"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:84
+#: .\bookings\templates\bookings\__booking_one.html:91
+#: .\bookings\templates\bookings\__booking_one.html:98
+#: .\bookings\templates\bookings\__booking_one.html:105
+#: .\bookings\templates\bookings\__booking_one.html:192
+#: .\bookings\templates\bookings\__booking_one.html:199
+#: .\bookings\templates\bookings\__booking_one.html:206
+#: .\bookings\templates\bookings\__booking_one.html:213
+msgid "reject"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:85
+#: .\bookings\templates\bookings\__booking_one.html:92
+#: .\bookings\templates\bookings\__booking_one.html:99
+#: .\bookings\templates\bookings\__booking_one.html:106
+#: .\bookings\templates\bookings\__booking_one.html:193
+#: .\bookings\templates\bookings\__booking_one.html:200
+#: .\bookings\templates\bookings\__booking_one.html:207
+#: .\bookings\templates\bookings\__booking_one.html:214
+msgid "cancel"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:87
+#: .\bookings\templates\bookings\__booking_one.html:101
+#: .\bookings\templates\bookings\__booking_one.html:195
+#: .\bookings\templates\bookings\__booking_one.html:209
+msgid "delete"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:118
+#: .\insite_messages\templates\insite_messages\__message_list.html:6
+#: .\profiles\templates\profiles\__notifications_list.html:9
+msgid "Sender"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:122
+#: .\insite_messages\forms.py:15
+#: .\insite_messages\templates\insite_messages\__message_list.html:7
+#: .\profiles\templates\profiles\__notifications_list.html:10
+msgid "Recipient"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:136 .\core\constants.py:40
+#: .\services\templates\services\__service_one_own.html:82
+msgid "€"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:138 .\core\constants.py:41
+#: .\services\templates\services\__service_one_own.html:84
+msgid "¥"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:142
+#: .\services\templates\services\__service_one_own.html:88
+msgid "day"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:144
+#: .\services\templates\services\__service_one_own.html:90
+msgid "hour"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:148
+msgid "No. of customers"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_one.html:152
+msgid "Booking status"
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\new_booking_message.txt:4
+#, python-format
+msgid "You have a new booking request at %(site)s. Log in to view the details!"
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\new_booking_subject.txt:2
+#, python-format
+msgid "You have got a new booking request at %(site)s."
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\notification_booking_message_for_provider.txt:2
+#: .\bookings\templates\bookings\emails\successful_booking_message_for_provider.txt:2
+#, python-format
+msgid "Dear %(provider_first_name)s %(provider_last_name)s,"
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\notification_booking_message_for_provider.txt:4
+#, python-format
+msgid ""
+"Customer has modified the booking offer for %(service_title)s at %(site)s. "
+"Log in to view the details!"
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\notification_booking_message_for_user.txt:2
+#: .\bookings\templates\bookings\emails\successful_booking_message_for_user.txt:2
+#, python-format
+msgid "Dear %(user_first_name)s %(user_last_name)s,"
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\notification_booking_message_for_user.txt:4
+#, python-format
+msgid ""
+"Provider has modified the booking offer for %(service_title)s at %(site)s. "
+"Log in to view the details!"
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\notification_booking_subject_for_provider.txt:2
+#, python-format
+msgid " Provider information. Booking modified by customer at %(site)s."
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\notification_booking_subject_for_user.txt:2
+#, python-format
+msgid " Customer information. Booking modified by provider at %(site)s."
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\successful_booking_message_for_provider.txt:4
+#, python-format
+msgid ""
+"\n"
+"You have accepted booking from %(customer_first_name)s %(customer_last_name)"
+"s at %(site)s.\n"
+"\n"
+"Customer information:\n"
+"\n"
+"Name: %(customer_first_name)s %(customer_last_name)s\n"
+"Tel: %(customer_phone)s\n"
+"Wechat: %(customer_wechat)s\n"
+"Email: %(customer_email)s\n"
+"\n"
+"Service details:\n"
+"\n"
+"Service name: %(service_title)s\n"
+"Service starting time: %(service_date_starts_at)s at %"
+"(service_time_starts_at)s\n"
+"Service ending time: %(service_date_ends_at)s at %(service_time_ends_at)s\n"
+"\n"
+"Service charge:\n"
+"\n"
+"Total charge: %(service_price)s Euro\n"
+"\n"
+"Charges inlcudes: The total charge is considered only for the agreed "
+"services. The possible toll and fuel charges during the journey are not "
+"included.\n"
+"\n"
+"Service content:\n"
+"\n"
+"%(service_content)s\n"
+"\n"
+"Remark:\n"
+"\n"
+"%(service_remark)s\n"
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\successful_booking_message_for_user.txt:4
+#, python-format
+msgid ""
+"\n"
+"Congratulations for successfull booking at %(site)s!\n"
+"Following is the booking information:\n"
+"\n"
+"Service details:\n"
+"\n"
+"Title: %(service_title)s\n"
+"Starting time: %(service_date_starts_at)s at %(service_time_starts_at)s\n"
+"Ending time: %(service_date_ends_at)s at %(service_time_ends_at)s\n"
+"Total charge: %(service_price)s Euro\n"
+"\n"
+"* Charges inlcudes: The total charge is considered only for the agreed "
+"services. The possible toll and fuel charges during the journey are not "
+"included.\n"
+"\n"
+"Service provider information:\n"
+"\n"
+"Name: %(provider_first_name)s %(provider_last_name)s\n"
+"Birthday: %(provider_birthday)s\n"
+"Gender: %(provider_gender)s\n"
+"Tel: %(provider_phone)s\n"
+"Wechat: %(provider_wechat)s\n"
+"Email: %(provider_email)s\n"
+"\n"
+"Service content:\n"
+"\n"
+"%(service_content)s\n"
+"\n"
+"Remark:\n"
+"\n"
+"%(service_remark)s\n"
+"\n"
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\successful_booking_subject_for_provider.txt:2
+#, python-format
+msgid " Provider information. Successful booking at %(site)s."
+msgstr ""
+
+#: .\bookings\templates\bookings\emails\successful_booking_subject_for_user.txt:2
+#, python-format
+msgid " Customer information. Successful booking at %(site)s."
+msgstr ""
+
+#: .\cities\forms.py:27
+msgid "All cities"
+msgstr ""
+
+#: .\cities\forms.py:29 .\profiles\templates\profiles\__sidebar.html:39
+#: .\services\models.py:71
+msgid "Services"
+msgstr ""
+
+#: .\cities\forms.py:67
+msgid "Select city..."
+msgstr ""
+
+#: .\cities\models.py:9
+msgid "country name"
+msgstr ""
+
+#: .\cities\models.py:11
+msgid "country is active"
+msgstr ""
+
+#: .\cities\models.py:12
+msgid "country is active help text"
+msgstr ""
+
+#: .\cities\models.py:14 .\cities\models.py:48 .\configurations\models.py:24
+#: .\configurations\models.py:48 .\configurations\models.py:71
+#: .\services\models.py:63 .\services\models.py:111
+msgid "created at"
+msgstr ""
+
+#: .\cities\models.py:16 .\cities\models.py:50 .\configurations\models.py:26
+#: .\configurations\models.py:50 .\configurations\models.py:73
+#: .\services\models.py:65
+msgid "updated at"
+msgstr ""
+
+#: .\cities\models.py:19 .\profiles\forms.py:177
+msgid "Country"
+msgstr ""
+
+#: .\cities\models.py:20
+msgid "Countries"
+msgstr ""
+
+#: .\cities\models.py:32
+msgid "city country"
+msgstr ""
+
+#: .\cities\models.py:34
+msgid "city name"
+msgstr ""
+
+#: .\cities\models.py:36
+msgid "city card image"
+msgstr ""
+
+#: .\cities\models.py:37
+msgid "city card image help text"
+msgstr ""
+
+#: .\cities\models.py:39
+msgid "city banner image"
+msgstr ""
+
+#: .\cities\models.py:40
+msgid "city banner image help text"
+msgstr ""
+
+#: .\cities\models.py:42
+msgid "all cities of selected country"
+msgstr ""
+
+#: .\cities\models.py:43
+msgid "city all of country help text"
+msgstr ""
+
+#: .\cities\models.py:45 .\cities\models.py:46
+msgid "city is active"
+msgstr ""
+
+#: .\cities\models.py:53 .\profiles\forms.py:180
+msgid "City"
+msgstr ""
+
+#: .\cities\models.py:54 .\services\forms.py:48
+#: .\services\templates\services\__service_one_own.html:102
+msgid "Cities"
+msgstr ""
+
+#: .\cities\models.py:61
+#, python-format
+msgid "%(name)s, %(country_name)s"
+msgstr ""
+
+#: .\cities\templates\cities\__newcomer_cities.html:3
+msgid "New cities"
+msgstr ""
+
+#: .\cities\templates\cities\__popular_cities.html:3
+msgid "Popular cities"
+msgstr ""
+
+#: .\cities\templates\cities\city.html:24
+msgid "Service types"
+msgstr ""
+
+#: .\cities\templates\cities\city.html:39
+msgid "Service people"
+msgstr ""
+
+#: .\cities\templates\cities\city.html:52
+msgid "Service cities"
+msgstr ""
+
+#: .\cities\templates\cities\city.html:63 .\configurations\models.py:79
+msgid "Service languages"
+msgstr ""
+
+#: .\cities\templates\cities\city.html:77 .\configurations\models.py:56
+msgid "Service tags"
+msgstr ""
+
+#: .\cities\templates\cities\city.html:96
+msgid "More options"
+msgstr ""
+
+#: .\cities\templates\cities\city.html:97
+msgid "Search"
+msgstr ""
+
+#: .\cities\templates\cities\city.html:99
+msgid "Have found "
+msgstr ""
+
+#: .\cities\templates\cities\city.html:99
+msgid " services"
+msgstr ""
+
+#: .\configurations\models.py:17 .\configurations\models.py:41
+#: .\configurations\models.py:64 .\configurations\models.py:87
+msgid "site"
+msgstr ""
+
+#: .\configurations\models.py:19
+msgid "service category name"
+msgstr ""
+
+#: .\configurations\models.py:21
+msgid "service category is active"
+msgstr ""
+
+#: .\configurations\models.py:22
+msgid "service category is active help text"
+msgstr ""
+
+#: .\configurations\models.py:31
+msgid "Service category"
+msgstr ""
+
+#: .\configurations\models.py:32
+msgid "Service categories"
+msgstr ""
+
+#: .\configurations\models.py:43
+msgid "service tag name"
+msgstr ""
+
+#: .\configurations\models.py:45
+msgid "service tag is active"
+msgstr ""
+
+#: .\configurations\models.py:46
+msgid "service tag is active help text"
+msgstr ""
+
+#: .\configurations\models.py:55
+msgid "Service tag"
+msgstr ""
+
+#: .\configurations\models.py:66
+msgid "service language name"
+msgstr ""
+
+#: .\configurations\models.py:68
+msgid "service language is active"
+msgstr ""
+
+#: .\configurations\models.py:69
+msgid "service language is active help text"
+msgstr ""
+
+#: .\configurations\models.py:78
+msgid "Service language"
+msgstr ""
+
+#: .\configurations\models.py:89
+msgid "avatar fallback image"
+msgstr ""
+
+#: .\configurations\models.py:92
+msgid "avatar fallback image help text"
+msgstr ""
+
+#: .\configurations\models.py:94
+msgid "profile card fallback image"
+msgstr ""
+
+#: .\configurations\models.py:97
+msgid "profile card fallback image help text"
+msgstr ""
+
+#: .\configurations\models.py:99
+msgid "service card fallback image"
+msgstr ""
+
+#: .\configurations\models.py:102
+msgid "service card fallback image help text"
+msgstr ""
+
+#: .\configurations\models.py:107
+msgid "Site configuration"
+msgstr ""
+
+#: .\configurations\models.py:108
+msgid "site configurations"
+msgstr ""
+
+#: .\configurations\models.py:111
+#, python-format
+msgid "Configuration of %(site_name)s"
+msgstr ""
+
+#: .\contacts\forms.py:17 .\contacts\models.py:12
+msgid "contact email"
+msgstr ""
+
+#: .\contacts\forms.py:19
+msgid "Contact email"
+msgstr ""
+
+#: .\contacts\forms.py:22 .\contacts\models.py:15
+msgid "telephone number"
+msgstr ""
+
+#: .\contacts\forms.py:24
+msgid "Telephone number"
+msgstr ""
+
+#: .\contacts\forms.py:27 .\contacts\models.py:18
+#: .\contacts\templates\contacts\__contact_box.html:28
+msgid "weibo account"
+msgstr ""
+
+#: .\contacts\forms.py:29
+msgid "Weibo account"
+msgstr ""
+
+#: .\contacts\forms.py:31 .\contacts\models.py:21
+#: .\contacts\templates\contacts\__contact_box.html:33
+msgid "wechat account"
+msgstr ""
+
+#: .\contacts\forms.py:33
+msgid "Wechat account"
+msgstr ""
+
+#: .\contacts\forms.py:35 .\contacts\templates\contacts\__contact_box.html:23
+msgid "qq account"
+msgstr ""
+
+#: .\contacts\forms.py:37
+msgid "Qq account"
+msgstr ""
+
+#: .\contacts\models.py:10
+msgid "contact"
+msgstr ""
+
+#: .\contacts\models.py:24
+msgid "qq username"
+msgstr ""
+
+#: .\contacts\models.py:30 .\core\templates\core\footer\__footer.html:10
+msgid "Contact"
+msgstr "联系我们"
+
+#: .\contacts\models.py:31 .\contacts\templates\contacts\__contact_box.html:8
+msgid "Contacts"
+msgstr "联系我们"
+
+#: .\contacts\models.py:33
+msgid "view contact"
+msgstr ""
+
+#: .\contacts\models.py:37
+#, python-format
+msgid "Contact of %(username)s"
+msgstr ""
+
+#: .\contacts\templates\contacts\__contact_box.html:13
+msgid "Phone"
+msgstr ""
+
+#: .\contacts\templates\contacts\__contact_box.html:39
+msgid "Edit contacts"
+msgstr ""
+
+#: .\contacts\templates\contacts\__contact_box.html:41
+msgid "Send message"
+msgstr ""
+
+#: .\contacts\templates\contacts\__contact_form.html:4
+msgid "Edit contact"
+msgstr ""
+
+#: .\core\admin.py:44
+msgid "Personal info"
+msgstr ""
+
+#: .\core\admin.py:48
+msgid "Permissions"
+msgstr ""
+
+#: .\core\admin.py:52
+msgid "Important dates"
+msgstr ""
+
+#: .\core\constants.py:9 .\profiles\models.py:39
+msgid "gender"
+msgstr ""
+
+#: .\core\constants.py:10
+msgid "Male"
+msgstr ""
+
+#: .\core\constants.py:11
+msgid "Female"
+msgstr ""
+
+#: .\core\constants.py:15 .\profiles\models.py:42
+msgid "profession"
+msgstr ""
+
+#: .\core\constants.py:16
+msgid "Student"
+msgstr ""
+
+#: .\core\constants.py:17
+msgid "Engineer"
+msgstr ""
+
+#: .\core\constants.py:18
+msgid "Artist"
+msgstr ""
+
+#: .\core\constants.py:19
+msgid "Performer"
+msgstr ""
+
+#: .\core\constants.py:20
+msgid "Manager"
+msgstr ""
+
+#: .\core\constants.py:21
+msgid "Doctor"
+msgstr ""
+
+#: .\core\constants.py:22
+msgid "Civilian"
+msgstr ""
+
+#: .\core\constants.py:23
+msgid "Accountant"
+msgstr ""
+
+#: .\core\constants.py:24
+msgid "Lawyer"
+msgstr ""
+
+#: .\core\constants.py:25
+msgid "Freelancer"
+msgstr ""
+
+#: .\core\constants.py:26
+msgid "Others"
+msgstr ""
+
+#: .\core\constants.py:30
+msgid "Part time"
+msgstr ""
+
+#: .\core\constants.py:31
+msgid "Full time"
+msgstr ""
+
+#: .\core\constants.py:35
+msgid "Per day"
+msgstr ""
+
+#: .\core\constants.py:36
+msgid "Per hour"
+msgstr ""
+
+#: .\core\constants.py:45
+msgid "Negotiation by customer"
+msgstr ""
+
+#: .\core\constants.py:46
+msgid "Negotiation by provider"
+msgstr ""
+
+#: .\core\constants.py:48
+msgid "Rejected by provider"
+msgstr ""
+
+#: .\core\constants.py:51
+msgid "Deleted by customer"
+msgstr ""
+
+#: .\core\constants.py:52
+msgid "Deleted by provider"
+msgstr ""
+
+#: .\core\constants.py:58 .\core\constants.py:64
+#: .\services\templates\services\__service_list.html:28
+msgid "Moderation"
+msgstr ""
+
+#: .\core\constants.py:59 .\core\constants.py:65
+#: .\services\templates\services\__service_list.html:12
+#: .\services\templates\services\__service_list.html:31
+msgid "Active"
+msgstr ""
+
+#: .\core\constants.py:60 .\core\constants.py:66
+#: .\services\templates\services\__service_list.html:34
+msgid "Not active"
+msgstr ""
+
+#: .\core\constants.py:67
+msgid "Suspended"
+msgstr ""
+
+#: .\core\constants.py:73
+#: .\profiles\templates\profiles\__verification_form.html:19
+msgid "Not started"
+msgstr ""
+
+#: .\core\constants.py:74
+#: .\profiles\templates\profiles\__verification_form.html:21
+msgid "Waiting for approval"
+msgstr ""
+
+#: .\core\constants.py:76
+#: .\profiles\templates\profiles\__verification_form.html:25
+msgid "Declined"
+msgstr ""
+
+#: .\core\mail.py:13
+msgid "Either message_plain or message_html should be set"
+msgstr ""
+
+#: .\core\templates\404.html:4
+msgid "404 Error Page"
+msgstr ""
+
+#: .\core\templates\404.html:8
+msgid "Oops! Page not found."
+msgstr ""
+
+#: .\core\templates\404.html:11
+msgid "We could not find the page you were looking for."
+msgstr ""
+
+#: .\core\templates\404.html:12 .\core\templates\500.html:12
+msgid "Meanwhile, you may"
+msgstr ""
+
+#: .\core\templates\404.html:13 .\core\templates\500.html:13
+msgid "return to homepage"
+msgstr ""
+
+#: .\core\templates\500.html:4
+msgid "500 Error Page"
+msgstr ""
+
+#: .\core\templates\500.html:8
+msgid "Oops! Something went wrong."
+msgstr ""
+
+#: .\core\templates\500.html:11
+msgid "We will work on fixing that right away."
+msgstr ""
+
+#: .\core\templates\core\__index_banner.html:9
+msgid "Your new travel experiences"
+msgstr ""
+
+#: .\core\templates\core\__index_banner.html:13
+msgid "book your individual travel services"
+msgstr ""
+
+#: .\core\templates\core\__index_banner.html:34
+msgid "search"
+msgstr ""
+
+#: .\core\templates\core\about\service_term.html:29
+#: .\core\templates\core\footer\__footer.html:6
+msgid "About us"
+msgstr "关于我们"
+
+#: .\core\templates\core\about\service_term.html:30
+#: .\core\templates\core\footer\__footer.html:7
+msgid "Terms of services"
+msgstr "服务条款"
+
+#: .\core\templates\core\about\service_term.html:31
+msgid "Privacy protection"
+msgstr ""
+
+#: .\core\templates\core\about\service_term.html:32
+msgid "Disclaimer of liability"
+msgstr ""
+
+#: .\core\templates\core\footer\__footer.html:8
+msgid "Help"
+msgstr "帮助中心"
+
+#: .\core\templates\core\footer\__footer.html:9
+msgid "Photo copyright"
+msgstr "图片版权"
+
+#: .\core\templates\core\footer\__footer.html:12
+msgid "Copyright © 2016 frelanvo LLC. All rights reserved"
+msgstr ""
+
+#: .\core\templates\core\header\__header.html:5
+msgid "help"
+msgstr ""
+
+#: .\core\templates\core\header\__header_custom_menu.html:11
+msgid "You have "
+msgstr ""
+
+#: .\core\templates\core\header\__header_custom_menu.html:11
+msgid " unread notifications"
+msgstr ""
+
+#: .\core\templates\core\header\__header_custom_menu.html:31
+msgid "dashboard"
+msgstr ""
+
+#: .\core\templates\core\header\__header_custom_menu.html:32
+msgid "sign out"
+msgstr ""
+
+#: .\core\templates\core\header\__header_custom_menu.html:41
+#: .\core\templates\core\header\__header_custom_menu.html:43
+msgid "signin"
+msgstr ""
+
+#: .\core\templates\core\header\__header_custom_menu.html:46
+msgid "register"
+msgstr ""
+
+#: .\followship\models.py:108
+msgid "follower"
+msgstr ""
+
+#: .\followship\models.py:110
+msgid "followee"
+msgstr ""
+
+#: .\followship\models.py:119
+msgid "Follow"
+msgstr ""
+
+#: .\followship\models.py:120
+msgid "Follows"
+msgstr ""
+
+#: .\followship\models.py:122
+msgid "view followers"
+msgstr ""
+
+#: .\followship\models.py:123
+msgid "view followings"
+msgstr ""
+
+#: .\followship\templates\followship\followers.html:15
+#: .\followship\templates\followship\followship.html:16
+#: .\profiles\templates\profiles\dashboard.html:26
+msgid "Followers"
+msgstr ""
+
+#: .\followship\templates\followship\followings.html:15
+#: .\followship\templates\followship\followship.html:17
+msgid "Followings"
+msgstr ""
+
+#: .\insite_messages\forms.py:14
+msgid "recipient"
+msgstr ""
+
+#: .\insite_messages\forms.py:19
+msgid "subject"
+msgstr ""
+
+#: .\insite_messages\forms.py:20
+#: .\insite_messages\templates\insite_messages\__message_list.html:8
+msgid "Subject"
+msgstr ""
+
+#: .\insite_messages\forms.py:24 .\insite_messages\models.py:25
+msgid "message body"
+msgstr ""
+
+#: .\insite_messages\forms.py:27 .\insite_messages\models.py:70
+#: .\insite_messages\templates\insite_messages\__message_view.html:4
+#: .\profiles\templates\profiles\__notifications_list.html:11
+msgid "Message"
+msgstr ""
+
+#: .\insite_messages\models.py:21
+msgid "message sender"
+msgstr ""
+
+#: .\insite_messages\models.py:22
+msgid "message recipient"
+msgstr ""
+
+#: .\insite_messages\models.py:24
+msgid "message subject"
+msgstr ""
+
+#: .\insite_messages\models.py:27
+msgid "parent message"
+msgstr ""
+
+#: .\insite_messages\models.py:29
+msgid "message sent at"
+msgstr ""
+
+#: .\insite_messages\models.py:30
+msgid "message read at"
+msgstr ""
+
+#: .\insite_messages\models.py:31
+msgid "message replied at"
+msgstr ""
+
+#: .\insite_messages\models.py:32
+msgid "message sender deleted at"
+msgstr ""
+
+#: .\insite_messages\models.py:33
+msgid "message recipient deleted at"
+msgstr ""
+
+#: .\insite_messages\models.py:71
+#: .\profiles\templates\profiles\__sidebar.html:55
+msgid "Messages"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\__message_form.html:24
+msgid "Send message  "
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\__message_list.html:9
+msgid "Sent at"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\__message_list.html:90
+msgid "write"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\__message_view.html:9
+msgid "From:"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\__message_view.html:13
+msgid "Time:"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\__message_view.html:19
+#: .\services\templates\services\__service_one_own.html:9
+msgid "Title:"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\__message_view.html:23
+msgid "Text:"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\__message_write.html:4
+msgid "Write message"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\emails\new_message_subject.txt:2
+#, python-format
+msgid "You have got a new message at %(site)s."
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\emails\new_message_text.txt:4
+#, python-format
+msgid "You have a new message at %(site)s. Log in to view the message!"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\emails\replied_message_subject.txt:2
+#, python-format
+msgid "User replied on your message at %(site)s."
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\emails\replied_message_text.txt:4
+#, python-format
+msgid ""
+"One of the users replied on your message at %(site)s. Log in to view the "
+"message!"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\inbox_messages.html:15
+msgid " Inbox Messages"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\messages.html:16
+msgid "Inbox message"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\messages.html:17
+msgid "Outbox message"
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\outbox_messages.html:15
+msgid " Outbox Messages"
+msgstr ""
+
+#: .\insite_messages\utils.py:10
+#, python-format
+msgid ""
+"%(sender)s wrote:\n"
+"%(body)s"
+msgstr ""
+
+#: .\insite_messages\utils.py:31
+#, python-format
+msgid "Re%(prefix)s: %(subject)s"
+msgstr ""
+
+#: .\profiles\forms.py:20 .\profiles\forms.py:22
+msgid "Profile is active"
+msgstr ""
+
+#: .\profiles\forms.py:23 .\profiles\forms.py:25
+msgid "Email notifications"
+msgstr ""
+
+#: .\profiles\forms.py:26
+msgid "Show real name"
+msgstr ""
+
+#: .\profiles\forms.py:28
+msgid "Show real name in Profile"
+msgstr ""
+
+#: .\profiles\forms.py:30 .\profiles\forms.py:32
+msgid "Provider functionality"
+msgstr ""
+
+#: .\profiles\forms.py:65
+msgid "Id image"
+msgstr ""
+
+#: .\profiles\forms.py:68
+msgid "Another Id"
+msgstr ""
+
+#: .\profiles\forms.py:79 .\profiles\forms.py:81 .\profiles\forms.py:158
+#: .\profiles\forms.py:160
+msgid "First name"
+msgstr ""
+
+#: .\profiles\forms.py:84 .\profiles\forms.py:86 .\profiles\forms.py:161
+#: .\profiles\forms.py:163
+msgid "Last name"
+msgstr ""
+
+#: .\profiles\forms.py:87 .\profiles\forms.py:164 .\profiles\forms.py:168
+#: .\profiles\models.py:38
+msgid "Gender"
+msgstr ""
+
+#: .\profiles\forms.py:167 .\profiles\models.py:41
+msgid "Profession"
+msgstr ""
+
+#: .\profiles\forms.py:170 .\profiles\models.py:23
+msgid "Avatar"
+msgstr ""
+
+#: .\profiles\forms.py:173 .\profiles\models.py:44
+msgid "Birthday"
+msgstr ""
+
+#: .\profiles\forms.py:183 .\profiles\models.py:52
+msgid "Short description"
+msgstr ""
+
+#: .\profiles\forms.py:186 .\profiles\models.py:26
+msgid "Card image"
+msgstr ""
+
+#: .\profiles\forms.py:190 .\profiles\forms.py:193 .\profiles\models.py:55
+msgid "Biography"
+msgstr ""
+
+#: .\profiles\models.py:24
+msgid "profile avatar"
+msgstr ""
+
+#: .\profiles\models.py:28 .\services\models.py:39
+msgid "card image"
+msgstr ""
+
+#: .\profiles\models.py:30
+msgid "Id card"
+msgstr ""
+
+#: .\profiles\models.py:31
+msgid "id card"
+msgstr ""
+
+#: .\profiles\models.py:33
+msgid "Second id card"
+msgstr ""
+
+#: .\profiles\models.py:34
+msgid "second id card"
+msgstr ""
+
+#: .\profiles\models.py:36
+msgid "identification status"
+msgstr ""
+
+#: .\profiles\models.py:44
+msgid "birthday"
+msgstr ""
+
+#: .\profiles\models.py:46
+msgid "location"
+msgstr ""
+
+#: .\profiles\models.py:49
+msgid "country"
+msgstr ""
+
+#: .\profiles\models.py:53
+msgid "short description"
+msgstr ""
+
+#: .\profiles\models.py:64 .\profiles\templates\profiles\__sidebar.html:29
+msgid "Profile"
+msgstr ""
+
+#: .\profiles\models.py:65
+msgid "Profiles"
+msgstr ""
+
+#: .\profiles\models.py:68
+#, python-format
+msgid "Profile of %(username)s"
+msgstr ""
+
+#: .\profiles\models.py:121
+#, python-format
+msgid "member since %(year)i.%(month)i.%(day)i"
+msgstr ""
+
+#: .\profiles\models.py:126 .\profiles\models.py:135
+#, python-format
+msgid "%(first_name)s %(last_name)s"
+msgstr ""
+
+#: .\profiles\models.py:143
+msgid "settings"
+msgstr ""
+
+#: .\profiles\models.py:145
+msgid "profile status"
+msgstr ""
+
+#: .\profiles\models.py:148
+msgid "email notifications"
+msgstr ""
+
+#: .\profiles\models.py:149
+msgid "get email notifications"
+msgstr ""
+
+#: .\profiles\models.py:151
+msgid "real name"
+msgstr ""
+
+#: .\profiles\models.py:152
+msgid "show real name"
+msgstr ""
+
+#: .\profiles\models.py:154 .\profiles\models.py:155
+msgid "provider functionality"
+msgstr ""
+
+#: .\profiles\models.py:158
+msgid "Profile settings"
+msgstr ""
+
+#: .\profiles\models.py:159
+msgid "Profiles settings"
+msgstr ""
+
+#: .\profiles\models.py:162
+#, python-format
+msgid "Profile settings for %(username)s"
+msgstr ""
+
+#: .\profiles\templates\profiles\__newcomer_profiles.html:3
+msgid "New providers"
+msgstr ""
+
+#: .\profiles\templates\profiles\__notifications_list.html:4
+#: .\profiles\templates\profiles\__sidebar.html:25
+msgid "Notifications"
+msgstr ""
+
+#: .\profiles\templates\profiles\__notifications_list.html:12
+msgid "Time since"
+msgstr ""
+
+#: .\profiles\templates\profiles\__popular_profiles.html:3
+msgid "Popular providers"
+msgstr ""
+
+#: .\profiles\templates\profiles\__profile_box.html:7
+#: .\profiles\templates\profiles\__profile_top.html:6
+msgid "user profile picture"
+msgstr "用户头像"
+
+#: .\profiles\templates\profiles\__profile_box.html:16
+msgid " years old, "
+msgstr ""
+
+#: .\profiles\templates\profiles\__profile_box.html:36
+msgid "Profile status:"
+msgstr ""
+
+#: .\profiles\templates\profiles\__profile_button.html:7
+#: .\profiles\templates\profiles\__profile_button.html:36
+msgid "messages"
+msgstr "发消息"
+
+#: .\profiles\templates\profiles\__profile_button.html:10
+#: .\profiles\templates\profiles\__profile_button.html:16
+#: .\profiles\templates\profiles\__profile_button.html:37
+msgid "booking"
+msgstr "预定"
+
+#: .\profiles\templates\profiles\__profile_button.html:22
+#: .\profiles\templates\profiles\__profile_button.html:38
+msgid "more fun"
+msgstr "更多功能"
+
+#: .\profiles\templates\profiles\__profile_button.html:26
+msgid "not follow"
+msgstr "取消关注"
+
+#: .\profiles\templates\profiles\__profile_button.html:28
+msgid "follow"
+msgstr "关注"
+
+#: .\profiles\templates\profiles\__profile_button.html:30
+msgid "shielding"
+msgstr "屏蔽"
+
+#: .\profiles\templates\profiles\__profile_button.html:31
+msgid "inform"
+msgstr "举报"
+
+#: .\profiles\templates\profiles\__profile_form.html:5
+msgid "Edit profile"
+msgstr ""
+
+#: .\profiles\templates\profiles\__profile_form.html:79
+msgid "Change Avatar"
+msgstr ""
+
+#: .\profiles\templates\profiles\__profile_form.html:88
+msgid "Change Card Image"
+msgstr ""
+
+#: .\profiles\templates\profiles\__profile_form.html:93
+msgid "Select one image from your photo center"
+msgstr ""
+
+#: .\profiles\templates\profiles\__profile_services.html:7
+#, fuzzy
+#| msgid "Terms of services"
+msgid "services"
+msgstr "服务"
+
+#: .\profiles\templates\profiles\__profile_top.html:15
+msgid "profession:"
+msgstr "职业："
+
+#: .\profiles\templates\profiles\__profile_top.html:17
+msgid "language:"
+msgstr "语言："
+
+#: .\profiles\templates\profiles\__profile_top.html:21
+msgid "signature:"
+msgstr "个性签名："
+
+#: .\profiles\templates\profiles\__rating_box.html:4
+msgid "Rating and comments:"
+msgstr "星级和评论："
+
+#: .\profiles\templates\profiles\__rating_box.html:14
+#: .\services\templates\services\__service_description.html:21
+msgid "User"
+msgstr "用户"
+
+#: .\profiles\templates\profiles\__rating_box.html:16
+#: .\services\templates\services\__service_description.html:23
+msgid "Anonymous user"
+msgstr "匿名用户"
+
+#: .\profiles\templates\profiles\__rating_box.html:19
+#: .\services\templates\services\__service_description.html:26
+msgid "Created at: "
+msgstr "创于："
+
+#: .\profiles\templates\profiles\__settings_form.html:4
+#: .\profiles\templates\profiles\__sidebar.html:64
+msgid "Settings"
+msgstr ""
+
+#: .\profiles\templates\profiles\__share_box.html:3
+msgid "Scan,collection,share"
+msgstr "扫一扫，收藏，分享"
+
+#: .\profiles\templates\profiles\__sidebar.html:16
+msgid "Profile sidebar"
+msgstr ""
+
+#: .\profiles\templates\profiles\__sidebar.html:20
+msgid "Dashboard"
+msgstr ""
+
+#: .\profiles\templates\profiles\__sidebar.html:35
+msgid "Album"
+msgstr ""
+
+#: .\profiles\templates\profiles\__sidebar.html:50
+msgid "Followship"
+msgstr ""
+
+#: .\profiles\templates\profiles\__sidebar.html:60
+msgid "Verification"
+msgstr ""
+
+#: .\profiles\templates\profiles\__sidebar.html:68
+msgid "Quit"
+msgstr ""
+
+#: .\profiles\templates\profiles\__verification_form.html:6
+msgid "Personal Verification"
+msgstr ""
+
+#: .\profiles\templates\profiles\__verification_form.html:8
+msgid "Please upload the image of your ID or other document"
+msgstr ""
+
+#: .\profiles\templates\profiles\__verification_form.html:14
+msgid "Moderation status"
+msgstr ""
+
+#: .\profiles\templates\profiles\__verification_form.html:38
+msgid "ID document"
+msgstr ""
+
+#: .\profiles\templates\profiles\__verification_form.html:55
+msgid "Other documents for verification (Driving license, student card, etc )"
+msgstr ""
+
+#: .\profiles\templates\profiles\album.html:19
+msgid "Photo Center"
+msgstr ""
+
+#: .\profiles\templates\profiles\album.html:21
+msgid ""
+"To display some of above photos on my profile page, please select the "
+"checkboxes and click save."
+msgstr ""
+
+#: .\profiles\templates\profiles\album.html:41
+msgid "Save"
+msgstr ""
+
+#: .\profiles\templates\profiles\album.html:50
+msgid "Upload an image to Photo Center"
+msgstr ""
+
+#: .\profiles\templates\profiles\album.html:63
+msgid "Upload Image"
+msgstr ""
+
+#: .\profiles\templates\profiles\dashboard.html:16
+msgid "View profile"
+msgstr ""
+
+#: .\profiles\templates\profiles\dashboard.html:35
+msgid "Following"
+msgstr ""
+
+#: .\profiles\templates\profiles\emails\notification_id_added_message_for_admin.txt:5
+#, python-format
+msgid ""
+"Customer has added or modified his ID and it needs your moderation!\n"
+"\n"
+"You can do it here:\n"
+"http://%(site)s/admin/profiles/profile/%(profile_id)s\n"
+"\n"
+msgstr ""
+
+#: .\profiles\templates\profiles\emails\notification_id_added_subject_for_admin.txt:2
+#, python-format
+msgid " Admininstrator information. Check customer id at %(site)s."
+msgstr ""
+
+#: .\profiles\templates\profiles\widgets\__widget_newcomer_profile.html:18
+msgid "average price"
+msgstr ""
+
+#: .\profiles\templates\profiles\widgets\__widget_profile.html:4
+msgid "user profile avatar"
+msgstr ""
+
+#: .\profiles\templates\profiles\widgets\__widget_profile.html:19
+msgid "years old"
+msgstr ""
+
+#: .\profiles\templates\profiles\widgets\__widget_profile.html:23
+msgid "from"
+msgstr ""
+
+#: .\profiles\views_bak.py:273
+msgid "Your email address has been changed."
+msgstr ""
+
+#: .\profiles\views_bak.py:424
+msgid "You have been signed in."
+msgstr ""
+
+#: .\profiles\views_bak.py:462
+msgid "You have been signed out."
+msgstr ""
+
+#: .\profiles\views_bak.py:670
+msgid "Your profile has been updated."
+msgstr ""
+
+#: .\reismann\alex_settings.py:9
+msgid "English"
+msgstr ""
+
+#: .\reismann\dashboard.py:23 .\reismann\dashboard.py:61
+msgid "Group: Administration & Applications"
+msgstr ""
+
+#: .\reismann\dashboard.py:28 .\reismann\dashboard.py:66
+msgid "Administration"
+msgstr ""
+
+#: .\reismann\dashboard.py:34 .\reismann\dashboard.py:72
+msgid "Applications"
+msgstr ""
+
+#: .\reismann\dashboard.py:44 .\reismann\dashboard.py:143
+msgid "Recent Actions"
+msgstr ""
+
+#: .\reismann\dashboard.py:82
+msgid "AppList: Applications"
+msgstr ""
+
+#: .\reismann\dashboard.py:91
+msgid "ModelList: Administration"
+msgstr ""
+
+#: .\reismann\dashboard.py:99
+msgid "Media Management"
+msgstr ""
+
+#: .\reismann\dashboard.py:103
+msgid "FileBrowser"
+msgstr ""
+
+#: .\reismann\dashboard.py:112
+msgid "Support"
+msgstr ""
+
+#: .\reismann\dashboard.py:116
+msgid "Django Documentation"
+msgstr ""
+
+#: .\reismann\dashboard.py:121
+msgid "Grappelli Documentation"
+msgstr ""
+
+#: .\reismann\dashboard.py:126
+msgid "Grappelli Google-Code"
+msgstr ""
+
+#: .\reismann\dashboard.py:135
+msgid "Latest Django News"
+msgstr ""
+
+#: .\reismann\settings.py:171
+msgid "reismann admin interface"
+msgstr ""
+
+#: .\services\forms.py:26 .\services\models.py:29
+msgid "service title"
+msgstr ""
+
+#: .\services\forms.py:27 .\services\templates\services\__service_list.html:9
+#: .\services\templates\services\__service_one_own.html:76
+msgid "Title"
+msgstr ""
+
+#: .\services\forms.py:31 .\services\models.py:51
+msgid "service content"
+msgstr ""
+
+#: .\services\forms.py:34
+#: .\services\templates\services\__service_one_own.html:124
+msgid "Content"
+msgstr ""
+
+#: .\services\forms.py:45
+#: .\services\templates\services\__service_one_own.html:94
+msgid "Type"
+msgstr ""
+
+#: .\services\forms.py:52
+msgid "service cities"
+msgstr ""
+
+#: .\services\forms.py:56
+#: .\services\templates\services\__service_one_own.html:108
+msgid "Category"
+msgstr ""
+
+#: .\services\forms.py:59 .\services\models.py:43
+msgid "service category"
+msgstr ""
+
+#: .\services\forms.py:63
+#: .\services\templates\services\__service_one_own.html:112
+msgid "Languages"
+msgstr ""
+
+#: .\services\forms.py:67
+msgid "service languages"
+msgstr ""
+
+#: .\services\forms.py:71
+#: .\services\templates\services\__service_one_own.html:118
+msgid "Tags"
+msgstr ""
+
+#: .\services\forms.py:75
+msgid "service tags"
+msgstr ""
+
+#: .\services\models.py:26 .\services\models.py:36
+msgid "service type"
+msgstr ""
+
+#: .\services\models.py:31
+msgid "service price"
+msgstr ""
+
+#: .\services\models.py:33
+msgid "service currency"
+msgstr ""
+
+#: .\services\models.py:41
+msgid "service card image help text"
+msgstr ""
+
+#: .\services\models.py:44
+msgid "service category help text"
+msgstr ""
+
+#: .\services\models.py:47
+msgid "tags of service"
+msgstr ""
+
+#: .\services\models.py:48
+msgid "tags of service help text"
+msgstr ""
+
+#: .\services\models.py:53
+msgid "languages of service"
+msgstr ""
+
+#: .\services\models.py:54
+msgid "languages of service help text"
+msgstr ""
+
+#: .\services\models.py:57
+msgid "cities of service"
+msgstr ""
+
+#: .\services\models.py:58
+msgid "cities of service help text"
+msgstr ""
+
+#: .\services\models.py:73
+msgid "view service"
+msgstr ""
+
+#: .\services\models.py:77
+msgid " by "
+msgstr ""
+
+#: .\services\models.py:77
+msgid " with price "
+msgstr ""
+
+#: .\services\models.py:103
+msgid "rating service"
+msgstr ""
+
+#: .\services\models.py:105
+msgid "rating user"
+msgstr ""
+
+#: .\services\models.py:107
+msgid "rating value"
+msgstr ""
+
+#: .\services\models.py:109
+msgid "rating comment"
+msgstr ""
+
+#: .\services\templates\services\__service_box.html:4
+msgid "All services"
+msgstr ""
+
+#: .\services\templates\services\__service_box.html:12
+msgid "cities"
+msgstr ""
+
+#: .\services\templates\services\__service_box.html:20
+msgid "categories"
+msgstr ""
+
+#: .\services\templates\services\__service_box.html:28
+msgid "languages"
+msgstr ""
+
+#: .\services\templates\services\__service_box.html:36
+msgid "tags"
+msgstr ""
+
+#: .\services\templates\services\__service_description.html:11
+msgid "Rating and comment:"
+msgstr "星级和评论："
+
+#: .\services\templates\services\__service_description.html:44
+msgid "Send your comment"
+msgstr "发送"
+
+#: .\services\templates\services\__service_descriptions.html:6
+#, fuzzy
+#| msgid "about me"
+msgid "about me"
+msgstr "关于我"
+
+#: .\services\templates\services\__service_descriptions.html:7
+msgid "photo"
+msgstr "照片"
+
+#: .\services\templates\services\__service_form_add.html:4
+msgid "Add service"
+msgstr ""
+
+#: .\services\templates\services\__service_form_edit.html:4
+msgid "Edit service"
+msgstr ""
+
+#: .\services\templates\services\__service_list.html:4
+msgid "Available services"
+msgstr ""
+
+#: .\services\templates\services\__service_list.html:11
+msgid "Date of creation"
+msgstr ""
+
+#: .\services\templates\services\__service_one.html:22
+msgid "'s homepage"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:21
+msgid "Type:"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:25
+msgid "Cities:"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:33
+msgid "Category:"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:37
+msgid "Languages:"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:45
+msgid "Tags:"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:55
+msgid "Content:"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:64
+#: .\services\templates\services\__service_one_own.html:132
+msgid "Activate"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:68
+#: .\services\templates\services\__service_one_own.html:136
+msgid "Deactivate"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:71
+#: .\services\templates\services\__service_one_own.html:139
+msgid "remove"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:96
+msgid "part time"
+msgstr ""
+
+#: .\services\templates\services\__service_one_own.html:98
+msgid "full time"
+msgstr ""
+
+#: .\services\templates\services\__service_short_list.html:4
+msgid "Num of services"
+msgstr ""
+
+#: .\services\templates\services\emails\notification_service_changed_message_for_admin.txt:5
+#, python-format
+msgid ""
+"Customer has modified service and it needs your moderation!\n"
+"\n"
+"You can do it here:\n"
+"http://%(site)s/admin/services/service/%(service_id)s\n"
+"\n"
+msgstr ""
+
+#: .\services\templates\services\emails\notification_service_changed_subject_for_admin.txt:2
+#, python-format
+msgid " Admininstrator information. Service modified by customer at %(site)s."
+msgstr ""

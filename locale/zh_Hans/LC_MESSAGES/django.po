@@ -33,7 +33,7 @@ msgstr ""
 
 #: accounts/forms.py:30
 msgid "First Name"
-msgstr ""
+msgstr "姓"
 
 #: accounts/forms.py:31 profiles/forms.py:22 profiles/forms.py:24
 msgid "First name"

@@ -1,0 +1,16 @@
+{% extends "profiles/__profile_base.html" %}
+{#{% load render_bundle from webpack_loader %}#}
+{#{% block stylesheets %}#}
+{#   {% render_bundle 'profiles/notifications' 'css' %}#}
+{#{% endblock %}#}
+{#{% block javascripts %}#}
+{#   {% render_bundle 'profiles/notifications' 'js' %}#}
+{#{% endblock %}#}
+
+{% block content %}
+	<div class="ui grid setting_grid">
+	  <div class="column">
+        {% include 'profiles/__notifications_list.html' %}
+	  </div>
+	</div>
+{% endblock %}

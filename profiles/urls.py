@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^(?P<username>[\@\.\w-]+)/verification/$', views.verification, name='verification'),
     url(r'^(?P<username>[\@\.\w-]+)/settings/$', views.settings, name='settings'),
     url(r'^(?P<username>[\@\.\w-]+)/notifications/$', views.notifications, name='notifications'),
+    url(r'^(?P<username>[\@\.\w-]+)/notifications/avatar/(?P<avatar_username>[\@\.\w-]+)/$', views.notification_avatar, name='notification_avatar'),
 
     url(r'^', include('album.urls')),
     url(r'^', include('services.urls')),

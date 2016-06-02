@@ -239,6 +239,15 @@ def notifications(request, username, template_name='profiles/notifications.html'
 
 @secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
+def notification_avatar(request, username, avatar_username, **kwargs):
+
+  user = User.objects.get(username = avatar_username)
+  if user:
+    return HttpResponse(user.profile.avatar)
+
+
+@secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
 def verification(request, username, edit_id_form=ProfileIdForm,
                  template_name='profiles/verification.html', success_url=None,
                  extra_context=None, **kwargs):

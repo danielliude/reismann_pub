@@ -1,0 +1,41 @@
+{% load i18n %}
+
+{% if topics.paginator.num_pages > 1 %}
+  <div class="ui pagination menu">
+    {% if topics.has_previous %}
+    <a class="icon item" href="?page={{ topics.previous_page_number }}">
+      <i class="left arrow icon"></i>
+    </a>
+    {% endif %}
+
+    {% if topics.number > 4 %}
+      <a class="item" href="?page=1">1</a>
+      <div class="disabled item">...</div>
+      <a class="item" href="?page={{ topics.previous_page_number }}">{{ topics.previous_page_number }}</a>
+      <a class="active item">{{ topics.number }}</a>
+      {% if topics.has_next %}
+      <a class="item" href="?page={{ topics.next_page_number }}">{{ topics.next_page_number }}</a>
+      {% endif %}
+
+    {% else %}
+      {% for page_number in topics.paginator.page_range %}
+        {% if page_number < 6 %}
+        {% ifequal page_number  topics.number %}
+          <a class="active item">{{ page_number }}</a>
+        {% else %}
+          <a class="item" href="?page={{ page_number }}">{{ page_number }}</a>
+        {% endifequal %}
+        {% endif %}
+      {% endfor %}
+      {% if topics.paginator.num_pages > 5 %}
+        <div class="disabled item">...</div>
+      {% endif %}
+    {% endif %}
+
+    {% if topics.has_next %}
+    <a class="icon item" href="?page={{ topics.next_page_number }}">
+      <i class="right arrow icon"></i>
+    </a>
+    {% endif %}
+  </div>
+{% endif %}

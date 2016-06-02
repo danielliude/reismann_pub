@@ -6,6 +6,12 @@
 function get_date(d) {
   return d.replace('T', ' ').replace('Z', '')
 }
+function fill_notification_badge(data) {
+    var badge = $('.live_notify_badge');
+    if (badge) {
+        badge.text(data.unread_count);
+    }
+}
 function fill_notification_list(data) {
     $('.unread_info').remove()
     var html = ''
@@ -29,21 +35,14 @@ function fill_notification_list(data) {
 <div class="right menu">
   <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:notifications' user.username %}'">
     <i class="icon alarm outline"></i>
-    <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">{% live_notify_badge %}</div>
+    <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">
+      <span class='live_notify_badge'>{{ unread_count }}</span>
+    </div>
 
     <div class="menu" style="width:300px;">
-      <div class="item">{% trans "You have " %}{% live_notify_badge %}{% trans " unread notifications" %}</div>
+      <div class="item">{% trans "You have " %}<span class='live_notify_badge'>{{ unread_count }}</span>{% trans " unread notifications" %}</div>
       <div class="divider update_notifications"></div>
 
-{#      {% for notification in notifications %}#}
-{#         <a href="" class="item unread_info">#}
-{#          <img class="ui avatar image" src="{{ notification.actor.profile.get_avatar_url }}">#}
-{#            <span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">{{ notification.actor }}</span>#}
-{#            <small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>{{ notification.timesince}}</small>#}
-{#            <span class="subject" style="position:absolute;left:53px;top:25px;">{{ notification.verb }}</span>#}
-{#        </a>#}
-{#        <div class="divider"></div> #}
-{#      {% endfor %}#}
     </div>
   </div>
   <div class="ui top right pointing dropdown item">

@@ -30,6 +30,11 @@ from followship.models import FollowingManager
 
 from services.models import Service
 
+#paginator
+from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage
+from django.core.paginator import PageNotAnInteger
+
 
 logger = logging.getLogger("profiles")
 
@@ -235,6 +240,20 @@ def notifications(request, username, template_name='profiles/notifications.html'
 
   extra_context['profile'] = profile
   extra_context = makeContextForNotifications(request, extra_context)
+
+  limit = 10  # 每页显示的记录数
+  topics = extra_context['notifications']
+  paginator = Paginator(topics, limit)  # 实例化一个分页对象
+
+  page = request.GET.get('page')  # 获取页码
+  try:
+      topics = paginator.page(page)  # 获取某页对应的记录
+  except PageNotAnInteger:  # 如果页码不是个整数
+      topics = paginator.page(1)  # 取第一页的记录
+  except EmptyPage:  # 如果页码太大，没有相应的记录
+      topics = paginator.page(paginator.num_pages)  # 取最后一页的记录
+  extra_context['notifications'] = topics
+
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 @secure_required

@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="ui blue padded segment">
+<div class="ui blue padded center aligned segment">
   <h3 class="ui center aligned header">{% trans 'Notifications' %}</h3>
 
   <table class="ui selectable table">
@@ -63,5 +63,10 @@
     {% endfor %}
     </tbody>
   </table>
+
+  {% with notifications as topics %}
+    {% include 'profiles/__paginator_button.html' %}
+  {% endwith %}
+
 </div>
 

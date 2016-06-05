@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, get_object_or_404
 from django.shortcuts import render
+from django.core.urlresolvers import reverse
 from guardian.decorators import permission_required_or_403
 from userena.decorators import secure_required
 
@@ -65,6 +66,7 @@ def album(request, username):
     context = makeContextForNotifications(request, context)
     return render(request, 'profiles/album.html', context)
 
+
 @secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
 def set_album_image(request, username):
@@ -81,3 +83,14 @@ def set_album_image(request, username):
         profile.save()
         return HttpResponse(the_image.image.url)
     raise Http404
+
+
+@secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
+def delete_album_image(request, username, image_id):
+    user = get_object_or_404(User, username__iexact=username)
+    image = AlbumImage.objects.get(id=image_id, user=user)
+    if image:
+        image.delete()
+    return redirect(reverse('profiles:album', args=[username]))
+

@@ -34,6 +34,7 @@
                   <input type="checkbox" name="selected" value="{{ image.id }}" {% if image.is_in_my_album %}checked{% endif %} />
                   {{ image.get_status_display }}
                 </label>
+                <a href="{% url "profiles:delete_album_image" profile.user.username image.id  %}">delete</a>
               </div>
             {% endfor %}
 

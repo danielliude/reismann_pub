@@ -7,7 +7,11 @@
     {% render_bundle 'profiles/profile' 'css' %}
 {% endblock %}
 {% block javascripts %}
-    <script src="http://cdn.bootcss.com/galleria/1.4.2/galleria.js"></script>
+    <script type="text/javascript">
+      $.ajaxSetup({
+        data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+      });
+    </script>
     {% render_bundle 'profiles/profile' 'js' %}
 {% endblock %}
 
@@ -21,5 +25,21 @@
   </div>  
   <br>
   <br>
+  <div class="ui small long test modal" style="">
+    <i class="icon grey close" style="right:1rem;top:1rem;position:absolute;"></i>
+    <div class="header">
+      创建账号
+    </div>
+    
+    <div class="content">
+      <form class="ui form register-content" action="" method="post" style="max-width:360px;margin:10px auto;">
+        {% include "accounts/__register_form.html" %}
+      </form>
+    </div>
+    <div class="actions">
+      <span>已有账号？立即<a href="{% url 'accounts:login' %}">登录</a></span>
+      <div class="ui submit brand button">免费注册</div>
+    </div>
+  </div>
 {% endblock %}
 

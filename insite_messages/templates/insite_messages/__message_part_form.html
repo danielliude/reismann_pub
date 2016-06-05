@@ -1,0 +1,15 @@
+{% csrf_token %}
+  
+{{ form.non_field_errors }}
+{{ form.subject.errors }}
+<div class="required field">
+  {{ form.subject }}
+</div>
+{{ form.body.errors }}
+<div class="required field">
+  {{ form.body }}
+</div>
+
+<div class="required field" style="display:none;">
+  {{ form.recipient }}
+</div>

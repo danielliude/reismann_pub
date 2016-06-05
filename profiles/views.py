@@ -42,6 +42,12 @@ import accounts.signals as accounts_signals
 from accounts.settings import ACCOUNT_ACTIVATION_REQUIRED
 from django.http import JsonResponse
 
+#message
+from insite_messages.forms import MessageComposeForm
+from insite_messages.managers import MessageMailManager as mailer
+from notifications.signals import notify
+from datetime import datetime
+from django.utils.timezone import utc
 
 logger = logging.getLogger("profiles")
 
@@ -129,36 +135,64 @@ def profile(request, username, template_name="profiles/profile.html",
 
   user = get_object_or_404(User, username__iexact=username)
 
-  form = RegistrationForm()
+  if request.user.is_authenticated():
+    rec_user = get_object_or_404(User, username__iexact=username)
+    initial_recipient = {'recipient': rec_user.id}
+    form = MessageComposeForm(initial = initial_recipient)
+  else:
+    form = RegistrationForm()
   if request.method == 'POST':
-    form = RegistrationForm(request.POST, request.FILES)
+    if request.user.is_authenticated():
+      form = MessageComposeForm(request.POST, request.FILES)
 
-    if form.is_valid():
-      user = form.save()
+      if form.is_valid():
+        message = form.save(user)
+        message.sent_at = datetime.utcnow().replace(tzinfo=utc)
+        message.save()
 
-      accounts_signals.registration_complete.send(sender=None, user=user)
+        # send email about internal message
+        m = mailer()
+        m.send_email_new_message_to_recipient(message=message)
 
-      if success_url:
-        redirect_to = success_url
-      elif ACCOUNT_ACTIVATION_REQUIRED:
-        redirect_to = reverse('accounts:registration_complete', kwargs = {'username': user.username})
+        # create notification about internal message
+        notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has sent new message')
+
+        temp = {}
+        temp['success'] = 'ok'
+        return JsonResponse(temp)
       else:
-        redirect_to = reverse('profiles:dashboard', kwargs = {'username': user.username})
+        extra_context['form'] = form
+        return ExtraContextTemplateView.as_view(template_name='insite_messages/__message_part_form.html', extra_context=extra_context)(request)
 
-      if request.user.is_authenticated():
-        signout(request)
-
-      if not ACCOUNT_ACTIVATION_REQUIRED:
-        user = authenticate(identification=user.email, check_password=False)
-        signin(request, user)
-
-      temp = {}
-      temp['success'] = 'ok'
-      temp['redirect_to'] = redirect_to
-      return JsonResponse(temp)
     else:
-      extra_context['form'] = form
-      return ExtraContextTemplateView.as_view(template_name='accounts/__register_form.html', extra_context=extra_context)(request)
+      form = RegistrationForm(request.POST, request.FILES)
+
+      if form.is_valid():
+        user = form.save()
+
+        accounts_signals.registration_complete.send(sender=None, user=user)
+
+        if success_url:
+          redirect_to = success_url
+        elif ACCOUNT_ACTIVATION_REQUIRED:
+          redirect_to = reverse('accounts:registration_complete', kwargs = {'username': user.username})
+        else:
+          redirect_to = reverse('profiles:dashboard', kwargs = {'username': user.username})
+
+        if request.user.is_authenticated():
+          signout(request)
+
+        if not ACCOUNT_ACTIVATION_REQUIRED:
+          user = authenticate(identification=user.email, check_password=False)
+          signin(request, user)
+
+        temp = {}
+        temp['success'] = 'ok'
+        temp['redirect_to'] = redirect_to
+        return JsonResponse(temp)
+      else:
+        extra_context['form'] = form
+        return ExtraContextTemplateView.as_view(template_name='accounts/__register_form.html', extra_context=extra_context)(request)
 
   else:
     provider_service = Service.objects.filter(user = user).first()

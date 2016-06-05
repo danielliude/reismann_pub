@@ -62,14 +62,22 @@
 			$('.ui.comments .ui.rating').rating('disable');
 
 			$(".not_login").click(function () {
-				$('.ui.long.test.modal').modal('show');
+				$('.register_modal').modal('show');
+			});
+
+			$('.message_modal, .second.modal').modal({
+				allowMultiple: false
+			});
+			$('.second.modal').modal('attach events', '.message_modal.modal .close');
+			$(".send_message").click(function () {
+				$('.message_modal').modal('show');
 			});
 
 			$('.menu .item').tab();
 
 			$('.ui.dropdown').dropdown();
 
-			$('.submit').click(function () {
+			$('.register_modal .submit').click(function () {
 				var temp = $('.register-content').serialize();
 
 				$.post('/profiles/shuimu1/', temp, function (result) {
@@ -80,7 +88,22 @@
 					}
 					$('.register-content').empty();
 					$('.register-content').html(result);
-					$('.ui.long.test.modal').modal('refresh');
+					$('.register_modal').modal('refresh');
+				});
+			});
+
+			$('.message_modal .submit').click(function () {
+				var temp = $('.message-content').serialize();
+
+				$.post('/profiles/shuimu1/', temp, function (result) {
+					console.log(result);
+					if (result.success == 'ok') {
+						$('.second_modal').modal('show');
+						return;
+					}
+					$('.message-content').empty();
+					$('.message-content').html(result);
+					$('.message_modal').modal('refresh');
 				});
 			});
 

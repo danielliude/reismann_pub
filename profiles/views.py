@@ -35,6 +35,19 @@ from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
 
+#register
+from django.contrib.auth import authenticate, login as signin, logout as signout, REDIRECT_FIELD_NAME
+from accounts.forms import RegistrationForm
+import accounts.signals as accounts_signals
+from accounts.settings import ACCOUNT_ACTIVATION_REQUIRED
+from django.http import JsonResponse
+
+#message
+from insite_messages.forms import MessageComposeForm
+from insite_messages.managers import MessageMailManager as mailer
+from notifications.signals import notify
+from datetime import datetime
+from django.utils.timezone import utc
 
 logger = logging.getLogger("profiles")
 
@@ -97,10 +110,6 @@ def makeContextForProfile(request, user, context):
 
     profile = get_user_profile(user)
 
-    follow_manager = FollowingManager()
-    if request.user and profile.user:
-        follows = follow_manager.follows(follower=request.user, followee=profile.user)
-        context['follows'] = follows
 
     context['profile'] = profile
     context['view_own_profile'] = view_own_profile(request, user.username)
@@ -112,24 +121,90 @@ def makeContextForProfile(request, user, context):
         else:
             user_rating = 0
             context['profile_rating'] = user_rating
+            
+        follow_manager = FollowingManager()
+        if request.user and profile.user:
+            follows = follow_manager.follows(follower=request.user, followee=profile.user)
+            context['follows'] = follows
     return context
 
 def profile(request, username, template_name="profiles/profile.html",
-                   extra_context=None, **kwargs):
+                  success_url=None, extra_context=None, **kwargs):
 
   if not extra_context: extra_context = dict()
 
   user = get_object_or_404(User, username__iexact=username)
 
+  if request.user.is_authenticated():
+    rec_user = get_object_or_404(User, username__iexact=username)
+    initial_recipient = {'recipient': rec_user.id}
+    form = MessageComposeForm(initial = initial_recipient)
+  else:
+    form = RegistrationForm()
+  if request.method == 'POST':
+    if request.user.is_authenticated():
+      form = MessageComposeForm(request.POST, request.FILES)
 
-  provider_service = Service.objects.filter(user = user).first()
-  if provider_service:
-    extra_context['provider_service'] = provider_service
-  extra_context = makeContextForProfile(request, user, extra_context)
-  extra_context = makeContextForActiveServices(user, extra_context)
-  extra_context = makeContextForNotifications(request, extra_context)
+      if form.is_valid():
+        message = form.save(user)
+        message.sent_at = datetime.utcnow().replace(tzinfo=utc)
+        message.save()
 
-  return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+        # send email about internal message
+        m = mailer()
+        m.send_email_new_message_to_recipient(message=message)
+
+        # create notification about internal message
+        notify.send(message.sender, recipient = message.recipient, action_object = message, verb = u'has sent new message')
+
+        temp = {}
+        temp['success'] = 'ok'
+        return JsonResponse(temp)
+      else:
+        extra_context['form'] = form
+        return ExtraContextTemplateView.as_view(template_name='insite_messages/__message_part_form.html', extra_context=extra_context)(request)
+
+    else:
+      form = RegistrationForm(request.POST, request.FILES)
+
+      if form.is_valid():
+        user = form.save()
+
+        accounts_signals.registration_complete.send(sender=None, user=user)
+
+        if success_url:
+          redirect_to = success_url
+        elif ACCOUNT_ACTIVATION_REQUIRED:
+          redirect_to = reverse('accounts:registration_complete', kwargs = {'username': user.username})
+        else:
+          redirect_to = reverse('profiles:dashboard', kwargs = {'username': user.username})
+
+        if request.user.is_authenticated():
+          signout(request)
+
+        if not ACCOUNT_ACTIVATION_REQUIRED:
+          user = authenticate(identification=user.email, check_password=False)
+          signin(request, user)
+
+        temp = {}
+        temp['success'] = 'ok'
+        temp['redirect_to'] = redirect_to
+        return JsonResponse(temp)
+      else:
+        extra_context['form'] = form
+        return ExtraContextTemplateView.as_view(template_name='accounts/__register_form.html', extra_context=extra_context)(request)
+
+  else:
+    provider_service = Service.objects.filter(user = user).first()
+    if provider_service:
+      extra_context['provider_service'] = provider_service
+    extra_context = makeContextForProfile(request, user, extra_context)
+    extra_context = makeContextForActiveServices(user, extra_context)
+    extra_context = makeContextForNotifications(request, extra_context)
+
+    extra_context['form'] = form
+
+    return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 @secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))

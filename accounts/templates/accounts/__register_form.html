@@ -1,0 +1,41 @@
+{% csrf_token %}
+
+{{ form.non_field_errors }}
+{{ form.username.errors }}
+<div class="required field">
+  <div class="ui left icon input">
+    <i class="user icon"></i>
+    {{ form.username }}
+  </div>
+</div>
+{{ form.email.errors }}
+<div class="required field">
+  <div class="ui left icon input">
+    <i class="mail outline icon"></i>
+    {{ form.email }}
+  </div>
+</div>
+{{ form.password1.errors }}
+<div class="required field">
+  <div class="ui left icon input">
+    <i class="lock icon"></i>
+    {{ form.password1 }}
+  </div>
+</div>
+{{ form.password2.errors }}
+<div class="required field">
+  <div class="ui left icon input">
+    <i class="repeat icon"></i>
+    {{ form.password2 }}
+  </div>
+</div>
+<div class="required field">
+  {{ form.captcha }}
+</div>
+{{ form.tos.errors }}
+<div class="field">
+  <div class="ui checkbox">
+    {{ form.tos }}
+    {{ form.tos.label_tag }}
+  </div>
+</div>

@@ -81,3 +81,22 @@ body {
 		padding-left: 10px;
 	}
 }
+
+
+.ui.dimmer {
+	background-color: rgba(32, 34, 34, 0.33);
+}
+
+.register-content, .message-content {
+	ul.errorlist {
+		list-style: none;
+		-webkit-padding-start: 0; 
+		li {
+			color: #dd4b39; 
+		}
+	}
+}
+
+.ui.modal>.header:not(.ui), .ui.button {
+	font-weight: normal;
+}

@@ -7,7 +7,11 @@
     {% render_bundle 'profiles/profile' 'css' %}
 {% endblock %}
 {% block javascripts %}
-    <script src="http://cdn.bootcss.com/galleria/1.4.2/galleria.js"></script>
+    <script type="text/javascript">
+      $.ajaxSetup({
+        data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+      });
+    </script>
     {% render_bundle 'profiles/profile' 'js' %}
 {% endblock %}
 

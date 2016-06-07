@@ -49,7 +49,11 @@
 
 	__webpack_require__(122);
 
-	$(function () {});
+	$(function () {
+		$('.noti_segment .ui.dropdown').dropdown({
+			on: 'hover'
+		});
+	});
 
 /***/ },
 

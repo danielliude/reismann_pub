@@ -17,7 +17,7 @@ function fill_notification_list(data) {
     var html = ''
     for (var i=0; i < data.unread_list.length; i++) {
         var item = data.unread_list[i];
-        var avatar_url = "avatar/" + item.actor + "/"
+        var avatar_url = "/profiles/{{ user.username }}/notifications/avatar/" + item.actor + "/"
         html += '<a href="" class="item unread_info">' + 
                   '<img class="ui avatar image" src="'+avatar_url+'">' +
                   '<span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">' + item.actor + '</span>' +

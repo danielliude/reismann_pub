@@ -1,5 +1,76 @@
+body {
+	font-family: "Microsoft YaHei",Verdana,"Bitstream Vera Sans",sans-serif;
+}
+
+.all_buttons {
+	.ui.button {
+		margin: 0.3rem 0;
+		width: 31%;
+		max-width: 110px;
+	    text-align: center;
+	    font-weight: normal;
+	    padding: 0.72571429em 1.2em;
+        font-size: 0.9rem;
+	}
+	.ui.brand_blue.button {
+		background-color: #428bca;
+	    border-color: #357ebd;
+	    &:hover {
+	    	background-color: #3071a9;
+		    border-color: #285e8e;
+	    }
+	}
+	.ui.brand.button {
+		background-color: #FF5026;
+	    border-color: #FF5026;
+	    opacity: 0.8;
+	    &:hover {
+	    	opacity: 1;
+	    }
+	}
+}
+
+.grey_and_bold {
+	color: #999;
+	font-weight: 700;
+}
+
 .ui.grid.dashboard_grid {
-	max-width: 700px;
+	.ui.divider {
+		margin-top: 0.5rem;
+		margin-bottom: 0rem;
+	}
+	.ui.label {
+		font-weight: normal;
+	    padding: 0.4233em 0.833em;
+	    margin-top: 3px;
+	}
+}
+.ui.table.table2 {
+	border-right: 0px;
+	border-left: 0px;
+	margin-top: 0px;
+	tr td {
+	    padding-left: 1.7em;
+	}
+}
+
+.ui.segment.noti_segment {
+	span, .ui.checkbox {
+		margin-right: 2rem;
+	}
+	.table {
+		margin-top: 0px;
+		.ui.checkbox {
+			margin-right: 0px;
+			padding-top: 4px;
+		}
+	}
+}
+
+
+.ui.grid.dashboard_grid {
+	max-width: 750px;
 	margin: 80px auto;
 	.h_content {
 		h1, h2, h3, h4, h5 {

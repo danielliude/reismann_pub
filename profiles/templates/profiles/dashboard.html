@@ -9,46 +9,111 @@
 {% endblock %}
 
 {% block content %}  
-  <div class="ui grid dashboard_grid">
-    <div class="column">
-      {% include "profiles/__profile_box.html" %} 
-      {% if profile.settings.is_provider %}
-	      <a href="{% url 'profiles:profile' profile.user.username %}" class="ui brand_blue fluid button"><b>{% trans 'View profile' %}</b></a>
-      {% endif %}
-      <div class="ui segment">
-	  		<div class="ui middle aligned selection  divided list">
-				  <a class="item" href="{% url 'profiles:followers' profile.user.username %}">
-				    <div class="right floated content">
-				      <div class="header">{{ number_followers }}</div>
-				    </div>
-				    <img class="ui avatar image" src="/static/images/dummy/avatar2.png">
-				    <div class="content">
-				    	<div class="header">{% trans 'Followers' %}</div>
-				    </div>
-				  </a>
-				  <a class="item" href="{% url 'profiles:followings' profile.user.username %}">
-				    <div class="right floated content">
-				      <div class="header">{{ number_following }}</div>
-				    </div>
-				    <img class="ui avatar image" src="/static/images/dummy/avatar3.png">
-				    <div class="content">
-				    	<div class="header">{% trans 'Following' %}</div>
-				    </div>
-				  </a>
-				  <a class="item" href = "{% url 'profiles:bookings' profile.user.username %}">
-				    <div class="right floated content">
-				      <div class="header">{{ number_bookings }}</div>
-				    </div>
-				    <img class="ui avatar image" src="/static/images/dummy/avatar5.png">
-				    <div class="content">
-				    	<div class="header">{% trans 'Bookings' %}</div>
-				    </div>
-				  </a>
-				</div>
-      </div>
-      {% if profile.settings.is_provider %}
-      {% include "services/__service_short_list.html" %}
-      {% endif %}
-    </div>
-  </div>
+<div class="ui grid dashboard_grid">
+	<div class="column">
+		<div class="ui segment" style="padding:0;">
+		  <div class="ui padded grid">
+		    <div class="four wide column">
+		      <img style="box-shadow: #333333 1px 1px 20px 0;" class="ui centered small image" src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile picture' %}">
+		    </div>
+		    <div class="nine wide column">
+		      <h3 style="color: #555555;font-weight: 300;">{{ profile.user.username }}{% if profile.get_gender_display%}, {{ profile.get_gender_display|default:"" }}{% endif %}{% if profile.age %}/{{ profile.age}}{% endif %}</h3>
+		      <div class="sub header" style="margin-top:-1rem;">{% if profile.location %}{{ profile.location }}{% endif %}{% if profile.country%}, {{ profile.country}}{% endif %}</div>
+		      <div style="border-color: #888888;border-bottom-width: 0px;" class="ui black divider"></div>
+		      <table class="ui very basic unstackable compact fixed table" style="margin: 0.5rem 0;">
+		        <tbody>
+		          <tr>
+		            <td class="grey_and_bold">{% trans 'profession:' %}</td>
+		            <td>{% if profile.get_profession_display%}{{ profile.get_profession_display|default:"" }}{% endif %}</td>
+		            <td class="grey_and_bold">{% trans 'language:' %}</td>
+		            <td>not know</td>
+		          </tr>
+		          <tr>
+		            <td class="grey_and_bold" style="border:0px;">{% trans 'tag:' %}</td>
+		            <td style="border:0px;" colspan="3">not know</td>
+		          </tr>
+		          <tr>
+		            <td class="grey_and_bold" style="border:0px;">{% trans 'signature:' %}</td>
+		            <td style="border:0px;" colspan="3">{{ profile.short_description }}</td>
+		          </tr>
+		        </tbody>
+		      </table>
+		      <div class="all_buttons">
+			      <a class="ui brand_blue button" href="{% url 'profiles:profile' profile.user.username %}"><i class="icon home"></i>{% trans 'homepage' %}</a>
+			      <a class="ui brand button">{{ profile.settings.get_status_display }}</a>
+		      </div>
+		    </div>
+		    <div class="three wide column">
+	        {% if profile.settings.is_provider %}
+	          <a class="ui large blue right ribbon label">{% trans 'Provider' %}</a>
+	        {% else %}
+	          <a class="ui large blue right ribbon label">{% trans 'Customer' %}</a>
+	        {% endif %}
+		    </div>
+		  </div>
+
+		  <table class="ui unstackable compact fixed table table2">
+	      <tbody>
+	        <tr>
+	          <td class="grey_and_bold">{% trans 'Followers:' %}</td>
+	          <td style="border-right: 1px solid rgba(34,36,38,.15);">{{ number_followers }}</td>
+	          <td class="grey_and_bold">{% trans 'Following:' %}</td>
+	          <td>{{ number_following }}</td>
+	        </tr>
+	        {% if profile.settings.is_provider %}
+	        <tr>
+	          <td colspan="4">
+	          	<span class="grey_and_bold">{% trans 'Service:' %}</span>
+	          	{{ services|length }}
+	          	<br>
+	          	{% for service in services %}
+	          	<a class="ui large blue label" href="{% url 'profiles:service_view' service.user.username service.id %}">{{ service.category }}</a>
+	          	{% endfor %}
+	          </td>
+	        </tr>
+	        {% endif %}
+	        <tr>
+	        	<td class="grey_and_bold">{% trans 'Bookings:' %}</td>
+	          <td colspan="3">{{ number_bookings }}</td>
+	        </tr>
+	      </tbody>
+	    </table>
+		</div>
+
+		<div class="ui segment noti_segment" style="padding: 1rem 2rem;">
+			<h3 class="grey_and_bold">{% trans 'Notifications:' %}</h3>
+			<span>{% trans 'show' %}</span>
+			<div class="ui checkbox">
+			  <input type="checkbox" class="unread">
+			  <label>unread</label>
+			</div>
+			<div class="ui checkbox">
+			  <input type="checkbox" class="read">
+			  <label>read</label>
+			</div>
+			<div class="ui black divider"></div>
+			<table class="ui very basic selectable table">
+				<tbody>
+					{% for notification in notifications %}
+						<tr>
+							<td>
+								<div class="ui checkbox">
+								  <input type="checkbox" class="{{ nofitication.id }}">
+								  <label>{{ nofitication.id }}</label>
+								</div>
+								{{ notification.verb}}
+								<span style="position:absolute;right:0px;">{{ notification.timestamp | date:"Y-m-d" }}<span>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<div style="text-align:center;">
+			{% with notifications as topics %}
+		    {% include 'profiles/__paginator_button.html' %}
+		  {% endwith %}
+		  </div>
+		</div>
+	</div>
+</div>
 {% endblock %} 

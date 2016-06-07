@@ -138,6 +138,8 @@ class Profile(models.Model):
 
     return name.strip()
 
+
+
 class ProfileSettings(models.Model):
 
   profile = models.OneToOneField(Profile, unique=True, verbose_name=_('settings'), related_name='settings', blank = True, null = True)

@@ -52,6 +52,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 SITE_ID = 1
+ADMIN_NAME = 'admin'
 
 ROOT_URLCONF = 'reismann.urls'
 

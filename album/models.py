@@ -10,6 +10,9 @@ from core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib.sites.models import Site
 from reismann.alex_settings import EMAIL_DEFAULT_FROM_EMAIL
+from notifications.signals import notify
+from django.contrib.auth.models import User
+from reismann.settings import ADMIN_NAME
 
 
 class AlbumImage(models.Model):
@@ -28,8 +31,28 @@ class AlbumImage(models.Model):
         verbose_name = _('Album Image')
         verbose_name_plural = _('Album Images')
 
+    # only admins can change the album image
+    def save(self):
+        active = self.is_active()
+        admin = User.objects.get(username = ADMIN_NAME)
+
+        if active:
+            if admin:
+                notify.send(admin, recipient= self.user, action_object= self,
+                        verb=u'image was approved')
+            else:
+                notify.send(self.user, recipient=self.user, action_object=self,
+                            verb=u'image was approved')
+
+        super(AlbumImage, self).save()
+
+
+
     def is_in_my_album(self):
         return self in self.user.my_album.images.all()
+
+    def is_moderated(self):
+        return self.status == 1
 
     def is_active(self):
         return self.status == 2

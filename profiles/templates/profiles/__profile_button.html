@@ -23,7 +23,7 @@
       <i class="dropdown icon"></i>
       <div class="menu">
         {% if follows %}
-          <a class="item" href="{% url 'profiles:unfollow' request.user.username profile.user.username %}"><i class="minus icon"></i>{% trans 'not follow' %}</a>
+          <a class="item" href="{% url 'profiles:unfollow' request.user.username profile.user.username %}"><i class="minus icon"></i>{% trans 'unfollow' %}</a>
         {% else %}
           <a class="item" href="{% url 'profiles:follow' request.user.username profile.user.username %}"><i class="plus icon"></i>{% trans 'follow' %}</a>
         {% endif %}

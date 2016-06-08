@@ -136,11 +136,13 @@ def profile(request, username, template_name="profiles/profile.html",
   if not extra_context: extra_context = dict()
 
   user = get_object_or_404(User, username__iexact=username)
+  extra_context = makeContextForProfile(request, user, extra_context)
 
   if request.user.is_authenticated():
     rec_user = get_object_or_404(User, username__iexact=username)
     initial_recipient = {'recipient': rec_user.id}
     form = MessageComposeForm(initial = initial_recipient)
+
   else:
     form = RegistrationForm()
   if request.method == 'POST':
@@ -163,6 +165,7 @@ def profile(request, username, template_name="profiles/profile.html",
         temp['success'] = 'ok'
         return JsonResponse(temp)
       else:
+
         extra_context['form'] = form
         return ExtraContextTemplateView.as_view(template_name='insite_messages/__message_part_form.html', extra_context=extra_context)(request)
 
@@ -200,7 +203,6 @@ def profile(request, username, template_name="profiles/profile.html",
     provider_service = Service.objects.filter(user = user).first()
     if provider_service:
       extra_context['provider_service'] = provider_service
-    extra_context = makeContextForProfile(request, user, extra_context)
     extra_context = makeContextForActiveServices(user, extra_context)
     extra_context = makeContextForNotifications(request, extra_context)
 

@@ -1,72 +1,23 @@
 {% load i18n %}
 
-<div class="ui blue padded center aligned segment">
-  <h3 class="ui center aligned header">{% trans 'Notifications' %}</h3>
-
-  <table class="ui selectable table">
-    <thead>
-      <tr>
-        <th>{% trans "Sender" %}</th>
-        <th>{% trans "Recipient" %}</th>
-        <th>{% trans "Message" %}</th>
-        <th>{% trans "Time since" %}</th>
-      </tr>
-    </thead>
-    <tbody>
+<table class="ui very basic selectable table">
+  <tbody>
     {% for notification in notifications %}
-      <tr onclick="window.document.location='';" >
-        {% if notification.actor == user %}
-          <td>
-            <h4 class= "ui image header">
-              <a href="{% url 'profiles:profile' notification.actor.profile.user.username %}"><img src="{{ notification.actor.profile.get_avatar_url }}" class="ui mini rounded image"></a>
-              <div class="content">
-                {% trans "Me" %}
-                <div class="sub header">{{ notification.actor.profile.location }}</div>
-              </div>
-            </h4>
-          </td>
-        {% else %}
-          <td>
-            <h5 class= "ui image header">
-              <a href="{% url 'profiles:profile' notification.actor.profile.user.username %}"><img src="{{ notification.actor.profile.get_avatar_url }}" class="ui mini rounded image"></a>
-              <div class="ui content">
-                {{ notification.actor }}
-                <div class="sub header">{{ notification.actor.profile.location }}</div>
-              </div>
-            </h5>
-          </td>
-        {% endif %}
-        {% if notification.recipient == user %}
-          <td>
-            <h5 class= "ui image header">
-              <a href="{% url 'profiles:profile' notification.recipient.profile.user.username %}"><img src="{{ notification.recipient.profile.get_avatar_url }}" class="ui mini rounded image"></a>
-              <div class="content">
-                {% trans "Me" %}
-                <div class="sub header">{{ notification.recipient.profile.location }}</div>
-              </div>
-            </h5>
-          </td>
-        {% else %}
-          <td>
-            <h5 class= "ui image header">
-              <a href="{% url 'profiles:profile' notification.recipient.profile.user.username %}"><img src="{{ notification.recipient.profile.get_avatar_url }}" class="ui mini rounded image"></a>
-              <div class="content">
-                {{ notification.recipient }}
-                <div class="sub header">{{ notification.recipient.profile.location }}</div>
-              </div>
-            </h5>
-          </td>
-        {% endif %}
-        <td>{{ notification.verb}}</td>
-        <td>{{ notification.timestamp | date:"Y-m-d H:i:s" }}</td>
+      <tr class="{% if notification.unread %}negative{% else %}read_opacity{% endif %}">
+        <td>
+          <div class="ui checkbox">
+            <input type="checkbox" name="checkbox_select" value="{{ notification.id }}">
+            <label> </label>
+          </div>
+          {{ notification.verb}}
+          <span style="position:absolute;right:0px;">{{ notification.timestamp | date:"Y-m-d" }}<span>
+        </td>
       </tr>
     {% endfor %}
-    </tbody>
-  </table>
-
-  {% with notifications as topics %}
-    {% include 'profiles/__paginator_button.html' %}
-  {% endwith %}
-
+  </tbody>
+</table>
+<div style="text-align:center;">
+{% with notifications as topics %}
+  {% include 'profiles/__paginator_button.html' %}
+{% endwith %}
 </div>
-

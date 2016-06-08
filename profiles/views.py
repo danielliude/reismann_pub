@@ -49,6 +49,8 @@ from notifications.signals import notify
 from datetime import datetime
 from django.utils.timezone import utc
 
+from django.db.models import Q
+
 logger = logging.getLogger("profiles")
 
 def view_own_profile(request, username):
@@ -212,28 +214,85 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
               extra_context=None, **kwargs):
 
   user = get_object_or_404(User, username__iexact=username)
-
   if not extra_context: extra_context = dict()
 
-  extra_context = makeContextForNotifications(request, extra_context)
-  extra_context = makeContextForProfile(request, user, extra_context)
-  extra_context = makeContextForDetails(request, extra_context)
-  extra_context = makeContextForAllUserServices(user, extra_context)
+  if request.method == 'POST':
+    checkbox = request.POST.getlist('checkbox[]')
+    extra_context['notifications'] = request.user.notifications.active()
+    if len(checkbox) == 1:
+      if checkbox[0] == 'unread':
+        extra_context['notifications'] = request.user.notifications.unread()
+      else:
+        extra_context['notifications'] = request.user.notifications.read()
 
-  limit = 10  # 每页显示的记录数
-  topics = extra_context['notifications']
-  paginator = Paginator(topics, limit)  # 实例化一个分页对象
+    limit = 10  # 每页显示的记录数
+    topics = extra_context['notifications']
+    paginator = Paginator(topics, limit)  # 实例化一个分页对象
 
-  page = request.GET.get('page')  # 获取页码
-  try:
-      topics = paginator.page(page)  # 获取某页对应的记录
-  except PageNotAnInteger:  # 如果页码不是个整数
-      topics = paginator.page(1)  # 取第一页的记录
-  except EmptyPage:  # 如果页码太大，没有相应的记录
-      topics = paginator.page(paginator.num_pages)  # 取最后一页的记录
-  extra_context['notifications'] = topics
+    page = 1  # 获取页码
+    try:
+        topics = paginator.page(page)  # 获取某页对应的记录
+    except PageNotAnInteger:  # 如果页码不是个整数
+        topics = paginator.page(1)  # 取第一页的记录
+    except EmptyPage:  # 如果页码太大，没有相应的记录
+        topics = paginator.page(paginator.num_pages)  # 取最后一页的记录
+    extra_context['notifications'] = topics
 
-  return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+    return ExtraContextTemplateView.as_view(template_name='profiles/__notifications_list.html', extra_context=extra_context)(request)
+
+  else:
+    # extra_context = makeContextForNotifications(request, extra_context)
+    extra_context = makeContextForProfile(request, user, extra_context)
+    extra_context = makeContextForDetails(request, extra_context)
+    extra_context = makeContextForAllUserServices(user, extra_context)
+
+    if request.user.is_authenticated():
+      extra_context['notifications'] = request.user.notifications.active()
+
+    limit = 10  # 每页显示的记录数
+    topics = extra_context['notifications']
+    paginator = Paginator(topics, limit)  # 实例化一个分页对象
+
+    page = request.GET.get('page')  # 获取页码
+    try:
+        topics = paginator.page(page)  # 获取某页对应的记录
+    except PageNotAnInteger:  # 如果页码不是个整数
+        topics = paginator.page(1)  # 取第一页的记录
+    except EmptyPage:  # 如果页码太大，没有相应的记录
+        topics = paginator.page(paginator.num_pages)  # 取最后一页的记录
+    extra_context['notifications'] = topics
+
+    return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+
+@secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
+def mark_read_or_delete(request, username, template_name=None,
+              extra_context=None, **kwargs):
+
+  user = get_object_or_404(User, username__iexact=username)
+  if not extra_context: extra_context = dict()
+
+  checkbox = request.GET.getlist('checkbox[]')
+  mark_type = request.GET.get('type')
+
+  check = ''
+  if(checkbox):
+      for ch in checkbox:
+          if(check):
+              check = check | Q(id=ch) 
+          else:
+              check = Q(id=ch) 
+  if(check):
+    notification = request.user.notifications.filter(check)
+    if(mark_type == 'mark_read'):
+      notification.mark_all_as_read()
+    else:
+      notification.mark_all_as_deleted()
+
+  temp = {}
+  temp['success'] = 'ok'
+  return JsonResponse(temp)
+
 
 @secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))

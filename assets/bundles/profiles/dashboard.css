@@ -53,6 +53,9 @@ body {
     margin-right: 0px;
     padding-top: 4px; }
 
+.read_opacity {
+  opacity: 0.8; }
+
 .ui.grid.dashboard_grid {
   max-width: 750px;
   margin: 80px auto; }

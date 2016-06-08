@@ -5,6 +5,11 @@
     {% render_bundle 'profiles/dashboard' 'css' %}
 {% endblock %}
 {% block javascripts %}
+		<script type="text/javascript">
+      $.ajaxSetup({
+        data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+      });
+    </script>
     {% render_bundle 'profiles/dashboard' 'js' %}
 {% endblock %}
 
@@ -84,43 +89,23 @@
 			<h3 class="grey_and_bold">{% trans 'Notifications:' %}</h3>
 			<span>{% trans 'show' %}</span>
 			<div class="ui checkbox">
-			  <input type="checkbox" class="unread">
+			  <input type="checkbox" class="checkbox_sort" name="checkbox_sort" value="unread">
 			  <label>unread</label>
 			</div>
 			<div class="ui checkbox">
-			  <input type="checkbox" class="read">
+			  <input type="checkbox" class="checkbox_sort" name="checkbox_sort" value="read">
 			  <label>read</label>
 			</div>
 			<div class="ui left pointing dropdown">
 		    <b>...</b>
 
 		    <div class="menu">
-		      <div class="item">{% trans "mark read" %}</div>
-		      <div class="item">{% trans "delete" %}</div>
+		      <div class="mark_read item"><i class="checkmark icon"></i>{% trans "mark read" %}</div>
+		      <div class="mark_delete item"><i class="trash outline icon"></i>{% trans "delete" %}</div>
 		    </div>
 		  </div>
-			<div class="ui black divider"></div>
-			<table class="ui very basic selectable table">
-				<tbody>
-					{% for notification in notifications %}
-						<tr>
-							<td>
-								<div class="ui checkbox">
-								  <input type="checkbox" class="{{ nofitication.id }}">
-								  <label>{{ nofitication.id }}</label>
-								</div>
-								{{ notification.verb}}
-								<span style="position:absolute;right:0px;">{{ notification.timestamp | date:"Y-m-d" }}<span>
-							</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-			<div style="text-align:center;">
-			{% with notifications as topics %}
-		    {% include 'profiles/__paginator_button.html' %}
-		  {% endwith %}
-		  </div>
+			<div class="ui black divider notifications_list"></div>
+			{% include 'profiles/__notifications_list.html' %}
 		</div>
 	</div>
 </div>

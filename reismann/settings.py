@@ -137,6 +137,8 @@ AUTHENTICATION_BACKENDS = (
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
+#notification
+NOTIFICATIONS_SOFT_DELETE=True
 
 TIME_ZONE = 'UTC'
 

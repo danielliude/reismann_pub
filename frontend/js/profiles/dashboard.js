@@ -5,7 +5,9 @@ $(function() {
 		on : 'hover'
 	})
 
-	$('.checkbox_sort').click(function(event) {
+	$('.ui.checkbox').checkbox()
+
+	$('.checkbox_sort').parent('.checkbox').click(function(event) {
 		update_checkbox()
 	});
 

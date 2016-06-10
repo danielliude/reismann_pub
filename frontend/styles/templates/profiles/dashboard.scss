@@ -76,45 +76,4 @@ body {
 .ui.grid.dashboard_grid {
 	max-width: 750px;
 	margin: 80px auto;
-	.h_content {
-		h1, h2, h3, h4, h5 {
-			margin: 0.5rem 0;
-		}
-		h2 {
-			margin-top: 0rem;
-		}
-	}
-}
-
-.ui.segment.profile_info {
-	.ui.blue.segment {
-		padding-bottom: 20px;
-	}
-	.right_absolute {
-		position: absolute;
-		right: 1rem;
-	}
-	.ui.divided.items>.item {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
-	}
-}
-
-.ui.segment.all_services {
-	margin-bottom: 1rem;
-	.ui.divided.items>.item {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
-	}
-	.ui.label {
-		padding: 6px 9px;
-		
-	}
-}
-
-.ui.segment.service_short_list {
-	.ui.label {
-		padding: 6px 9px;
-		margin-top: 2px;
-	}
 }

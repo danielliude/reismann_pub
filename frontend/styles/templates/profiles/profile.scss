@@ -41,10 +41,6 @@ body {
 	}
 }
 
-.ui.label {
-	font-weight: normal;
-}
-
 .grey_and_bold {
 	color: #999;
 	font-weight: 700;
@@ -82,7 +78,6 @@ body {
 	}
 }
 
-
 .ui.dimmer {
 	background-color: rgba(32, 34, 34, 0.33);
 }
@@ -95,8 +90,4 @@ body {
 			color: #dd4b39; 
 		}
 	}
-}
-
-.ui.modal>.header:not(.ui), .ui.button {
-	font-weight: normal;
 }

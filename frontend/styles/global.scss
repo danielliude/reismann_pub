@@ -9,6 +9,14 @@ img {
   max-width: 100%;
 }
 
+.ui.button {
+  font-weight: normal;
+}
+
+.ui.label {
+  font-weight: normal;
+}
+
 
 /*--------------
     Masthead
@@ -49,7 +57,6 @@ img {
     width: 100%;
   }
 }
-
 
 
 
@@ -105,15 +112,6 @@ img {
     display: none;
     @include LT(S) {
       display: inline-block;
-    } 
-  }
-}
-
-.footer .ui.grid.container {
-  .column {
-    padding-left: 1rem;
-    @include LT(M) {
-      padding-left: 100px;
     } 
   }
 }

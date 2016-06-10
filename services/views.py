@@ -24,6 +24,20 @@ from services.utils import get_user_services
 
 from services.managers import ServiceMailManager
 
+#register
+from django.contrib.auth import authenticate, login as signin, logout as signout, REDIRECT_FIELD_NAME
+from accounts.forms import RegistrationForm
+import accounts.signals as accounts_signals
+from accounts.settings import ACCOUNT_ACTIVATION_REQUIRED
+from django.http import JsonResponse
+
+#message
+from insite_messages.forms import MessageComposeForm
+from insite_messages.managers import MessageMailManager as mailer
+from notifications.signals import notify
+from datetime import datetime
+from django.utils.timezone import utc
+
 @secure_required
 @permission_required_or_403('services.add_service')
 def service_add(request, username, edit_service_form=ServiceForm,
@@ -193,6 +207,14 @@ def service_view(request, username, service_id,
     else:
         canRate = False
 
+    if request.user.is_authenticated():
+      rec_user = get_object_or_404(User, username__iexact=username)
+      initial_recipient = {'recipient': rec_user.id}
+      form = MessageComposeForm(initial = initial_recipient)
+    else:
+      form = RegistrationForm()
+
+    extra_context['form'] = form
     extra_context['view_own_profile'] = view_own_profile(request, username)
     extra_context = makeContextForDetails(request, extra_context)
     extra_context = makeContextForNotifications(request, extra_context)

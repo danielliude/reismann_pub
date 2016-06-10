@@ -41,9 +41,6 @@ body {
   .ui.table tbody tr {
     cursor: pointer; }
 
-.ui.label {
-  font-weight: normal; }
-
 .grey_and_bold {
   color: #999;
   font-weight: 700; }
@@ -79,6 +76,3 @@ body {
   -webkit-padding-start: 0; }
   .register-content ul.errorlist li, .message-content ul.errorlist li {
     color: #dd4b39; }
-
-.ui.modal > .header:not(.ui), .ui.button {
-  font-weight: normal; }

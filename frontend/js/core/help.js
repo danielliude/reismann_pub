@@ -1,3 +1,9 @@
+import '../../semantic/dist/components/sticky.min.css'
+import '../../semantic/dist/components/sticky.min.js'
+import '../../semantic/dist/components/accordion.min.css'
+import '../../semantic/dist/components/accordion.min.js'
+import '../../semantic/dist/components/breadcrumb.min.css'
+
 import '../../styles/templates/core/help.scss'
 
 $(function() {

@@ -53,13 +53,13 @@
 
 	__webpack_require__(115);
 
+	__webpack_require__(60);
+
+	__webpack_require__(95);
+
+	__webpack_require__(96);
+
 	__webpack_require__(62);
-
-	__webpack_require__(97);
-
-	__webpack_require__(98);
-
-	__webpack_require__(64);
 
 	$(function () {
 	  init_button();
@@ -188,6 +188,13 @@
 
 /***/ },
 
+/***/ 60:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
 /***/ 62:
 /***/ function(module, exports) {
 
@@ -195,14 +202,7 @@
 
 /***/ },
 
-/***/ 64:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 92:
+/***/ 90:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10051,7 +10051,7 @@
 
 /***/ },
 
-/***/ 97:
+/***/ 95:
 /***/ function(module, exports) {
 
 	/*!
@@ -10222,7 +10222,7 @@
 
 /***/ },
 
-/***/ 98:
+/***/ 96:
 /***/ function(module, exports) {
 
 	/*!
@@ -10466,7 +10466,7 @@
 	        var jQuery = $;
 	        if (!jQuery) {
 	            try {
-	                jQuery = __webpack_require__(92);
+	                jQuery = __webpack_require__(90);
 	            } catch (err) {
 	                jQuery = window.jQuery;
 	                if (!jQuery) throw new Error('jQuery dependency not found');

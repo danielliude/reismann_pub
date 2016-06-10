@@ -35,15 +35,14 @@ $(function() {
 		  .tab()
 		;
 
-		$('.ui.dropdown')
+		$('.all_buttons .ui.dropdown')
 		  .dropdown()
 		;
 
 	    $('.register_modal .submit').click(function() {
 	    	var temp = $('.register-content').serialize(); 
 
-		    $.post('/profiles/shuimu1/', temp, function(result){
-		    	console.log(result)
+		    $.post(window.location.href, temp, function(result){
 		    	if(result.success == 'ok') {
 		    		window.location.href = window.location.href.replace(window.location.pathname, result.redirect_to)
 		    		return;
@@ -59,8 +58,7 @@ $(function() {
 	    $('.message_modal .submit').click(function() {
 	    	var temp = $('.message-content').serialize(); 
 
-		    $.post('/profiles/shuimu1/', temp, function(result){
-		    	console.log(result)
+		    $.post(window.location.href, temp, function(result){
 		    	if(result.success == 'ok') {
 			    	$('.second_modal')
 					  .modal('show')

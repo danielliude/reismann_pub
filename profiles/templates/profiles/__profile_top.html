@@ -8,14 +8,19 @@
     <div class="eight wide column">
       <h3 style="color: #555555;font-weight: 300;">{{ profile.user.username }}{% if profile.get_gender_display%}, {{ profile.get_gender_display|default:"" }}{% endif %}{% if profile.age %}/{{ profile.age}}{% endif %}</h3>
       <div class="sub header" style="margin-top:-1rem;">{% if profile.location %}{{ profile.location }}{% endif %}{% if profile.country%}, {{ profile.country}}{% endif %}</div>
-      <div style="border-color: #888888;border-bottom-width: 0px;" class="ui black divider"></div>
-      <table class="ui very basic unstackable compact fixed table">
+      <div style="border-color: #888888;border-bottom-width: 0px;margin-top: 0.5rem;
+    margin-bottom: 0rem;" class="ui black divider"></div>
+      <table class="ui very basic unstackable compact fixed table" style="margin: 0.5rem 0;">
         <tbody>
           <tr>
             <td class="grey_and_bold">{% trans 'profession:' %}</td>
             <td>{% if profile.get_profession_display%}{{ profile.get_profession_display|default:"" }}{% endif %}</td>
             <td class="grey_and_bold">{% trans 'language:' %}</td>
             <td>not know</td>
+          </tr>
+          <tr>
+            <td class="grey_and_bold" style="border:0px;">{% trans 'tag:' %}</td>
+            <td style="border:0px;" colspan="3">not know</td>
           </tr>
           <tr>
             <td class="grey_and_bold" style="border:0px;">{% trans 'signature:' %}</td>

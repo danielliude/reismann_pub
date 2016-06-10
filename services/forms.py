@@ -43,7 +43,7 @@ class ServiceForm(forms.ModelForm):
                            choices = SERVICE_PRICE_TYPE_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui compact selection dropdown', 'required': True}), required=True)
 
   type = forms.ChoiceField(label=_('Type'),
-                           choices = SERVICE_TYPE_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'required': True}), required=True)
+                           choices = SERVICE_TYPE_CHOICES, initial='', widget=forms.Select(attrs={'class': 'ui search dropdown', 'required': True}), required=True)
 
   cities = forms.ModelMultipleChoiceField(label=_('Cities'),
                                      widget=forms.SelectMultiple(attrs={
@@ -55,26 +55,26 @@ class ServiceForm(forms.ModelForm):
 
   category = forms.ModelChoiceField(label=_('Category'),
                                          widget=forms.Select(attrs={
-                                           'class': 'ui fluid search dropdown',
+                                           'class': 'ui search dropdown',
                                            'placeholder': _('service category')
                                          }),
                                          queryset=ServiceCategory.objects.all())
 
-  languages = forms.ModelMultipleChoiceField(label=_('Languages'),
-                                        widget=forms.SelectMultiple(attrs={
-                                          'class': 'ui fluid search dropdown',
-                                          'multiple' : "",
-                                          'placeholder': _('service languages')
-                                        }),
-                                        queryset=ServiceLanguage.objects.all())
+  # languages = forms.ModelMultipleChoiceField(label=_('Languages'),
+  #                                       widget=forms.SelectMultiple(attrs={
+  #                                         'class': 'ui fluid search dropdown',
+  #                                         'multiple' : "",
+  #                                         'placeholder': _('service languages')
+  #                                       }),
+  #                                       queryset=ServiceLanguage.objects.all())
 
-  tags = forms.ModelMultipleChoiceField(label=_('Tags'),
-                                   widget=forms.SelectMultiple(attrs={
-                                     'class': 'ui fluid search dropdown',
-                                     'multiple' : "",
-                                     'placeholder': _('service tags')
-                                   }),
-                                   queryset=ServiceTag.objects.all())
+  # tags = forms.ModelMultipleChoiceField(label=_('Tags'),
+  #                                  widget=forms.SelectMultiple(attrs={
+  #                                    'class': 'ui fluid search dropdown',
+  #                                    'multiple' : "",
+  #                                    'placeholder': _('service tags')
+  #                                  }),
+  #                                  queryset=ServiceTag.objects.all())
 
   class Meta:
     model = Service

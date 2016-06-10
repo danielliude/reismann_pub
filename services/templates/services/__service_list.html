@@ -6,58 +6,62 @@
   <table class="ui striped table">
       <thead>
         <tr>
+          <th>{% trans "Category" %}</th>
           <th>{% trans "Title" %}</th>
           <th>{% trans "Price" %}</th>
           <th>{% trans "Date of creation" %}</th>
           <th>{% trans "Active" %}</th>
-          <th>{% trans "View" %}</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         {% for service in services %}
         <tr onclick="window.document.location='view/own/{{ service.id }}/';">
+            <td><span class="ui brand_blue label">{{ service.category }}</span></td>
             <td>{{ service.title }}</td>
             <td>
               {{ service.get_currency_display }}
               {{ service.price|floatformat:"0" }}/
               {{ service.get_price_type_display }}
             </td>
-            <td>{{ service.created_at|date:"Y-m-d H:i:s" }}</td>
+            <td>{{ service.created_at|date:"Y-m-d" }}</td>
 
             {% if service.status == 1 %}
-                <td><span class="ui red label">{% trans 'Moderation' %}</span></td>
+                <td><span class="ui red label">{{ service.get_status_display }}</span></td>
 
             {% elif service.status == 2 %}
-                <td><span class="ui green label">{% trans 'Active' %}</span></td>
+                <td><span class="ui green label">{{ service.get_status_display }}</span></td>
 
             {% elif service.status == 3 %}
-                <td><span class="ui gray label">{% trans 'Not active' %}</span></td>
+                <td><span class="ui gray label">{{ service.get_status_display }}</span></td>
             {% else %}
                 <td></td>
             {% endif %}
 
             <td>
-                <a class="ui green label" href="view/own/{{ service.id }}/">
-                  <i class="unhide icon"></i>view
+                <a class="ui grey basic button view_and_edit" href="view/own/{{ service.id }}/">
+                   <i class="unhide icon"></i><i class="edit icon"></i>
                 </a>
             </td>
         </tr>
         {% endfor %}
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
           <td>
             {% if show_add_service == True %}
             <a class="ui green label" href="add">
-              <i class="edit icon"></i>{% trans 'add' %}
+              <i class="plus icon"></i>{% trans 'add' %}
             </a>
             {% else %}
-            <a class="ui green label disabled" href="">
-              <i class="edit icon"></i>{% trans 'add' %}
+            <a class="ui green label disabled">
+              <i class="plus icon"></i>{% trans 'add' %}
             </a>
             {% endif %}
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
       </tbody>
     </table>

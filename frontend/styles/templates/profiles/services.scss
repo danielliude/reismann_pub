@@ -1,5 +1,5 @@
 .ui.grid.service_grid {
-	max-width: 900px;
+	max-width: 830px;
 	margin: 80px auto;
 }
 
@@ -14,17 +14,8 @@
 	}
 }
 
-/*--------------
-    service_one_own
----------------*/
-.style_button {
- 	a.ui.button {
- 		margin-bottom: 3px;
- 	}
-}
-.style_label {
-	a.ui.label {
-		margin-top: 3px;
-		margin-left: 0px;
+.service_form .field.inline {
+	label {
+		min-width: 100px;
 	}
 }

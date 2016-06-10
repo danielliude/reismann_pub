@@ -32,8 +32,8 @@ SERVICE_TYPE_CHOICES = (
 )
 
 SERVICE_PRICE_TYPE_CHOICES = (
-  (1, _('Per day')),
-  (2, _('Per hour')),
+  (1, _('day')),
+  (2, _('hour')),
 )
 
 SERVICE_CURRENCY_CHOICES = (

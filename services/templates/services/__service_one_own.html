@@ -33,7 +33,7 @@
         <td><b>{% trans 'Category:' %}</b></td>
         <td><a class="ui green label">{{ service.category.name }}</a></td>
       </tr>
-      <tr>
+<!--       <tr>
         <td><b>{% trans 'Languages:' %}</b></td>
         <td>
           {% for language in service.languages.all %}
@@ -48,7 +48,7 @@
             <a class="ui red label">{{ tag.name }}</a>
           {% endfor %}
         </td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
 
@@ -61,86 +61,15 @@
   <div class="style_button">
     <a href="{% url 'profiles:service_edit' request.user.username service.id %}" class="ui brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
     {% ifequal service.status 3 %}
-        <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui green button"><i class="unlock icon"></i>{% trans 'Activate' %}</a>
+        <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui green button"><i class="checkmark icon"></i>{% trans 'Activate' %}</a>
     {% endifequal %}
 
     {% ifequal service.status 2 %}
-        <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui grey button"><i class="lock icon"></i>{% trans 'Deactivate' %}</a>
+        <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui grey button"><i class="ban icon"></i>{% trans 'Deactivate' %}</a>
     {% endifequal %}
 
-    <a href="{% url 'profiles:service_remove' request.user.username service.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
+    <a href="{% url 'profiles:service_remove' request.user.username service.id %}" class="ui red button"><i class="trash outline icon"></i>{% trans 'remove' %}</a>
   </div>
-
-<!--   <div class="ui large relaxed list">
-    <div class="item">
-      <div class="header">{% trans 'Title' %}</div>
-      {{ service.title }}
-    </div>
-    <div class="item">
-      <div class="header">{% trans 'Price' %}</div>
-      {% if service.currency == 1 %}
-        {% trans '€' %}
-      {% elif service.currency == 2 %}
-        {% trans '¥' %}
-      {% endif %}
-      {{ service.price|floatformat:"0" }}/
-      {% if service.price_type == 1 %}
-        {% trans 'day' %}
-      {% elif service.price_type == 2 %}
-        {% trans 'hour' %}
-      {% endif %}
-    </div>
-    <div class="item">
-      <div class="header">{% trans 'Type' %}</div>
-      {% if service.type == 1 %}
-        {% trans 'part time' %}
-      {% else %}
-        {% trans 'full time' %}
-      {% endif %}
-    </div>
-    <div class="item style_label">
-      <div class="header">{% trans 'Cities' %}</div>
-      {% for city in service.cities.all %}
-        <a class="ui brand_blue label">{{ city.name }}</a>
-      {% endfor %}
-    </div>
-    <div class="item style_label">
-      <div class="header">{% trans 'Category' %}</div>
-        <a class="ui green label">{{ service.category.name }}</a>
-    </div>
-    <div class="item style_label">
-      <div class="header">{% trans 'Languages' %}</div>
-      {% for language in service.languages.all %}
-        <a class="ui yellow label">{{ language.name }}</a>
-      {% endfor %}
-    </div>
-    <div class="item style_label">
-      <div class="header">{% trans 'Tags' %}</div>
-      {% for tag in service.tags.all %}
-        <a class="ui red label">{{ tag.name }}</a>
-      {% endfor %}
-    </div>
-    <div class="item">
-      <div class="header">{% trans 'Content' %}</div>
-      {{ service.content|safe }}
-    </div>
-
-    <div class="one column row">
-      <div class="column style_button" style="width:100%!important;">
-        <a href="{% url 'profiles:service_edit' request.user.username service.id %}" class="ui brand_blue button"><i class="edit icon"></i>{% trans 'edit' %}</a>
-        {% ifequal service.status 3 %}
-            <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui green button"><i class="unlock icon"></i>{% trans 'Activate' %}</a>
-        {% endifequal %}
-
-        {% ifequal service.status 2 %}
-            <a href="{% url 'profiles:service_activate' request.user.username service.id %}" class="ui grey button"><i class="lock icon"></i>{% trans 'Deactivate' %}</a>
-        {% endifequal %}
-
-        <a href="{% url 'profiles:service_remove' request.user.username service.id %}" class="ui red button"><i class="remove icon"></i>{% trans 'remove' %}</a>
-      </div>
-
-    </div>
-  </div> -->
 </div>
 
 

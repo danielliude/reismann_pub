@@ -247,6 +247,15 @@
 img {
   max-width: 100%; }
 
+.ui.button {
+  font-weight: normal; }
+
+.ui.label {
+  font-weight: normal; }
+
+.view_and_edit {
+  padding: 0.5em 0.2em 0.5em 0.7em !important; }
+
 .redactor-toolbar {
   z-index: 1 !important; }
 

@@ -1,14 +1,13 @@
 {% load i18n %}
-
 <form class="ui form service_form" action="" enctype="multipart/form-data" method="post">
   <br>
   {% csrf_token %}
   {{ form.media }}
   {{ form.non_field_errors }}
   {{ form.category.errors }}
-  <div class="required field">
-      <label>{{ form.category.label }}</label>
-      {{ form.category }}
+  <div class="required field" style="max-width:300px">
+    <label>{{ form.category.label }}</label>
+    {{ form.category }}
   </div>
   {{ form.title.errors }}
   <div class="required field">
@@ -17,6 +16,29 @@
       {{ form.title }}
     </div>
   </div>
+  {{ form.type.errors }}
+  <div class="required field" style="max-width:300px">
+      <label>{{ form.type.label }}</label>
+      {{ form.type }}
+  </div>
+  {{ form.currency.errors }}
+  {{ form.price.errors }}
+  {{ form.price_type.errors }}
+  <div class="required field" style="max-width:400px">
+    <label>{{ form.price.label }}</label>
+    <div class="ui input">
+      {{ form.currency }}
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      {{ form.price }}
+      &nbsp;&nbsp;<span style="line-height: 38px;">/</span>&nbsp;&nbsp;
+      {{ form.price_type }}
+    </div>
+  </div>
+  {{ form.cities.errors }}
+  <div class="required field">
+      <label>{{ form.cities.label }}</label>
+      {{ form.cities }}
+  </div>
   {{ form.content.errors }}
   <div class="required field">
     <label>{{ form.content.label }}</label>
@@ -24,28 +46,8 @@
       {{ form.content }}
     </div>
   </div>
-  {{ form.currency.errors }}
-  {{ form.price.errors }}
-  {{ form.price_type.errors }}
-  <div class="required field">
-    <label>{{ form.price.label }}</label>
-    <div class="ui right labeled input">
-      {{ form.currency }}
-      {{ form.price }}
-      {{ form.price_type }}
-    </div>
-  </div>
-  {{ form.type.errors }}
-  <div class="required field">
-      <label>{{ form.type.label }}</label>
-      {{ form.type }}
-  </div>
-  {{ form.cities.errors }}
-  <div class="required field">
-      <label>{{ form.cities.label }}</label>
-      {{ form.cities }}
-  </div>
-  {{ form.languages.errors }}
+  
+<!--   {{ form.languages.errors }}
   <div class="required field">
       <label>{{ form.languages.label }}</label>
       {{ form.languages }}
@@ -54,11 +56,10 @@
   <div class="required field">
       <label>{{ form.tags.label }}</label>
       {{ form.tags }}
-  </div>
+  </div> -->
   
-  <br>
-  <button class="fluid ui brand_blue button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
-  <a href="{% url 'profiles:services' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
+  <button class=" ui positive button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+  <a href="{% url 'profiles:services' profile.user.username %}" class=" ui grey button">{% trans 'Cancel' %}</a>
   <div class="ui error message">
   </div>
 </form>

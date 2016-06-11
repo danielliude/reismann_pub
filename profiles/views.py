@@ -49,6 +49,9 @@ from notifications.signals import notify
 from datetime import datetime
 from django.utils.timezone import utc
 
+#blacklists
+from blacklists.models import BlackLists
+
 from django.db.models import Q
 
 logger = logging.getLogger("profiles")
@@ -128,6 +131,16 @@ def makeContextForProfile(request, user, context):
         if request.user and profile.user:
             follows = follow_manager.follows(follower=request.user, followee=profile.user)
             context['follows'] = follows
+            shielding_list = BlackLists.objects.filter(user__id=request.user.id)
+            for item in shielding_list:
+                if item.shielding.id == profile.user.id:
+                    context['shielding'] = True
+                    break
+            shielded_list = BlackLists.objects.filter(user__id=profile.user.id)
+            for item in shielded_list:
+                if item.shielding.id == request.user.id:
+                    context['shielded'] = True
+                    break
     return context
 
 def profile(request, username, template_name="profiles/profile.html",

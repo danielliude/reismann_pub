@@ -86,6 +86,7 @@ INSTALLED_APPS = (
   'webpack_loader',
   'album',
   'notifications',
+  'blacklists',
 )
 
 SESSION_COOKIE_AGE = 360

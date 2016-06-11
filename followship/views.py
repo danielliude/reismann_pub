@@ -13,6 +13,7 @@ from profiles.views import makeContextForNotifications, makeContextForProfile, m
 from followship.managers import FollowshipMailManager as mailer
 
 from notifications.signals import notify
+from blacklists.models import BlackLists
 
 def follow(request, follower, followee):
 
@@ -21,6 +22,11 @@ def follow(request, follower, followee):
 
     if follower and followee:
         if not Follow.objects.follows(follower_object, followee_object):
+            shielded_list = BlackLists.objects.filter(user__id=followee_object.id)
+            for item in shielded_list:
+                # the request.user is shielded by profile.user, can not follow
+                if item.shielding.id == request.user.id:
+                    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             Follow.objects.follow(follower_object, followee_object)
 
             # create internal notification

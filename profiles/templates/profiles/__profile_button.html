@@ -4,7 +4,11 @@
 {% if request.user.is_authenticated %}
   {% if view_own_profile %}
   {% else %}
-    <a class="ui brand_blue button send_message" data-username="{{ profile.user.username }}"><i class="icon mail outline"></i>{% trans 'messages' %}</a>
+    {% if shielded %}
+      <a class="ui brand_blue button send_message disabled" data-username="{{ profile.user.username }}"><i class="icon mail outline"></i>{% trans 'messages' %}</a>
+    {% else %}
+      <a class="ui brand_blue button send_message" data-username="{{ profile.user.username }}"><i class="icon mail outline"></i>{% trans 'messages' %}</a>
+    {% endif %}
     {% if service %}
       {% if profile.settings.is_provider %}
       <a href="{% url 'profiles:booking_add' profile.user.username service.id %}" class="ui brand button"><i class="icon heart"></i>{% trans 'booking' %}</a>
@@ -27,7 +31,11 @@
         {% else %}
           <a class="item" href="{% url 'profiles:follow' request.user.username profile.user.username %}"><i class="plus icon"></i>{% trans 'follow' %}</a>
         {% endif %}
-        <a class="item"><i class="ban icon"></i>{% trans 'shielding' %}</a>
+        {% if shielding %}
+          <a class="item" href="{% url 'profiles:unshield' request.user.username profile.user.username %}"><i class="ban icon"></i>{% trans 'unshield' %}</a>
+        {% else %}
+          <a class="item" href="{% url 'profiles:shield' request.user.username profile.user.username %}"><i class="ban icon"></i>{% trans 'shielding' %}</a>
+        {% endif %}
         <a class="item"><i class="announcement icon"></i>{% trans 'inform' %}</a>
       </div>
     </div>

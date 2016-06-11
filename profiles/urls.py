@@ -17,5 +17,6 @@ urlpatterns = [
     url(r'^', include('services.urls')),
     url(r'^', include('insite_messages.urls')),
     url(r'^', include('followship.urls')),
-    url(r'^', include('bookings.urls'))
+    url(r'^', include('bookings.urls')),
+    url(r'^', include('blacklists.urls')),
 ]

@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 from easy_thumbnails.widgets import ImageClearableFileInput
 
 from core.constants import GENDER_CHOICES, PROFESSION_CHOICES
-from cities.models import City, Country
+from cities.models import City, Country, Province
 from profiles.models import Profile, ProfileSettings
 from contacts.models import Contact
 
@@ -177,6 +177,9 @@ class ProfileForm(forms.ModelForm):
   country = forms.ModelChoiceField(label=_('Country'),
                                     widget=forms.Select(attrs={'class': 'ui search dropdown'}),
                                     queryset=Country.objects.all(), required= True)
+  province = forms.ModelChoiceField(label=_('Province'),
+                                    widget=forms.Select(attrs={'class': 'ui search dropdown'}),
+                                    queryset=Province.objects.all(), required= True)
   location = forms.ModelChoiceField(label=_('City'),
                                     widget=forms.Select(attrs={'class': 'ui search dropdown'}),
                                     queryset=City.objects.all(), required= True)

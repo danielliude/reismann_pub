@@ -26,10 +26,23 @@ class Country(models.Model):
 cityCardImagePath = os.path.join(settings.MEDIA_ROOT, 'reismann/images/cities/card')
 cityBannerImagePath = os.path.join(settings.MEDIA_ROOT, 'reismann/images/cities/banner')
 
+class Province(models.Model):
+    country = models.ForeignKey(Country, verbose_name=_('province country'))
+    name = models.CharField(max_length=128, verbose_name=_('province name'))
+    is_active = models.BooleanField(default=True, verbose_name=_('province is active'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('updated at'))
+    class Meta:
+        verbose_name = _('Province')
+        verbose_name_plural = _('Provinces')
+    def __str__(self):
+      return self.name
 
 class City(models.Model):
 
   country = models.ForeignKey(Country, verbose_name=_('city country'))
+
+  province = models.ForeignKey(Province, verbose_name=_('city province'), blank=True, null=True)
 
   name = models.CharField(max_length=128, verbose_name=_('city name'))
 
@@ -58,8 +71,9 @@ class City(models.Model):
 
   def get_full_location(self):
     if self.country:
-      return _("%(name)s, %(country_name)s") % \
+      return _("%(name)s, %(country_name)s, %(province_name)s") % \
              {'name': self.name,
+              'province_name': self.province_name,
               'country_name': self.country.name}
     else:
       return self.name

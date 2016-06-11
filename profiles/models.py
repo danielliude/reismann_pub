@@ -12,7 +12,7 @@ from easy_thumbnails.fields import ThumbnailerImageField
 from core.constants import MUGSHOT_SETTINGS, GENDER_CHOICES, PROFILE_CARD_IMAGE_SETTINGS, PROFESSION_CHOICES, IDENTIFICATION_STATUS, PROFILE_STATUS
 from core.uploads import upload_to_avatar, upload_to_profile_card, upload_to_profile_id_card
 from configurations.utils import get_profile_card_fallback_url, get_avatar_fallback_url
-from cities.models import City, Country
+from cities.models import City, Country, Province
 from profiles.managers import ProfileManager
 from services.utils import get_user_services
 
@@ -48,6 +48,9 @@ class Profile(models.Model):
 
   country = models.ForeignKey(Country, blank=True, null=True, verbose_name=_('country'),
                                 help_text='country')
+
+  province = models.ForeignKey(Province, blank=True, null=True, verbose_name=_('province'),
+                               help_text='province')
 
   short_description = models.CharField(_('Short description'), blank=True, null=True,
                                        max_length=255, help_text= _('short description'))

@@ -27,6 +27,10 @@ def follow(request, follower, followee):
                 # the request.user is shielded by profile.user, can not follow
                 if item.shielding.id == request.user.id:
                     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            shielding_list = BlackLists.objects.filter(user__id=request.user.id)
+            for item in shielding_list:
+                if item.shielding.id == followee_object.id:
+                    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             Follow.objects.follow(follower_object, followee_object)
 
             # create internal notification

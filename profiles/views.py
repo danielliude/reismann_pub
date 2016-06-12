@@ -11,7 +11,7 @@ from userena.decorators import secure_required
 from guardian.decorators import permission_required_or_403
 
 from profiles.models import Profile, ProfileSettings
-from profiles.forms import ProfileForm, ProfileIdForm, SettingsForm, ProfileFormCustomer
+from profiles.forms import ProfileForm, ProfileIdForm, SettingsForm, ProfileFormCustomer, ProfileMoreForm
 from profiles.utils import get_user_profile
 from profiles.managers import ProfileMailManager
 from core.utils import ExtraContextTemplateView
@@ -344,6 +344,7 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
 
   if profile.settings.is_provider:
       form = profile_form(instance=profile, initial=user_initial)
+      more_form = ProfileMoreForm()
   else:
       form = ProfileFormCustomer(instance = profile, initial=user_initial)
 
@@ -352,6 +353,7 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   if not extra_context: extra_context = dict()
 
   extra_context['form'] = form
+  extra_context['more_form'] = more_form
   extra_context['contactForm'] = contactForm
   extra_context = makeContextForProfile(request, user, extra_context)
   extra_context = makeContextForNotifications(request, extra_context)

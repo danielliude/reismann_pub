@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from cities.forms import SearchForm
 from services.models import Service
 from cities.models import City
+from cities.models import Province
 from profiles.models import Profile
 from profiles.views import makeContextForDetails, makeContextForMessages
 from django.http import HttpResponse
@@ -227,8 +228,26 @@ def get_cities(request):
             city_json = {}
             city_json['id'] = city.id
             city_json['name'] = city.name
-            city_json['country'] = city.country.id
+            city_json['province'] = city.province.id
             results.append(city_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+
+    return HttpResponse(data, mimetype)
+
+def get_provinces(request):
+    if request.is_ajax():
+        provinces = Province.objects.all()
+        data = []
+        results = []
+        mimetype = 'application/json'
+        for province in provinces:
+            province_json = {}
+            province_json['id'] = province.id
+            province_json['name'] = province.name
+            province_json['country'] = province.country.id
+            results.append(province_json)
         data = json.dumps(results)
     else:
         data = 'fail'

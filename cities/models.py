@@ -73,7 +73,7 @@ class City(models.Model):
     if self.country:
       return _("%(name)s, %(country_name)s, %(province_name)s") % \
              {'name': self.name,
-              'province_name': self.province_name,
+              'province_name': self.province.name,
               'country_name': self.country.name}
     else:
       return self.name

@@ -117,9 +117,37 @@ $(function() {
   }
 
   function country_city() {
-    $.get('/cities/get_cities', function(data) {
-      refresh_location(data, $("#id_country").val())
+    var province_data = ''
+    var city_data = ''
+
+    $.get('/cities/get_provinces', function(p_data) {
+      province_data = p_data
+      refresh_province(p_data, $("#id_country").val())
+
+      $.get('/cities/get_cities', function(c_data) {
+        city_data = c_data
+        refresh_location(c_data, $("#id_province").val())
+
+        change_event()
+      });
+    });
+    
+    function change_event() {
       $('#id_country').parent().dropdown({
+        onChange: function(value, text, $selectedItem) {
+          console.log(value, text, $selectedItem)
+          if(!value) {
+            $("#id_province").empty().siblings('.text').text('')
+            return;
+          }
+
+          refresh_province(province_data, value, function() {
+            refresh_location(city_data, $("#id_province").val())
+          })
+        }
+      })
+
+      $('#id_province').parent().dropdown({
         onChange: function(value, text, $selectedItem) {
           console.log(value, text, $selectedItem)
           if(!value) {
@@ -127,16 +155,34 @@ $(function() {
             return;
           }
 
-          refresh_location(data, value)
+          refresh_location(city_data, value)
         }
       })
-    });
+    }
   }
+
+
+  function refresh_province(data, value, cb) {
+    var html = ''
+    for(var i=0; i<data.length; i++) {
+      if(data[i].country == value) {
+        if(html) {
+          html += '<option value="' + data[i].id + '">' + data[i].name + '</option>'
+        } else {
+          html += '<option value="' + data[i].id + '" selected="selected">' + data[i].name + '</option>'
+         $("#id_province").siblings('.text').text(data[i].name)
+        }
+      }
+    }
+
+    $("#id_province").empty().append(html).parent().dropdown('refresh')
+    cb && cb()
+  } 
 
   function refresh_location(data, value) {
     var html = ''
     for(var i=0; i<data.length; i++) {
-      if(data[i].country == value) {
+      if(data[i].province == value) {
         if(html) {
           html += '<option value="' + data[i].id + '">' + data[i].name + '</option>'
         } else {

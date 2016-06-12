@@ -47,13 +47,13 @@
 
 	'use strict';
 
-	__webpack_require__(82);
-
-	__webpack_require__(100);
-
-	__webpack_require__(80);
-
 	__webpack_require__(13);
+
+	__webpack_require__(15);
+
+	__webpack_require__(16);
+
+	__webpack_require__(18);
 
 	$(function () {
 	  $('.ui.sticky').sticky({
@@ -71,21 +71,7 @@
 
 /***/ },
 
-/***/ 80:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 82:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 100:
+/***/ 15:
 /***/ function(module, exports) {
 
 	/*!
@@ -278,6 +264,20 @@
 	    }), i !== n ? i : this;
 	  }, e.fn.sticky.settings = { name: "Sticky", namespace: "sticky", debug: !1, verbose: !0, performance: !0, pushing: !1, context: !1, scrollContext: t, offset: 0, bottomOffset: 0, jitter: 5, observeChanges: !1, onReposition: function onReposition() {}, onScroll: function onScroll() {}, onStick: function onStick() {}, onUnstick: function onUnstick() {}, onTop: function onTop() {}, onBottom: function onBottom() {}, error: { container: "Sticky element must be inside a relative container", visible: "Element is hidden, you must call refresh after element becomes visible", method: "The method you called is not defined.", invalidContext: "Context specified does not exist", elementSize: "Sticky element is larger than its container, cannot create sticky." }, className: { bound: "bound", fixed: "fixed", supported: "native", top: "top", bottom: "bottom" } };
 	})(jQuery, window, document);
+
+/***/ },
+
+/***/ 16:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 18:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 

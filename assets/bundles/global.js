@@ -46,79 +46,79 @@
 
 	'use strict';
 
-	__webpack_require__(88);
-
-	__webpack_require__(21);
-
-	__webpack_require__(91);
-
-	__webpack_require__(78);
-
 	__webpack_require__(29);
 
+	__webpack_require__(32);
+
+	__webpack_require__(34);
+
+	__webpack_require__(35);
+
 	__webpack_require__(37);
-
-	__webpack_require__(23);
-
-	__webpack_require__(31);
 
 	__webpack_require__(39);
 
 	__webpack_require__(41);
 
-	__webpack_require__(48);
+	__webpack_require__(43);
 
-	__webpack_require__(50);
+	__webpack_require__(45);
+
+	__webpack_require__(47);
 
 	__webpack_require__(54);
 
-	__webpack_require__(68);
-
-	__webpack_require__(72);
-
-	__webpack_require__(52);
-
 	__webpack_require__(56);
-
-	__webpack_require__(76);
-
-	__webpack_require__(25);
-
-	__webpack_require__(92);
-
-	__webpack_require__(33);
-
-	__webpack_require__(93);
-
-	__webpack_require__(35);
-
-	__webpack_require__(94);
-
-	__webpack_require__(66);
-
-	__webpack_require__(98);
-
-	__webpack_require__(74);
-
-	__webpack_require__(99);
 
 	__webpack_require__(58);
 
-	__webpack_require__(27);
-
 	__webpack_require__(60);
-
-	__webpack_require__(95);
-
-	__webpack_require__(64);
-
-	__webpack_require__(97);
 
 	__webpack_require__(62);
 
-	__webpack_require__(96);
+	__webpack_require__(64);
 
-	__webpack_require__(86);
+	__webpack_require__(66);
+
+	__webpack_require__(68);
+
+	__webpack_require__(70);
+
+	__webpack_require__(72);
+
+	__webpack_require__(73);
+
+	__webpack_require__(75);
+
+	__webpack_require__(76);
+
+	__webpack_require__(78);
+
+	__webpack_require__(79);
+
+	__webpack_require__(81);
+
+	__webpack_require__(82);
+
+	__webpack_require__(84);
+
+	__webpack_require__(85);
+
+	__webpack_require__(87);
+
+	__webpack_require__(89);
+
+	__webpack_require__(91);
+
+	__webpack_require__(92);
+
+	__webpack_require__(94);
+
+	__webpack_require__(95);
+
+	__webpack_require__(97);
+
+	__webpack_require__(98);
 
 	$(document).ready(function () {
 		highly_adaptive();
@@ -164,223 +164,29 @@
 /* 18 */,
 /* 19 */,
 /* 20 */,
-/* 21 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 21 */,
 /* 22 */,
-/* 23 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 23 */,
 /* 24 */,
-/* 25 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 25 */,
 /* 26 */,
-/* 27 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 27 */,
 /* 28 */,
 /* 29 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(30);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 30 */,
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(31);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
 /* 31 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 32 */,
-/* 33 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 34 */,
-/* 35 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 36 */,
-/* 37 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 38 */,
-/* 39 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 40 */,
-/* 41 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 49 */,
-/* 50 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 51 */,
-/* 52 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 53 */,
-/* 54 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 55 */,
-/* 56 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 57 */,
-/* 58 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 59 */,
-/* 60 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 61 */,
-/* 62 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 63 */,
-/* 64 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 65 */,
-/* 66 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 67 */,
-/* 68 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 73 */,
-/* 74 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 75 */,
-/* 76 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 77 */,
-/* 78 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 87 */,
-/* 88 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(89);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(90);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10228,7 +10034,14 @@
 
 
 /***/ },
-/* 91 */
+/* 32 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 33 */,
+/* 34 */
 /***/ function(module, exports) {
 
 	/*!
@@ -10363,7 +10176,124 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 92 */
+/* 35 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 36 */,
+/* 37 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 38 */,
+/* 39 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 40 */,
+/* 41 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 42 */,
+/* 43 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 44 */,
+/* 45 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 46 */,
+/* 47 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 55 */,
+/* 56 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 57 */,
+/* 58 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 59 */,
+/* 60 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 61 */,
+/* 62 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 63 */,
+/* 64 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 65 */,
+/* 66 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 67 */,
+/* 68 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 69 */,
+/* 70 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 71 */,
+/* 72 */
 /***/ function(module, exports) {
 
 	/*!
@@ -10554,7 +10484,14 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 93 */
+/* 73 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 74 */,
+/* 75 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11302,7 +11239,14 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 94 */
+/* 76 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 77 */,
+/* 78 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11637,507 +11581,14 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 95 */
+/* 79 */
 /***/ function(module, exports) {
 
-	/*!
-	 * # Semantic UI 2.1.8 - Dimmer
-	 * http://github.com/semantic-org/semantic-ui/
-	 *
-	 *
-	 * Copyright 2015 Contributors
-	 * Released under the MIT license
-	 * http://opensource.org/licenses/MIT
-	 *
-	 */
-	"use strict";
-
-	!(function (e, i, n, t) {
-	  "use strict";e.fn.dimmer = function (i) {
-	    var o,
-	        a = e(this),
-	        r = new Date().getTime(),
-	        m = [],
-	        s = arguments[0],
-	        d = "string" == typeof s,
-	        c = [].slice.call(arguments, 1);return a.each(function () {
-	      var u,
-	          l,
-	          f,
-	          g = e.isPlainObject(i) ? e.extend(!0, {}, e.fn.dimmer.settings, i) : e.extend({}, e.fn.dimmer.settings),
-	          p = g.selector,
-	          v = g.namespace,
-	          b = g.className,
-	          h = g.error,
-	          y = "." + v,
-	          C = "module-" + v,
-	          w = a.selector || "",
-	          S = "ontouchstart" in n.documentElement ? "touchstart" : "click",
-	          D = e(this),
-	          T = this,
-	          N = D.data(C);f = { preinitialize: function preinitialize() {
-	          f.is.dimmer() ? (l = D.parent(), u = D) : (l = D, u = f.has.dimmer() ? g.dimmerName ? l.find(p.dimmer).filter("." + g.dimmerName) : l.find(p.dimmer) : f.create());
-	        }, initialize: function initialize() {
-	          f.debug("Initializing dimmer", g), f.bind.events(), f.set.dimmable(), f.instantiate();
-	        }, instantiate: function instantiate() {
-	          f.verbose("Storing instance of module", f), N = f, D.data(C, N);
-	        }, destroy: function destroy() {
-	          f.verbose("Destroying previous module", u), f.unbind.events(), f.remove.variation(), l.off(y);
-	        }, bind: { events: function events() {
-	            "hover" == g.on ? l.on("mouseenter" + y, f.show).on("mouseleave" + y, f.hide) : "click" == g.on && l.on(S + y, f.toggle), f.is.page() && (f.debug("Setting as a page dimmer", l), f.set.pageDimmer()), f.is.closable() && (f.verbose("Adding dimmer close event", u), l.on(S + y, p.dimmer, f.event.click));
-	          } }, unbind: { events: function events() {
-	            D.removeData(C);
-	          } }, event: { click: function click(i) {
-	            f.verbose("Determining if event occured on dimmer", i), (0 === u.find(i.target).length || e(i.target).is(p.content)) && (f.hide(), i.stopImmediatePropagation());
-	          } }, addContent: function addContent(i) {
-	          var n = e(i);f.debug("Add content to dimmer", n), n.parent()[0] !== u[0] && n.detach().appendTo(u);
-	        }, create: function create() {
-	          var i = e(g.template.dimmer());return g.variation && (f.debug("Creating dimmer with variation", g.variation), i.addClass(g.variation)), g.dimmerName && (f.debug("Creating named dimmer", g.dimmerName), i.addClass(g.dimmerName)), i.appendTo(l), i;
-	        }, show: function show(i) {
-	          i = e.isFunction(i) ? i : function () {}, f.debug("Showing dimmer", u, g), f.is.dimmed() && !f.is.animating() || !f.is.enabled() ? f.debug("Dimmer is already shown or disabled") : (f.animate.show(i), g.onShow.call(T), g.onChange.call(T));
-	        }, hide: function hide(i) {
-	          i = e.isFunction(i) ? i : function () {}, f.is.dimmed() || f.is.animating() ? (f.debug("Hiding dimmer", u), f.animate.hide(i), g.onHide.call(T), g.onChange.call(T)) : f.debug("Dimmer is not visible");
-	        }, toggle: function toggle() {
-	          f.verbose("Toggling dimmer visibility", u), f.is.dimmed() ? f.hide() : f.show();
-	        }, animate: { show: function show(i) {
-	            i = e.isFunction(i) ? i : function () {}, g.useCSS && e.fn.transition !== t && u.transition("is supported") ? ("auto" !== g.opacity && f.set.opacity(), u.transition({ animation: g.transition + " in", queue: !1, duration: f.get.duration(), useFailSafe: !0, onStart: function onStart() {
-	                f.set.dimmed();
-	              }, onComplete: function onComplete() {
-	                f.set.active(), i();
-	              } })) : (f.verbose("Showing dimmer animation with javascript"), f.set.dimmed(), "auto" == g.opacity && (g.opacity = .8), u.stop().css({ opacity: 0, width: "100%", height: "100%" }).fadeTo(f.get.duration(), g.opacity, function () {
-	              u.removeAttr("style"), f.set.active(), i();
-	            }));
-	          }, hide: function hide(i) {
-	            i = e.isFunction(i) ? i : function () {}, g.useCSS && e.fn.transition !== t && u.transition("is supported") ? (f.verbose("Hiding dimmer with css"), u.transition({ animation: g.transition + " out", queue: !1, duration: f.get.duration(), useFailSafe: !0, onStart: function onStart() {
-	                f.remove.dimmed();
-	              }, onComplete: function onComplete() {
-	                f.remove.active(), i();
-	              } })) : (f.verbose("Hiding dimmer with javascript"), f.remove.dimmed(), u.stop().fadeOut(f.get.duration(), function () {
-	              f.remove.active(), u.removeAttr("style"), i();
-	            }));
-	          } }, get: { dimmer: function dimmer() {
-	            return u;
-	          }, duration: function duration() {
-	            return "object" == typeof g.duration ? f.is.active() ? g.duration.hide : g.duration.show : g.duration;
-	          } }, has: { dimmer: function dimmer() {
-	            return g.dimmerName ? D.find(p.dimmer).filter("." + g.dimmerName).length > 0 : D.find(p.dimmer).length > 0;
-	          } }, is: { active: function active() {
-	            return u.hasClass(b.active);
-	          }, animating: function animating() {
-	            return u.is(":animated") || u.hasClass(b.animating);
-	          }, closable: function closable() {
-	            return "auto" == g.closable ? "hover" != g.on : g.closable;
-	          }, dimmer: function dimmer() {
-	            return D.hasClass(b.dimmer);
-	          }, dimmable: function dimmable() {
-	            return D.hasClass(b.dimmable);
-	          }, dimmed: function dimmed() {
-	            return l.hasClass(b.dimmed);
-	          }, disabled: function disabled() {
-	            return l.hasClass(b.disabled);
-	          }, enabled: function enabled() {
-	            return !f.is.disabled();
-	          }, page: function page() {
-	            return l.is("body");
-	          }, pageDimmer: function pageDimmer() {
-	            return u.hasClass(b.pageDimmer);
-	          } }, can: { show: function show() {
-	            return !u.hasClass(b.disabled);
-	          } }, set: { opacity: function opacity(e) {
-	            var i = u.css("background-color"),
-	                n = i.split(","),
-	                t = n && 4 == n.length;e = 0 === g.opacity ? 0 : g.opacity || e, t ? (n[3] = e + ")", i = n.join(",")) : i = "rgba(0, 0, 0, " + e + ")", f.debug("Setting opacity to", e), u.css("background-color", i);
-	          }, active: function active() {
-	            u.addClass(b.active);
-	          }, dimmable: function dimmable() {
-	            l.addClass(b.dimmable);
-	          }, dimmed: function dimmed() {
-	            l.addClass(b.dimmed);
-	          }, pageDimmer: function pageDimmer() {
-	            u.addClass(b.pageDimmer);
-	          }, disabled: function disabled() {
-	            u.addClass(b.disabled);
-	          }, variation: function variation(e) {
-	            e = e || g.variation, e && u.addClass(e);
-	          } }, remove: { active: function active() {
-	            u.removeClass(b.active);
-	          }, dimmed: function dimmed() {
-	            l.removeClass(b.dimmed);
-	          }, disabled: function disabled() {
-	            u.removeClass(b.disabled);
-	          }, variation: function variation(e) {
-	            e = e || g.variation, e && u.removeClass(e);
-	          } }, setting: function setting(i, n) {
-	          if ((f.debug("Changing setting", i, n), e.isPlainObject(i))) e.extend(!0, g, i);else {
-	            if (n === t) return g[i];g[i] = n;
-	          }
-	        }, internal: function internal(i, n) {
-	          if (e.isPlainObject(i)) e.extend(!0, f, i);else {
-	            if (n === t) return f[i];f[i] = n;
-	          }
-	        }, debug: function debug() {
-	          g.debug && (g.performance ? f.performance.log(arguments) : (f.debug = Function.prototype.bind.call(console.info, console, g.name + ":"), f.debug.apply(console, arguments)));
-	        }, verbose: function verbose() {
-	          g.verbose && g.debug && (g.performance ? f.performance.log(arguments) : (f.verbose = Function.prototype.bind.call(console.info, console, g.name + ":"), f.verbose.apply(console, arguments)));
-	        }, error: function error() {
-	          f.error = Function.prototype.bind.call(console.error, console, g.name + ":"), f.error.apply(console, arguments);
-	        }, performance: { log: function log(e) {
-	            var i, n, t;g.performance && (i = new Date().getTime(), t = r || i, n = i - t, r = i, m.push({ Name: e[0], Arguments: [].slice.call(e, 1) || "", Element: T, "Execution Time": n })), clearTimeout(f.performance.timer), f.performance.timer = setTimeout(f.performance.display, 500);
-	          }, display: function display() {
-	            var i = g.name + ":",
-	                n = 0;r = !1, clearTimeout(f.performance.timer), e.each(m, function (e, i) {
-	              n += i["Execution Time"];
-	            }), i += " " + n + "ms", w && (i += " '" + w + "'"), a.length > 1 && (i += " (" + a.length + ")"), (console.group !== t || console.table !== t) && m.length > 0 && (console.groupCollapsed(i), console.table ? console.table(m) : e.each(m, function (e, i) {
-	              console.log(i.Name + ": " + i["Execution Time"] + "ms");
-	            }), console.groupEnd()), m = [];
-	          } }, invoke: function invoke(i, n, a) {
-	          var r,
-	              m,
-	              s,
-	              d = N;return n = n || c, a = T || a, "string" == typeof i && d !== t && (i = i.split(/[\. ]/), r = i.length - 1, e.each(i, function (n, o) {
-	            var a = n != r ? o + i[n + 1].charAt(0).toUpperCase() + i[n + 1].slice(1) : i;if (e.isPlainObject(d[a]) && n != r) d = d[a];else {
-	              if (d[a] !== t) return m = d[a], !1;if (!e.isPlainObject(d[o]) || n == r) return d[o] !== t ? (m = d[o], !1) : (f.error(h.method, i), !1);d = d[o];
-	            }
-	          })), e.isFunction(m) ? s = m.apply(a, n) : m !== t && (s = m), e.isArray(o) ? o.push(s) : o !== t ? o = [o, s] : s !== t && (o = s), m;
-	        } }, f.preinitialize(), d ? (N === t && f.initialize(), f.invoke(s)) : (N !== t && N.invoke("destroy"), f.initialize());
-	    }), o !== t ? o : this;
-	  }, e.fn.dimmer.settings = { name: "Dimmer", namespace: "dimmer", debug: !1, verbose: !1, performance: !0, dimmerName: !1, variation: !1, closable: "auto", useCSS: !0, transition: "fade", on: !1, opacity: "auto", duration: { show: 500, hide: 500 }, onChange: function onChange() {}, onShow: function onShow() {}, onHide: function onHide() {}, error: { method: "The method you called is not defined." }, className: { active: "active", animating: "animating", dimmable: "dimmable", dimmed: "dimmed", dimmer: "dimmer", disabled: "disabled", hide: "hide", pageDimmer: "page", show: "show" }, selector: { dimmer: "> .ui.dimmer", content: ".ui.dimmer > .content, .ui.dimmer > .content > .center" }, template: { dimmer: function dimmer() {
-	        return e("<div />").attr("class", "ui dimmer");
-	      } } };
-	})(jQuery, window, document);
+	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 96 */
-/***/ function(module, exports) {
-
-	/*!
-	 * # Semantic UI 2.1.8 - Modal
-	 * http://github.com/semantic-org/semantic-ui/
-	 *
-	 *
-	 * Copyright 2015 Contributors
-	 * Released under the MIT license
-	 * http://opensource.org/licenses/MIT
-	 *
-	 */
-	"use strict";
-
-	!(function (e, n, i, t) {
-	  "use strict";e.fn.modal = function (o) {
-	    var a,
-	        r = e(this),
-	        s = e(n),
-	        c = e(i),
-	        l = e("body"),
-	        d = r.selector || "",
-	        u = new Date().getTime(),
-	        m = [],
-	        f = arguments[0],
-	        g = "string" == typeof f,
-	        h = [].slice.call(arguments, 1),
-	        v = n.requestAnimationFrame || n.mozRequestAnimationFrame || n.webkitRequestAnimationFrame || n.msRequestAnimationFrame || function (e) {
-	      setTimeout(e, 0);
-	    };return r.each(function () {
-	      var r,
-	          b,
-	          p,
-	          y,
-	          k,
-	          w,
-	          C,
-	          M,
-	          S,
-	          F = e.isPlainObject(o) ? e.extend(!0, {}, e.fn.modal.settings, o) : e.extend({}, e.fn.modal.settings),
-	          A = F.selector,
-	          D = F.className,
-	          H = F.namespace,
-	          T = F.error,
-	          x = "." + H,
-	          z = "module-" + H,
-	          O = e(this),
-	          q = e(F.context),
-	          E = O.find(A.close),
-	          j = this,
-	          R = O.data(z);S = { initialize: function initialize() {
-	          S.verbose("Initializing dimmer", q), S.create.id(), S.create.dimmer(), S.refreshModals(), S.bind.events(), F.observeChanges && S.observeChanges(), S.instantiate();
-	        }, instantiate: function instantiate() {
-	          S.verbose("Storing instance of modal"), R = S, O.data(z, R);
-	        }, create: { dimmer: function dimmer() {
-	            var n = { debug: F.debug, dimmerName: "modals", duration: { show: F.duration, hide: F.duration } },
-	                i = e.extend(!0, n, F.dimmerSettings);return F.inverted && (i.variation = i.variation !== t ? i.variation + " inverted" : "inverted"), e.fn.dimmer === t ? void S.error(T.dimmer) : (S.debug("Creating dimmer with settings", i), y = q.dimmer(i), F.detachable ? (S.verbose("Modal is detachable, moving content into dimmer"), y.dimmer("add content", O)) : S.set.undetached(), F.blurring && y.addClass(D.blurring), void (k = y.dimmer("get dimmer")));
-	          }, id: function id() {
-	            C = (Math.random().toString(16) + "000000000").substr(2, 8), w = "." + C, S.verbose("Creating unique id for element", C);
-	          } }, destroy: function destroy() {
-	          S.verbose("Destroying previous modal"), O.removeData(z).off(x), s.off(w), E.off(x), q.dimmer("destroy");
-	        }, observeChanges: function observeChanges() {
-	          "MutationObserver" in n && (M = new MutationObserver(function (e) {
-	            S.debug("DOM tree modified, refreshing"), S.refresh();
-	          }), M.observe(j, { childList: !0, subtree: !0 }), S.debug("Setting up mutation observer", M));
-	        }, refresh: function refresh() {
-	          S.remove.scrolling(), S.cacheSizes(), S.set.screenHeight(), S.set.type(), S.set.position();
-	        }, refreshModals: function refreshModals() {
-	          b = O.siblings(A.modal), r = b.add(O);
-	        }, attachEvents: function attachEvents(n, i) {
-	          var t = e(n);i = e.isFunction(S[i]) ? S[i] : S.toggle, t.length > 0 ? (S.debug("Attaching modal events to element", n, i), t.off(x).on("click" + x, i)) : S.error(T.notFound, n);
-	        }, bind: { events: function events() {
-	            S.verbose("Attaching events"), O.on("click" + x, A.close, S.event.close).on("click" + x, A.approve, S.event.approve).on("click" + x, A.deny, S.event.deny), s.on("resize" + w, S.event.resize);
-	          } }, get: { id: function id() {
-	            return (Math.random().toString(16) + "000000000").substr(2, 8);
-	          } }, event: { approve: function approve() {
-	            return F.onApprove.call(j, e(this)) === !1 ? void S.verbose("Approve callback returned false cancelling hide") : void S.hide();
-	          }, deny: function deny() {
-	            return F.onDeny.call(j, e(this)) === !1 ? void S.verbose("Deny callback returned false cancelling hide") : void S.hide();
-	          }, close: function close() {
-	            S.hide();
-	          }, click: function click(n) {
-	            var t = e(n.target),
-	                o = t.closest(A.modal).length > 0,
-	                a = e.contains(i.documentElement, n.target);!o && a && (S.debug("Dimmer clicked, hiding all modals"), S.is.active() && (S.remove.clickaway(), F.allowMultiple ? S.hide() : S.hideAll()));
-	          }, debounce: function debounce(e, n) {
-	            clearTimeout(S.timer), S.timer = setTimeout(e, n);
-	          }, keyboard: function keyboard(e) {
-	            var n = e.which,
-	                i = 27;n == i && (F.closable ? (S.debug("Escape key pressed hiding modal"), S.hide()) : S.debug("Escape key pressed, but closable is set to false"), e.preventDefault());
-	          }, resize: function resize() {
-	            y.dimmer("is active") && v(S.refresh);
-	          } }, toggle: function toggle() {
-	          S.is.active() || S.is.animating() ? S.hide() : S.show();
-	        }, show: function show(n) {
-	          n = e.isFunction(n) ? n : function () {}, S.refreshModals(), S.showModal(n);
-	        }, hide: function hide(n) {
-	          n = e.isFunction(n) ? n : function () {}, S.refreshModals(), S.hideModal(n);
-	        }, showModal: function showModal(n) {
-	          n = e.isFunction(n) ? n : function () {}, S.is.animating() || !S.is.active() ? (S.showDimmer(), S.cacheSizes(), S.set.position(), S.set.screenHeight(), S.set.type(), S.set.clickaway(), !F.allowMultiple && S.others.active() ? S.hideOthers(S.showModal) : (F.onShow.call(j), F.transition && e.fn.transition !== t && O.transition("is supported") ? (S.debug("Showing modal with css animations"), O.transition({ debug: F.debug, animation: F.transition + " in", queue: F.queue, duration: F.duration, useFailSafe: !0, onComplete: function onComplete() {
-	              F.onVisible.apply(j), S.add.keyboardShortcuts(), S.save.focus(), S.set.active(), F.autofocus && S.set.autofocus(), n();
-	            } })) : S.error(T.noTransition))) : S.debug("Modal is already visible");
-	        }, hideModal: function hideModal(n, i) {
-	          return n = e.isFunction(n) ? n : function () {}, S.debug("Hiding modal"), F.onHide.call(j, e(this)) === !1 ? void S.verbose("Hide callback returned false cancelling hide") : void ((S.is.animating() || S.is.active()) && (F.transition && e.fn.transition !== t && O.transition("is supported") ? (S.remove.active(), O.transition({ debug: F.debug, animation: F.transition + " out", queue: F.queue, duration: F.duration, useFailSafe: !0, onStart: function onStart() {
-	              S.others.active() || i || S.hideDimmer(), S.remove.keyboardShortcuts();
-	            }, onComplete: function onComplete() {
-	              F.onHidden.call(j), S.restore.focus(), n();
-	            } })) : S.error(T.noTransition)));
-	        }, showDimmer: function showDimmer() {
-	          y.dimmer("is animating") || !y.dimmer("is active") ? (S.debug("Showing dimmer"), y.dimmer("show")) : S.debug("Dimmer already visible");
-	        }, hideDimmer: function hideDimmer() {
-	          return y.dimmer("is animating") || y.dimmer("is active") ? void y.dimmer("hide", function () {
-	            S.remove.clickaway(), S.remove.screenHeight();
-	          }) : void S.debug("Dimmer is not visible cannot hide");
-	        }, hideAll: function hideAll(n) {
-	          var i = r.filter("." + D.active + ", ." + D.animating);n = e.isFunction(n) ? n : function () {}, i.length > 0 && (S.debug("Hiding all visible modals"), S.hideDimmer(), i.modal("hide modal", n));
-	        }, hideOthers: function hideOthers(n) {
-	          var i = b.filter("." + D.active + ", ." + D.animating);n = e.isFunction(n) ? n : function () {}, i.length > 0 && (S.debug("Hiding other modals", b), i.modal("hide modal", n, !0));
-	        }, others: { active: function active() {
-	            return b.filter("." + D.active).length > 0;
-	          }, animating: function animating() {
-	            return b.filter("." + D.animating).length > 0;
-	          } }, add: { keyboardShortcuts: function keyboardShortcuts() {
-	            S.verbose("Adding keyboard shortcuts"), c.on("keyup" + x, S.event.keyboard);
-	          } }, save: { focus: function focus() {
-	            p = e(i.activeElement).blur();
-	          } }, restore: { focus: function focus() {
-	            p && p.length > 0 && p.focus();
-	          } }, remove: { active: function active() {
-	            O.removeClass(D.active);
-	          }, clickaway: function clickaway() {
-	            F.closable && k.off("click" + w);
-	          }, bodyStyle: function bodyStyle() {
-	            "" === l.attr("style") && (S.verbose("Removing style attribute"), l.removeAttr("style"));
-	          }, screenHeight: function screenHeight() {
-	            S.debug("Removing page height"), l.css("height", "");
-	          }, keyboardShortcuts: function keyboardShortcuts() {
-	            S.verbose("Removing keyboard shortcuts"), c.off("keyup" + x);
-	          }, scrolling: function scrolling() {
-	            y.removeClass(D.scrolling), O.removeClass(D.scrolling);
-	          } }, cacheSizes: function cacheSizes() {
-	          var o = O.outerHeight();S.cache !== t && 0 === o || (S.cache = { pageHeight: e(i).outerHeight(), height: o + F.offset, contextHeight: "body" == F.context ? e(n).height() : y.height() }), S.debug("Caching modal and container sizes", S.cache);
-	        }, can: { fit: function fit() {
-	            return S.cache.height + 2 * F.padding < S.cache.contextHeight;
-	          } }, is: { active: function active() {
-	            return O.hasClass(D.active);
-	          }, animating: function animating() {
-	            return O.transition("is supported") ? O.transition("is animating") : O.is(":visible");
-	          }, scrolling: function scrolling() {
-	            return y.hasClass(D.scrolling);
-	          }, modernBrowser: function modernBrowser() {
-	            return !(n.ActiveXObject || "ActiveXObject" in n);
-	          } }, set: { autofocus: function autofocus() {
-	            var e = O.find(":input").filter(":visible"),
-	                n = e.filter("[autofocus]"),
-	                i = n.length > 0 ? n.first() : e.first();i.length > 0 && i.focus();
-	          }, clickaway: function clickaway() {
-	            F.closable && k.on("click" + w, S.event.click);
-	          }, screenHeight: function screenHeight() {
-	            S.can.fit() ? l.css("height", "") : (S.debug("Modal is taller than page content, resizing page height"), l.css("height", S.cache.height + 2 * F.padding));
-	          }, active: function active() {
-	            O.addClass(D.active);
-	          }, scrolling: function scrolling() {
-	            y.addClass(D.scrolling), O.addClass(D.scrolling);
-	          }, type: function type() {
-	            S.can.fit() ? (S.verbose("Modal fits on screen"), S.others.active() || S.others.animating() || S.remove.scrolling()) : (S.verbose("Modal cannot fit on screen setting to scrolling"), S.set.scrolling());
-	          }, position: function position() {
-	            S.verbose("Centering modal on page", S.cache), S.can.fit() ? O.css({ top: "", marginTop: -(S.cache.height / 2) }) : O.css({ marginTop: "", top: c.scrollTop() });
-	          }, undetached: function undetached() {
-	            y.addClass(D.undetached);
-	          } }, setting: function setting(n, i) {
-	          if ((S.debug("Changing setting", n, i), e.isPlainObject(n))) e.extend(!0, F, n);else {
-	            if (i === t) return F[n];F[n] = i;
-	          }
-	        }, internal: function internal(n, i) {
-	          if (e.isPlainObject(n)) e.extend(!0, S, n);else {
-	            if (i === t) return S[n];S[n] = i;
-	          }
-	        }, debug: function debug() {
-	          F.debug && (F.performance ? S.performance.log(arguments) : (S.debug = Function.prototype.bind.call(console.info, console, F.name + ":"), S.debug.apply(console, arguments)));
-	        }, verbose: function verbose() {
-	          F.verbose && F.debug && (F.performance ? S.performance.log(arguments) : (S.verbose = Function.prototype.bind.call(console.info, console, F.name + ":"), S.verbose.apply(console, arguments)));
-	        }, error: function error() {
-	          S.error = Function.prototype.bind.call(console.error, console, F.name + ":"), S.error.apply(console, arguments);
-	        }, performance: { log: function log(e) {
-	            var n, i, t;F.performance && (n = new Date().getTime(), t = u || n, i = n - t, u = n, m.push({ Name: e[0], Arguments: [].slice.call(e, 1) || "", Element: j, "Execution Time": i })), clearTimeout(S.performance.timer), S.performance.timer = setTimeout(S.performance.display, 500);
-	          }, display: function display() {
-	            var n = F.name + ":",
-	                i = 0;u = !1, clearTimeout(S.performance.timer), e.each(m, function (e, n) {
-	              i += n["Execution Time"];
-	            }), n += " " + i + "ms", d && (n += " '" + d + "'"), (console.group !== t || console.table !== t) && m.length > 0 && (console.groupCollapsed(n), console.table ? console.table(m) : e.each(m, function (e, n) {
-	              console.log(n.Name + ": " + n["Execution Time"] + "ms");
-	            }), console.groupEnd()), m = [];
-	          } }, invoke: function invoke(n, i, o) {
-	          var r,
-	              s,
-	              c,
-	              l = R;return i = i || h, o = j || o, "string" == typeof n && l !== t && (n = n.split(/[\. ]/), r = n.length - 1, e.each(n, function (i, o) {
-	            var a = i != r ? o + n[i + 1].charAt(0).toUpperCase() + n[i + 1].slice(1) : n;if (e.isPlainObject(l[a]) && i != r) l = l[a];else {
-	              if (l[a] !== t) return s = l[a], !1;if (!e.isPlainObject(l[o]) || i == r) return l[o] !== t ? (s = l[o], !1) : !1;l = l[o];
-	            }
-	          })), e.isFunction(s) ? c = s.apply(o, i) : s !== t && (c = s), e.isArray(a) ? a.push(c) : a !== t ? a = [a, c] : c !== t && (a = c), s;
-	        } }, g ? (R === t && S.initialize(), S.invoke(f)) : (R !== t && R.invoke("destroy"), S.initialize());
-	    }), a !== t ? a : this;
-	  }, e.fn.modal.settings = { name: "Modal", namespace: "modal", debug: !1, verbose: !1, performance: !0, observeChanges: !1, allowMultiple: !1, detachable: !0, closable: !0, autofocus: !0, inverted: !1, blurring: !1, dimmerSettings: { closable: !1, useCSS: !0 }, context: "body", queue: !1, duration: 500, offset: 0, transition: "scale", padding: 50, onShow: function onShow() {}, onVisible: function onVisible() {}, onHide: function onHide() {
-	      return !0;
-	    }, onHidden: function onHidden() {}, onApprove: function onApprove() {
-	      return !0;
-	    }, onDeny: function onDeny() {
-	      return !0;
-	    }, selector: { close: "> .close", approve: ".actions .positive, .actions .approve, .actions .ok", deny: ".actions .negative, .actions .deny, .actions .cancel", modal: ".ui.modal" }, error: { dimmer: "UI Dimmer, a required component is not included in this page", method: "The method you called is not defined.", notFound: "The element you specified could not be found" }, className: { active: "active", animating: "animating", blurring: "blurring", scrolling: "scrolling", undetached: "undetached" } };
-	})(jQuery, window, document);
-
-/***/ },
-/* 97 */
-/***/ function(module, exports) {
-
-	/*!
-	 * # Semantic UI 2.1.8 - Rating
-	 * http://github.com/semantic-org/semantic-ui/
-	 *
-	 *
-	 * Copyright 2015 Contributors
-	 * Released under the MIT license
-	 * http://opensource.org/licenses/MIT
-	 *
-	 */
-	"use strict";
-
-	!(function (e, n, t, i) {
-	  "use strict";e.fn.rating = function (n) {
-	    var t,
-	        a = e(this),
-	        o = a.selector || "",
-	        r = new Date().getTime(),
-	        s = [],
-	        l = arguments[0],
-	        c = "string" == typeof l,
-	        u = [].slice.call(arguments, 1);return a.each(function () {
-	      var g,
-	          d = e.isPlainObject(n) ? e.extend(!0, {}, e.fn.rating.settings, n) : e.extend({}, e.fn.rating.settings),
-	          m = d.namespace,
-	          f = d.className,
-	          v = d.metadata,
-	          p = d.selector,
-	          b = (d.error, "." + m),
-	          h = "module-" + m,
-	          y = this,
-	          x = e(this).data(h),
-	          R = e(this),
-	          C = R.find(p.icon);g = { initialize: function initialize() {
-	          g.verbose("Initializing rating module", d), 0 === C.length && g.setup.layout(), d.interactive ? g.enable() : g.disable(), g.set.rating(g.get.initialRating()), g.instantiate();
-	        }, instantiate: function instantiate() {
-	          g.verbose("Instantiating module", d), x = g, R.data(h, g);
-	        }, destroy: function destroy() {
-	          g.verbose("Destroying previous instance", x), g.remove.events(), R.removeData(h);
-	        }, refresh: function refresh() {
-	          C = R.find(p.icon);
-	        }, setup: { layout: function layout() {
-	            var n = g.get.maxRating(),
-	                t = e.fn.rating.settings.templates.icon(n);g.debug("Generating icon html dynamically"), R.html(t), g.refresh();
-	          } }, event: { mouseenter: function mouseenter() {
-	            var n = e(this);n.nextAll().removeClass(f.selected), R.addClass(f.selected), n.addClass(f.selected).prevAll().addClass(f.selected);
-	          }, mouseleave: function mouseleave() {
-	            R.removeClass(f.selected), C.removeClass(f.selected);
-	          }, click: function click() {
-	            var n = e(this),
-	                t = g.get.rating(),
-	                i = C.index(n) + 1,
-	                a = "auto" == d.clearable ? 1 === C.length : d.clearable;a && t == i ? g.clearRating() : g.set.rating(i);
-	          } }, clearRating: function clearRating() {
-	          g.debug("Clearing current rating"), g.set.rating(0);
-	        }, bind: { events: function events() {
-	            g.verbose("Binding events"), R.on("mouseenter" + b, p.icon, g.event.mouseenter).on("mouseleave" + b, p.icon, g.event.mouseleave).on("click" + b, p.icon, g.event.click);
-	          } }, remove: { events: function events() {
-	            g.verbose("Removing events"), R.off(b);
-	          } }, enable: function enable() {
-	          g.debug("Setting rating to interactive mode"), g.bind.events(), R.removeClass(f.disabled);
-	        }, disable: function disable() {
-	          g.debug("Setting rating to read-only mode"), g.remove.events(), R.addClass(f.disabled);
-	        }, get: { initialRating: function initialRating() {
-	            return R.data(v.rating) !== i ? (R.removeData(v.rating), R.data(v.rating)) : d.initialRating;
-	          }, maxRating: function maxRating() {
-	            return R.data(v.maxRating) !== i ? (R.removeData(v.maxRating), R.data(v.maxRating)) : d.maxRating;
-	          }, rating: function rating() {
-	            var e = C.filter("." + f.active).length;return g.verbose("Current rating retrieved", e), e;
-	          } }, set: { rating: function rating(e) {
-	            var n = e - 1 >= 0 ? e - 1 : 0,
-	                t = C.eq(n);R.removeClass(f.selected), C.removeClass(f.selected).removeClass(f.active), e > 0 && (g.verbose("Setting current rating to", e), t.prevAll().andSelf().addClass(f.active)), d.onRate.call(y, e);
-	          } }, setting: function setting(n, t) {
-	          if ((g.debug("Changing setting", n, t), e.isPlainObject(n))) e.extend(!0, d, n);else {
-	            if (t === i) return d[n];d[n] = t;
-	          }
-	        }, internal: function internal(n, t) {
-	          if (e.isPlainObject(n)) e.extend(!0, g, n);else {
-	            if (t === i) return g[n];g[n] = t;
-	          }
-	        }, debug: function debug() {
-	          d.debug && (d.performance ? g.performance.log(arguments) : (g.debug = Function.prototype.bind.call(console.info, console, d.name + ":"), g.debug.apply(console, arguments)));
-	        }, verbose: function verbose() {
-	          d.verbose && d.debug && (d.performance ? g.performance.log(arguments) : (g.verbose = Function.prototype.bind.call(console.info, console, d.name + ":"), g.verbose.apply(console, arguments)));
-	        }, error: function error() {
-	          g.error = Function.prototype.bind.call(console.error, console, d.name + ":"), g.error.apply(console, arguments);
-	        }, performance: { log: function log(e) {
-	            var n, t, i;d.performance && (n = new Date().getTime(), i = r || n, t = n - i, r = n, s.push({ Name: e[0], Arguments: [].slice.call(e, 1) || "", Element: y, "Execution Time": t })), clearTimeout(g.performance.timer), g.performance.timer = setTimeout(g.performance.display, 500);
-	          }, display: function display() {
-	            var n = d.name + ":",
-	                t = 0;r = !1, clearTimeout(g.performance.timer), e.each(s, function (e, n) {
-	              t += n["Execution Time"];
-	            }), n += " " + t + "ms", o && (n += " '" + o + "'"), a.length > 1 && (n += " (" + a.length + ")"), (console.group !== i || console.table !== i) && s.length > 0 && (console.groupCollapsed(n), console.table ? console.table(s) : e.each(s, function (e, n) {
-	              console.log(n.Name + ": " + n["Execution Time"] + "ms");
-	            }), console.groupEnd()), s = [];
-	          } }, invoke: function invoke(n, a, o) {
-	          var r,
-	              s,
-	              l,
-	              c = x;return a = a || u, o = y || o, "string" == typeof n && c !== i && (n = n.split(/[\. ]/), r = n.length - 1, e.each(n, function (t, a) {
-	            var o = t != r ? a + n[t + 1].charAt(0).toUpperCase() + n[t + 1].slice(1) : n;if (e.isPlainObject(c[o]) && t != r) c = c[o];else {
-	              if (c[o] !== i) return s = c[o], !1;if (!e.isPlainObject(c[a]) || t == r) return c[a] !== i ? (s = c[a], !1) : !1;c = c[a];
-	            }
-	          })), e.isFunction(s) ? l = s.apply(o, a) : s !== i && (l = s), e.isArray(t) ? t.push(l) : t !== i ? t = [t, l] : l !== i && (t = l), s;
-	        } }, c ? (x === i && g.initialize(), g.invoke(l)) : (x !== i && x.invoke("destroy"), g.initialize());
-	    }), t !== i ? t : this;
-	  }, e.fn.rating.settings = { name: "Rating", namespace: "rating", debug: !1, verbose: !1, performance: !0, initialRating: 0, interactive: !0, maxRating: 4, clearable: "auto", onRate: function onRate(e) {}, error: { method: "The method you called is not defined", noMaximum: "No maximum rating specified. Cannot generate HTML automatically" }, metadata: { rating: "rating", maxRating: "maxRating" }, className: { active: "active", disabled: "disabled", selected: "selected", loading: "loading" }, selector: { icon: ".icon" }, templates: { icon: function icon(e) {
-	        for (var n = 1, t = ""; e >= n;) t += '<i class="icon"></i>', n++;return t;
-	      } } };
-	})(jQuery, window, document);
-
-/***/ },
-/* 98 */
+/* 80 */,
+/* 81 */
 /***/ function(module, exports) {
 
 	/*!
@@ -12403,7 +11854,14 @@
 	})(jQuery, window, document);
 
 /***/ },
-/* 99 */
+/* 82 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 83 */,
+/* 84 */
 /***/ function(module, exports) {
 
 	/*!
@@ -12656,6 +12114,547 @@
 	    }), a !== t ? a : this;
 	  }, n.fn.transition.exists = {}, n.fn.transition.settings = { name: "Transition", debug: !1, verbose: !1, performance: !0, namespace: "transition", interval: 0, reverse: "auto", onStart: function onStart() {}, onComplete: function onComplete() {}, onShow: function onShow() {}, onHide: function onHide() {}, useFailSafe: !0, failSafeDelay: 100, allowRepeats: !1, displayType: !1, animation: "fade", duration: !1, queue: !0, metadata: { displayType: "display" }, className: { animating: "animating", disabled: "disabled", hidden: "hidden", inward: "in", loading: "loading", looping: "looping", outward: "out", transition: "transition", visible: "visible" }, error: { noAnimation: "Element is no longer attached to DOM. Unable to animate.", repeated: "That animation is already occurring, cancelling repeated animation", method: "The method you called is not defined", support: "This browser does not support CSS animations" } };
 	})(jQuery, window, document);
+
+/***/ },
+/* 85 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 86 */,
+/* 87 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 88 */,
+/* 89 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 90 */,
+/* 91 */
+/***/ function(module, exports) {
+
+	/*!
+	 * # Semantic UI 2.1.8 - Dimmer
+	 * http://github.com/semantic-org/semantic-ui/
+	 *
+	 *
+	 * Copyright 2015 Contributors
+	 * Released under the MIT license
+	 * http://opensource.org/licenses/MIT
+	 *
+	 */
+	"use strict";
+
+	!(function (e, i, n, t) {
+	  "use strict";e.fn.dimmer = function (i) {
+	    var o,
+	        a = e(this),
+	        r = new Date().getTime(),
+	        m = [],
+	        s = arguments[0],
+	        d = "string" == typeof s,
+	        c = [].slice.call(arguments, 1);return a.each(function () {
+	      var u,
+	          l,
+	          f,
+	          g = e.isPlainObject(i) ? e.extend(!0, {}, e.fn.dimmer.settings, i) : e.extend({}, e.fn.dimmer.settings),
+	          p = g.selector,
+	          v = g.namespace,
+	          b = g.className,
+	          h = g.error,
+	          y = "." + v,
+	          C = "module-" + v,
+	          w = a.selector || "",
+	          S = "ontouchstart" in n.documentElement ? "touchstart" : "click",
+	          D = e(this),
+	          T = this,
+	          N = D.data(C);f = { preinitialize: function preinitialize() {
+	          f.is.dimmer() ? (l = D.parent(), u = D) : (l = D, u = f.has.dimmer() ? g.dimmerName ? l.find(p.dimmer).filter("." + g.dimmerName) : l.find(p.dimmer) : f.create());
+	        }, initialize: function initialize() {
+	          f.debug("Initializing dimmer", g), f.bind.events(), f.set.dimmable(), f.instantiate();
+	        }, instantiate: function instantiate() {
+	          f.verbose("Storing instance of module", f), N = f, D.data(C, N);
+	        }, destroy: function destroy() {
+	          f.verbose("Destroying previous module", u), f.unbind.events(), f.remove.variation(), l.off(y);
+	        }, bind: { events: function events() {
+	            "hover" == g.on ? l.on("mouseenter" + y, f.show).on("mouseleave" + y, f.hide) : "click" == g.on && l.on(S + y, f.toggle), f.is.page() && (f.debug("Setting as a page dimmer", l), f.set.pageDimmer()), f.is.closable() && (f.verbose("Adding dimmer close event", u), l.on(S + y, p.dimmer, f.event.click));
+	          } }, unbind: { events: function events() {
+	            D.removeData(C);
+	          } }, event: { click: function click(i) {
+	            f.verbose("Determining if event occured on dimmer", i), (0 === u.find(i.target).length || e(i.target).is(p.content)) && (f.hide(), i.stopImmediatePropagation());
+	          } }, addContent: function addContent(i) {
+	          var n = e(i);f.debug("Add content to dimmer", n), n.parent()[0] !== u[0] && n.detach().appendTo(u);
+	        }, create: function create() {
+	          var i = e(g.template.dimmer());return g.variation && (f.debug("Creating dimmer with variation", g.variation), i.addClass(g.variation)), g.dimmerName && (f.debug("Creating named dimmer", g.dimmerName), i.addClass(g.dimmerName)), i.appendTo(l), i;
+	        }, show: function show(i) {
+	          i = e.isFunction(i) ? i : function () {}, f.debug("Showing dimmer", u, g), f.is.dimmed() && !f.is.animating() || !f.is.enabled() ? f.debug("Dimmer is already shown or disabled") : (f.animate.show(i), g.onShow.call(T), g.onChange.call(T));
+	        }, hide: function hide(i) {
+	          i = e.isFunction(i) ? i : function () {}, f.is.dimmed() || f.is.animating() ? (f.debug("Hiding dimmer", u), f.animate.hide(i), g.onHide.call(T), g.onChange.call(T)) : f.debug("Dimmer is not visible");
+	        }, toggle: function toggle() {
+	          f.verbose("Toggling dimmer visibility", u), f.is.dimmed() ? f.hide() : f.show();
+	        }, animate: { show: function show(i) {
+	            i = e.isFunction(i) ? i : function () {}, g.useCSS && e.fn.transition !== t && u.transition("is supported") ? ("auto" !== g.opacity && f.set.opacity(), u.transition({ animation: g.transition + " in", queue: !1, duration: f.get.duration(), useFailSafe: !0, onStart: function onStart() {
+	                f.set.dimmed();
+	              }, onComplete: function onComplete() {
+	                f.set.active(), i();
+	              } })) : (f.verbose("Showing dimmer animation with javascript"), f.set.dimmed(), "auto" == g.opacity && (g.opacity = .8), u.stop().css({ opacity: 0, width: "100%", height: "100%" }).fadeTo(f.get.duration(), g.opacity, function () {
+	              u.removeAttr("style"), f.set.active(), i();
+	            }));
+	          }, hide: function hide(i) {
+	            i = e.isFunction(i) ? i : function () {}, g.useCSS && e.fn.transition !== t && u.transition("is supported") ? (f.verbose("Hiding dimmer with css"), u.transition({ animation: g.transition + " out", queue: !1, duration: f.get.duration(), useFailSafe: !0, onStart: function onStart() {
+	                f.remove.dimmed();
+	              }, onComplete: function onComplete() {
+	                f.remove.active(), i();
+	              } })) : (f.verbose("Hiding dimmer with javascript"), f.remove.dimmed(), u.stop().fadeOut(f.get.duration(), function () {
+	              f.remove.active(), u.removeAttr("style"), i();
+	            }));
+	          } }, get: { dimmer: function dimmer() {
+	            return u;
+	          }, duration: function duration() {
+	            return "object" == typeof g.duration ? f.is.active() ? g.duration.hide : g.duration.show : g.duration;
+	          } }, has: { dimmer: function dimmer() {
+	            return g.dimmerName ? D.find(p.dimmer).filter("." + g.dimmerName).length > 0 : D.find(p.dimmer).length > 0;
+	          } }, is: { active: function active() {
+	            return u.hasClass(b.active);
+	          }, animating: function animating() {
+	            return u.is(":animated") || u.hasClass(b.animating);
+	          }, closable: function closable() {
+	            return "auto" == g.closable ? "hover" != g.on : g.closable;
+	          }, dimmer: function dimmer() {
+	            return D.hasClass(b.dimmer);
+	          }, dimmable: function dimmable() {
+	            return D.hasClass(b.dimmable);
+	          }, dimmed: function dimmed() {
+	            return l.hasClass(b.dimmed);
+	          }, disabled: function disabled() {
+	            return l.hasClass(b.disabled);
+	          }, enabled: function enabled() {
+	            return !f.is.disabled();
+	          }, page: function page() {
+	            return l.is("body");
+	          }, pageDimmer: function pageDimmer() {
+	            return u.hasClass(b.pageDimmer);
+	          } }, can: { show: function show() {
+	            return !u.hasClass(b.disabled);
+	          } }, set: { opacity: function opacity(e) {
+	            var i = u.css("background-color"),
+	                n = i.split(","),
+	                t = n && 4 == n.length;e = 0 === g.opacity ? 0 : g.opacity || e, t ? (n[3] = e + ")", i = n.join(",")) : i = "rgba(0, 0, 0, " + e + ")", f.debug("Setting opacity to", e), u.css("background-color", i);
+	          }, active: function active() {
+	            u.addClass(b.active);
+	          }, dimmable: function dimmable() {
+	            l.addClass(b.dimmable);
+	          }, dimmed: function dimmed() {
+	            l.addClass(b.dimmed);
+	          }, pageDimmer: function pageDimmer() {
+	            u.addClass(b.pageDimmer);
+	          }, disabled: function disabled() {
+	            u.addClass(b.disabled);
+	          }, variation: function variation(e) {
+	            e = e || g.variation, e && u.addClass(e);
+	          } }, remove: { active: function active() {
+	            u.removeClass(b.active);
+	          }, dimmed: function dimmed() {
+	            l.removeClass(b.dimmed);
+	          }, disabled: function disabled() {
+	            u.removeClass(b.disabled);
+	          }, variation: function variation(e) {
+	            e = e || g.variation, e && u.removeClass(e);
+	          } }, setting: function setting(i, n) {
+	          if ((f.debug("Changing setting", i, n), e.isPlainObject(i))) e.extend(!0, g, i);else {
+	            if (n === t) return g[i];g[i] = n;
+	          }
+	        }, internal: function internal(i, n) {
+	          if (e.isPlainObject(i)) e.extend(!0, f, i);else {
+	            if (n === t) return f[i];f[i] = n;
+	          }
+	        }, debug: function debug() {
+	          g.debug && (g.performance ? f.performance.log(arguments) : (f.debug = Function.prototype.bind.call(console.info, console, g.name + ":"), f.debug.apply(console, arguments)));
+	        }, verbose: function verbose() {
+	          g.verbose && g.debug && (g.performance ? f.performance.log(arguments) : (f.verbose = Function.prototype.bind.call(console.info, console, g.name + ":"), f.verbose.apply(console, arguments)));
+	        }, error: function error() {
+	          f.error = Function.prototype.bind.call(console.error, console, g.name + ":"), f.error.apply(console, arguments);
+	        }, performance: { log: function log(e) {
+	            var i, n, t;g.performance && (i = new Date().getTime(), t = r || i, n = i - t, r = i, m.push({ Name: e[0], Arguments: [].slice.call(e, 1) || "", Element: T, "Execution Time": n })), clearTimeout(f.performance.timer), f.performance.timer = setTimeout(f.performance.display, 500);
+	          }, display: function display() {
+	            var i = g.name + ":",
+	                n = 0;r = !1, clearTimeout(f.performance.timer), e.each(m, function (e, i) {
+	              n += i["Execution Time"];
+	            }), i += " " + n + "ms", w && (i += " '" + w + "'"), a.length > 1 && (i += " (" + a.length + ")"), (console.group !== t || console.table !== t) && m.length > 0 && (console.groupCollapsed(i), console.table ? console.table(m) : e.each(m, function (e, i) {
+	              console.log(i.Name + ": " + i["Execution Time"] + "ms");
+	            }), console.groupEnd()), m = [];
+	          } }, invoke: function invoke(i, n, a) {
+	          var r,
+	              m,
+	              s,
+	              d = N;return n = n || c, a = T || a, "string" == typeof i && d !== t && (i = i.split(/[\. ]/), r = i.length - 1, e.each(i, function (n, o) {
+	            var a = n != r ? o + i[n + 1].charAt(0).toUpperCase() + i[n + 1].slice(1) : i;if (e.isPlainObject(d[a]) && n != r) d = d[a];else {
+	              if (d[a] !== t) return m = d[a], !1;if (!e.isPlainObject(d[o]) || n == r) return d[o] !== t ? (m = d[o], !1) : (f.error(h.method, i), !1);d = d[o];
+	            }
+	          })), e.isFunction(m) ? s = m.apply(a, n) : m !== t && (s = m), e.isArray(o) ? o.push(s) : o !== t ? o = [o, s] : s !== t && (o = s), m;
+	        } }, f.preinitialize(), d ? (N === t && f.initialize(), f.invoke(s)) : (N !== t && N.invoke("destroy"), f.initialize());
+	    }), o !== t ? o : this;
+	  }, e.fn.dimmer.settings = { name: "Dimmer", namespace: "dimmer", debug: !1, verbose: !1, performance: !0, dimmerName: !1, variation: !1, closable: "auto", useCSS: !0, transition: "fade", on: !1, opacity: "auto", duration: { show: 500, hide: 500 }, onChange: function onChange() {}, onShow: function onShow() {}, onHide: function onHide() {}, error: { method: "The method you called is not defined." }, className: { active: "active", animating: "animating", dimmable: "dimmable", dimmed: "dimmed", dimmer: "dimmer", disabled: "disabled", hide: "hide", pageDimmer: "page", show: "show" }, selector: { dimmer: "> .ui.dimmer", content: ".ui.dimmer > .content, .ui.dimmer > .content > .center" }, template: { dimmer: function dimmer() {
+	        return e("<div />").attr("class", "ui dimmer");
+	      } } };
+	})(jQuery, window, document);
+
+/***/ },
+/* 92 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 93 */,
+/* 94 */
+/***/ function(module, exports) {
+
+	/*!
+	 * # Semantic UI 2.1.8 - Rating
+	 * http://github.com/semantic-org/semantic-ui/
+	 *
+	 *
+	 * Copyright 2015 Contributors
+	 * Released under the MIT license
+	 * http://opensource.org/licenses/MIT
+	 *
+	 */
+	"use strict";
+
+	!(function (e, n, t, i) {
+	  "use strict";e.fn.rating = function (n) {
+	    var t,
+	        a = e(this),
+	        o = a.selector || "",
+	        r = new Date().getTime(),
+	        s = [],
+	        l = arguments[0],
+	        c = "string" == typeof l,
+	        u = [].slice.call(arguments, 1);return a.each(function () {
+	      var g,
+	          d = e.isPlainObject(n) ? e.extend(!0, {}, e.fn.rating.settings, n) : e.extend({}, e.fn.rating.settings),
+	          m = d.namespace,
+	          f = d.className,
+	          v = d.metadata,
+	          p = d.selector,
+	          b = (d.error, "." + m),
+	          h = "module-" + m,
+	          y = this,
+	          x = e(this).data(h),
+	          R = e(this),
+	          C = R.find(p.icon);g = { initialize: function initialize() {
+	          g.verbose("Initializing rating module", d), 0 === C.length && g.setup.layout(), d.interactive ? g.enable() : g.disable(), g.set.rating(g.get.initialRating()), g.instantiate();
+	        }, instantiate: function instantiate() {
+	          g.verbose("Instantiating module", d), x = g, R.data(h, g);
+	        }, destroy: function destroy() {
+	          g.verbose("Destroying previous instance", x), g.remove.events(), R.removeData(h);
+	        }, refresh: function refresh() {
+	          C = R.find(p.icon);
+	        }, setup: { layout: function layout() {
+	            var n = g.get.maxRating(),
+	                t = e.fn.rating.settings.templates.icon(n);g.debug("Generating icon html dynamically"), R.html(t), g.refresh();
+	          } }, event: { mouseenter: function mouseenter() {
+	            var n = e(this);n.nextAll().removeClass(f.selected), R.addClass(f.selected), n.addClass(f.selected).prevAll().addClass(f.selected);
+	          }, mouseleave: function mouseleave() {
+	            R.removeClass(f.selected), C.removeClass(f.selected);
+	          }, click: function click() {
+	            var n = e(this),
+	                t = g.get.rating(),
+	                i = C.index(n) + 1,
+	                a = "auto" == d.clearable ? 1 === C.length : d.clearable;a && t == i ? g.clearRating() : g.set.rating(i);
+	          } }, clearRating: function clearRating() {
+	          g.debug("Clearing current rating"), g.set.rating(0);
+	        }, bind: { events: function events() {
+	            g.verbose("Binding events"), R.on("mouseenter" + b, p.icon, g.event.mouseenter).on("mouseleave" + b, p.icon, g.event.mouseleave).on("click" + b, p.icon, g.event.click);
+	          } }, remove: { events: function events() {
+	            g.verbose("Removing events"), R.off(b);
+	          } }, enable: function enable() {
+	          g.debug("Setting rating to interactive mode"), g.bind.events(), R.removeClass(f.disabled);
+	        }, disable: function disable() {
+	          g.debug("Setting rating to read-only mode"), g.remove.events(), R.addClass(f.disabled);
+	        }, get: { initialRating: function initialRating() {
+	            return R.data(v.rating) !== i ? (R.removeData(v.rating), R.data(v.rating)) : d.initialRating;
+	          }, maxRating: function maxRating() {
+	            return R.data(v.maxRating) !== i ? (R.removeData(v.maxRating), R.data(v.maxRating)) : d.maxRating;
+	          }, rating: function rating() {
+	            var e = C.filter("." + f.active).length;return g.verbose("Current rating retrieved", e), e;
+	          } }, set: { rating: function rating(e) {
+	            var n = e - 1 >= 0 ? e - 1 : 0,
+	                t = C.eq(n);R.removeClass(f.selected), C.removeClass(f.selected).removeClass(f.active), e > 0 && (g.verbose("Setting current rating to", e), t.prevAll().andSelf().addClass(f.active)), d.onRate.call(y, e);
+	          } }, setting: function setting(n, t) {
+	          if ((g.debug("Changing setting", n, t), e.isPlainObject(n))) e.extend(!0, d, n);else {
+	            if (t === i) return d[n];d[n] = t;
+	          }
+	        }, internal: function internal(n, t) {
+	          if (e.isPlainObject(n)) e.extend(!0, g, n);else {
+	            if (t === i) return g[n];g[n] = t;
+	          }
+	        }, debug: function debug() {
+	          d.debug && (d.performance ? g.performance.log(arguments) : (g.debug = Function.prototype.bind.call(console.info, console, d.name + ":"), g.debug.apply(console, arguments)));
+	        }, verbose: function verbose() {
+	          d.verbose && d.debug && (d.performance ? g.performance.log(arguments) : (g.verbose = Function.prototype.bind.call(console.info, console, d.name + ":"), g.verbose.apply(console, arguments)));
+	        }, error: function error() {
+	          g.error = Function.prototype.bind.call(console.error, console, d.name + ":"), g.error.apply(console, arguments);
+	        }, performance: { log: function log(e) {
+	            var n, t, i;d.performance && (n = new Date().getTime(), i = r || n, t = n - i, r = n, s.push({ Name: e[0], Arguments: [].slice.call(e, 1) || "", Element: y, "Execution Time": t })), clearTimeout(g.performance.timer), g.performance.timer = setTimeout(g.performance.display, 500);
+	          }, display: function display() {
+	            var n = d.name + ":",
+	                t = 0;r = !1, clearTimeout(g.performance.timer), e.each(s, function (e, n) {
+	              t += n["Execution Time"];
+	            }), n += " " + t + "ms", o && (n += " '" + o + "'"), a.length > 1 && (n += " (" + a.length + ")"), (console.group !== i || console.table !== i) && s.length > 0 && (console.groupCollapsed(n), console.table ? console.table(s) : e.each(s, function (e, n) {
+	              console.log(n.Name + ": " + n["Execution Time"] + "ms");
+	            }), console.groupEnd()), s = [];
+	          } }, invoke: function invoke(n, a, o) {
+	          var r,
+	              s,
+	              l,
+	              c = x;return a = a || u, o = y || o, "string" == typeof n && c !== i && (n = n.split(/[\. ]/), r = n.length - 1, e.each(n, function (t, a) {
+	            var o = t != r ? a + n[t + 1].charAt(0).toUpperCase() + n[t + 1].slice(1) : n;if (e.isPlainObject(c[o]) && t != r) c = c[o];else {
+	              if (c[o] !== i) return s = c[o], !1;if (!e.isPlainObject(c[a]) || t == r) return c[a] !== i ? (s = c[a], !1) : !1;c = c[a];
+	            }
+	          })), e.isFunction(s) ? l = s.apply(o, a) : s !== i && (l = s), e.isArray(t) ? t.push(l) : t !== i ? t = [t, l] : l !== i && (t = l), s;
+	        } }, c ? (x === i && g.initialize(), g.invoke(l)) : (x !== i && x.invoke("destroy"), g.initialize());
+	    }), t !== i ? t : this;
+	  }, e.fn.rating.settings = { name: "Rating", namespace: "rating", debug: !1, verbose: !1, performance: !0, initialRating: 0, interactive: !0, maxRating: 4, clearable: "auto", onRate: function onRate(e) {}, error: { method: "The method you called is not defined", noMaximum: "No maximum rating specified. Cannot generate HTML automatically" }, metadata: { rating: "rating", maxRating: "maxRating" }, className: { active: "active", disabled: "disabled", selected: "selected", loading: "loading" }, selector: { icon: ".icon" }, templates: { icon: function icon(e) {
+	        for (var n = 1, t = ""; e >= n;) t += '<i class="icon"></i>', n++;return t;
+	      } } };
+	})(jQuery, window, document);
+
+/***/ },
+/* 95 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 96 */,
+/* 97 */
+/***/ function(module, exports) {
+
+	/*!
+	 * # Semantic UI 2.1.8 - Modal
+	 * http://github.com/semantic-org/semantic-ui/
+	 *
+	 *
+	 * Copyright 2015 Contributors
+	 * Released under the MIT license
+	 * http://opensource.org/licenses/MIT
+	 *
+	 */
+	"use strict";
+
+	!(function (e, n, i, t) {
+	  "use strict";e.fn.modal = function (o) {
+	    var a,
+	        r = e(this),
+	        s = e(n),
+	        c = e(i),
+	        l = e("body"),
+	        d = r.selector || "",
+	        u = new Date().getTime(),
+	        m = [],
+	        f = arguments[0],
+	        g = "string" == typeof f,
+	        h = [].slice.call(arguments, 1),
+	        v = n.requestAnimationFrame || n.mozRequestAnimationFrame || n.webkitRequestAnimationFrame || n.msRequestAnimationFrame || function (e) {
+	      setTimeout(e, 0);
+	    };return r.each(function () {
+	      var r,
+	          b,
+	          p,
+	          y,
+	          k,
+	          w,
+	          C,
+	          M,
+	          S,
+	          F = e.isPlainObject(o) ? e.extend(!0, {}, e.fn.modal.settings, o) : e.extend({}, e.fn.modal.settings),
+	          A = F.selector,
+	          D = F.className,
+	          H = F.namespace,
+	          T = F.error,
+	          x = "." + H,
+	          z = "module-" + H,
+	          O = e(this),
+	          q = e(F.context),
+	          E = O.find(A.close),
+	          j = this,
+	          R = O.data(z);S = { initialize: function initialize() {
+	          S.verbose("Initializing dimmer", q), S.create.id(), S.create.dimmer(), S.refreshModals(), S.bind.events(), F.observeChanges && S.observeChanges(), S.instantiate();
+	        }, instantiate: function instantiate() {
+	          S.verbose("Storing instance of modal"), R = S, O.data(z, R);
+	        }, create: { dimmer: function dimmer() {
+	            var n = { debug: F.debug, dimmerName: "modals", duration: { show: F.duration, hide: F.duration } },
+	                i = e.extend(!0, n, F.dimmerSettings);return F.inverted && (i.variation = i.variation !== t ? i.variation + " inverted" : "inverted"), e.fn.dimmer === t ? void S.error(T.dimmer) : (S.debug("Creating dimmer with settings", i), y = q.dimmer(i), F.detachable ? (S.verbose("Modal is detachable, moving content into dimmer"), y.dimmer("add content", O)) : S.set.undetached(), F.blurring && y.addClass(D.blurring), void (k = y.dimmer("get dimmer")));
+	          }, id: function id() {
+	            C = (Math.random().toString(16) + "000000000").substr(2, 8), w = "." + C, S.verbose("Creating unique id for element", C);
+	          } }, destroy: function destroy() {
+	          S.verbose("Destroying previous modal"), O.removeData(z).off(x), s.off(w), E.off(x), q.dimmer("destroy");
+	        }, observeChanges: function observeChanges() {
+	          "MutationObserver" in n && (M = new MutationObserver(function (e) {
+	            S.debug("DOM tree modified, refreshing"), S.refresh();
+	          }), M.observe(j, { childList: !0, subtree: !0 }), S.debug("Setting up mutation observer", M));
+	        }, refresh: function refresh() {
+	          S.remove.scrolling(), S.cacheSizes(), S.set.screenHeight(), S.set.type(), S.set.position();
+	        }, refreshModals: function refreshModals() {
+	          b = O.siblings(A.modal), r = b.add(O);
+	        }, attachEvents: function attachEvents(n, i) {
+	          var t = e(n);i = e.isFunction(S[i]) ? S[i] : S.toggle, t.length > 0 ? (S.debug("Attaching modal events to element", n, i), t.off(x).on("click" + x, i)) : S.error(T.notFound, n);
+	        }, bind: { events: function events() {
+	            S.verbose("Attaching events"), O.on("click" + x, A.close, S.event.close).on("click" + x, A.approve, S.event.approve).on("click" + x, A.deny, S.event.deny), s.on("resize" + w, S.event.resize);
+	          } }, get: { id: function id() {
+	            return (Math.random().toString(16) + "000000000").substr(2, 8);
+	          } }, event: { approve: function approve() {
+	            return F.onApprove.call(j, e(this)) === !1 ? void S.verbose("Approve callback returned false cancelling hide") : void S.hide();
+	          }, deny: function deny() {
+	            return F.onDeny.call(j, e(this)) === !1 ? void S.verbose("Deny callback returned false cancelling hide") : void S.hide();
+	          }, close: function close() {
+	            S.hide();
+	          }, click: function click(n) {
+	            var t = e(n.target),
+	                o = t.closest(A.modal).length > 0,
+	                a = e.contains(i.documentElement, n.target);!o && a && (S.debug("Dimmer clicked, hiding all modals"), S.is.active() && (S.remove.clickaway(), F.allowMultiple ? S.hide() : S.hideAll()));
+	          }, debounce: function debounce(e, n) {
+	            clearTimeout(S.timer), S.timer = setTimeout(e, n);
+	          }, keyboard: function keyboard(e) {
+	            var n = e.which,
+	                i = 27;n == i && (F.closable ? (S.debug("Escape key pressed hiding modal"), S.hide()) : S.debug("Escape key pressed, but closable is set to false"), e.preventDefault());
+	          }, resize: function resize() {
+	            y.dimmer("is active") && v(S.refresh);
+	          } }, toggle: function toggle() {
+	          S.is.active() || S.is.animating() ? S.hide() : S.show();
+	        }, show: function show(n) {
+	          n = e.isFunction(n) ? n : function () {}, S.refreshModals(), S.showModal(n);
+	        }, hide: function hide(n) {
+	          n = e.isFunction(n) ? n : function () {}, S.refreshModals(), S.hideModal(n);
+	        }, showModal: function showModal(n) {
+	          n = e.isFunction(n) ? n : function () {}, S.is.animating() || !S.is.active() ? (S.showDimmer(), S.cacheSizes(), S.set.position(), S.set.screenHeight(), S.set.type(), S.set.clickaway(), !F.allowMultiple && S.others.active() ? S.hideOthers(S.showModal) : (F.onShow.call(j), F.transition && e.fn.transition !== t && O.transition("is supported") ? (S.debug("Showing modal with css animations"), O.transition({ debug: F.debug, animation: F.transition + " in", queue: F.queue, duration: F.duration, useFailSafe: !0, onComplete: function onComplete() {
+	              F.onVisible.apply(j), S.add.keyboardShortcuts(), S.save.focus(), S.set.active(), F.autofocus && S.set.autofocus(), n();
+	            } })) : S.error(T.noTransition))) : S.debug("Modal is already visible");
+	        }, hideModal: function hideModal(n, i) {
+	          return n = e.isFunction(n) ? n : function () {}, S.debug("Hiding modal"), F.onHide.call(j, e(this)) === !1 ? void S.verbose("Hide callback returned false cancelling hide") : void ((S.is.animating() || S.is.active()) && (F.transition && e.fn.transition !== t && O.transition("is supported") ? (S.remove.active(), O.transition({ debug: F.debug, animation: F.transition + " out", queue: F.queue, duration: F.duration, useFailSafe: !0, onStart: function onStart() {
+	              S.others.active() || i || S.hideDimmer(), S.remove.keyboardShortcuts();
+	            }, onComplete: function onComplete() {
+	              F.onHidden.call(j), S.restore.focus(), n();
+	            } })) : S.error(T.noTransition)));
+	        }, showDimmer: function showDimmer() {
+	          y.dimmer("is animating") || !y.dimmer("is active") ? (S.debug("Showing dimmer"), y.dimmer("show")) : S.debug("Dimmer already visible");
+	        }, hideDimmer: function hideDimmer() {
+	          return y.dimmer("is animating") || y.dimmer("is active") ? void y.dimmer("hide", function () {
+	            S.remove.clickaway(), S.remove.screenHeight();
+	          }) : void S.debug("Dimmer is not visible cannot hide");
+	        }, hideAll: function hideAll(n) {
+	          var i = r.filter("." + D.active + ", ." + D.animating);n = e.isFunction(n) ? n : function () {}, i.length > 0 && (S.debug("Hiding all visible modals"), S.hideDimmer(), i.modal("hide modal", n));
+	        }, hideOthers: function hideOthers(n) {
+	          var i = b.filter("." + D.active + ", ." + D.animating);n = e.isFunction(n) ? n : function () {}, i.length > 0 && (S.debug("Hiding other modals", b), i.modal("hide modal", n, !0));
+	        }, others: { active: function active() {
+	            return b.filter("." + D.active).length > 0;
+	          }, animating: function animating() {
+	            return b.filter("." + D.animating).length > 0;
+	          } }, add: { keyboardShortcuts: function keyboardShortcuts() {
+	            S.verbose("Adding keyboard shortcuts"), c.on("keyup" + x, S.event.keyboard);
+	          } }, save: { focus: function focus() {
+	            p = e(i.activeElement).blur();
+	          } }, restore: { focus: function focus() {
+	            p && p.length > 0 && p.focus();
+	          } }, remove: { active: function active() {
+	            O.removeClass(D.active);
+	          }, clickaway: function clickaway() {
+	            F.closable && k.off("click" + w);
+	          }, bodyStyle: function bodyStyle() {
+	            "" === l.attr("style") && (S.verbose("Removing style attribute"), l.removeAttr("style"));
+	          }, screenHeight: function screenHeight() {
+	            S.debug("Removing page height"), l.css("height", "");
+	          }, keyboardShortcuts: function keyboardShortcuts() {
+	            S.verbose("Removing keyboard shortcuts"), c.off("keyup" + x);
+	          }, scrolling: function scrolling() {
+	            y.removeClass(D.scrolling), O.removeClass(D.scrolling);
+	          } }, cacheSizes: function cacheSizes() {
+	          var o = O.outerHeight();S.cache !== t && 0 === o || (S.cache = { pageHeight: e(i).outerHeight(), height: o + F.offset, contextHeight: "body" == F.context ? e(n).height() : y.height() }), S.debug("Caching modal and container sizes", S.cache);
+	        }, can: { fit: function fit() {
+	            return S.cache.height + 2 * F.padding < S.cache.contextHeight;
+	          } }, is: { active: function active() {
+	            return O.hasClass(D.active);
+	          }, animating: function animating() {
+	            return O.transition("is supported") ? O.transition("is animating") : O.is(":visible");
+	          }, scrolling: function scrolling() {
+	            return y.hasClass(D.scrolling);
+	          }, modernBrowser: function modernBrowser() {
+	            return !(n.ActiveXObject || "ActiveXObject" in n);
+	          } }, set: { autofocus: function autofocus() {
+	            var e = O.find(":input").filter(":visible"),
+	                n = e.filter("[autofocus]"),
+	                i = n.length > 0 ? n.first() : e.first();i.length > 0 && i.focus();
+	          }, clickaway: function clickaway() {
+	            F.closable && k.on("click" + w, S.event.click);
+	          }, screenHeight: function screenHeight() {
+	            S.can.fit() ? l.css("height", "") : (S.debug("Modal is taller than page content, resizing page height"), l.css("height", S.cache.height + 2 * F.padding));
+	          }, active: function active() {
+	            O.addClass(D.active);
+	          }, scrolling: function scrolling() {
+	            y.addClass(D.scrolling), O.addClass(D.scrolling);
+	          }, type: function type() {
+	            S.can.fit() ? (S.verbose("Modal fits on screen"), S.others.active() || S.others.animating() || S.remove.scrolling()) : (S.verbose("Modal cannot fit on screen setting to scrolling"), S.set.scrolling());
+	          }, position: function position() {
+	            S.verbose("Centering modal on page", S.cache), S.can.fit() ? O.css({ top: "", marginTop: -(S.cache.height / 2) }) : O.css({ marginTop: "", top: c.scrollTop() });
+	          }, undetached: function undetached() {
+	            y.addClass(D.undetached);
+	          } }, setting: function setting(n, i) {
+	          if ((S.debug("Changing setting", n, i), e.isPlainObject(n))) e.extend(!0, F, n);else {
+	            if (i === t) return F[n];F[n] = i;
+	          }
+	        }, internal: function internal(n, i) {
+	          if (e.isPlainObject(n)) e.extend(!0, S, n);else {
+	            if (i === t) return S[n];S[n] = i;
+	          }
+	        }, debug: function debug() {
+	          F.debug && (F.performance ? S.performance.log(arguments) : (S.debug = Function.prototype.bind.call(console.info, console, F.name + ":"), S.debug.apply(console, arguments)));
+	        }, verbose: function verbose() {
+	          F.verbose && F.debug && (F.performance ? S.performance.log(arguments) : (S.verbose = Function.prototype.bind.call(console.info, console, F.name + ":"), S.verbose.apply(console, arguments)));
+	        }, error: function error() {
+	          S.error = Function.prototype.bind.call(console.error, console, F.name + ":"), S.error.apply(console, arguments);
+	        }, performance: { log: function log(e) {
+	            var n, i, t;F.performance && (n = new Date().getTime(), t = u || n, i = n - t, u = n, m.push({ Name: e[0], Arguments: [].slice.call(e, 1) || "", Element: j, "Execution Time": i })), clearTimeout(S.performance.timer), S.performance.timer = setTimeout(S.performance.display, 500);
+	          }, display: function display() {
+	            var n = F.name + ":",
+	                i = 0;u = !1, clearTimeout(S.performance.timer), e.each(m, function (e, n) {
+	              i += n["Execution Time"];
+	            }), n += " " + i + "ms", d && (n += " '" + d + "'"), (console.group !== t || console.table !== t) && m.length > 0 && (console.groupCollapsed(n), console.table ? console.table(m) : e.each(m, function (e, n) {
+	              console.log(n.Name + ": " + n["Execution Time"] + "ms");
+	            }), console.groupEnd()), m = [];
+	          } }, invoke: function invoke(n, i, o) {
+	          var r,
+	              s,
+	              c,
+	              l = R;return i = i || h, o = j || o, "string" == typeof n && l !== t && (n = n.split(/[\. ]/), r = n.length - 1, e.each(n, function (i, o) {
+	            var a = i != r ? o + n[i + 1].charAt(0).toUpperCase() + n[i + 1].slice(1) : n;if (e.isPlainObject(l[a]) && i != r) l = l[a];else {
+	              if (l[a] !== t) return s = l[a], !1;if (!e.isPlainObject(l[o]) || i == r) return l[o] !== t ? (s = l[o], !1) : !1;l = l[o];
+	            }
+	          })), e.isFunction(s) ? c = s.apply(o, i) : s !== t && (c = s), e.isArray(a) ? a.push(c) : a !== t ? a = [a, c] : c !== t && (a = c), s;
+	        } }, g ? (R === t && S.initialize(), S.invoke(f)) : (R !== t && R.invoke("destroy"), S.initialize());
+	    }), a !== t ? a : this;
+	  }, e.fn.modal.settings = { name: "Modal", namespace: "modal", debug: !1, verbose: !1, performance: !0, observeChanges: !1, allowMultiple: !1, detachable: !0, closable: !0, autofocus: !0, inverted: !1, blurring: !1, dimmerSettings: { closable: !1, useCSS: !0 }, context: "body", queue: !1, duration: 500, offset: 0, transition: "scale", padding: 50, onShow: function onShow() {}, onVisible: function onVisible() {}, onHide: function onHide() {
+	      return !0;
+	    }, onHidden: function onHidden() {}, onApprove: function onApprove() {
+	      return !0;
+	    }, onDeny: function onDeny() {
+	      return !0;
+	    }, selector: { close: "> .close", approve: ".actions .positive, .actions .approve, .actions .ok", deny: ".actions .negative, .actions .deny, .actions .cancel", modal: ".ui.modal" }, error: { dimmer: "UI Dimmer, a required component is not included in this page", method: "The method you called is not defined.", notFound: "The element you specified could not be found" }, className: { active: "active", animating: "animating", blurring: "blurring", scrolling: "scrolling", undetached: "undetached" } };
+	})(jQuery, window, document);
+
+/***/ },
+/* 98 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

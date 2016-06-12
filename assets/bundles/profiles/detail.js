@@ -53,13 +53,13 @@
 
 	__webpack_require__(115);
 
-	__webpack_require__(60);
+	__webpack_require__(89);
+
+	__webpack_require__(91);
+
+	__webpack_require__(97);
 
 	__webpack_require__(95);
-
-	__webpack_require__(96);
-
-	__webpack_require__(62);
 
 	$(function () {
 	  init_button();
@@ -153,9 +153,37 @@
 	  }
 
 	  function country_city() {
-	    $.get('/cities/get_cities', function (data) {
-	      refresh_location(data, $("#id_country").val());
+	    var province_data = '';
+	    var city_data = '';
+
+	    $.get('/cities/get_provinces', function (p_data) {
+	      province_data = p_data;
+	      refresh_province(p_data, $("#id_country").val());
+
+	      $.get('/cities/get_cities', function (c_data) {
+	        city_data = c_data;
+	        refresh_location(c_data, $("#id_province").val());
+
+	        change_event();
+	      });
+	    });
+
+	    function change_event() {
 	      $('#id_country').parent().dropdown({
+	        onChange: function onChange(value, text, $selectedItem) {
+	          console.log(value, text, $selectedItem);
+	          if (!value) {
+	            $("#id_province").empty().siblings('.text').text('');
+	            return;
+	          }
+
+	          refresh_province(province_data, value, function () {
+	            refresh_location(city_data, $("#id_province").val());
+	          });
+	        }
+	      });
+
+	      $('#id_province').parent().dropdown({
 	        onChange: function onChange(value, text, $selectedItem) {
 	          console.log(value, text, $selectedItem);
 	          if (!value) {
@@ -163,16 +191,33 @@
 	            return;
 	          }
 
-	          refresh_location(data, value);
+	          refresh_location(city_data, value);
 	        }
 	      });
-	    });
+	    }
+	  }
+
+	  function refresh_province(data, value, cb) {
+	    var html = '';
+	    for (var i = 0; i < data.length; i++) {
+	      if (data[i].country == value) {
+	        if (html) {
+	          html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+	        } else {
+	          html += '<option value="' + data[i].id + '" selected="selected">' + data[i].name + '</option>';
+	          $("#id_province").siblings('.text').text(data[i].name);
+	        }
+	      }
+	    }
+
+	    $("#id_province").empty().append(html).parent().dropdown('refresh');
+	    cb && cb();
 	  }
 
 	  function refresh_location(data, value) {
 	    var html = '';
 	    for (var i = 0; i < data.length; i++) {
-	      if (data[i].country == value) {
+	      if (data[i].province == value) {
 	        if (html) {
 	          html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
 	        } else {
@@ -188,21 +233,7 @@
 
 /***/ },
 
-/***/ 60:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 62:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 90:
+/***/ 31:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10051,7 +10082,14 @@
 
 /***/ },
 
-/***/ 95:
+/***/ 89:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 91:
 /***/ function(module, exports) {
 
 	/*!
@@ -10222,7 +10260,14 @@
 
 /***/ },
 
-/***/ 96:
+/***/ 95:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 97:
 /***/ function(module, exports) {
 
 	/*!
@@ -10466,7 +10511,7 @@
 	        var jQuery = $;
 	        if (!jQuery) {
 	            try {
-	                jQuery = __webpack_require__(90);
+	                jQuery = __webpack_require__(31);
 	            } catch (err) {
 	                jQuery = window.jQuery;
 	                if (!jQuery) throw new Error('jQuery dependency not found');

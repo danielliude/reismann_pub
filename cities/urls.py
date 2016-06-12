@@ -12,4 +12,5 @@ urlpatterns = [
   url(r'^search/$', views.search_cities, name='search_cities'),
 
   url(r'^get_cities/$', views.get_cities, name='get_cities'),
+  url(r'^get_provinces/$', views.get_provinces, name='get_provinces'),
 ]

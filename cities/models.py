@@ -71,9 +71,8 @@ class City(models.Model):
 
   def get_full_location(self):
     if self.country:
-      return _("%(name)s, %(country_name)s, %(province_name)s") % \
+      return _("%(name)s, %(country_name)s") % \
              {'name': self.name,
-              'province_name': self.province_name,
               'country_name': self.country.name}
     else:
       return self.name

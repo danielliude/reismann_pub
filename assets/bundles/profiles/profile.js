@@ -47,16 +47,45 @@
 
 	'use strict';
 
-	__webpack_require__(135);
-
 	__webpack_require__(128);
 
 	__webpack_require__(130);
 
+	__webpack_require__(16);
+
 	// import '../../vendors/galleria/galleria-1.4.2.js'
+
+	__webpack_require__(135);
 
 	$(function () {
 		init();
+
+		service_click_event();
+
+		function service_click_event() {
+			var service_index = 0;
+			$('.click_service').click(function (event) {
+				var service_id = $(this).data('service');
+				$('.service_' + service_index).hide();
+				$('.service_' + service_id).show();
+				service_index = service_id;
+			});
+		}
+
+		function equal_width() {
+			var width = 0;
+			$(".equal_width").each(function () {
+				if (width < parseInt($(this).width())) {
+					width = parseInt($(this).width());
+				}
+			});
+
+			if (width) {
+				$(".equal_width").css({
+					width: width + 20
+				});
+			}
+		}
 
 		function init() {
 			$('.ui.comments .ui.rating').rating('disable');
@@ -75,7 +104,7 @@
 
 			$('.menu .item').tab();
 
-			$('.all_buttons .ui.dropdown').dropdown();
+			$('.profile_home .ui.dropdown').dropdown();
 
 			$('.register_modal .submit').click(function () {
 				var temp = $('.register-content').serialize();
@@ -109,6 +138,13 @@
 			//    Galleria.run('#galleria');
 		}
 	});
+
+/***/ },
+
+/***/ 16:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ },
 

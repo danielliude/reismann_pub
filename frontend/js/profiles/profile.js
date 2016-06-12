@@ -1,11 +1,40 @@
-import '../../styles/templates/profiles/profile.scss'
 import '../../semantic/dist/components/tab.min.css'
 import '../../semantic/dist/components/tab.min.js'
+import '../../semantic/dist/components/breadcrumb.min.css'
 // import '../../vendors/galleria/galleria-1.4.2.js'
 
+import '../../styles/templates/profiles/profile.scss'
 
 $(function() {
 	init() 
+
+	service_click_event()
+
+	function service_click_event() {
+		var service_index = 0
+		$('.click_service').click(function(event) {
+			var service_id = $(this).data('service')
+			$('.service_' + service_index).hide()
+			$('.service_' + service_id).show()
+			service_index = service_id
+		});
+	}
+
+	function equal_width() {
+	    var width = 0 
+	    $(".equal_width").each(function() {
+	      if(width < parseInt($(this).width())) {
+	        width = parseInt($(this).width())
+	      }
+	    })
+
+	    if(width) {
+	      $(".equal_width").css({
+	        width: width+20,
+	      });
+	    }
+		
+	}
 
 	function init() {
 	    $('.ui.comments .ui.rating').rating('disable');
@@ -35,9 +64,10 @@ $(function() {
 		  .tab()
 		;
 
-		$('.all_buttons .ui.dropdown')
+		$('.profile_home .ui.dropdown')
 		  .dropdown()
 		;
+
 
 	    $('.register_modal .submit').click(function() {
 	    	var temp = $('.register-content').serialize(); 

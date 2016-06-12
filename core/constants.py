@@ -148,3 +148,138 @@ GLOBAL_PERMISSIONS = {
     ('followship.view_followers', 'Can view followers'),
     ('followship.view_followings', 'Can view followings')),
 }
+
+COUNTRY_OF_BIRTH = (
+  ('', _('country_of_birth')),
+  (1, _('')),
+  (2, _('')),
+  (3, _('')),
+  (4, _('')),
+  (5, _('')),
+  (6, _('')),
+  (7, _('')),
+  (8, _('')),
+  (9, _('')),
+  (10, _('')),
+)
+MARRITTAL_STATUS = (
+  ('', _('marrittal_status')),
+  (1, _('unmarried')),
+  (2, _('married')),
+  (3, _('divorced')),
+  (4, _('widowed')),
+  (5, _('separated')),
+  (6, _('no answer')),
+)
+CHILDREN = (
+  ('', _('children')),
+  (1, _('no kid')),
+  (2, _('one kid')),
+  (3, _('> 1 kid')),
+  (4, _('no answer')),
+)
+ETHNICITY = (
+  ('', _('ethnicity')),
+  (1, _('chinese')),
+  (2, _('cambodian')),
+  (3, _('filipino')),
+  (4, _('japanese')),
+  (5, _('korean')),
+  (6, _('malaysian')),
+  (7, _('thai')),
+  (8, _('vietnamese')),
+  (9, _('indian')),
+  (10, _('black')),
+  (11, _('hispanic latin')),
+  (12, _('middle east')),
+  (13, _('white/caucasian')),
+  (14, _('other')),
+  (15, _('no answer')),
+)
+RELIGION = (
+  ('', _('religion')),
+  (1, _('buddihism')),
+  (2, _('chistianity')),
+  (3, _('judaism')),
+  (4, _('catholicism')),
+  (5, _('islan')),
+  (6, _('hinduism')),
+  (7, _('other')),
+  (8, _('no answer')),
+)
+EDUCATION = (
+  ('', _('education')),
+  (1, _('high school')),
+  (2, _('bachelor')),
+  (3, _('master')),
+  (4, _('phd')),
+  (5, _('no answer')),
+)
+ANNUAL_INCOME = (
+  ('', _('annual_income')),
+  (1, _('< €15k')),
+  (2, _('€15k - €30k')),
+  (3, _('€30k - €40k')),
+  (4, _('€40k - €50k')),
+  (5, _('€50k - €80k')),
+  (6, _('< €80k')),
+  (7, _('no answer')),
+)
+IMMIGRATION_STATUS = (
+  ('', _('immigration_status')),
+  (1, _('resident')),
+  (2, _('citizen')),
+  (3, _('no answer')),
+)
+BODY_FORM = (
+  ('', _('body_form')),
+  (1, _('slim')),
+  (2, _('athlete')),
+  (3, _('average')),
+  (4, _('curvy')),
+  (5, _('no answer')),
+)
+SMOKING = (
+  ('', _('smoking')),
+  (1, _('yes')),
+  (2, _('some times')),
+  (3, _('never')),
+  (4, _('no answer')),
+)
+DRINKING = (
+  ('', _('drinking')),
+  (1, _('yes')),
+  (2, _('some times')),
+  (3, _('never')),
+  (4, _('no answer')),
+)
+PETS = (
+  ('', _('pets')),
+  (1, _('dog(s)')),
+  (2, _('cat(s)')),
+  (3, _('other pets')),
+  (4, _('want to have')),
+  (5, _('no answer')),
+)
+HOBBY = (
+  ('', _('hobby')),
+  (1, _('basketball')),
+  (2, _('camping')),
+  (3, _('card game')),
+  (4, _('bicycle')),
+  (5, _('dance')),
+  (6, _('fishing/hunting')),
+  (7, _('golf')),
+  (8, _('musical')),
+  (9, _('jogging')),
+  (10, _('singing')),
+  (11, _('ski')),
+  (12, _('football')),
+  (13, _('read')),
+  (14, _('swimming')),
+  (15, _('tennis')),
+  (16, _('travel')),
+  (17, _('gym')),
+  (18, _('yoga')),
+  (19, _('Other')),
+)

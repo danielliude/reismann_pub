@@ -1,0 +1,110 @@
+{% load i18n %}
+{% load thumbnail %}
+
+
+<div class="ui blue padded segment profile_form">
+  <h3 class="ui center aligned header">{% trans 'Edit more profile' %}</h3>
+  <form class="ui form" action="" enctype="multipart/form-data" method="post">
+    <br>
+    {% csrf_token %}
+    {{ more_form.non_field_errors }}
+    {{ contactForm.non_field_errors }}
+
+    <div class="two fields">
+      {{ more_form.country_of_birth.errors }}
+      <div class="field">
+        <label>{{ more_form.country_of_birth.label }}</label>
+        {{ more_form.country_of_birth }}
+      </div>
+
+      {{ more_form.marrittal_status.errors }}
+      <div class="field">
+        <label>{{ more_form.marrittal_status.label }}</label>
+        {{ more_form.marrittal_status }}
+      </div>
+    </div>
+
+    <div class="two fields">
+      {{ more_form.children.errors }}
+      <div class="field">
+        <label>{{ more_form.children.label }}</label>
+        {{ more_form.children }}
+      </div>
+
+      {{ more_form.ethnicity.errors }}
+      <div class="field">
+        <label>{{ more_form.ethnicity.label }}</label>
+        {{ more_form.ethnicity }}
+      </div>
+    </div>
+
+    <div class="two fields">
+      {{ more_form.religion.errors }}
+      <div class="field">
+        <label>{{ more_form.religion.label }}</label>
+        {{ more_form.religion }}
+      </div>
+
+      {{ more_form.education.errors }}
+      <div class="field">
+        <label>{{ more_form.education.label }}</label>
+        {{ more_form.education }}
+      </div>
+    </div>
+
+    <div class="two fields">
+      {{ more_form.annual_income.errors }}
+      <div class="field">
+        <label>{{ more_form.annual_income.label }}</label>
+        {{ more_form.annual_income }}
+      </div>
+
+      {{ more_form.immigration_status.errors }}
+      <div class="field">
+        <label>{{ more_form.immigration_status.label }}</label>
+        {{ more_form.immigration_status }}
+      </div>
+    </div>
+
+    <div class="two fields">
+      {{ more_form.body_form.errors }}
+      <div class="field">
+        <label>{{ more_form.body_form.label }}</label>
+        {{ more_form.body_form }}
+      </div>
+
+      {{ more_form.smoking.errors }}
+      <div class="field">
+        <label>{{ more_form.smoking.label }}</label>
+        {{ more_form.smoking }}
+      </div>
+    </div>
+
+    <div class="two fields">
+      {{ more_form.drinking.errors }}
+      <div class="field">
+        <label>{{ more_form.drinking.label }}</label>
+        {{ more_form.drinking }}
+      </div>
+
+      {{ more_form.pets.errors }}
+      <div class="field">
+        <label>{{ more_form.pets.label }}</label>
+        {{ more_form.pets }}
+      </div>
+    </div>
+
+    <div class="two fields">
+      {{ more_form.hobby.errors }}
+      <div class="field">
+        <label>{{ more_form.hobby.label }}</label>
+        {{ more_form.hobby }}
+      </div>
+    </div>
+    <br>
+    <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+    <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
+    <div class="ui error message">
+    </div>
+  </form>
+</div>

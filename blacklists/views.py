@@ -9,8 +9,9 @@ from followship.models import Follow
 def shield(request, username, shielding):
     user_object = User.objects.get(username=username)
     shield_object = User.objects.get(username=shielding)
-    if Follow.objects.follows(shield_object, user_object):
+    if Follow.objects.follows(shield_object, user_object) or Follow.objects.follows(user_object, shield_object):
         Follow.objects.unfollow(shield_object, user_object)
+        Follow.objects.unfollow(user_object, shield_object)
     BlackLists.objects.create(user=user_object, shielding=shield_object)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

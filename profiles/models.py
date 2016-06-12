@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from easy_thumbnails.fields import ThumbnailerImageField
 
-from core.constants import MUGSHOT_SETTINGS, GENDER_CHOICES, PROFILE_CARD_IMAGE_SETTINGS, PROFESSION_CHOICES, IDENTIFICATION_STATUS, PROFILE_STATUS
+from core.constants import *
 from core.uploads import upload_to_avatar, upload_to_profile_card, upload_to_profile_id_card
 from configurations.utils import get_profile_card_fallback_url, get_avatar_fallback_url
 from cities.models import City, Country, Province
@@ -165,3 +165,35 @@ class ProfileSettings(models.Model):
 
   def __str__(self):
     return _('Profile settings for %(username)s') % {'username': self.profile.user.username}
+
+
+class ProfileMore(models.Model):
+  user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name='more_profile')
+  country_of_birth = models.PositiveSmallIntegerField(_('country of birth'), blank=True, null=True, choices=COUNTRY_OF_BIRTH)
+  marrittal_status = models.PositiveSmallIntegerField(_('marrittal status'), blank=True, null=True, choices=MARRITTAL_STATUS)
+  children = models.PositiveSmallIntegerField(_('children'), blank=True, null=True, choices=CHILDREN)
+  ethnicity = models.PositiveSmallIntegerField(_('ethnicity'), blank=True, null=True, choices=ETHNICITY)
+  religion = models.PositiveSmallIntegerField(_('religion'), blank=True, null=True, choices=RELIGION)
+  education = models.PositiveSmallIntegerField(_('education'), blank=True, null=True, choices=EDUCATION)
+  annual_income = models.PositiveSmallIntegerField(_('annual_income'), blank=True, null=True, choices=ANNUAL_INCOME)
+  immigration_status = models.PositiveSmallIntegerField(_('immigration_status'), blank=True, null=True, choices=IMMIGRATION_STATUS)
+  body_form = models.PositiveSmallIntegerField(_('body form'), blank=True, null=True, choices=BODY_FORM)
+  smoking = models.PositiveSmallIntegerField(_('smoking'), blank=True, null=True, choices=SMOKING)
+  drinking = models.PositiveSmallIntegerField(_('drinking'), blank=True, null=True, choices=DRINKING)
+  pets = models.PositiveSmallIntegerField(_('pets'), blank=True, null=True, choices=PETS)
+  hobby = models.PositiveSmallIntegerField(_('hobby'), blank=True, null=True, choices=HOBBY)
+
+  most_cheerful = models.CharField(_('most cheerful'), max_length=400, blank=True, null=True)
+  good_at = models.CharField(_('good at'), max_length=400, blank=True, null=True)
+  friends_description = models.CharField(_('friends description'), max_length=200, blank=True, null=True)
+  must_have = models.CharField(_('must have'), max_length=400, blank=True, null=True)
+  favourite_things = models.CharField(_('favourite things'), max_length=400, blank=True, null=True)
+  crazy_thing_done = models.CharField(_('crazy thing done'), max_length=400, blank=True, null=True)
+  normal_do_weekend = models.CharField(_('normal do weekend'), max_length=400, blank=True, null=True)
+
+  class Meta:
+    verbose_name = _('more profile')
+    verbose_name_plural = _('more profiles')
+
+    def __str__(self):
+      return _('More profile for %(username)s') % {'username': self.profile.user.username}

@@ -2,10 +2,10 @@
 
 <div class="ui segment">
   <div class="ui grid">
-    <div class="four wide column">
+    <div class="sixteen wide mobile four wide tablet four wide computer column">
       <img style="box-shadow: #333333 1px 1px 20px 0;" class="ui centered small image" src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile picture' %}">
     </div>
-    <div class="eight wide column">
+    <div class="sixteen wide mobile eight wide tablet eight wide computer column">
       <h3 style="color: #555555;font-weight: 300;">{{ profile.user.username }}{% if profile.get_gender_display%}, {{ profile.get_gender_display|default:"" }}{% endif %}{% if profile.age %}/{{ profile.age}}{% endif %}</h3>
       <div class="sub header" style="margin-top:-1rem;">{% if profile.location %}{{ profile.location }}{% endif %}{% if profile.country%}, {{ profile.country}}{% endif %}</div>
       <div style="border-color: #888888;border-bottom-width: 0px;margin-top: 0.5rem;
@@ -30,7 +30,7 @@
       </table>
       {% include "profiles/__profile_button.html" %}
     </div>
-    <div class="four wide column">
+    <div class="four wide column tablet_more only">
       {% include "profiles/__share_box.html" %}
     </div>
   </div>

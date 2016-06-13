@@ -94,3 +94,10 @@ body {
 
 .disnone {
   display: none; }
+
+/*--------------
+    responsive
+---------------*/
+@media only screen and (max-width: 759px) {
+  .ui.small.image {
+    width: 100%; } }

@@ -102,3 +102,18 @@ body {
 .disnone {
 	display: none;
 }
+
+
+
+
+@import '../../base/responsive';
+@import '../../base/mixins';
+
+/*--------------
+    responsive
+---------------*/
+.ui.small.image {
+	@include GT(S) {
+	  width: 100%;
+	}
+}

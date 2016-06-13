@@ -19,7 +19,7 @@
   background-size: cover;
   padding: 0px;
   height: 300px; }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 760px) {
     .ui.grid.banner .banner_img, .ui.grid.banner .banner_img_copy {
       height: 480px; } }
   @media only screen and (min-width: 992px) {
@@ -28,7 +28,7 @@
 
 .ui.grid.banner .information {
   margin-top: -210px; }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 760px) {
     .ui.grid.banner .information {
       margin-top: -290px; } }
   @media only screen and (min-width: 992px) {
@@ -40,7 +40,7 @@
     @media only screen and (max-width: 991px) {
       .ui.grid.banner .information .tagline {
         font-size: 2.2rem; } }
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 759px) {
       .ui.grid.banner .information .tagline {
         font-size: 1.7rem; } }
     @media only screen and (max-width: 319px) {
@@ -53,14 +53,14 @@
     @media only screen and (min-width: 992px) {
       .ui.grid.banner .information .subheadline.ui.header {
         font-size: 1.2rem; } }
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 759px) {
       .ui.grid.banner .information .subheadline.ui.header {
         font-size: 0.8rem; } }
   .ui.grid.banner .information .ui.icon.input {
     margin-right: 3px;
     margin-bottom: 0.3rem;
     width: 290px; }
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 759px) {
       .ui.grid.banner .information .ui.icon.input {
         width: 260px; } }
     .ui.grid.banner .information .ui.icon.input .prompt {

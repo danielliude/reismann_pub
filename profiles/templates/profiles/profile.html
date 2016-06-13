@@ -18,7 +18,7 @@
 {% block content %}  
   <br>
   <div class="ui container profile_home">
-    <div class="ui  breadcrumb">
+    <div class="ui large breadcrumb">
       <a href="{% url 'index' %}" class="section"><i class="home icon"></i></a>
       <i class="right chevron icon divider"></i>
       <a href="/cities/show/all/" class="section">{% trans 'search' %}</a>
@@ -28,7 +28,6 @@
       </div>
     </div>  
     {% include "profiles/__profile_top.html" %}
-    {#{% include "profiles/__profile_services.html" %}#}
     {% include "services/__service_descriptions.html" %}
 
     {% if profile.settings.is_provider %}

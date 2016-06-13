@@ -1796,6 +1796,12 @@
   .ui.grid.grid.grid > .row > [class*="tablet only"].column:not(.mobile) {
     display: none !important;
   }
+  .ui[class*="tablet_more only"].grid.grid.grid:not(.mobile),
+  .ui.grid.grid.grid > [class*="tablet_more only"].row:not(.mobile),
+  .ui.grid.grid.grid > [class*="tablet_more only"].column:not(.mobile),
+  .ui.grid.grid.grid > .row > [class*="tablet_more only"].column:not(.mobile) {
+    display: none !important;
+  }
   .ui[class*="computer only"].grid.grid.grid:not(.mobile),
   .ui.grid.grid.grid > [class*="computer only"].row:not(.mobile),
   .ui.grid.grid.grid > [class*="computer only"].column:not(.mobile),

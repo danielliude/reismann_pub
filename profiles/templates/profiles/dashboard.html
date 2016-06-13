@@ -18,10 +18,10 @@
 	<div class="column">
 		<div class="ui segment" style="padding:0;">
 		  <div class="ui padded grid">
-		    <div class="four wide column">
+		    <div class="sixteen wide mobile four wide tablet four wide computer column">
 		      <img style="box-shadow: #333333 1px 1px 20px 0;" class="ui centered small image" src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile picture' %}">
 		    </div>
-		    <div class="nine wide column">
+		    <div class="sixteen wide mobile nine wide tablet nine wide computer column">
 		      <h3 style="color: #555555;font-weight: 300;">{{ profile.user.username }}{% if profile.get_gender_display%}, {{ profile.get_gender_display|default:"" }}{% endif %}{% if profile.age %}/{{ profile.age}}{% endif %}</h3>
 		      <div class="sub header" style="margin-top:-1rem;">{% if profile.location %}{{ profile.location }}{% endif %}{% if profile.country%}, {{ profile.country}}{% endif %}</div>
 		      <div style="border-color: #888888;border-bottom-width: 0px;" class="ui black divider"></div>
@@ -48,7 +48,7 @@
 			      <a class="ui brand button">{{ profile.settings.get_status_display }}</a>
 		      </div>
 		    </div>
-		    <div class="three wide column">
+		    <div class="three wide column tablet_more only">
 	        {% if profile.settings.is_provider %}
 	          <a class="ui large blue right ribbon label">{% trans 'Provider' %}</a>
 	        {% else %}
@@ -57,7 +57,7 @@
 		    </div>
 		  </div>
 
-		  <table class="ui unstackable compact fixed table table2">
+		  <table class="ui unstackable compact table table2">
 	      <tbody>
 	        <tr>
 	          <td class="grey_and_bold">{% trans 'Followers:' %}</td>
@@ -66,6 +66,10 @@
 	          <td>{{ number_following }}</td>
 	        </tr>
 	        {% if profile.settings.is_provider %}
+	        <tr>
+	        	<td class="grey_and_bold">{% trans 'Bookings:' %}</td>
+	          <td colspan="3">{{ number_bookings }}</td>
+	        </tr>
 	        <tr>
 	          <td colspan="4">
 	          	<span class="grey_and_bold">{% trans 'Service:' %}</span>
@@ -77,10 +81,6 @@
 	          </td>
 	        </tr>
 	        {% endif %}
-	        <tr>
-	        	<td class="grey_and_bold">{% trans 'Bookings:' %}</td>
-	          <td colspan="3">{{ number_bookings }}</td>
-	        </tr>
 	      </tbody>
 	    </table>
 		</div>
@@ -96,7 +96,7 @@
 			  <input type="checkbox" class="checkbox_sort" name="checkbox_sort" value="read">
 			  <label>read</label>
 			</div>
-			<div class="ui left pointing dropdown">
+			<div class="ui top left pointing dropdown">
 		    <b>...</b>
 
 		    <div class="menu">

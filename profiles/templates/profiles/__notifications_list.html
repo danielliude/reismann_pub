@@ -10,7 +10,7 @@
             <label> </label>
           </div>
           {{ notification.verb}}
-          <span style="position:absolute;right:0px;">{{ notification.timestamp | date:"Y-m-d" }}<span>
+          <span class="not_show_on_mobile" style="position:absolute;right:0px;">{{ notification.timestamp | date:"Y-m-d" }}<span>
         </td>
       </tr>
     {% endfor %}

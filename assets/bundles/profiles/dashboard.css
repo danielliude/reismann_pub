@@ -35,7 +35,8 @@ body {
 .ui.grid.dashboard_grid .ui.label {
   font-weight: normal;
   padding: 0.4233em 0.833em;
-  margin-top: 3px; }
+  margin-top: 13px;
+  margin-bottom: 10px; }
 
 .ui.table.table2 {
   border-right: 0px;
@@ -59,3 +60,23 @@ body {
 .ui.grid.dashboard_grid {
   max-width: 750px;
   margin: 80px auto; }
+
+/*--------------
+    responsive
+---------------*/
+@media only screen and (max-width: 759px) {
+  .dashboard_grid .ui.small.image {
+    width: 100%; } }
+
+@media only screen and (max-width: 759px) {
+  .all_buttons {
+    text-align: center; } }
+
+@media only screen and (max-width: 759px) {
+  .all_buttons .ui.button {
+    width: 49%;
+    max-width: 50%; } }
+
+@media only screen and (max-width: 759px) {
+  .not_show_on_mobile {
+    display: none; } }

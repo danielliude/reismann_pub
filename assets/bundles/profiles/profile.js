@@ -66,15 +66,12 @@
 		register_modal();
 		send_message_modal();
 		send_comment();
+		use_galleria();
 
 		function init() {
 			$('.menu .item').tab();
 
 			$('.profile_home .ui.dropdown').dropdown();
-
-			//不知道为什么用webpack引用不进galleria，我只好引用网上的galleria文件了。
-			Galleria.loadTheme('http://cdn.bootcss.com/galleria/1.4.2/themes/classic/galleria.classic.min.js');
-			Galleria.run('#galleria');
 		}
 
 		function init_rating() {
@@ -189,6 +186,12 @@
 					init_rating();
 				});
 			});
+		}
+
+		function use_galleria() {
+			//不知道为什么用webpack引用不进galleria，我只好引用网上的galleria文件了。
+			Galleria.loadTheme('http://cdn.bootcss.com/galleria/1.4/themes/classic/galleria.classic.min.js');
+			Galleria.run('#galleria');
 		}
 
 		function equal_width() {

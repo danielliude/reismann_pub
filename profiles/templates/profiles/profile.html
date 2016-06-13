@@ -4,6 +4,7 @@
 {% load thumbnail %}
 
 {% block stylesheets %}
+    <link href="http://cdn.bootcss.com/galleria/1.4/themes/classic/galleria.classic.min.css" rel="stylesheet">
     {% render_bundle 'profiles/profile' 'css' %}
 {% endblock %}
 {% block javascripts %}
@@ -12,7 +13,7 @@
         data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
       });
     </script>
-    <script src="http://cdn.bootcss.com/galleria/1.4.2/galleria.js"></script>
+    <script src="http://cdn.bootcss.com/galleria/1.4.1/galleria.min.js"></script>
     {% render_bundle 'profiles/profile' 'js' %}
 {% endblock %}
 

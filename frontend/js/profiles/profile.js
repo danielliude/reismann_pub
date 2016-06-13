@@ -23,8 +23,10 @@ $(function() {
 		$('.profile_home .ui.dropdown')
 		  .dropdown()
 		;
-		// Galleria.loadTheme('/themes/classic/galleria.classic.min.js');
-	 //    Galleria.run('#galleria');
+
+		//不知道为什么用webpack引用不进galleria，我只好引用网上的galleria文件了。
+		Galleria.loadTheme('http://cdn.bootcss.com/galleria/1.4.2/themes/classic/galleria.classic.min.js');
+	    Galleria.run('#galleria');
 	}
 
 	function init_rating() {

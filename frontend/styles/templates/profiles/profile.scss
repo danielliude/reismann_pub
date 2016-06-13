@@ -117,3 +117,8 @@ body {
 	  width: 100%;
 	}
 }
+.ui.comments .comment .rate_date {
+	@include GT(S) {
+	  display: none;
+	}	
+}

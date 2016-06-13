@@ -18,7 +18,7 @@ from services.utils import get_user_services, get_service_by_id
 
 from configurations.utils import get_active_service_categories
 
-from profiles.views import view_own_profile, makeContextForDetails, makeContextForNotifications
+from profiles.views import view_own_profile, makeContextForDetails, makeContextForNotifications, makeContextForActiveServices
 from services.models import ServiceRating
 from services.utils import get_user_services
 
@@ -311,3 +311,57 @@ def service_activate(request, username, service_id, template_name='bookings/book
     else:
         url = reverse('profiles:services', kwargs={'username':request.user.username})
         return HttpResponseRedirect(url)
+
+@secure_required
+def get_rating_and_form(request, username,
+                 template_name='profiles/__rating_box.html', success_url=None,
+                 extra_context=None, **kwargs):
+
+    if not extra_context: extra_context = dict()
+
+    user = User.objects.get(username__iexact = username)
+    extra_context['service_id'] = request.GET.get('service_id')
+    if request.method == 'POST':
+      extra_context['service_id'] = request.POST.get('service_id')
+
+    if not extra_context['service_id'] == 'all':
+      service = get_service_by_id(extra_context['service_id'])
+      ratings = ServiceRating.objects.filter(service = service)
+      extra_context['ratings'] = ratings
+
+      canRate = False
+
+      try:
+          who = User.objects.get(username__iexact = request.user.username)
+      except User.DoesNotExist:
+          who = None
+
+      if who:
+          try:
+              serviceRating = ServiceRating.objects.get(service= service, user = who)
+          except ServiceRating.DoesNotExist:
+              form = ServiceRatingForm()
+              extra_context['rating_form'] = form
+              canRate = True
+      else:
+          canRate = False
+    else:
+      extra_context = makeContextForActiveServices(user, extra_context)
+
+    if request.method == 'POST':
+        form = ServiceRatingForm(request.POST)
+        if form.is_valid():
+            rating = form.cleaned_data['stars']
+            comment = form.cleaned_data['comment']
+            if (canRate):
+                serviceRating = ServiceRating(user= request.user, service = service, rating = rating, comment = comment)
+                serviceRating.created_at = datetime.now()
+                serviceRating.save()
+                ratings = ServiceRating.objects.filter(service = service)
+                extra_context['ratings'] = ratings
+                extra_context['rating_form'] = ''
+            return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+            # url = reverse('profiles:profile', kwargs={'username':request.user.username})
+            # return HttpResponseRedirect(url)
+
+    return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)

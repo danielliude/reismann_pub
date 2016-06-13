@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'(?P<username>[\@\.\w-]+)/services/activate/(?P<service_id>[0-9]+)/$', views.service_activate, name='service_activate'),
     url(r'(?P<username>[\@\.\w-]+)/services/view/own/(?P<service_id>[0-9]+)/$', views.service_view_own, name='service_view_own'),
 
+    url(r'(?P<username>[\@\.\w-]+)/get_rating_and_form/$', views.get_rating_and_form, name='get_rating_and_form'),
 ]

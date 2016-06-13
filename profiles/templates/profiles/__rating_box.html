@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="ui padded segment">
+{% if service_id = 'all' %}
   <h3 style="color: #555555;font-weight: 300;">{% trans 'Rating and comments:' %}</h3>
   <div class="ui comments">
     {% for service in services %}
@@ -11,7 +11,7 @@
           </a>
           <div class="content">
             {% if request.user.username %}
-                <a class="author">{% trans 'User' %} {{ rating.user.username }}</a>
+                <a class="author" target="_blank" href="{% url 'profiles:profile' rating.user.username %}">{% trans 'User' %} {{ rating.user.username }}</a>
             {% else %}
                 <a class="author">{% trans 'Anonymous user' %}</a>
             {% endif %}
@@ -25,4 +25,45 @@
       {% endfor %}
     {% endfor %}
   </div>
-</div>
+{% else %}
+  <h3 style="color: #555555;font-weight: 300;">{% trans 'Rating and comment:' %}{{ ratings|length }}</h3>
+  {% if ratings|length != 0 %}
+      <div class="ui comments">
+        {% for rating in ratings %}
+        <div class="comment">
+          <a class="avatar">
+            <img src="{{ rating.user.profile.get_avatar_url }}">
+          </a>
+          <div class="content">
+            {% if request.user.username %}
+                <a class="author" target="_blank" href="{% url 'profiles:profile' rating.user.username %}">{% trans 'User' %} {{ rating.user.username }}</a>
+            {% else %}
+                <a class="author">{% trans 'Anonymous user' %}</a>
+            {% endif %}
+            <div class="metadata">
+              <span class="date">{% trans 'Created at: ' %}{{ rating.created_at|date:"Y-m-d H:i:s" }}</span>
+            </div>
+            {{ rating.gen_stars }}
+            <div class="text">{{ rating.comment }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+  {% endif %}
+
+  {% if rating_form %}
+    <div class='row'>
+      <form method="post" class="ui form rating_form">
+        {% csrf_token %}
+        <div class="field">
+          <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
+          {{rating_form.comment}}
+        </div>
+        <div class="ui brand_blue labeled submit icon button"><i class="icon edit"></i> {% trans 'Send your comment' %}</div>
+      </form>
+    </div>
+    <br>
+  {% endif %}
+{% endif %}
+
+

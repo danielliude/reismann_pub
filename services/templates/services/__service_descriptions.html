@@ -3,7 +3,7 @@
 
 <div class="ui segment">
   <div class="ui secondary pointing menu">
-    <a class="active item" data-tab="first">
+    <a class="active item click_about_me" data-tab="first">
       关于我
     </a>
     <a class="item" data-tab="second">
@@ -14,7 +14,8 @@
     </a>
     {% if profile.settings.is_provider %}
     <div class="ui right dropdown labeled item">
-      {{ services | length }} 服务
+      <span class="service_length">{{ services | length }} 服务</span>
+      <span class="service_title disnone"></span>
       <i class="dropdown icon"></i>
       <div class="menu">
         <a class="item" style="display:none"></a>

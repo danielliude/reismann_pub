@@ -220,6 +220,7 @@ def profile(request, username, template_name="profiles/profile.html",
     extra_context = makeContextForNotifications(request, extra_context)
 
     extra_context['form'] = form
+    extra_context['service_id'] = 'all'
 
     return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 

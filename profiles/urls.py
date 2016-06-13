@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^(?P<username>[\@\.\w-]+)/settings/$', views.settings, name='settings'),
     url(r'^(?P<username>[\@\.\w-]+)/notifications/$', views.notifications, name='notifications'),
     url(r'^(?P<username>[\@\.\w-]+)/notifications/avatar/(?P<avatar_username>[\@\.\w-]+)/$', views.notification_avatar, name='notification_avatar'),
+
     url(r'^(?P<username>[\@\.\w-]+)/mark_read_or_delete/$', views.mark_read_or_delete, name='mark_read_or_delete'),
 
 

@@ -4,7 +4,7 @@
 
 <div class="ui blue padded segment profile_form">
   <h3 class="ui center aligned header">{% trans 'Edit more profile' %}</h3>
-  <form class="ui form" action="" enctype="multipart/form-data" method="post">
+  <form class="ui form" action="{% url 'profiles:more_profile' profile.user.username %}" method="post">
     <br>
     {% csrf_token %}
     {{ more_form.non_field_errors }}
@@ -101,6 +101,63 @@
         {{ more_form.hobby }}
       </div>
     </div>
+    {{ more_form.most_cheerful.errors }}
+    <div class="required field">
+      <label>{{ more_form.most_cheerful.label }}</label>
+      <div class="ui icon input">
+        {{ more_form.most_cheerful }}
+      </div>
+    </div>
+
+    {{ more_form.good_at.errors }}
+    <div class="required field">
+      <label>{{ more_form.good_at.label }}</label>
+      <div class="ui icon input">
+        {{ more_form.good_at }}
+      </div>
+    </div>
+
+    {{ more_form.friends_description.errors }}
+    <div class="required field">
+      <label>{{ more_form.friends_description.label }}</label>
+      <div class="ui icon input">
+        {{ more_form.friends_description }}
+      </div>
+    </div>
+
+    {{ more_form.must_have.errors }}
+    <div class="required field">
+      <label>{{ more_form.must_have.label }}</label>
+      <div class="ui icon input">
+        {{ more_form.must_have }}
+      </div>
+    </div>
+
+    {{ more_form.favourite_things.errors }}
+    <div class="required field">
+      <label>{{ more_form.favourite_things.label }}</label>
+      <div class="ui icon input">
+        {{ more_form.favourite_things }}
+      </div>
+    </div>
+
+    {{ more_form.crazy_thing_done.errors }}
+    <div class="required field">
+      <label>{{ more_form.crazy_thing_done.label }}</label>
+      <div class="ui icon input">
+        {{ more_form.crazy_thing_done }}
+      </div>
+    </div>
+
+    {{ more_form.normal_do_weekend.errors }}
+    <div class="required field">
+      <label>{{ more_form.normal_do_weekend.label }}</label>
+      <div class="ui icon input">
+        {{ more_form.normal_do_weekend }}
+      </div>
+    </div>
+
+
     <br>
     <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
     <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>

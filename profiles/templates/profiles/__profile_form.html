@@ -33,6 +33,18 @@
     </div>
 
     {% if profile.settings.is_provider %}
+
+    {{ form.languages.errors }}
+    <div class="required field">
+      <label>{{ form.languages.label }}</label>
+      {{ form.languages }}
+    </div>
+
+    {{ form.tags.errors }}
+    <div class="required field">
+      <label>{{ form.tags.label }}</label>
+      {{ form.tags }}
+    </div>
     {{ form.birthday.errors }}
     <div class="required field">
       <label>{{ form.birthday.label }}</label>

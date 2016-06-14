@@ -16,11 +16,19 @@
             <td class="grey_and_bold">{% trans 'profession:' %}</td>
             <td>{% if profile.get_profession_display%}{{ profile.get_profession_display|default:"" }}{% endif %}</td>
             <td class="grey_and_bold">{% trans 'language:' %}</td>
-            <td>not know</td>
+            <td colspan="3">
+            {% for language in profile.languages.all %}
+              {{ language.name }}
+            {% endfor %}
+            </td>
           </tr>
           <tr>
             <td class="grey_and_bold" style="border:0px;">{% trans 'tag:' %}</td>
-            <td style="border:0px;" colspan="3">not know</td>
+            <td style="border:0px;" colspan="3">
+                {% for tag in profile.tags.all %}
+                {{ tag.name }}
+                {% endfor %}
+            </td>
           </tr>
           <tr>
             <td class="grey_and_bold" style="border:0px;">{% trans 'signature:' %}</td>

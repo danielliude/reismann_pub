@@ -13,6 +13,7 @@ from core.constants import *
 from cities.models import City, Country, Province
 from profiles.models import Profile, ProfileSettings, ProfileMore
 from contacts.models import Contact
+from configurations.models import ServiceLanguage, ServiceTag
 
 logger = logging.getLogger('accounts')
 
@@ -164,6 +165,22 @@ class ProfileForm(forms.ModelForm):
   gender = forms.ChoiceField(label=_('Gender'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
                              choices=GENDER_CHOICES, required = False)
+
+  languages = forms.ModelMultipleChoiceField(label=_('Languages'),
+                                             widget=forms.SelectMultiple(attrs={
+                                                 'class': 'ui fluid search dropdown',
+                                                 'multiple': "",
+                                                 'placeholder': _('service languages')
+                                             }),
+                                             queryset=ServiceLanguage.objects.all())
+
+  tags = forms.ModelMultipleChoiceField(label=_('Tags'),
+                                        widget=forms.SelectMultiple(attrs={
+                                            'class': 'ui fluid search dropdown',
+                                            'multiple': "",
+                                            'placeholder': _('service tags')
+                                        }),
+                                        queryset=ServiceTag.objects.all())
   profession = forms.ChoiceField(label=_('Profession'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'placeholder': _('Gender')}),
                              choices=PROFESSION_CHOICES, required = True)

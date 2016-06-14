@@ -46,18 +46,7 @@
       {{ form.content }}
     </div>
   </div>
-  
-<!--   {{ form.languages.errors }}
-  <div class="required field">
-      <label>{{ form.languages.label }}</label>
-      {{ form.languages }}
-  </div>
-  {{ form.tags.errors }}
-  <div class="required field">
-      <label>{{ form.tags.label }}</label>
-      {{ form.tags }}
-  </div> -->
-  
+
   <button class=" ui positive button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
   <a href="{% url 'profiles:services' profile.user.username %}" class=" ui grey button">{% trans 'Cancel' %}</a>
   <div class="ui error message">

@@ -60,22 +60,6 @@ class ServiceForm(forms.ModelForm):
                                          }),
                                          queryset=ServiceCategory.objects.all())
 
-  # languages = forms.ModelMultipleChoiceField(label=_('Languages'),
-  #                                       widget=forms.SelectMultiple(attrs={
-  #                                         'class': 'ui fluid search dropdown',
-  #                                         'multiple' : "",
-  #                                         'placeholder': _('service languages')
-  #                                       }),
-  #                                       queryset=ServiceLanguage.objects.all())
-
-  # tags = forms.ModelMultipleChoiceField(label=_('Tags'),
-  #                                  widget=forms.SelectMultiple(attrs={
-  #                                    'class': 'ui fluid search dropdown',
-  #                                    'multiple' : "",
-  #                                    'placeholder': _('service tags')
-  #                                  }),
-  #                                  queryset=ServiceTag.objects.all())
-
   class Meta:
     model = Service
     exclude = ['user', 'created_at', 'updated_at']

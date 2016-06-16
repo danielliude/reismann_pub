@@ -7,16 +7,15 @@
       {% trans 'about me' %}
     </a>
     <a class="item" data-tab="second">
-      详细资料
+      {% trans 'information' %}
     </a>
     <a class="item" data-tab="third">
-      照片
-        {% trans 'photo' %}
+      {% trans 'photo' %}
     </a>
 
     {% if profile.settings.is_provider %}
     <a class="right floated item all_services"  data-tab="fourth">
-      <span class="service_length"><span class="ui label green" style="padding: 0.24em 0.833em;">{{ services | length }}</span> 服务<i class="dropdown icon"></i></span>
+      <span class="service_length"><span class="ui label green" style="padding: 0.24em 0.833em;">{{ services | length }}</span> {% trans 'services' %}<i class="dropdown icon"></i></span>
       <span class="ui label green service_title disnone"></span>
     </a>
 

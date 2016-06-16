@@ -7,49 +7,36 @@
       {% trans 'about me' %}
     </a>
     <a class="item" data-tab="second">
-      详细资料
+      {% trans 'information' %}
     </a>
     <a class="item" data-tab="third">
-      照片
-        {% trans 'photo' %}
+      {% trans 'photo' %}
     </a>
+
     {% if profile.settings.is_provider %}
-    <div class="ui right dropdown labeled item">
-      <span class="service_length">{{ services | length }} 服务</span>
-      <span class="service_title disnone"></span>
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item" style="display:none"></a>
-        <table class="ui very basic unstackable selectable table" style="margin-top:0px;">
-          <tbody>
-            {% for service in services %}
-            <tr class="click_service" data-service="{{ service.id }}">
-              <td><div class="ui green label equal_width">{{ service.category }}</div></td>
-              <td>{{ service.title }}</td>
-              <td>{{ service.get_currency_display }} {{ service.price }}/{{ service.get_price_type_display | cut:'Per ' }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+    <a class="right floated item all_services"  data-tab="fourth">
+      <span class="service_length"><span class="ui label green" style="padding: 0.24em 0.833em;">{{ services | length }}</span> {% trans 'services' %}<i class="dropdown icon"></i></span>
+      <span class="ui label green service_title disnone"></span>
+    </a>
+
+    <div class="ui flowing popup bottom right transition hidden" style="padding:0px;">
+      <table class="ui very basic unstackable selectable table" style="margin-top:0px;">
+        <tbody>
+          {% for service in services %}
+          <tr class="click_service" data-service="{{ service.id }}">
+            <td><div class="ui green label equal_width">{{ service.category }}</div></td>
+            <td>{{ service.title }}</td>
+            <td>{{ service.get_currency_display }} {{ service.price }}/{{ service.get_price_type_display | cut:'Per ' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
     {% endif %}
   </div>
 
   <div style="border:0px;" class="ui bottom attached tab padded segment active" data-tab="first">
-    <div class="service_0">
-      <p>{{ profile.bio|safe }}</p>
-    </div>
-
-    {% if profile.settings.is_provider %}
-      {% for service in services %}
-        <div class="service_{{ service.id }} disnone">
-          <h5 class="ui right floated header"><a class="ui red tag label">{{ service.get_currency_display }} {{ service.price }}</a></h5>
-          <h2 class="ui center aligned header" style="color: #555555;font-weight: 300;margin-top:0px;">{{ service.title }}</h2>
-          <p>{{ service.content|safe }}</p>
-        </div>
-      {% endfor %}
-    {% endif %}
+    <p>{{ profile.bio|safe }}</p>
     <br>
     <br>
   </div>
@@ -69,5 +56,16 @@
     {% endif %}
     <br>
     <br>
+  </div>
+  <div style="border:0px;" class="ui bottom attached tab padded segment" data-tab="fourth">
+    {% if profile.settings.is_provider %}
+      {% for service in services %}
+        <div class="service_{{ service.id }} disnone">
+          <h5 class="ui right floated header"><a class="ui red tag label">{{ service.get_currency_display }} {{ service.price }}</a></h5>
+          <h2 class="ui center aligned header" style="color: #555555;font-weight: 300;margin-top:0px;">{{ service.title }}</h2>
+          <p>{{ service.content|safe }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
 </div>

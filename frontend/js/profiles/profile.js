@@ -1,5 +1,7 @@
 import '../../semantic/dist/components/tab.min.css'
 import '../../semantic/dist/components/tab.min.js'
+import '../../semantic/dist/components/popup.min.css'
+import '../../semantic/dist/components/popup.min.js'
 import '../../semantic/dist/components/breadcrumb.min.css'
 // import '../../vendors/galleria/galleria-1.4.2.js'
 
@@ -17,13 +19,21 @@ $(function() {
 	use_galleria()
 
 	function init() {
+		$('.profile_home .ui.dropdown')
+		  .dropdown()
+		;
+
 	    $('.menu .item')
 		  .tab()
 		;
 
-		$('.profile_home .ui.dropdown')
-		  .dropdown()
+		$('.menu .all_services')
+		  .popup({
+		    on: 'click',
+		    position : 'bottom right',
+		  })
 		;
+
 	}
 
 	function init_rating() {
@@ -44,7 +54,7 @@ $(function() {
 				$('.service_' + service_id).show()
 				$('.service_length').hide()
 				$('.service_title').text($div.find('td').eq(0).text()).show()
-				$('.secondary.pointing.menu .ui.dropdown').dropdown('hide')
+				$('.menu .all_services').popup('hide')
 				service_index = service_id
 			})
 		});
@@ -53,11 +63,8 @@ $(function() {
 			get_rating_and_form({'service_id' : 'all'}, function() {
 				init_rating()
 
-				$('.service_' + service_index).hide()
-				$('.service_0').show()
 				$('.service_title').hide()
 				$('.service_length').show()
-				service_index = 0
 			})
 		});
 	}

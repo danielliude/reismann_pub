@@ -11,13 +11,13 @@
     {% endif %}
     {% if service %}
       {% if profile.settings.is_provider %}
-      <a href="{% url 'profiles:booking_add' profile.user.username service.id %}" class="ui brand button"><i class="icon heart"></i>{% trans 'booking' %}</a>
+      <a href="{% url 'profiles:booking_add' profile.user.username service.id %}" class="ui brand button"><i class="icon shop"></i>{% trans 'booking' %}</a>
       {% endif %}
     {% else %}
       {% with services.first as provider_service %}
       {% if profile.settings.is_provider %}
         {% if provider_service %}
-          <a href="{% url 'profiles:booking_add' profile.user.username provider_service.id %}" class="ui brand button"><i class="icon heart"></i>{% trans 'booking' %}</a>
+          <a href="{% url 'profiles:booking_add' profile.user.username provider_service.id %}" class="ui brand button"><i class="icon shop"></i>{% trans 'booking' %}</a>
         {% endif %}
       {% endif %}
       {% endwith %}
@@ -42,7 +42,7 @@
   {% endif %}
 {% else %}
   <a class="ui brand_blue button not_login"><i class="icon mail outline"></i>{% trans 'messages' %}</a>
-  <a class="ui brand button not_login"><i class="icon heart"></i>{% trans 'booking' %}</a>
+  <a class="ui brand button not_login"><i class="icon shop"></i>{% trans 'booking' %}</a>
   <a class="ui button not_login" style="color:#000;"><i class="icon list"></i>{% trans 'more fun' %}</a>
 {% endif %}
 </div>

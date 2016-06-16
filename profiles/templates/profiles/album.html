@@ -26,9 +26,9 @@
         <form method="post" action="">
           {% csrf_token %}
           
-          <div class="ui grid">
+          <div class="ui doubling four column grid">
             {% for image in images %}
-              <div class="four wide column">
+              <div class="column">
                 <label>
                   <img src="{% thumbnail image.image 140x140 crop='smart' %}" />
                   <input type="checkbox" name="selected" value="{{ image.id }}" {% if image.is_in_my_album %}checked{% endif %} />

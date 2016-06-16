@@ -99,7 +99,7 @@ body {
 	padding-right: 9px;
 }
 
-.disnone {
+.disnone, .disnone.ui.label {
 	display: none;
 }
 
@@ -112,11 +112,11 @@ body {
 /*--------------
     responsive
 ---------------*/
-.ui.small.image {
-	@include GT(S) {
-	  width: 100%;
-	}
-}
+// .ui.small.image {
+// 	@include GT(S) {
+// 	  width: 100%;
+// 	}
+// }
 .ui.comments .comment .rate_date {
 	@include GT(S) {
 	  display: none;

@@ -235,6 +235,9 @@ img {
 .ui.label {
   font-weight: normal; }
 
+.disnone {
+  display: none; }
+
 /*--------------
     Masthead
 ---------------*/

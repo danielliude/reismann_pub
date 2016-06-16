@@ -150,17 +150,11 @@ GLOBAL_PERMISSIONS = {
 }
 
 COUNTRY_OF_BIRTH = (
-  ('', _('country_of_birth')),
-  (1, _('')),
-  (2, _('')),
-  (3, _('')),
-  (4, _('')),
-  (5, _('')),
-  (6, _('')),
-  (7, _('')),
-  (8, _('')),
-  (9, _('')),
-  (10, _('')),
+  ('', _('Country of birth')),
+  (1, _('China')),
+  (2, _('Janpan')),
+  (3, _('South Korea')),
+  (4, _('India')),
 )
 MARRITTAL_STATUS = (
   ('', _('marrittal_status')),

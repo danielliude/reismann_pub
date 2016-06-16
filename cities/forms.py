@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from core.constants import GENDER_CHOICES
 from .models import City
-from services.models import ServiceCategory, ServiceLanguage, ServiceTag
+from configurations.models import ServiceCategory, ServiceLanguage, ServiceTag
 
 
 AGE = (

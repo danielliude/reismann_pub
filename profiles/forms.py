@@ -13,6 +13,7 @@ from core.constants import *
 from cities.models import City, Country, Province
 from profiles.models import Profile, ProfileSettings, ProfileMore
 from contacts.models import Contact
+from configurations.models import ServiceLanguage, ServiceTag
 
 logger = logging.getLogger('accounts')
 
@@ -164,6 +165,22 @@ class ProfileForm(forms.ModelForm):
   gender = forms.ChoiceField(label=_('Gender'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
                              choices=GENDER_CHOICES, required = False)
+
+  languages = forms.ModelMultipleChoiceField(label=_('Languages'),
+                                             widget=forms.SelectMultiple(attrs={
+                                                 'class': 'ui fluid search dropdown',
+                                                 'multiple': "",
+                                                 'placeholder': _('service languages')
+                                             }),
+                                             queryset=ServiceLanguage.objects.all())
+
+  tags = forms.ModelMultipleChoiceField(label=_('Tags'),
+                                        widget=forms.SelectMultiple(attrs={
+                                            'class': 'ui fluid search dropdown',
+                                            'multiple': "",
+                                            'placeholder': _('service tags')
+                                        }),
+                                        queryset=ServiceTag.objects.all())
   profession = forms.ChoiceField(label=_('Profession'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown', 'placeholder': _('Gender')}),
                              choices=PROFESSION_CHOICES, required = True)
@@ -278,63 +295,67 @@ class ProfileMoreForm(forms.ModelForm):
   country_of_birth = forms.ChoiceField(choices=COUNTRY_OF_BIRTH,
                                label=_('country of birth'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   marrittal_status = forms.ChoiceField(choices=MARRITTAL_STATUS,
                                label=_('marrittal status'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   children = forms.ChoiceField(choices=CHILDREN,
                                label=_('children'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   ethnicity = forms.ChoiceField(choices=ETHNICITY,
                                label=_('ethnicity'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   religion = forms.ChoiceField(choices=RELIGION,
                                label=_('religion'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   education = forms.ChoiceField(choices=EDUCATION,
                                label=_('education'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   annual_income = forms.ChoiceField(choices=ANNUAL_INCOME,
                                label=_('annual income'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   immigration_status = forms.ChoiceField(choices=IMMIGRATION_STATUS,
                                label=_('immigration status'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   body_form = forms.ChoiceField(choices=BODY_FORM,
                                label=_('body form'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   smoking = forms.ChoiceField(choices=SMOKING,
                                label=_('smoking'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   drinking = forms.ChoiceField(choices=DRINKING,
                                label=_('drinking'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               required=False)
+                               required=True)
   pets = forms.ChoiceField(choices=PETS,
                            label=_('pets'),
                            widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                           required=False)
+                           required=True)
   hobby = forms.ChoiceField(choices=HOBBY,
                             label=_('hobby'),
                             widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                            required=False)
-  most_cheerful = forms.CharField(label=_('most cheerful'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
-  good_at = forms.CharField(label=_('good at'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
-  friends_description = forms.CharField(label=_('friends description'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
-  must_have = forms.CharField(label=_('must have'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
-  favourite_things = forms.CharField(label=_('favourite things'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
-  crazy_thing_done = forms.CharField(label=_('crazy thing done'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
-  normal_do_weekend = forms.CharField(label=_('normal do weekend'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
+                            required=True)
+  most_cheerful = forms.CharField(label=_('The most cheerful thing for me'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
+  good_at = forms.CharField(label=_('The thing I am good at'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
+  friends_description = forms.CharField(label=_('3 words which friends uses to describe me'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
+  must_have = forms.CharField(label=_('5 things I must have by my side'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
+  favourite_things = forms.CharField(label=_('Favourite books, movies and foods'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
+  crazy_thing_done = forms.CharField(label=_('Most crazy thing I have done'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
+  normal_do_weekend = forms.CharField(label=_('What I normally do on weekend'), max_length=400, widget=forms.TextInput(attrs={},), required=False)
 
   class Meta:
     model = ProfileMore
     exclude = ['user']
+  def save(self, force_insert=False, force_update=False, commit=True):
+    profile = super(ProfileMoreForm, self).save(commit=commit)
+    return profile
+  

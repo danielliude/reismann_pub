@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from userena.decorators import secure_required
 from guardian.decorators import permission_required_or_403
 
-from profiles.models import Profile, ProfileSettings
+from profiles.models import Profile, ProfileSettings, ProfileMore
 from profiles.forms import ProfileForm, ProfileIdForm, SettingsForm, ProfileFormCustomer, ProfileMoreForm
 from profiles.utils import get_user_profile
 from profiles.managers import ProfileMailManager
@@ -360,6 +360,18 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   extra_context = makeContextForNotifications(request, extra_context)
 
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+
+
+@secure_required
+def more_profile(request, username):
+  redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
+  if request.POST:
+    user = get_object_or_404(User, username__iexact=username)
+    profile, created = ProfileMore.objects.get_or_create(user=user)
+    form = ProfileMoreForm(request.POST, instance=profile)
+    if form.is_valid():
+      form.save()
+  return redirect(redirect_to)
 
 
 @secure_required

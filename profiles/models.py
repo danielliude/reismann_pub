@@ -15,6 +15,7 @@ from configurations.utils import get_profile_card_fallback_url, get_avatar_fallb
 from cities.models import City, Country, Province
 from profiles.managers import ProfileManager
 from services.utils import get_user_services
+from configurations.models import ServiceTag, ServiceLanguage
 
 class Profile(models.Model):
 
@@ -51,6 +52,15 @@ class Profile(models.Model):
 
   province = models.ForeignKey(Province, blank=True, null=True, verbose_name=_('province'),
                                help_text='province')
+
+  tags = models.ManyToManyField(ServiceTag, verbose_name=_('tags of profile'),
+                                help_text=_('tags of profile help text'),
+                                related_name='profiles')
+
+
+  languages = models.ManyToManyField(ServiceLanguage, verbose_name=_('languages of profile'),
+                                   help_text=_('languages of profile help text'),
+                                   related_name='profiles')
 
   short_description = models.CharField(_('Short description'), blank=True, null=True,
                                        max_length=255, help_text= _('short description'))

@@ -33,7 +33,7 @@ class Service(models.Model):
   currency = models.PositiveSmallIntegerField(_('service currency'), choices=SERVICE_CURRENCY_CHOICES,
                                           blank=True, null=True)
 
-  price_type = models.PositiveSmallIntegerField(_('service type'), choices=SERVICE_PRICE_TYPE_CHOICES,
+  price_type = models.PositiveSmallIntegerField(_('price type'), choices=SERVICE_PRICE_TYPE_CHOICES,
                                           blank=True, null=True)
 
   card_image = ThumbnailerImageField(_('card image'), blank=True, upload_to=upload_to_service_card,

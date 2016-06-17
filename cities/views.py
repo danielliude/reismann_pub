@@ -59,6 +59,17 @@ def city(request, city_name, template_name='cities/city.html'):
             for user in users:
                 print('>>>>>>>>>>>>>>>>>user is:', user)
 
+                # check number of active services for user
+                services = Service.objects.filter(user = user)
+                if not services: continue
+
+                one_is_active = False
+                for service in services:
+                    if service.status == 2:
+                        one_is_active = True
+
+                if not one_is_active: continue
+
                 # Checking gender for user
                 skip_user = False
                 gender = request.POST.getlist('gender[]')
@@ -112,7 +123,9 @@ def city(request, city_name, template_name='cities/city.html'):
 
                 services_dict = {}
                 for service in user_services:
+
                     if service.status != 2 : continue
+
                     service_dict = {}
 
                     print(service)
@@ -148,9 +161,10 @@ def city(request, city_name, template_name='cities/city.html'):
                     # Checking for type of service
                     svrs = request.POST.getlist('services[]')
                     if (svrs):
-                        for service in svrs:
-                            if service.type.filter(id = service).exists():
+                        for serv in svrs:
+                            if service.category.id == int(serv):
                                 service_dict['searched'] = True
+                                break
                             else:
                                 service_dict['searched'] = False
 

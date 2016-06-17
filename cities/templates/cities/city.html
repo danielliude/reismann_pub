@@ -96,44 +96,38 @@
     <button class="ui primary button more_select"> {% trans "More options" %}</button>
     <button class="ui primary button submit submit_button">{% trans "Search" %}</button>
   </div>
-  <p class="serveice_num_p" {% if services|length == 0 %}style="display:none"{% endif %}>{% trans "Have found " %} <span class="services_num"> {{ services|length }}</span>{% trans " services" %}</p>
+  <p class="serveice_num_p" {% if results|length == 0 %}style="display:none"{% endif %}>{% trans "Have found " %} <span class="services_num"> {{ results|length }}</span>{% trans " services" %}</p>
   
 </div>
 <div class="ui three column stackable doubling grid container search_profile">
-  {% if services|length == 0 %}
+  {% if results|length == 0 %}
     <h4>No result,please search again!</h4>
   {% endif %}
-  {% for service in services %}
+  {% for result in results %}
     <div class="column">
       <div class="ui segment padding">
-        <a href="{% url 'profiles:service_view' service.user.username service.id %}" class="profile_map" style="background-image: url('{{ service.user.profile.get_card_image_url }}');">
+        <a href="{{ result.profile_url }}" class="profile_map" style="background-image: url('{{ result.card_image_url }}');">
         </a>
-        <a href="{% url 'profiles:profile' service.user.username %}" class="ui tiny circular image">
-          <img  src="{{ service.user.profile.get_avatar_url }}" alt="User Avatar">
+        <a href="{{ result.profile_url }}" class="ui tiny circular image">
+          <img  src="{{ result.avatar_url }}" alt="User Avatar">
         </a>
         <div class="ui segment">
           <div class="row"> 
-            <div class="ui header">{{ service.user.profile.get_full_name_or_username }} {{ service.user.profile.short_description }}</div>
-            <span>{% for city in service.cities.all %}{% if not forloop.last %}{{ city.name }} , {% else %}{{ city.name }}{% endif %} {% endfor %}</span>
+            <div class="ui header">{{ result.username }} {{ result.short_description }}</div>
+            <span>{{ result.location }}</span>
           </div>
-          <!-- <div class="ui red header average_price">€ {{ service.price }}</div> -->
-          <div class="row content">
-            <div class="ui three column padded grid">
-              {% for serv in  service.all_service %}
-                <div class="row" style="padding:0.3rem 0;">
-                  <div class="left floated column" style="padding-left:0px;">
-                    <label class="ui {% if serv.active == 'true' %} blue {% endif %} label">{{serv.categorie}}</label>
-                  </div>
-                  <div class="center aligned column">
-                    <span>{{serv.categorie}}</span>
-                  </div>
-                  <div class="right floated right aligned column" style="padding-right:0px;">
-                    <label class="ui label">{{serv.price}}</label>
-                  </div>
-                </div>
-              {% endfor %}
-
-            </div>
+          <div class="row">
+            <table class="ui very basic unstackable compact table">
+              <tbody>
+                {% for serv in  result.services %}
+                <tr>
+                  <td><label class="ui {% if serv.searched %} blue {% endif %} label">{{serv.category}}</label></td>
+                  <td>{{ serv.title }}</td>
+                  <td class="right aligned"><label class="ui label">{{serv.currency}} {{serv.price}}/{{serv.price_type}}</label></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -141,7 +135,7 @@
   {% endfor %}
 </div>
 
-<div class="ui grid container more_loaders"{% if services|length <= 21 %} style="display:none" {% endif %}>
+<div class="ui grid container more_loaders"{% if results|length <= 21 %} style="display:none" {% endif %}>
   <div class="row">
     <button class="large ui fluid center aligned black button more_loader">加载更多</button>
   </div>

@@ -84,7 +84,7 @@
 	                    $(".more_loaders").show();
 	                }
 
-	                show_data(result.services_new);
+	                show_data(result.result);
 	            });
 	        });
 	        $(".more_loader").click(function () {
@@ -98,7 +98,7 @@
 	                    $(".more_loaders").show();
 	                }
 
-	                show_data(result.services_new);
+	                show_data(result.result);
 	            });
 	        });
 	    }
@@ -132,15 +132,13 @@
 	    function show_data(ret) {
 	        var html = '';
 	        for (var i in ret) {
-	            html += '<div class="column">' + '<div class="ui segment padding">' + '<a href="' + ret[i].profile_map_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url + '\');"></a>' + '<a href="' + ret[i].image_url + '" class="ui tiny circular image">' + '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' + '</a>' + '<div class="ui segment">' + '<div class="row"> ' + '<div class="ui header">' + ret[i].name_of_username + ' ' + ret[i].short_description + '</div>' + '<span>' + ret[i].cities + '</span>' + '</div>' +
-	            // '<div class="ui red header average_price">€ ' + ret[i].price + '</div>' +
-	            '<div class="row content">' + '<div class="ui three column padded grid">';
-	            for (var j in ret[i].all_service) {
-	                var temp = ret[i].all_service[j];
-	                html += '<div class="row" style="padding:0.3rem 0;">' + '<div class="left floated column" style="padding-left:0px;">' + '<label class="ui ' + (temp.active == 'true' ? 'blue' : '') + ' label">' + temp.categorie + '</label>' + '</div>' + '<div class="center aligned column">' + '<span>' + temp.categorie + '</span>' + '</div>' + '<div class="right floated right aligned column" style="padding-right:0px;">' + '<label class="ui label">' + temp.price + '</label>' + '</div>' + '</div>';
+	            html += '<div class="column">' + '<div class="ui segment padding">' + '<a href="' + ret[i].profile_url + '" class="profile_map" style="background-image: url(\'' + ret[i].card_image_url + '\');"></a>' + '<a href="' + ret[i].profile_url + '" class="ui tiny circular image">' + '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' + '</a>' + '<div class="ui segment">' + '<div class="row"> ' + '<div class="ui header">' + ret[i].username + ' ' + ret[i].short_description + '</div>' + '<span>' + ret[i].location + '</span>' + '</div>' + '<div class="row">' + '<table class="ui very basic unstackable compact table"><tbody>';
+	            for (var j in ret[i].services) {
+	                var serv = ret[i].services[j];
+	                html += '<tr>' + '<td><label class="ui ' + (serv.searched ? 'blue' : '') + ' label">' + serv.category + '</label></td>' + '<td>' + serv.title + '</td>' + '<td class="right aligned"><label class="ui label">' + serv.currency + serv.price + '/' + serv.price_type + '</label></td>' + '</tr>';
 	            }
 
-	            html += '</div>' + '</div>' + '</div>' + '</div>' + '</div>';
+	            html += '</tbody></table>' + '</div>' + '</div>' + '</div>' + '</div>';
 	        }
 	        $(".search_profile").append(html);
 	    }

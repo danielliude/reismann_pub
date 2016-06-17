@@ -63,24 +63,23 @@ def city(request, city_name, template_name='cities/city.html'):
                 services = Service.objects.filter(user = user)
                 if not services: continue
 
+                # check if at least one service of provider is active
                 one_is_active = False
                 for service in services:
                     if service.status == 2:
                         one_is_active = True
-
                 if not one_is_active: continue
 
-                # Checking gender for user
+                # Checking gender of provider
                 skip_user = False
                 gender = request.POST.getlist('gender[]')
                 if (gender):
                     for gend in gender:
                         if user.profile.gender != int(gend):
                             skip_user = True
-
                 if skip_user: continue
 
-                # Check age for user
+                # Check age of provider
                 age = request.POST.get('age')
                 if (age):
                     if (age != '0'):
@@ -91,46 +90,35 @@ def city(request, city_name, template_name='cities/city.html'):
                             skip_user = True
                         elif(user.profile.age < int(min)):
                             skip_user = True
-
                 if skip_user: continue
 
-                # Check languages
+                # Check languages of provider
                 languages = request.POST.getlist('languages[]')
                 if (languages):
                     for lang in languages:
                         if not user.profile.languages.filter(id=lang).exists():
                             skip_user = True
-
                 if skip_user: continue
 
+                # Check tags of provider
                 tags = request.POST.getlist('tags[]')
                 if (tags):
                     for tag in tags:
                         if not user.profile.tags.filter(id=tag).exists():
                             skip_user = True
-
                 if skip_user: continue
 
                 user_dict = {}
-                user_dict['card_image_url'] = user.profile.get_card_image_url()
-                user_dict['profile_url'] = "/profiles/" + user.username + "/"
-                user_dict['avatar_url'] = user.profile.get_avatar_url()
-                user_dict['username'] = user.username
-                user_dict['short_description'] = user.profile.short_description
-                user_dict['location'] = user.profile.location.name
-
                 user_services = user.service.all()
-
                 services_dict = {}
                 for service in user_services:
 
                     if service.status != 2 : continue
-
                     service_dict = {}
 
-                    print(service)
-                    for city in service.cities.all():
-                        print(city)
+                    # print(service)
+                    # for city in service.cities.all():
+                    #     print(city)
 
                     service_dict['service_url'] = "/profiles/" + user.username + "/services/view/" + str(service.id)
 
@@ -144,7 +132,7 @@ def city(request, city_name, template_name='cities/city.html'):
                     service_dict['price'] = service.price
                     service_dict['title'] = service.title
                     service_dict['category'] = service.category.name
-                    service_dict['searched'] = True
+                    service_dict['searched'] = False
                     service_dict['price_type'] = service.price_type
                     service_dict['currency'] = service.currency
                     
@@ -170,7 +158,23 @@ def city(request, city_name, template_name='cities/city.html'):
 
                     services_dict[service.id] = service_dict
 
+                # Check if at least one found service is found
+                forward = False
+                for key in services_dict:
+                    if services_dict[key]['searched'] == True:
+                        forward = True
+                        break
+
+                if not forward: continue
+
                 user_dict['services'] = services_dict
+                user_dict['card_image_url'] = user.profile.get_card_image_url()
+                user_dict['profile_url'] = "/profiles/" + user.username + "/"
+                user_dict['avatar_url'] = user.profile.get_avatar_url()
+                user_dict['username'] = user.username
+                user_dict['short_description'] = user.profile.short_description
+                user_dict['location'] = user.profile.location.name
+
                 result.append(user_dict)
 
             print(result)

@@ -1,167 +1,164 @@
 {% load i18n %}
 {% load thumbnail %}
 
-<div class="ui blue padded segment profile_form">
-  <h3 class="ui center aligned header">{% trans 'Edit profile' %}</h3>
-  <form class="ui form" action="" enctype="multipart/form-data" method="post">
-    <br>
-    {% csrf_token %}
-    {{ form.media }}
-    {{ form.non_field_errors }}
-    {{ contactForm.non_field_errors }}
+<form class="ui form" action="" enctype="multipart/form-data" method="post">
+  <br>
+  {% csrf_token %}
+  {{ form.media }}
+  {{ form.non_field_errors }}
+  {{ contactForm.non_field_errors }}
 
-    {{ form.last_name.errors }}
+  {{ form.last_name.errors }}
+  <div class="required field">
+    <label>{{ form.last_name.label }}</label>
+    <div class="ui icon input">
+      {{ form.last_name }}
+    </div>
+  </div>
+
+  {{ form.first_name.errors }}
+  <div class="required field">
+    <label>{{ form.first_name.label }}</label>
+    <div class="ui icon input">
+      {{ form.first_name }}
+    </div>
+  </div>
+
+  {{ form.gender.errors }}
+  <div class="required field">
+      <label>{{ form.gender.label }}</label>
+      {{ form.gender }}
+  </div>
+
+  {% if profile.settings.is_provider %}
+
+  {{ form.languages.errors }}
+  <div class="required field">
+    <label>{{ form.languages.label }}</label>
+    {{ form.languages }}
+  </div>
+
+  {{ form.tags.errors }}
+  <div class="required field">
+    <label>{{ form.tags.label }}</label>
+    {{ form.tags }}
+  </div>
+  {{ form.birthday.errors }}
+  <div class="required field">
+    <label>{{ form.birthday.label }}</label>
+    <div class="ui icon input">
+        {{ form.birthday }}
+        <i class="calendar icon"></i>
+    </div>
+  </div>
+
+  <div class="three fields">
+    {{ form.country.errors }}
     <div class="required field">
-      <label>{{ form.last_name.label }}</label>
-      <div class="ui icon input">
-        {{ form.last_name }}
+      <label>{{ form.country.label }}</label>
+      {{ form.country }}
+    </div>
+
+    {{ form.province.errors }}
+    <div class="required field">
+      <label>{{ form.province.label }}</label>
+      {{ form.province }}
+    </div>
+
+    {{ form.location.errors }}
+    <div class="required field">
+      <label>{{ form.location.label }}</label>
+      {{ form.location }}
+    </div>
+  </div>
+
+  {{ form.profession.errors }}
+  <div class="required field">
+      <label>{{ form.profession.label }}</label>
+      {{ form.profession }}
+  </div>
+
+  {{ form.short_description.errors }}
+  <div class="field">
+    <label>{{ form.short_description.label }}</label>
+    <div class="ui icon input">
+      {{ form.short_description }}
+    </div>
+  </div>
+
+  {{ form.avatar.errors }}
+  <div class="required field">
+    <label>{{ form.avatar.label }}</label>
+    <div class="avatar">
+      {% if profile.avatar %}<img src="{{ profile.avatar.url }}" />{% endif %}
+    </div>
+    <button type="button" class="change_avatar ui button">{% trans 'Change Avatar' %}</button>
+  </div>
+
+  {{ form.card_image.errors }}
+  <div class="required field">
+    <label>{{ form.card_image.label }}</label>
+    <div class="card_image">
+      {% if profile.card_image %}<img src="{{ profile.card_image.url }}" />{% endif %}
+    </div>
+    <button type="button" class="change_card_image ui button">{% trans 'Change Card Image' %}</button>
+  </div>
+
+  <div class="album-images" >
+    <div class="ui modal">
+      <div class="header">{% trans 'Select one image from your photo center' %}</div>
+      <div class="image content">
+        {% for img in profile.user.album_images.all %}
+          <label class="album-image" data-img_id="{{ img.id }}"><img src="{% thumbnail img.image 140x140 crop='smart' %}" /></label>
+        {% endfor %}
       </div>
     </div>
+  </div>
 
-    {{ form.first_name.errors }}
-    <div class="required field">
-      <label>{{ form.first_name.label }}</label>
-      <div class="ui icon input">
-        {{ form.first_name }}
+  {{ form.bio.errors }}
+  <div class="required field">
+    <label>{{ form.bio.label }}</label>
+    {{ form.bio }}
+  </div>
+  {% endif %}
+
+  {{ contactForm.email.error }}
+  <div class="required field">
+      <label>{{ contactForm.email.label }}</label>
+      <div class="ui disabled input">
+      {{ contactForm.email }}
       </div>
-    </div>
+  </div>
 
-    {{ form.gender.errors }}
-    <div class="required field">
-        <label>{{ form.gender.label }}</label>
-        {{ form.gender }}
-    </div>
+  {{ contactForm.phone.error }}
+  <div class="field">
+      <label>{{ contactForm.phone.label }}</label>
+      {{ contactForm.phone }}
+  </div>
 
-    {% if profile.settings.is_provider %}
+  {{ contactForm.wechat.error }}
+  <div class="field">
+      <label>{{ contactForm.wechat.label }}</label>
+      {{ contactForm.wechat }}
+  </div>
 
-    {{ form.languages.errors }}
-    <div class="required field">
-      <label>{{ form.languages.label }}</label>
-      {{ form.languages }}
-    </div>
+  {{ contactForm.qq.error }}
+  <div class="field">
+      <label>{{ contactForm.qq.label }}</label>
+      {{ contactForm.qq}}
+  </div>
 
-    {{ form.tags.errors }}
-    <div class="required field">
-      <label>{{ form.tags.label }}</label>
-      {{ form.tags }}
-    </div>
-    {{ form.birthday.errors }}
-    <div class="required field">
-      <label>{{ form.birthday.label }}</label>
-      <div class="ui icon input">
-          {{ form.birthday }}
-          <i class="calendar icon"></i>
-      </div>
-    </div>
+  {% if profile.settings.is_provider %}
+  {{ contactForm.weibo.error }}
+  <div class="field">
+      <label>{{ contactForm.weibo.label }}</label>
+      {{ contactForm.weibo }}
+  </div>
+  {% endif %}
 
-    <div class="three fields">
-      {{ form.country.errors }}
-      <div class="required field">
-        <label>{{ form.country.label }}</label>
-        {{ form.country }}
-      </div>
-
-      {{ form.province.errors }}
-      <div class="required field">
-        <label>{{ form.province.label }}</label>
-        {{ form.province }}
-      </div>
-
-      {{ form.location.errors }}
-      <div class="required field">
-        <label>{{ form.location.label }}</label>
-        {{ form.location }}
-      </div>
-    </div>
-
-    {{ form.profession.errors }}
-    <div class="required field">
-        <label>{{ form.profession.label }}</label>
-        {{ form.profession }}
-    </div>
-
-    {{ form.short_description.errors }}
-    <div class="field">
-      <label>{{ form.short_description.label }}</label>
-      <div class="ui icon input">
-        {{ form.short_description }}
-      </div>
-    </div>
-
-    {{ form.avatar.errors }}
-    <div class="required field">
-      <label>{{ form.avatar.label }}</label>
-      <div class="avatar">
-        {% if profile.avatar %}<img src="{{ profile.avatar.url }}" />{% endif %}
-      </div>
-      <button type="button" class="change_avatar ui button">{% trans 'Change Avatar' %}</button>
-    </div>
-
-    {{ form.card_image.errors }}
-    <div class="required field">
-      <label>{{ form.card_image.label }}</label>
-      <div class="card_image">
-        {% if profile.card_image %}<img src="{{ profile.card_image.url }}" />{% endif %}
-      </div>
-      <button type="button" class="change_card_image ui button">{% trans 'Change Card Image' %}</button>
-    </div>
-
-    <div class="album-images" >
-      <div class="ui modal">
-        <div class="header">{% trans 'Select one image from your photo center' %}</div>
-        <div class="image content">
-          {% for img in profile.user.album_images.all %}
-            <label class="album-image" data-img_id="{{ img.id }}"><img src="{% thumbnail img.image 140x140 crop='smart' %}" /></label>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-
-    {{ form.bio.errors }}
-    <div class="required field">
-      <label>{{ form.bio.label }}</label>
-      {{ form.bio }}
-    </div>
-    {% endif %}
-
-    {{ contactForm.email.error }}
-    <div class="required field">
-        <label>{{ contactForm.email.label }}</label>
-        <div class="ui disabled input">
-        {{ contactForm.email }}
-        </div>
-    </div>
-
-    {{ contactForm.phone.error }}
-    <div class="field">
-        <label>{{ contactForm.phone.label }}</label>
-        {{ contactForm.phone }}
-    </div>
-
-    {{ contactForm.wechat.error }}
-    <div class="field">
-        <label>{{ contactForm.wechat.label }}</label>
-        {{ contactForm.wechat }}
-    </div>
-
-    {{ contactForm.qq.error }}
-    <div class="field">
-        <label>{{ contactForm.qq.label }}</label>
-        {{ contactForm.qq}}
-    </div>
-
-    {% if profile.settings.is_provider %}
-    {{ contactForm.weibo.error }}
-    <div class="field">
-        <label>{{ contactForm.weibo.label }}</label>
-        {{ contactForm.weibo }}
-    </div>
-    {% endif %}
-
-    <br>
-    <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
-    <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
-    <div class="ui error message">
-    </div>
-  </form>
-</div>
+  <br>
+  <button class="fluid ui primary button" type="submit" style="margin-bottom:10px;">{% trans 'Save changes' %}</button>
+  <a href="{% url 'profiles:detail' profile.user.username %}" class="fluid ui red button">{% trans 'Cancel' %}</a>
+  <div class="ui error message">
+  </div>
+</form>

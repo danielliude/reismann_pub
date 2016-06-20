@@ -51,15 +51,15 @@
 
 	__webpack_require__(130);
 
-	__webpack_require__(145);
+	__webpack_require__(135);
 
-	__webpack_require__(147);
+	__webpack_require__(137);
 
 	__webpack_require__(16);
 
 	// import '../../vendors/galleria/galleria-1.4.2.js'
 
-	__webpack_require__(135);
+	__webpack_require__(138);
 
 	$(function () {
 		var profile_username = $('.profile_username').text();
@@ -438,14 +438,7 @@
 
 /***/ },
 
-/***/ 145:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 147:
+/***/ 137:
 /***/ function(module, exports) {
 
 	/*!
@@ -706,6 +699,13 @@
 	            i = t.fn.popup.settings.templates.escape;return typeof e !== n && (typeof e.title !== n && e.title && (e.title = i(e.title), o += '<div class="header">' + e.title + "</div>"), typeof e.content !== n && e.content && (e.content = i(e.content), o += '<div class="content">' + e.content + "</div>")), o;
 	      } } };
 	})(jQuery, window, document);
+
+/***/ },
+
+/***/ 138:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 

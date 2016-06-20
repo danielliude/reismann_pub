@@ -1,5 +1,6 @@
 {% extends "profiles/__profile_base.html" %}
 {% load render_bundle from webpack_loader %}
+{% load i18n %}
 {% block stylesheets %}
     {% render_bundle 'profiles/detail' 'css' %}
 {% endblock %}
@@ -18,8 +19,18 @@
 {% block content %}
     <div class="ui grid detail_grid">
       <div class="column">
-        {% include 'profiles/__profile_form.html' %}
-        {% include 'profiles/__more_profile_form.html' %}
+        <div class="ui segment" style="padding:2rem 0 0 0;">
+          <div class="ui top attached tabular menu" style="margin-left:0px;padding-left:2rem;">
+            <a class="{% if simple_profile %}active{% endif %} item" data-tab="first">{% trans 'Inbox message' %}</a>
+            <a class="{% if more_profile %}active{% endif %} item" data-tab="second">{% trans 'Outbox message' %}</a>
+          </div>
+          <div style="border:0px;" class="ui bottom attached tab padded segment {% if simple_profile %}active{% endif %}" data-tab="first">
+            {% include 'profiles/__profile_form.html' %}
+          </div>
+          <div style="border:0px;" class="ui bottom attached tab padded segment {% if more_profile %}active{% endif %}" data-tab="second">
+            {% include 'profiles/__more_profile_form.html' %}
+          </div>
+        </div>
       </div>
     </div>
 {% endblock %} 

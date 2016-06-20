@@ -7,15 +7,17 @@ import '../../semantic/dist/components/dimmer.min.css'
 import '../../semantic/dist/components/dimmer.min.js'
 import '../../semantic/dist/components/modal.min.js'
 import '../../semantic/dist/components/modal.min.css'
+import '../../semantic/dist/components/tab.min.css'
+import '../../semantic/dist/components/tab.min.js'
 
 $(function() {
   init_button()
-  // init_form()
   init_album()
   country_city()
 
   function init_button() {
-    $('.profile_form .ui.dropdown').dropdown();
+    $('.detail_grid .ui.dropdown').dropdown();
+
     $('#id_birthday').daterangepicker({
       format: 'YYYY-MM-DD',
       singleDatePicker: true,
@@ -23,76 +25,10 @@ $(function() {
     }, function(start, end, label) {
       console.log(start.toISOString(), end.toISOString(), label);
     });
-  }
-  
-  function init_form() {
-    $('.ui.form').form({
-        fields: {
-            first_name: {
-                identifier  : 'first_name',
-                rules: [
-                    {
-                      type   : 'empty',
-                      prompt : 'Please enter your first_name'
-                    },
-                ]
-            },
-            last_name: {
-                identifier  : 'last_name',
-                rules: [
-                    {
-                      type   : 'empty',
-                      prompt : 'Please enter your last_name'
-                    },
-                ]
-            },
-            gender: {
-                identifier  : 'gender',
-                rules: [
-                    {
-                      type   : 'empty',
-                      prompt : 'Please enter your gender'
-                    },
-                ]
-            },
-            profession: {
-                identifier  : 'profession',
-                rules: [
-                    {
-                      type   : 'empty',
-                      prompt : 'Please enter your profession'
-                    },
-                ]
-            },
-            birthday: {
-                identifier  : 'birthday',
-                rules: [
-                    {
-                      type   : 'empty',
-                      prompt : 'Please enter your birthday'
-                    },
-                ]
-            },
-            location: {
-                identifier  : 'location',
-                rules: [
-                    {
-                      type   : 'empty',
-                      prompt : 'Please enter your location'
-                    },
-                ]
-            },
-            bio: {
-                identifier  : 'bio',
-                rules: [
-                    {
-                      type   : 'empty',
-                      prompt : 'Please enter your bio'
-                    },
-                ]
-            },
-        }
-    })
+
+    $('.tabular.menu .item')
+        .tab()
+      ;
   }
 
   function init_album() {

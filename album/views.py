@@ -41,16 +41,20 @@ def album(request, username):
                     my_album.images.add(image)
             return redirect(request.path)
         else:
-            form = AlbumImageUploadForm(request.POST, request.FILES)
-            form.user = user
-            if form.is_valid():
-                obj = form.save(commit=False)
-                obj.image_size = obj.image.size
-                obj.user = user
-                obj.status = 1
-                obj.save()
-                obj.send_notification_email_to_administrator()
-                return redirect(request.path)
+            all_files = request.FILES.getlist('image')
+            for files in all_files:
+                files1 = {'image':files}
+                form = AlbumImageUploadForm(request.POST, files1)
+                form.user = user
+                if form.is_valid():
+                    obj = form.save(commit=False)
+                    obj.image_size = obj.image.size
+                    obj.user = user
+                    obj.status = 1
+                    obj.save()
+                    obj.send_notification_email_to_administrator()
+
+            return redirect(request.path)
     else:
         form = AlbumImageUploadForm()
 

@@ -51,6 +51,11 @@
 
 	$(function () {
 	    init_form();
+	    init();
+
+	    function init() {
+	        $('#id_image').attr('multiple', ' ');
+	    }
 
 	    function init_form() {
 	        $('.ui.form').form({

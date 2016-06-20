@@ -21,8 +21,8 @@
       <div class="column">
         <div class="ui segment" style="padding:2rem 0 0 0;">
           <div class="ui top attached tabular menu" style="margin-left:0px;padding-left:2rem;">
-            <a class="{% if simple_profile %}active{% endif %} item" data-tab="first">{% trans 'Inbox message' %}</a>
-            <a class="{% if more_profile %}active{% endif %} item" data-tab="second">{% trans 'Outbox message' %}</a>
+            <a class="{% if simple_profile %}active{% endif %} item" data-tab="first">{% trans 'simple_profile' %}</a>
+            <a class="{% if more_profile %}active{% endif %} item" data-tab="second">{% trans 'more_profile' %}</a>
           </div>
           <div style="border:0px;" class="ui bottom attached tab padded segment {% if simple_profile %}active{% endif %}" data-tab="first">
             {% include 'profiles/__profile_form.html' %}

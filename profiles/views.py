@@ -357,11 +357,7 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   extra_context['more_form'] = more_form
   extra_context['contactForm'] = contactForm
 
-  profile_type = request.GET.get('profile_type')
-  if profile_type == 'more_profile':
-    extra_context['more_profile'] = 'true'
-  else:
-    extra_context['simple_profile'] = 'true'
+  extra_context['simple_profile'] = 'true'
 
   extra_context = makeContextForProfile(request, user, extra_context)
   extra_context = makeContextForNotifications(request, extra_context)

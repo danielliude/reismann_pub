@@ -17,11 +17,32 @@
       <div class="ui padding blue segment">
         <h3 class="ui center aligned header">
           {% trans 'Photo Center' %}
-          <div class="sub header">
+<!--           <div class="sub header">
             {% trans 'To display some of above photos on my profile page, please select the checkboxes and click save.' %}
-          </div>
+          </div> -->
         </h3>
+        <div style="text-align:center">
+          <div class="ui large horizontal list">
+            <div class="item">
+              <i class="icon home blue"></i>
+              {% trans 'homepage pic' %}
+            </div>
+            <div class="item">
+              <i class="icon circle green"></i>
+              {% trans 'approved' %}  
+            </div>
+            <div class="item">
+              <i class="icon circle yellow"></i>
+              {% trans 'waiting for approval' %}  
+            </div>
+            <div class="item">
+              <i class="icon circle red"></i>
+              {% trans 'denied' %}  
+            </div>
+          </div>
+        </div>
         <br>
+
 
         <form method="post" action="">
           {% csrf_token %}
@@ -29,18 +50,31 @@
           <div class="ui doubling four column grid">
             {% for image in images %}
               <div class="column">
-                <label>
-                  <img src="{% thumbnail image.image 140x140 crop='smart' %}" />
-                  <input type="checkbox" name="selected" value="{{ image.id }}" {% if image.is_in_my_album %}checked{% endif %} />
-                  {{ image.get_status_display }}
-                </label>
-                <a href="{% url "profiles:delete_album_image" profile.user.username image.id  %}">delete</a>
+                <div class="image_css">
+                  <label>
+                    <img src="{% thumbnail image.image 220x220 crop='smart' %}" />
+                    <input class="image_checkbox" type="checkbox" name="selected" value="{{ image.id }}"  />
+                    <div class="icon_block">
+                      <div class="ui basic label">
+                        {% if image.is_in_my_album %}<i class="icon home blue"></i>{% endif %}
+                        {% if image.status == 1 %}
+                          <i class="icon circle yellow"></i>
+                        {% elif image.status == 2 %}
+                          <i class="icon circle green"></i>
+                        {% elif image.status == 3 %}
+                          <i class="icon circle red"></i>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </label>
+                </div>
               </div>
             {% endfor %}
 
             <div class="row">
-              <div class="column">
-                <input class="button blue ui" type="submit" name="select" value="{% trans 'Save' %}" />
+              <div class="sixteen wide column">
+                <input class="button blue ui" type="submit" name="select" value="{% trans 'Home photo' %}" />
+                <input class="button red ui" type="submit" name="select_delete" value="{% trans 'Delete' %}" />
               </div>
             </div>
           </div>

@@ -21,7 +21,7 @@ $(function() {
 	register_modal() 
 	send_message_modal()
 	send_comment()
-	use_galleria()
+	use_unslider()
 
 	function init() {
 		$('.profile_home .ui.dropdown')
@@ -166,30 +166,10 @@ $(function() {
 		})
 	}
 
-	function use_galleria() {
-		//不知道为什么用webpack引用不进galleria，我只好引用网上的galleria文件了。
-
-
+	function use_unslider() {
 		$('.banner').unslider({
 			arrows: true 
-});
-		// $('#carousel').flexslider({
-  //   animation: "slide",
-  //   controlNav: false,
-  //   animationLoop: false,
-  //   slideshow: false,
-  //   itemWidth: 210,
-  //   itemMargin: 5,
-  //   asNavFor: '#slider'
-  // });
- 
-  // $('#slider').flexslider({
-  //   animation: "slide",
-  //   controlNav: false,
-  //   animationLoop: false,
-  //   slideshow: false,
-  //   sync: "#carousel"
-  // });
+		});
 	}
 
 	function equal_width() {

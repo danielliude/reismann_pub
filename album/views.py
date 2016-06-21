@@ -40,6 +40,13 @@ def album(request, username):
                 for image in selected_images:
                     my_album.images.add(image)
             return redirect(request.path)
+        elif request.POST.get('select_delete'):
+            selected_image_ids = request.POST.getlist('selected')
+            for image_id in selected_image_ids:
+                image = AlbumImage.objects.get(id=image_id, user=user)
+                if image:
+                    image.delete()
+            return redirect(request.path)
         else:
             all_files = request.FILES.getlist('image')
             for files in all_files:

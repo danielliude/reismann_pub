@@ -42,17 +42,18 @@
   </div>
   <div style="border:0px;" class="ui bottom attached tab padded segment" data-tab="second">
   </div>
-  <div style="border:0px;" class="ui bottom attached tab padded segment" data-tab="third">
+  <div style="border:0px;" class="ui bottom attached tab padded segment third_segment" data-tab="third">
     {% if profile.settings.is_provider %}
-      <div id="galleria">
-      {% for image in profile.user.my_album.images.all %}
-        {% if image.is_active %}
-          <a href="{{ image.image.url }}">
-            <img src="{% thumbnail image.image 280x280 crop='smart' %}" />
-          </a>
-        {% endif %}
-      {% endfor %}
+      <div class="banner">
+          <ul>
+              {% for image in profile.user.my_album.images.all %}
+                {% if image.is_active %}
+                  <li><img src="{{ image.image.url }}" /></li>
+                {% endif %}
+              {% endfor %}
+          </ul>
       </div>
+
     {% endif %}
     <br>
     <br>

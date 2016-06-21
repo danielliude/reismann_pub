@@ -3,7 +3,12 @@ import '../../semantic/dist/components/tab.min.js'
 import '../../semantic/dist/components/popup.min.css'
 import '../../semantic/dist/components/popup.min.js'
 import '../../semantic/dist/components/breadcrumb.min.css'
-// import '../../vendors/galleria/galleria-1.4.2.js'
+
+import '../../vendors/unslider/dist/css/unslider.css'
+import '../../vendors/unslider/dist/css/unslider-dots.css'
+import '../../vendors/unslider/dist/js/unslider-min.js'
+// import '../../vendors/flexslider/jquery.flexslider-min.js'
+// import '../../vendors/flexslider/flexslider.css'
 
 import '../../styles/templates/profiles/profile.scss'
 
@@ -163,8 +168,28 @@ $(function() {
 
 	function use_galleria() {
 		//不知道为什么用webpack引用不进galleria，我只好引用网上的galleria文件了。
-		Galleria.loadTheme('http://cdn.bootcss.com/galleria/1.4/themes/classic/galleria.classic.min.js');
-	    Galleria.run('#galleria');
+
+
+		$('.banner').unslider({
+			arrows: true 
+});
+		// $('#carousel').flexslider({
+  //   animation: "slide",
+  //   controlNav: false,
+  //   animationLoop: false,
+  //   slideshow: false,
+  //   itemWidth: 210,
+  //   itemMargin: 5,
+  //   asNavFor: '#slider'
+  // });
+ 
+  // $('#slider').flexslider({
+  //   animation: "slide",
+  //   controlNav: false,
+  //   animationLoop: false,
+  //   slideshow: false,
+  //   sync: "#carousel"
+  // });
 	}
 
 	function equal_width() {

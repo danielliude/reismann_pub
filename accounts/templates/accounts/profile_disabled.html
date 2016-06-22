@@ -1,0 +1,16 @@
+{% extends "core/__global.html" %}
+{% load staticfiles i18n %}
+{% load render_bundle from webpack_loader %}
+
+{% block stylesheets %}
+    {% render_bundle 'accounts/login' 'css' %}
+{% endblock %}
+{% block javascripts %}
+    {% render_bundle 'accounts/login' 'js' %}
+{% endblock %}
+
+{% block content %}
+
+<div>{% trans 'Profile is not active!' %}</div>
+
+{% endblock %}

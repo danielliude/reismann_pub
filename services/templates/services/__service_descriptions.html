@@ -43,15 +43,17 @@
   </div>
   <div class="ui bottom attached tab padded segment third_segment" data-tab="third">
     {% if profile.settings.is_provider %}
-      <div class="banner">
-          <ul>
-              {% for image in profile.user.my_album.images.all %}
-                {% if image.is_active %}
-                  <li><img src="{{ image.image.url }}" /></li>
-                {% endif %}
-              {% endfor %}
-          </ul>
-      </div>
+      {% if profile.user.my_album.images.active_images|length == 0 %}
+        <p>There are not photos</p>
+      {% else %}
+        <div class="banner">
+            <ul>
+                {% for image in profile.user.my_album.images.active_images %}
+                    <li><img src="{{ image.image.url }}" /></li>
+                {% endfor %}
+            </ul>
+        </div>
+      {% endif %}
     {% endif %}
     <br>
   </div>

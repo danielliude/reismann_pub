@@ -47,11 +47,11 @@
 
 	'use strict';
 
+	__webpack_require__(129);
+
 	__webpack_require__(126);
 
 	__webpack_require__(128);
-
-	__webpack_require__(130);
 
 	$(function () {
 	  $('.tabular.menu .item').tab();
@@ -67,13 +67,6 @@
 /***/ },
 
 /***/ 128:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 130:
 /***/ function(module, exports) {
 
 	/*!
@@ -269,6 +262,13 @@
 	    e(t).tab.apply(this, arguments);
 	  }, e.fn.tab.settings = { name: "Tab", namespace: "tab", debug: !1, verbose: !1, performance: !0, auto: !1, history: !1, historyType: "hash", path: !1, context: !1, childrenOnly: !1, maxDepth: 25, alwaysRefresh: !1, cache: !0, ignoreFirstLoad: !1, apiSettings: !1, evaluateScripts: "once", onFirstLoad: function onFirstLoad(e, t, a) {}, onLoad: function onLoad(e, t, a) {}, onVisible: function onVisible(e, t, a) {}, onRequest: function onRequest(e, t, a) {}, templates: { determineTitle: function determineTitle(e) {} }, error: { api: "You attempted to load content without API module", method: "The method you called is not defined", missingTab: "Activated tab cannot be found. Tabs are case-sensitive.", noContent: "The tab you specified is missing a content url.", path: "History enabled, but no path was specified", recursion: "Max recursive depth reached", legacyInit: "onTabInit has been renamed to onFirstLoad in 2.0, please adjust your code.", legacyLoad: "onTabLoad has been renamed to onLoad in 2.0. Please adjust your code", state: "History requires Asual's Address library <https://github.com/asual/jquery-address>" }, metadata: { tab: "tab", loaded: "loaded", promise: "promise" }, className: { loading: "loading", active: "active" }, selector: { tabs: ".ui.tab", ui: ".ui" } };
 	})(jQuery, window, document);
+
+/***/ },
+
+/***/ 129:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 

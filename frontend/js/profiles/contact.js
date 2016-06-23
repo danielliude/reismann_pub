@@ -3,6 +3,8 @@ import '../../styles/templates/profiles/contact.scss'
 $(function() {
     // init_form()
 
+
+
     function init_form() {
         $('.ui.form').form({
             fields: {

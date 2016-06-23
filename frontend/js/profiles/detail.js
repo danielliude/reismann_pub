@@ -58,11 +58,11 @@ $(function() {
 
     $.get('/cities/get_provinces', function(p_data) {
       province_data = p_data
-      refresh_province(p_data, $("#id_country").val())
+      refresh_province(p_data, $("#id_country").val(), $("#id_province").val())
 
       $.get('/cities/get_cities', function(c_data) {
         city_data = c_data
-        refresh_location(c_data, $("#id_province").val())
+        refresh_location(c_data, $("#id_province").val(), $("#id_location").val())
 
         change_event()
       });
@@ -77,7 +77,7 @@ $(function() {
             return;
           }
 
-          refresh_province(province_data, value, function() {
+          refresh_province(province_data, value, null, function() {
             refresh_location(city_data, $("#id_province").val())
           })
         }
@@ -98,15 +98,24 @@ $(function() {
   }
 
 
-  function refresh_province(data, value, cb) {
+  function refresh_province(data, value, province_value, cb) {
     var html = ''
     for(var i=0; i<data.length; i++) {
       if(data[i].country == value) {
-        if(html) {
-          html += '<option value="' + data[i].id + '">' + data[i].name + '</option>'
+        if(province_value) {
+          if(data[i].id == province_value) {
+            html += '<option value="' + data[i].id + '" selected="selected">' + data[i].name + '</option>'
+            $("#id_province").siblings('.text').text(data[i].name)
+          } else {
+            html += '<option value="' + data[i].id + '">' + data[i].name + '</option>'
+          }
         } else {
-          html += '<option value="' + data[i].id + '" selected="selected">' + data[i].name + '</option>'
-         $("#id_province").siblings('.text').text(data[i].name)
+          if(html) {
+            html += '<option value="' + data[i].id + '">' + data[i].name + '</option>'
+          } else {
+            html += '<option value="' + data[i].id + '" selected="selected">' + data[i].name + '</option>'
+            $("#id_province").siblings('.text').text(data[i].name)
+          }
         }
       }
     }
@@ -115,20 +124,30 @@ $(function() {
     cb && cb()
   } 
 
-  function refresh_location(data, value) {
+  function refresh_location(data, value, location_value, cb) {
     var html = ''
     for(var i=0; i<data.length; i++) {
       if(data[i].province == value) {
-        if(html) {
-          html += '<option value="' + data[i].id + '">' + data[i].name + '</option>'
+        if(location_value) {
+          if(location_value == data[i].id) {
+            html += '<option value="' + data[i].id + '" selected="selected">' + data[i].name + '</option>'
+           $("#id_location").siblings('.text').text(data[i].name)
+          } else {
+            html += '<option value="' + data[i].id + '">' + data[i].name + '</option>'
+          }
         } else {
-          html += '<option value="' + data[i].id + '" selected="selected">' + data[i].name + '</option>'
-         $("#id_location").siblings('.text').text(data[i].name)
+          if(html) {
+            html += '<option value="' + data[i].id + '">' + data[i].name + '</option>'
+          } else {
+            html += '<option value="' + data[i].id + '" selected="selected">' + data[i].name + '</option>'
+           $("#id_location").siblings('.text').text(data[i].name)
+          }
         }
       }
     }
 
     $("#id_location").empty().append(html).parent().dropdown('refresh')
+    cb && cb()
   } 
 
 })

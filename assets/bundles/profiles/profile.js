@@ -47,9 +47,9 @@
 
 	'use strict';
 
-	__webpack_require__(128);
+	__webpack_require__(126);
 
-	__webpack_require__(130);
+	__webpack_require__(128);
 
 	__webpack_require__(135);
 
@@ -57,16 +57,16 @@
 
 	__webpack_require__(16);
 
-	__webpack_require__(150);
+	__webpack_require__(138);
 
-	__webpack_require__(152);
+	__webpack_require__(140);
 
-	__webpack_require__(149);
+	__webpack_require__(142);
 
 	// import '../../vendors/flexslider/jquery.flexslider-min.js'
 	// import '../../vendors/flexslider/flexslider.css'
 
-	__webpack_require__(138);
+	__webpack_require__(143);
 
 	$(function () {
 		var profile_username = $('.profile_username').text();
@@ -232,14 +232,14 @@
 
 /***/ },
 
-/***/ 128:
+/***/ 126:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 130:
+/***/ 128:
 /***/ function(module, exports) {
 
 	/*!
@@ -716,7 +716,14 @@
 
 /***/ },
 
-/***/ 149:
+/***/ 140:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 142:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -819,14 +826,7 @@
 
 /***/ },
 
-/***/ 150:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 152:
+/***/ 143:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

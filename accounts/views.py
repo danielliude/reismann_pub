@@ -38,6 +38,16 @@ import logging
 
 logger = logging.getLogger("accounts")
 
+def profile_disabled(request, username, template_name='accounts/profile_disabled.html', extra_context=None):
+
+  user = get_object_or_404(User, username__iexact=username)
+
+  if not extra_context: extra_context = dict()
+  extra_context['profile'] = get_user_profile(user=user)
+
+  return ExtraContextTemplateView.as_view(template_name=template_name,
+                                          extra_context=extra_context)(request)
+
 def login(request, login_form=AuthenticationForm, template_name='accounts/login.html',
           extra_context=None):
 
@@ -63,7 +73,7 @@ def login(request, login_form=AuthenticationForm, template_name='accounts/login.
 
         return HttpResponseRedirect(redirect_to)
       else:
-        return redirect(reverse('profile_disabled', kwargs={'username': user.username}))
+        return redirect(reverse('accounts:profile_disabled', kwargs={'username': user.username}))
 
   if not extra_context: extra_context = dict()
   extra_context.update({

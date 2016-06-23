@@ -30,4 +30,7 @@ urlpatterns = [
     'template_name': 'accounts/password_complete.html'
   }, name='change_password_complete'),
 
+  # disabled profile
+  url(r'^(?P<username>[\@\.\w-]+)/profile/disabled/$', views.profile_disabled, name='profile_disabled'),
+
 ]

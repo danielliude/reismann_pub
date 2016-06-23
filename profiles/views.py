@@ -342,19 +342,20 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
         else:
             redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
         return redirect(redirect_to)
-
+  if not extra_context: extra_context = dict()
+  more_form = None
   if profile.settings.is_provider:
       form = profile_form(instance=profile, initial=user_initial)
       more_form = ProfileMoreForm()
+      extra_context['more_form'] = more_form
+      extra_context['show_more_form'] = True
   else:
       form = ProfileFormCustomer(instance = profile, initial=user_initial)
+      extra_context['show_more_form'] = False
 
   contactForm = contact_form(instance = contact)
 
-  if not extra_context: extra_context = dict()
-
   extra_context['form'] = form
-  extra_context['more_form'] = more_form
   extra_context['contactForm'] = contactForm
 
   extra_context['simple_profile'] = 'true'
@@ -366,15 +367,23 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
 
 
 @secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
 def more_profile(request, username):
-  redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
   if request.POST:
     user = get_object_or_404(User, username__iexact=username)
-    profile, created = ProfileMore.objects.get_or_create(user=user)
-    form = ProfileMoreForm(request.POST, instance=profile)
-    if form.is_valid():
-      form.save()
-  return redirect(redirect_to)
+    profile, created = Profile.objects.get_or_create(user=user)
+    if profile.settings.is_provider:
+      more_profile, created = ProfileMore.objects.get_or_create(user=user)
+      more_form = ProfileMoreForm(request.POST, instance=more_profile)
+      if more_form.is_valid():
+        more_form.save()
+        return redirect(reverse('profiles:dashboard', kwargs={'username': username}))
+      extra_context = {}
+      extra_context['more_profile'] = 'true'
+      extra_context['more_form'] = more_form
+      extra_context = makeContextForProfile(request, user, extra_context)
+      return ExtraContextTemplateView.as_view(template_name='profiles/detail.html', extra_context=extra_context)(request)
+  return redirect(reverse('profiles:profile', kwargs={'username': username}))
 
 
 @secure_required

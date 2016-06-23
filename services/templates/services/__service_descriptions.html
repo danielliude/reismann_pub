@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load thumbnail %}
 
-<div class="ui segment">
+<div class="ui segment info_segment">
   <div class="ui secondary pointing menu">
     <a class="active item click_about_me" data-tab="first">
       {% trans 'about me' %}
@@ -19,8 +19,8 @@
       <span class="ui label green service_title disnone"></span>
     </a>
 
-    <div class="ui flowing popup bottom right transition hidden" style="padding:0px;">
-      <table class="ui very basic unstackable selectable table" style="margin-top:0px;">
+    <div class="ui flowing popup bottom right transition hidden">
+      <table class="ui very basic unstackable selectable table">
         <tbody>
           {% for service in services %}
           <tr class="click_service" data-service="{{ service.id }}">
@@ -35,14 +35,13 @@
     {% endif %}
   </div>
 
-  <div style="border:0px;" class="ui bottom attached tab padded segment active" data-tab="first">
+  <div class="ui bottom attached tab padded segment active" data-tab="first">
     <p>{{ profile.bio|safe }}</p>
     <br>
-    <br>
   </div>
-  <div style="border:0px;" class="ui bottom attached tab padded segment" data-tab="second">
+  <div class="ui bottom attached tab padded segment" data-tab="second">
   </div>
-  <div style="border:0px;" class="ui bottom attached tab padded segment third_segment" data-tab="third">
+  <div class="ui bottom attached tab padded segment third_segment" data-tab="third">
     {% if profile.settings.is_provider %}
       <div class="banner">
           <ul>
@@ -53,12 +52,10 @@
               {% endfor %}
           </ul>
       </div>
-
     {% endif %}
     <br>
-    <br>
   </div>
-  <div style="border:0px;" class="ui bottom attached tab padded segment" data-tab="fourth">
+  <div class="ui bottom attached tab padded segment" data-tab="fourth">
     {% if profile.settings.is_provider %}
       {% for service in services %}
         <div class="service_{{ service.id }} disnone">

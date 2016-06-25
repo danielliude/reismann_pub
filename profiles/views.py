@@ -346,7 +346,8 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   more_form = None
   if profile.settings.is_provider:
       form = profile_form(instance=profile, initial=user_initial)
-      more_form = ProfileMoreForm()
+      more_profile, created = ProfileMore.objects.get_or_create(user=user)
+      more_form = ProfileMoreForm(instance=more_profile)
       extra_context['more_form'] = more_form
       extra_context['show_more_form'] = True
   else:
@@ -357,7 +358,7 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
 
   extra_context['form'] = form
   extra_context['contactForm'] = contactForm
-
+  extra_context['more_form'] = more_form
   extra_context['simple_profile'] = 'true'
 
   extra_context = makeContextForProfile(request, user, extra_context)
@@ -375,14 +376,19 @@ def more_profile(request, username):
     if profile.settings.is_provider:
       more_profile, created = ProfileMore.objects.get_or_create(user=user)
       more_form = ProfileMoreForm(request.POST, instance=more_profile)
+      form = ProfileForm(request.POST, instance=profile)
       if more_form.is_valid():
         more_form.save()
         return redirect(reverse('profiles:dashboard', kwargs={'username': username}))
       extra_context = {}
       extra_context['more_profile'] = 'true'
       extra_context['more_form'] = more_form
+      extra_context['form'] = form
+      extra_context['show_more_form'] = True
       extra_context = makeContextForProfile(request, user, extra_context)
       return ExtraContextTemplateView.as_view(template_name='profiles/detail.html', extra_context=extra_context)(request)
+    else:
+      extra_context['show_more_form'] = False
   return redirect(reverse('profiles:profile', kwargs={'username': username}))
 
 

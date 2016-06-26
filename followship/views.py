@@ -14,6 +14,8 @@ from followship.managers import FollowshipMailManager as mailer
 
 from notifications.signals import notify
 from blacklists.models import BlackLists
+from django.contrib.contenttypes.models import ContentType
+
 
 def follow(request, follower, followee):
 
@@ -34,7 +36,8 @@ def follow(request, follower, followee):
             Follow.objects.follow(follower_object, followee_object)
 
             # create internal notification
-            notify.send(sender = follower_object, recipient=followee_object, verb=u'has started following you')
+            instance = ContentType.objects.get(app_label='followship', model='Follow')
+            notify.send(sender = follower_object, recipient=followee_object, verb=u'has started following you', action_object=instance)
 
             # send email about internal message
             m = mailer()
@@ -53,7 +56,8 @@ def unfollow(request, follower, followee):
             Follow.objects.unfollow(follower_object, followee_object)
 
             # create internal notification
-            notify.send(sender = follower_object, recipient=followee_object, verb=u'has unfollowed you')
+            instance = ContentType.objects.get(app_label='followship', model='Follow')
+            notify.send(sender = follower_object, recipient=followee_object, verb=u'has unfollowed you', instance=instance)
 
             # send email about internal message
             m = mailer()

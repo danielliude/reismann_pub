@@ -477,6 +477,14 @@ def notifications(request, username, template_name='profiles/notifications.html'
       topics = paginator.page(paginator.num_pages)  # 取最后一页的记录
   extra_context['notifications'] = topics
 
+  content_type_model = ContentType.objects
+  content_type = {
+    1: content_type_model.get(app_label='bookings', model='Booking'),
+    2: content_type_model.get(app_label='followship', model='Follow'),
+    3: content_type_model.get(app_label='album', model='AlbumImage'),
+    4: content_type_model.get(app_label='profiles', model='Profile'),
+  }
+  extra_context['content_type'] = content_type
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 @secure_required

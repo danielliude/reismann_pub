@@ -4,8 +4,9 @@ import json
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.shortcuts import render
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.contrib.auth.models import User
+from django.forms import model_to_dict
 from django.contrib.auth.decorators import login_required
 from userena.decorators import secure_required
 from guardian.decorators import permission_required_or_403
@@ -46,8 +47,10 @@ from django.http import JsonResponse
 from insite_messages.forms import MessageComposeForm
 from insite_messages.managers import MessageMailManager as mailer
 from notifications.signals import notify
+from notifications.models import Notification
 from datetime import datetime
 from django.utils.timezone import utc
+from django.contrib.contenttypes.models import ContentType
 
 #blacklists
 from blacklists.models import BlackLists
@@ -82,15 +85,15 @@ def makeContextForDetails(request, context):
 def makeContextForNotifications(request, context):
 
     if request.user.is_authenticated():
-
-        context['notifications'] = request.user.notifications.unread()
+        instance = ContentType.objects.get(app_label='insite_messages', model='Message')
+        context['notifications'] = Notification.objects.filter(recipient=request.user).exclude(action_object_content_type=instance).unread()
 
     return context
 
 def makeContextForMessages(request, context):
 
     if request.user.is_authenticated():
-
+        instance = ContentType.objects.get(app_label='insite_messages', model='Message')
         unread_messages = Message.objects.unread_for(request.user)
         context['unread_messages'] = unread_messages
 
@@ -424,6 +427,30 @@ def settings(request, username, template_name='profiles/settings.html', success_
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 
 @secure_required
+def get_notifications_unread_count(request, username):
+    unread_notifications = len(makeContextForNotifications(request, {})['notifications'])
+    return HttpResponse(unread_notifications)
+
+@secure_required
+def get_notifications_unread_info(request, username):
+    unread_list = []
+    notifications = makeContextForNotifications(request, {})['notifications']
+    for noti in notifications:
+        struct = model_to_dict(noti)
+        if noti.actor:
+            struct['actor'] = str(noti.actor)
+        if noti.target:
+            struct['target'] = str(noti.target)
+        if noti.action_object:
+            struct['action_object'] = str(noti.action_object)
+        unread_list.append(struct)
+    result = {
+        'unread_count': len(notifications),
+        'unread_list': unread_list,
+    }
+    return JsonResponse(result)
+
+@secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
 def notifications(request, username, template_name='profiles/notifications.html', success_url=None,
                  extra_context=None, **kwargs):
@@ -435,6 +462,7 @@ def notifications(request, username, template_name='profiles/notifications.html'
 
   extra_context['profile'] = profile
   extra_context = makeContextForNotifications(request, extra_context)
+  extra_context['unread_notifications'] = len(extra_context['notifications'])
 
   limit = 10  # 每页显示的记录数
   topics = extra_context['notifications']

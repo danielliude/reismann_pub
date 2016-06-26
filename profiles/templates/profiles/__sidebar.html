@@ -49,6 +49,7 @@
     <a class="item {% if url_name == 'inbox_messages' or url_name == 'outbox_messages'  %}active{% endif %}" href="{% url 'profiles:inbox_messages' profile.user.username %}">
       <i class="mail outline icon"></i>
       {% trans 'Messages' %}
+      <span style="color: red">unread8(label)</span>
     </a>
 
     <a class="item {% if url_name == 'verification' %}active{% endif %}" href="{% url 'profiles:verification' profile.user.username %}">

@@ -42,7 +42,9 @@ def bookings(request, username,
 
         extra_context['profile'] = profile
         extra_context['my_bookings'] = my_bookings
-        extra_context['other_bookings'] = other_bookings
+        if profile.settings.is_provider:
+            extra_context['other_bookings'] = other_bookings
+            extra_context['show_other_bookings'] = True
 
         extra_context = makeContextForDetails(request, extra_context)
         extra_context = makeContextForNotifications(request, extra_context)

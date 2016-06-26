@@ -11,7 +11,9 @@
     <div class="ui grid booking_grid">
       <div class="column">
         {% include 'bookings/__my_booking_list.html' %}
-        {% include 'bookings/__other_booking_list.html' %}
+        {% if show_other_bookings %}
+            {% include 'bookings/__other_booking_list.html' %}
+        {% endif %}
       </div>
     </div>
 {% endblock %} 

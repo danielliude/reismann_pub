@@ -18,7 +18,7 @@ class BookingForm(forms.ModelForm):
                                     widget=forms.Select(attrs={'class': 'ui fluid search dropdown',
                                     'placeholder': _('service')}),
                                     label=_('Service'),
-                                    queryset= Service.objects.all())
+                                    queryset=None)
 
   start_time = forms.DateField(required=True,
                                initial=datetime.today, label= _('Start time'),
@@ -71,6 +71,9 @@ class BookingForm(forms.ModelForm):
                                         label=_('Booking remark'),
                                         max_length=300)
 
+  def __init__(self, user, *args, **kwargs):
+    super(BookingForm, self).__init__(*args, **kwargs)
+    self.fields['service'].queryset = Service.objects.all().exclude(user=user)
 
 
   def save(self, sender_username, booking=None):

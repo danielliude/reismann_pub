@@ -268,7 +268,7 @@ def message_remove(request, username, message_id, template_name='profiles/inbox_
 @permission_required_or_403('insite_messages.view_message')
 def get_message_unread_count(request, username):
     if request.user.is_authenticated():
-        instance = ContentType.objects.get(app_label='insite_messages', model='Message')
+        instance = ContentType.objects.get(app_label='insite_messages', model='message')
         unread_message = Notification.objects.filter(recipient=request.user, action_object_content_type=instance).unread().count()
     else:
         return HttpResponseRedirect('/')
@@ -278,7 +278,7 @@ def get_message_unread_count(request, username):
 @permission_required_or_403('insite_messages.view_message')
 def get_message_unread_info(request, username):
     if request.user.is_authenticated():
-        instance = ContentType.objects.get(app_label='insite_messages', model='Message')
+        instance = ContentType.objects.get(app_label='insite_messages', model='message')
         unread_messages = Notification.objects.filter(recipient=request.user, action_object_content_type=instance).unread()
         unread_list = []
         for message in unread_messages:

@@ -39,6 +39,12 @@ class BookingManager(models.Manager):
                     recipient = user,
                     recipient_deleted_at__isnull = True)
 
+  def my_bookings(self, user):
+    return self.filter(sender=user, sender_deleted_at__isnull=True).exclude(recipient=user)
+
+  def other_bookings(self, user):
+    return self.filter(recipient=user, sender_deleted_at__isnull=True).exclude(sender=user)
+
 
 class BookingMailManager():
 

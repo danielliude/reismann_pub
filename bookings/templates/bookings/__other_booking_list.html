@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <div class="ui blue padded segment bookings_show">
-  <h3 class="ui center aligned header">{% trans 'Bookings' %}</h3>
+  <h3 class="ui center aligned header">{% trans 'other_bookings' %}</h3>
 
   <table class="ui striped table">
     <thead>
@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-    {% for booking in bookings %}
+    {% for booking in other_bookings %}
       <tr onclick="window.document.location='{% url 'profiles:booking_view' profile.user.username booking.id%}';">
         {% if booking.sender == user %}
           <td>
@@ -119,9 +119,6 @@
         <td></td>
         <td></td>
         <td>
-          <a class="ui green label" href="add/0">
-            <i class="edit icon"></i>{% trans 'add' %}
-          </a>
       </tr>
     </tbody>
   </table>

@@ -33,6 +33,19 @@ function fill_notification_list(data) {
 {% notifications_unread as unread_count%}
 {% if user.is_authenticated %}
 <div class="right menu">
+  <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:inbox_messages' user.username %}'">
+    <i class="icon alarm outline"></i>
+    <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">
+      <span class='live_notify_badge'>{{ unread_message_count }}</span>
+    </div>
+
+    <div class="menu" style="width:300px;">
+      <div class="item">{% trans "You have " %}<span class='live_notify_badge'>{{ unread_message_count }}</span>{% trans " unread messages" %}</div>
+      <div class="divider update_notifications"></div>
+
+    </div>
+  </div>
+
   <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:notifications' user.username %}'">
     <i class="icon alarm outline"></i>
     <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">

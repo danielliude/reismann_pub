@@ -13,7 +13,8 @@ urlpatterns = [
     url(r'^(?P<username>[\@\.\w-]+)/notifications/avatar/(?P<avatar_username>[\@\.\w-]+)/$', views.notification_avatar, name='notification_avatar'),
 
     url(r'^(?P<username>[\@\.\w-]+)/mark_read_or_delete/$', views.mark_read_or_delete, name='mark_read_or_delete'),
-
+    url(r'^(?P<username>[\@\.\w-]+)/unread_notifications_count/$', views.get_notifications_unread_count, name='unread_notifications_count'),
+    url(r'^(?P<username>[\@\.\w-]+)/unread_notifications/$', views.get_notifications_unread_info, name='unread_notifications_info'),
 
     url(r'^', include('album.urls')),
     url(r'^', include('services.urls')),

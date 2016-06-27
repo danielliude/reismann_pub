@@ -9,7 +9,17 @@
             <input type="checkbox" name="checkbox_select" value="{{ notification.id }}">
             <label> </label>
           </div>
-          {{ notification.verb}}
+          {% if notification.action_object_content_type == content_type.1 %}
+            <a href="{% url 'profiles:bookings' profile.user.username %}">{{notification.actor}} {{ notification.verb}}</a>
+          {% elif notification.action_object_content_type == content_type.2 %}
+            <a href="{% url 'profiles:followers' profile.user.username %}">{{notification.actor}} {{ notification.verb}}</a>
+          {% elif notification.action_object_content_type == content_type.3 %}
+            <a href="{% url 'profiles:album' profile.user.username %}">your {{ notification.verb}}</a>
+          {% elif notification.action_object_content_type == content_type.4 %}
+            <a href="{% url 'profiles:dashboard' profile.user.username %}">your {{ notification.verb}}</a>
+          {% else %}
+            {{ notification.verb}}
+          {% endif %}
           <span class="not_show_on_mobile" style="position:absolute;right:0px;">{{ notification.timestamp | date:"Y-m-d" }}<span>
         </td>
       </tr>

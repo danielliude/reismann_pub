@@ -35,11 +35,16 @@ def bookings(request, username,
         user = get_object_or_404(User, username__iexact=username)
         profile = get_user_profile(user)
         bookings = Booking.objects.all_for(user)
+        my_bookings = Booking.objects.my_bookings(user)
+        other_bookings = Booking.objects.other_bookings(user)
 
         if not extra_context: extra_context = dict()
 
         extra_context['profile'] = profile
-        extra_context['bookings']= bookings
+        extra_context['my_bookings'] = my_bookings
+        if profile.settings.is_provider:
+            extra_context['other_bookings'] = other_bookings
+            extra_context['show_other_bookings'] = True
 
         extra_context = makeContextForDetails(request, extra_context)
         extra_context = makeContextForNotifications(request, extra_context)
@@ -61,7 +66,7 @@ def booking_add(request, username, service_id, booking_form = BookingForm,
             profile = get_user_profile(user)
 
 
-            form = booking_form()
+            form = booking_form(user=request.user)
 
             if service_id:
                 if service_id != '0':

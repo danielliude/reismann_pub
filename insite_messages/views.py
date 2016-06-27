@@ -1,9 +1,12 @@
+import json
 from datetime import datetime
 
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.contrib.contenttypes.models import ContentType
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from django.forms import model_to_dict
 from django.utils.timezone import utc
 from userena.decorators import secure_required
 from guardian.decorators import permission_required_or_403
@@ -19,6 +22,7 @@ from insite_messages.managers import MessageMailManager as mailer
 from profiles.views import makeContextForDetails, makeContextForNotifications
 
 from notifications.signals import notify
+from notifications.models import Notification
 
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
@@ -258,4 +262,37 @@ def message_remove(request, username, message_id, template_name='profiles/inbox_
   else:
     url = reverse('profiles:message_remove', kwargs={'username':request.user.username, 'message_id':message_id})
     return HttpResponseRedirect(url)
+
+
+@secure_required
+@permission_required_or_403('insite_messages.view_message')
+def get_message_unread_count(request, username):
+    if request.user.is_authenticated():
+        instance = ContentType.objects.get(app_label='insite_messages', model='Message')
+        unread_message = Notification.objects.filter(recipient=request.user, action_object_content_type=instance).unread().count()
+    else:
+        return HttpResponseRedirect('/')
+    return HttpResponse(unread_message)
+
+@secure_required
+@permission_required_or_403('insite_messages.view_message')
+def get_message_unread_info(request, username):
+    if request.user.is_authenticated():
+        instance = ContentType.objects.get(app_label='insite_messages', model='Message')
+        unread_messages = Notification.objects.filter(recipient=request.user, action_object_content_type=instance).unread()
+        unread_list = []
+        for message in unread_messages:
+            struct = model_to_dict(message)
+            if message.actor:
+                struct['actor'] = str(message.actor)
+            if message.target:
+                struct['target'] = str(message.target)
+            if message.action_object:
+                struct['action_object'] = str(message.action_object)
+            unread_list.append(struct)
+        result = {
+            'unread_count': len(unread_messages),
+            'unread_list': unread_list,
+        }
+        return JsonResponse(result)
 

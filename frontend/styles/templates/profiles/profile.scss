@@ -156,12 +156,43 @@ body {
 /*--------------
     responsive
 ---------------*/
-.column.div_avatar {
+.ui.container.profile_home {
+	.ui.large.breadcrumb {
+		margin-left: 1rem;
+		margin-top: 1rem;
+	}
+	@include GT(S) {
+	  margin: 0px!important;
+	}
+}
+.ui.grid .column.div_avatar {
+	@include GT(S) {
+	  padding: 0px;
+	  padding-left: 10px;
+	}
 	.ui.image {
 		box-shadow: #333333 1px 1px 20px 0;margin-top:10px;
 		@include GT(S) {
-		  width: 100%;
-		  margin-top: 0px;
+		  margin-top: 1.2rem;
+		  // width: 100%;
+		}	
+	}
+}
+.ui.table.personal_table {
+	@include GT(S) {
+	  font-size: 0.6em;
+	}	
+	.ui.label {
+		padding: 0.25em 0.4em;
+	}
+	tr td {
+		@include GT(S) {
+		  padding-left: 0px;
+		}	
+	}
+	.grey_and_bold {
+		@include GT(S) {
+		  display: none;
 		}	
 	}
 }
@@ -174,5 +205,26 @@ body {
 .ui.segment.third_segment {
 	@include GT(S) {
 	  padding: 0px;
+	}	
+}
+
+.disnone_mobile {
+	@include GT(S) {
+	  display: none;
+	}	
+}
+
+.ui.grid>.column:not(.row).display_mobile {
+	display: none;
+	padding-top: 0rem;
+	@include GT(S) {
+	  display: block;
+	}	
+}
+
+.all_buttons .ui.button {
+	@include GT(S) {
+		max-width: 200px;
+		width: 32%;
 	}	
 }

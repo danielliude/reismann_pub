@@ -324,7 +324,9 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
 
+
   if request.POST:
+    print('>>>>>>>>>>>>>>>>>>>post', request.POST)
     if profile.settings.is_provider:
         form = profile_form(request.POST, request.FILES, instance = profile, initial=user_initial)
     else:

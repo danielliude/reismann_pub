@@ -1,6 +1,28 @@
 body {
   font-family: "Microsoft YaHei",Verdana,"Bitstream Vera Sans",sans-serif; }
 
+.grey_and_bold {
+  color: #999;
+  font-weight: 700; }
+
+.ui.grid.dashboard_grid {
+  max-width: 750px;
+  margin: 80px auto; }
+  .ui.grid.dashboard_grid .ui.divider {
+    margin-top: 0.5rem;
+    margin-bottom: 0rem; }
+  .ui.grid.dashboard_grid .ui.label.right.ribbon {
+    font-weight: normal;
+    padding: 0.4233em 0.833em;
+    margin-top: 13px;
+    margin-bottom: 10px; }
+
+.ui.table.personal_table {
+  margin: 0.2rem 0; }
+  .ui.table.personal_table tbody tr td {
+    border: 0px;
+    padding-bottom: 0px; }
+
 .all_buttons .ui.button {
   margin: 0.3rem 0;
   width: 31%;
@@ -24,20 +46,6 @@ body {
   .all_buttons .ui.brand.button:hover {
     opacity: 1; }
 
-.grey_and_bold {
-  color: #999;
-  font-weight: 700; }
-
-.ui.grid.dashboard_grid .ui.divider {
-  margin-top: 0.5rem;
-  margin-bottom: 0rem; }
-
-.ui.grid.dashboard_grid .ui.label {
-  font-weight: normal;
-  padding: 0.4233em 0.833em;
-  margin-top: 13px;
-  margin-bottom: 10px; }
-
 .ui.table.table2 {
   border-right: 0px;
   border-left: 0px;
@@ -57,16 +65,35 @@ body {
 .read_opacity {
   opacity: 0.8; }
 
-.ui.grid.dashboard_grid {
-  max-width: 750px;
-  margin: 80px auto; }
-
 /*--------------
     responsive
 ---------------*/
 @media only screen and (max-width: 759px) {
-  .dashboard_grid .ui.small.image {
-    width: 100%; } }
+  .ui.grid .column.div_avatar {
+    padding: 0px;
+    padding-left: 10px; } }
+
+.ui.grid .column.div_avatar .ui.image {
+  box-shadow: #333333 1px 1px 20px 0;
+  margin-top: 10px; }
+  @media only screen and (max-width: 759px) {
+    .ui.grid .column.div_avatar .ui.image {
+      margin-top: 1.2rem; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.table.personal_table {
+    font-size: 0.6em; } }
+
+.ui.table.personal_table .ui.label {
+  padding: 0.25em 0.4em; }
+
+@media only screen and (max-width: 759px) {
+  .ui.table.personal_table tr td {
+    padding-left: 0px; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.table.personal_table .grey_and_bold {
+    display: none; } }
 
 @media only screen and (max-width: 759px) {
   .all_buttons {
@@ -80,3 +107,14 @@ body {
 @media only screen and (max-width: 759px) {
   .not_show_on_mobile {
     display: none; } }
+
+@media only screen and (max-width: 759px) {
+  .disnone_mobile {
+    display: none; } }
+
+.ui.grid > .column:not(.row).display_mobile {
+  display: none;
+  padding-top: 0rem; }
+  @media only screen and (max-width: 759px) {
+    .ui.grid > .column:not(.row).display_mobile {
+      display: block; } }

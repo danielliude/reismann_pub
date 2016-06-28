@@ -264,6 +264,7 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
     extra_context = makeContextForProfile(request, user, extra_context)
     extra_context = makeContextForDetails(request, extra_context)
     extra_context = makeContextForAllUserServices(user, extra_context)
+    extra_context = makeContextForMessages(request, extra_context)
 
     if request.user.is_authenticated():
       extra_context['notifications'] = request.user.notifications.active()

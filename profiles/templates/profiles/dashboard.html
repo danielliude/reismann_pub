@@ -18,32 +18,46 @@
 	<div class="column">
 		<div class="ui segment" style="padding:0;">
 		  <div class="ui padded grid">
-		    <div class="sixteen wide mobile four wide tablet four wide computer column">
+		    <div class="six wide mobile four wide tablet four wide computer column div_avatar">
 		      <img style="box-shadow: #333333 1px 1px 20px 0;" class="ui centered small image" src="{{ profile.get_avatar_url }}" alt="{% trans 'user profile picture' %}">
 		    </div>
-		    <div class="sixteen wide mobile nine wide tablet nine wide computer column">
+		    <div class="ten wide mobile nine wide tablet nine wide computer column">
 		      <h3 style="color: #555555;font-weight: 300;">{{ profile.user.username }}{% if profile.get_gender_display%}, {{ profile.get_gender_display|default:"" }}{% endif %}{% if profile.age %}/{{ profile.age}}{% endif %}</h3>
 		      <div class="sub header" style="margin-top:-1rem;">{% if profile.location %}{{ profile.location }}{% endif %}{% if profile.country%}, {{ profile.country}}{% endif %}</div>
 		      <div style="border-color: #888888;border-bottom-width: 0px;" class="ui black divider"></div>
-		      <table class="ui very basic unstackable compact fixed table" style="margin: 0.5rem 0;">
+		      <table class="ui very basic unstackable compact fixed table personal_table">
 		        <tbody>
 		          <tr>
 		            <td class="grey_and_bold">{% trans 'profession:' %}</td>
-		            <td>{% if profile.get_profession_display%}{{ profile.get_profession_display|default:"" }}{% endif %}</td>
+		            <td colspan="3">{% if profile.get_profession_display%}{{ profile.get_profession_display|default:"" }}{% endif %}</td>
+		          </tr>
+		          <tr>
 		            <td class="grey_and_bold">{% trans 'language:' %}</td>
-		            <td>not know</td>
+		            <td colspan="3">
+		            {% for language in profile.languages.all %}
+		              <div class="ui green label">{{ language.name }}</div>
+		            {% endfor %}
+		            </td>
 		          </tr>
 		          <tr>
-		            <td class="grey_and_bold" style="border:0px;">{% trans 'tag:' %}</td>
-		            <td style="border:0px;" colspan="3">not know</td>
+		            <td class="grey_and_bold">{% trans 'tag:' %}</td>
+		            <td colspan="3">
+		              {% for tag in profile.tags.all %}
+		                <div class="ui green label">{{ tag.name }}</div>
+		              {% endfor %}
+		            </td>
 		          </tr>
 		          <tr>
-		            <td class="grey_and_bold" style="border:0px;">{% trans 'signature:' %}</td>
-		            <td style="border:0px;" colspan="3">{{ profile.short_description }}</td>
+		            <td class="grey_and_bold">{% trans 'signature:' %}</td>
+		            <td colspan="3">{{ profile.short_description }}</td>
+		          </tr>
+		          <tr>
+		            <td class="grey_and_bold">{% trans 'user_id:' %}</td>
+		            <td colspan="3">NO.{{ profile.user.id }}</td>
 		          </tr>
 		        </tbody>
 		      </table>
-		      <div class="all_buttons">
+		      <div class="all_buttons disnone_mobile">
 			      <a class="ui brand_blue button" href="{% url 'profiles:profile' profile.user.username %}"><i class="icon home"></i>{% trans 'homepage' %}</a>
 			      <a class="ui brand button">{{ profile.settings.get_status_display }}</a>
 		      </div>
@@ -55,34 +69,95 @@
 	          <a class="ui large blue right ribbon label">{% trans 'Customer' %}</a>
 	        {% endif %}
 		    </div>
+		    <div class="sixteen wide column display_mobile">
+		    	<div class="all_buttons">
+			      <a class="ui brand_blue button" href="{% url 'profiles:profile' profile.user.username %}"><i class="icon home"></i>{% trans 'homepage' %}</a>
+			      <a class="ui brand button">{{ profile.settings.get_status_display }}</a>
+			     </div>
+		    </div>
 		  </div>
 
-		  <table class="ui unstackable compact table table2">
-	      <tbody>
-	        <tr>
-	          <td class="grey_and_bold">{% trans 'Followers:' %}</td>
-	          <td style="border-right: 1px solid rgba(34,36,38,.15);">{{ number_followers }}</td>
-	          <td class="grey_and_bold">{% trans 'Following:' %}</td>
-	          <td>{{ number_following }}</td>
-	        </tr>
-	        {% if profile.settings.is_provider %}
-	        <tr>
-	        	<td class="grey_and_bold">{% trans 'Bookings:' %}</td>
-	          <td colspan="3">{{ number_bookings }}</td>
-	        </tr>
-	        <tr>
-	          <td colspan="4">
-	          	<span class="grey_and_bold">{% trans 'Service:' %}</span>
-	          	{{ services|length }}
-	          	<br>
-	          	{% for service in services %}
-	          	<a class="ui large blue label" href="{% url 'profiles:service_view' service.user.username service.id %}">{{ service.category }}</a>
-	          	{% endfor %}
-	          </td>
-	        </tr>
-	        {% endif %}
-	      </tbody>
-	    </table>
+<!-- 		  <table class="ui unstackable compact table table2">
+		      <tbody>
+		        <tr>
+		          <td class="grey_and_bold">{% trans 'Followers:' %}</td>
+		          <td style="border-right: 1px solid rgba(34,36,38,.15);">{{ number_followers }}</td>
+		          <td class="grey_and_bold">{% trans 'Following:' %}</td>
+		          <td>{{ number_following }}</td>
+		        </tr>
+		        {% if profile.settings.is_provider %}
+		        <tr>
+		        	<td class="grey_and_bold">{% trans 'Bookings:' %}</td>
+		          <td colspan="3">{{ number_bookings }}</td>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		          	<span class="grey_and_bold">{% trans 'Service:' %}</span>
+		          	{{ services|length }}
+		          	<br>
+		          	{% for service in services %}
+		          	<a class="ui large blue label" href="{% url 'profiles:service_view' service.user.username service.id %}">{{ service.category }}</a>
+		          	{% endfor %}
+		          </td>
+		        </tr>
+		        {% endif %}
+		      </tbody>
+		    </table> -->
+		</div>
+
+		<div class="ui four column doubling grid">
+			<div class="column">
+				<div class="ui blue inverted segment">
+					<div class="ui center aligned middle aligned grid">
+						<div class="seven wide column">
+							<h2>{{ number_bookings }}</h2>
+							<p>{% trans 'Bookings' %}</p>
+						</div>
+						<div class="nine wide column">
+							<i class="shop huge icon"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="ui green inverted segment">
+					<div class="ui center aligned middle aligned grid">
+						<div class="seven wide column">
+							<h2>{{ services|length }}</h2>
+							<p>{% trans 'Service' %}</p>
+						</div>
+						<div class="nine wide column">
+							<i class="server huge icon"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="ui orange inverted segment">
+					<div class="ui center aligned middle aligned grid">
+						<div class="seven wide column">
+							<h2>{{ number_followers }}+{{ number_following }}</h2>
+							<p>{% trans 'Follow' %}</p>
+						</div>
+						<div class="nine wide column">
+							<i class="add user huge icon"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="ui red inverted segment">
+					<div class="ui center aligned middle aligned grid">
+						<div class="seven wide column">
+							<h2>{{ unread_messages | length }}</h2>
+							<p>{% trans 'Messages' %}</p>
+						</div>
+						<div class="nine wide column">
+							<i class="mail outline huge icon"></i>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="ui segment noti_segment" style="padding: 1rem 2rem;">

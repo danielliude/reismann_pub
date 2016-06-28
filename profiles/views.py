@@ -85,7 +85,7 @@ def makeContextForDetails(request, context):
 def makeContextForNotifications(request, context):
 
     if request.user.is_authenticated():
-        instance = ContentType.objects.get(app_label='insite_messages', model='Message')
+        instance = ContentType.objects.get(app_label='insite_messages', model='message')
         context['notifications'] = Notification.objects.filter(recipient=request.user).exclude(action_object_content_type=instance).unread()
 
     return context
@@ -93,7 +93,7 @@ def makeContextForNotifications(request, context):
 def makeContextForMessages(request, context):
 
     if request.user.is_authenticated():
-        instance = ContentType.objects.get(app_label='insite_messages', model='Message')
+        instance = ContentType.objects.get(app_label='insite_messages', model='message')
         unread_messages = Message.objects.unread_for(request.user)
         context['unread_messages'] = unread_messages
 

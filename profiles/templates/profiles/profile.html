@@ -38,5 +38,49 @@
   </div>  
   <br>
   <br>
+  {% if request.user.is_authenticated %}
+  <div class="ui small test modal message_modal">
+    <i class="icon grey close" style="right:1rem;top:1rem;position:absolute;"></i>
+    <div class="header">
+      发消息
+    </div>
+    
+    <div class="content">
+      <p><span style="color:#999;">收件人：</span>{{ profile.user.username }}</p>
+      <form class="ui form message-content" action="" method="post" style="margin:10px auto;">
+        {% include "insite_messages/__message_part_form.html" %}
+      </form>
+    </div>
+    <div class="actions">
+      <div class="ui submit brand button">免费发送</div>
+    </div>
+  </div>
+
+  <div class="ui small test modal second_modal">  
+    <div class="content">
+      <p>发送成功</p>
+    </div>
+    <div class="actions">
+      <div class="ui cancel brand button">关闭</div>
+    </div>
+  </div>
+  {% else %}
+  <div class="ui small long test modal register_modal">
+    <i class="icon grey close" style="right:1rem;top:1rem;position:absolute;"></i>
+    <div class="header">
+      创建账号
+    </div>
+    
+    <div class="content">
+      <form class="ui form register-content" action="" method="post" style="max-width:360px;margin:10px auto;">
+        {% include "accounts/__register_form.html" %}
+      </form>
+    </div>
+    <div class="actions">
+      <span>已有账号？立即<a href="{% url 'accounts:login' %}">登录</a></span>
+      <div class="ui submit brand button">免费注册</div>
+    </div>
+  </div>
+  {% endif %}
 {% endblock %}
 

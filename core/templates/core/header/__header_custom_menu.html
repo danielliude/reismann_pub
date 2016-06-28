@@ -1,8 +1,18 @@
 {% load i18n staticfiles %}
 {% load notifications_tags %}
 
-<script src="{% static 'notifications/notify.js' %}" type="text/javascript"></script>
 <script type="text/javascript">
+var notify_badge_id='live_notify_badge';
+var notify_menu_id='live_notify_list';
+var message_badge_id='live_message_badge';
+var notify_message_url = '/profiles/test/unread_messages/';
+var notify_notification_url = '/profiles/test/unread_notifications/'
+var notify_fetch_count='5';
+var notify_refresh_period=15000;
+var consecutive_misfires = 0;
+var registered_functions = [];
+var registered_functions1 = [];
+
 function get_date(d) {
   return d.replace('T', ' ').replace('Z', '')
 }
@@ -12,48 +22,144 @@ function fill_notification_badge(data) {
         badge.text(data.unread_count);
     }
 }
+function fill_message_badge(data) {
+    var badge = $('.live_message_badge');
+    if (badge) {
+        badge.text(data.unread_count);
+    }
+}
 function fill_notification_list(data) {
-    $('.unread_info').remove()
+    $('.unread_notification').remove()
     var html = ''
     for (var i=0; i < data.unread_list.length; i++) {
         var item = data.unread_list[i];
         var avatar_url = "/profiles/{{ user.username }}/notifications/avatar/" + item.actor + "/"
-        html += '<a href="" class="item unread_info">' + 
+        html += '<a href="' + item.url + '" class="item unread_notification">' + 
                   '<img class="ui avatar image" src="'+avatar_url+'">' +
                   '<span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">' + item.actor + '</span>' +
                   '<small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>' +  get_date(item.timestamp) + '</small>' +
                   '<span class="subject" style="position:absolute;left:53px;top:25px;">' + item.verb + '</span>' +
                 '</a>' +
-                '<div class="divider unread_info"></div>'
+                '<div class="divider unread_notification"></div>'
     }
     $(".update_notifications").after(html)
 }
+function fill_message_list(data) {
+    $('.unread_message').remove()
+    var html = ''
+    for (var i=0; i < data.unread_list.length; i++) {
+        var item = data.unread_list[i];
+        var avatar_url = "/profiles/{{ user.username }}/notifications/avatar/" + item.actor + "/"
+        html += '<a href="' + item.url + '" class="item unread_message">' + 
+                  '<img class="ui avatar image" src="'+avatar_url+'">' +
+                  '<span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">' + item.actor + '</span>' +
+                  '<small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>' +  get_date(item.timestamp) + '</small>' +
+                  '<span class="subject" style="position:absolute;left:53px;top:25px;">' + item.verb + '</span>' +
+                '</a>' +
+                '<div class="divider unread_message"></div>'
+    }
+    $(".update_messages").after(html)
+}
+
+function register_notifier(func) {
+    registered_functions.push(func);
+}
+function register_notifier1(func) {
+    registered_functions1.push(func);
+}
+
+function fetch_notification_data() {
+    if (registered_functions.length > 0) {
+        //only fetch data if a function is setup
+        var r = new XMLHttpRequest();
+        r.open("GET", notify_notification_url+'?max='+notify_fetch_count, true);
+        r.onreadystatechange = function () {
+            if (r.readyState != 4 || r.status != 200) {
+                consecutive_misfires++;
+            }
+            else {
+                consecutive_misfires = 0;
+                for (var i=0; i < registered_functions.length; i++) {
+                    var func = registered_functions[i];
+                    func(JSON.parse(r.responseText));
+                }
+            }
+        }
+        r.send();
+    }
+    if (consecutive_misfires < 10) {
+        setTimeout(fetch_notification_data,notify_refresh_period);
+    } else {
+        var badge = document.getElementById(notify_badge_id);
+        if (badge) {
+            badge.innerHTML = "!";
+            badge.title = "Connection lost!"
+        }
+    }
+}
+
+function fetch_message_data() {
+    if (registered_functions1.length > 0) {
+        //only fetch data if a function is setup
+        var r = new XMLHttpRequest();
+        r.open("GET", notify_message_url+'?max='+notify_fetch_count, true);
+        r.onreadystatechange = function () {
+            if (r.readyState != 4 || r.status != 200) {
+                consecutive_misfires++;
+            }
+            else {
+                consecutive_misfires = 0;
+                for (var i=0; i < registered_functions1.length; i++) {
+                    var func = registered_functions1[i];
+                    func(JSON.parse(r.responseText));
+                }
+            }
+        }
+        r.send();
+    }
+    if (consecutive_misfires < 10) {
+        setTimeout(fetch_message_data,notify_refresh_period);
+    } else {
+        var badge = document.getElementById(message_badge_id);
+        if (badge) {
+            badge.innerHTML = "!";
+            badge.title = "Connection lost!"
+        }
+    }
+}
+
+setTimeout(fetch_notification_data,1000);
+setTimeout(fetch_message_data,1000);
+
+
+register_notifier(fill_notification_list);
+register_notifier(fill_notification_badge);
+register_notifier1(fill_message_list);
+register_notifier1(fill_message_badge);
+
 </script>
-{% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge'  %}
-{% notifications_unread as unread_count%}
 {% if user.is_authenticated %}
 <div class="right menu">
   <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:inbox_messages' user.username %}'">
     <i class="icon alarm outline"></i>
     <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">
-      <span class='live_notify_badge'>{{ unread_message_count }}</span>
+      <span class='live_message_badge'></span>
     </div>
 
     <div class="menu" style="width:300px;">
-      <div class="item">{% trans "You have " %}<span class='live_notify_badge'>{{ unread_message_count }}</span>{% trans " unread messages" %}</div>
-      <div class="divider update_notifications"></div>
-
+      <div class="item">{% trans "You have " %}<span class='live_message_badge'></span>{% trans " unread messages" %}</div>
+      <div class="divider update_messages"></div>
     </div>
   </div>
 
   <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:notifications' user.username %}'">
     <i class="icon alarm outline"></i>
     <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">
-      <span class='live_notify_badge'>{{ unread_count }}</span>
+      <span class='live_notify_badge'></span>
     </div>
 
     <div class="menu" style="width:300px;">
-      <div class="item">{% trans "You have " %}<span class='live_notify_badge'>{{ unread_count }}</span>{% trans " unread notifications" %}</div>
+      <div class="item">{% trans "You have " %}<span class='live_notify_badge'></span>{% trans " unread notifications" %}</div>
       <div class="divider update_notifications"></div>
 
     </div>

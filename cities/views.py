@@ -61,6 +61,7 @@ def city(request, city_name, template_name='cities/city.html'):
 
                 # check number of active services for user
                 services = Service.objects.filter(user = user)
+
                 if not services: continue
 
                 # check if at least one service of provider is active
@@ -68,6 +69,7 @@ def city(request, city_name, template_name='cities/city.html'):
                 for service in services:
                     if service.status == 2:
                         one_is_active = True
+
                 if not one_is_active: continue
 
                 # Checking gender of provider
@@ -191,7 +193,8 @@ def city(request, city_name, template_name='cities/city.html'):
     else:
 
         users = User.objects.all()
-        users = users.exclude(Q(is_staff=True) | Q(is_superuser=True)).filter(is_active=True)
+        users = users.exclude(Q(is_staff=True) | Q(is_superuser=True)| Q(username = 'AnonymousGuardianUser')).filter(is_active=True)
+
         banner_image = { 'url' : '/media/reismann/images/cities/banner/munich.jpg' } 
 
         result = []

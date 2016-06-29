@@ -29,6 +29,18 @@ import re
 
 SHA1_RE = re.compile('^[a-f0-9]{40}$')
 
+def get_anonymous_user_instance(User):
+
+    new_user = User.objects.create_user(username='AnonymousGuardianUser')
+
+    profile = Profile.objects.create_profile(new_user)
+
+    settings = ProfileSettings(profile = profile, status = 1, email_notifications = True)
+    settings.save()
+
+    return new_user
+
+
 class RegistrationManager(UserManager):
 
   def create_user(self, username, email, password, active=False, send_email=True):

@@ -129,7 +129,7 @@ def makeContextForProfile(request, user, context):
         else:
             user_rating = 0
             context['profile_rating'] = user_rating
-            
+
         follow_manager = FollowingManager()
         if request.user and profile.user:
             follows = follow_manager.follows(follower=request.user, followee=profile.user)
@@ -298,9 +298,9 @@ def mark_read_or_delete(request, username, template_name=None,
   if(checkbox):
       for ch in checkbox:
           if(check):
-              check = check | Q(id=ch) 
+              check = check | Q(id=ch)
           else:
-              check = Q(id=ch) 
+              check = Q(id=ch)
   if(check):
     notification = request.user.notifications.filter(check)
     if(mark_type == 'mark_read'):
@@ -479,10 +479,10 @@ def notifications(request, username, template_name='profiles/notifications.html'
 
   content_type_model = ContentType.objects
   content_type = {
-    1: content_type_model.get(app_label='bookings', model='Booking'),
-    2: content_type_model.get(app_label='followship', model='Follow'),
-    3: content_type_model.get(app_label='album', model='AlbumImage'),
-    4: content_type_model.get(app_label='profiles', model='Profile'),
+    1: content_type_model.get(app_label='bookings', model='booking'),
+    2: content_type_model.get(app_label='followship', model='follow'),
+    3: content_type_model.get(app_label='album', model='albumImage'),
+    4: content_type_model.get(app_label='profiles', model='profile'),
   }
   extra_context['content_type'] = content_type
   return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)

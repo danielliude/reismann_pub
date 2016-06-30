@@ -36,7 +36,7 @@ def follow(request, follower, followee):
             Follow.objects.follow(follower_object, followee_object)
 
             # create internal notification
-            instance = ContentType.objects.get(app_label='followship', model='Follow')
+            instance = ContentType.objects.get(app_label='followship', model='follow')
             notify.send(sender = follower_object, recipient=followee_object, verb=u'has started following you', action_object=instance)
 
             # send email about internal message
@@ -56,7 +56,7 @@ def unfollow(request, follower, followee):
             Follow.objects.unfollow(follower_object, followee_object)
 
             # create internal notification
-            instance = ContentType.objects.get(app_label='followship', model='Follow')
+            instance = ContentType.objects.get(app_label='followship', model='follow')
             notify.send(sender = follower_object, recipient=followee_object, verb=u'has unfollowed you', instance=instance)
 
             # send email about internal message

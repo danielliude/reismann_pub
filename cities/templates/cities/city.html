@@ -20,12 +20,12 @@
   <br>
   <div class="ui doubling grid container">
     <div class="sixteen wide tablet four wide computer column">
-      <label><b>{% trans 'Service types' %}</b></label>
+      <label><b>{% trans 'Service category' %}</b></label>
     </div>
     <div class="sixteen wide tablet twelve wide computer column">
       <div class="ui grid">
         <div class="column">
-          {{ form.services }}
+          {{ form.category }}
         </div>
       </div>
     </div>
@@ -37,6 +37,7 @@
         <div class="sixteen wide tablet five wide computer column">
           {{ form.gender }}
         </div>
+
         <div class="seven wide tablet five wide computer column" style="padding-right:0px;">
           <select name="min_age" class="ui search fluid dropdown" id="min_age">
             <option value="" selected="selected">min age</option>
@@ -74,6 +75,7 @@
         <div class="seven wide tablet five wide computer column" style="padding-left:0px;">
           <select name="max_age" class="ui search fluid dropdown" id="max_age">
             <option value="" selected="selected">max age</option>
+
             <option value="all">irrelevant</option>
             <option value="2">2</option>
             <option value="4">4</option>
@@ -137,7 +139,7 @@
     <button class="ui primary button more_select"> {% trans "More options" %}</button>
     <button class="ui primary button submit submit_button">{% trans "Search" %}</button>
   </div>
-  <p class="serveice_num_p" {% if results|length == 0 %}style="display:none"{% endif %}>{% trans "Have found " %} <span class="services_num"> {{ results|length }}</span>{% trans " services" %}</p>
+  <p class="serveice_num_p" {% if results|length == 0 %}style="display:none"{% endif %}>{% trans "Have found " %} <span class="services_num"> {{ results|length }}</span>{% trans " providers" %}</p>
   
 </div>
 <div class="ui three column stackable doubling grid container search_profile">

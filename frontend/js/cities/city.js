@@ -71,13 +71,13 @@ $(function() {
         if($(".search_form [name='services']").val()) {
             temp.services   = $(".search_form [name='services']").val() 
         }
-        if($(".search_form [name='gender']").val()) {
+        if($(".search_form [name='gender']").val() && $(".search_form [name='gender']").val() != '0') {
             temp.gender   = $(".search_form [name='gender']").val() 
         }
-        if($(".search_form [name='min_age']").val()) {
+        if($(".search_form [name='min_age']").val() && $(".search_form [name='min_age']").val() != 'all') {
             temp.min_age      = $(".search_form [name='min_age']").val()
         }
-        if($(".search_form [name='max_age']").val()) {
+        if($(".search_form [name='max_age']").val() && $(".search_form [name='max_age']").val() != 'all') {
             temp.max_age      = $(".search_form [name='max_age']").val()
         }
         if(temp.min_age && temp.max_age && (parseInt(temp.min_age) > parseInt(temp.max_age))) {

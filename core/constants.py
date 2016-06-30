@@ -7,6 +7,7 @@ ALBUM_IMAGES_SIZE = 20 * 1024 * 1024
 
 GENDER_CHOICES = (
   ('', _('gender')),
+  (0, _('irrelevant')),
   (1, _('Male')),
   (2, _('Female')),
 )

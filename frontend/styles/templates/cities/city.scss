@@ -32,8 +32,12 @@
     padding-top: 9px;
     cursor: pointer;
   }
-  .ui.grid.hidden_content {
+  .row.hidden_content {
     margin-top: 0px;
+    padding-top: 0px;
+    .column {
+      padding: 1rem;
+    }
   }
 }
 
@@ -72,9 +76,6 @@
       height:300px;
       background-color:rgba(0, 0, 0, 0.3)
     }
-  }
-  .ui.grid.hidden_content {
-    margin-top: 0px;
   }
   .ui.segment.padding {
     padding: 0px;

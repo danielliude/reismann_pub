@@ -264,6 +264,7 @@ def dashboard(request, username, template_name='profiles/dashboard.html',
     extra_context = makeContextForProfile(request, user, extra_context)
     extra_context = makeContextForDetails(request, extra_context)
     extra_context = makeContextForAllUserServices(user, extra_context)
+    extra_context = makeContextForMessages(request, extra_context)
 
     if request.user.is_authenticated():
       extra_context['notifications'] = request.user.notifications.active()
@@ -327,7 +328,9 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
 
+
   if request.POST:
+    print('>>>>>>>>>>>>>>>>>>>post', request.POST)
     if profile.settings.is_provider:
         form = profile_form(request.POST, request.FILES, instance = profile, initial=user_initial)
     else:

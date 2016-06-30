@@ -22,21 +22,26 @@ class SearchForm(forms.Form):
                                           widget=forms. Select(attrs={
                                           'class': 'ui fluid search dropdown',
                                           'multiple' : "",
-                                          # 'data-placeholder': _('gender'),
                                           }),
                                           label= _("All cities"))
-
-    services = forms.ModelMultipleChoiceField(label = _('Services'),
-                                              required = False,
-                                              widget=forms.CheckboxSelectMultiple(attrs={
-                                                  'class': "ui checkbox",
-                                              }),
-                                              queryset= ServiceCategory.objects.all())
-
-    gender = forms.MultipleChoiceField(required = False,
+    services = forms.ModelMultipleChoiceField(required=False, queryset=ServiceCategory.objects.all(), 
                                           widget=forms. Select(attrs={
                                           'class': 'ui fluid search dropdown',
                                           'multiple' : "",
+                                          }),
+                                          label= _("All services"))
+
+    # services = forms.ModelMultipleChoiceField(label = _('Services'),
+    #                                           required = False,
+    #                                           widget=forms.CheckboxSelectMultiple(attrs={
+    #                                               'class': "ui checkbox",
+    #                                           }),
+    #                                           queryset= ServiceCategory.objects.all())
+
+    gender = forms.ChoiceField(required = False,
+                                          widget=forms. Select(attrs={
+                                          'class': 'ui fluid search dropdown',
+                                          # 'multiple' : "",
                                           }),
                                           choices=GENDER_CHOICES)
 
@@ -47,17 +52,31 @@ class SearchForm(forms.Form):
                                 }),
                                 choices= AGE)
 
-    languages = forms.ModelMultipleChoiceField(required= False,
-                                              widget=forms.CheckboxSelectMultiple(attrs={
-                                                  'class': "ui checkbox",
-                                              }),
-                                              queryset= ServiceLanguage.objects.all())
-
-    tags = forms.ModelMultipleChoiceField(required= False,
-                                          widget=forms.CheckboxSelectMultiple(attrs={
-                                              'class': "ui checkbox",
+    languages = forms.ModelMultipleChoiceField(required=False, queryset=ServiceLanguage.objects.all(), 
+                                          widget=forms. Select(attrs={
+                                          'class': 'ui fluid search dropdown',
+                                          'multiple' : "",
                                           }),
-                                          queryset=ServiceTag.objects.all())
+                                          label= _("All languages"))
+
+    # languages = forms.ModelMultipleChoiceField(required= False,
+    #                                           widget=forms.CheckboxSelectMultiple(attrs={
+    #                                               'class': "ui checkbox",
+    #                                           }),
+    #                                           queryset= ServiceLanguage.objects.all())
+
+    tags = forms.ModelMultipleChoiceField(required=False, queryset=ServiceTag.objects.all(), 
+                                          widget=forms. Select(attrs={
+                                          'class': 'ui fluid search dropdown',
+                                          'multiple' : "",
+                                          }),
+                                          label= _("All tags"))
+
+    # tags = forms.ModelMultipleChoiceField(required= False,
+    #                                       widget=forms.CheckboxSelectMultiple(attrs={
+    #                                           'class': "ui checkbox",
+    #                                       }),
+    #                                       queryset=ServiceTag.objects.all())
 
 
 class SearchIndexForm(forms.Form):

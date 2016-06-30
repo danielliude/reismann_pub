@@ -167,13 +167,40 @@ body {
 /*--------------
     responsive
 ---------------*/
-.column.div_avatar .ui.image {
+.ui.container.profile_home .ui.large.breadcrumb {
+  margin-left: 1rem;
+  margin-top: 1rem; }
+
+@media only screen and (max-width: 759px) {
+  .ui.container.profile_home {
+    margin: 0px !important; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.grid .column.div_avatar {
+    padding: 0px;
+    padding-left: 10px; } }
+
+.ui.grid .column.div_avatar .ui.image {
   box-shadow: #333333 1px 1px 20px 0;
   margin-top: 10px; }
   @media only screen and (max-width: 759px) {
-    .column.div_avatar .ui.image {
-      width: 100%;
-      margin-top: 0px; } }
+    .ui.grid .column.div_avatar .ui.image {
+      margin-top: 1.2rem; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.table.personal_table {
+    font-size: 0.6em; } }
+
+.ui.table.personal_table .ui.label {
+  padding: 0.25em 0.4em; }
+
+@media only screen and (max-width: 759px) {
+  .ui.table.personal_table tr td {
+    padding-left: 0px; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.table.personal_table .grey_and_bold {
+    display: none; } }
 
 @media only screen and (max-width: 759px) {
   .ui.comments .comment .rate_date {
@@ -182,3 +209,19 @@ body {
 @media only screen and (max-width: 759px) {
   .ui.segment.third_segment {
     padding: 0px; } }
+
+@media only screen and (max-width: 759px) {
+  .disnone_mobile {
+    display: none; } }
+
+.ui.grid > .column:not(.row).display_mobile {
+  display: none;
+  padding-top: 0rem; }
+  @media only screen and (max-width: 759px) {
+    .ui.grid > .column:not(.row).display_mobile {
+      display: block; } }
+
+@media only screen and (max-width: 759px) {
+  .all_buttons .ui.button {
+    max-width: 200px;
+    width: 32%; } }

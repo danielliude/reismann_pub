@@ -2,6 +2,34 @@ body {
 	font-family: "Microsoft YaHei",Verdana,"Bitstream Vera Sans",sans-serif;
 }
 
+.grey_and_bold {
+	color: #999;
+	font-weight: 700;
+}
+
+.ui.grid.dashboard_grid {
+	max-width: 750px;
+	margin: 80px auto;
+	.ui.divider {
+		margin-top: 0.5rem;
+		margin-bottom: 0rem;
+	}
+	.ui.label.right.ribbon  {
+		font-weight: normal;
+	    padding: 0.4233em 0.833em;
+	    margin-top: 13px;
+	    margin-bottom: 10px;
+	}
+}
+
+.ui.table.personal_table {
+	margin: 0.2rem 0;
+	tbody tr td {
+		border: 0px;
+		padding-bottom: 0px;
+	}
+}
+
 .all_buttons {
 	.ui.button {
 		margin: 0.3rem 0;
@@ -30,23 +58,7 @@ body {
 	}
 }
 
-.grey_and_bold {
-	color: #999;
-	font-weight: 700;
-}
 
-.ui.grid.dashboard_grid {
-	.ui.divider {
-		margin-top: 0.5rem;
-		margin-bottom: 0rem;
-	}
-	.ui.label {
-		font-weight: normal;
-	    padding: 0.4233em 0.833em;
-	    margin-top: 13px;
-	    margin-bottom: 10px;
-	}
-}
 .ui.table.table2 {
 	border-right: 0px;
 	border-left: 0px;
@@ -74,12 +86,6 @@ body {
 }
 
 
-.ui.grid.dashboard_grid {
-	max-width: 750px;
-	margin: 80px auto;
-}
-
-
 
 @import '../../base/responsive';
 @import '../../base/mixins';
@@ -87,11 +93,38 @@ body {
 /*--------------
     responsive
 ---------------*/
-.dashboard_grid .ui.small.image {
+.ui.grid .column.div_avatar {
 	@include GT(S) {
-	  width: 100%;
+	  padding: 0px;
+	  padding-left: 10px;
+	}
+	.ui.image {
+		box-shadow: #333333 1px 1px 20px 0;margin-top:10px;
+		@include GT(S) {
+		  margin-top: 1.2rem;
+		  // width: 100%;
+		}	
 	}
 }
+.ui.table.personal_table {
+	@include GT(S) {
+	  font-size: 0.6em;
+	}	
+	.ui.label {
+		padding: 0.25em 0.4em;
+	}
+	tr td {
+		@include GT(S) {
+		  padding-left: 0px;
+		}	
+	}
+	.grey_and_bold {
+		@include GT(S) {
+		  display: none;
+		}	
+	}
+}
+
 .all_buttons {
 	@include GT(S) {
 	  text-align: center;
@@ -106,5 +139,19 @@ body {
 .not_show_on_mobile {
 	@include GT(S) {
 	  display: none;
+	}	
+}
+
+.disnone_mobile {
+	@include GT(S) {
+	  display: none;
+	}	
+}
+
+.ui.grid>.column:not(.row).display_mobile {
+	display: none;
+	padding-top: 0rem;
+	@include GT(S) {
+	  display: block;
 	}	
 }

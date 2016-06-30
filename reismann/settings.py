@@ -193,6 +193,8 @@ REDACTOR_UPLOAD = 'reismann/images/services/redactor/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 REDACTOR_AUTH_DECORATOR = 'django.contrib.auth.decorators.login_required'
 
+GUARDIAN_GET_INIT_ANONYMOUS_USER = 'accounts.managers.get_anonymous_user_instance'
+
 # Logging
 LOGGING = {
   'version': 1,

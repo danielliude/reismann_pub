@@ -65,17 +65,34 @@ $(function() {
     }
     function get_post_data(page) {
         var temp = {}
-        temp.services = get_select_checkbox("services")
-        temp.languages = get_select_checkbox("languages")
-        temp.tags = get_select_checkbox("tags")
-        if($(".search_form [name='gender']").val()[0]) {
+        // temp.services = get_select_checkbox("services")
+        // temp.languages = get_select_checkbox("languages")
+        // temp.tags = get_select_checkbox("tags")
+        if($(".search_form [name='services']").val()) {
+            temp.services   = $(".search_form [name='services']").val() 
+        }
+        if($(".search_form [name='gender']").val()) {
             temp.gender   = $(".search_form [name='gender']").val() 
         }
-        if($(".search_form [name='age']").val()) {
-            temp.age      = $(".search_form [name='age']").val()
+        if($(".search_form [name='min_age']").val()) {
+            temp.min_age      = $(".search_form [name='min_age']").val()
+        }
+        if($(".search_form [name='max_age']").val()) {
+            temp.max_age      = $(".search_form [name='max_age']").val()
+        }
+        if(temp.min_age && temp.max_age && (parseInt(temp.min_age) > parseInt(temp.max_age))) {
+            var t = temp.min_age
+            temp.min_age = temp.max_age
+            temp.max_age = t
         }
         if($(".search_form [name='city']").val()) {
             temp.city     = $(".search_form [name='city']").val()
+        }
+        if($(".search_form [name='languages']").val()) {
+            temp.languages     = $(".search_form [name='languages']").val()
+        }
+        if($(".search_form [name='tags']").val()) {
+            temp.tags     = $(".search_form [name='tags']").val()
         }
         temp.page         = page
         return temp

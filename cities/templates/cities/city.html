@@ -15,7 +15,6 @@
 {% endblock %}
 
 {% block content %}
-<!-- <img class="ui fluid image" src="{{ banner_image.url }}"> -->
 <div class="city_img" style="background-image: url('{{ banner_image.url }}');"></div>
 <div class="ui segment search_form">
   <br>
@@ -23,16 +22,11 @@
     <div class="sixteen wide tablet four wide computer column">
       <label><b>{% trans 'Service types' %}</b></label>
     </div>
-
     <div class="sixteen wide tablet twelve wide computer column">
-      <div class="ui three column doubling grid">
-        {% for field in form.services %}
+      <div class="ui grid">
         <div class="column">
-          <div class="ui secondary segment">
-               {{ field }}
-          </div>
+          {{ form.services }}
         </div>
-        {% endfor %}
       </div>
     </div>
     <div class="sixteen wide tablet four wide computer column">
@@ -40,11 +34,68 @@
     </div>
     <div class="sixteen wide tablet twelve wide computer column">
       <div class="ui grid">
-        <div class="eight wide column">
+        <div class="sixteen wide tablet six wide computer column">
           {{ form.gender }}
         </div>
-        <div class="eight wide column">
-          {{ form.age }}
+        <div class="five wide tablet five wide computer column">
+          <select name="min_age" class="ui search dropdown" id="min_age">
+            <option value="" selected="selected">min age</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="22">22</option>
+            <option value="24">24</option>
+            <option value="26">26</option>
+            <option value="28">28</option>
+            <option value="30">30</option>
+            <option value="32">32</option>
+            <option value="34">34</option>
+            <option value="36">36</option>
+            <option value="38">38</option>
+            <option value="40">40</option>
+            <option value="42">42</option>
+            <option value="44">44</option>
+            <option value="46">46</option>
+            <option value="48">48</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+        <div class="five wide tablet five wide computer column">
+          <select name="max_age" class="ui search dropdown" id="max_age">
+            <option value="" selected="selected">max age</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="22">22</option>
+            <option value="24">24</option>
+            <option value="26">26</option>
+            <option value="28">28</option>
+            <option value="30">30</option>
+            <option value="32">32</option>
+            <option value="34">34</option>
+            <option value="36">36</option>
+            <option value="38">38</option>
+            <option value="40">40</option>
+            <option value="42">42</option>
+            <option value="44">44</option>
+            <option value="46">46</option>
+            <option value="48">48</option>
+            <option value="50">50</option>
+          </select>
         </div>
       </div>
     </div>
@@ -58,34 +109,19 @@
         </div>
       </div>
     </div>
-    <div class="ui grid hidden_content" style="display: none;">
+    <div class="row hidden_content" style="display: none;">
       <div class="sixteen wide tablet four wide computer column hidden">
         <label><b>{% trans 'Service languages' %}</b></label>
       </div>
       <div class="sixteen wide tablet twelve wide computer column hidden">
-        <div class="ui three column doubling grid">
-          {% for field in form.languages %}
-          <div class="column">
-            <div class="ui secondary segment">
-                 {{ field }}
-            </div>
-          </div>
-          {% endfor %}
-        </div>
+        {{ form.languages }}
       </div>
+
       <div class="sixteen wide tablet four wide computer column hidden">
         <label><b>{% trans 'Service tags' %}</b></label>
       </div>
       <div class="sixteen wide tablet twelve wide computer column hidden">
-        <div class="ui three column doubling grid">
-          {% for field in form.tags %}
-          <div class="column">
-            <div class="ui secondary segment">
-                 {{ field }}
-            </div>
-          </div>
-          {% endfor %}
-        </div>
+        {{ form.tags }}
       </div>
     </div>
   </div>

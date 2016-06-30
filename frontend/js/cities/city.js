@@ -68,8 +68,8 @@ $(function() {
         // temp.services = get_select_checkbox("services")
         // temp.languages = get_select_checkbox("languages")
         // temp.tags = get_select_checkbox("tags")
-        if($(".search_form [name='services']").val()) {
-            temp.services   = $(".search_form [name='services']").val() 
+        if($(".search_form [name='category']").val()) {
+            temp.category   = $(".search_form [name='category']").val()
         }
         if($(".search_form [name='gender']").val()) {
             temp.gender   = $(".search_form [name='gender']").val() 

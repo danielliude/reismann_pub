@@ -52,16 +52,15 @@ def city(request, city_name, template_name='cities/city.html'):
         if form.is_valid():
 
             users = User.objects.all()
-            users = users.exclude(Q(is_staff=True) | Q(is_superuser=True)).filter(is_active=True)
+            users = users.exclude(Q(is_staff=True) | Q(is_superuser=True) | Q(username__iexact = 'AnonymousGuardianUser')).filter(is_active=True)
 
             result = []
 
             for user in users:
                 print('>>>>>>>>>>>>>>>>>user is:', user)
 
-                # check number of active services for user
+                # check number of services for provider
                 services = Service.objects.filter(user = user)
-
                 if not services: continue
 
                 # check if at least one service of provider is active
@@ -69,58 +68,64 @@ def city(request, city_name, template_name='cities/city.html'):
                 for service in services:
                     if service.status == 2:
                         one_is_active = True
-
                 if not one_is_active: continue
 
+                # Check if at least one service of provider has requested category
+                cat = request.POST.get('category')
+                if cat:
+                    services = services.filter(category=cat)
+                if not services: continue
+
+                # Check services has all requested cities
+                city_ids = request.POST.getlist('city[]')
+                if city_ids:
+                    for ci_id in city_ids:
+                        services = services.filter(cities=ci_id)
+                if not services: continue
+
                 # Checking gender of provider
-                skip_user = False
-                gender = request.POST.getlist('gender[]')
-                if (gender):
-                    for gend in gender:
-                        if user.profile.gender != int(gend):
-                            skip_user = True
-                if skip_user: continue
+                skip_provider = False
+                gender = request.POST.get('gender')
+                if gender:
+                    if user.profile.gender != int(gender):
+                        skip_provider = True
+                if skip_provider: continue
 
                 # Check age of provider
-                age = request.POST.get('age')
-                if (age):
-                    if (age != '0'):
-                        min = age.split(',')[0]
-                        max = age.split(',')[1]
-                        print(user.profile.age)
-                        if(user.profile.age > int(max)):
-                            skip_user = True
-                        elif(user.profile.age < int(min)):
-                            skip_user = True
-                if skip_user: continue
+                min_age = request.POST.get('min_age')
+                max_age = request.POST.get('max_age')
+                if min_age:
+                    if(user.profile.age < int(min_age)):
+                        skip_provider = True
+                if max_age:
+                    if(user.profile.age > int(max_age)):
+                        skip_provider = True
+                if skip_provider: continue
 
                 # Check languages of provider
                 languages = request.POST.getlist('languages[]')
-                if (languages):
+                if languages:
                     for lang in languages:
                         if not user.profile.languages.filter(id=lang).exists():
-                            skip_user = True
-                if skip_user: continue
+                            skip_provider = True
+                if skip_provider: continue
 
                 # Check tags of provider
                 tags = request.POST.getlist('tags[]')
-                if (tags):
+                if tags:
                     for tag in tags:
                         if not user.profile.tags.filter(id=tag).exists():
                             skip_user = True
-                if skip_user: continue
+                if skip_provider: continue
 
                 user_dict = {}
                 user_services = user.service.all()
                 services_dict = {}
+
                 for service in user_services:
 
                     if service.status != 2 : continue
                     service_dict = {}
-
-                    # print(service)
-                    # for city in service.cities.all():
-                    #     print(city)
 
                     service_dict['service_url'] = "/profiles/" + user.username + "/services/view/" + str(service.id)
 
@@ -137,37 +142,35 @@ def city(request, city_name, template_name='cities/city.html'):
                     service_dict['searched'] = False
                     service_dict['price_type'] = service.price_type
                     service_dict['currency'] = service.currency
-                    
+
 
                     # Checking cities for services
                     city_ids = request.POST.getlist('city[]')
-                    if (city_ids):
+                    if city_ids:
                         for ci_id in city_ids:
                             if service.cities.filter(id = ci_id).exists():
                                 service_dict['searched'] = True
                             else:
                                 service_dict['searched'] = False
 
-                    # Checking for type of service
-                    svrs = request.POST.getlist('services[]')
-                    if (svrs):
-                        for serv in svrs:
-                            if service.category.id == int(serv):
-                                service_dict['searched'] = True
-                                break
-                            else:
-                                service_dict['searched'] = False
+                    cat = request.POST.getlist('category')
+                    if cat:
+                        if service.category.id == int(cat[0]):
+                            service_dict['searched'] = True
+                        else:
+                            service_dict['searched'] = False
 
                     services_dict[service.id] = service_dict
 
-                # Check if at least one found service is found
-                forward = False
-                for key in services_dict:
-                    if services_dict[key]['searched'] == True:
-                        forward = True
-                        break
 
-                if not forward: continue
+                # Check if at least one found service is found
+                # forward = False
+                # for key in services_dict:
+                #     if services_dict[key]['searched'] == True:
+                #         forward = True
+                #         break
+                #
+                # if not forward: continue
 
                 user_dict['services'] = services_dict
                 user_dict['card_image_url'] = user.profile.get_card_image_url()

@@ -112,10 +112,12 @@ def city(request, city_name, template_name='cities/city.html'):
 
                 # Check tags of provider
                 tags = request.POST.getlist('tags[]')
+
                 if tags:
                     for tag in tags:
-                        if not user.profile.tags.filter(id=tag).exists():
-                            skip_user = True
+                        if not user.profile.tags.filter(id=int(tag)).exists():
+                            skip_provider = True
+
                 if skip_provider: continue
 
                 user_dict = {}

@@ -144,6 +144,12 @@
   .ui.segment.padding {
     padding: 0px;
   } 
+  .profile_info {
+    position: absolute;
+    top: 0px;
+    height: 30px;
+    padding-left: 67px;
+  }
   .average_price {
     position: absolute;
     right: 14px;
@@ -161,9 +167,8 @@
     padding: 2px;
     border: 2px;
     background-color: #fff;
-    // border-radius: 28px;
     margin-top: -33px;
-    // margin-left: 19px;
+    margin-bottom: 0.3rem;
   }
 }
 

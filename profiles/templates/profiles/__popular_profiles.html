@@ -11,13 +11,19 @@
 		      	<a href="{% url 'profiles:profile' profile.user.username %}" class="ui tiny image">
 			      <img  src="{{ profile.get_avatar_url }}" alt="User Avatar">
 				</a>
-				<div class="row">
-					<div class="ui header">{{ profile.user.username }} {{ profile.short_description }}</div>
-					<span>{{ profile.location.get_full_location }}</span>
+				<div class="profile_info">
+					<b>{{ profile.user.username }}</b> {{ profile.get_gender_display }}/{{ profile.age }} {{ profile.location.get_full_location }}
 				</div>
-				<div class="ui red header average_price">€ {{ profile.average_price }}</div>
+				<div class="row">
+				<!-- 	<div class="ui header">{{ profile.user.username }} {{ profile.short_description }}</div> -->
+					<span>{{ profile.short_description }}</span>
+				</div>
+				<!-- <div class="ui red header average_price">€ {{ profile.average_price }}</div> -->
 				<div class="row content">
-					{{ profile.bio|safe }}
+					<!-- {{ profile.bio|safe }} -->
+					{% for service in profile.user.services %}
+		                <div class="ui green label">{{ service.category }}</div>
+		            {% endfor %}
 				</div>
 			</div>
     	</div>

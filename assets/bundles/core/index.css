@@ -122,6 +122,12 @@
 .profile_content .ui.segment.padding {
   padding: 0px; }
 
+.profile_content .profile_info {
+  position: absolute;
+  top: 0px;
+  height: 30px;
+  padding-left: 67px; }
+
 .profile_content .average_price {
   position: absolute;
   right: 14px;
@@ -139,7 +145,8 @@
   padding: 2px;
   border: 2px;
   background-color: #fff;
-  margin-top: -33px; }
+  margin-top: -33px;
+  margin-bottom: 0.3rem; }
 
 /*--------------
     city_content

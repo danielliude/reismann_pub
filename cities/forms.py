@@ -18,6 +18,7 @@ class SearchForm(forms.Form):
     category = forms.ModelChoiceField(required=False,
                                           widget=forms.Select(attrs={
                                           'class': 'ui fluid search dropdown',
+                                          'multiple' : "",
                                           }),
                                           queryset=ServiceCategory.objects.all(),
                                           label= _("All services"))

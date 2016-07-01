@@ -181,8 +181,7 @@ body {
     padding-left: 10px; } }
 
 .ui.grid .column.div_avatar .ui.image {
-  box-shadow: #333333 1px 1px 20px 0;
-  margin-top: 10px; }
+  box-shadow: #333333 1px 1px 20px 0; }
   @media only screen and (max-width: 759px) {
     .ui.grid .column.div_avatar .ui.image {
       margin-top: 1.2rem; } }

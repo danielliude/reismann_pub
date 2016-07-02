@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class BlackLists(models.Model):
-    user = models.OneToOneField(User, related_name='blacklist', verbose_name=_('user'))
+    user = models.ForeignKey(User, related_name='blacklist', verbose_name=_('user'))
     shielding = models.ForeignKey(User, related_name='shielding', verbose_name=_('shielding'))
     created_at = models.DateTimeField(auto_now_add=True)
 

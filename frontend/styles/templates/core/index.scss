@@ -144,10 +144,14 @@
   .ui.image.image_avatar {
     position: absolute;
     width: 60px;
+    height: 60px;
     padding: 2px;
     border: 2px;
     background-color: #fff;
     margin-top: -29px;
+    img {
+      height: 100%;
+    }
   }
 
   .profile_info {
@@ -260,15 +264,15 @@
 /*--------------
     responsive
 ---------------*/
-.profile_map {
-  @include GT(S) {
-    display: none;
-  }
-}
 #profile_content {
   .column {
     @include GT(S) {
       padding:0.3rem 0.5rem!important;
+    }
+  }
+  .profile_map {
+    @include GT(S) {
+      display: none;
     }
   }
   .segment.segment_profile {
@@ -282,6 +286,7 @@
     @include GT(S) {
       margin-top: 0px;
       width: 84px;
+      height: 100%;
     }
   }
   .profile_info {

@@ -55,8 +55,7 @@ $(function() {
 
         // show the more profile
         $('#profile_content').on('click', '.ellipsis_vertical', function() {
-            console.log('fdfdfd')
-          var h = parseInt($('.segment_profile').height()) == 84 ? '200' : '100%'
+          var h = parseInt($('#profile_content .ui.segment.padding').height()) < 200 ? '200' : '100%'
           $(this).parent().siblings('.more_profile_info').animate({
             height: h},
             1000, function() {

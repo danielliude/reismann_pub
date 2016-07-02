@@ -120,10 +120,13 @@
   #profile_content .ui.image.image_avatar {
     position: absolute;
     width: 60px;
+    height: 60px;
     padding: 2px;
     border: 2px;
     background-color: #fff;
     margin-top: -29px; }
+    #profile_content .ui.image.image_avatar img {
+      height: 100%; }
   #profile_content .profile_info {
     position: relative;
     top: 0px;
@@ -213,12 +216,12 @@
     responsive
 ---------------*/
 @media only screen and (max-width: 759px) {
-  .profile_map {
-    display: none; } }
-
-@media only screen and (max-width: 759px) {
   #profile_content .column {
     padding: 0.3rem 0.5rem !important; } }
+
+@media only screen and (max-width: 759px) {
+  #profile_content .profile_map {
+    display: none; } }
 
 @media only screen and (max-width: 759px) {
   #profile_content .segment.segment_profile {
@@ -229,7 +232,8 @@
 @media only screen and (max-width: 759px) {
   #profile_content .ui.image.image_avatar {
     margin-top: 0px;
-    width: 84px; } }
+    width: 84px;
+    height: 100%; } }
 
 @media only screen and (max-width: 759px) {
   #profile_content .profile_info {

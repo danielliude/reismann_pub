@@ -1,0 +1,43 @@
+{% for result in results %}
+    <div class="column">
+        <div class="ui segment padding">
+            <a href="{{ result.profile_url }}" class="profile_map" style="background-image: url('{{ result.card_image_url }}');">
+            </a>
+            <div class="ui segment segment_profile">
+                <a href="{{ result.profile_url }}" class="ui image image_avatar">
+                  <img  src="{{ result.avatar_url }}" alt="User Avatar">
+                </a>
+                <div class="profile_info">
+                    <b>{{ result.username }}</b> {{ result.profile.get_gender_display }}/{{ result.profile.age }} {{ result.profile.location.get_full_location }}
+                    <div class="row">
+                        <span>{{ result.short_description }}</span>
+                    </div>
+                    <div class="row content">
+                        <table class="ui very basic unstackable compact table">
+                          <tbody>
+                            {% for serv in  result.services %}
+                            <tr>
+                              <td><label class="ui {% if serv.searched %} blue {% endif %} label">{{serv.category}}</label></td>
+                              <td>{{ serv.title }}</td>
+                              <td class="right aligned"><label class="ui label">{{serv.currency}} {{serv.price}}/{{serv.price_type}}</label></td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="ellipsis_vertical"><i class="icon link ellipsis vertical"></i></div>
+            </div>
+
+            <div class="more_profile_info">
+                <div class="ui segment">
+                    <h4 class="ui header">
+                        {{ result.username }}
+                    </h4>
+                    <div class="more_profile_info_remove"><i class="icon link remove"></i></div>
+                    {{ result.profile.bio | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

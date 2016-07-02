@@ -142,40 +142,11 @@
   <p class="serveice_num_p" {% if results|length == 0 %}style="display:none"{% endif %}>{% trans "Have found " %} <span class="services_num"> {{ results|length }}</span>{% trans " providers" %}</p>
   
 </div>
-<div class="ui three column stackable doubling grid container search_profile">
+<div class="ui three column stackable doubling grid container search_profile" id="profile_content">
   {% if results|length == 0 %}
     <h4>No result,please search again!</h4>
   {% endif %}
-  {% for result in results %}
-    <div class="column">
-      <div class="ui segment padding">
-        <a href="{{ result.profile_url }}" class="profile_map" style="background-image: url('{{ result.card_image_url }}');">
-        </a>
-        <a href="{{ result.profile_url }}" class="ui tiny circular image">
-          <img  src="{{ result.avatar_url }}" alt="User Avatar">
-        </a>
-        <div class="ui segment">
-          <div class="row"> 
-            <div class="ui header">{{ result.username }} {{ result.short_description }}</div>
-            <span>{{ result.location }}</span>
-          </div>
-          <div class="row">
-            <table class="ui very basic unstackable compact table">
-              <tbody>
-                {% for serv in  result.services %}
-                <tr>
-                  <td><label class="ui {% if serv.searched %} blue {% endif %} label">{{serv.category}}</label></td>
-                  <td>{{ serv.title }}</td>
-                  <td class="right aligned"><label class="ui label">{{serv.currency}} {{serv.price}}/{{serv.price_type}}</label></td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  {% endfor %}
+  {% include "cities/widgets/__search_profile.html" %}
 </div>
 
 <div class="ui grid container more_loaders"{% if results|length <= 21 %} style="display:none" {% endif %}>

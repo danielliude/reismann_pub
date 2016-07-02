@@ -45,9 +45,9 @@
 /*--------------
     search_profile
 ---------------*/
-.ui.grid.search_profile {
-  padding-bottom: 40px; }
-  .ui.grid.search_profile .profile_map {
+#profile_content {
+  margin-bottom: 0rem; }
+  #profile_content .profile_map {
     height: 300px;
     display: block;
     width: 100%;
@@ -55,7 +55,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover; }
-    .ui.grid.search_profile .profile_map:hover:before {
+    #profile_content .profile_map:hover:before {
       content: '';
       position: absolute;
       top: 0;
@@ -63,36 +63,57 @@
       width: 100%;
       height: 300px;
       background-color: rgba(0, 0, 0, 0.3); }
-  .ui.grid.search_profile .ui.segment.padding {
+  #profile_content .ui.segment {
+    border: 0px; }
+    #profile_content .ui.segment span {
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0.5em 0em 0.5em;
+      font-size: 0.9em; }
+  #profile_content .ui.segment.padding {
     padding: 0px; }
-    .ui.grid.search_profile .ui.segment.padding .ui.header {
-      font-size: 1em;
-      margin-bottom: 0px; }
-    .ui.grid.search_profile .ui.segment.padding .ui.segment {
-      margin-top: 5px;
-      padding-top: 0px;
-      border: 0px; }
-      .ui.grid.search_profile .ui.segment.padding .ui.segment span {
-        color: rgba(0, 0, 0, 0.6);
-        margin: 0.5em 0em 0.5em;
-        font-size: 0.9em; }
-    .ui.grid.search_profile .ui.segment.padding .average_price {
-      position: absolute;
-      right: 14px;
-      top: -25px; }
-    .ui.grid.search_profile .ui.segment.padding .content {
-      margin-top: 10px; }
-    .ui.grid.search_profile .ui.segment.padding .content p {
+  #profile_content .segment.segment_profile {
+    margin-top: 0rem;
+    padding-top: 0rem;
+    margin-bottom: 0rem; }
+  #profile_content .ui.image.image_avatar {
+    position: absolute;
+    width: 60px;
+    padding: 2px;
+    border: 2px;
+    background-color: #fff;
+    margin-top: -29px; }
+  #profile_content .profile_info {
+    position: relative;
+    top: 0px;
+    padding-left: 67px;
+    line-height: 30px; }
+    #profile_content .profile_info .row {
+      margin-left: -66px; }
+    #profile_content .profile_info .content p {
       color: rgba(0, 0, 0, 0.68);
       font-size: 1em; }
-    .ui.grid.search_profile .ui.segment.padding .ui.tiny.image {
-      width: 60px;
-      padding: 2px;
-      border: 2px;
-      background-color: #fff;
-      border-radius: 28px;
-      margin-top: -33px;
-      margin-left: 19px; }
+  #profile_content .ellipsis_vertical {
+    position: absolute;
+    right: 0.3rem;
+    top: 6px; }
+  #profile_content .more_profile_info {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0px;
+    bottom: 0px;
+    background-color: #fff;
+    overflow: hidden; }
+    #profile_content .more_profile_info .ui.segment {
+      height: 100%;
+      overflow-y: auto;
+      margin-top: 0; }
+      #profile_content .more_profile_info .ui.segment .ui.header:first-child {
+        margin-top: 0.3rem; }
+    #profile_content .more_profile_info .more_profile_info_remove {
+      position: absolute;
+      right: 1rem;
+      top: 1.2rem; }
 
 .ui.grid.more_loaders {
   margin-top: 0px;
@@ -102,4 +123,5 @@
     cursor: pointer; }
 
 .search_profile .ui.table tr td {
-  border-top: 0px solid rgba(34, 36, 38, 0.1); }
+  border-top: 0px solid rgba(34, 36, 38, 0.1);
+  padding: 0.3em 0.4em; }

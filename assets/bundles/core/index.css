@@ -81,23 +81,6 @@
 /*--------------
    profile_content
 ---------------*/
-.profile_map {
-  height: 300px;
-  display: block;
-  width: 100%;
-  background-color: #242731;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; }
-  .profile_map:hover:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 300px;
-    background-color: rgba(0, 0, 0, 0.3); }
-
 .ui.header.popular_profile_h2, .ui.header.new_profile_h2 {
   margin-top: 0px;
   padding-top: 55px;
@@ -106,6 +89,22 @@
 
 #profile_content {
   margin-bottom: 0rem; }
+  #profile_content .profile_map {
+    height: 300px;
+    display: block;
+    width: 100%;
+    background-color: #242731;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; }
+    #profile_content .profile_map:hover:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      background-color: rgba(0, 0, 0, 0.3); }
   #profile_content .ui.segment {
     border: 0px; }
     #profile_content .ui.segment span {

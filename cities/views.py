@@ -142,8 +142,8 @@ def city(request, city_name, template_name='cities/city.html'):
                     service_dict['title'] = service.title
                     service_dict['category'] = service.category.name
                     service_dict['searched'] = False
-                    service_dict['price_type'] = service.price_type
-                    service_dict['currency'] = service.currency
+                    service_dict['price_type'] = service.get_price_type_display()
+                    service_dict['currency'] = service.get_currency_display()
 
 
                     # Checking cities for services
@@ -175,6 +175,10 @@ def city(request, city_name, template_name='cities/city.html'):
                 # if not forward: continue
 
                 user_dict['services'] = services_dict
+                user_dict['gender'] = user.profile.get_gender_display()
+                user_dict['age'] = user.profile.age
+                user_dict['get_full_location'] = user.profile.location.get_full_location()
+                user_dict['bio'] = user.profile.bio
                 user_dict['card_image_url'] = user.profile.get_card_image_url()
                 user_dict['profile_url'] = "/profiles/" + user.username + "/"
                 user_dict['avatar_url'] = user.profile.get_avatar_url()
@@ -183,8 +187,6 @@ def city(request, city_name, template_name='cities/city.html'):
                 user_dict['location'] = user.profile.location.name
 
                 result.append(user_dict)
-
-            print(result)
 
             page = int(request.POST.get('page'))
             page_num = 21
@@ -208,6 +210,7 @@ def city(request, city_name, template_name='cities/city.html'):
             print('>>>>>>>>>>>>>>>>>user is:', user)
 
             user_dict = {}
+            user_dict['profile'] = user.profile
             user_dict['card_image_url'] = user.profile.get_card_image_url()
             user_dict['profile_url'] = "/profiles/" + user.username + "/"
             user_dict['avatar_url'] = user.profile.get_avatar_url()
@@ -228,8 +231,8 @@ def city(request, city_name, template_name='cities/city.html'):
                 service_dict['title'] = service.title
                 service_dict['category'] = service.category.name
                 service_dict['searched'] = False
-                service_dict['price_type'] = service.price_type
-                service_dict['currency'] = service.currency
+                service_dict['price_type'] = service.get_price_type_display
+                service_dict['currency'] = service.get_currency_display
                     
                 # Checking cities for services
                 if city_name == 'all' :

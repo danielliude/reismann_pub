@@ -74,7 +74,7 @@ $(document).ready(function() {
       $('html,body').animate({scrollTop: '0px'}, 1000)
     })
 
-    $('#profile_content .ellipsis_vertical').click(function() {
+    $('#profile_content .ellipsis_vertical').live('click', function() {
       var h = parseInt($('.segment_profile').height()) == 84 ? '200' : '100%'
       $(this).parent().siblings('.more_profile_info').animate({
         height: h},

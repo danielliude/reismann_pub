@@ -73,5 +73,23 @@ $(document).ready(function() {
     $('.fixed_position').click(function() {
       $('html,body').animate({scrollTop: '0px'}, 1000)
     })
+
+    $('.profile_content .ellipsis_vertical').click(function() {
+      console.log('fed')
+      $(this).parent().siblings('.more_profile_info').animate({
+        height: '100%'},
+        1000, function() {
+        /* stuff to do after animation is complete */
+      });
+    })
+
+    $('.more_profile_info_remove').click(function() {
+      console.log('fed')
+      $(this).parent().parent().animate({
+        height: '0'},
+        1000, function() {
+        /* stuff to do after animation is complete */
+      });
+    })
   }
 })

@@ -7,7 +7,7 @@
     	<div class="ui segment padding">
 	      	<a href="{% url 'profiles:profile' profile.user.username %}" class="profile_map" style="background-image: url('{{ profile.get_card_image_url }}');">
 	      	</a>
-			<div class="ui segment">
+			<div class="ui segment" style="margin-top:0rem;">
 		      	<a href="{% url 'profiles:profile' profile.user.username %}" class="ui tiny image">
 			      <img  src="{{ profile.get_avatar_url }}" alt="User Avatar">
 				</a>
@@ -15,15 +15,23 @@
 					<b>{{ profile.user.username }}</b> {{ profile.get_gender_display }}/{{ profile.age }} {{ profile.location.get_full_location }}
 				</div>
 				<div class="row">
-				<!-- 	<div class="ui header">{{ profile.user.username }} {{ profile.short_description }}</div> -->
 					<span>{{ profile.short_description }}</span>
 				</div>
-				<!-- <div class="ui red header average_price">€ {{ profile.average_price }}</div> -->
+				<div class="ellipsis_vertical"><i class="icon link ellipsis vertical"></i></div>
 				<div class="row content">
-					<!-- {{ profile.bio|safe }} -->
-					{% for service in profile.user.services %}
-		                <div class="ui green label">{{ service.category }}</div>
+					{% for service in profile.user.service.all %}
+		                <a target="_blank" href="{% url 'profiles:profile' profile.user.username %}" class="ui green label">{{ service.category }}</a>
 		            {% endfor %}
+				</div>
+			</div>
+
+			<div class="more_profile_info">
+				<div class="ui segment">
+					<h4 class="ui header">
+						{{ profile.user.username }}
+					</h4>
+					<div class="more_profile_info_remove"><i class="icon link remove"></i></div>
+					{{ profile.bio | safe }}
 				</div>
 			</div>
     	</div>

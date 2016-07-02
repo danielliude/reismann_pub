@@ -104,14 +104,6 @@
   padding-bottom: 30px;
   font-weight: 100; }
 
-.padding .ui.header {
-  font-size: 1em;
-  margin-bottom: 0px; }
-
-.padding .ui.segment {
-  margin-top: 5px;
-  padding-top: 0px; }
-
 .profile_content .ui.segment {
   border: 0px; }
   .profile_content .ui.segment span {
@@ -126,12 +118,32 @@
   position: absolute;
   top: 0px;
   height: 30px;
-  padding-left: 67px; }
+  padding-left: 67px;
+  line-height: 30px; }
 
-.profile_content .average_price {
+.profile_content .ellipsis_vertical {
   position: absolute;
-  right: 14px;
-  top: -25px; }
+  right: 1rem;
+  top: 6px; }
+
+.profile_content .more_profile_info {
+  position: absolute;
+  width: 100%;
+  height: 0px;
+  left: 0px;
+  bottom: 0px;
+  background-color: #fff;
+  overflow: hidden; }
+  .profile_content .more_profile_info .ui.segment {
+    height: 100%;
+    overflow-y: auto;
+    margin-top: 0; }
+    .profile_content .more_profile_info .ui.segment .ui.header:first-child {
+      margin-top: 0.3rem; }
+  .profile_content .more_profile_info .more_profile_info_remove {
+    position: absolute;
+    right: 1rem;
+    top: 1.2rem; }
 
 .profile_content .content {
   margin-top: 10px; }
@@ -145,7 +157,7 @@
   padding: 2px;
   border: 2px;
   background-color: #fff;
-  margin-top: -33px;
+  margin-top: -43px;
   margin-bottom: 0.3rem; }
 
 /*--------------

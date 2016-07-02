@@ -94,7 +94,7 @@
 }
 
 /*--------------
-    profile_content
+   profile_content
 ---------------*/
 
 .profile_map {
@@ -122,17 +122,9 @@
   padding-bottom: 30px;
   font-weight: 100;
 }
-// .padding {
-//   .ui.header {
-//     font-size: 1em;
-//     margin-bottom: 0px;
-//   }
-//   .ui.segment {
-//     margin-top: 5px;
-//     padding-top: 0px;
-//   }
-// }
-.profile_content {
+
+#profile_content {
+  margin-bottom: 0rem;
   .ui.segment {
     border: 0px;
     span {
@@ -144,22 +136,43 @@
   .ui.segment.padding {
     padding: 0px;
   } 
-  .profile_info {
+  .segment.segment_profile {
+    margin-top:0rem;
+    padding-top:0rem;
+    margin-bottom: 0rem;
+  }
+
+  .ui.image.image_avatar {
     position: absolute;
+    width: 60px;
+    padding: 2px;
+    border: 2px;
+    background-color: #fff;
+    margin-top: -29px;
+  }
+
+  .profile_info {
+    position: relative;
     top: 0px;
-    height: 30px;
+    // height: 30px;
     padding-left: 67px;
     line-height: 30px;
+    .row {
+      margin-left: -66px;
+    }
+    .content p {
+      color: rgba(0,0,0,.68);
+      font-size: 1em;
+    }
   }
   .ellipsis_vertical {
     position: absolute;
-    right: 1rem;
+    right: 0.3rem;
     top: 6px;
   }
   .more_profile_info {
     position: absolute;
     width: 100%;
-    // height: 100%;
     height: 0px;
     left: 0px;
     bottom: 0px;
@@ -178,21 +191,6 @@
       right: 1rem;
       top: 1.2rem;
     }
-  }
-  .content {
-    margin-top: 10px;
-  }
-  .content p {
-    color: rgba(0,0,0,.68);
-    font-size: 1em;
-  }
-  .ui.tiny.image {
-    width: 60px;
-    padding: 2px;
-    border: 2px;
-    background-color: #fff;
-    margin-top: -43px;
-    margin-bottom: 0.3rem;
   }
 }
 
@@ -254,4 +252,63 @@
   display: none;
   bottom: 120px;
   right: 30px;
+}
+
+
+@import '../../base/responsive';
+@import '../../base/mixins';
+
+/*--------------
+    responsive
+---------------*/
+.profile_map {
+  @include GT(S) {
+    display: none;
+  }
+}
+#profile_content {
+  .column {
+    @include GT(S) {
+      padding:0.3rem 0.5rem!important;
+    }
+  }
+  .segment.segment_profile {
+    @include GT(S) {
+      padding-left: 0rem;
+      padding-bottom: 0rem;
+      height: 84px;
+    }
+  }
+  .ui.image.image_avatar {
+    @include GT(S) {
+      margin-top: 0px;
+      width: 84px;
+    }
+  }
+  .profile_info {
+    @include GT(S) {
+      padding-left: 87px;
+      line-height: 25px;
+    }
+    .row {
+      @include GT(S) {
+        margin-left: 0px;
+      }
+    }
+  }
+  .more_profile_info {
+    .ui.segment {
+      height: 100%;
+      overflow-y: auto;
+      margin-top: 0;
+      .ui.header:first-child {
+        margin-top: 0.3rem;
+      }
+    }
+    .more_profile_info_remove {
+      position: absolute;
+      right: 1rem;
+      top: 1.2rem;
+    }
+  }
 }

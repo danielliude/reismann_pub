@@ -74,17 +74,16 @@ $(document).ready(function() {
       $('html,body').animate({scrollTop: '0px'}, 1000)
     })
 
-    $('.profile_content .ellipsis_vertical').click(function() {
-      console.log('fed')
+    $('#profile_content .ellipsis_vertical').click(function() {
+      var h = parseInt($('.segment_profile').height()) == 84 ? '200' : '100%'
       $(this).parent().siblings('.more_profile_info').animate({
-        height: '100%'},
+        height: h},
         1000, function() {
         /* stuff to do after animation is complete */
       });
     })
 
     $('.more_profile_info_remove').click(function() {
-      console.log('fed')
       $(this).parent().parent().animate({
         height: '0'},
         1000, function() {

@@ -18,7 +18,7 @@
 					</div>
 					<div class="row content">
 						{% for service in profile.user.service.all %}
-			                <a target="_blank" href="{% url 'profiles:profile' profile.user.username %}" class="ui green label">{{ service.category }}</a>
+			                <a target="_blank" href="{% url 'profiles:profile' profile.user.username %}?service_id={{ service.id }}" class="ui green label">{{ service.category }}</a>
 			            {% endfor %}
 					</div>
 				</div>

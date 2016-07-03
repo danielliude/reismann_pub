@@ -76,7 +76,7 @@
 		service_click_event();
 		register_modal();
 		send_message_modal();
-		send_comment();
+		send_comment($server_id);
 		use_unslider();
 
 		function init() {
@@ -96,7 +96,7 @@
 		}
 
 		function service_click_event() {
-			var service_index = 0;
+			var service_index = $server_id != 'all' ? $server_id : 0;
 			$('.click_service').click(function (event) {
 				var service_id = $(this).data('service');
 				var $div = $(this);

@@ -35,7 +35,7 @@ function fill_notification_list(data) {
         var item = data.unread_list[i];
         var avatar_url = "/profiles/{{ user.username }}/notifications/avatar/" + item.actor + "/"
         html += '<a href="' + item.url + '" class="item unread_notification">' + 
-                  '<img class="ui avatar image" src="'+avatar_url+'">' +
+                  '<img class="ui avatar image" style="width: 2em;" src="'+avatar_url+'">' +
                   '<span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">' + item.actor + '</span>' +
                   '<small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>' +  get_date(item.timestamp) + '</small>' +
                   '<span class="subject" style="position:absolute;left:53px;top:25px;">' + item.verb + '</span>' +
@@ -51,7 +51,7 @@ function fill_message_list(data) {
         var item = data.unread_list[i];
         var avatar_url = "/profiles/{{ user.username }}/notifications/avatar/" + item.actor + "/"
         html += '<a href="' + item.url + '" class="item unread_message">' + 
-                  '<img class="ui avatar image" src="'+avatar_url+'">' +
+                  '<img class="ui avatar image" style="width: 2em;" src="'+avatar_url+'">' +
                   '<span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">' + item.actor + '</span>' +
                   '<small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>' +  get_date(item.timestamp) + '</small>' +
                   '<span class="subject" style="position:absolute;left:53px;top:25px;">' + item.verb + '</span>' +

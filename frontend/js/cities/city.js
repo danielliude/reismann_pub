@@ -137,7 +137,7 @@ $(function() {
                                         for (var j in ret[i].services) {
                                             var serv = ret[i].services[j]
                                             html += '<tr>' +
-                                                  '<td><label class="ui ' + (serv.searched?'blue':'') + ' label">' + serv.category + '</label></td>' +
+                                                  '<td><a target="_blank" href="/profiles/' + ret[i].username + '/?service_id=' + serv.id + '" class="ui ' + (serv.searched?'blue':'') + ' label">' + serv.category + '</a></td>' +
                                                   '<td>' + serv.title + '</td>' +
                                                   '<td class="right aligned"><label class="ui label">' + serv.currency + serv.price + '/' + serv.price_type + '</label></td>' +
                                                 '</tr>'

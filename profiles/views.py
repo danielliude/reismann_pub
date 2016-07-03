@@ -29,7 +29,9 @@ from album.models import AlbumImage, MyAlbum
 
 from followship.models import FollowingManager
 
-from services.models import Service
+from services.models import Service, ServiceRating
+from services.forms import ServiceForm, ServiceRatingForm
+from services.utils import get_user_services, get_service_by_id
 
 #paginator
 from django.core.paginator import Paginator
@@ -222,8 +224,27 @@ def profile(request, username, template_name="profiles/profile.html",
     extra_context = makeContextForActiveServices(user, extra_context)
     extra_context = makeContextForNotifications(request, extra_context)
 
+    if(request.GET.get('service_id')):
+      extra_context['service_id'] = request.GET.get('service_id')    
+      service = get_service_by_id(extra_context['service_id'])
+      ratings = ServiceRating.objects.filter(service = service)
+      extra_context['ratings'] = ratings
+
+      try:
+          who = User.objects.get(username__iexact = request.user.username)
+      except User.DoesNotExist:
+          who = None
+
+      if who:
+          try:
+              serviceRating = ServiceRating.objects.get(service= service, user = who)
+          except ServiceRating.DoesNotExist:
+              form = ServiceRatingForm()
+              extra_context['rating_form'] = form
+    else:
+      extra_context['service_id'] = 'all'
+
     extra_context['form'] = form
-    extra_context['service_id'] = 'all'
 
     return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
 

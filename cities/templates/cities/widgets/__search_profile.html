@@ -17,7 +17,7 @@
                           <tbody>
                             {% for serv in  result.services %}
                             <tr>
-                              <td><label class="ui {% if serv.searched %} blue {% endif %} label">{{serv.category}}</label></td>
+                              <td><a target="_blank" href="{% url 'profiles:profile' result.username %}?service_id={{ serv.id }}" class="ui {% if serv.searched %} blue {% endif %} label">{{serv.category}}</a></td>
                               <td>{{ serv.title }}</td>
                               <td class="right aligned"><label class="ui label">{{serv.currency}} {{serv.price}}/{{serv.price_type}}</label></td>
                             </tr>

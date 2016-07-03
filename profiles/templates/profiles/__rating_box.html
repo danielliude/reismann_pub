@@ -1,6 +1,6 @@
 {% load i18n %}
 
-{% if service_id = 'all' %}
+{% if service_id == 'all' %}
   <h3 style="color: #555555;font-weight: 300;">{% trans 'Rating and comments:' %}</h3>
   <div class="ui comments">
     {% for service in services %}

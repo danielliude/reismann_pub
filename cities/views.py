@@ -138,6 +138,7 @@ def city(request, city_name, template_name='cities/city.html'):
                     citiesStr = ",".join(str(item) for item in cities)
 
                     service_dict['cities'] = citiesStr
+                    service_dict['id'] = service.id
                     service_dict['price'] = service.price
                     service_dict['title'] = service.title
                     service_dict['category'] = service.category.name
@@ -227,6 +228,7 @@ def city(request, city_name, template_name='cities/city.html'):
                 service_dict = {}
 
                 print(service)
+                service_dict['id'] = service.id
                 service_dict['price'] = service.price
                 service_dict['title'] = service.title
                 service_dict['category'] = service.category.name

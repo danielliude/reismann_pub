@@ -3,7 +3,7 @@
 
 <div class="ui segment info_segment">
   <div class="ui secondary pointing menu">
-    <a class="active item click_about_me" data-tab="first">
+    <a class="{% if service_id == 'all' %}active{% endif %} item click_about_me" data-tab="first">
       {% trans 'about me' %}
     </a>
     <a class="item" data-tab="second">
@@ -14,9 +14,17 @@
     </a>
 
     {% if profile.settings.is_provider %}
-    <a class="right floated item all_services"  data-tab="fourth">
-      <span class="service_length"><span class="ui label green" style="padding: 0.24em 0.833em;">{{ services | length }}</span> {% trans 'services' %}<i class="dropdown icon"></i></span>
-      <span class="ui label green service_title disnone"></span>
+    <a class="{% if service_id != 'all' %}active{% endif %} right floated item all_services"  data-tab="fourth">
+      <span class="{% if service_id != 'all' %}disnone{% endif %} service_length"><span class="ui label green" style="padding: 0.24em 0.833em;">{{ services | length }}</span> {% trans 'services' %}<i class="dropdown icon"></i></span>
+      <span class="ui label green service_title {% if service_id == 'all' %}disnone{% endif %}">
+        {% if service_id != 'all' %}
+          {% for service in services %}
+            {% if service_id|floatformat == service.pk|floatformat %}
+              {{ service.category }}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </span>
     </a>
 
     <div class="ui flowing popup bottom right transition hidden">
@@ -35,7 +43,7 @@
     {% endif %}
   </div>
 
-  <div class="ui bottom attached tab padded segment active" data-tab="first">
+  <div class="ui bottom attached tab padded segment {% if service_id == 'all' %}active{% endif %}" data-tab="first">
     <p>{{ profile.bio|safe }}</p>
     <br>
   </div>
@@ -57,10 +65,10 @@
     {% endif %}
     <br>
   </div>
-  <div class="ui bottom attached tab padded segment" data-tab="fourth">
+  <div class="ui bottom attached tab padded segment {% if service_id != 'all' %}active{% endif %}" data-tab="fourth">
     {% if profile.settings.is_provider %}
       {% for service in services %}
-        <div class="service_{{ service.id }} disnone">
+        <div class="service_{{ service.pk }} {% if service_id|floatformat != service.pk|floatformat %}disnone{% endif %}">
           <h5 class="ui right floated header"><a class="ui red tag label">{{ service.get_currency_display }} {{ service.price }}</a></h5>
           <h2 class="ui center aligned header" style="color: #555555;font-weight: 300;margin-top:0px;">{{ service.title }}</h2>
           <p>{{ service.content|safe }}</p>

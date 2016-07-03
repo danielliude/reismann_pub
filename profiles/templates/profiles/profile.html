@@ -11,7 +11,7 @@
       $.ajaxSetup({
         data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
       });
-      $server_id = {{ service_id }}
+      $server_id = '{{ service_id }}'
     </script>
     {% render_bundle 'profiles/profile' 'js' %}
 {% endblock %}

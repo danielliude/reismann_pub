@@ -64,9 +64,9 @@
 		    </div>
 		    <div class="three wide column tablet_more only">
 	        {% if profile.settings.is_provider %}
-	          <a class="ui large blue right ribbon label">{% trans 'Provider' %}</a>
+	          <div class="ui large blue right ribbon label">{% trans 'Provider' %}</div>
 	        {% else %}
-	          <a class="ui large blue right ribbon label">{% trans 'Customer' %}</a>
+	          <div class="ui large blue right ribbon label">{% trans 'Customer' %}</div>
 	        {% endif %}
 		    </div>
 		    <div class="sixteen wide column display_mobile">
@@ -76,38 +76,11 @@
 			     </div>
 		    </div>
 		  </div>
-
-<!-- 		  <table class="ui unstackable compact table table2">
-		      <tbody>
-		        <tr>
-		          <td class="grey_and_bold">{% trans 'Followers:' %}</td>
-		          <td style="border-right: 1px solid rgba(34,36,38,.15);">{{ number_followers }}</td>
-		          <td class="grey_and_bold">{% trans 'Following:' %}</td>
-		          <td>{{ number_following }}</td>
-		        </tr>
-		        {% if profile.settings.is_provider %}
-		        <tr>
-		        	<td class="grey_and_bold">{% trans 'Bookings:' %}</td>
-		          <td colspan="3">{{ number_bookings }}</td>
-		        </tr>
-		        <tr>
-		          <td colspan="4">
-		          	<span class="grey_and_bold">{% trans 'Service:' %}</span>
-		          	{{ services|length }}
-		          	<br>
-		          	{% for service in services %}
-		          	<a class="ui large blue label" href="{% url 'profiles:service_view' service.user.username service.id %}">{{ service.category }}</a>
-		          	{% endfor %}
-		          </td>
-		        </tr>
-		        {% endif %}
-		      </tbody>
-		    </table> -->
 		</div>
 
-		<div class="ui four column doubling grid">
+		<div class="ui four column doubling grid big_icon_grid">
 			<div class="column">
-				<div class="ui blue inverted segment">
+				<div class="ui blue inverted segment" onclick='location.href="{% url 'profiles:bookings' profile.user.username %}"'>
 					<div class="ui center aligned middle aligned grid">
 						<div class="seven wide column">
 							<h2>{{ number_bookings }}</h2>
@@ -120,7 +93,7 @@
 				</div>
 			</div>
 			<div class="column">
-				<div class="ui green inverted segment">
+				<div class="ui green inverted segment" onclick='location.href="{% url 'profiles:services' profile.user.username %}"'>
 					<div class="ui center aligned middle aligned grid">
 						<div class="seven wide column">
 							<h2>{{ services|length }}</h2>
@@ -133,7 +106,7 @@
 				</div>
 			</div>
 			<div class="column">
-				<div class="ui orange inverted segment">
+				<div class="ui orange inverted segment" onclick='location.href="{% url 'profiles:followers' profile.user.username %}"'>
 					<div class="ui center aligned middle aligned grid">
 						<div class="seven wide column">
 							<h2>{{ number_followers }}+{{ number_following }}</h2>
@@ -146,7 +119,7 @@
 				</div>
 			</div>
 			<div class="column">
-				<div class="ui red inverted segment">
+				<div class="ui red inverted segment" onclick='location.href="{% url 'profiles:inbox_messages' profile.user.username %}"'>
 					<div class="ui center aligned middle aligned grid">
 						<div class="seven wide column">
 							<h2>{{ unread_messages | length }}</h2>
@@ -160,7 +133,7 @@
 			</div>
 		</div>
 
-		<div class="ui segment noti_segment" style="padding: 1rem 2rem;">
+		<div class="ui segment noti_segment">
 			<h3 class="grey_and_bold">{% trans 'Notifications:' %}</h3>
 			<span>{% trans 'show' %}</span>
 			<div class="ui checkbox">

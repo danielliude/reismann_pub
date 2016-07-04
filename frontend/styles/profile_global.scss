@@ -5,6 +5,10 @@
 /*******************************
             Global
 *******************************/
+body {
+  font-family: "Microsoft YaHei",Verdana,"Bitstream Vera Sans",sans-serif;
+}
+
 img {
   max-width: 100%;
 }
@@ -29,6 +33,18 @@ img {
   border-radius: 0px;
 }
 
+.grey_and_bold {
+  color: #999;
+  font-weight: 700;
+}
+
+.inline-block-css {
+  display: inline-block;
+}
+
+.grey {
+  color: grey;
+}
 
 /*--------------
     Masthead

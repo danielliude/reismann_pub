@@ -50,37 +50,41 @@
 	__webpack_require__(122);
 
 	$(function () {
-		$('.noti_segment .ui.dropdown').dropdown({
-			on: 'hover'
-		});
+		init_notification();
 
-		$('.ui.checkbox').checkbox();
+		function init_notification() {
+			$('.noti_segment .ui.dropdown').dropdown({
+				on: 'hover'
+			});
 
-		$('.checkbox_sort').parent('.checkbox').click(function (event) {
-			update_checkbox();
-		});
+			$('.ui.checkbox').checkbox();
 
-		$('.mark_read').click(function (event) {
-			var temp = {
-				type: 'mark_read',
-				checkbox: get_select_checkbox('checkbox_select')
-			};
-
-			$.get(window.location.pathname.replace('dashboard', 'mark_read_or_delete'), temp, function (result) {
+			$('.checkbox_sort').parent('.checkbox').click(function (event) {
 				update_checkbox();
 			});
-		});
 
-		$('.mark_delete').click(function (event) {
-			var temp = {
-				type: 'mark_delete',
-				checkbox: get_select_checkbox('checkbox_select')
-			};
+			$('.mark_read').click(function (event) {
+				var temp = {
+					type: 'mark_read',
+					checkbox: get_select_checkbox('checkbox_select')
+				};
 
-			$.get(window.location.pathname.replace('dashboard', 'mark_read_or_delete'), temp, function (result) {
-				update_checkbox();
+				$.get(window.location.pathname.replace('dashboard', 'mark_read_or_delete'), temp, function (result) {
+					update_checkbox();
+				});
 			});
-		});
+
+			$('.mark_delete').click(function (event) {
+				var temp = {
+					type: 'mark_delete',
+					checkbox: get_select_checkbox('checkbox_select')
+				};
+
+				$.get(window.location.pathname.replace('dashboard', 'mark_read_or_delete'), temp, function (result) {
+					update_checkbox();
+				});
+			});
+		}
 
 		function update_checkbox() {
 			var temp = {

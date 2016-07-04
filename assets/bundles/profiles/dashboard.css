@@ -1,10 +1,3 @@
-body {
-  font-family: "Microsoft YaHei",Verdana,"Bitstream Vera Sans",sans-serif; }
-
-.grey_and_bold {
-  color: #999;
-  font-weight: 700; }
-
 .ui.grid.dashboard_grid {
   max-width: 750px;
   margin: 80px auto; }
@@ -16,12 +9,11 @@ body {
     padding: 0.4233em 0.833em;
     margin-top: 13px;
     margin-bottom: 10px; }
-
-.ui.table.personal_table {
-  margin: 0.2rem 0; }
-  .ui.table.personal_table tbody tr td {
-    border: 0px;
-    padding-bottom: 0px; }
+  .ui.grid.dashboard_grid .ui.table.personal_table {
+    margin: 0.2rem 0; }
+    .ui.grid.dashboard_grid .ui.table.personal_table tbody tr td {
+      border: 0px;
+      padding-bottom: 0px; }
 
 .all_buttons .ui.button {
   margin: 0.3rem 0;
@@ -46,24 +38,32 @@ body {
   .all_buttons .ui.brand.button:hover {
     opacity: 1; }
 
-.ui.table.table2 {
-  border-right: 0px;
-  border-left: 0px;
-  margin-top: 0px; }
-  .ui.table.table2 tr td {
-    padding-left: 1.7em; }
+.ui.grid.big_icon_grid .inverted.segment {
+  cursor: pointer; }
 
-.ui.segment.noti_segment span, .ui.segment.noti_segment .ui.checkbox {
-  margin-right: 2rem; }
-
-.ui.segment.noti_segment .table {
-  margin-top: 0px; }
-  .ui.segment.noti_segment .table .ui.checkbox {
-    margin-right: 0px;
-    padding-top: 4px; }
-
-.read_opacity {
-  opacity: 0.8; }
+.ui.segment.noti_segment {
+  padding: 1rem 1rem 1rem 3rem; }
+  .ui.segment.noti_segment h3.grey_and_bold {
+    margin-left: -2rem; }
+  .ui.segment.noti_segment span, .ui.segment.noti_segment .ui.checkbox {
+    margin-right: 1rem; }
+  .ui.segment.noti_segment .ui.checkbox.select_checkbox {
+    margin-left: -2rem; }
+  .ui.segment.noti_segment .email_image {
+    width: 52px; }
+  .ui.segment.noti_segment .ui.table {
+    margin-top: 0px; }
+    .ui.segment.noti_segment .ui.table .inline-block-css {
+      color: rgba(0, 0, 0, 0.87);
+      padding-left: 0.3rem; }
+      .ui.segment.noti_segment .ui.table .inline-block-css h4 {
+        margin-bottom: 0.3rem; }
+    .ui.segment.noti_segment .ui.table .read_opacity {
+      opacity: 0.8; }
+    .ui.segment.noti_segment .ui.table .not_show_on_mobile {
+      color: rgba(0, 0, 0, 0.87);
+      position: absolute;
+      right: 0px; }
 
 /*--------------
     responsive

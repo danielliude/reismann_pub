@@ -1,12 +1,3 @@
-body {
-	font-family: "Microsoft YaHei",Verdana,"Bitstream Vera Sans",sans-serif;
-}
-
-.grey_and_bold {
-	color: #999;
-	font-weight: 700;
-}
-
 .ui.grid.dashboard_grid {
 	max-width: 750px;
 	margin: 80px auto;
@@ -20,15 +11,17 @@ body {
 	    margin-top: 13px;
 	    margin-bottom: 10px;
 	}
-}
-
-.ui.table.personal_table {
-	margin: 0.2rem 0;
-	tbody tr td {
-		border: 0px;
-		padding-bottom: 0px;
+	.ui.table.personal_table {
+		margin: 0.2rem 0;
+		tbody tr td {
+			border: 0px;
+			padding-bottom: 0px;
+		}
 	}
 }
+
+
+
 
 .all_buttons {
 	.ui.button {
@@ -58,32 +51,48 @@ body {
 	}
 }
 
-
-.ui.table.table2 {
-	border-right: 0px;
-	border-left: 0px;
-	margin-top: 0px;
-	tr td {
-	    padding-left: 1.7em;
+.ui.grid.big_icon_grid {
+	.inverted.segment {
+		cursor: pointer;
 	}
 }
 
+
 .ui.segment.noti_segment {
-	span, .ui.checkbox {
-		margin-right: 2rem;
+	padding: 1rem 1rem 1rem 3rem;
+	h3.grey_and_bold {
+		margin-left: -2rem;
 	}
-	.table {
+	span, .ui.checkbox {
+		margin-right: 1rem;
+	}
+	.ui.checkbox.select_checkbox {
+		margin-left: -2rem;
+		// vertical-align: top;
+	}
+	.email_image {
+		width: 52px;
+	}
+	.ui.table {
 		margin-top: 0px;
-		.ui.checkbox {
-			margin-right: 0px;
-			padding-top: 4px;
+		.inline-block-css {
+			color: rgba(0,0,0,.87);
+			padding-left: 0.3rem;
+			h4 {
+				margin-bottom: 0.3rem;
+			}
+		}
+		.read_opacity {
+			opacity: 0.8;
+		}
+		.not_show_on_mobile {
+			color: rgba(0,0,0,.87);
+			position:absolute;
+			right:0px;
 		}
 	}
 }
 
-.read_opacity {
-	opacity: 0.8;
-}
 
 
 

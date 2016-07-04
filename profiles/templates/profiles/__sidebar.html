@@ -47,7 +47,6 @@
     </a>
 
     <a class="item {% if url_name == 'inbox_messages' or url_name == 'outbox_messages'  %}active{% endif %}" href="{% url 'profiles:inbox_messages' profile.user.username %}">
-      <!-- <i class="mail outline icon"></i> -->
       {% trans 'Messages' %}
       <div class="ui teal left pointing label"><span class='live_message_badge'>0</span></div>
     </a>

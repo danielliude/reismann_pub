@@ -277,12 +277,13 @@ def get_message_unread_count(request, username):
 @secure_required
 @permission_required_or_403('insite_messages.view_message')
 def get_message_unread_info(request, username):
-    if request.user.is_authenticated():
+    if request.user.username == username:
         instance = ContentType.objects.get(app_label='insite_messages', model='message')
         unread_messages = Notification.objects.filter(recipient=request.user, action_object_content_type=instance).unread()
         unread_list = []
         for message in unread_messages:
             struct = model_to_dict(message)
+            struct['url'] = reverse('profiles:message_view', kwargs={'username': username, 'message_id': struct['action_object_object_id']})
             if message.actor:
                 struct['actor'] = str(message.actor)
             if message.target:
@@ -290,9 +291,12 @@ def get_message_unread_info(request, username):
             if message.action_object:
                 struct['action_object'] = str(message.action_object)
             unread_list.append(struct)
+        max_count = int(request.GET.get('max', 5))
+        unread_list = unread_list[0: max_count]
         result = {
-            'unread_count': len(unread_messages),
+            'unread_count': len(unread_list),
             'unread_list': unread_list,
         }
         return JsonResponse(result)
+    return HttpResponse([])
 

@@ -456,11 +456,26 @@ def get_notifications_unread_count(request, username):
     return HttpResponse(unread_notifications)
 
 @secure_required
+@permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))
 def get_notifications_unread_info(request, username):
+  if request.user.username == username:
     unread_list = []
     notifications = makeContextForNotifications(request, {})['notifications']
+    content_type_model = ContentType.objects
     for noti in notifications:
         struct = model_to_dict(noti)
+        content_type_id = struct['action_object_content_type']
+        if content_type_id == content_type_model.get(app_label='bookings', model='booking').id:
+          struct['url'] = reverse('profiles:booking_view', kwargs={'username': username, 'booking_id': struct['action_object_object_id']})
+        elif content_type_id == content_type_model.get(app_label='followship', model='follow').id:
+          struct['url'] = reverse('profiles:followers', kwargs={'username': username})
+        elif content_type_id == content_type_model.get(app_label='album', model='albumImage').id:
+          struct['url'] = reverse('profiles:album', kwargs={'username': username})
+        elif content_type_id == content_type_model.get(app_label='profiles', model='profile').id:
+          struct['url'] = reverse('profiles:profile', kwargs={'username': username})
+        else:
+          struct['url'] = reverse('profiles:dashboard', kwargs={'username': username})
+
         if noti.actor:
             struct['actor'] = str(noti.actor)
         if noti.target:
@@ -468,11 +483,14 @@ def get_notifications_unread_info(request, username):
         if noti.action_object:
             struct['action_object'] = str(noti.action_object)
         unread_list.append(struct)
+    max_count = int(request.GET.get('max', 5))
+    unread_list = unread_list[0: max_count]
     result = {
-        'unread_count': len(notifications),
+        'unread_count': len(unread_list),
         'unread_list': unread_list,
     }
     return JsonResponse(result)
+  return HttpResponse([])
 
 @secure_required
 @permission_required_or_403('change_profile', (Profile, 'user__username', 'username'))

@@ -278,6 +278,9 @@ img {
 .grey {
   color: grey; }
 
+.disnone {
+  display: none; }
+
 /*--------------
     Masthead
 ---------------*/

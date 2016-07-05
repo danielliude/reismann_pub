@@ -84,6 +84,17 @@
 					update_checkbox();
 				});
 			});
+
+			$('.noti_segment').on('click', '.click_tr_url', function (e) {
+				e.preventDefault();
+				var ev = e || window.event;
+				var elm = ev.target || ev.srcElement;
+				if (elm.tagName != 'LABEL') {
+					if ($(this).data('url')) {
+						location.href = $(this).data('url');
+					}
+				}
+			});
 		}
 
 		function update_checkbox() {

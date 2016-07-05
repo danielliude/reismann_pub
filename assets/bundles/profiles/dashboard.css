@@ -47,17 +47,29 @@
     margin-left: -2rem; }
   .ui.segment.noti_segment span, .ui.segment.noti_segment .ui.checkbox {
     margin-right: 1rem; }
-  .ui.segment.noti_segment .ui.checkbox.select_checkbox {
-    margin-left: -2rem; }
+  .ui.segment.noti_segment .checkbox_icon {
+    display: inline-block;
+    margin-top: -14px;
+    vertical-align: middle; }
+    .ui.segment.noti_segment .checkbox_icon .ui.checkbox.select_checkbox {
+      margin-left: -2rem;
+      margin-right: 0rem;
+      margin-bottom: 3px; }
+    .ui.segment.noti_segment .checkbox_icon .icon.mail_icon {
+      font-size: 2.5em; }
   .ui.segment.noti_segment .email_image {
-    width: 52px; }
+    width: 52px;
+    height: 52px; }
   .ui.segment.noti_segment .ui.table {
     margin-top: 0px; }
     .ui.segment.noti_segment .ui.table .inline-block-css {
       color: rgba(0, 0, 0, 0.87);
       padding-left: 0.3rem; }
       .ui.segment.noti_segment .ui.table .inline-block-css h4 {
-        margin-bottom: 0.3rem; }
+        margin-bottom: 0.5rem;
+        margin-top: 0.3rem; }
+        .ui.segment.noti_segment .ui.table .inline-block-css h4 i.icon.disnone {
+          display: none; }
     .ui.segment.noti_segment .ui.table .read_opacity {
       opacity: 0.8; }
     .ui.segment.noti_segment .ui.table .not_show_on_mobile {
@@ -79,6 +91,32 @@
   @media only screen and (max-width: 759px) {
     .ui.grid .column.div_avatar .ui.image {
       margin-top: 1.2rem; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.segment.noti_segment .ui.top.left.pointing.dropdown > .menu {
+    left: auto;
+    right: 0; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.segment.noti_segment .ui.top.left.pointing.dropdown > .menu:after {
+    left: auto;
+    right: 1em; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.segment.noti_segment .ui.table .inline-block-css h4 i.icon.disnone {
+    display: inline; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.segment.noti_segment .checkbox_icon .icon.mail_icon {
+    display: none; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.segment.noti_segment .ui.table.notification_table tr {
+    padding: 0px; } }
+
+@media only screen and (max-width: 759px) {
+  .ui.segment.noti_segment .ui.table.notification_table tr td {
+    padding: 4px 0px !important; } }
 
 @media only screen and (max-width: 759px) {
   .ui.table.personal_table {

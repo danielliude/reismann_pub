@@ -1,17 +1,43 @@
 {% load i18n %}
 
-<table class="ui very basic selectable table">
+<table class="ui very basic selectable table notification_table">
   <tbody>
     {% for notification in notifications %}
-      <tr class="{% if notification.unread %}negative{% else %}read_opacity{% endif %}">
+      {% if notification.action_object_content_type == content_type.1 %}
+        <tr data-url='{% url "profiles:bookings" profile.user.username %}' class="click_tr_url {% if notification.unread %}negative{% else %}read_opacity{% endif %}">
+      {% elif notification.action_object_content_type == content_type.2 %}
+        <tr data-url='{% url "profiles:followers" profile.user.username %}' class="click_tr_url {% if notification.unread %}negative{% else %}read_opacity{% endif %}">
+      {% elif notification.action_object_content_type == content_type.3 %}
+        <tr data-url='{% url "profiles:album" profile.user.username %}' class="click_tr_url {% if notification.unread %}negative{% else %}read_opacity{% endif %}">
+      {% elif notification.action_object_content_type == content_type.4 %}
+        <tr data-url='{% url "profiles:dashboard" profile.user.username %}' class="click_tr_url {% if notification.unread %}negative{% else %}read_opacity{% endif %}">
+      {% else %}
+        <tr class="click_tr_url {% if notification.unread %}negative{% else %}read_opacity{% endif %}">
+      {% endif %}
         <td>
-          <div class="ui checkbox select_checkbox">
-            <input type="checkbox" name="checkbox_select" value="{{ notification.id }}">
-            <label> </label>
+          <div class="checkbox_icon">
+            <div class="ui checkbox select_checkbox">
+              <input type="checkbox" name="checkbox_select" value="{{ notification.id }}">
+              <label> </label>
+            </div>
+            <i class="icon grey mail_icon mail outline"></i> 
           </div>
           <img class="ui top aligned email_image image" src="/profiles/{{ user.username }}/notifications/avatar/{{notification.actor}}/">
           <div class="inline-block-css">
-            <h4>{{notification.actor}}</h4>
+            <h4>
+              <i class="disnone icon grey mail outline"></i> 
+              {% if notification.action_object_content_type == content_type.1  %}
+                {{ notification.actor }}
+              {% elif notification.action_object_content_type == content_type.2 %}
+                {{ notification.actor }}
+              {% elif notification.action_object_content_type == content_type.3 %}
+                {% trans 'yours' %}
+              {% elif notification.action_object_content_type == content_type.4 %}
+                {% trans 'yours' %}
+              {% else %}
+                {% trans 'anonymous user' %}
+              {% endif %}
+            </h4>
             <p class="grey">{{ notification.verb}}</p>
           </div>
           <span class="not_show_on_mobile">{{ notification.timestamp | date:"Y-m-d" }}<span>

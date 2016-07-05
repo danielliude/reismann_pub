@@ -66,12 +66,22 @@
 	span, .ui.checkbox {
 		margin-right: 1rem;
 	}
-	.ui.checkbox.select_checkbox {
-		margin-left: -2rem;
-		// vertical-align: top;
+	.checkbox_icon {
+		display: inline-block;
+		margin-top: -14px;
+	    vertical-align: middle;
+		.ui.checkbox.select_checkbox {
+			margin-left: -2rem;
+			margin-right: 0rem;
+			margin-bottom: 3px;
+		}
+		.icon.mail_icon {
+			font-size: 2.5em;
+		}
 	}
 	.email_image {
 		width: 52px;
+		height: 52px;
 	}
 	.ui.table {
 		margin-top: 0px;
@@ -79,7 +89,11 @@
 			color: rgba(0,0,0,.87);
 			padding-left: 0.3rem;
 			h4 {
-				margin-bottom: 0.3rem;
+				i.icon.disnone {
+				  display: none;
+				}
+				margin-bottom: 0.5rem;
+				margin-top: 0.3rem;
 			}
 		}
 		.read_opacity {
@@ -111,10 +125,54 @@
 		box-shadow: #333333 1px 1px 20px 0;margin-top:10px;
 		@include GT(S) {
 		  margin-top: 1.2rem;
-		  // width: 100%;
 		}	
 	}
 }
+.ui.segment.noti_segment {
+	.ui.top.left.pointing.dropdown>.menu {
+		@include GT(S) {
+		  left: auto;
+	      right: 0;
+		}	
+	}
+	.ui.top.left.pointing.dropdown>.menu:after {
+	    @include GT(S) {
+		  left: auto;
+	      right: 1em;
+		}
+	}
+
+	.ui.table .inline-block-css {
+		h4 {
+			i.icon.disnone {
+			  	@include GT(S) {
+				  	display: inline;
+				}
+			}
+		}
+	}
+
+	.checkbox_icon {
+		.icon.mail_icon {
+			@include GT(S) {
+			  display: none;
+			}	
+		}
+	}
+	.ui.table.notification_table {
+		tr {
+			@include GT(S) {
+			  padding: 0px;
+			}
+			td {
+				@include GT(S) {
+				    padding: 4px 0px !important;
+				}
+			}
+		}
+	}
+}
+
 .ui.table.personal_table {
 	@include GT(S) {
 	  font-size: 0.6em;
@@ -122,11 +180,13 @@
 	.ui.label {
 		padding: 0.25em 0.4em;
 	}
-	tr td {
-		@include GT(S) {
-		  padding-left: 0px;
-		}	
-	}
+	tr {
+		td {
+			@include GT(S) {
+			  padding-left: 0px;
+			}	
+		}
+	} 
 	.grey_and_bold {
 		@include GT(S) {
 		  display: none;

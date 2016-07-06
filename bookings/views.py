@@ -48,6 +48,39 @@ def bookings(request, username,
 
         extra_context = makeContextForDetails(request, extra_context)
         extra_context = makeContextForNotifications(request, extra_context)
+        extra_context['inbox_page'] = 'true'
+
+        return ExtraContextTemplateView.as_view(template_name=template_name,
+                                      extra_context=extra_context)(request)
+    else:
+        url = reverse('profiles:bookings', kwargs={'username':request.user.username})
+        return HttpResponseRedirect(url)
+
+@secure_required
+@permission_required_or_403('bookings.view_booking')
+def other_bookings(request, username,
+                template_name='bookings/bookings.html',
+                extra_context=None, **kwargs):
+
+    if request.user.username == username:
+
+        user = get_object_or_404(User, username__iexact=username)
+        profile = get_user_profile(user)
+        bookings = Booking.objects.all_for(user)
+        my_bookings = Booking.objects.my_bookings(user)
+        other_bookings = Booking.objects.other_bookings(user)
+
+        if not extra_context: extra_context = dict()
+
+        extra_context['profile'] = profile
+        extra_context['my_bookings'] = my_bookings
+        if profile.settings.is_provider:
+            extra_context['other_bookings'] = other_bookings
+            extra_context['show_other_bookings'] = True
+
+        extra_context = makeContextForDetails(request, extra_context)
+        extra_context = makeContextForNotifications(request, extra_context)
+        extra_context['outbox_page'] = 'true'
 
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                       extra_context=extra_context)(request)

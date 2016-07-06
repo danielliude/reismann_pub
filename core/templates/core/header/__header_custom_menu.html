@@ -5,8 +5,8 @@
 var notify_badge_id='live_notify_badge';
 var notify_menu_id='live_notify_list';
 var message_badge_id='live_message_badge';
-var notify_message_url = '/profiles/test/unread_messages/';
-var notify_notification_url = '/profiles/test/unread_notifications/'
+var notify_message_url = '/profiles/{{ user.username }}/unread_messages/';
+var notify_notification_url = '/profiles/{{ user.username }}/unread_notifications/'
 var notify_fetch_count='5';
 var notify_refresh_period=15000;
 var consecutive_misfires = 0;
@@ -42,6 +42,9 @@ function fill_notification_list(data) {
                 '</a>' +
                 '<div class="divider unread_notification"></div>'
     }
+    if (data.unread_count > notify_fetch_count) {
+      html += '<a href="/profiles/{{ user.username }}/dashboard/" style="text-align:center;" class="item unread_notification"><i class="icon grey ellipsis vertical"></i></a>' 
+    }
     $(".update_notifications").after(html)
 }
 function fill_message_list(data) {
@@ -57,6 +60,9 @@ function fill_message_list(data) {
                   '<span class="subject" style="position:absolute;left:53px;top:25px;">' + item.verb + '</span>' +
                 '</a>' +
                 '<div class="divider unread_message"></div>'
+    }
+    if (data.unread_count > notify_fetch_count) {
+      html += '<a href="/profiles/{{ user.username }}/inbox_messages/" style="text-align:center;" class="item unread_message"><i class="icon grey ellipsis vertical"></i></a>' 
     }
     $(".update_messages").after(html)
 }
@@ -147,19 +153,19 @@ register_notifier1(fill_message_badge);
     </div>
 
     <div class="menu" style="width:300px;">
-      <div class="item">{% trans "You have " %}<span class='live_message_badge'></span>{% trans " unread messages" %}</div>
+      <div onclick="location.href='{% url 'profiles:inbox_messages' user.username %}'" class="item">{% trans "You have " %}<span class='live_message_badge'></span>{% trans " unread messages" %}</div>
       <div class="divider update_messages"></div>
     </div>
   </div>
 
-  <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:notifications' user.username %}'">
+  <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:dashboard' user.username %}'">
     <i class="icon alarm outline"></i>
     <div class="floating ui teal label" style="padding:2px 3px;top: 10px;left: 47px;">
       <span class='live_notify_badge'></span>
     </div>
 
     <div class="menu" style="width:300px;">
-      <div class="item">{% trans "You have " %}<span class='live_notify_badge'></span>{% trans " unread notifications" %}</div>
+      <div onclick="location.href='{% url 'profiles:dashboard' user.username %}'" class="item">{% trans "You have " %}<span class='live_notify_badge'></span>{% trans " unread notifications" %}</div>
       <div class="divider update_notifications"></div>
 
     </div>

@@ -292,10 +292,10 @@ def get_message_unread_info(request, username):
                 struct['action_object'] = str(message.action_object)
             unread_list.append(struct)
         max_count = int(request.GET.get('max', 5))
-        unread_list = unread_list[0: max_count]
+        filter_unread_list = unread_list[0: max_count]
         result = {
             'unread_count': len(unread_list),
-            'unread_list': unread_list,
+            'unread_list': filter_unread_list,
         }
         return JsonResponse(result)
     return HttpResponse([])

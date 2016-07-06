@@ -1,5 +1,6 @@
 {% extends "profiles/__profile_base.html" %}
 {% load render_bundle from webpack_loader %}
+{% load i18n %}
 {% block stylesheets %}
     {% render_bundle 'profiles/bookings' 'css' %}
 {% endblock %}
@@ -10,10 +11,26 @@
 {% block content %}
     <div class="ui grid booking_grid">
       <div class="column">
-        {% include 'bookings/__my_booking_list.html' %}
-        {% if show_other_bookings %}
-            {% include 'bookings/__other_booking_list.html' %}
-        {% endif %}
+        <div class="ui segment" style="padding:2rem 0 0 0;">
+          <div class="ui top attached tabular menu" style="margin-left:0px;padding-left:2rem;">
+            <a class="{% if inbox_page %}active{% endif %} item" data-tab="first">{% trans 'My booking' %}</a>
+            {% if show_other_bookings %}
+              <a class="{% if outbox_page %}active{% endif %} item" data-tab="second">{% trans 'Other booking' %}</a>
+            {% endif %}
+          </div>
+          <div style="border:0px;" class="ui bottom attached tab padded segment {% if inbox_page %}active{% endif %}" data-tab="first">
+            {% with my_bookings as bookings %}
+              {% include 'bookings/__booking_list.html' %}
+            {% endwith %}
+          </div>
+          {% if show_other_bookings %}
+            <div style="border:0px;" class="ui bottom attached tab padded segment {% if outbox_page %}active{% endif %}" data-tab="second">
+              {% with other_bookings as bookings %}
+                {% include 'bookings/__booking_list.html' %}
+              {% endwith %}
+            </div>
+          {% endif %}
+        </div>
       </div>
     </div>
 {% endblock %} 

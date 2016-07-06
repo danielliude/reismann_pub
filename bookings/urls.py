@@ -4,6 +4,7 @@ from bookings import views
 urlpatterns = [
 
     url(r'^(?P<username>[\@\.\w-]+)/bookings/$', views.bookings, name='bookings'),
+    url(r'^(?P<username>[\@\.\w-]+)/other_bookings/$', views.other_bookings, name='other_bookings'),
 
     url(r'^(?P<username>[\@\.\w-]+)/bookings/add/(?P<service_id>[0-9]+)/$', views.booking_add, name='booking_add'),
     url(r'^(?P<username>[\@\.\w-]+)/bookings/view/(?P<booking_id>[0-9]+)/$', views.booking_view, name='booking_view'),

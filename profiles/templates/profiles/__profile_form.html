@@ -2,7 +2,6 @@
 {% load thumbnail %}
 
 <form class="ui form" action="" enctype="multipart/form-data" method="post">
-  <br>
   {% csrf_token %}
   {{ form.media }}
   {{ form.non_field_errors }}

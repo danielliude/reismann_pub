@@ -3,104 +3,103 @@
 
 
 <form class="ui form" action="{% url 'profiles:more_profile' profile.user.username %}" method="post">
-  <br>
   {% csrf_token %}
   {{ more_form.non_field_errors }}
   {{ contactForm.non_field_errors }}
 
   <div class="two fields">
-    {{ more_form.country_of_birth.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.country_of_birth.errors }}
       <label>{{ more_form.country_of_birth.label }}</label>
       {{ more_form.country_of_birth }}
     </div>
 
-    {{ more_form.marrittal_status.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.marrittal_status.errors }}
       <label>{{ more_form.marrittal_status.label }}</label>
       {{ more_form.marrittal_status }}
     </div>
   </div>
 
   <div class="two fields">
-    {{ more_form.children.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.children.errors }}
       <label>{{ more_form.children.label }}</label>
       {{ more_form.children }}
     </div>
 
-    {{ more_form.ethnicity.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.ethnicity.errors }}
       <label>{{ more_form.ethnicity.label }}</label>
       {{ more_form.ethnicity }}
     </div>
   </div>
 
   <div class="two fields">
-    {{ more_form.religion.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.religion.errors }}
       <label>{{ more_form.religion.label }}</label>
       {{ more_form.religion }}
     </div>
 
-    {{ more_form.education.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.education.errors }}
       <label>{{ more_form.education.label }}</label>
       {{ more_form.education }}
     </div>
   </div>
 
   <div class="two fields">
-    {{ more_form.annual_income.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.annual_income.errors }}
       <label>{{ more_form.annual_income.label }}</label>
       {{ more_form.annual_income }}
     </div>
 
-    {{ more_form.immigration_status.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.immigration_status.errors }}
       <label>{{ more_form.immigration_status.label }}</label>
       {{ more_form.immigration_status }}
     </div>
   </div>
 
   <div class="two fields">
-    {{ more_form.body_form.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.body_form.errors }}
       <label>{{ more_form.body_form.label }}</label>
       {{ more_form.body_form }}
     </div>
 
-    {{ more_form.smoking.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.smoking.errors }}
       <label>{{ more_form.smoking.label }}</label>
       {{ more_form.smoking }}
     </div>
   </div>
 
   <div class="two fields">
-    {{ more_form.drinking.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.drinking.errors }}
       <label>{{ more_form.drinking.label }}</label>
       {{ more_form.drinking }}
     </div>
 
-    {{ more_form.pets.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.pets.errors }}
       <label>{{ more_form.pets.label }}</label>
       {{ more_form.pets }}
     </div>
   </div>
 
   <div class="two fields">
-    {{ more_form.hobby.errors }}
-    <div class="field">
+    <div class="required field">
+      {{ more_form.hobby.errors }}
       <label>{{ more_form.hobby.label }}</label>
       {{ more_form.hobby }}
     </div>
   </div>
-  {{ more_form.most_cheerful.errors }}
-  <div class="required field">
+  <div class="field">
+    {{ more_form.most_cheerful.errors }}
     <label>{{ more_form.most_cheerful.label }}</label>
     <div class="ui icon input">
       {{ more_form.most_cheerful }}
@@ -108,7 +107,7 @@
   </div>
 
   {{ more_form.good_at.errors }}
-  <div class="required field">
+  <div class="field">
     <label>{{ more_form.good_at.label }}</label>
     <div class="ui icon input">
       {{ more_form.good_at }}
@@ -116,7 +115,7 @@
   </div>
 
   {{ more_form.friends_description.errors }}
-  <div class="required field">
+  <div class="field">
     <label>{{ more_form.friends_description.label }}</label>
     <div class="ui icon input">
       {{ more_form.friends_description }}
@@ -124,7 +123,7 @@
   </div>
 
   {{ more_form.must_have.errors }}
-  <div class="required field">
+  <div class="field">
     <label>{{ more_form.must_have.label }}</label>
     <div class="ui icon input">
       {{ more_form.must_have }}
@@ -132,7 +131,7 @@
   </div>
 
   {{ more_form.favourite_things.errors }}
-  <div class="required field">
+  <div class="field">
     <label>{{ more_form.favourite_things.label }}</label>
     <div class="ui icon input">
       {{ more_form.favourite_things }}
@@ -140,7 +139,7 @@
   </div>
 
   {{ more_form.crazy_thing_done.errors }}
-  <div class="required field">
+  <div class="field">
     <label>{{ more_form.crazy_thing_done.label }}</label>
     <div class="ui icon input">
       {{ more_form.crazy_thing_done }}
@@ -148,7 +147,7 @@
   </div>
 
   {{ more_form.normal_do_weekend.errors }}
-  <div class="required field">
+  <div class="field">
     <label>{{ more_form.normal_do_weekend.label }}</label>
     <div class="ui icon input">
       {{ more_form.normal_do_weekend }}

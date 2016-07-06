@@ -25,10 +25,10 @@
             <a class="{% if simple_profile %}active{% endif %} item" data-tab="first">{% trans 'simple_profile' %}</a>
             <a class="{% if more_profile %}active{% endif %} item" data-tab="second">{% trans 'more_profile' %}</a>
           </div>
-          <div style="border:0px;" class="ui bottom attached tab padded segment {% if simple_profile %}active{% endif %}" data-tab="first">
+          <div style="border:0px;" class="ui bottom attached tab padded segment profile_form {% if simple_profile %}active{% endif %}" data-tab="first">
             {% include 'profiles/__profile_form.html' %}
           </div>
-          <div style="border:0px;" class="ui bottom attached tab padded segment {% if more_profile %}active{% endif %}" data-tab="second">
+          <div style="border:0px;" class="ui bottom attached tab padded segment profile_form {% if more_profile %}active{% endif %}" data-tab="second">
             {% include 'profiles/__more_profile_form.html' %}
           </div>
         </div>
@@ -38,7 +38,7 @@
     <div class="ui grid detail_grid">
       <div class="column">
         <div class="ui segment">
-          <div style="border:0px;" class="ui bottom attached tab padded segment {% if simple_profile %}active{% endif %}" data-tab="first">
+          <div style="border:0px;" class="ui bottom attached tab padded segment profile_form {% if simple_profile %}active{% endif %}" data-tab="first">
             {% include 'profiles/__profile_form.html' %}
           </div>
         </div>

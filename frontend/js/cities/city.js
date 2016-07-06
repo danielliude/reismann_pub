@@ -150,10 +150,10 @@ $(function() {
                         '</div>' +
                         '<div class="more_profile_info">' +
                             '<div class="ui segment">' +
-                                '<h4 class="ui header">' +
+                                '<h3 class="ui header">' +
                                     '' + ret[i].username + '' +
-                                '</h4>' +
-                                '<div class="more_profile_info_remove"><i class="icon link remove"></i></div>' +
+                                '</h3>' +
+                                '<div class="more_profile_info_remove"><i class="icon large grey link remove"></i></div>' +
                                 '' + ret[i].bio + '' +
                             '</div>' +
                         '</div>' +

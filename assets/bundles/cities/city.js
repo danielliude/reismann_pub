@@ -170,7 +170,7 @@
 	                var serv = ret[i].services[j];
 	                html += '<tr>' + '<td><a target="_blank" href="/profiles/' + ret[i].username + '/?service_id=' + serv.id + '" class="ui ' + (serv.searched ? 'blue' : '') + ' label">' + serv.category + '</a></td>' + '<td>' + serv.title + '</td>' + '<td class="right aligned"><label class="ui label">' + serv.currency + serv.price + '/' + serv.price_type + '</label></td>' + '</tr>';
 	            }
-	            html += '</tbody>' + '</table>' + '</div>' + '</div>' + '<div class="ellipsis_vertical"><i class="icon link ellipsis vertical"></i></div>' + '</div>' + '<div class="more_profile_info">' + '<div class="ui segment">' + '<h4 class="ui header">' + '' + ret[i].username + '' + '</h4>' + '<div class="more_profile_info_remove"><i class="icon link remove"></i></div>' + '' + ret[i].bio + '' + '</div>' + '</div>' + '</div>' + '</div>';
+	            html += '</tbody>' + '</table>' + '</div>' + '</div>' + '<div class="ellipsis_vertical"><i class="icon link ellipsis vertical"></i></div>' + '</div>' + '<div class="more_profile_info">' + '<div class="ui segment">' + '<h3 class="ui header">' + '' + ret[i].username + '' + '</h3>' + '<div class="more_profile_info_remove"><i class="icon large grey link remove"></i></div>' + '' + ret[i].bio + '' + '</div>' + '</div>' + '</div>' + '</div>';
 	        }
 	        $(".search_profile").append(html);
 	    }

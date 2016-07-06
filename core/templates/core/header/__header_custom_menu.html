@@ -1,6 +1,7 @@
 {% load i18n staticfiles %}
 {% load notifications_tags %}
 
+{% if user.is_authenticated %}
 <script type="text/javascript">
 var notify_badge_id='live_notify_badge';
 var notify_menu_id='live_notify_list';
@@ -142,9 +143,8 @@ register_notifier(fill_notification_list);
 register_notifier(fill_notification_badge);
 register_notifier1(fill_message_list);
 register_notifier1(fill_message_badge);
-
 </script>
-{% if user.is_authenticated %}
+
 <div class="right menu">
   <div class="ui top right pointing dropdown item" onclick="location.href='{% url 'profiles:inbox_messages' user.username %}'">
     <i class="icon mail outline"></i>

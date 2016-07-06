@@ -49,9 +49,9 @@
 
 	__webpack_require__(131);
 
-	__webpack_require__(126);
+	__webpack_require__(113);
 
-	__webpack_require__(128);
+	__webpack_require__(115);
 
 	$(function () {
 	    init_button();
@@ -64,14 +64,14 @@
 
 /***/ },
 
-/***/ 126:
+/***/ 113:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 128:
+/***/ 115:
 /***/ function(module, exports) {
 
 	/*!

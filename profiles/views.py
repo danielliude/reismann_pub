@@ -239,8 +239,8 @@ def profile(request, username, template_name="profiles/profile.html",
           try:
               serviceRating = ServiceRating.objects.get(service= service, user = who)
           except ServiceRating.DoesNotExist:
-              form = ServiceRatingForm()
-              extra_context['rating_form'] = form
+              rating_form = ServiceRatingForm()
+              extra_context['rating_form'] = rating_form
     else:
       extra_context['service_id'] = 'all'
 

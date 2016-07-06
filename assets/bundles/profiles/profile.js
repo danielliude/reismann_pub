@@ -106,9 +106,14 @@
 
 					$('.service_' + service_index).hide();
 					$('.service_' + service_id).show();
+					$('.info_segment .bottom.attached.tab.segment').removeClass('active');
+					$('.info_segment .secondary.pointing.menu .item').removeClass('active');
+					$('.info_segment .all_services').addClass('active');
+					$('.fourth_segment').addClass('active');
 					$('.service_length').hide();
 					$('.service_title').text($div.find('td').eq(0).text()).show();
 					$('.menu .all_services').popup('hide');
+
 					service_index = service_id;
 				});
 			});
@@ -177,7 +182,6 @@
 
 		function send_comment(service_id) {
 			$('.ui.form.rating_form .submit').click(function () {
-				console.log('fdfd');
 				var stars = $('.ui.form.rating_form .ui.rating .icon.active').size();
 				var comment = $("#id_comment").val();
 				if (stars == "0") {

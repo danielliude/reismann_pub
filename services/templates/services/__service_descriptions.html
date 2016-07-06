@@ -14,8 +14,8 @@
     </a>
 
     {% if profile.settings.is_provider %}
-    <a class="{% if service_id != 'all' %}active{% endif %} right floated item all_services"  data-tab="fourth">
-      <span class="{% if service_id != 'all' %}disnone{% endif %} service_length"><span class="ui label green" style="padding: 0.24em 0.833em;">{{ services | length }}</span> {% trans 'services' %}<i class="dropdown icon"></i></span>
+    <a class="{% if service_id != 'all' %}active{% endif %} right floated item all_services" >
+      <span class="{% if service_id != 'all' %}disnone{% endif %} service_length"><span class="ui label green" style="padding: 0.24em 0.833em;">{{ services | length }}</span> {% trans 'services' %}</span>
       <span class="ui label green service_title {% if service_id == 'all' %}disnone{% endif %}">
         {% if service_id != 'all' %}
           {% for service in services %}
@@ -25,6 +25,7 @@
           {% endfor %}
         {% endif %}
       </span>
+      <i class="dropdown fitted icon" style="margin-left:0.4em"></i>
     </a>
 
     <div class="ui flowing popup bottom right transition hidden">
@@ -65,7 +66,7 @@
     {% endif %}
     <br>
   </div>
-  <div class="ui bottom attached tab padded segment {% if service_id != 'all' %}active{% endif %}" data-tab="fourth">
+  <div class="ui bottom attached tab padded segment fourth_segment {% if service_id != 'all' %}active{% endif %}" data-tab="fourth">
     {% if profile.settings.is_provider %}
       {% for service in services %}
         <div class="service_{{ service.pk }} {% if service_id|floatformat != service.pk|floatformat %}disnone{% endif %}">

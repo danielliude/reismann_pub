@@ -38,6 +38,8 @@ urlpatterns = patterns('',
   url(r'^grappelli/', include('grappelli.urls')),
   url(r'^admin/', include(admin.site.urls)),
   url('^inbox/notifications/', include(notifications.urls, namespace='notifications')),
+
+  url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 
 urlpatterns += staticfiles_urlpatterns()

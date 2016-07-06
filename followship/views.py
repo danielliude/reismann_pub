@@ -33,10 +33,9 @@ def follow(request, follower, followee):
             for item in shielding_list:
                 if item.shielding.id == followee_object.id:
                     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-            Follow.objects.follow(follower_object, followee_object)
+            instance = Follow.objects.follow(follower_object, followee_object)
 
             # create internal notification
-            instance = ContentType.objects.get(app_label='followship', model='follow')
             notify.send(sender = follower_object, recipient=followee_object, verb=u'has started following you', action_object=instance)
 
             # send email about internal message
@@ -53,11 +52,10 @@ def unfollow(request, follower, followee):
 
     if follower and followee:
         if Follow.objects.follows(follower_object, followee_object):
-            Follow.objects.unfollow(follower_object, followee_object)
+            instance = Follow.objects.unfollow(follower_object, followee_object)
 
             # create internal notification
-            instance = ContentType.objects.get(app_label='followship', model='follow')
-            notify.send(sender = follower_object, recipient=followee_object, verb=u'has unfollowed you', instance=instance)
+            notify.send(sender = follower_object, recipient=followee_object, verb=u'has unfollowed you', action_object=instance)
 
             # send email about internal message
             m = mailer()

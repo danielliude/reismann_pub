@@ -83,7 +83,7 @@ class FollowingManager(models.Manager):
 
       invalidate_cache('followers', followee.id)
       invalidate_cache('followings', follower.id)
-      return True
+      return following
     except Follow.DoesNotExist:
       return False
 

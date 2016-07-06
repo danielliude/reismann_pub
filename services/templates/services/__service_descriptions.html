@@ -57,7 +57,7 @@
         <div class="banner">
             <ul>
                 {% for image in profile.user.my_album.images.active_images %}
-                    <li><img src="{{ image.image.url }}" /></li>
+                    <li><div class="banner_image" style="background-image:url('{{ image.image.url }}');"></div></li>
                 {% endfor %}
             </ul>
         </div>

@@ -1,7 +1,3 @@
-body {
-	font-family: "Microsoft YaHei",Verdana,"Bitstream Vera Sans",sans-serif;
-}
-
 .ui.container {
 	max-width: 950px!important;
 }
@@ -80,6 +76,7 @@ body {
 		text-align: center;
 		max-width: 550px;
 		.unslider-nav {
+			position: relative;
 			margin-top: 15px;
 		}
 		.unslider-arrow {
@@ -112,6 +109,14 @@ body {
 			right: auto;
 			-ms-transform: rotate(-180deg);
 			transform: rotate(-180deg);
+		}
+
+		.banner_image {
+			height: 400px;
+			background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: cover; 
+		    width: 100%;
 		}
 	}
 }
@@ -174,7 +179,6 @@ body {
 		box-shadow: #333333 1px 1px 20px 0;
 		@include GT(S) {
 		  margin-top: 1.2rem;
-		  // width: 100%;
 		}	
 	}
 }
@@ -227,4 +231,31 @@ body {
 		max-width: 200px;
 		width: 32%;
 	}	
+}
+
+
+.ui.segment.info_segment {
+	.unslider {
+		.unslider-nav {
+			ol li {
+				@include GT(S) {
+				    border: 2px solid #F0E7E7;
+				}
+			}
+			ol li.unslider-active {
+				@include GT(S) {
+					background: #F0E7E7;
+				}
+			}
+			@include GT(S) {
+				margin-top: -19px;
+			    background-color: rgba(0, 0, 0, 0.3);
+			}
+		}
+		.banner_image {
+		    @include GT(S) {
+				height: 250px;
+			}
+		}
+	}
 }

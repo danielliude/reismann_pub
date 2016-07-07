@@ -11,7 +11,8 @@
 		      	<a href="{% url 'profiles:profile' profile.user.username %}" class="ui image image_avatar background_img" style="background-image:url('{{ profile.get_avatar_url }}')">
 				</a>
 				<div class="profile_info">
-					<b>{{ profile.user.username }}</b> {{ profile.get_gender_display }}/{{ profile.age }} {{ profile.location.get_full_location }}
+					<h3 style="margin-bottom:-4px;margin-top:5px;">{{ profile.user.username }}</h3>
+					<span class="profile_info_span">{{ profile.get_gender_display }}/{{ profile.age }} {{ profile.location.get_full_location }}</span>
 					<div class="row">
 						<span>{{ profile.short_description }}</span>
 					</div>

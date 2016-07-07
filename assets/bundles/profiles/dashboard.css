@@ -39,7 +39,9 @@
     opacity: 1; }
 
 .ui.grid.big_icon_grid .column {
-  padding: 1rem 0.5rem; }
+  padding: 1rem 1rem; }
+  .ui.grid.big_icon_grid .column p {
+    font-size: 0.8rem; }
 
 .ui.grid.big_icon_grid .inverted.segment {
   cursor: pointer; }

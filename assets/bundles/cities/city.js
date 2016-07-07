@@ -74,7 +74,7 @@
 	                $(".search_profile").empty();
 	                if (result.num == '0') {
 	                    $(".serveice_num_p").hide();
-	                    $(".search_profile").append('<h4>No result,please search again!</h4>');
+	                    $(".search_profile").append(gettext('<h4>No result,please search again!</h4>'));
 	                    return;
 	                }
 	                $(".serveice_num_p").show();
@@ -165,7 +165,7 @@
 	    function show_data(ret) {
 	        var html = '';
 	        for (var i in ret) {
-	            html += '<div class="column">' + '<div class="ui segment padding">' + '<a href="' + ret[i].profile_url + '" class="profile_map" style="background-image: url(' + ret[i].card_image_url + ');">' + '</a>' + '<div class="ui segment segment_profile">' + '<a href="' + ret[i].profile_url + '" class="ui image image_avatar">' + '<img  src="' + ret[i].avatar_url + '" alt="User Avatar">' + '</a>' + '<div class="profile_info">' + '<b>' + ret[i].username + '</b> ' + ret[i].gender + '/' + ret[i].age + ' ' + ret[i].get_full_location + '' + '<div class="row">' + '<span>' + ret[i].short_description + '</span>' + '</div>' + '<div class="row content">' + '<table class="ui very basic unstackable compact table">' + '<tbody>';
+	            html += '<div class="column">' + '<div class="ui segment padding">' + '<a href="' + ret[i].profile_url + '" class="profile_map" style="background-image: url(' + ret[i].card_image_url + ');">' + '</a>' + '<div class="ui segment segment_profile">' + '<a href="' + ret[i].profile_url + '" class="ui image image_avatar background_img" style="background-image:url(\'' + ret[i].avatar_url + '\')">' + '</a>' + '<div class="profile_info">' + '<b>' + ret[i].username + '</b> ' + ret[i].gender + '/' + ret[i].age + ' ' + ret[i].get_full_location + '' + '<div class="row">' + '<span>' + ret[i].short_description + '</span>' + '</div>' + '<div class="row content">' + '<table class="ui very basic unstackable compact table">' + '<tbody>';
 	            for (var j in ret[i].services) {
 	                var serv = ret[i].services[j];
 	                html += '<tr>' + '<td><a target="_blank" href="/profiles/' + ret[i].username + '/?service_id=' + serv.id + '" class="ui ' + (serv.searched ? 'blue' : '') + ' label">' + serv.category + '</a></td>' + '<td>' + serv.title + '</td>' + '<td class="right aligned"><label class="ui label">' + serv.currency + serv.price + '/' + serv.price_type + '</label></td>' + '</tr>';

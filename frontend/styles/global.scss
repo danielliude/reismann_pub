@@ -25,6 +25,11 @@ img {
   border-radius: 0px;
 }
 
+.background_img {
+  background-size: cover;
+  background-position: center;
+}
+
 
 /*--------------
     Masthead
@@ -122,4 +127,11 @@ img {
       display: inline-block;
     } 
   }
+}
+
+// common responseive
+.disnone_mobile {
+  @include GT(S) {
+      display: none;
+  } 
 }

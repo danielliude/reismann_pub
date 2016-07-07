@@ -54,68 +54,6 @@
   }
 }
 
-/*--------------
-    search_profile
----------------*/
-// .ui.grid.search_profile {
-//   padding-bottom: 40px;
-//   .profile_map {
-//     height: 300px;
-//     display: block;
-//     width: 100%;
-//     background-color: #242731;
-//     background-repeat: no-repeat;
-//     background-position: center center;
-//     background-size: cover;
-//     &:hover:before {
-//       content: '';
-//       position:absolute;
-//       top:0;
-//       left:0;
-//       width:100%;
-//       height:300px;
-//       background-color:rgba(0, 0, 0, 0.3)
-//     }
-//   }
-//   .ui.segment.padding {
-//     padding: 0px;
-//     .ui.header {
-//       font-size: 1em;
-//       margin-bottom: 0px;
-//     }
-//     .ui.segment {
-//       margin-top: 5px;
-//       padding-top: 0px;
-//       border: 0px;
-//       span {
-//         color: rgba(0, 0, 0, 0.6);
-//         margin: 0.5em 0em 0.5em;
-//         font-size: 0.9em;
-//       }
-//     }
-//     .average_price {
-//       position: absolute;
-//       right: 14px;
-//       top: -25px;
-//     }
-//     .content {
-//       margin-top: 10px;
-//     }
-//     .content p {
-//       color: rgba(0,0,0,.68);
-//       font-size: 1em;
-//     }
-//     .ui.tiny.image {
-//       width: 60px;
-//       padding: 2px;
-//       border: 2px;
-//       background-color: #fff;
-//       border-radius: 28px;
-//       margin-top: -33px;
-//       margin-left: 19px;
-//     }
-//   }
-// }
 
 #profile_content {
   margin-bottom: 0rem;
@@ -158,9 +96,7 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    padding: 2px;
-    border: 2px;
-    background-color: #fff;
+    border: 2px solid #fff;
     margin-top: -29px;
     img {
       height: 100%;

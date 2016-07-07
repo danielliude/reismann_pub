@@ -42,9 +42,6 @@
 .ui.grid.search_button .serveice_num_p {
   padding-bottom: 10px; }
 
-/*--------------
-    search_profile
----------------*/
 #profile_content {
   margin-bottom: 0rem; }
   #profile_content .profile_map {
@@ -79,9 +76,7 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    padding: 2px;
-    border: 2px;
-    background-color: #fff;
+    border: 2px solid #fff;
     margin-top: -29px; }
     #profile_content .ui.image.image_avatar img {
       height: 100%; }

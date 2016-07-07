@@ -19,6 +19,7 @@
     {% endblock %}
     {% render_bundle 'global' 'css' %}
     {% block stylesheets %}{% endblock %}
+    <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
     {% block header_javascripts %}{% endblock %}
     {% block extra_head %}{% endblock %}
     {% render_bundle 'global' 'js' %}

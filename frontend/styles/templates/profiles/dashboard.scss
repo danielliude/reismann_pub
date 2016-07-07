@@ -1,5 +1,5 @@
 .ui.grid.dashboard_grid {
-	max-width: 750px;
+	max-width: 850px;
 	margin: 80px auto;
 	.ui.divider {
 		margin-top: 0.5rem;
@@ -52,6 +52,9 @@
 }
 
 .ui.grid.big_icon_grid {
+	.column {
+		padding: 1rem 0.5rem;
+	}
 	.inverted.segment {
 		cursor: pointer;
 	}

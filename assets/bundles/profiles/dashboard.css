@@ -1,5 +1,5 @@
 .ui.grid.dashboard_grid {
-  max-width: 750px;
+  max-width: 850px;
   margin: 80px auto; }
   .ui.grid.dashboard_grid .ui.divider {
     margin-top: 0.5rem;
@@ -37,6 +37,9 @@
   opacity: 0.8; }
   .all_buttons .ui.brand.button:hover {
     opacity: 1; }
+
+.ui.grid.big_icon_grid .column {
+  padding: 1rem 0.5rem; }
 
 .ui.grid.big_icon_grid .inverted.segment {
   cursor: pointer; }

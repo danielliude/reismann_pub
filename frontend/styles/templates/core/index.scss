@@ -143,11 +143,11 @@
 
   .ui.image.image_avatar {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border: 2px solid #fff;
     margin: 2px;
-    margin-top: -29px;
+    margin-top: -33px;
     img {
       height: 100%;
     }
@@ -156,11 +156,17 @@
   .profile_info {
     position: relative;
     top: 0px;
-    // height: 30px;
-    padding-left: 67px;
+    padding-left: 87px;
     line-height: 30px;
+    .profile_info_span {
+      display: inline-block;
+      margin: 0px !important;
+      width: 100%;
+      border-bottom: 1px solid grey;
+      line-height: 20px;
+    }
     .row {
-      margin-left: -66px;
+      margin-left: -80px;
     }
     .content p {
       color: rgba(0,0,0,.68);
@@ -278,20 +284,21 @@
     @include GT(S) {
       padding-left: 0rem;
       padding-bottom: 0rem;
-      height: 84px;
+      // height: 98px;
     }
   }
   .ui.image.image_avatar {
     @include GT(S) {
       margin-top: 0px;
       width: 84px;
-      height: 100%;
+      height: 84px;
     }
   }
   .profile_info {
     @include GT(S) {
       padding-left: 87px;
       line-height: 25px;
+      padding-bottom: 2px;
     }
     .row {
       @include GT(S) {

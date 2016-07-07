@@ -53,7 +53,10 @@
 
 .ui.grid.big_icon_grid {
 	.column {
-		padding: 1rem 0.5rem;
+		padding: 1rem 1rem;
+		p {
+			font-size: 0.8rem;
+		}
 	}
 	.inverted.segment {
 		cursor: pointer;

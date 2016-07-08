@@ -109,7 +109,7 @@ def booking_add(request, username, service_id, booking_form = BookingForm,
 
             if request.method == 'POST':
 
-                form = booking_form(request.POST, request.FILES)
+                form = booking_form(user= request.user, data=request.POST, files=request.FILES)
                 if form.is_valid():
 
                   booking = form.save(user)

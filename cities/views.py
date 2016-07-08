@@ -77,6 +77,19 @@ def city(request, city_name, template_name='cities/city.html'):
                 if not services: continue
 
                 # Check services has all requested cities
+                categories = request.POST.getlist('category[]')
+                number_categories = len(categories)
+                number_of_services = 0
+                if number_categories < 4:
+                    for cat in categories:
+                        for service in user.service.all():
+                            if service.category.id == int(cat):
+                                number_of_services = number_of_services + 1
+                                break
+
+                if number_of_services != number_categories: continue
+
+                # Check services has all requested cities
                 city_ids = request.POST.getlist('city[]')
                 if city_ids:
                     for ci_id in city_ids:
@@ -156,24 +169,18 @@ def city(request, city_name, template_name='cities/city.html'):
                             else:
                                 service_dict['searched'] = False
 
-                    cat = request.POST.getlist('category')
-                    if cat:
-                        if service.category.id == int(cat[0]):
-                            service_dict['searched'] = True
-                        else:
-                            service_dict['searched'] = False
+                    categories = request.POST.getlist('category[]')
+
+                    service_dict['searched'] = False
+
+                    if categories:
+                        for cat in categories:
+                            if service.category.id == int(cat):
+                                service_dict['searched'] = True
+                                break
 
                     services_dict[service.id] = service_dict
 
-
-                # Check if at least one found service is found
-                # forward = False
-                # for key in services_dict:
-                #     if services_dict[key]['searched'] == True:
-                #         forward = True
-                #         break
-                #
-                # if not forward: continue
 
                 user_dict['services'] = services_dict
                 user_dict['gender'] = user.profile.get_gender_display()

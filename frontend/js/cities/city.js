@@ -126,7 +126,8 @@ $(function() {
                             '<a href="' + ret[i].profile_url + '" class="ui image image_avatar background_img" style="background-image:url(\'' + ret[i].avatar_url + '\')">' +
                             '</a>' +
                             '<div class="profile_info">' +
-                                '<b>' + ret[i].username + '</b> ' + ret[i].gender + '/' + ret[i].age + ' ' + ret[i].get_full_location + '' +
+                                '<h4>' + ret[i].username + '</h4> ' + 
+                                '<span class="profile_info_span">' + ret[i].gender + '/' + ret[i].age + ' ' + ret[i].get_full_location + '</span>' +
                                 '<div class="row">' +
                                     '<span>' + ret[i].short_description + '</span>' +
                                 '</div>' +

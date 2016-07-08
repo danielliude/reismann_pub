@@ -7,7 +7,8 @@
                 <a href="{{ result.profile_url }}" class="ui image image_avatar background_img" style="background-image:url('{{ result.avatar_url }}')">
                 </a>
                 <div class="profile_info">
-                    <b>{{ result.username }}</b> {{ result.profile.get_gender_display }}/{{ result.profile.age }} {{ result.profile.location.get_full_location }}
+                    <h4>{{ result.username }}</h4> 
+                    <span class="profile_info_span">{{ result.profile.get_gender_display }}/{{ result.profile.age }} {{ result.profile.location.get_full_location }}</span>
                     <div class="row">
                         <span>{{ result.short_description }}</span>
                     </div>

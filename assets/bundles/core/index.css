@@ -123,7 +123,7 @@
     height: 80px;
     border: 2px solid #fff;
     margin: 2px;
-    margin-top: -33px; }
+    margin-top: -28px; }
     #profile_content .ui.image.image_avatar img {
       height: 100%; }
   #profile_content .profile_info {
@@ -131,12 +131,15 @@
     top: 0px;
     padding-left: 87px;
     line-height: 30px; }
+    #profile_content .profile_info h4 {
+      margin-bottom: -4px;
+      padding-top: 5px; }
     #profile_content .profile_info .profile_info_span {
       display: inline-block;
       margin: 0px !important;
       width: 100%;
       border-bottom: 1px solid grey;
-      line-height: 20px; }
+      line-height: 27px; }
     #profile_content .profile_info .row {
       margin-left: -80px; }
     #profile_content .profile_info .content p {
@@ -241,13 +244,18 @@
 
 @media only screen and (max-width: 759px) {
   #profile_content .profile_info {
-    padding-left: 87px;
-    line-height: 25px;
-    padding-bottom: 2px; } }
+    padding-left: 90px;
+    padding-bottom: 2px;
+    line-height: 30px; } }
 
 @media only screen and (max-width: 759px) {
   #profile_content .profile_info .row {
     margin-left: 0px; } }
+
+@media only screen and (max-width: 759px) {
+  #profile_content .profile_info .row.content {
+    margin-left: -86px;
+    margin-top: 5px; } }
 
 #profile_content .more_profile_info .ui.segment {
   height: 100%;

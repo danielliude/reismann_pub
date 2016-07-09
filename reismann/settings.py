@@ -180,7 +180,8 @@ GRAPPELLI_INDEX_DASHBOARD = 'reismann.dashboard.AdminDashboard'
 GRAPPELLI_ADMIN_TITLE = _('reismann admin interface')
 
 # Needed for Django guardian
-ANONYMOUS_USER_ID = -1
+ANONYMOUS_USER_NAME = "AnonymousGuadrianUser"
+GUARDIAN_GET_INIT_ANONYMOUS_USER = 'accounts.managers.get_anonymous_user_instance'
 
 # Mail Server Configuration MOVED TO LOCAL SETTINGS
 
@@ -193,7 +194,7 @@ REDACTOR_UPLOAD = 'reismann/images/services/redactor/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 REDACTOR_AUTH_DECORATOR = 'django.contrib.auth.decorators.login_required'
 
-GUARDIAN_GET_INIT_ANONYMOUS_USER = 'accounts.managers.get_anonymous_user_instance'
+
 
 # Logging
 LOGGING = {

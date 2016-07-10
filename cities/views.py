@@ -74,10 +74,13 @@ def city(request, city_name, template_name='cities/city.html'):
                 categories = request.POST.getlist('category[]')
                 number_categories = len(categories)
                 number_of_services = 0
+
                 if number_categories < 4:
                     for cat in categories:
+                        if cat == '': continue
                         for service in user.service.all():
                             if service.status != 2: continue
+
                             if service.category.id == int(cat):
                                 number_of_services = number_of_services + 1
                                 break
@@ -85,7 +88,7 @@ def city(request, city_name, template_name='cities/city.html'):
 
                 # filter services by categories
                 for cat in categories:
-                    services = services.filter(categories=int(cat))
+                    services = services.filter(categories=cat)
 
                 # Check services has all requested cities
                 city_ids = request.POST.getlist('city[]')
@@ -96,8 +99,12 @@ def city(request, city_name, template_name='cities/city.html'):
                         services = services.filter(cities=ci_id)
                         print(services)
 
-                for services in services:
-                    print(services.cities)
+                for service in services:
+                    print("service")
+                    print(service.title)
+                    for city in service.cities.all():
+                        print(city.name)
+
                 if not services: continue
 
                 # Checking gender of provider

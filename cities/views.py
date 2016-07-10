@@ -75,20 +75,31 @@ def city(request, city_name, template_name='cities/city.html'):
                 number_categories = len(categories)
                 number_of_services = 0
 
-                if number_categories < 4:
-                    for cat in categories:
-                        if cat == '': continue
-                        for service in user.service.all():
-                            if service.status != 2: continue
+                # if number_categories < 4:
+                #     for cat in categories:
+                #         if cat == '': continue
+                #         for service in services:
+                #             if service.status != 2: continue
+                #
+                #             if service.category.id == int(cat):
+                #                 number_of_services = number_of_services + 1
+                #                 break
+                # if number_of_services != number_categories: continue
 
-                            if service.category.id == int(cat):
-                                number_of_services = number_of_services + 1
-                                break
-                if number_of_services != number_categories: continue
 
-                # filter services by categories
-                # for cat in categories:
-                #     services = services.filter(category=cat)
+                print("Here are our services")
+                print(services)
+
+                if categories:
+                    if number_categories < 4:
+                        prel_result = Service.objects.none()
+                        for cat in categories:
+                            filtered_services = services.filter(category=cat)
+                            prel_result = prel_result | filtered_services
+                        print("Here is result")
+                        print(prel_result)
+                    services = prel_result
+                    if not services: continue
 
                 # Check services has all requested cities
                 city_ids = request.POST.getlist('city[]')

@@ -80,6 +80,7 @@ def city(request, city_name, template_name='cities/city.html'):
                 if number_categories < 4:
                     for cat in categories:
                         for service in user.service.all():
+                            if service.status != 2: continue
                             print("serivce:")
                             print(service.category.id)
                             print(cat)
@@ -186,14 +187,16 @@ def city(request, city_name, template_name='cities/city.html'):
                 user_dict['services'] = services_dict
                 user_dict['gender'] = user.profile.get_gender_display()
                 user_dict['age'] = user.profile.age
-                user_dict['get_full_location'] = user.profile.location.get_full_location()
+                if user.profile.location:
+                    user_dict['location'] = user.profile.location.name
+                    user_dict['get_full_location'] = user.profile.location.get_full_location()
                 user_dict['bio'] = user.profile.bio
                 user_dict['card_image_url'] = user.profile.get_card_image_url()
                 user_dict['profile_url'] = "/profiles/" + user.username + "/"
                 user_dict['avatar_url'] = user.profile.get_avatar_url()
                 user_dict['username'] = user.username
                 user_dict['short_description'] = user.profile.short_description
-                user_dict['location'] = user.profile.location.name
+
 
                 result.append(user_dict)
 

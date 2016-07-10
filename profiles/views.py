@@ -52,7 +52,8 @@ from insite_messages.managers import MessageMailManager as mailer
 from notifications.signals import notify
 from notifications.models import Notification
 from datetime import datetime
-from django.utils.timezone import utc
+from datetime import timedelta
+from django.utils.timezone import utc, now
 from django.contrib.contenttypes.models import ContentType
 
 #blacklists
@@ -403,6 +404,14 @@ def more_profile(request, username):
     profile, created = Profile.objects.get_or_create(user=user)
     if profile.settings.is_provider:
       more_profile_obj, created = ProfileMore.objects.get_or_create(user=user)
+
+      # updated_at = more_profile_obj.updated_at
+      # if not updated_at:
+      #   updated_at = now()
+      # lock_time = updated_at + timedelta(hours=1)
+      # if (now() - lock_time) < timedelta(seconds=1):
+      #   return redirect(reverse('profiles:detail', kwargs={'username': username}))
+
       more_form = ProfileMoreForm(instance=more_profile_obj)
       form = ProfileForm(request.POST, instance=profile)
 

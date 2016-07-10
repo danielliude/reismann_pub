@@ -200,6 +200,8 @@ class ProfileMore(models.Model):
   favourite_things = models.CharField(_('favourite things'), max_length=400, blank=True, null=True)
   crazy_thing_done = models.CharField(_('crazy thing done'), max_length=400, blank=True, null=True)
   normal_do_weekend = models.CharField(_('normal do weekend'), max_length=400, blank=True, null=True)
+  created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+  updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
   class Meta:
     verbose_name = _('more profile')

@@ -73,22 +73,6 @@ def city(request, city_name, template_name='cities/city.html'):
                 # Check number categories
                 categories = request.POST.getlist('category[]')
                 number_categories = len(categories)
-                number_of_services = 0
-
-                # if number_categories < 4:
-                #     for cat in categories:
-                #         if cat == '': continue
-                #         for service in services:
-                #             if service.status != 2: continue
-                #
-                #             if service.category.id == int(cat):
-                #                 number_of_services = number_of_services + 1
-                #                 break
-                # if number_of_services != number_categories: continue
-
-
-                print("Here are our services")
-                print(services)
 
                 if categories:
                     if number_categories < 4:
@@ -96,25 +80,16 @@ def city(request, city_name, template_name='cities/city.html'):
                         for cat in categories:
                             filtered_services = services.filter(category=cat)
                             prel_result = prel_result | filtered_services
-                        print("Here is result")
-                        print(prel_result)
                     services = prel_result
                     if not services: continue
 
                 # Check services has all requested cities
                 city_ids = request.POST.getlist('city[]')
-                print(city_ids)
                 if city_ids:
                     print("City filter")
                     for ci_id in city_ids:
                         services = services.filter(cities=ci_id)
                         print(services)
-
-                for service in services:
-                    print("service")
-                    print(service.title)
-                    for city in service.cities.all():
-                        print(city.name)
 
                 if not services: continue
 
@@ -139,8 +114,14 @@ def city(request, city_name, template_name='cities/city.html'):
 
                 # Check languages of provider
                 languages = request.POST.getlist('languages[]')
+                print(languages)
                 if languages:
                     for lang in languages:
+                        print("Language")
+                        print(lang)
+                        print("Language is attached to provider:")
+                        print(user.profile.languages.filter(id=lang).exists())
+
                         if not user.profile.languages.filter(id=lang).exists():
                             skip_provider = True
                 if skip_provider: continue

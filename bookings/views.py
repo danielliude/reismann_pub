@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from core.utils import ExtraContextTemplateView
+from core.constants import BOOKING_STATUS
 
 from guardian.decorators import permission_required_or_403
 from userena.decorators import secure_required
@@ -224,30 +225,44 @@ def booking_view(request, username, booking_id, template_name = 'bookings/bookin
         profile = get_user_profile(user)
 
         booking = get_booking_by_id(booking_id)
+        rating_form = ServiceRatingForm()
+        extra_context['form'] = rating_form
 
         if booking.recipient == user:
             booking.read_at = datetime.now()
             booking.save()
 
-        service_rating, created = ServiceRating.objects.get_or_create(service=booking.service, user=user)
-        rating_form = ServiceRatingForm()
-        extra_context['form'] = rating_form
-        extra_context['show_form'] = True
-        now = timezone.now()
+        if booking.status == BOOKING_STATUS[5][0] or booking.status == BOOKING_STATUS[4][0]:
+            extra_context['show_form'] = True
 
-        if service_rating.rating:
-            extra_context['booking_rating'] = service_rating.rating
-            extra_context['booking_comment'] = service_rating.comment
-            lock_time = service_rating.created_at + timedelta(days=14)
-            if (now - lock_time) > timedelta(seconds=1):
-                extra_context['show_form'] = False
+            try:
+                service_rating = ServiceRating.objects.get(service=booking.service, user=user)
+                extra_context['booking_rating'] = service_rating.rating
+                extra_context['booking_comment'] = service_rating.comment
+                now = timezone.now()
+                lock_time = service_rating.created_at + timedelta(days=14)
+                if (now - lock_time) > timedelta(seconds=1):
+                    extra_context['show_form'] = False
+                rating_form = ServiceRatingForm()
+                extra_context['form'] = rating_form
+            except ServiceRating.DoesNotExist:
+                pass
 
         if request.method == 'POST':
+            rating_form = ServiceRatingForm(request.POST)
+            extra_context['form'] = rating_form
             posted_data = request.POST
-            service_rating.rating = posted_data['stars']
-            service_rating.comment = posted_data['comment']
-            service_rating.save()
-            return HttpResponseRedirect(url)
+            try:
+                service_rating = ServiceRating.objects.get(service=booking.service, user=user)
+            except ServiceRating.DoesNotExist:
+                service_rating = ServiceRating()
+            service_rating.service = booking.service
+            service_rating.user = user
+            service_rating.rating = posted_data.get('stars', 0)
+            service_rating.comment = posted_data.get('comment', 0)
+            if service_rating.rating and service_rating.comment:
+                service_rating.save()
+                return HttpResponseRedirect(url)
 
         # if user.has_perm('bookings.view_message', booking):
         extra_context['booking'] = booking

@@ -5,23 +5,26 @@
     <form method="post" action="">
       {% csrf_token %}
       {{form.media}}
-      {{ form.stars.errors }}
+
+      <div class="required field">
+        {{ form.stars.errors }}
+        <label>{{ form.stars.label }}</label>
         <div class="">
-          <label>{{ form.stars.label }}</label>
-          <div class="">
-            {{ form.stars }}
-            <i class=""></i>
-          </div>
+          {{ form.stars }}
+          <i class=""></i>
         </div>
-      {{ form.comment.errors }}
+      </div>
+      
+
+      <div class="required field">
+        {{ form.comment.errors }}
+        <label>{{ form.comment.label }}</label>
         <div class="">
-          <label>{{ form.comment.label }}</label>
-          <div class="">
-            {{ form.comment }}
-            <i class=""></i>
-          </div>
+          {{ form.comment }}
+          <i class=""></i>
         </div>
-        <button type="submit">保存</button>
+      </div>
+      <button type="submit">保存</button>
     </form>
     {% endif %}
 </div>

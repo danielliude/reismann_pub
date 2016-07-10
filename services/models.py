@@ -91,6 +91,25 @@ class Service(models.Model):
     output = '<div class="ui star rating" data-rating="' + str(int(a)) +'" data-max-rating="5"></div>'
     return mark_safe(output)
 
+  @property
+  def provider_stars(self):
+    service_ratings = ServiceRating.objects.filter(service=self, user=self.user)
+    a = 0
+    if service_ratings:
+        a = service_ratings[0].rating
+    output = '<div class="ui star rating" data-rating="' + str(int(a)) +'" data-max-rating="5"></div><br>'
+    return mark_safe(output)
+
+  @property
+  def my_stars(self):
+    service_ratings = ServiceRating.objects.filter(service=self)
+    a = 0
+    for item in service_ratings:
+      if not item.user == self.user:
+        a = item.rating
+    output = '<div class="ui star rating" data-rating="' + str(int(a)) +'" data-max-rating="5"></div><br>'
+    return mark_safe(output)
+
 class ServiceRating(models.Model):
 
     service = models.ForeignKey(Service, verbose_name=_('rating service'), related_name='service_rating', blank=True, null=True)

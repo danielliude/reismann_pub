@@ -107,7 +107,19 @@
           <a class="ui red label">{% trans 'Canceled by provider' %}</a>
         {% endif %}
       </td>
-      <td>{{ booking.service.gen_stars }}</td>
+      <td>
+      {% if booking.service.user == profile.user %}
+        {% trans 'My Rating' %}
+        {{ booking.service.provider_stars }}
+        {% trans 'Receive Rating' %}
+        {{ booking.service.my_stars }}
+      {% else %}
+        {% trans 'My Rating' %}
+        {{ booking.service.my_stars }}
+        {% trans 'Receive Rating' %}
+        {{ booking.service.provider_stars }}
+      {% endif %}
+      </td>
       <td>
         <a class="ui green label" href="view/{{ booking.id }}/">
           <i class="unhide icon"></i>{% trans 'view' %}

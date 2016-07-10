@@ -11,3 +11,9 @@ def get_user_profile(user):
     profile = Profile.objects.create(user=user)
 
   return profile
+
+def get_default_value(value):
+    if value:
+        return int(value[0])
+    else:
+        return 0

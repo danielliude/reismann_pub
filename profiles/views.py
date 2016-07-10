@@ -14,6 +14,7 @@ from guardian.decorators import permission_required_or_403
 from profiles.models import Profile, ProfileSettings, ProfileMore
 from profiles.forms import ProfileForm, ProfileIdForm, SettingsForm, ProfileFormCustomer, ProfileMoreForm
 from profiles.utils import get_user_profile
+from profiles.utils import get_default_value
 from profiles.managers import ProfileMailManager
 from core.utils import ExtraContextTemplateView
 from contacts.forms import ContactForm
@@ -401,19 +402,39 @@ def more_profile(request, username):
     user = get_object_or_404(User, username__iexact=username)
     profile, created = Profile.objects.get_or_create(user=user)
     if profile.settings.is_provider:
-      more_profile, created = ProfileMore.objects.get_or_create(user=user)
-      more_form = ProfileMoreForm(request.POST, instance=more_profile)
+      more_profile_obj, created = ProfileMore.objects.get_or_create(user=user)
+      more_form = ProfileMoreForm(instance=more_profile_obj)
       form = ProfileForm(request.POST, instance=profile)
-      if more_form.is_valid():
-        more_form.save()
-        return redirect(reverse('profiles:dashboard', kwargs={'username': username}))
+
+      more_profile_obj.country_of_birth = get_default_value(request.POST.get('country_of_birth'))
+      more_profile_obj.marrittal_status = get_default_value(request.POST.get('marrittal_status'))
+      more_profile_obj.children = get_default_value(request.POST.get('children'))
+      more_profile_obj.ethnicity = get_default_value(request.POST.get('ethnicity'))
+      more_profile_obj.religion = get_default_value(request.POST.get('religion'))
+      more_profile_obj.education = get_default_value(request.POST.get('education'))
+      more_profile_obj.annual_income = get_default_value(request.POST.get('annual_income'))
+      more_profile_obj.immigration_status = get_default_value(request.POST.get('immigration_status'))
+      more_profile_obj.body_form = get_default_value(request.POST.get('body_form'))
+      more_profile_obj.smoking = get_default_value(request.POST.get('smoking'))
+      more_profile_obj.drinking = get_default_value(request.POST.get('drinking'))
+      more_profile_obj.pets = get_default_value(request.POST.get('pets'))
+      more_profile_obj.hobby = get_default_value(request.POST.get('hobby'))
+      more_profile_obj.most_cheerful = request.POST.get('most_cheerful', '')
+      more_profile_obj.good_at = request.POST.get('good_at', '')
+      more_profile_obj.friends_description = request.POST.get('friends_description', '')
+      more_profile_obj.must_have = request.POST.get('must_have', '')
+      more_profile_obj.favourite_things = request.POST.get('favourite_things', '')
+      more_profile_obj.crazy_thing_done = request.POST.get('crazy_thing_done', '')
+      more_profile_obj.normal_do_weekend = request.POST.get('normal_do_weekend', '')
+      more_profile_obj.save()
+
       extra_context = {}
       extra_context['more_profile'] = 'true'
       extra_context['more_form'] = more_form
       extra_context['form'] = form
       extra_context['show_more_form'] = True
       extra_context = makeContextForProfile(request, user, extra_context)
-      return ExtraContextTemplateView.as_view(template_name='profiles/detail.html', extra_context=extra_context)(request)
+      return redirect(reverse('profiles:detail', kwargs={'username': username}))
     else:
       extra_context['show_more_form'] = False
   return redirect(reverse('profiles:profile', kwargs={'username': username}))

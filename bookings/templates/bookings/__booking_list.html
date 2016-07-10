@@ -109,14 +109,14 @@
       </td>
       <td>
       {% if booking.service.user == profile.user %}
-        {% trans 'My Rating' %}
+        {% trans 'My Rating' %}<br>
         {{ booking.service.provider_stars }}
-        {% trans 'Receive Rating' %}
+        {% trans 'Received Rating' %}
         {{ booking.service.my_stars }}
       {% else %}
-        {% trans 'My Rating' %}
+        {% trans 'My Rating' %}<br>
         {{ booking.service.my_stars }}
-        {% trans 'Receive Rating' %}
+        {% trans 'Received Rating' %}
         {{ booking.service.provider_stars }}
       {% endif %}
       </td>

@@ -78,15 +78,17 @@ def city(request, city_name, template_name='cities/city.html'):
                     if number_categories < 4:
                         prel_result = Service.objects.none()
                         for cat in categories:
-                            filtered_services = services.filter(category=cat)
+                            filtered_services = services.filter(category=int(cat))
                             prel_result = prel_result | filtered_services
                     services = prel_result
+                    
                     if not services: continue
+                    if number_categories!= len(services): continue
+
 
                 # Check services has all requested cities
                 city_ids = request.POST.getlist('city[]')
                 if city_ids:
-                    print("City filter")
                     for ci_id in city_ids:
                         services = services.filter(cities=ci_id)
                         print(services)

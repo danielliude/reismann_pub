@@ -75,13 +75,16 @@ def city(request, city_name, template_name='cities/city.html'):
                 number_categories = len(categories)
 
                 if categories:
+                    if categories[0]== "": break
+
                     if number_categories < 4:
                         prel_result = Service.objects.none()
                         for cat in categories:
-                            filtered_services = services.filter(category=int(cat))
+                            filtered_services = services.filter(category=cat)
                             prel_result = prel_result | filtered_services
+
                     services = prel_result
-                    
+
                     if not services: continue
                     if number_categories!= len(services): continue
 

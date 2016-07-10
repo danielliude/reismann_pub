@@ -20,13 +20,17 @@
           </div>
           <div style="border:0px;" class="ui bottom attached tab padded segment {% if inbox_page %}active{% endif %}" data-tab="first">
             {% with my_bookings as bookings %}
-              {% include 'bookings/__booking_list.html' %}
+              {% with 'true' as mybook %}
+                {% include 'bookings/__booking_list.html' %}
+              {% endwith %}
             {% endwith %}
           </div>
           {% if show_other_bookings %}
             <div style="border:0px;" class="ui bottom attached tab padded segment {% if outbox_page %}active{% endif %}" data-tab="second">
               {% with other_bookings as bookings %}
-                {% include 'bookings/__booking_list.html' %}
+                {% with 'true' as otherbook %}
+                  {% include 'bookings/__booking_list.html' %}
+                {% endwith %}
               {% endwith %}
             </div>
           {% endif %}

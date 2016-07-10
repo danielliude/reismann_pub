@@ -70,31 +70,32 @@ def city(request, city_name, template_name='cities/city.html'):
                         one_is_active = True
                 if not one_is_active: continue
 
-                # Check services has all requested cities
+                # Check number categories
                 categories = request.POST.getlist('category[]')
-                print(categories)
                 number_categories = len(categories)
-                print("Number of categories:")
-                print(number_categories)
-                number_of_services = 0
-                if number_categories < 4:
-                    for cat in categories:
-                        for service in user.service.all():
-                            print("serivce:")
-                            print(service.category.id)
-                            print(cat)
-                            if service.category.id == int(cat):
-                                number_of_services = number_of_services + 1
-                                break
-                print("Number of services:")
-                print(number_of_services)
-                if number_of_services != number_categories: continue
+
+                if categories:
+                    if categories[0]== "": break
+
+                    if number_categories < 4:
+                        prel_result = Service.objects.none()
+                        for cat in categories:
+                            filtered_services = services.filter(category=cat)
+                            prel_result = prel_result | filtered_services
+
+                    services = prel_result
+
+                    if not services: continue
+                    if number_categories!= len(services): continue
+
 
                 # Check services has all requested cities
                 city_ids = request.POST.getlist('city[]')
                 if city_ids:
                     for ci_id in city_ids:
                         services = services.filter(cities=ci_id)
+                        print(services)
+
                 if not services: continue
 
                 # Checking gender of provider
@@ -118,8 +119,14 @@ def city(request, city_name, template_name='cities/city.html'):
 
                 # Check languages of provider
                 languages = request.POST.getlist('languages[]')
+                print(languages)
                 if languages:
                     for lang in languages:
+                        print("Language")
+                        print(lang)
+                        print("Language is attached to provider:")
+                        print(user.profile.languages.filter(id=lang).exists())
+
                         if not user.profile.languages.filter(id=lang).exists():
                             skip_provider = True
                 if skip_provider: continue
@@ -164,11 +171,17 @@ def city(request, city_name, template_name='cities/city.html'):
                     # Checking cities for services
                     city_ids = request.POST.getlist('city[]')
                     if city_ids:
+                        count = 0
                         for ci_id in city_ids:
                             if service.cities.filter(id = ci_id).exists():
-                                service_dict['searched'] = True
-                            else:
-                                service_dict['searched'] = False
+                                count = count+1
+
+                        if count == len(city_ids):
+                            service_dict['searched'] = True
+                        else:
+                            service_dict['searched'] = False
+
+
 
                     categories = request.POST.getlist('category[]')
 
@@ -186,14 +199,16 @@ def city(request, city_name, template_name='cities/city.html'):
                 user_dict['services'] = services_dict
                 user_dict['gender'] = user.profile.get_gender_display()
                 user_dict['age'] = user.profile.age
-                user_dict['get_full_location'] = user.profile.location.get_full_location()
+                if user.profile.location:
+                    user_dict['location'] = user.profile.location.name
+                    user_dict['get_full_location'] = user.profile.location.get_full_location()
                 user_dict['bio'] = user.profile.bio
                 user_dict['card_image_url'] = user.profile.get_card_image_url()
                 user_dict['profile_url'] = "/profiles/" + user.username + "/"
                 user_dict['avatar_url'] = user.profile.get_avatar_url()
                 user_dict['username'] = user.username
                 user_dict['short_description'] = user.profile.short_description
-                user_dict['location'] = user.profile.location.name
+
 
                 result.append(user_dict)
 

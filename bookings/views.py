@@ -9,10 +9,14 @@ from userena.decorators import secure_required
 
 from bookings.models import Booking
 from bookings.forms import BookingForm
+from services.models import ServiceRating
+from services.forms import ServiceRatingForm
 
 from profiles.views import makeContextForDetails, makeContextForNotifications
 from profiles.utils import get_user_profile
 from bookings.utils import get_booking_by_id
+from datetime import timedelta
+from django.utils import timezone
 
 try:
     from _datetime import datetime
@@ -211,6 +215,7 @@ def booking_approve(request, username, booking_id):
 @permission_required_or_403('bookings.view_booking')
 def booking_view(request, username, booking_id, template_name = 'bookings/booking_view.html', success_url=None,
                  extra_context=None, **kwargs):
+    url = reverse('profiles:booking_view', kwargs={'username':request.user.username, 'booking_id': booking_id})
 
     if not extra_context: extra_context = dict()
 
@@ -224,6 +229,26 @@ def booking_view(request, username, booking_id, template_name = 'bookings/bookin
             booking.read_at = datetime.now()
             booking.save()
 
+        service_rating, created = ServiceRating.objects.get_or_create(service=booking.service, user=user)
+        rating_form = ServiceRatingForm()
+        extra_context['form'] = rating_form
+        extra_context['show_form'] = True
+        now = timezone.now()
+
+        if service_rating.rating:
+            extra_context['booking_rating'] = service_rating.rating
+            extra_context['booking_comment'] = service_rating.comment
+            lock_time = service_rating.created_at + timedelta(days=14)
+            if (now - lock_time) > timedelta(seconds=1):
+                extra_context['show_form'] = False
+
+        if request.method == 'POST':
+            posted_data = request.POST
+            service_rating.rating = posted_data['stars']
+            service_rating.comment = posted_data['comment']
+            service_rating.save()
+            return HttpResponseRedirect(url)
+
         # if user.has_perm('bookings.view_message', booking):
         extra_context['booking'] = booking
         extra_context['profile'] = profile
@@ -234,7 +259,6 @@ def booking_view(request, username, booking_id, template_name = 'bookings/bookin
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                               extra_context=extra_context)(request)
     else:
-        url = reverse('profiles:booking_view', kwargs={'username':request.user.username, 'booking_id': booking_id})
         return HttpResponseRedirect(url)
 
 
@@ -365,4 +389,3 @@ def booking_cancel(request, username, booking_id, template_name='bookings/bookin
     else:
         url = reverse('profiles:bookings', kwargs={'username':request.user.username})
         return HttpResponseRedirect(url)
-

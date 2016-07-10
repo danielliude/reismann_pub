@@ -1,0 +1,27 @@
+<div>
+{{booking_rating}}
+{{booking_comment}}
+    {% if show_form %}
+    <form method="post" action="">
+      {% csrf_token %}
+      {{form.media}}
+      {{ form.stars.errors }}
+        <div class="">
+          <label>{{ form.stars.label }}</label>
+          <div class="">
+            {{ form.stars }}
+            <i class=""></i>
+          </div>
+        </div>
+      {{ form.comment.errors }}
+        <div class="">
+          <label>{{ form.comment.label }}</label>
+          <div class="">
+            {{ form.comment }}
+            <i class=""></i>
+          </div>
+        </div>
+        <button type="submit">保存</button>
+    </form>
+    {% endif %}
+</div>

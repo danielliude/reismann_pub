@@ -99,5 +99,5 @@ class ServiceRatingForm(forms.Form):
         super(ServiceRatingForm, self).__init__(*args, **kwargs)
         self.fields['stars'].widget.attrs.update({'class': 'star', 'name' : 'rating'})
         self.fields['comment'].widget.attrs.update({'rows' : 10})
-    stars = forms.ChoiceField(widget=forms.RadioSelect, choices=c)
-    comment = forms.CharField(widget=forms.Textarea)
+    stars = forms.ChoiceField(widget=forms.RadioSelect, choices=c, required=True)
+    comment = forms.CharField(widget=forms.Textarea, required=True)

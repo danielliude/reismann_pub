@@ -87,8 +87,8 @@ def city(request, city_name, template_name='cities/city.html'):
                 if number_of_services != number_categories: continue
 
                 # filter services by categories
-                for cat in categories:
-                    services = services.filter(categories=cat)
+                # for cat in categories:
+                #     services = services.filter(category=cat)
 
                 # Check services has all requested cities
                 city_ids = request.POST.getlist('city[]')
@@ -174,11 +174,17 @@ def city(request, city_name, template_name='cities/city.html'):
                     # Checking cities for services
                     city_ids = request.POST.getlist('city[]')
                     if city_ids:
+                        count = 0
                         for ci_id in city_ids:
                             if service.cities.filter(id = ci_id).exists():
-                                service_dict['searched'] = True
-                            else:
-                                service_dict['searched'] = False
+                                count = count+1
+
+                        if count == len(city_ids):
+                            service_dict['searched'] = True
+                        else:
+                            service_dict['searched'] = False
+
+
 
                     categories = request.POST.getlist('category[]')
 

@@ -70,8 +70,22 @@
     {% if profile.settings.is_provider %}
       {% for service in services %}
         <div class="service_{{ service.pk }} {% if service_id|floatformat != service.pk|floatformat %}disnone{% endif %}">
-          <h5 class="ui right floated header"><a class="ui red tag label">{{ service.get_currency_display }} {{ service.price }}</a></h5>
-          <h2 class="ui center aligned header" style="color: #555555;font-weight: 300;margin-top:0px;">{{ service.title }}</h2>
+          <table class="ui very basic unstackable table">
+            <tbody>
+              <tr>
+                <td><label class="ui blue label" style="margin-right:1rem;">{{ service.category }}</label> <span style="color: #555555;font-weight: 300;margin-top:0px;font-size: 1.25rem;">{{ service.title }}</span></td>
+                <!-- <td class="left aligned"></td> -->
+                <td class="right aligned"><div class="ui red tag label">{{ service.get_currency_display }} {{ service.price }}</div></td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  {% for city in service.cities.all %}
+                    <div class="ui green label">{{ city.name }}</div>
+                  {% endfor %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <p>{{ service.content|safe }}</p>
         </div>
       {% endfor %}

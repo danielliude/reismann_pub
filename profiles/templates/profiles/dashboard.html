@@ -108,11 +108,13 @@
 			<div class="column">
 				<div class="ui orange inverted segment" onclick='location.href="{% url 'profiles:followers' profile.user.username %}"'>
 					<div class="ui center aligned middle aligned grid">
-						<div class="seven wide column">
-							<h2>{{ number_followers }}+{{ number_following }}</h2>
-							<p>{% trans 'Follow' %}</p>
-						</div>
 						<div class="nine wide column">
+							<h2>{{ number_followers }} <span style="font-weight:100;">/</span> {{ number_following }}</h2>
+							<p>粉丝 / 关注</p>
+	<!-- 						<p>{% trans 'Followers' %} <span style="font-size:1.2rem;"><b>{{ number_followers }}</b></span></p> 
+							<p>{% trans 'Following' %} <span style="font-size:1.2rem;"><b>{{ number_following }}</b></span></p> -->
+						</div>
+						<div class="seven wide column">
 							<i class="add user huge icon"></i>
 						</div>
 					</div>

@@ -70,11 +70,25 @@ def city(request, city_name, template_name='cities/city.html'):
                         one_is_active = True
                 if not one_is_active: continue
 
-                # Check if at least one service of provider has requested category
-                cat = request.POST.get('category')
-                if cat:
-                    services = services.filter(category=cat)
-                if not services: continue
+                # Check services has all requested cities
+                categories = request.POST.getlist('category[]')
+                print(categories)
+                number_categories = len(categories)
+                print("Number of categories:")
+                print(number_categories)
+                number_of_services = 0
+                if number_categories < 4:
+                    for cat in categories:
+                        for service in user.service.all():
+                            print("serivce:")
+                            print(service.category.id)
+                            print(cat)
+                            if service.category.id == int(cat):
+                                number_of_services = number_of_services + 1
+                                break
+                print("Number of services:")
+                print(number_of_services)
+                if number_of_services != number_categories: continue
 
                 # Check services has all requested cities
                 city_ids = request.POST.getlist('city[]')
@@ -156,24 +170,18 @@ def city(request, city_name, template_name='cities/city.html'):
                             else:
                                 service_dict['searched'] = False
 
-                    cat = request.POST.getlist('category')
-                    if cat:
-                        if service.category.id == int(cat[0]):
-                            service_dict['searched'] = True
-                        else:
-                            service_dict['searched'] = False
+                    categories = request.POST.getlist('category[]')
+
+                    service_dict['searched'] = False
+
+                    if categories:
+                        for cat in categories:
+                            if service.category.id == int(cat):
+                                service_dict['searched'] = True
+                                break
 
                     services_dict[service.id] = service_dict
 
-
-                # Check if at least one found service is found
-                # forward = False
-                # for key in services_dict:
-                #     if services_dict[key]['searched'] == True:
-                #         forward = True
-                #         break
-                #
-                # if not forward: continue
 
                 user_dict['services'] = services_dict
                 user_dict['gender'] = user.profile.get_gender_display()
@@ -217,7 +225,7 @@ def city(request, city_name, template_name='cities/city.html'):
             user_dict['avatar_url'] = user.profile.get_avatar_url()
             user_dict['username'] = user.username
             user_dict['short_description'] = user.profile.short_description
-            user_dict['location'] = user.profile.location.name
+            if user.profile.location: user_dict['location'] = user.profile.location.name
 
             user_services = user.service.all()
 

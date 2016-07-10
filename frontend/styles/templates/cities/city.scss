@@ -54,68 +54,6 @@
   }
 }
 
-/*--------------
-    search_profile
----------------*/
-// .ui.grid.search_profile {
-//   padding-bottom: 40px;
-//   .profile_map {
-//     height: 300px;
-//     display: block;
-//     width: 100%;
-//     background-color: #242731;
-//     background-repeat: no-repeat;
-//     background-position: center center;
-//     background-size: cover;
-//     &:hover:before {
-//       content: '';
-//       position:absolute;
-//       top:0;
-//       left:0;
-//       width:100%;
-//       height:300px;
-//       background-color:rgba(0, 0, 0, 0.3)
-//     }
-//   }
-//   .ui.segment.padding {
-//     padding: 0px;
-//     .ui.header {
-//       font-size: 1em;
-//       margin-bottom: 0px;
-//     }
-//     .ui.segment {
-//       margin-top: 5px;
-//       padding-top: 0px;
-//       border: 0px;
-//       span {
-//         color: rgba(0, 0, 0, 0.6);
-//         margin: 0.5em 0em 0.5em;
-//         font-size: 0.9em;
-//       }
-//     }
-//     .average_price {
-//       position: absolute;
-//       right: 14px;
-//       top: -25px;
-//     }
-//     .content {
-//       margin-top: 10px;
-//     }
-//     .content p {
-//       color: rgba(0,0,0,.68);
-//       font-size: 1em;
-//     }
-//     .ui.tiny.image {
-//       width: 60px;
-//       padding: 2px;
-//       border: 2px;
-//       background-color: #fff;
-//       border-radius: 28px;
-//       margin-top: -33px;
-//       margin-left: 19px;
-//     }
-//   }
-// }
 
 #profile_content {
   margin-bottom: 0rem;
@@ -156,12 +94,10 @@
 
   .ui.image.image_avatar {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    padding: 2px;
-    border: 2px;
-    background-color: #fff;
-    margin-top: -29px;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #fff;
+    margin-top: -28px;
     img {
       height: 100%;
     }
@@ -170,11 +106,21 @@
   .profile_info {
     position: relative;
     top: 0px;
-    // height: 30px;
-    padding-left: 67px;
+    padding-left: 87px;
     line-height: 30px;
+    h4 {
+      margin-bottom:-4px;
+      padding-top:5px;
+    }
+    .profile_info_span {
+      display: inline-block;
+      margin: 0px !important;
+      width: 100%;
+      border-bottom: 1px solid grey;
+      line-height: 27px;
+    }
     .row {
-      margin-left: -66px;
+      margin-left: -80px;
     }
     .content p {
       color: rgba(0,0,0,.68);
@@ -255,17 +201,24 @@
     @include GT(S) {
       margin-top: 0px;
       width: 84px;
-      height: 100%;
+      height: 84px;
     }
   }
   .profile_info {
     @include GT(S) {
-      padding-left: 87px;
-      line-height: 25px;
+      padding-left: 90px;
+      padding-bottom: 2px;
+      line-height: 30px;
     }
     .row {
       @include GT(S) {
         margin-left: 0px;
+      }
+    }
+    .row.content {
+      @include GT(S) {
+        margin-left: -86px;
+        margin-top: 5px;
       }
     }
   }

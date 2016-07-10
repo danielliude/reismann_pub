@@ -31,6 +31,13 @@ SHA1_RE = re.compile('^[a-f0-9]{40}$')
 
 def get_anonymous_user_instance(User):
 
+    try:
+        user = User.objects.get(username__iexact = 'AnonymousGuardianUser')
+    except User.DoesNotExist:
+        user = None
+
+    if user: return user
+
     new_user = User.objects.create_user(username='AnonymousGuardianUser')
 
     profile = Profile.objects.create_profile(new_user)

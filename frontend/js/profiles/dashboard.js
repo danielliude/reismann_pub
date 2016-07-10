@@ -11,7 +11,10 @@ $(function() {
 		$('.ui.checkbox').checkbox()	
 
 		$('.checkbox_sort').parent('.checkbox').click(function(event) {
-			update_checkbox()
+			event.preventDefault()
+			setTimeout(function() {
+				update_checkbox()
+			}, 100)
 		});
 
 		$('.mark_read').click(function(event) {
@@ -56,14 +59,18 @@ $(function() {
 		$.post(window.location.pathname, temp, function(result){
 	    	$('.noti_segment table, .noti_segment .pagination').remove()
 	    	$('.notifications_list').after(result)
+	    	$('.noti_segment .ui.checkbox').checkbox()
         })
 	}
 
 	function get_select_checkbox(name) {
         var result = []
+        console.log('>>>>>>>init', result)
         $("[name='" + name + "']:checked").each(function() {
+        	console.log('>>>>>>>each', $(this))
             result.push($(this).val())
         })
+        console.log('>>>>>>>finish', result)
         return result
     }
 })

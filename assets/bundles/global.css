@@ -241,6 +241,10 @@ img {
 .ui.image.avatar {
   border-radius: 0px; }
 
+.background_img {
+  background-size: cover;
+  background-position: center; }
+
 /*--------------
     Masthead
 ---------------*/
@@ -316,3 +320,7 @@ img {
   @media only screen and (min-width: 760px) {
     .ui.menu.masthead .not_mobile_span {
       display: inline-block; } }
+
+@media only screen and (max-width: 759px) {
+  .disnone_mobile {
+    display: none; } }

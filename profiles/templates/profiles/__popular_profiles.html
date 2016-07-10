@@ -8,11 +8,11 @@
 	      	<a href="{% url 'profiles:profile' profile.user.username %}" class="profile_map" style="background-image: url('{{ profile.get_card_image_url }}');">
 	      	</a>
 			<div class="ui segment segment_profile">
-		      	<a href="{% url 'profiles:profile' profile.user.username %}" class="ui image image_avatar">
-			      <img  src="{{ profile.get_avatar_url }}" alt="User Avatar">
+		      	<a href="{% url 'profiles:profile' profile.user.username %}" class="ui image image_avatar background_img" style="background-image:url('{{ profile.get_avatar_url }}')">
 				</a>
 				<div class="profile_info">
-					<b>{{ profile.user.username }}</b> {{ profile.get_gender_display }}/{{ profile.age }} {{ profile.location.get_full_location }}
+					<h4>{{ profile.user.username }}</h4>
+					<span class="profile_info_span">{{ profile.get_gender_display }}/{{ profile.age }} {{ profile.location.get_full_location }}</span>
 					<div class="row">
 						<span>{{ profile.short_description }}</span>
 					</div>
@@ -27,10 +27,10 @@
 
 			<div class="more_profile_info">
 				<div class="ui segment">
-					<h4 class="ui header">
+					<h3 class="ui header">
 						{{ profile.user.username }}
-					</h4>
-					<div class="more_profile_info_remove"><i class="icon link remove"></i></div>
+					</h3>
+					<div class="more_profile_info_remove"><i class="icon large grey link remove"></i></div>
 					{{ profile.bio | safe }}
 				</div>
 			</div>

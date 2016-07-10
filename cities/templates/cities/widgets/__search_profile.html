@@ -4,11 +4,11 @@
             <a href="{{ result.profile_url }}" class="profile_map" style="background-image: url('{{ result.card_image_url }}');">
             </a>
             <div class="ui segment segment_profile">
-                <a href="{{ result.profile_url }}" class="ui image image_avatar">
-                  <img  src="{{ result.avatar_url }}" alt="User Avatar">
+                <a href="{{ result.profile_url }}" class="ui image image_avatar background_img" style="background-image:url('{{ result.avatar_url }}')">
                 </a>
                 <div class="profile_info">
-                    <b>{{ result.username }}</b> {{ result.profile.get_gender_display }}/{{ result.profile.age }} {{ result.profile.location.get_full_location }}
+                    <h4>{{ result.username }}</h4> 
+                    <span class="profile_info_span">{{ result.profile.get_gender_display }}/{{ result.profile.age }} {{ result.profile.location.get_full_location }}</span>
                     <div class="row">
                         <span>{{ result.short_description }}</span>
                     </div>
@@ -31,10 +31,10 @@
 
             <div class="more_profile_info">
                 <div class="ui segment">
-                    <h4 class="ui header">
+                    <h3 class="ui header">
                         {{ result.username }}
-                    </h4>
-                    <div class="more_profile_info_remove"><i class="icon link remove"></i></div>
+                    </h3>
+                    <div class="more_profile_info_remove"><i class="icon large grey link remove"></i></div>
                     {{ result.profile.bio | safe }}
                 </div>
             </div>

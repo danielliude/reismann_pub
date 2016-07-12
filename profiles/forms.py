@@ -87,7 +87,7 @@ class ProfileFormCustomer(forms.ModelForm):
                                 widget=forms.TextInput(attrs={'placeholder': _('Last name')}), required=False)
     gender = forms.ChoiceField(label=_('Gender'),
                                widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                               choices=GENDER_CHOICES, required=False)
+                               choices=GENDER_CHOICES, required=True)
 
     class Meta:
         model = Profile
@@ -164,7 +164,7 @@ class ProfileForm(forms.ModelForm):
                               widget=forms.TextInput(attrs={'placeholder': _('Last name')}), required = False)
   gender = forms.ChoiceField(label=_('Gender'),
                              widget=forms.Select(attrs={'class': 'ui fluid search dropdown'}),
-                             choices=GENDER_CHOICES, required = False)
+                             choices=GENDER_CHOICES, required = True)
 
   languages = forms.ModelMultipleChoiceField(label=_('Languages'),
                                              widget=forms.SelectMultiple(attrs={

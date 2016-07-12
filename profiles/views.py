@@ -351,6 +351,17 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
   user_initial = {'first_name': user.first_name,
                   'last_name': user.last_name}
 
+  if not extra_context: extra_context = dict()
+  more_form = None
+  if profile.settings.is_provider:
+      form = profile_form(instance=profile, initial=user_initial)
+      more_profile, created = ProfileMore.objects.get_or_create(user=user)
+      more_form = ProfileMoreForm(instance=more_profile)
+      extra_context['more_form'] = more_form
+      extra_context['show_more_form'] = True
+  else:
+      form = ProfileFormCustomer(instance = profile, initial=user_initial)
+      extra_context['show_more_form'] = False
 
   if request.POST:
     print('>>>>>>>>>>>>>>>>>>>post', request.POST)
@@ -371,18 +382,7 @@ def detail(request, username, profile_form=ProfileForm, contact_form=ContactForm
         else:
             redirect_to = reverse('profiles:dashboard', kwargs={'username': username})
         return redirect(redirect_to)
-  if not extra_context: extra_context = dict()
-  more_form = None
-  if profile.settings.is_provider:
-      form = profile_form(instance=profile, initial=user_initial)
-      more_profile, created = ProfileMore.objects.get_or_create(user=user)
-      more_form = ProfileMoreForm(instance=more_profile)
-      extra_context['more_form'] = more_form
-      extra_context['show_more_form'] = True
-  else:
-      form = ProfileFormCustomer(instance = profile, initial=user_initial)
-      extra_context['show_more_form'] = False
-
+  
   contactForm = contact_form(instance = contact)
 
   extra_context['form'] = form

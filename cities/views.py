@@ -75,18 +75,17 @@ def city(request, city_name, template_name='cities/city.html'):
                 number_categories = len(categories)
 
                 if categories:
-                    if categories[0]== "": break
+                    if categories[0]!= "":
+                        if number_categories < 4:
+                            prel_result = Service.objects.none()
+                            for cat in categories:
+                                filtered_services = services.filter(category=cat)
+                                prel_result = prel_result | filtered_services
 
-                    if number_categories < 4:
-                        prel_result = Service.objects.none()
-                        for cat in categories:
-                            filtered_services = services.filter(category=cat)
-                            prel_result = prel_result | filtered_services
+                        services = prel_result
 
-                    services = prel_result
-
-                    if not services: continue
-                    if number_categories!= len(services): continue
+                        if not services: continue
+                        if number_categories!= len(services): continue
 
 
                 # Check services has all requested cities
@@ -94,7 +93,6 @@ def city(request, city_name, template_name='cities/city.html'):
                 if city_ids:
                     for ci_id in city_ids:
                         services = services.filter(cities=ci_id)
-                        print(services)
 
                 if not services: continue
 
@@ -188,10 +186,11 @@ def city(request, city_name, template_name='cities/city.html'):
                     service_dict['searched'] = False
 
                     if categories:
-                        for cat in categories:
-                            if service.category.id == int(cat):
-                                service_dict['searched'] = True
-                                break
+                        if categories[0] != "":
+                            for cat in categories:
+                                if service.category.id == int(cat):
+                                    service_dict['searched'] = True
+                                    break
 
                     services_dict[service.id] = service_dict
 

@@ -78,14 +78,19 @@ def city(request, city_name, template_name='cities/city.html'):
                     if categories[0]!= "":
                         if number_categories < 4:
                             prel_result = Service.objects.none()
-                            for cat in categories:
-                                filtered_services = services.filter(category=cat)
+
+                            count = 0
+                            for cat_id in categories:
+                                filtered_services = services.filter(category=cat_id)
+                                if filtered_services:
+                                    count = count + 1
                                 prel_result = prel_result | filtered_services
+                        else:
+                            continue
 
                         services = prel_result
-
                         if not services: continue
-                        if number_categories!= len(services): continue
+                        if number_categories != count: continue
 
 
                 # Check services has all requested cities

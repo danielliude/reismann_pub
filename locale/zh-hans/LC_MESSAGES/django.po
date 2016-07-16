@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-06 20:31+0800\n"
+"POT-Creation-Date: 2016-07-16 21:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,7 +95,7 @@ msgstr ""
 msgid "You're already known under this email."
 msgstr ""
 
-#: .\accounts\managers.py:182
+#: .\accounts\managers.py:189
 #, python-format
 msgid "No profile found for %(username)s"
 msgstr ""
@@ -480,18 +480,17 @@ msgstr ""
 msgid "service"
 msgstr ""
 
-#: .\bookings\forms.py:20 .\bookings\templates\bookings\__booking_list.html:8
-#: .\bookings\templates\bookings\__booking_one.html:114
+#: .\bookings\forms.py:20 .\bookings\templates\bookings\__booking_list.html:12
 #: .\profiles\templates\profiles\dashboard.html:100 .\services\models.py:63
 #: .\services\templates\services\__service_one_own.html:4
 msgid "Service"
 msgstr ""
 
-#: .\bookings\forms.py:24 .\bookings\templates\bookings\__booking_one.html:126
+#: .\bookings\forms.py:24
 msgid "Start time"
 msgstr ""
 
-#: .\bookings\forms.py:30 .\bookings\templates\bookings\__booking_one.html:130
+#: .\bookings\forms.py:30
 msgid "End time"
 msgstr ""
 
@@ -504,9 +503,8 @@ msgstr ""
 msgid "Price type"
 msgstr ""
 
-#: .\bookings\forms.py:45 .\bookings\templates\bookings\__booking_list.html:11
-#: .\bookings\templates\bookings\__booking_one.html:134 .\services\forms.py:40
-#: .\services\templates\services\__service_list.html:11
+#: .\bookings\forms.py:45 .\bookings\templates\bookings\__booking_list.html:15
+#: .\services\forms.py:40 .\services\templates\services\__service_list.html:11
 msgid "Price"
 msgstr ""
 
@@ -514,7 +512,7 @@ msgstr ""
 msgid "negotiation price"
 msgstr ""
 
-#: .\bookings\forms.py:54 .\bookings\templates\bookings\__booking_one.html:176
+#: .\bookings\forms.py:54
 msgid "Meeting point"
 msgstr ""
 
@@ -526,7 +524,7 @@ msgstr ""
 msgid "booking content"
 msgstr ""
 
-#: .\bookings\forms.py:63 .\bookings\templates\bookings\__booking_one.html:180
+#: .\bookings\forms.py:63
 msgid "Booking content"
 msgstr ""
 
@@ -534,7 +532,7 @@ msgstr ""
 msgid "booking remark"
 msgstr ""
 
-#: .\bookings\forms.py:71 .\bookings\templates\bookings\__booking_one.html:184
+#: .\bookings\forms.py:71
 msgid "Booking remark"
 msgstr ""
 
@@ -618,8 +616,8 @@ msgstr ""
 
 #: .\bookings\templates\bookings\__booking_form.html:61
 #: .\contacts\templates\contacts\__contact_form.html:51
-#: .\profiles\templates\profiles\__more_profile_form.html:160
-#: .\profiles\templates\profiles\__profile_form.html:160
+#: .\profiles\templates\profiles\__more_profile_form.html:159
+#: .\profiles\templates\profiles\__profile_form.html:159
 #: .\profiles\templates\profiles\__settings_form.html:38
 #: .\profiles\templates\profiles\__verification_form.html:70
 #: .\services\templates\services\__service_form.html:50
@@ -629,8 +627,8 @@ msgstr ""
 #: .\bookings\templates\bookings\__booking_form.html:62
 #: .\contacts\templates\contacts\__contact_form.html:52
 #: .\insite_messages\templates\insite_messages\__message_form.html:25
-#: .\profiles\templates\profiles\__more_profile_form.html:161
-#: .\profiles\templates\profiles\__profile_form.html:161
+#: .\profiles\templates\profiles\__more_profile_form.html:160
+#: .\profiles\templates\profiles\__profile_form.html:160
 #: .\profiles\templates\profiles\__settings_form.html:39
 #: .\profiles\templates\profiles\__verification_form.html:71
 #: .\services\templates\services\__service_form.html:51
@@ -645,107 +643,113 @@ msgstr ""
 msgid "Edit booking"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:6
+#: .\bookings\templates\bookings\__booking_list.html:7
 #: .\profiles\templates\profiles\dashboard.html:69
 msgid "Customer"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:7
+#: .\bookings\templates\bookings\__booking_list.html:10
 #: .\profiles\templates\profiles\dashboard.html:67
 msgid "Provider"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:9
+#: .\bookings\templates\bookings\__booking_list.html:13
 msgid "Start date"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:10
+#: .\bookings\templates\bookings\__booking_list.html:14
 msgid "End date"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:12
+#: .\bookings\templates\bookings\__booking_list.html:16
 #: .\insite_messages\templates\insite_messages\__message_list.html:10
 msgid "Status"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:13
+#: .\bookings\templates\bookings\__booking_list.html:17
 msgid "Rating"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:14
+#: .\bookings\templates\bookings\__booking_list.html:18
 #: .\insite_messages\templates\insite_messages\__message_list.html:11
 msgid "View"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:25
-#: .\bookings\templates\bookings\__booking_list.html:46
+#: .\bookings\templates\bookings\__booking_list.html:30
+#: .\bookings\templates\bookings\__booking_list.html:53
 #: .\insite_messages\templates\insite_messages\__message_list.html:22
 #: .\insite_messages\templates\insite_messages\__message_list.html:46
 msgid "Me"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:73
+#: .\bookings\templates\bookings\__booking_list.html:82
 msgid "User should reply"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:75
+#: .\bookings\templates\bookings\__booking_list.html:84
 msgid "Customer should reply"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:79
+#: .\bookings\templates\bookings\__booking_list.html:88
 msgid "You should reply"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:81
+#: .\bookings\templates\bookings\__booking_list.html:90
 msgid "Provider should reply"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:84 .\core\constants.py:49
+#: .\bookings\templates\bookings\__booking_list.html:93 .\core\constants.py:49
 msgid "Rejected by customer"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:86
+#: .\bookings\templates\bookings\__booking_list.html:95
 msgid "Rejected provider"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:88 .\core\constants.py:51
+#: .\bookings\templates\bookings\__booking_list.html:97 .\core\constants.py:51
 msgid "Approved by customer"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:90 .\core\constants.py:52
+#: .\bookings\templates\bookings\__booking_list.html:99 .\core\constants.py:52
 msgid "Approved by provider"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:92
+#: .\bookings\templates\bookings\__booking_list.html:101
 #: .\bookings\templates\bookings\__booking_one.html:56
-#: .\bookings\templates\bookings\__booking_one.html:166
 msgid "Removed by customer"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:94
+#: .\bookings\templates\bookings\__booking_list.html:103
 #: .\bookings\templates\bookings\__booking_one.html:58
-#: .\bookings\templates\bookings\__booking_one.html:168
 msgid "Removed by provider"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:96
-#: .\bookings\templates\bookings\__booking_one.html:60
-#: .\bookings\templates\bookings\__booking_one.html:170 .\core\constants.py:55
+#: .\bookings\templates\bookings\__booking_list.html:105
+#: .\bookings\templates\bookings\__booking_one.html:60 .\core\constants.py:55
 msgid "Canceled by customer"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:98
-#: .\bookings\templates\bookings\__booking_one.html:62
-#: .\bookings\templates\bookings\__booking_one.html:172 .\core\constants.py:56
+#: .\bookings\templates\bookings\__booking_list.html:107
+#: .\bookings\templates\bookings\__booking_one.html:62 .\core\constants.py:56
 msgid "Canceled by provider"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:104
+#: .\bookings\templates\bookings\__booking_list.html:112
+#: .\bookings\templates\bookings\__booking_list.html:117
+msgid "My Rating"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:114
+#: .\bookings\templates\bookings\__booking_list.html:119
+msgid "Received Rating"
+msgstr ""
+
+#: .\bookings\templates\bookings\__booking_list.html:125
 #: .\insite_messages\templates\insite_messages\__message_list.html:77
 msgid "view"
 msgstr ""
 
-#: .\bookings\templates\bookings\__booking_list.html:112
+#: .\bookings\templates\bookings\__booking_list.html:133
 #: .\services\templates\services\__service_list.html:52
 #: .\services\templates\services\__service_list.html:56
 msgid "add"
@@ -786,22 +790,16 @@ msgstr ""
 
 #: .\bookings\templates\bookings\__booking_one.html:44
 #: .\bookings\templates\bookings\__booking_one.html:46
-#: .\bookings\templates\bookings\__booking_one.html:154
-#: .\bookings\templates\bookings\__booking_one.html:156
 msgid "Negotiation"
 msgstr ""
 
 #: .\bookings\templates\bookings\__booking_one.html:48
 #: .\bookings\templates\bookings\__booking_one.html:50
-#: .\bookings\templates\bookings\__booking_one.html:158
-#: .\bookings\templates\bookings\__booking_one.html:160
 msgid "Rejected"
 msgstr ""
 
 #: .\bookings\templates\bookings\__booking_one.html:52
-#: .\bookings\templates\bookings\__booking_one.html:54
-#: .\bookings\templates\bookings\__booking_one.html:162
-#: .\bookings\templates\bookings\__booking_one.html:164 .\core\constants.py:77
+#: .\bookings\templates\bookings\__booking_one.html:54 .\core\constants.py:77
 #: .\profiles\templates\profiles\__verification_form.html:23
 msgid "Approved"
 msgstr ""
@@ -818,10 +816,6 @@ msgstr ""
 #: .\bookings\templates\bookings\__booking_one.html:89
 #: .\bookings\templates\bookings\__booking_one.html:96
 #: .\bookings\templates\bookings\__booking_one.html:103
-#: .\bookings\templates\bookings\__booking_one.html:190
-#: .\bookings\templates\bookings\__booking_one.html:197
-#: .\bookings\templates\bookings\__booking_one.html:204
-#: .\bookings\templates\bookings\__booking_one.html:211
 #: .\services\templates\services\__service_one_own.html:62
 msgid "edit"
 msgstr ""
@@ -830,10 +824,6 @@ msgstr ""
 #: .\bookings\templates\bookings\__booking_one.html:90
 #: .\bookings\templates\bookings\__booking_one.html:97
 #: .\bookings\templates\bookings\__booking_one.html:104
-#: .\bookings\templates\bookings\__booking_one.html:191
-#: .\bookings\templates\bookings\__booking_one.html:198
-#: .\bookings\templates\bookings\__booking_one.html:205
-#: .\bookings\templates\bookings\__booking_one.html:212
 msgid "approve"
 msgstr ""
 
@@ -841,10 +831,6 @@ msgstr ""
 #: .\bookings\templates\bookings\__booking_one.html:91
 #: .\bookings\templates\bookings\__booking_one.html:98
 #: .\bookings\templates\bookings\__booking_one.html:105
-#: .\bookings\templates\bookings\__booking_one.html:192
-#: .\bookings\templates\bookings\__booking_one.html:199
-#: .\bookings\templates\bookings\__booking_one.html:206
-#: .\bookings\templates\bookings\__booking_one.html:213
 msgid "reject"
 msgstr ""
 
@@ -852,54 +838,13 @@ msgstr ""
 #: .\bookings\templates\bookings\__booking_one.html:92
 #: .\bookings\templates\bookings\__booking_one.html:99
 #: .\bookings\templates\bookings\__booking_one.html:106
-#: .\bookings\templates\bookings\__booking_one.html:193
-#: .\bookings\templates\bookings\__booking_one.html:200
-#: .\bookings\templates\bookings\__booking_one.html:207
-#: .\bookings\templates\bookings\__booking_one.html:214
 msgid "cancel"
 msgstr ""
 
 #: .\bookings\templates\bookings\__booking_one.html:87
 #: .\bookings\templates\bookings\__booking_one.html:101
-#: .\bookings\templates\bookings\__booking_one.html:195
-#: .\bookings\templates\bookings\__booking_one.html:209
-#: .\profiles\templates\profiles\dashboard.html:152
+#: .\profiles\templates\profiles\dashboard.html:154
 msgid "delete"
-msgstr ""
-
-#: .\bookings\templates\bookings\__booking_one.html:118
-#: .\insite_messages\templates\insite_messages\__message_list.html:6
-msgid "Sender"
-msgstr ""
-
-#: .\bookings\templates\bookings\__booking_one.html:122
-#: .\insite_messages\forms.py:15
-#: .\insite_messages\templates\insite_messages\__message_list.html:7
-msgid "Recipient"
-msgstr ""
-
-#: .\bookings\templates\bookings\__booking_one.html:136 .\core\constants.py:42
-msgid "€"
-msgstr ""
-
-#: .\bookings\templates\bookings\__booking_one.html:138 .\core\constants.py:43
-msgid "¥"
-msgstr ""
-
-#: .\bookings\templates\bookings\__booking_one.html:142 .\core\constants.py:36
-msgid "day"
-msgstr ""
-
-#: .\bookings\templates\bookings\__booking_one.html:144 .\core\constants.py:37
-msgid "hour"
-msgstr ""
-
-#: .\bookings\templates\bookings\__booking_one.html:148
-msgid "No. of customers"
-msgstr ""
-
-#: .\bookings\templates\bookings\__booking_one.html:152
-msgid "Booking status"
 msgstr ""
 
 #: .\bookings\templates\bookings\bookings.html:16
@@ -1076,7 +1021,7 @@ msgstr ""
 #: .\cities\models.py:14 .\cities\models.py:33 .\cities\models.py:61
 #: .\configurations\models.py:24 .\configurations\models.py:48
 #: .\configurations\models.py:71 .\services\models.py:56
-#: .\services\models.py:104
+#: .\services\models.py:123
 msgid "created at"
 msgstr ""
 
@@ -1180,19 +1125,19 @@ msgid "Service category"
 msgstr ""
 
 #: .\cities\templates\cities\city.html:33
-msgid "Service people"
+msgid "Provider details"
 msgstr ""
 
 #: .\cities\templates\cities\city.html:110
 msgid "Service cities"
 msgstr ""
 
-#: .\cities\templates\cities\city.html:121 .\configurations\models.py:79
-msgid "Service languages"
+#: .\cities\templates\cities\city.html:121
+msgid "Provider languages"
 msgstr ""
 
-#: .\cities\templates\cities\city.html:128 .\configurations\models.py:56
-msgid "Service tags"
+#: .\cities\templates\cities\city.html:128
+msgid "Provider tags"
 msgstr ""
 
 #: .\cities\templates\cities\city.html:139
@@ -1248,6 +1193,10 @@ msgstr ""
 msgid "Service tag"
 msgstr ""
 
+#: .\configurations\models.py:56
+msgid "Service tags"
+msgstr ""
+
 #: .\configurations\models.py:66
 msgid "service language name"
 msgstr ""
@@ -1262,6 +1211,10 @@ msgstr ""
 
 #: .\configurations\models.py:78
 msgid "Service language"
+msgstr ""
+
+#: .\configurations\models.py:79
+msgid "Service languages"
 msgstr ""
 
 #: .\configurations\models.py:89
@@ -1468,8 +1421,24 @@ msgstr ""
 msgid "Full time"
 msgstr ""
 
+#: .\core\constants.py:36
+msgid "day"
+msgstr ""
+
+#: .\core\constants.py:37
+msgid "hour"
+msgstr ""
+
 #: .\core\constants.py:38
 msgid "time"
+msgstr ""
+
+#: .\core\constants.py:42
+msgid "€"
+msgstr ""
+
+#: .\core\constants.py:43
+msgid "¥"
 msgstr ""
 
 #: .\core\constants.py:47
@@ -2871,6 +2840,10 @@ msgstr ""
 msgid "book your individual travel services"
 msgstr ""
 
+#: .\core\templates\core\__index_banner.html:30
+msgid "further search"
+msgstr "更多搜索"
+
 #: .\core\templates\core\__index_banner.html:34
 #: .\profiles\templates\profiles\profile.html:24
 msgid "search"
@@ -2878,11 +2851,11 @@ msgstr ""
 
 #: .\core\templates\core\footer\__footer.html:6
 msgid "About us"
-msgstr ""
+msgstr "关于我"
 
 #: .\core\templates\core\footer\__footer.html:7
 msgid "Terms of services"
-msgstr ""
+msgstr "服务条款"
 
 #: .\core\templates\core\footer\__footer.html:8
 msgid "Help"
@@ -2890,7 +2863,7 @@ msgstr ""
 
 #: .\core\templates\core\footer\__footer.html:9
 msgid "Photo copyright"
-msgstr ""
+msgstr "照片"
 
 #: .\core\templates\core\footer\__footer.html:12
 msgid "Copyright © 2016 frelanvo LLC. All rights reserved"
@@ -2930,6 +2903,10 @@ msgstr ""
 msgid "register"
 msgstr ""
 
+#: .\core\templates\core\index.html:25
+msgid "Top"
+msgstr ""
+
 #: .\followship\models.py:108
 msgid "follower"
 msgstr ""
@@ -2938,7 +2915,7 @@ msgstr ""
 msgid "followee"
 msgstr ""
 
-#: .\followship\models.py:119 .\profiles\templates\profiles\dashboard.html:113
+#: .\followship\models.py:119
 msgid "Follow"
 msgstr ""
 
@@ -2976,6 +2953,7 @@ msgstr ""
 
 #: .\followship\templates\followship\followers.html:15
 #: .\followship\templates\followship\followship.html:16
+#: .\profiles\templates\profiles\dashboard.html:114
 msgid "Followers"
 msgstr ""
 
@@ -2986,6 +2964,11 @@ msgstr ""
 
 #: .\insite_messages\forms.py:14
 msgid "recipient"
+msgstr ""
+
+#: .\insite_messages\forms.py:15
+#: .\insite_messages\templates\insite_messages\__message_list.html:7
+msgid "Recipient"
 msgstr ""
 
 #: .\insite_messages\forms.py:19
@@ -3044,12 +3027,16 @@ msgstr ""
 
 #: .\insite_messages\models.py:71
 #: .\profiles\templates\profiles\__sidebar.html:50
-#: .\profiles\templates\profiles\dashboard.html:126
+#: .\profiles\templates\profiles\dashboard.html:128
 msgid "Messages"
 msgstr ""
 
 #: .\insite_messages\templates\insite_messages\__message_form.html:24
 msgid "Send message  "
+msgstr ""
+
+#: .\insite_messages\templates\insite_messages\__message_list.html:6
+msgid "Sender"
 msgstr ""
 
 #: .\insite_messages\templates\insite_messages\__message_list.html:9
@@ -3235,31 +3222,31 @@ msgid "body form"
 msgstr ""
 
 #: .\profiles\forms.py:347
-msgid "The most cheerful thing for me"
+msgid "The most cheerful thing for me (limit 50 words)"
 msgstr ""
 
 #: .\profiles\forms.py:348
-msgid "The thing I am good at"
+msgid "The thing I am good at (limit 50 words)"
 msgstr ""
 
 #: .\profiles\forms.py:349
-msgid "3 words which friends uses to describe me"
+msgid "3 words which friends uses to describe me (limit 50 words)"
 msgstr ""
 
 #: .\profiles\forms.py:350
-msgid "5 things I must have by my side"
+msgid "5 things I must have by my side (limit 50 words)"
 msgstr ""
 
 #: .\profiles\forms.py:351
-msgid "Favourite books, movies and foods"
+msgid "Favourite books, movies and foods (limit 50 words)"
 msgstr ""
 
 #: .\profiles\forms.py:352
-msgid "Most crazy thing I have done"
+msgid "Most crazy thing I have done (limit 50 words)"
 msgstr ""
 
 #: .\profiles\forms.py:353
-msgid "What I normally do on weekend"
+msgid "What I normally do on weekend (limit 50 words)"
 msgstr ""
 
 #: .\profiles\models.py:25
@@ -3418,15 +3405,15 @@ msgstr ""
 msgid "normal do weekend"
 msgstr ""
 
-#: .\profiles\models.py:205
+#: .\profiles\models.py:207
 msgid "more profile"
 msgstr ""
 
-#: .\profiles\models.py:206
+#: .\profiles\models.py:208
 msgid "more profiles"
 msgstr ""
 
-#: .\profiles\models.py:209
+#: .\profiles\models.py:211
 #, python-format
 msgid "More profile for %(username)s"
 msgstr ""
@@ -3481,15 +3468,15 @@ msgstr ""
 msgid "inform"
 msgstr ""
 
-#: .\profiles\templates\profiles\__profile_form.html:95
+#: .\profiles\templates\profiles\__profile_form.html:94
 msgid "Change Avatar"
 msgstr ""
 
-#: .\profiles\templates\profiles\__profile_form.html:104
+#: .\profiles\templates\profiles\__profile_form.html:103
 msgid "Change Card Image"
 msgstr ""
 
-#: .\profiles\templates\profiles\__profile_form.html:109
+#: .\profiles\templates\profiles\__profile_form.html:108
 msgid "Select one image from your photo center"
 msgstr ""
 
@@ -3652,15 +3639,19 @@ msgstr ""
 msgid "homepage"
 msgstr ""
 
-#: .\profiles\templates\profiles\dashboard.html:137
+#: .\profiles\templates\profiles\dashboard.html:115
+msgid "Following"
+msgstr ""
+
+#: .\profiles\templates\profiles\dashboard.html:139
 msgid "Notifications:"
 msgstr ""
 
-#: .\profiles\templates\profiles\dashboard.html:138
+#: .\profiles\templates\profiles\dashboard.html:140
 msgid "show"
 msgstr ""
 
-#: .\profiles\templates\profiles\dashboard.html:151
+#: .\profiles\templates\profiles\dashboard.html:153
 msgid "mark read"
 msgstr ""
 
@@ -3867,19 +3858,19 @@ msgstr ""
 msgid " with price "
 msgstr ""
 
-#: .\services\models.py:96
+#: .\services\models.py:115
 msgid "rating service"
 msgstr ""
 
-#: .\services\models.py:98
+#: .\services\models.py:117
 msgid "rating user"
 msgstr ""
 
-#: .\services\models.py:100
+#: .\services\models.py:119
 msgid "rating value"
 msgstr ""
 
-#: .\services\models.py:102
+#: .\services\models.py:121
 msgid "rating comment"
 msgstr ""
 

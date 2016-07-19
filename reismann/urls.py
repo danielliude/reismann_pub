@@ -23,9 +23,9 @@ import notifications.urls
 
 from core import views
 
-js_info_dict = {
-    'packages': ('cities'),
-}
+# js_info_dict = {
+#     'packages': ('cities'),
+# }
 
 urlpatterns = patterns('',
   url(r'^$', views.index, name="index"),  
@@ -45,7 +45,7 @@ urlpatterns = patterns('',
   url('^inbox/notifications/', include(notifications.urls, namespace='notifications')),
 
   url(r'^i18n/', include('django.conf.urls.i18n')),
-  url(r'^jsi18n/$', javascript_catalog, js_info_dict),
+  # url(r'^jsi18n/$', javascript_catalog, js_info_dict),
 )
 
 urlpatterns += staticfiles_urlpatterns()

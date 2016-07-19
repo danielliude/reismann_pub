@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-19 21:56+0800\n"
+"POT-Creation-Date: 2016-07-19 22:21+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1072,7 +1072,7 @@ msgstr "所有语言"
 msgid "All tags"
 msgstr "所有其他选项"
 
-#: .\cities\forms.py:52
+#: .\cities\forms.py:52 .\core\templates\core\__index_banner.html:26
 msgid "Select city..."
 msgstr "选择城市..."
 
@@ -1197,6 +1197,23 @@ msgstr "服务类型"
 #: .\cities\templates\cities\city.html:33
 msgid "Provider details"
 msgstr "服务商信息"
+
+#: .\cities\templates\cities\city.html:43
+#, fuzzy
+#| msgid "Image"
+msgid "min age"
+msgstr "照片"
+
+#: .\cities\templates\cities\city.html:44
+#: .\cities\templates\cities\city.html:79 .\core\constants.py:10
+msgid "irrelevant"
+msgstr "无所谓"
+
+#: .\cities\templates\cities\city.html:77
+#, fuzzy
+#| msgid "Image"
+msgid "max age"
+msgstr "照片"
 
 #: .\cities\templates\cities\city.html:110
 msgid "Service cities"
@@ -1422,10 +1439,6 @@ msgstr "重要信息"
 #: .\core\constants.py:9 .\profiles\models.py:40
 msgid "gender"
 msgstr "性别"
-
-#: .\core\constants.py:10
-msgid "irrelevant"
-msgstr "无所谓"
 
 #: .\core\constants.py:11
 msgid "Male"

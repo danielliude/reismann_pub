@@ -9,7 +9,7 @@ var message_badge_id='live_message_badge';
 var notify_message_url = '/profiles/{{ user.username }}/unread_messages/';
 var notify_notification_url = '/profiles/{{ user.username }}/unread_notifications/'
 var notify_fetch_count='5';
-var notify_refresh_period=15000;
+var notify_refresh_period=150000;
 var consecutive_misfires = 0;
 var registered_functions = [];
 var registered_functions1 = [];
@@ -36,10 +36,10 @@ function fill_notification_list(data) {
         var item = data.unread_list[i];
         var avatar_url = "/profiles/{{ user.username }}/notifications/avatar/" + item.actor + "/"
         html += '<a href="' + item.url + '" class="item unread_notification">' + 
-                  '<img class="ui avatar image" style="width: 2em;" src="'+avatar_url+'">' +
-                  '<span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">' + item.actor + '</span>' +
+                  '<img class="ui avatar image" style="width: 2.5em;height:2.5em;max-height:2.5em;" src="'+avatar_url+'">' +
+                  '<span class="sender" style="position:absolute;left:57px;top:10px;font-weight:bold;">' + item.actor + '</span>' +
                   '<small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>' +  get_date(item.timestamp) + '</small>' +
-                  '<span class="subject" style="position:absolute;left:53px;top:25px;">' + item.verb + '</span>' +
+                  '<span class="subject" style="position:absolute;left:57px;top:30px;">' + item.verb + '</span>' +
                 '</a>' +
                 '<div class="divider unread_notification"></div>'
     }
@@ -55,10 +55,10 @@ function fill_message_list(data) {
         var item = data.unread_list[i];
         var avatar_url = "/profiles/{{ user.username }}/notifications/avatar/" + item.actor + "/"
         html += '<a href="' + item.url + '" class="item unread_message">' + 
-                  '<img class="ui avatar image" style="width: 2em;" src="'+avatar_url+'">' +
-                  '<span class="sender" style="position:absolute;left:53px;top:5px;font-weight:bold;">' + item.actor + '</span>' +
+                  '<img class="ui avatar image" style="width: 2.5em;height:2.5em;max-height:2.5em;" src="'+avatar_url+'">' +
+                  '<span class="sender" style="position:absolute;left:57px;top:10px;font-weight:bold;">' + item.actor + '</span>' +
                   '<small class="minutes_past" style="position:absolute;right:15px;"><i class="history icon"></i>' +  get_date(item.timestamp) + '</small>' +
-                  '<span class="subject" style="position:absolute;left:53px;top:25px;">' + item.verb + '</span>' +
+                  '<span class="subject" style="position:absolute;left:57px;top:30px;">' + item.verb + '</span>' +
                 '</a>' +
                 '<div class="divider unread_message"></div>'
     }

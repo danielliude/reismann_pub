@@ -42,7 +42,7 @@ class RegistrationForm(forms.Form):
                                                          label=_("Repeat password"))
 
   tos = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'required'}),
-                           label= mark_safe('I have read and agree to the <a target="_blank" href="/about/service_term/">terms of service</a>'),
+                           label= mark_safe(_('I have read and agree to the <a target="_blank" href="/about/service_term/">terms of service</a>')),
                            error_messages={'required': _('You must agree to the terms to register.')})
 
   def clean_email(self):

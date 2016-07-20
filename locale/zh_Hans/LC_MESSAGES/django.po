@@ -8,14 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-19 22:21+0800\n"
+"POT-Creation-Date: 2016-07-20 11:38+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: .\accounts\forms.py:29 .\accounts\forms.py:30
@@ -29,7 +28,7 @@ msgstr "用户名只能由以下组成：汉字、字母、数字、下划线(_)
 #: .\accounts\forms.py:33 .\accounts\forms.py:34
 #: .\contacts\templates\contacts\__contact_box.html:18
 msgid "Email"
-msgstr "Email"
+msgstr "电子邮件"
 
 #: .\accounts\forms.py:36 .\accounts\forms.py:92 .\accounts\forms.py:93
 #: .\accounts\forms.py:113
@@ -43,6 +42,14 @@ msgstr "设置密码"
 #: .\accounts\forms.py:40 .\accounts\forms.py:42
 msgid "Repeat password"
 msgstr "重复密码"
+
+#: .\accounts\forms.py:45
+msgid ""
+"I have read and agree to the <a target=\"_blank\" href=\"/about/service_term/"
+"\">terms of service</a>"
+msgstr ""
+"我已阅读并同意该 <a target=\"_blank\" href=\"/about/service_term/\">服务条款"
+" </a>"
 
 #: .\accounts\forms.py:46
 msgid "You must agree to the terms to register."
@@ -288,10 +295,8 @@ msgstr ""
 #: .\accounts\templates\accounts\login.html:17
 #: .\accounts\templates\accounts\register.html:17
 #: .\core\templates\core\header\__header.html:4
-#, fuzzy
-#| msgid "islan"
 msgid "Reismann"
-msgstr "伊斯兰教"
+msgstr ""
 
 #: .\accounts\templates\accounts\login.html:20
 msgid "Sign in to start your session"
@@ -305,7 +310,7 @@ msgstr "登录"
 #: .\accounts\templates\accounts\login.html:51
 #: .\accounts\templates\accounts\register.html:29
 msgid "- OR -"
-msgstr "或者"
+msgstr "-或者-"
 
 #: .\accounts\templates\accounts\login.html:53
 #: .\accounts\templates\accounts\register.html:31
@@ -1201,10 +1206,8 @@ msgid "Provider details"
 msgstr "服务商信息"
 
 #: .\cities\templates\cities\city.html:43
-#, fuzzy
-#| msgid "Image"
 msgid "min age"
-msgstr "照片"
+msgstr "最小年龄"
 
 #: .\cities\templates\cities\city.html:44
 #: .\cities\templates\cities\city.html:79 .\core\constants.py:10
@@ -1212,10 +1215,8 @@ msgid "irrelevant"
 msgstr "无所谓"
 
 #: .\cities\templates\cities\city.html:77
-#, fuzzy
-#| msgid "Image"
 msgid "max age"
-msgstr "照片"
+msgstr "最大年龄"
 
 #: .\cities\templates\cities\city.html:110
 msgid "Service cities"

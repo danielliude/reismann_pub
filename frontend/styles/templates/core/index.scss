@@ -74,8 +74,10 @@
         border-radius: 0px;
       }
     }
-    .ui.brand.button {
+    .ui.brand.button.search_but {
       height: 38px;
+      padding-left: 15px;
+      padding-right: 6px;
     }
     .left_aligned {
       text-align: left;
@@ -83,7 +85,7 @@
     .further_serrch {
       display: block;
       position: absolute;
-      right: 3px;
+      right: -34px;
       bottom: -16px;
       color: #fff;
       &:hover {
@@ -254,6 +256,8 @@
   padding-top: 35px;
   padding-bottom: 23px;
 }
+
+
 
 
 /*--------------

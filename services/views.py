@@ -241,7 +241,9 @@ def services(request, username,
 
   if request.user.username == username:
 
+      print('>>>>>>>>>>>>>>>>>username:', username)
       user = get_object_or_404(User, username__iexact=username)
+      print('>>>>>>>>>>>>>>>>>user:', user)
       profile = get_user_profile(user)
       contact = get_user_contact(user)
       services = get_user_services(user)

@@ -65,14 +65,16 @@
         width: 260px; } }
     .ui.grid.banner .information .ui.icon.input .prompt {
       border-radius: 0px; }
-  .ui.grid.banner .information .ui.brand.button {
-    height: 38px; }
+  .ui.grid.banner .information .ui.brand.button.search_but {
+    height: 38px;
+    padding-left: 15px;
+    padding-right: 6px; }
   .ui.grid.banner .information .left_aligned {
     text-align: left; }
   .ui.grid.banner .information .further_serrch {
     display: block;
     position: absolute;
-    right: 3px;
+    right: -34px;
     bottom: -16px;
     color: #fff; }
     .ui.grid.banner .information .further_serrch:hover {

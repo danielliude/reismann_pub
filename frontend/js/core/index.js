@@ -91,5 +91,75 @@ $(document).ready(function() {
         /* stuff to do after animation is complete */
       });
     })
+
+    var total_column = 9
+    var current_column = 1
+    $('.column_4, .column_5, .column_6, .column_7, .column_8, .column_9').hide()
+    $('.comment_prev').click(function(event) {
+      if(current_column == 1) {
+        $('.column_' + current_column).fadeOut(500, function() {
+        });
+        $('.column_' + (current_column+1)).fadeOut(500, function() {
+        });
+        $('.column_' + (current_column+2)).fadeOut(500, function() {
+          current_column = 7
+          $('.column_' + current_column).fadeIn(500, function() {
+          });
+          $('.column_' + (current_column+1)).fadeIn(500, function() {
+          });
+          $('.column_' + (current_column+2)).fadeIn(500, function() {
+          });
+        });
+      } else {
+        $('.column_' + current_column).fadeOut(500, function() {
+        });
+        $('.column_' + (current_column+1)).fadeOut(500, function() {
+        });
+        $('.column_' + (current_column+2)).fadeOut(500, function() {
+          current_column = current_column - 3
+          $('.column_' + current_column).fadeIn(500, function() {
+          });
+          $('.column_' + (current_column+1)).fadeIn(500, function() {
+          });
+          $('.column_' + (current_column+2)).fadeIn(500, function() {
+          });
+        });
+      }
+    });
+    $('.comment_next').click(function(event) {
+      if(current_column == 7) {
+        $('.column_' + current_column).fadeOut(500, function() {
+        });
+        $('.column_' + (current_column+1)).fadeOut(500, function() {
+        });
+        $('.column_' + (current_column+2)).fadeOut(500, function() {
+          current_column = 1
+          $('.column_' + current_column).fadeIn(500, function() {
+          });
+          $('.column_' + (current_column+1)).fadeIn(500, function() {
+          });
+          $('.column_' + (current_column+2)).fadeIn(500, function() {
+          });
+        });
+      } else {
+        $('.column_' + current_column).fadeOut(500, function() {
+        });
+        $('.column_' + (current_column+1)).fadeOut(500, function() {
+        });
+        $('.column_' + (current_column+2)).fadeOut(500, function() {
+          current_column = current_column + 3
+          $('.column_' + current_column).fadeIn(500, function() {
+          });
+          $('.column_' + (current_column+1)).fadeIn(500, function() {
+          });
+          $('.column_' + (current_column+2)).fadeIn(500, function() {
+          });
+        });
+      }
+    });
+
+
+
+  
   }
 })
